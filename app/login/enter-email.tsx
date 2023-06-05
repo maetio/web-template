@@ -48,5 +48,3 @@ export const EnterEmail: React.FC<{}> = () => {
     </form>
   )
 }
-
-export default EnterEmail;

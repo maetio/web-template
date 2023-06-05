@@ -43,5 +43,3 @@ export const EnterPassword: React.FC<{}> = () => {
     </form>
   )
 }
-
-export default EnterPassword;
