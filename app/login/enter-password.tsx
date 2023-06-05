@@ -11,7 +11,7 @@ export const EnterPassword: React.FC<{}> = () => {
   const { register, handleSubmit, formState: { errors }, } = useForm({
     resolver: yupResolver(passwordSchema),})
   //user routed to SignIn screen on click of 'return to previous screen' button
-  const router = useRouter()
+  const router = useRouter();
 
 
   const handleReturnClick = (e: { preventDefault: () => void; }) => {

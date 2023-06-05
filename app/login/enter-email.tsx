@@ -1,4 +1,5 @@
-import React from 'react'
+"use client";
+import React from 'react';
 import { Button, Container, TextField, Grid, Typography, Paper } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
