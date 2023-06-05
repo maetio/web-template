@@ -1,6 +1,6 @@
-import { FirebaseOptions, getApps, initializeApp } from "firebase/app";
-import { initializeAuth } from "firebase/auth";
-import { initializeFirestore } from "firebase/firestore";
+import { FirebaseOptions, getApps, initializeApp } from 'firebase/app';
+import { initializeAuth } from 'firebase/auth';
+import { initializeFirestore } from 'firebase/firestore';
 
 const firebaseConfig: FirebaseOptions = {
   apiKey: process.env.FIREBASE_API_KEY,

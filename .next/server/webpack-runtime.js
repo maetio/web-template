@@ -1,6 +1,6 @@
 /******/ (() => {
   // webpackBootstrap
-  /******/ "use strict";
+  /******/ 'use strict';
   /******/ var __webpack_modules__ = {};
   /************************************************************************/
   /******/ // The module cache
@@ -52,7 +52,7 @@
     /******/ __webpack_require__.n = (module) => {
       /******/ var getter =
         module && module.__esModule
-          ? /******/ () => module["default"]
+          ? /******/ () => module['default']
           : /******/ () => module;
       /******/ __webpack_require__.d(getter, { a: getter });
       /******/ return getter;
@@ -76,9 +76,9 @@
     /******/ __webpack_require__.t = function (value, mode) {
       /******/ if (mode & 1) value = this(value);
       /******/ if (mode & 8) return value;
-      /******/ if (typeof value === "object" && value) {
+      /******/ if (typeof value === 'object' && value) {
         /******/ if (mode & 4 && value.__esModule) return value;
-        /******/ if (mode & 16 && typeof value.then === "function")
+        /******/ if (mode & 16 && typeof value.then === 'function')
           return value;
         /******/
       }
@@ -93,7 +93,7 @@
       ];
       /******/ for (
         var current = mode & 2 && value;
-        typeof current == "object" && !~leafPrototypes.indexOf(current);
+        typeof current == 'object' && !~leafPrototypes.indexOf(current);
         current = getProto(current)
       ) {
         /******/ Object.getOwnPropertyNames(current).forEach(
@@ -101,7 +101,7 @@
         );
         /******/
       }
-      /******/ def["default"] = () => value;
+      /******/ def['default'] = () => value;
       /******/ __webpack_require__.d(ns, def);
       /******/ return ns;
       /******/
@@ -154,7 +154,7 @@
     /******/ // This function allow to reference async chunks and sibling chunks for the entrypoint
     /******/ __webpack_require__.u = (chunkId) => {
       /******/ // return url for filenames based on template
-      /******/ return "" + chunkId + ".js";
+      /******/ return '' + chunkId + '.js';
       /******/
     };
     /******/
@@ -171,13 +171,13 @@
   /******/ (() => {
     /******/ // define __esModule on exports
     /******/ __webpack_require__.r = (exports) => {
-      /******/ if (typeof Symbol !== "undefined" && Symbol.toStringTag) {
+      /******/ if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
         /******/ Object.defineProperty(exports, Symbol.toStringTag, {
-          value: "Module",
+          value: 'Module',
         });
         /******/
       }
-      /******/ Object.defineProperty(exports, "__esModule", { value: true });
+      /******/ Object.defineProperty(exports, '__esModule', { value: true });
       /******/
     };
     /******/
@@ -236,7 +236,7 @@
       /******/ if (!installedChunks[chunkId]) {
         /******/ if (658 != chunkId) {
           /******/ installChunk(
-            require("./chunks/" + __webpack_require__.u(chunkId))
+            require('./chunks/' + __webpack_require__.u(chunkId))
           );
           /******/
         } else installedChunks[chunkId] = 1;

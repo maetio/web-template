@@ -10,9 +10,9 @@
       e.exports = {
         style: {
           fontFamily: "'__Inter_0ec1f4', '__Inter_Fallback_0ec1f4'",
-          fontStyle: "normal",
+          fontStyle: 'normal',
         },
-        className: "__className_0ec1f4",
+        className: '__className_0ec1f4',
       };
     },
   },

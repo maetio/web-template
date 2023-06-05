@@ -4,190 +4,190 @@
   exports.ids = [931];
   exports.modules = {
     /***/ 252: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/compiled/cookie");
+      'use strict';
+      module.exports = require('next/dist/compiled/cookie');
 
       /***/
     },
 
     /***/ 7999: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/compiled/path-to-regexp");
+      'use strict';
+      module.exports = require('next/dist/compiled/path-to-regexp');
 
       /***/
     },
 
     /***/ 8038: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/compiled/react");
+      'use strict';
+      module.exports = require('next/dist/compiled/react');
 
       /***/
     },
 
     /***/ 8704: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/compiled/react-dom/server-rendering-stub");
+      'use strict';
+      module.exports = require('next/dist/compiled/react-dom/server-rendering-stub');
 
       /***/
     },
 
     /***/ 7897: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/compiled/react-server-dom-webpack/client");
+      'use strict';
+      module.exports = require('next/dist/compiled/react-server-dom-webpack/client');
 
       /***/
     },
 
     /***/ 6786: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/compiled/react/jsx-runtime");
+      'use strict';
+      module.exports = require('next/dist/compiled/react/jsx-runtime');
 
       /***/
     },
 
     /***/ 1090: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/server/app-render/get-segment-param.js");
+      'use strict';
+      module.exports = require('next/dist/server/app-render/get-segment-param.js');
 
       /***/
     },
 
     /***/ 8652: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/server/future/helpers/interception-routes.js");
+      'use strict';
+      module.exports = require('next/dist/server/future/helpers/interception-routes.js');
 
       /***/
     },
 
     /***/ 3918: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/amp-context.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/amp-context.js');
 
       /***/
     },
 
     /***/ 5732: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/amp-mode.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/amp-mode.js');
 
       /***/
     },
 
     /***/ 3280: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/app-router-context.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/app-router-context.js');
 
       /***/
     },
 
     /***/ 2796: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/head-manager-context.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/head-manager-context.js');
 
       /***/
     },
 
     /***/ 9274: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/hooks-client-context.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/hooks-client-context.js');
 
       /***/
     },
 
     /***/ 4486: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/image-blur-svg.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/image-blur-svg.js');
 
       /***/
     },
 
     /***/ 744: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/image-config-context.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/image-config-context.js');
 
       /***/
     },
 
     /***/ 5843: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/image-config.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/image-config.js');
 
       /***/
     },
 
     /***/ 9552: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/image-loader");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/image-loader');
 
       /***/
     },
 
     /***/ 1751: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/router/utils/add-path-prefix.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/router/utils/add-path-prefix.js');
 
       /***/
     },
 
     /***/ 1668: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/router/utils/handle-smooth-scroll.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/router/utils/handle-smooth-scroll.js');
 
       /***/
     },
 
     /***/ 1897: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/router/utils/is-bot.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/router/utils/is-bot.js');
 
       /***/
     },
 
     /***/ 8854: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/router/utils/parse-path.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/router/utils/parse-path.js');
 
       /***/
     },
 
     /***/ 3297: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/router/utils/remove-trailing-slash.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/router/utils/remove-trailing-slash.js');
 
       /***/
     },
 
     /***/ 3349: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/server-inserted-html.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/server-inserted-html.js');
 
       /***/
     },
 
     /***/ 2470: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/side-effect.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/side-effect.js');
 
       /***/
     },
 
     /***/ 618: /***/ (module) => {
-      "use strict";
-      module.exports = require("next/dist/shared/lib/utils/warn-once.js");
+      'use strict';
+      module.exports = require('next/dist/shared/lib/utils/warn-once.js');
 
       /***/
     },
 
     /***/ 1017: /***/ (module) => {
-      "use strict";
-      module.exports = require("path");
+      'use strict';
+      module.exports = require('path');
 
       /***/
     },
 
     /***/ 7310: /***/ (module) => {
-      "use strict";
-      module.exports = require("url");
+      'use strict';
+      module.exports = require('url');
 
       /***/
     },
@@ -197,7 +197,7 @@
       __webpack_exports__,
       __webpack_require__
     ) => {
-      "use strict";
+      'use strict';
       __webpack_require__.r(__webpack_exports__);
       /* harmony export */ __webpack_require__.d(__webpack_exports__, {
         /* harmony export */ AppRouter: () =>
@@ -319,10 +319,10 @@
 
       const tree = {
         children: [
-          "",
+          '',
           {
             children: [
-              "__PAGE__",
+              '__PAGE__',
               {},
               {
                 page: [
@@ -330,7 +330,7 @@
                     Promise.resolve(/* import() eager */).then(
                       __webpack_require__.bind(__webpack_require__, 1799)
                     ),
-                  "/workspaces/web-template/src/app/page.tsx",
+                  '/workspaces/web-template/src/app/page.tsx',
                 ],
                 metadata: {
                   icon: [
@@ -355,7 +355,7 @@
                 Promise.resolve(/* import() eager */).then(
                   __webpack_require__.bind(__webpack_require__, 4232)
                 ),
-              "/workspaces/web-template/src/app/layout.tsx",
+              '/workspaces/web-template/src/app/layout.tsx',
             ],
             metadata: {
               icon: [
@@ -374,11 +374,11 @@
           },
         ],
       }.children;
-      const pages = ["/workspaces/web-template/src/app/page.tsx"];
+      const pages = ['/workspaces/web-template/src/app/page.tsx'];
 
       const __next_app_webpack_require__ = __webpack_require__;
 
-      const originalPathname = "/page";
+      const originalPathname = '/page';
 
       /***/
     },
@@ -426,16 +426,16 @@
     /***/ 7518: /***/ (module) => {
       // Exports
       module.exports = {
-        main: "page_main__ibFHK",
-        description: "page_description__s_Lqk",
-        code: "page_code__Cdcue",
-        grid: "page_grid__2WZXq",
-        card: "page_card__ftWzl",
-        center: "page_center__GvJ9Y",
-        logo: "page_logo__M5piD",
-        content: "page_content__rFejU",
-        vercelLogo: "page_vercelLogo__1QD2W",
-        rotate: "page_rotate__P15uU",
+        main: 'page_main__ibFHK',
+        description: 'page_description__s_Lqk',
+        code: 'page_code__Cdcue',
+        grid: 'page_grid__2WZXq',
+        card: 'page_card__ftWzl',
+        center: 'page_center__GvJ9Y',
+        logo: 'page_logo__M5piD',
+        content: 'page_content__rFejU',
+        vercelLogo: 'page_vercelLogo__1QD2W',
+        rotate: 'page_rotate__P15uU',
       };
 
       /***/
@@ -446,7 +446,7 @@
       __webpack_exports__,
       __webpack_require__
     ) => {
-      "use strict";
+      'use strict';
       __webpack_require__.r(__webpack_exports__);
       /* harmony export */ __webpack_require__.d(__webpack_exports__, {
         /* harmony export */ default: () => /* binding */ RootLayout,
@@ -473,17 +473,17 @@
         );
 
       const metadata = {
-        title: "Create Next App",
-        description: "Generated by create next app",
+        title: 'Create Next App',
+        description: 'Generated by create next app',
       };
       function RootLayout({ children }) {
         return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(
-          "html",
+          'html',
           {
-            lang: "en",
+            lang: 'en',
             children:
               /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(
-                "body",
+                'body',
                 {
                   className:
                     next_font_google_target_css_path_src_app_layout_tsx_import_Inter_arguments_subsets_latin_variableName_inter___WEBPACK_IMPORTED_MODULE_2___default()
@@ -503,7 +503,7 @@
       __webpack_exports__,
       __webpack_require__
     ) => {
-      "use strict";
+      'use strict';
       __webpack_require__.r(__webpack_exports__);
       /* harmony export */ __webpack_require__.d(__webpack_exports__, {
         /* harmony export */ default: () => /* binding */ Home,
@@ -530,47 +530,47 @@
 
       function Home() {
         return /*#__PURE__*/ (0,
-        react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("main", {
+        react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)('main', {
           className:
             _page_module_css__WEBPACK_IMPORTED_MODULE_2___default().main,
           children: [
             /*#__PURE__*/ (0,
-            react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)('div', {
               className:
                 _page_module_css__WEBPACK_IMPORTED_MODULE_2___default()
                   .description,
               children: [
                 /*#__PURE__*/ (0,
-                react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)('p', {
                   children: [
-                    "Get started by editing\xa0",
+                    'Get started by editing\xa0',
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(
-                      "code",
+                      'code',
                       {
                         className:
                           _page_module_css__WEBPACK_IMPORTED_MODULE_2___default()
                             .code,
-                        children: "src/app/page.tsx",
+                        children: 'src/app/page.tsx',
                       }
                     ),
                   ],
                 }),
                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(
-                  "div",
+                  'div',
                   {
                     children: /*#__PURE__*/ (0,
-                    react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
-                      href: "https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app",
-                      target: "_blank",
-                      rel: "noopener noreferrer",
+                    react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)('a', {
+                      href: 'https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app',
+                      target: '_blank',
+                      rel: 'noopener noreferrer',
                       children: [
-                        "By",
-                        " ",
+                        'By',
+                        ' ',
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(
                           next_image__WEBPACK_IMPORTED_MODULE_1___default(),
                           {
-                            src: "/vercel.svg",
-                            alt: "Vercel Logo",
+                            src: '/vercel.svg',
+                            alt: 'Vercel Logo',
                             className:
                               _page_module_css__WEBPACK_IMPORTED_MODULE_2___default()
                                 .vercelLogo,
@@ -586,7 +586,7 @@
               ],
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(
-              "div",
+              'div',
               {
                 className:
                   _page_module_css__WEBPACK_IMPORTED_MODULE_2___default()
@@ -598,8 +598,8 @@
                       className:
                         _page_module_css__WEBPACK_IMPORTED_MODULE_2___default()
                           .logo,
-                      src: "/next.svg",
-                      alt: "Next.js Logo",
+                      src: '/next.svg',
+                      alt: 'Next.js Logo',
                       width: 180,
                       height: 37,
                       priority: true,
@@ -608,125 +608,125 @@
               }
             ),
             /*#__PURE__*/ (0,
-            react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)('div', {
               className:
                 _page_module_css__WEBPACK_IMPORTED_MODULE_2___default().grid,
               children: [
                 /*#__PURE__*/ (0,
-                react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
-                  href: "https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app",
+                react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)('a', {
+                  href: 'https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app',
                   className:
                     _page_module_css__WEBPACK_IMPORTED_MODULE_2___default()
                       .card,
-                  target: "_blank",
-                  rel: "noopener noreferrer",
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
                   children: [
                     /*#__PURE__*/ (0,
-                    react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h2", {
+                    react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)('h2', {
                       children: [
-                        "Docs ",
+                        'Docs ',
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(
-                          "span",
+                          'span',
                           {
-                            children: "->",
+                            children: '->',
                           }
                         ),
                       ],
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(
-                      "p",
+                      'p',
                       {
                         children:
-                          "Find in-depth information about Next.js features and API.",
+                          'Find in-depth information about Next.js features and API.',
                       }
                     ),
                   ],
                 }),
                 /*#__PURE__*/ (0,
-                react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
-                  href: "https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app",
+                react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)('a', {
+                  href: 'https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app',
                   className:
                     _page_module_css__WEBPACK_IMPORTED_MODULE_2___default()
                       .card,
-                  target: "_blank",
-                  rel: "noopener noreferrer",
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
                   children: [
                     /*#__PURE__*/ (0,
-                    react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h2", {
+                    react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)('h2', {
                       children: [
-                        "Learn ",
+                        'Learn ',
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(
-                          "span",
+                          'span',
                           {
-                            children: "->",
+                            children: '->',
                           }
                         ),
                       ],
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(
-                      "p",
+                      'p',
                       {
                         children:
-                          "Learn about Next.js in an interactive course with\xa0quizzes!",
+                          'Learn about Next.js in an interactive course with\xa0quizzes!',
                       }
                     ),
                   ],
                 }),
                 /*#__PURE__*/ (0,
-                react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
-                  href: "https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app",
+                react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)('a', {
+                  href: 'https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app',
                   className:
                     _page_module_css__WEBPACK_IMPORTED_MODULE_2___default()
                       .card,
-                  target: "_blank",
-                  rel: "noopener noreferrer",
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
                   children: [
                     /*#__PURE__*/ (0,
-                    react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h2", {
+                    react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)('h2', {
                       children: [
-                        "Templates ",
+                        'Templates ',
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(
-                          "span",
+                          'span',
                           {
-                            children: "->",
+                            children: '->',
                           }
                         ),
                       ],
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(
-                      "p",
+                      'p',
                       {
-                        children: "Explore the Next.js 13 playground.",
+                        children: 'Explore the Next.js 13 playground.',
                       }
                     ),
                   ],
                 }),
                 /*#__PURE__*/ (0,
-                react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
-                  href: "https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app",
+                react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)('a', {
+                  href: 'https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app',
                   className:
                     _page_module_css__WEBPACK_IMPORTED_MODULE_2___default()
                       .card,
-                  target: "_blank",
-                  rel: "noopener noreferrer",
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
                   children: [
                     /*#__PURE__*/ (0,
-                    react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h2", {
+                    react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)('h2', {
                       children: [
-                        "Deploy ",
+                        'Deploy ',
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(
-                          "span",
+                          'span',
                           {
-                            children: "->",
+                            children: '->',
                           }
                         ),
                       ],
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(
-                      "p",
+                      'p',
                       {
                         children:
-                          "Instantly deploy your Next.js site to a shareable URL with Vercel.",
+                          'Instantly deploy your Next.js site to a shareable URL with Vercel.',
                       }
                     ),
                   ],
@@ -745,7 +745,7 @@
       __webpack_exports__,
       __webpack_require__
     ) => {
-      "use strict";
+      'use strict';
       __webpack_require__.r(__webpack_exports__);
       /* harmony export */ __webpack_require__.d(__webpack_exports__, {
         /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__,
@@ -761,18 +761,18 @@
       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (
         props
       ) => {
-        const imageData = { type: "image/x-icon", sizes: "any" };
+        const imageData = { type: 'image/x-icon', sizes: 'any' };
         const imageUrl = (0,
         next_dist_lib_metadata_get_metadata_route__WEBPACK_IMPORTED_MODULE_0__.fillMetadataSegment)(
-          ".",
+          '.',
           props.params,
-          "favicon.ico"
+          'favicon.ico'
         );
 
         return [
           {
             ...imageData,
-            url: imageUrl + "",
+            url: imageUrl + '',
           },
         ];
       };
@@ -785,7 +785,7 @@
     },
   };
   // load runtime
-  var __webpack_require__ = require("../webpack-runtime.js");
+  var __webpack_require__ = require('../webpack-runtime.js');
   __webpack_require__.C(exports);
   var __webpack_exec__ = (moduleId) =>
     __webpack_require__((__webpack_require__.s = moduleId));

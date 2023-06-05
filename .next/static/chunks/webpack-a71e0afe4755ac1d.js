@@ -1,5 +1,5 @@
 !(function () {
-  "use strict";
+  'use strict';
   var e,
     t,
     r,
@@ -63,17 +63,17 @@
       if (
         (1 & n && (e = this(e)),
         8 & n ||
-          ("object" == typeof e &&
+          ('object' == typeof e &&
             e &&
             ((4 & n && e.__esModule) ||
-              (16 & n && "function" == typeof e.then))))
+              (16 & n && 'function' == typeof e.then))))
       )
         return e;
       var o = Object.create(null);
       s.r(o);
       var u = {};
       t = t || [null, r({}), r([]), r(r)];
-      for (var i = 2 & n && e; "object" == typeof i && !~t.indexOf(i); i = r(i))
+      for (var i = 2 & n && e; 'object' == typeof i && !~t.indexOf(i); i = r(i))
         Object.getOwnPropertyNames(i).forEach(function (t) {
           u[t] = function () {
             return e[t];
@@ -104,16 +104,16 @@
     (s.u = function (e) {}),
     (s.miniCssF = function (e) {
       return (
-        "static/css/" +
-        { 185: "48a976b010c8897c", 931: "dbc3840bcb631cd5" }[e] +
-        ".css"
+        'static/css/' +
+        { 185: '48a976b010c8897c', 931: 'dbc3840bcb631cd5' }[e] +
+        '.css'
       );
     }),
     (s.o = function (e, t) {
       return Object.prototype.hasOwnProperty.call(e, t);
     }),
     (n = {}),
-    (o = "_N_E:"),
+    (o = '_N_E:'),
     (s.l = function (e, t, r, u) {
       if (n[e]) {
         n[e].push(t);
@@ -121,14 +121,14 @@
       }
       if (void 0 !== r)
         for (
-          var i, c, f = document.getElementsByTagName("script"), a = 0;
+          var i, c, f = document.getElementsByTagName('script'), a = 0;
           a < f.length;
           a++
         ) {
           var l = f[a];
           if (
-            l.getAttribute("src") == e ||
-            l.getAttribute("data-webpack") == o + r
+            l.getAttribute('src') == e ||
+            l.getAttribute('data-webpack') == o + r
           ) {
             i = l;
             break;
@@ -136,10 +136,10 @@
         }
       i ||
         ((c = !0),
-        ((i = document.createElement("script")).charset = "utf-8"),
+        ((i = document.createElement('script')).charset = 'utf-8'),
         (i.timeout = 120),
-        s.nc && i.setAttribute("nonce", s.nc),
-        i.setAttribute("data-webpack", o + r),
+        s.nc && i.setAttribute('nonce', s.nc),
+        i.setAttribute('data-webpack', o + r),
         (i.src = s.tu(e))),
         (n[e] = [t]);
       var d = function (t, r) {
@@ -157,7 +157,7 @@
             return t(r);
         },
         p = setTimeout(
-          d.bind(null, void 0, { type: "timeout", target: i }),
+          d.bind(null, void 0, { type: 'timeout', target: i }),
           12e4
         );
       (i.onerror = d.bind(null, i.onerror)),
@@ -165,10 +165,10 @@
         c && document.head.appendChild(i);
     }),
     (s.r = function (e) {
-      "undefined" != typeof Symbol &&
+      'undefined' != typeof Symbol &&
         Symbol.toStringTag &&
-        Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }),
-        Object.defineProperty(e, "__esModule", { value: !0 });
+        Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
+        Object.defineProperty(e, '__esModule', { value: !0 });
     }),
     (s.tt = function () {
       return (
@@ -178,16 +178,16 @@
               return e;
             },
           }),
-          "undefined" != typeof trustedTypes &&
+          'undefined' != typeof trustedTypes &&
             trustedTypes.createPolicy &&
-            (u = trustedTypes.createPolicy("nextjs#bundler", u))),
+            (u = trustedTypes.createPolicy('nextjs#bundler', u))),
         u
       );
     }),
     (s.tu = function (e) {
       return s.tt().createScriptURL(e);
     }),
-    (s.p = "/_next/"),
+    (s.p = '/_next/'),
     (i = { 272: 0 }),
     (s.f.j = function (e, t) {
       var r = s.o(i, e) ? i[e] : void 0;
@@ -204,17 +204,17 @@
             o,
             function (t) {
               if (s.o(i, e) && (0 !== (r = i[e]) && (i[e] = void 0), r)) {
-                var n = t && ("load" === t.type ? "missing" : t.type),
+                var n = t && ('load' === t.type ? 'missing' : t.type),
                   o = t && t.target && t.target.src;
                 (u.message =
-                  "Loading chunk " + e + " failed.\n(" + n + ": " + o + ")"),
-                  (u.name = "ChunkLoadError"),
+                  'Loading chunk ' + e + ' failed.\n(' + n + ': ' + o + ')'),
+                  (u.name = 'ChunkLoadError'),
                   (u.type = n),
                   (u.request = o),
                   r[1](u);
               }
             },
-            "chunk-" + e,
+            'chunk-' + e,
             e
           );
         } else i[e] = 0;

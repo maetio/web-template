@@ -2,12 +2,12 @@
   [179],
   {
     37: function () {
-      "trimStart" in String.prototype ||
+      'trimStart' in String.prototype ||
         (String.prototype.trimStart = String.prototype.trimLeft),
-        "trimEnd" in String.prototype ||
+        'trimEnd' in String.prototype ||
           (String.prototype.trimEnd = String.prototype.trimRight),
-        "description" in Symbol.prototype ||
-          Object.defineProperty(Symbol.prototype, "description", {
+        'description' in Symbol.prototype ||
+          Object.defineProperty(Symbol.prototype, 'description', {
             configurable: !0,
             get: function () {
               var e = /\((.*)\)/.exec(this.toString());
@@ -26,7 +26,7 @@
           })),
         Promise.prototype.finally ||
           (Promise.prototype.finally = function (e) {
-            if ("function" != typeof e) return this.then(e, e);
+            if ('function' != typeof e) return this.then(e, e);
             var t = this.constructor || Promise;
             return this.then(
               function (r) {
@@ -49,9 +49,9 @@
           });
     },
     7800: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "addBasePath", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'addBasePath', {
           enumerable: !0,
           get: function () {
             return o;
@@ -60,19 +60,19 @@
       let n = r(1250),
         a = r(2432);
       function o(e, t) {
-        return (0, a.normalizePathTrailingSlash)((0, n.addPathPrefix)(e, ""));
+        return (0, a.normalizePathTrailingSlash)((0, n.addPathPrefix)(e, ''));
       }
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     328: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "addLocale", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'addLocale', {
           enumerable: !0,
           get: function () {
             return n;
@@ -88,17 +88,17 @@
           r[n - 1] = arguments[n];
         return e;
       };
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     4512: function (e, t) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "detectDomainLocale", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'detectDomainLocale', {
           enumerable: !0,
           get: function () {
             return r;
@@ -108,17 +108,17 @@
         for (var e = arguments.length, t = Array(e), r = 0; r < e; r++)
           t[r] = arguments[r];
       };
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     1146: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "hasBasePath", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'hasBasePath', {
           enumerable: !0,
           get: function () {
             return a;
@@ -126,19 +126,19 @@
         });
       let n = r(7751);
       function a(e) {
-        return (0, n.pathHasPrefix)(e, "");
+        return (0, n.pathHasPrefix)(e, '');
       }
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     8321: function (e, t) {
-      "use strict";
+      'use strict';
       let r;
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -154,11 +154,11 @@
           },
         });
       let n = {
-        acceptCharset: "accept-charset",
-        className: "class",
-        htmlFor: "for",
-        httpEquiv: "http-equiv",
-        noModule: "noModule",
+        acceptCharset: 'accept-charset',
+        className: 'class',
+        htmlFor: 'for',
+        httpEquiv: 'http-equiv',
+        noModule: 'noModule',
       };
       function a(e) {
         let { type: t, props: r } = e,
@@ -166,33 +166,33 @@
         for (let e in r) {
           if (
             !r.hasOwnProperty(e) ||
-            "children" === e ||
-            "dangerouslySetInnerHTML" === e ||
+            'children' === e ||
+            'dangerouslySetInnerHTML' === e ||
             void 0 === r[e]
           )
             continue;
           let o = n[e] || e.toLowerCase();
-          "script" === t && ("async" === o || "defer" === o || "noModule" === o)
+          'script' === t && ('async' === o || 'defer' === o || 'noModule' === o)
             ? (a[o] = !!r[e])
             : a.setAttribute(o, r[e]);
         }
         let { children: o, dangerouslySetInnerHTML: i } = r;
         return (
           i
-            ? (a.innerHTML = i.__html || "")
+            ? (a.innerHTML = i.__html || '')
             : o &&
               (a.textContent =
-                "string" == typeof o ? o : Array.isArray(o) ? o.join("") : ""),
+                'string' == typeof o ? o : Array.isArray(o) ? o.join('') : ''),
           a
         );
       }
       function o(e, t) {
         if (e instanceof HTMLElement && t instanceof HTMLElement) {
-          let r = t.getAttribute("nonce");
-          if (r && !e.getAttribute("nonce")) {
+          let r = t.getAttribute('nonce');
+          if (r && !e.getAttribute('nonce')) {
             let n = t.cloneNode(!0);
             return (
-              n.setAttribute("nonce", ""),
+              n.setAttribute('nonce', ''),
               (n.nonce = r),
               r === e.nonce && e.isEqualNode(n)
             );
@@ -206,35 +206,35 @@
           updateHead: (e) => {
             let t = {};
             e.forEach((e) => {
-              if ("link" === e.type && e.props["data-optimized-fonts"]) {
+              if ('link' === e.type && e.props['data-optimized-fonts']) {
                 if (
                   document.querySelector(
-                    'style[data-href="' + e.props["data-href"] + '"]'
+                    'style[data-href="' + e.props['data-href'] + '"]'
                   )
                 )
                   return;
-                (e.props.href = e.props["data-href"]),
-                  (e.props["data-href"] = void 0);
+                (e.props.href = e.props['data-href']),
+                  (e.props['data-href'] = void 0);
               }
               let r = t[e.type] || [];
               r.push(e), (t[e.type] = r);
             });
             let n = t.title ? t.title[0] : null,
-              a = "";
+              a = '';
             if (n) {
               let { children: e } = n.props;
-              a = "string" == typeof e ? e : Array.isArray(e) ? e.join("") : "";
+              a = 'string' == typeof e ? e : Array.isArray(e) ? e.join('') : '';
             }
             a !== document.title && (document.title = a),
-              ["meta", "base", "link", "style", "script"].forEach((e) => {
+              ['meta', 'base', 'link', 'style', 'script'].forEach((e) => {
                 r(e, t[e] || []);
               });
           },
         };
       }
       (r = (e, t) => {
-        let r = document.getElementsByTagName("head")[0],
-          n = r.querySelector("meta[name=next-head-count]"),
+        let r = document.getElementsByTagName('head')[0],
+          n = r.querySelector('meta[name=next-head-count]'),
           i = Number(n.content),
           l = [];
         for (
@@ -263,19 +263,19 @@
           s.forEach((e) => r.insertBefore(e, n)),
           (n.content = (i - l.length + s.length).toString());
       }),
-        ("function" == typeof t.default ||
-          ("object" == typeof t.default && null !== t.default)) &&
+        ('function' == typeof t.default ||
+          ('object' == typeof t.default && null !== t.default)) &&
           void 0 === t.default.__esModule &&
-          (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+          (Object.defineProperty(t.default, '__esModule', { value: !0 }),
           Object.assign(t.default, t),
           (e.exports = t.default));
     },
     4274: function (e, t, r) {
-      "use strict";
+      'use strict';
       let n, a, o, i, l, u, s, c, f, d, h, p;
-      Object.defineProperty(t, "__esModule", { value: !0 });
+      Object.defineProperty(t, '__esModule', { value: !0 });
       let m = r(1757);
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -322,7 +322,7 @@
         B = r(5174),
         H = r(9731),
         U = g._(r(2856)),
-        F = "13.4.4",
+        F = '13.4.4',
         q = (0, v.default)(),
         W = (e) => [].slice.call(e),
         z = !1;
@@ -343,7 +343,7 @@
               n
                 .replace(
                   n.pathname +
-                    "?" +
+                    '?' +
                     String(
                       (0, j.assign)(
                         (0, j.urlQueryToSearchParams)(n.query),
@@ -373,13 +373,13 @@
       async function V(e) {
         void 0 === e && (e = {}),
           (a = JSON.parse(
-            document.getElementById("__NEXT_DATA__").textContent
+            document.getElementById('__NEXT_DATA__').textContent
           )),
           (window.__NEXT_DATA__ = a),
           (p = a.defaultLocale);
-        let t = a.assetPrefix || "";
+        let t = a.assetPrefix || '';
         if (
-          ((r.p = "" + t + "/_next/"),
+          ((r.p = '' + t + '/_next/'),
           (0, O.setConfig)({
             serverRuntimeConfig: {},
             publicRuntimeConfig: a.runtimeConfig || {},
@@ -402,7 +402,7 @@
           (window.__NEXT_P = []),
           (window.__NEXT_P.push = s),
           ((u = (0, R.default)()).getIsSsr = () => n.isSsr),
-          (l = document.getElementById("__next")),
+          (l = document.getElementById('__next')),
           { assetPrefix: t }
         );
       }
@@ -417,7 +417,7 @@
           {
             fn: (e) =>
               J({ App: f, err: e }).catch((e) =>
-                console.error("Error rendering page: ", e)
+                console.error('Error rendering page: ', e)
               ),
           },
           y.default.createElement(
@@ -447,8 +447,8 @@
                             640, 750, 828, 1080, 1200, 1920, 2048, 3840,
                           ],
                           imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-                          path: "/_next/image",
-                          loader: "default",
+                          path: '/_next/image',
+                          loader: 'default',
                           dangerouslyAllowSVG: !1,
                           unoptimized: !1,
                         },
@@ -471,10 +471,10 @@
         return (
           console.error(l),
           console.error(
-            "A client-side exception has occurred, see here for more info: https://nextjs.org/docs/messages/client-side-exception-occurred"
+            'A client-side exception has occurred, see here for more info: https://nextjs.org/docs/messages/client-side-exception-occurred'
           ),
           i
-            .loadPage("/_error")
+            .loadPage('/_error')
             .then((n) => {
               let { page: a, styleSheets: o } = n;
               return (null == s ? void 0 : s.Component) === a
@@ -524,44 +524,44 @@
       let Q = null,
         Z = !0;
       function ee() {
-        ["beforeRender", "afterHydrate", "afterRender", "routeChange"].forEach(
+        ['beforeRender', 'afterHydrate', 'afterRender', 'routeChange'].forEach(
           (e) => performance.clearMarks(e)
         );
       }
       function et() {
         E.ST &&
-          (performance.mark("afterHydrate"),
+          (performance.mark('afterHydrate'),
           performance.measure(
-            "Next.js-before-hydration",
-            "navigationStart",
-            "beforeRender"
+            'Next.js-before-hydration',
+            'navigationStart',
+            'beforeRender'
           ),
           performance.measure(
-            "Next.js-hydration",
-            "beforeRender",
-            "afterHydrate"
+            'Next.js-hydration',
+            'beforeRender',
+            'afterHydrate'
           ),
-          d && performance.getEntriesByName("Next.js-hydration").forEach(d),
+          d && performance.getEntriesByName('Next.js-hydration').forEach(d),
           ee());
       }
       function er() {
         if (!E.ST) return;
-        performance.mark("afterRender");
-        let e = performance.getEntriesByName("routeChange", "mark");
+        performance.mark('afterRender');
+        let e = performance.getEntriesByName('routeChange', 'mark');
         e.length &&
           (performance.measure(
-            "Next.js-route-change-to-render",
+            'Next.js-route-change-to-render',
             e[0].name,
-            "beforeRender"
+            'beforeRender'
           ),
-          performance.measure("Next.js-render", "beforeRender", "afterRender"),
+          performance.measure('Next.js-render', 'beforeRender', 'afterRender'),
           d &&
-            (performance.getEntriesByName("Next.js-render").forEach(d),
+            (performance.getEntriesByName('Next.js-render').forEach(d),
             performance
-              .getEntriesByName("Next.js-route-change-to-render")
+              .getEntriesByName('Next.js-route-change-to-render')
               .forEach(d)),
           ee(),
-          ["Next.js-route-change-to-render", "Next.js-render"].forEach((e) =>
+          ['Next.js-route-change-to-render', 'Next.js-render'].forEach((e) =>
             performance.clearMeasures(e)
           ));
       }
@@ -578,7 +578,7 @@
       function ea(e) {
         let t,
           { App: r, Component: a, props: o, err: i } = e,
-          u = "initial" in e ? void 0 : e.styleSheets;
+          u = 'initial' in e ? void 0 : e.styleSheets;
         (a = a || s.Component), (o = o || s.props);
         let f = { ...o, Component: a, err: i, router: n };
         s = f;
@@ -590,7 +590,7 @@
               }),
               (c = () => {
                 (d = !0), (c = null);
-                let e = Error("Cancel rendering route");
+                let e = Error('Cancel rendering route');
                 (e.cancelled = !0), r(e);
               });
           });
@@ -599,17 +599,17 @@
         }
         !(function () {
           if (!u) return;
-          let e = W(document.querySelectorAll("style[data-n-href]")),
-            t = new Set(e.map((e) => e.getAttribute("data-n-href"))),
-            r = document.querySelector("noscript[data-n-css]"),
-            n = null == r ? void 0 : r.getAttribute("data-n-css");
+          let e = W(document.querySelectorAll('style[data-n-href]')),
+            t = new Set(e.map((e) => e.getAttribute('data-n-href'))),
+            r = document.querySelector('noscript[data-n-css]'),
+            n = null == r ? void 0 : r.getAttribute('data-n-css');
           u.forEach((e) => {
             let { href: r, text: a } = e;
             if (!t.has(r)) {
-              let e = document.createElement("style");
-              e.setAttribute("data-n-href", r),
-                e.setAttribute("media", "x"),
-                n && e.setAttribute("nonce", n),
+              let e = document.createElement('style');
+              e.setAttribute('data-n-href', r),
+                e.setAttribute('media', 'x'),
+                n && e.setAttribute('nonce', n),
                 document.head.appendChild(e),
                 e.appendChild(document.createTextNode(a));
             }
@@ -622,13 +622,13 @@
             callback: function () {
               if (u && !d) {
                 let e = new Set(u.map((e) => e.href)),
-                  t = W(document.querySelectorAll("style[data-n-href]")),
-                  r = t.map((e) => e.getAttribute("data-n-href"));
+                  t = W(document.querySelectorAll('style[data-n-href]')),
+                  r = t.map((e) => e.getAttribute('data-n-href'));
                 for (let n = 0; n < r.length; ++n)
                   e.has(r[n])
-                    ? t[n].removeAttribute("media")
-                    : t[n].setAttribute("media", "x");
-                let n = document.querySelector("noscript[data-n-css]");
+                    ? t[n].removeAttribute('media')
+                    : t[n].setAttribute('media', 'x');
+                let n = document.querySelector('noscript[data-n-css]');
                 n &&
                   u.forEach((e) => {
                     let { href: t } = e,
@@ -637,7 +637,7 @@
                       );
                     r && (n.parentNode.insertBefore(r, n.nextSibling), (n = r));
                   }),
-                  W(document.querySelectorAll("link[data-n-p]")).forEach(
+                  W(document.querySelectorAll('link[data-n-p]')).forEach(
                     (e) => {
                       e.parentNode.removeChild(e);
                     }
@@ -657,14 +657,14 @@
             X(r, f),
             y.default.createElement(
               x.Portal,
-              { type: "next-route-announcer" },
+              { type: 'next-route-announcer' },
               y.default.createElement(A.RouteAnnouncer, null)
             )
           )
         );
         return (
           !(function (e, t) {
-            E.ST && performance.mark("beforeRender");
+            E.ST && performance.mark('beforeRender');
             let r = t(Z ? et : er);
             if (Q) {
               let e = y.default.startTransition;
@@ -696,8 +696,8 @@
       async function ei(e) {
         let t = a.err;
         try {
-          let e = await i.routeLoader.whenEntrypoint("/_app");
-          if ("error" in e) throw e.error;
+          let e = await i.routeLoader.whenEntrypoint('/_app');
+          if ('error' in e) throw e.error;
           let { component: t, exports: r } = e;
           (f = t),
             r &&
@@ -716,7 +716,7 @@
                   } = e,
                   f =
                     Date.now() +
-                    "-" +
+                    '-' +
                     (Math.floor(Math.random() * (9e12 - 1)) + 1e12);
                 s && s.length && (t = s[0].startTime);
                 let d = {
@@ -725,12 +725,12 @@
                   startTime: o || t,
                   value: null == i ? l : i,
                   label:
-                    "mark" === u || "measure" === u ? "custom" : "web-vital",
+                    'mark' === u || 'measure' === u ? 'custom' : 'web-vital',
                 };
                 c && (d.attribution = c), r.reportWebVitals(d);
               });
           let n = await i.routeLoader.whenEntrypoint(a.page);
-          if ("error" in n) throw n.error;
+          if ('error' in n) throw n.error;
           h = n.component;
         } catch (e) {
           t = (0, T.getProperError)(e);
@@ -758,16 +758,16 @@
         (null == e ? void 0 : e.beforeRender) && (await e.beforeRender()),
           eo(r);
       }
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     155: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 });
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 });
       let n = r(4274);
       (window.next = {
         version: n.version,
@@ -779,17 +779,17 @@
         (0, n.initialize)({})
           .then(() => (0, n.hydrate)())
           .catch(console.error),
-        ("function" == typeof t.default ||
-          ("object" == typeof t.default && null !== t.default)) &&
+        ('function' == typeof t.default ||
+          ('object' == typeof t.default && null !== t.default)) &&
           void 0 === t.default.__esModule &&
-          (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+          (Object.defineProperty(t.default, '__esModule', { value: !0 }),
           Object.assign(t.default, t),
           (e.exports = t.default));
     },
     2432: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "normalizePathTrailingSlash", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'normalizePathTrailingSlash', {
           enumerable: !0,
           get: function () {
             return o;
@@ -798,21 +798,21 @@
       let n = r(7479),
         a = r(4460),
         o = (e) => {
-          if (!e.startsWith("/")) return e;
+          if (!e.startsWith('/')) return e;
           let { pathname: t, query: r, hash: o } = (0, a.parsePath)(e);
-          return "" + (0, n.removeTrailingSlash)(t) + r + o;
+          return '' + (0, n.removeTrailingSlash)(t) + r + o;
         };
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     2856: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "default", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'default', {
           enumerable: !0,
           get: function () {
             return a;
@@ -821,24 +821,24 @@
       let n = r(4785);
       function a(e) {
         let t =
-          "function" == typeof reportError
+          'function' == typeof reportError
             ? reportError
             : (e) => {
                 window.console.error(e);
               };
         e.digest !== n.NEXT_DYNAMIC_NO_SSR_CODE && t(e);
       }
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     309: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "default", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'default', {
           enumerable: !0,
           get: function () {
             return d;
@@ -867,15 +867,15 @@
             { pathname: f, query: d, search: h } = (0, s.parseRelativeUrl)(r),
             { pathname: p } = (0, s.parseRelativeUrl)(t),
             m = (0, c.removeTrailingSlash)(f);
-          if ("/" !== m[0])
+          if ('/' !== m[0])
             throw Error('Route name should start with a "/", got "' + m + '"');
           return ((e) => {
             let t = (0, i.default)(
               (0, c.removeTrailingSlash)((0, l.addLocale)(e, n)),
-              ".json"
+              '.json'
             );
             return (0, a.addBasePath)(
-              "/_next/data/" + this.buildId + t + h,
+              '/_next/data/' + this.buildId + t + h,
               !0
             );
           })(
@@ -891,7 +891,7 @@
         }
         loadPage(e) {
           return this.routeLoader.loadRoute(e).then((e) => {
-            if ("component" in e)
+            if ('component' in e)
               return {
                 page: e.component,
                 mod: e.exports,
@@ -919,24 +919,24 @@
             }));
         }
       }
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     2073: function (e, t, r) {
-      "use strict";
+      'use strict';
       let n;
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "default", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'default', {
           enumerable: !0,
           get: function () {
             return l;
           },
         });
-      let a = ["CLS", "FCP", "FID", "INP", "LCP", "TTFB"];
+      let a = ['CLS', 'FCP', 'FID', 'INP', 'LCP', 'TTFB'];
       location.href;
       let o = !1;
       function i(e) {
@@ -947,22 +947,22 @@
           for (let e of ((o = !0), a))
             try {
               let t;
-              t || (t = r(8018)), t["on" + e](i);
+              t || (t = r(8018)), t['on' + e](i);
             } catch (t) {
-              console.warn("Failed to track " + e + " web-vital", t);
+              console.warn('Failed to track ' + e + ' web-vital', t);
             }
       };
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     4842: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "Portal", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'Portal', {
           enumerable: !0,
           get: function () {
             return o;
@@ -987,56 +987,56 @@
             o ? (0, a.createPortal)(t, o) : null
           );
         };
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     8673: function (e, t, r) {
-      "use strict";
+      'use strict';
       function n(e) {
-        return (e = e.slice(0)).startsWith("/") || (e = "/" + e), e;
+        return (e = e.slice(0)).startsWith('/') || (e = '/' + e), e;
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "removeBasePath", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'removeBasePath', {
           enumerable: !0,
           get: function () {
             return n;
           },
         }),
         r(1146),
-        ("function" == typeof t.default ||
-          ("object" == typeof t.default && null !== t.default)) &&
+        ('function' == typeof t.default ||
+          ('object' == typeof t.default && null !== t.default)) &&
           void 0 === t.default.__esModule &&
-          (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+          (Object.defineProperty(t.default, '__esModule', { value: !0 }),
           Object.assign(t.default, t),
           (e.exports = t.default));
     },
     489: function (e, t, r) {
-      "use strict";
+      'use strict';
       function n(e, t) {
         return e;
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "removeLocale", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'removeLocale', {
           enumerable: !0,
           get: function () {
             return n;
           },
         }),
         r(4460),
-        ("function" == typeof t.default ||
-          ("object" == typeof t.default && null !== t.default)) &&
+        ('function' == typeof t.default ||
+          ('object' == typeof t.default && null !== t.default)) &&
           void 0 === t.default.__esModule &&
-          (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+          (Object.defineProperty(t.default, '__esModule', { value: !0 }),
           Object.assign(t.default, t),
           (e.exports = t.default));
     },
     9616: function (e, t) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -1049,7 +1049,7 @@
           },
         });
       let r =
-          ("undefined" != typeof self &&
+          ('undefined' != typeof self &&
             self.requestIdleCallback &&
             self.requestIdleCallback.bind(window)) ||
           function (e) {
@@ -1064,22 +1064,22 @@
             }, 1);
           },
         n =
-          ("undefined" != typeof self &&
+          ('undefined' != typeof self &&
             self.cancelIdleCallback &&
             self.cancelIdleCallback.bind(window)) ||
           function (e) {
             return clearTimeout(e);
           };
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     4105: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -1096,20 +1096,20 @@
         o = r(9843),
         i = {
           border: 0,
-          clip: "rect(0 0 0 0)",
-          height: "1px",
-          margin: "-1px",
-          overflow: "hidden",
+          clip: 'rect(0 0 0 0)',
+          height: '1px',
+          margin: '-1px',
+          overflow: 'hidden',
           padding: 0,
-          position: "absolute",
+          position: 'absolute',
           top: 0,
-          width: "1px",
-          whiteSpace: "nowrap",
-          wordWrap: "normal",
+          width: '1px',
+          whiteSpace: 'nowrap',
+          wordWrap: 'normal',
         },
         l = () => {
           let { asPath: e } = (0, o.useRouter)(),
-            [t, r] = a.default.useState(""),
+            [t, r] = a.default.useState(''),
             n = a.default.useRef(e);
           return (
             a.default.useEffect(() => {
@@ -1117,7 +1117,7 @@
                 if (((n.current = e), document.title)) r(document.title);
                 else {
                   var t;
-                  let n = document.querySelector("h1"),
+                  let n = document.querySelector('h1'),
                     a =
                       null != (t = null == n ? void 0 : n.innerText)
                         ? t
@@ -1129,11 +1129,11 @@
               }
             }, [e]),
             a.default.createElement(
-              "p",
+              'p',
               {
-                "aria-live": "assertive",
-                id: "__next-route-announcer__",
-                role: "alert",
+                'aria-live': 'assertive',
+                id: '__next-route-announcer__',
+                role: 'alert',
                 style: i,
               },
               t
@@ -1141,16 +1141,16 @@
           );
         },
         u = l;
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     6810: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -1175,7 +1175,7 @@
       function o(e, t, r) {
         let n,
           a = t.get(e);
-        if (a) return "future" in a ? a.future : Promise.resolve(a);
+        if (a) return 'future' in a ? a.future : Promise.resolve(a);
         let o = new Promise((e) => {
           n = e;
         });
@@ -1190,7 +1190,7 @@
             : o
         );
       }
-      let i = Symbol("ASSET_LOAD_ERROR");
+      let i = Symbol('ASSET_LOAD_ERROR');
       function l(e) {
         return Object.defineProperty(e, i, {});
       }
@@ -1200,9 +1200,9 @@
       let s = (function (e) {
         try {
           return (
-            (e = document.createElement("link")),
+            (e = document.createElement('link')),
             (!!window.MSInputMethodContext && !!document.documentMode) ||
-              e.relList.supports("prefetch")
+              e.relList.supports('prefetch')
           );
         } catch (e) {
           return !1;
@@ -1232,17 +1232,17 @@
             e(self.__BUILD_MANIFEST), t && t();
           };
         });
-        return c(e, 3800, l(Error("Failed to load client build manifest")));
+        return c(e, 3800, l(Error('Failed to load client build manifest')));
       }
       function d(e, t) {
         return f().then((r) => {
-          if (!(t in r)) throw l(Error("Failed to lookup route: " + t));
-          let a = r[t].map((t) => e + "/_next/" + encodeURI(t));
+          if (!(t in r)) throw l(Error('Failed to lookup route: ' + t));
+          let a = r[t].map((t) => e + '/_next/' + encodeURI(t));
           return {
             scripts: a
-              .filter((e) => e.endsWith(".js"))
+              .filter((e) => e.endsWith('.js'))
               .map((e) => (0, n.__unsafeCreateTrustedScriptURL)(e)),
-            css: a.filter((e) => e.endsWith(".css")),
+            css: a.filter((e) => e.endsWith('.css')),
           };
         });
       }
@@ -1262,9 +1262,9 @@
                 : (r.set(
                     e.toString(),
                     (n = new Promise((r, n) => {
-                      ((t = document.createElement("script")).onload = r),
+                      ((t = document.createElement('script')).onload = r),
                         (t.onerror = () =>
-                          n(l(Error("Failed to load script: " + e)))),
+                          n(l(Error('Failed to load script: ' + e)))),
                         (t.crossOrigin = void 0),
                         (t.src = e),
                         document.body.appendChild(t);
@@ -1282,7 +1282,7 @@
                 e,
                 (t = fetch(e)
                   .then((t) => {
-                    if (!t.ok) throw Error("Failed to load stylesheet: " + e);
+                    if (!t.ok) throw Error('Failed to load stylesheet: ' + e);
                     return t.text().then((t) => ({ href: e, content: t }));
                   })
                   .catch((e) => {
@@ -1305,7 +1305,7 @@
               : Promise.resolve(void 0)
             ).then((r) => {
               let n = t.get(e);
-              n && "resolve" in n
+              n && 'resolve' in n
                 ? r && (t.set(e, r), n.resolve(r))
                 : (r ? t.set(e, r) : t.delete(e), i.delete(e));
             });
@@ -1329,12 +1329,12 @@
                     }))
                   ),
                 3800,
-                l(Error("Route did not complete loading: " + r))
+                l(Error('Route did not complete loading: ' + r))
               )
                 .then((e) => {
                   let { entrypoint: t, styles: r } = e,
                     n = Object.assign({ styles: r }, t);
-                  return "error" in t ? t : n;
+                  return 'error' in t ? t : n;
                 })
                 .catch((e) => {
                   if (n) throw e;
@@ -1356,7 +1356,7 @@
                             var t, r, n;
                             return (
                               (t = e.toString()),
-                              (r = "script"),
+                              (r = 'script'),
                               new Promise((e, a) => {
                                 let o =
                                   '\n      link[rel="prefetch"][href^="' +
@@ -1367,13 +1367,13 @@
                                   t +
                                   '"]';
                                 if (document.querySelector(o)) return e();
-                                (n = document.createElement("link")),
+                                (n = document.createElement('link')),
                                   r && (n.as = r),
-                                  (n.rel = "prefetch"),
+                                  (n.rel = 'prefetch'),
                                   (n.crossOrigin = void 0),
                                   (n.onload = e),
                                   (n.onerror = () =>
-                                    a(l(Error("Failed to prefetch: " + t)))),
+                                    a(l(Error('Failed to prefetch: ' + t)))),
                                   (n.href = t),
                                   document.head.appendChild(n);
                               })
@@ -1391,16 +1391,16 @@
           },
         };
       }
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     9843: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -1439,22 +1439,22 @@
           },
         },
         c = [
-          "pathname",
-          "route",
-          "query",
-          "asPath",
-          "components",
-          "isFallback",
-          "basePath",
-          "locale",
-          "locales",
-          "defaultLocale",
-          "isReady",
-          "isPreview",
-          "isLocaleDomain",
-          "domainLocales",
+          'pathname',
+          'route',
+          'query',
+          'asPath',
+          'components',
+          'isFallback',
+          'basePath',
+          'locale',
+          'locales',
+          'defaultLocale',
+          'isReady',
+          'isPreview',
+          'isLocaleDomain',
+          'domainLocales',
         ],
-        f = ["push", "replace", "reload", "back", "prefetch", "beforePopState"];
+        f = ['push', 'replace', 'reload', 'back', 'prefetch', 'beforePopState'];
       function d() {
         if (!s.router)
           throw Error(
@@ -1462,7 +1462,7 @@
           );
         return s.router;
       }
-      Object.defineProperty(s, "events", { get: () => o.default.events }),
+      Object.defineProperty(s, 'events', { get: () => o.default.events }),
         c.forEach((e) => {
           Object.defineProperty(s, e, {
             get() {
@@ -1480,25 +1480,25 @@
           };
         }),
         [
-          "routeChangeStart",
-          "beforeHistoryChange",
-          "routeChangeComplete",
-          "routeChangeError",
-          "hashChangeStart",
-          "hashChangeComplete",
+          'routeChangeStart',
+          'beforeHistoryChange',
+          'routeChangeComplete',
+          'routeChangeError',
+          'hashChangeStart',
+          'hashChangeComplete',
         ].forEach((e) => {
           s.ready(() => {
             o.default.events.on(e, function () {
               for (var t = arguments.length, r = Array(t), n = 0; n < t; n++)
                 r[n] = arguments[n];
-              let a = "on" + e.charAt(0).toUpperCase() + e.substring(1);
+              let a = 'on' + e.charAt(0).toUpperCase() + e.substring(1);
               if (s[a])
                 try {
                   s[a](...r);
                 } catch (e) {
-                  console.error("Error when running the Router event: " + a),
+                  console.error('Error when running the Router event: ' + a),
                     console.error(
-                      (0, l.default)(e) ? e.message + "\n" + e.stack : e + ""
+                      (0, l.default)(e) ? e.message + '\n' + e.stack : e + ''
                     );
                 }
             });
@@ -1509,7 +1509,7 @@
         let e = a.default.useContext(i.RouterContext);
         if (!e)
           throw Error(
-            "NextRouter was not mounted. https://nextjs.org/docs/messages/next-router-not-mounted"
+            'NextRouter was not mounted. https://nextjs.org/docs/messages/next-router-not-mounted'
           );
         return e;
       }
@@ -1526,7 +1526,7 @@
       function g(e) {
         let t = {};
         for (let r of c) {
-          if ("object" == typeof e[r]) {
+          if ('object' == typeof e[r]) {
             t[r] = Object.assign(Array.isArray(e[r]) ? [] : {}, e[r]);
             continue;
           }
@@ -1544,16 +1544,16 @@
           t
         );
       }
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     1827: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -1578,12 +1578,12 @@
         c = new Map(),
         f = new Set(),
         d = [
-          "onLoad",
-          "onReady",
-          "dangerouslySetInnerHTML",
-          "children",
-          "onError",
-          "strategy",
+          'onLoad',
+          'onReady',
+          'dangerouslySetInnerHTML',
+          'children',
+          'onError',
+          'strategy',
         ],
         h = (e) => {
           let {
@@ -1592,8 +1592,8 @@
               onLoad: n = () => {},
               onReady: a = null,
               dangerouslySetInnerHTML: o,
-              children: i = "",
-              strategy: l = "afterInteractive",
+              children: i = '',
+              strategy: l = 'afterInteractive',
               onError: s,
             } = e,
             h = r || t;
@@ -1605,22 +1605,22 @@
           let p = () => {
               a && a(), f.add(h);
             },
-            m = document.createElement("script"),
+            m = document.createElement('script'),
             g = new Promise((e, t) => {
-              m.addEventListener("load", function (t) {
+              m.addEventListener('load', function (t) {
                 e(), n && n.call(this, t), p();
               }),
-                m.addEventListener("error", function (e) {
+                m.addEventListener('error', function (e) {
                   t(e);
                 });
             }).catch(function (e) {
               s && s(e);
             });
           for (let [r, n] of (o
-            ? ((m.innerHTML = o.__html || ""), p())
+            ? ((m.innerHTML = o.__html || ''), p())
             : i
             ? ((m.textContent =
-                "string" == typeof i ? i : Array.isArray(i) ? i.join("") : ""),
+                'string' == typeof i ? i : Array.isArray(i) ? i.join('') : ''),
               p())
             : t && ((m.src = t), c.set(t, g)),
           Object.entries(e))) {
@@ -1628,14 +1628,14 @@
             let e = u.DOMAttributeNames[r] || r.toLowerCase();
             m.setAttribute(e, n);
           }
-          "worker" === l && m.setAttribute("type", "text/partytown"),
-            m.setAttribute("data-nscript", l),
+          'worker' === l && m.setAttribute('type', 'text/partytown'),
+            m.setAttribute('data-nscript', l),
             document.body.appendChild(m);
         };
       function p(e) {
-        let { strategy: t = "afterInteractive" } = e;
-        "lazyOnload" === t
-          ? window.addEventListener("load", () => {
+        let { strategy: t = 'afterInteractive' } = e;
+        'lazyOnload' === t
+          ? window.addEventListener('load', () => {
               (0, s.requestIdleCallback)(() => h(e));
             })
           : h(e);
@@ -1650,7 +1650,7 @@
               ...document.querySelectorAll('[data-nscript="beforePageRender"]'),
             ];
             e.forEach((e) => {
-              let t = e.id || e.getAttribute("src");
+              let t = e.id || e.getAttribute('src');
               f.add(t);
             });
           })();
@@ -1658,10 +1658,10 @@
       function g(e) {
         let {
             id: t,
-            src: r = "",
+            src: r = '',
             onLoad: n = () => {},
             onReady: a = null,
-            strategy: u = "afterInteractive",
+            strategy: u = 'afterInteractive',
             onError: c,
             ...d
           } = e,
@@ -1681,17 +1681,17 @@
         if (
           ((0, i.useEffect)(() => {
             !v.current &&
-              ("afterInteractive" === u
+              ('afterInteractive' === u
                 ? h(e)
-                : "lazyOnload" === u &&
-                  ("complete" === document.readyState
+                : 'lazyOnload' === u &&
+                  ('complete' === document.readyState
                     ? (0, s.requestIdleCallback)(() => h(e))
-                    : window.addEventListener("load", () => {
+                    : window.addEventListener('load', () => {
                         (0, s.requestIdleCallback)(() => h(e));
                       })),
               (v.current = !0));
           }, [e, u]),
-          ("beforeInteractive" === u || "worker" === u) &&
+          ('beforeInteractive' === u || 'worker' === u) &&
             (p
               ? ((m[u] = (m[u] || []).concat([
                   { id: t, src: r, onLoad: n, onReady: a, onError: c, ...d },
@@ -1702,57 +1702,57 @@
               : g && !g() && h(e)),
           y)
         ) {
-          if ("beforeInteractive" === u)
+          if ('beforeInteractive' === u)
             return r
               ? (o.default.preload(
                   r,
                   d.integrity
-                    ? { as: "script", integrity: d.integrity }
-                    : { as: "script" }
+                    ? { as: 'script', integrity: d.integrity }
+                    : { as: 'script' }
                 ),
-                i.default.createElement("script", {
+                i.default.createElement('script', {
                   nonce: _,
                   dangerouslySetInnerHTML: {
                     __html:
-                      "(self.__next_s=self.__next_s||[]).push(" +
+                      '(self.__next_s=self.__next_s||[]).push(' +
                       JSON.stringify([r]) +
-                      ")",
+                      ')',
                   },
                 }))
               : (d.dangerouslySetInnerHTML &&
                   ((d.children = d.dangerouslySetInnerHTML.__html),
                   delete d.dangerouslySetInnerHTML),
-                i.default.createElement("script", {
+                i.default.createElement('script', {
                   nonce: _,
                   dangerouslySetInnerHTML: {
                     __html:
-                      "(self.__next_s=self.__next_s||[]).push(" +
+                      '(self.__next_s=self.__next_s||[]).push(' +
                       JSON.stringify([0, { ...d }]) +
-                      ")",
+                      ')',
                   },
                 }));
-          "afterInteractive" === u &&
+          'afterInteractive' === u &&
             r &&
             o.default.preload(
               r,
               d.integrity
-                ? { as: "script", integrity: d.integrity }
-                : { as: "script" }
+                ? { as: 'script', integrity: d.integrity }
+                : { as: 'script' }
             );
         }
         return null;
       }
-      Object.defineProperty(g, "__nextScript", { value: !0 });
+      Object.defineProperty(g, '__nextScript', { value: !0 });
       let y = g;
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     1251: function (e, t) {
-      "use strict";
+      'use strict';
       let r;
       function n(e) {
         var t;
@@ -1764,7 +1764,7 @@
               r =
                 (null == (e = window.trustedTypes)
                   ? void 0
-                  : e.createPolicy("nextjs", {
+                  : e.createPolicy('nextjs', {
                       createHTML: (e) => e,
                       createScript: (e) => e,
                       createScriptURL: (e) => e,
@@ -1776,24 +1776,24 @@
             : t.createScriptURL(e)) || e
         );
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "__unsafeCreateTrustedScriptURL", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, '__unsafeCreateTrustedScriptURL', {
           enumerable: !0,
           get: function () {
             return n;
           },
         }),
-        ("function" == typeof t.default ||
-          ("object" == typeof t.default && null !== t.default)) &&
+        ('function' == typeof t.default ||
+          ('object' == typeof t.default && null !== t.default)) &&
           void 0 === t.default.__esModule &&
-          (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+          (Object.defineProperty(t.default, '__esModule', { value: !0 }),
           Object.assign(t.default, t),
           (e.exports = t.default));
     },
     9987: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "default", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'default', {
           enumerable: !0,
           get: function () {
             return i;
@@ -1815,17 +1815,17 @@
           t
         );
       }
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     3739: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "default", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'default', {
           enumerable: !0,
           get: function () {
             return l;
@@ -1847,17 +1847,17 @@
       }
       (l.origGetInitialProps = i),
         (l.getInitialProps = i),
-        ("function" == typeof t.default ||
-          ("object" == typeof t.default && null !== t.default)) &&
+        ('function' == typeof t.default ||
+          ('object' == typeof t.default && null !== t.default)) &&
           void 0 === t.default.__esModule &&
-          (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+          (Object.defineProperty(t.default, '__esModule', { value: !0 }),
           Object.assign(t.default, t),
           (e.exports = t.default));
     },
     8495: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "default", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'default', {
           enumerable: !0,
           get: function () {
             return s;
@@ -1867,10 +1867,10 @@
         a = n._(r(7294)),
         o = n._(r(429)),
         i = {
-          400: "Bad Request",
-          404: "This page could not be found",
-          405: "Method Not Allowed",
-          500: "Internal Server Error",
+          400: 'Bad Request',
+          404: 'This page could not be found',
+          405: 'Method Not Allowed',
+          500: 'Internal Server Error',
         };
       function l(e) {
         let { res: t, err: r } = e,
@@ -1881,96 +1881,96 @@
         error: {
           fontFamily:
             'system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
-          height: "100vh",
-          textAlign: "center",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
+          height: '100vh',
+          textAlign: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
         },
-        desc: { display: "inline-block", textAlign: "left" },
+        desc: { display: 'inline-block', textAlign: 'left' },
         h1: {
-          display: "inline-block",
-          margin: "0 20px 0 0",
+          display: 'inline-block',
+          margin: '0 20px 0 0',
           paddingRight: 23,
           fontSize: 24,
           fontWeight: 500,
-          verticalAlign: "top",
-          lineHeight: "49px",
+          verticalAlign: 'top',
+          lineHeight: '49px',
         },
-        h2: { fontSize: 14, fontWeight: 400, lineHeight: "49px", margin: 0 },
+        h2: { fontSize: 14, fontWeight: 400, lineHeight: '49px', margin: 0 },
       };
       class s extends a.default.Component {
         render() {
           let { statusCode: e, withDarkMode: t = !0 } = this.props,
-            r = this.props.title || i[e] || "An unexpected error has occurred";
+            r = this.props.title || i[e] || 'An unexpected error has occurred';
           return a.default.createElement(
-            "div",
+            'div',
             { style: u.error },
             a.default.createElement(
               o.default,
               null,
               a.default.createElement(
-                "title",
+                'title',
                 null,
                 e
-                  ? e + ": " + r
-                  : "Application error: a client-side exception has occurred"
+                  ? e + ': ' + r
+                  : 'Application error: a client-side exception has occurred'
               )
             ),
             a.default.createElement(
-              "div",
+              'div',
               null,
-              a.default.createElement("style", {
+              a.default.createElement('style', {
                 dangerouslySetInnerHTML: {
                   __html:
-                    "body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}" +
+                    'body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}' +
                     (t
-                      ? "@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"
-                      : ""),
+                      ? '@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}'
+                      : ''),
                 },
               }),
               e
                 ? a.default.createElement(
-                    "h1",
-                    { className: "next-error-h1", style: u.h1 },
+                    'h1',
+                    { className: 'next-error-h1', style: u.h1 },
                     e
                   )
                 : null,
               a.default.createElement(
-                "div",
+                'div',
                 { style: u.desc },
                 a.default.createElement(
-                  "h2",
+                  'h2',
                   { style: u.h2 },
                   this.props.title || e
                     ? r
                     : a.default.createElement(
                         a.default.Fragment,
                         null,
-                        "Application error: a client-side exception has occurred (see the browser console for more information)"
+                        'Application error: a client-side exception has occurred (see the browser console for more information)'
                       ),
-                  "."
+                  '.'
                 )
               )
             )
           );
         }
       }
-      (s.displayName = "ErrorPage"),
+      (s.displayName = 'ErrorPage'),
         (s.getInitialProps = l),
         (s.origGetInitialProps = l),
-        ("function" == typeof t.default ||
-          ("object" == typeof t.default && null !== t.default)) &&
+        ('function' == typeof t.default ||
+          ('object' == typeof t.default && null !== t.default)) &&
           void 0 === t.default.__esModule &&
-          (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+          (Object.defineProperty(t.default, '__esModule', { value: !0 }),
           Object.assign(t.default, t),
           (e.exports = t.default));
     },
     1438: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "AmpStateContext", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'AmpStateContext', {
           enumerable: !0,
           get: function () {
             return o;
@@ -1981,7 +1981,7 @@
         o = a.default.createContext({});
     },
     6309: function (e, t) {
-      "use strict";
+      'use strict';
       function r(e) {
         let {
           ampFirst: t = !1,
@@ -1990,8 +1990,8 @@
         } = void 0 === e ? {} : e;
         return t || (r && n);
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "isInAmpMode", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'isInAmpMode', {
           enumerable: !0,
           get: function () {
             return r;
@@ -1999,9 +1999,9 @@
         });
     },
     2429: function (e, t, r) {
-      "use strict";
+      'use strict';
       var n, a;
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -2024,18 +2024,18 @@
         });
       let o = r(8754),
         i = o._(r(7294));
-      ((a = n || (n = {})).LAZY_INITIALIZED = "LAZYINITIALIZED"),
-        (a.DATA_FETCH = "DATAFETCH"),
-        (a.READY = "READY");
+      ((a = n || (n = {})).LAZY_INITIALIZED = 'LAZYINITIALIZED'),
+        (a.DATA_FETCH = 'DATAFETCH'),
+        (a.READY = 'READY');
       let l = i.default.createContext(null),
         u = i.default.createContext(null),
         s = i.default.createContext(null),
         c = i.default.createContext(null);
     },
     101: function (e, t) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "BloomFilter", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'BloomFilter', {
           enumerable: !0,
           get: function () {
             return r;
@@ -2088,7 +2088,7 @@
                     (t = Math.imul(t, 1540483477));
                 }
                 return t >>> 0;
-              })("" + e + r) % this.numBits;
+              })('' + e + r) % this.numBits;
             t.push(n);
           }
           return t;
@@ -2105,9 +2105,9 @@
       }
     },
     9713: function (e, t) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "escapeStringRegexp", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'escapeStringRegexp', {
           enumerable: !0,
           get: function () {
             return a;
@@ -2116,13 +2116,13 @@
       let r = /[|\\{}()[\]^$+*?.-]/,
         n = /[|\\{}()[\]^$+*?.-]/g;
       function a(e) {
-        return r.test(e) ? e.replace(n, "\\$&") : e;
+        return r.test(e) ? e.replace(n, '\\$&') : e;
       }
     },
     1595: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "HeadManagerContext", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'HeadManagerContext', {
           enumerable: !0,
           get: function () {
             return o;
@@ -2133,8 +2133,8 @@
         o = a.default.createContext({});
     },
     429: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -2155,26 +2155,26 @@
         s = r(6309);
       function c(e) {
         void 0 === e && (e = !1);
-        let t = [o.default.createElement("meta", { charSet: "utf-8" })];
+        let t = [o.default.createElement('meta', { charSet: 'utf-8' })];
         return (
           e ||
             t.push(
-              o.default.createElement("meta", {
-                name: "viewport",
-                content: "width=device-width",
+              o.default.createElement('meta', {
+                name: 'viewport',
+                content: 'width=device-width',
               })
             ),
           t
         );
       }
       function f(e, t) {
-        return "string" == typeof t || "number" == typeof t
+        return 'string' == typeof t || 'number' == typeof t
           ? e
           : t.type === o.default.Fragment
           ? e.concat(
               o.default.Children.toArray(t.props.children).reduce(
                 (e, t) =>
-                  "string" == typeof t || "number" == typeof t
+                  'string' == typeof t || 'number' == typeof t
                     ? e
                     : e.concat(t),
                 []
@@ -2183,7 +2183,7 @@
           : e.concat(t);
       }
       r(6308);
-      let d = ["name", "httpEquiv", "charSet", "itemProp"];
+      let d = ['name', 'httpEquiv', 'charSet', 'itemProp'];
       function h(e, t) {
         let { inAmpMode: r } = t;
         return e
@@ -2201,27 +2201,27 @@
                   i = !1;
                 if (
                   a.key &&
-                  "number" != typeof a.key &&
-                  a.key.indexOf("$") > 0
+                  'number' != typeof a.key &&
+                  a.key.indexOf('$') > 0
                 ) {
                   i = !0;
-                  let t = a.key.slice(a.key.indexOf("$") + 1);
+                  let t = a.key.slice(a.key.indexOf('$') + 1);
                   e.has(t) ? (o = !1) : e.add(t);
                 }
                 switch (a.type) {
-                  case "title":
-                  case "base":
+                  case 'title':
+                  case 'base':
                     t.has(a.type) ? (o = !1) : t.add(a.type);
                     break;
-                  case "meta":
+                  case 'meta':
                     for (let e = 0, t = d.length; e < t; e++) {
                       let t = d[e];
                       if (a.props.hasOwnProperty(t)) {
-                        if ("charSet" === t) r.has(t) ? (o = !1) : r.add(t);
+                        if ('charSet' === t) r.has(t) ? (o = !1) : r.add(t);
                         else {
                           let e = a.props[t],
                             r = n[t] || new Set();
-                          ("name" !== t || !i) && r.has(e)
+                          ('name' !== t || !i) && r.has(e)
                             ? (o = !1)
                             : (r.add(e), (n[t] = r));
                         }
@@ -2237,18 +2237,18 @@
             let n = e.key || t;
             if (
               !r &&
-              "link" === e.type &&
+              'link' === e.type &&
               e.props.href &&
               [
-                "https://fonts.googleapis.com/css",
-                "https://use.typekit.net/",
+                'https://fonts.googleapis.com/css',
+                'https://use.typekit.net/',
               ].some((t) => e.props.href.startsWith(t))
             ) {
               let t = { ...(e.props || {}) };
               return (
-                (t["data-href"] = t.href),
+                (t['data-href'] = t.href),
                 (t.href = void 0),
-                (t["data-optimized-fonts"] = !0),
+                (t['data-optimized-fonts'] = !0),
                 o.default.cloneElement(e, t)
               );
             }
@@ -2269,16 +2269,16 @@
           t
         );
       };
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     9731: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -2295,22 +2295,22 @@
         o = (0, n.createContext)(null);
     },
     1141: function (e, t) {
-      "use strict";
+      'use strict';
       function r(e, t) {
         let r;
-        let n = e.split("/");
+        let n = e.split('/');
         return (
           (t || []).some(
             (t) =>
               !!n[1] &&
               n[1].toLowerCase() === t.toLowerCase() &&
-              ((r = t), n.splice(1, 1), (e = n.join("/") || "/"), !0)
+              ((r = t), n.splice(1, 1), (e = n.join('/') || '/'), !0)
           ),
           { pathname: e, detectedLocale: r }
         );
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "normalizeLocalePath", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'normalizeLocalePath', {
           enumerable: !0,
           get: function () {
             return r;
@@ -2318,9 +2318,9 @@
         });
     },
     7529: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "ImageConfigContext", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'ImageConfigContext', {
           enumerable: !0,
           get: function () {
             return i;
@@ -2332,8 +2332,8 @@
         i = a.default.createContext(o.imageConfigDefault);
     },
     8992: function (e, t) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -2345,36 +2345,36 @@
             return n;
           },
         });
-      let r = ["default", "imgix", "cloudinary", "akamai", "custom"],
+      let r = ['default', 'imgix', 'cloudinary', 'akamai', 'custom'],
         n = {
           deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
           imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-          path: "/_next/image",
-          loader: "default",
-          loaderFile: "",
+          path: '/_next/image',
+          loader: 'default',
+          loaderFile: '',
           domains: [],
           disableStaticImages: !1,
           minimumCacheTTL: 60,
-          formats: ["image/webp"],
+          formats: ['image/webp'],
           dangerouslyAllowSVG: !1,
           contentSecurityPolicy:
             "script-src 'none'; frame-src 'none'; sandbox;",
-          contentDispositionType: "inline",
+          contentDispositionType: 'inline',
           remotePatterns: [],
           unoptimized: !1,
         };
     },
     5410: function (e, t) {
-      "use strict";
+      'use strict';
       function r(e) {
         return Object.prototype.toString.call(e);
       }
       function n(e) {
-        if ("[object Object]" !== r(e)) return !1;
+        if ('[object Object]' !== r(e)) return !1;
         let t = Object.getPrototypeOf(e);
-        return null === t || t.hasOwnProperty("isPrototypeOf");
+        return null === t || t.hasOwnProperty('isPrototypeOf');
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -2388,18 +2388,18 @@
         });
     },
     4785: function (e, t) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "NEXT_DYNAMIC_NO_SSR_CODE", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'NEXT_DYNAMIC_NO_SSR_CODE', {
           enumerable: !0,
           get: function () {
             return r;
           },
         });
-      let r = "NEXT_DYNAMIC_NO_SSR_CODE";
+      let r = 'NEXT_DYNAMIC_NO_SSR_CODE';
     },
     4742: function (e, t) {
-      "use strict";
+      'use strict';
       function r() {
         let e = Object.create(null);
         return {
@@ -2422,8 +2422,8 @@
           },
         };
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "default", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'default', {
           enumerable: !0,
           get: function () {
             return r;
@@ -2431,9 +2431,9 @@
         });
     },
     3872: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "denormalizePagePath", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'denormalizePagePath', {
           enumerable: !0,
           get: function () {
             return o;
@@ -2443,20 +2443,20 @@
         a = r(8886);
       function o(e) {
         let t = (0, a.normalizePathSep)(e);
-        return t.startsWith("/index/") && !(0, n.isDynamicRoute)(t)
+        return t.startsWith('/index/') && !(0, n.isDynamicRoute)(t)
           ? t.slice(6)
-          : "/index" !== t
+          : '/index' !== t
           ? t
-          : "/";
+          : '/';
       }
     },
     8886: function (e, t) {
-      "use strict";
+      'use strict';
       function r(e) {
-        return e.replace(/\\/g, "/");
+        return e.replace(/\\/g, '/');
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "normalizePathSep", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'normalizePathSep', {
           enumerable: !0,
           get: function () {
             return r;
@@ -2464,9 +2464,9 @@
         });
     },
     5330: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "RouterContext", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'RouterContext', {
           enumerable: !0,
           get: function () {
             return o;
@@ -2477,8 +2477,8 @@
         o = a.default.createContext(null);
     },
     5174: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -2543,9 +2543,9 @@
             )
               return null;
             try {
-              e = new URL(r.asPath, "http://f");
+              e = new URL(r.asPath, 'http://f');
             } catch (e) {
-              return "/";
+              return '/';
             }
             return e.pathname;
           }, [r.asPath, r.isFallback, r.isReady, r.pathname]);
@@ -2557,8 +2557,8 @@
       }
     },
     7630: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -2607,7 +2607,7 @@
         L = r(4021),
         T = r(294);
       function I() {
-        return Object.assign(Error("Route Cancelled"), { cancelled: !0 });
+        return Object.assign(Error('Route Cancelled'), { cancelled: !0 });
       }
       async function N(e) {
         let t = await Promise.resolve(e.router.pageLoader.getMiddleware());
@@ -2633,7 +2633,7 @@
       }
       function B(e, t) {
         let r = (0, o.removeTrailingSlash)((0, s.denormalizePagePath)(e));
-        return "/404" === r || "/_error" === r
+        return '/404' === r || '/_error' === r
           ? e
           : (t.includes(r) ||
               t.some((t) => {
@@ -2656,19 +2656,19 @@
                   i18n: { locales: r.router.locales },
                   trailingSlash: !1,
                 },
-                a = t.headers.get("x-nextjs-rewrite"),
-                l = a || t.headers.get("x-nextjs-matched-path"),
-                u = t.headers.get("x-matched-path");
+                a = t.headers.get('x-nextjs-rewrite'),
+                l = a || t.headers.get('x-nextjs-matched-path'),
+                u = t.headers.get('x-matched-path');
               if (
                 (!u ||
                   l ||
-                  u.includes("__next_data_catchall") ||
-                  u.includes("/_error") ||
-                  u.includes("/404") ||
+                  u.includes('__next_data_catchall') ||
+                  u.includes('/_error') ||
+                  u.includes('/404') ||
                   (l = u),
                 l)
               ) {
-                if (l.startsWith("/")) {
+                if (l.startsWith('/')) {
                   let t = (0, p.parseRelativeUrl)(l),
                     u = (0, O.getNextPathnameInfo)(t.pathname, {
                       nextConfig: n,
@@ -2716,7 +2716,7 @@
                       );
                       Object.assign(t.query, e || {});
                     }
-                    return { type: "rewrite", parsedAs: t, resolvedHref: d };
+                    return { type: 'rewrite', parsedAs: t, resolvedHref: d };
                   });
                 }
                 let t = (0, _.parsePath)(e),
@@ -2726,16 +2726,16 @@
                       parseData: !0,
                     }),
                     defaultLocale: r.router.defaultLocale,
-                    buildId: "",
+                    buildId: '',
                   });
                 return Promise.resolve({
-                  type: "redirect-external",
-                  destination: "" + u + t.query + t.hash,
+                  type: 'redirect-external',
+                  destination: '' + u + t.query + t.hash,
                 });
               }
-              let s = t.headers.get("x-nextjs-redirect");
+              let s = t.headers.get('x-nextjs-redirect');
               if (s) {
-                if (s.startsWith("/")) {
+                if (s.startsWith('/')) {
                   let e = (0, _.parsePath)(s),
                     t = (0, E.formatNextPathnameInfo)({
                       ...(0, O.getNextPathnameInfo)(e.pathname, {
@@ -2743,20 +2743,20 @@
                         parseData: !0,
                       }),
                       defaultLocale: r.router.defaultLocale,
-                      buildId: "",
+                      buildId: '',
                     });
                   return Promise.resolve({
-                    type: "redirect-internal",
-                    newAs: "" + t + e.query + e.hash,
-                    newUrl: "" + t + e.query + e.hash,
+                    type: 'redirect-internal',
+                    newAs: '' + t + e.query + e.hash,
+                    newUrl: '' + t + e.query + e.hash,
                   });
                 }
                 return Promise.resolve({
-                  type: "redirect-external",
+                  type: 'redirect-external',
                   destination: s,
                 });
               }
-              return Promise.resolve({ type: "next" });
+              return Promise.resolve({ type: 'next' });
             })(t.dataHref, t.response, e);
           return {
             dataHref: t.dataHref,
@@ -2770,7 +2770,7 @@
           return null;
         }
       }
-      let U = Symbol("SSG_DATA_NOT_FOUND");
+      let U = Symbol('SSG_DATA_NOT_FOUND');
       function F(e) {
         try {
           return JSON.parse(e);
@@ -2795,26 +2795,26 @@
           h = (e) =>
             (function e(t, r, n) {
               return fetch(t, {
-                credentials: "same-origin",
-                method: n.method || "GET",
-                headers: Object.assign({}, n.headers, { "x-nextjs-data": "1" }),
+                credentials: 'same-origin',
+                method: n.method || 'GET',
+                headers: Object.assign({}, n.headers, { 'x-nextjs-data': '1' }),
               }).then((a) =>
                 !a.ok && r > 1 && a.status >= 500 ? e(t, r - 1, n) : a
               );
             })(r, l ? 3 : 1, {
               headers: Object.assign(
                 {},
-                a ? { purpose: "prefetch" } : {},
-                a && o ? { "x-middleware-prefetch": "1" } : {}
+                a ? { purpose: 'prefetch' } : {},
+                a && o ? { 'x-middleware-prefetch': '1' } : {}
               ),
-              method: null != (t = null == e ? void 0 : e.method) ? t : "GET",
+              method: null != (t = null == e ? void 0 : e.method) ? t : 'GET',
             })
               .then((t) =>
-                t.ok && (null == e ? void 0 : e.method) === "HEAD"
+                t.ok && (null == e ? void 0 : e.method) === 'HEAD'
                   ? {
                       dataHref: r,
                       response: t,
-                      text: "",
+                      text: '',
                       json: {},
                       cacheKey: d,
                     }
@@ -2839,7 +2839,7 @@
                               cacheKey: d,
                             };
                         }
-                        let a = Error("Failed to load static props");
+                        let a = Error('Failed to load static props');
                         throw (l || (0, i.markAssetError)(a), a);
                       }
                       return {
@@ -2854,8 +2854,8 @@
               .then(
                 (e) => (
                   (s &&
-                    "no-cache" !==
-                      e.response.headers.get("x-middleware-cache")) ||
+                    'no-cache' !==
+                      e.response.headers.get('x-middleware-cache')) ||
                     delete n[d],
                   e
                 )
@@ -2863,10 +2863,10 @@
               .catch((e) => {
                 throw (
                   (f || delete n[d],
-                  ("Failed to fetch" === e.message ||
-                    "NetworkError when attempting to fetch resource." ===
+                  ('Failed to fetch' === e.message ||
+                    'NetworkError when attempting to fetch resource.' ===
                       e.message ||
-                    "Load failed" === e.message) &&
+                    'Load failed' === e.message) &&
                     (0, i.markAssetError)(e),
                   e)
                 );
@@ -2875,7 +2875,7 @@
           ? h({}).then((e) => ((n[d] = Promise.resolve(e)), e))
           : void 0 !== n[d]
           ? n[d]
-          : (n[d] = h(c ? { method: "HEAD" } : {}));
+          : (n[d] = h(c ? { method: 'HEAD' } : {}));
       }
       function W() {
         return Math.random().toString(36).slice(2, 10);
@@ -2884,9 +2884,9 @@
         let { url: t, router: r } = e;
         if (t === (0, w.addBasePath)((0, b.addLocale)(r.asPath, r.locale)))
           throw Error(
-            "Invariant: attempted to hard navigate to the same URL " +
+            'Invariant: attempted to hard navigate to the same URL ' +
               t +
-              " " +
+              ' ' +
               location.href
           );
         window.location.href = t;
@@ -2919,14 +2919,14 @@
           return (
             void 0 === r && (r = {}),
             ({ url: e, as: t } = D(this, e, t)),
-            this.change("pushState", e, t, r)
+            this.change('pushState', e, t, r)
           );
         }
         replace(e, t, r) {
           return (
             void 0 === r && (r = {}),
             ({ url: e, as: t } = D(this, e, t)),
-            this.change("replaceState", e, t, r)
+            this.change('replaceState', e, t, r)
           );
         }
         async _bfl(e, t, r, n) {
@@ -2936,13 +2936,13 @@
             for (let c of [e, t])
               if (c) {
                 let t = (0, o.removeTrailingSlash)(
-                    new URL(c, "http://n").pathname
+                    new URL(c, 'http://n').pathname
                   ),
                   f = (0, w.addBasePath)((0, b.addLocale)(t, r || this.locale));
                 if (
                   t !==
                   (0, o.removeTrailingSlash)(
-                    new URL(this.asPath, "http://n").pathname
+                    new URL(this.asPath, 'http://n').pathname
                   )
                 ) {
                   var a, i, l;
@@ -2951,9 +2951,9 @@
                     !!(null == (a = this._bfl_s) ? void 0 : a.contains(t)) ||
                     !!(null == (i = this._bfl_s) ? void 0 : i.contains(f))),
                   [t, f])) {
-                    let t = e.split("/");
+                    let t = e.split('/');
                     for (let e = 0; !s && e < t.length + 1; e++) {
-                      let r = t.slice(0, e).join("/");
+                      let r = t.slice(0, e).join('/');
                       if (
                         r &&
                         (null == (l = this._bfl_d) ? void 0 : l.contains(r))
@@ -3000,13 +3000,13 @@
           let X = this.isSsr;
           if ((F || (this.isSsr = !1), F && this.clc)) return !1;
           let Y = W.locale;
-          d.ST && performance.mark("routeChange");
+          d.ST && performance.mark('routeChange');
           let { shallow: $ = !1, scroll: J = !0 } = n,
             K = { shallow: $ };
           this._inFlightRoute &&
             this.clc &&
             (X ||
-              V.events.emit("routeChangeError", I(), this._inFlightRoute, K),
+              V.events.emit('routeChangeError', I(), this._inFlightRoute, K),
             this.clc(),
             (this.clc = null)),
             (r = (0, w.addBasePath)(
@@ -3024,7 +3024,7 @@
           let Z = Y !== W.locale;
           if (!F && this.onlyAHashChange(Q) && !Z) {
             (W.asPath = Q),
-              V.events.emit("hashChangeStart", r, K),
+              V.events.emit('hashChangeStart', r, K),
               this.changeState(e, t, r, { ...n, scroll: !1 }),
               J && this.scrollToHash(Q);
             try {
@@ -3033,11 +3033,11 @@
               throw (
                 ((0, u.default)(e) &&
                   e.cancelled &&
-                  V.events.emit("routeChangeError", e, Q, K),
+                  V.events.emit('routeChangeError', e, Q, K),
                 e)
               );
             }
-            return V.events.emit("hashChangeComplete", r, K), !0;
+            return V.events.emit('hashChangeComplete', r, K), !0;
           }
           let ee = (0, p.parseRelativeUrl)(t),
             { pathname: et, query: er } = ee;
@@ -3052,11 +3052,11 @@
           } catch (e) {
             return z({ url: r, router: this }), !1;
           }
-          this.urlIsNew(Q) || Z || (e = "replaceState");
+          this.urlIsNew(Q) || Z || (e = 'replaceState');
           let en = r;
           et = et ? (0, o.removeTrailingSlash)((0, P.removeBasePath)(et)) : et;
           let ea = (0, o.removeTrailingSlash)(et),
-            eo = r.startsWith("/") && (0, p.parseRelativeUrl)(r).pathname,
+            eo = r.startsWith('/') && (0, p.parseRelativeUrl)(r).pathname,
             ei = !!(
               eo &&
               ea !== eo &&
@@ -3069,7 +3069,7 @@
           if (
             (F && el && (q = !1),
             q &&
-              "/_error" !== et &&
+              '/_error' !== et &&
               ((n._shouldResolveHref = !0),
               (ee.pathname = B(et, k)),
               ee.pathname === et ||
@@ -3105,23 +3105,23 @@
               if (e.length > 0 && !el)
                 throw Error(
                   (o
-                    ? "The provided `href` (" +
+                    ? 'The provided `href` (' +
                       t +
-                      ") value is missing query values (" +
-                      e.join(", ") +
-                      ") to be interpolated properly. "
-                    : "The provided `as` value (" +
+                      ') value is missing query values (' +
+                      e.join(', ') +
+                      ') to be interpolated properly. '
+                    : 'The provided `as` value (' +
                       n +
-                      ") is incompatible with the `href` value (" +
+                      ') is incompatible with the `href` value (' +
                       ea +
-                      "). ") +
-                    "Read more: https://nextjs.org/docs/messages/" +
-                    (o ? "href-interpolation-failed" : "incompatible-href-as")
+                      '). ') +
+                    'Read more: https://nextjs.org/docs/messages/' +
+                    (o ? 'href-interpolation-failed' : 'incompatible-href-as')
                 );
             }
           }
-          F || V.events.emit("routeChangeStart", r, K);
-          let es = "/404" === this.pathname || "/_error" === this.pathname;
+          F || V.events.emit('routeChangeStart', r, K);
+          let es = '/404' === this.pathname || '/_error' === this.pathname;
           try {
             let o = await this.getRouteInfo({
               route: ea,
@@ -3142,10 +3142,10 @@
                 n.shallow ||
                 (await this._bfl(
                   r,
-                  "resolvedAs" in o ? o.resolvedAs : void 0,
+                  'resolvedAs' in o ? o.resolvedAs : void 0,
                   W.locale
                 )),
-              "route" in o && el)
+              'route' in o && el)
             ) {
               (ea = et = o.route || ea),
                 K.shallow || (er = Object.assign({}, o.query || {}, er));
@@ -3179,8 +3179,8 @@
                 a && Object.assign(er, a);
               }
             }
-            if ("type" in o) {
-              if ("redirect-internal" === o.type)
+            if ('type' in o) {
+              if ('redirect-internal' === o.type)
                 return this.change(e, o.newUrl, o.newAs, n);
               return (
                 z({ url: o.destination, router: this }), new Promise(() => {})
@@ -3198,7 +3198,7 @@
                 n.locale = !1;
                 let t = o.props.pageProps.__N_REDIRECT;
                 if (
-                  t.startsWith("/") &&
+                  t.startsWith('/') &&
                   !1 !== o.props.pageProps.__N_REDIRECT_BASE_PATH
                 ) {
                   let r = (0, p.parseRelativeUrl)(t);
@@ -3213,9 +3213,9 @@
               ) {
                 let e;
                 try {
-                  await this.fetchComponent("/404"), (e = "/404");
+                  await this.fetchComponent('/404'), (e = '/404');
                 } catch (t) {
-                  e = "/_error";
+                  e = '/_error';
                 }
                 if (
                   ((o = await this.getRouteInfo({
@@ -3229,13 +3229,13 @@
                     isPreview: W.isPreview,
                     isNotFound: !0,
                   })),
-                  "type" in o)
+                  'type' in o)
                 )
-                  throw Error("Unexpected middleware effect on /404");
+                  throw Error('Unexpected middleware effect on /404');
               }
             }
             F &&
-              "/_error" === this.pathname &&
+              '/_error' === this.pathname &&
               (null == (c = self.__NEXT_DATA__.props)
                 ? void 0
                 : null == (f = c.pageProps)
@@ -3267,10 +3267,10 @@
                   isPreview: W.isPreview,
                   isQueryUpdating: F && !this.isFallback,
                 })),
-                "type" in o)
+                'type' in o)
               )
-                throw Error("Unexpected middleware effect on " + this.pathname);
-              "/_error" === this.pathname &&
+                throw Error('Unexpected middleware effect on ' + this.pathname);
+              '/_error' === this.pathname &&
                 (null == (C = self.__NEXT_DATA__.props)
                   ? void 0
                   : null == (A = C.pageProps)
@@ -3284,13 +3284,13 @@
                 throw (
                   ((0, u.default)(e) &&
                     e.cancelled &&
-                    V.events.emit("routeChangeError", e, Q, K),
+                    V.events.emit('routeChangeError', e, Q, K),
                   e)
                 );
               }
               return !0;
             }
-            V.events.emit("beforeHistoryChange", r, K),
+            V.events.emit('beforeHistoryChange', r, K),
               this.changeState(e, t, r, n);
             let v =
               F && !y && !G && !Z && (0, x.compareRouterStates)(_, this.state);
@@ -3303,10 +3303,10 @@
               }
               if (o.error)
                 throw (
-                  (F || V.events.emit("routeChangeError", o.error, Q, K),
+                  (F || V.events.emit('routeChangeError', o.error, Q, K),
                   o.error)
                 );
-              F || V.events.emit("routeChangeComplete", r, K),
+              F || V.events.emit('routeChangeComplete', r, K),
                 d && /#.+$/.test(r) && this.scrollToHash(r);
             }
             return !0;
@@ -3317,7 +3317,7 @@
         }
         changeState(e, t, r, n) {
           void 0 === n && (n = {}),
-            ("pushState" !== e || (0, d.getURL)() !== r) &&
+            ('pushState' !== e || (0, d.getURL)() !== r) &&
               ((this._shallow = n.shallow),
               window.history[e](
                 {
@@ -3325,9 +3325,9 @@
                   as: r,
                   options: n,
                   __N: !0,
-                  key: (this._key = "pushState" !== e ? this._key : W()),
+                  key: (this._key = 'pushState' !== e ? this._key : W()),
                 },
-                "",
+                '',
                 r
               ));
         }
@@ -3335,14 +3335,14 @@
           if ((console.error(e), e.cancelled)) throw e;
           if ((0, i.isAssetError)(e) || o)
             throw (
-              (V.events.emit("routeChangeError", e, n, a),
+              (V.events.emit('routeChangeError', e, n, a),
               z({ url: n, router: this }),
               I())
             );
           try {
             let n;
             let { page: a, styleSheets: o } = await this.fetchComponent(
-                "/_error"
+                '/_error'
               ),
               i = { props: n, Component: a, styleSheets: o, err: e, error: e };
             if (!i.props)
@@ -3353,13 +3353,13 @@
                   query: r,
                 });
               } catch (e) {
-                console.error("Error in error page `getInitialProps`: ", e),
+                console.error('Error in error page `getInitialProps`: ', e),
                   (i.props = {});
               }
             return i;
           } catch (e) {
             return this.handleRouteInfoError(
-              (0, u.default)(e) ? e : Error(e + ""),
+              (0, u.default)(e) ? e : Error(e + ''),
               t,
               r,
               n,
@@ -3391,12 +3391,12 @@
               t = this.components[_];
             if (l.shallow && t && this.route === _) return t;
             f && (t = void 0);
-            let u = !t || "initial" in t ? void 0 : t,
+            let u = !t || 'initial' in t ? void 0 : t,
               O = {
                 dataHref: this.pageLoader.getDataHref({
                   href: (0, y.formatWithValidation)({ pathname: r, query: n }),
                   skipInterpolation: !0,
-                  asPath: g ? "/404" : i,
+                  asPath: g ? '/404' : i,
                   locale: s,
                 }),
                 hasMiddleware: !0,
@@ -3413,7 +3413,7 @@
                   ? null
                   : await H({
                       fetchData: () => q(O),
-                      asPath: g ? "/404" : i,
+                      asPath: g ? '/404' : i,
                       locale: s,
                       router: this,
                     }).catch((e) => {
@@ -3421,7 +3421,7 @@
                       throw e;
                     });
             if (
-              (E && ("/_error" === r || "/404" === r) && (E.effect = void 0),
+              (E && ('/_error' === r || '/404' === r) && (E.effect = void 0),
               p &&
                 (E
                   ? (E.json = self.__NEXT_DATA__.props)
@@ -3431,12 +3431,12 @@
                 ? void 0
                 : null == (b = E.effect)
                 ? void 0
-                : b.type) === "redirect-internal" ||
+                : b.type) === 'redirect-internal' ||
                 (null == E
                   ? void 0
                   : null == (v = E.effect)
                   ? void 0
-                  : v.type) === "redirect-external")
+                  : v.type) === 'redirect-external')
             )
               return E.effect;
             if (
@@ -3444,7 +3444,7 @@
                 ? void 0
                 : null == (w = E.effect)
                 ? void 0
-                : w.type) === "rewrite"
+                : w.type) === 'rewrite'
             ) {
               let e = (0, o.removeTrailingSlash)(E.effect.resolvedHref),
                 a = await this.pageLoader.getPageList();
@@ -3479,7 +3479,7 @@
                   ? void 0
                   : null == (S = E.response)
                   ? void 0
-                  : S.headers.get("x-middleware-skip"),
+                  : S.headers.get('x-middleware-skip'),
               C = x.__N_SSG || x.__N_SSP;
             R &&
               (null == E ? void 0 : E.dataHref) &&
@@ -3553,7 +3553,7 @@
         }
         set(e, t, r) {
           return (
-            (this.state = e), this.sub(t, this.components["/_app"].Component, r)
+            (this.state = e), this.sub(t, this.components['/_app'].Component, r)
           );
         }
         beforePopState(e) {
@@ -3561,13 +3561,13 @@
         }
         onlyAHashChange(e) {
           if (!this.asPath) return !1;
-          let [t, r] = this.asPath.split("#"),
-            [n, a] = e.split("#");
+          let [t, r] = this.asPath.split('#'),
+            [n, a] = e.split('#');
           return (!!a && t === n && r === a) || (t === n && r !== a);
         }
         scrollToHash(e) {
-          let [, t = ""] = e.split("#");
-          if ("" === t || "top" === t) {
+          let [, t = ''] = e.split('#');
+          if ('' === t || 'top' === t) {
             (0, T.handleSmoothScroll)(() => window.scrollTo(0, 0));
             return;
           }
@@ -3630,13 +3630,13 @@
             router: this,
           });
           if (
-            ((null == b ? void 0 : b.effect.type) === "rewrite" &&
+            ((null == b ? void 0 : b.effect.type) === 'rewrite' &&
               ((n.pathname = b.effect.resolvedHref),
               (i = b.effect.resolvedHref),
               (l = { ...l, ...b.effect.parsedAs.query }),
               (c = b.effect.parsedAs.pathname),
               (e = (0, y.formatWithValidation)(n))),
-            (null == b ? void 0 : b.effect.type) === "redirect-external")
+            (null == b ? void 0 : b.effect.type) === 'redirect-external')
           )
             return;
           let v = (0, o.removeTrailingSlash)(i);
@@ -3667,7 +3667,7 @@
                     .then(() => !1)
                     .catch(() => !1)
               ),
-              this.pageLoader[r.priority ? "loadPage" : "prefetch"](v),
+              this.pageLoader[r.priority ? 'loadPage' : 'prefetch'](v),
             ]);
         }
         async fetchComponent(e) {
@@ -3688,7 +3688,7 @@
             (this.clc = r),
             e().then((e) => {
               if ((r === this.clc && (this.clc = null), t)) {
-                let e = Error("Loading initial props cancelled");
+                let e = Error('Loading initial props cancelled');
                 throw ((e.cancelled = !0), e);
               }
               return e;
@@ -3709,7 +3709,7 @@
           });
         }
         getInitialProps(e, t) {
-          let { Component: r } = this.components["/_app"],
+          let { Component: r } = this.components['/_app'],
             n = this._wrapApp(r);
           return (
             (t.AppTree = n),
@@ -3774,7 +3774,7 @@
               if (!n) {
                 let { pathname: e, query: t } = this;
                 this.changeState(
-                  "replaceState",
+                  'replaceState',
                   (0, y.formatWithValidation)({
                     pathname: (0, w.addBasePath)(e),
                     query: t,
@@ -3800,7 +3800,7 @@
                 u !== (0, w.addBasePath)(this.pathname)) &&
                 (!this._bps || this._bps(n)) &&
                 this.change(
-                  "replaceState",
+                  'replaceState',
                   a,
                   o,
                   Object.assign({}, i, {
@@ -3813,7 +3813,7 @@
             });
           let S = (0, o.removeTrailingSlash)(e);
           (this.components = {}),
-            "/_error" !== e &&
+            '/_error' !== e &&
               (this.components[S] = {
                 Component: s,
                 initial: !0,
@@ -3822,7 +3822,7 @@
                 __N_SSG: a && a.__N_SSG,
                 __N_SSP: a && a.__N_SSP,
               }),
-            (this.components["/_app"] = { Component: l, styleSheets: [] });
+            (this.components['/_app'] = { Component: l, styleSheets: [] });
           {
             let { BloomFilter: e } = r(101),
               t = {
@@ -3851,7 +3851,7 @@
           (this.events = V.events), (this.pageLoader = i);
           let j = (0, h.isDynamicRoute)(e) && self.__NEXT_DATA__.autoExport;
           if (
-            ((this.basePath = ""),
+            ((this.basePath = ''),
             (this.sub = f),
             (this.clc = null),
             (this._wrapApp = u),
@@ -3873,7 +3873,7 @@
               isFallback: m,
             }),
             (this._initialMatchesMiddlewarePromise = Promise.resolve(!1)),
-            !n.startsWith("//"))
+            !n.startsWith('//'))
           ) {
             let r = { locale: g },
               a = (0, d.getURL)();
@@ -3885,7 +3885,7 @@
               (o) => (
                 (r._shouldResolveHref = n !== e),
                 this.changeState(
-                  "replaceState",
+                  'replaceState',
                   o
                     ? a
                     : (0, y.formatWithValidation)({
@@ -3899,15 +3899,15 @@
               )
             );
           }
-          window.addEventListener("popstate", this.onPopState);
+          window.addEventListener('popstate', this.onPopState);
         }
       }
       V.events = (0, f.default)();
     },
     8045: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "addLocale", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'addLocale', {
           enumerable: !0,
           get: function () {
             return o;
@@ -3919,16 +3919,16 @@
         if (!t || t === r) return e;
         let i = e.toLowerCase();
         return !o &&
-          ((0, a.pathHasPrefix)(i, "/api") ||
-            (0, a.pathHasPrefix)(i, "/" + t.toLowerCase()))
+          ((0, a.pathHasPrefix)(i, '/api') ||
+            (0, a.pathHasPrefix)(i, '/' + t.toLowerCase()))
           ? e
-          : (0, n.addPathPrefix)(e, "/" + t);
+          : (0, n.addPathPrefix)(e, '/' + t);
       }
     },
     1250: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "addPathPrefix", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'addPathPrefix', {
           enumerable: !0,
           get: function () {
             return a;
@@ -3936,15 +3936,15 @@
         });
       let n = r(4460);
       function a(e, t) {
-        if (!e.startsWith("/") || !t) return e;
+        if (!e.startsWith('/') || !t) return e;
         let { pathname: r, query: a, hash: o } = (0, n.parsePath)(e);
-        return "" + t + r + a + o;
+        return '' + t + r + a + o;
       }
     },
     1317: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "addPathSuffix", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'addPathSuffix', {
           enumerable: !0,
           get: function () {
             return a;
@@ -3952,19 +3952,19 @@
         });
       let n = r(4460);
       function a(e, t) {
-        if (!e.startsWith("/") || !t) return e;
+        if (!e.startsWith('/') || !t) return e;
         let { pathname: r, query: a, hash: o } = (0, n.parsePath)(e);
-        return "" + r + t + a + o;
+        return '' + r + t + a + o;
       }
     },
     7956: function (e, t) {
-      "use strict";
+      'use strict';
       function r(e, t) {
         let r = Object.keys(e);
         if (r.length !== Object.keys(t).length) return !1;
         for (let n = r.length; n--; ) {
           let a = r[n];
-          if ("query" === a) {
+          if ('query' === a) {
             let r = Object.keys(e.query);
             if (r.length !== Object.keys(t.query).length) return !1;
             for (let n = r.length; n--; ) {
@@ -3976,8 +3976,8 @@
         }
         return !0;
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "compareRouterStates", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'compareRouterStates', {
           enumerable: !0,
           get: function () {
             return r;
@@ -3985,9 +3985,9 @@
         });
     },
     8581: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "formatNextPathnameInfo", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'formatNextPathnameInfo', {
           enumerable: !0,
           get: function () {
             return l;
@@ -4009,21 +4009,21 @@
             (t = (0, n.removeTrailingSlash)(t)),
           e.buildId &&
             (t = (0, o.addPathSuffix)(
-              (0, a.addPathPrefix)(t, "/_next/data/" + e.buildId),
-              "/" === e.pathname ? "index.json" : ".json"
+              (0, a.addPathPrefix)(t, '/_next/data/' + e.buildId),
+              '/' === e.pathname ? 'index.json' : '.json'
             )),
           (t = (0, a.addPathPrefix)(t, e.basePath)),
           !e.buildId && e.trailingSlash
-            ? t.endsWith("/")
+            ? t.endsWith('/')
               ? t
-              : (0, o.addPathSuffix)(t, "/")
+              : (0, o.addPathSuffix)(t, '/')
             : (0, n.removeTrailingSlash)(t)
         );
       }
     },
     3507: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -4043,68 +4043,68 @@
         o = /https?|ftp|gopher|file/;
       function i(e) {
         let { auth: t, hostname: r } = e,
-          n = e.protocol || "",
-          i = e.pathname || "",
-          l = e.hash || "",
-          u = e.query || "",
+          n = e.protocol || '',
+          i = e.pathname || '',
+          l = e.hash || '',
+          u = e.query || '',
           s = !1;
-        (t = t ? encodeURIComponent(t).replace(/%3A/i, ":") + "@" : ""),
+        (t = t ? encodeURIComponent(t).replace(/%3A/i, ':') + '@' : ''),
           e.host
             ? (s = t + e.host)
             : r &&
-              ((s = t + (~r.indexOf(":") ? "[" + r + "]" : r)),
-              e.port && (s += ":" + e.port)),
+              ((s = t + (~r.indexOf(':') ? '[' + r + ']' : r)),
+              e.port && (s += ':' + e.port)),
           u &&
-            "object" == typeof u &&
+            'object' == typeof u &&
             (u = String(a.urlQueryToSearchParams(u)));
-        let c = e.search || (u && "?" + u) || "";
+        let c = e.search || (u && '?' + u) || '';
         return (
-          n && !n.endsWith(":") && (n += ":"),
+          n && !n.endsWith(':') && (n += ':'),
           e.slashes || ((!n || o.test(n)) && !1 !== s)
-            ? ((s = "//" + (s || "")), i && "/" !== i[0] && (i = "/" + i))
-            : s || (s = ""),
-          l && "#" !== l[0] && (l = "#" + l),
-          c && "?" !== c[0] && (c = "?" + c),
-          "" +
+            ? ((s = '//' + (s || '')), i && '/' !== i[0] && (i = '/' + i))
+            : s || (s = ''),
+          l && '#' !== l[0] && (l = '#' + l),
+          c && '?' !== c[0] && (c = '?' + c),
+          '' +
             n +
             s +
             (i = i.replace(/[?#]/g, encodeURIComponent)) +
-            (c = c.replace("#", "%23")) +
+            (c = c.replace('#', '%23')) +
             l
         );
       }
       let l = [
-        "auth",
-        "hash",
-        "host",
-        "hostname",
-        "href",
-        "path",
-        "pathname",
-        "port",
-        "protocol",
-        "query",
-        "search",
-        "slashes",
+        'auth',
+        'hash',
+        'host',
+        'hostname',
+        'href',
+        'path',
+        'pathname',
+        'port',
+        'protocol',
+        'query',
+        'search',
+        'slashes',
       ];
       function u(e) {
         return i(e);
       }
     },
     1323: function (e, t) {
-      "use strict";
+      'use strict';
       function r(e, t) {
-        void 0 === t && (t = "");
+        void 0 === t && (t = '');
         let r =
-          "/" === e
-            ? "/index"
+          '/' === e
+            ? '/index'
             : /^\/index(\/|$)/.test(e)
-            ? "/index" + e
-            : "" + e;
+            ? '/index' + e
+            : '' + e;
         return r + t;
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "default", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'default', {
           enumerable: !0,
           get: function () {
             return r;
@@ -4112,9 +4112,9 @@
         });
     },
     5007: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "getNextPathnameInfo", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'getNextPathnameInfo', {
           enumerable: !0,
           get: function () {
             return i;
@@ -4130,22 +4130,22 @@
             i18n: s,
             trailingSlash: c,
           } = null != (r = t.nextConfig) ? r : {},
-          f = { pathname: e, trailingSlash: "/" !== e ? e.endsWith("/") : c };
+          f = { pathname: e, trailingSlash: '/' !== e ? e.endsWith('/') : c };
         if (
           (u &&
             (0, o.pathHasPrefix)(f.pathname, u) &&
             ((f.pathname = (0, a.removePathPrefix)(f.pathname, u)),
             (f.basePath = u)),
           !0 === t.parseData &&
-            f.pathname.startsWith("/_next/data/") &&
-            f.pathname.endsWith(".json"))
+            f.pathname.startsWith('/_next/data/') &&
+            f.pathname.endsWith('.json'))
         ) {
           let e = f.pathname
-              .replace(/^\/_next\/data\//, "")
-              .replace(/\.json$/, "")
-              .split("/"),
+              .replace(/^\/_next\/data\//, '')
+              .replace(/\.json$/, '')
+              .split('/'),
             t = e[0];
-          (f.pathname = "index" !== e[1] ? "/" + e.slice(1).join("/") : "/"),
+          (f.pathname = 'index' !== e[1] ? '/' + e.slice(1).join('/') : '/'),
             (f.buildId = t);
         }
         if (t.i18nProvider) {
@@ -4161,18 +4161,18 @@
       }
     },
     294: function (e, t) {
-      "use strict";
+      'use strict';
       function r(e, t) {
         void 0 === t && (t = {});
         let r = document.documentElement,
           n = r.style.scrollBehavior;
-        (r.style.scrollBehavior = "auto"),
+        (r.style.scrollBehavior = 'auto'),
           t.dontForceLayout || r.getClientRects(),
           e(),
           (r.style.scrollBehavior = n);
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "handleSmoothScroll", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'handleSmoothScroll', {
           enumerable: !0,
           get: function () {
             return r;
@@ -4180,8 +4180,8 @@
         });
     },
     8865: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -4197,9 +4197,9 @@
         a = r(5136);
     },
     4021: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "interpolateAs", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'interpolateAs', {
           enumerable: !0,
           get: function () {
             return o;
@@ -4208,43 +4208,43 @@
       let n = r(8262),
         a = r(3952);
       function o(e, t, r) {
-        let o = "",
+        let o = '',
           i = (0, a.getRouteRegex)(e),
           l = i.groups,
-          u = (t !== e ? (0, n.getRouteMatcher)(i)(t) : "") || r;
+          u = (t !== e ? (0, n.getRouteMatcher)(i)(t) : '') || r;
         o = e;
         let s = Object.keys(l);
         return (
           s.every((e) => {
-            let t = u[e] || "",
+            let t = u[e] || '',
               { repeat: r, optional: n } = l[e],
-              a = "[" + (r ? "..." : "") + e + "]";
+              a = '[' + (r ? '...' : '') + e + ']';
             return (
-              n && (a = (t ? "" : "/") + "[" + a + "]"),
+              n && (a = (t ? '' : '/') + '[' + a + ']'),
               r && !Array.isArray(t) && (t = [t]),
               (n || e in u) &&
                 (o =
                   o.replace(
                     a,
                     r
-                      ? t.map((e) => encodeURIComponent(e)).join("/")
+                      ? t.map((e) => encodeURIComponent(e)).join('/')
                       : encodeURIComponent(t)
-                  ) || "/")
+                  ) || '/')
             );
-          }) || (o = ""),
+          }) || (o = ''),
           { params: s, result: o }
         );
       }
     },
     3222: function (e, t) {
-      "use strict";
+      'use strict';
       function r(e) {
         return /Googlebot|Mediapartners-Google|AdsBot-Google|googleweblight|Storebot-Google|Google-PageRenderer|Bingbot|BingPreview|Slurp|DuckDuckBot|baiduspider|yandex|sogou|LinkedInBot|bitlybot|tumblr|vkShare|quora link preview|facebookexternalhit|facebookcatalog|Twitterbot|applebot|redditbot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|ia_archiver/i.test(
           e
         );
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "isBot", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'isBot', {
           enumerable: !0,
           get: function () {
             return r;
@@ -4252,9 +4252,9 @@
         });
     },
     5136: function (e, t) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "isDynamicRoute", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'isDynamicRoute', {
           enumerable: !0,
           get: function () {
             return n;
@@ -4266,9 +4266,9 @@
       }
     },
     2009: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "isLocalURL", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'isLocalURL', {
           enumerable: !0,
           get: function () {
             return o;
@@ -4288,7 +4288,7 @@
       }
     },
     7025: function (e, t) {
-      "use strict";
+      'use strict';
       function r(e, t) {
         let r = {};
         return (
@@ -4298,8 +4298,8 @@
           r
         );
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "omit", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'omit', {
           enumerable: !0,
           get: function () {
             return r;
@@ -4307,21 +4307,21 @@
         });
     },
     4460: function (e, t) {
-      "use strict";
+      'use strict';
       function r(e) {
-        let t = e.indexOf("#"),
-          r = e.indexOf("?"),
+        let t = e.indexOf('#'),
+          r = e.indexOf('?'),
           n = r > -1 && (t < 0 || r < t);
         return n || t > -1
           ? {
               pathname: e.substring(0, n ? r : t),
-              query: n ? e.substring(r, t > -1 ? t : void 0) : "",
-              hash: t > -1 ? e.slice(t) : "",
+              query: n ? e.substring(r, t > -1 ? t : void 0) : '',
+              hash: t > -1 ? e.slice(t) : '',
             }
-          : { pathname: e, query: "", hash: "" };
+          : { pathname: e, query: '', hash: '' };
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "parsePath", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'parsePath', {
           enumerable: !0,
           get: function () {
             return r;
@@ -4329,9 +4329,9 @@
         });
     },
     4547: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "parseRelativeUrl", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'parseRelativeUrl', {
           enumerable: !0,
           get: function () {
             return o;
@@ -4343,7 +4343,7 @@
         let r = new URL((0, n.getLocationOrigin)()),
           o = t
             ? new URL(t, r)
-            : e.startsWith(".")
+            : e.startsWith('.')
             ? new URL(window.location.href)
             : r,
           {
@@ -4355,7 +4355,7 @@
             origin: f,
           } = new URL(e, o);
         if (f !== r.origin)
-          throw Error("invariant: invalid relative URL, router received " + e);
+          throw Error('invariant: invalid relative URL, router received ' + e);
         return {
           pathname: i,
           query: (0, a.searchParamsToUrlQuery)(l),
@@ -4366,9 +4366,9 @@
       }
     },
     7751: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "pathHasPrefix", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'pathHasPrefix', {
           enumerable: !0,
           get: function () {
             return a;
@@ -4376,13 +4376,13 @@
         });
       let n = r(4460);
       function a(e, t) {
-        if ("string" != typeof e) return !1;
+        if ('string' != typeof e) return !1;
         let { pathname: r } = (0, n.parsePath)(e);
-        return r === t || r.startsWith(t + "/");
+        return r === t || r.startsWith(t + '/');
       }
     },
     9719: function (e, t) {
-      "use strict";
+      'use strict';
       function r(e) {
         let t = {};
         return (
@@ -4397,10 +4397,10 @@
         );
       }
       function n(e) {
-        return "string" != typeof e &&
-          ("number" != typeof e || isNaN(e)) &&
-          "boolean" != typeof e
-          ? ""
+        return 'string' != typeof e &&
+          ('number' != typeof e || isNaN(e)) &&
+          'boolean' != typeof e
+          ? ''
           : String(e);
       }
       function a(e) {
@@ -4430,7 +4430,7 @@
           e
         );
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -4447,9 +4447,9 @@
         });
     },
     1606: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "removePathPrefix", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'removePathPrefix', {
           enumerable: !0,
           get: function () {
             return a;
@@ -4459,16 +4459,16 @@
       function a(e, t) {
         if (!(0, n.pathHasPrefix)(e, t)) return e;
         let r = e.slice(t.length);
-        return r.startsWith("/") ? r : "/" + r;
+        return r.startsWith('/') ? r : '/' + r;
       }
     },
     7479: function (e, t) {
-      "use strict";
+      'use strict';
       function r(e) {
-        return e.replace(/\/$/, "") || "/";
+        return e.replace(/\/$/, '') || '/';
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "removeTrailingSlash", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'removeTrailingSlash', {
           enumerable: !0,
           get: function () {
             return r;
@@ -4476,9 +4476,9 @@
         });
     },
     8769: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "resolveHref", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'resolveHref', {
           enumerable: !0,
           get: function () {
             return f;
@@ -4494,11 +4494,11 @@
         c = r(4021);
       function f(e, t, r) {
         let f;
-        let d = "string" == typeof t ? t : (0, a.formatWithValidation)(t),
+        let d = 'string' == typeof t ? t : (0, a.formatWithValidation)(t),
           h = d.match(/^[a-zA-Z]{1,}:\/\//),
           p = h ? d.slice(h[0].length) : d,
-          m = p.split("?");
-        if ((m[0] || "").match(/(\/\/|\\)/)) {
+          m = p.split('?');
+        if ((m[0] || '').match(/(\/\/|\\)/)) {
           console.error(
             "Invalid href '" +
               d +
@@ -4507,18 +4507,18 @@
               "'. Repeated forward-slashes (//) or backslashes \\ are not valid in the href."
           );
           let t = (0, i.normalizeRepeatedSlashes)(p);
-          d = (h ? h[0] : "") + t;
+          d = (h ? h[0] : '') + t;
         }
         if (!(0, u.isLocalURL)(d)) return r ? [d] : d;
         try {
-          f = new URL(d.startsWith("#") ? e.asPath : e.pathname, "http://n");
+          f = new URL(d.startsWith('#') ? e.asPath : e.pathname, 'http://n');
         } catch (e) {
-          f = new URL("/", "http://n");
+          f = new URL('/', 'http://n');
         }
         try {
           let e = new URL(d, f);
           e.pathname = (0, l.normalizePathTrailingSlash)(e.pathname);
-          let t = "";
+          let t = '';
           if ((0, s.isDynamicRoute)(e.pathname) && e.searchParams && r) {
             let r = (0, n.searchParamsToUrlQuery)(e.searchParams),
               { result: i, params: l } = (0, c.interpolateAs)(
@@ -4542,9 +4542,9 @@
       }
     },
     8262: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "getRouteMatcher", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'getRouteMatcher', {
           enumerable: !0,
           get: function () {
             return a;
@@ -4560,7 +4560,7 @@
               try {
                 return decodeURIComponent(e);
               } catch (e) {
-                throw new n.DecodeError("failed to decode param");
+                throw new n.DecodeError('failed to decode param');
               }
             },
             i = {};
@@ -4569,8 +4569,8 @@
               let t = r[e],
                 n = a[t.pos];
               void 0 !== n &&
-                (i[e] = ~n.indexOf("/")
-                  ? n.split("/").map((e) => o(e))
+                (i[e] = ~n.indexOf('/')
+                  ? n.split('/').map((e) => o(e))
                   : t.repeat
                   ? [o(n)]
                   : o(n));
@@ -4581,8 +4581,8 @@
       }
     },
     3952: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -4599,46 +4599,46 @@
         });
       let n = r(9713),
         a = r(7479),
-        o = "nxtP";
+        o = 'nxtP';
       function i(e) {
-        let t = e.startsWith("[") && e.endsWith("]");
+        let t = e.startsWith('[') && e.endsWith(']');
         t && (e = e.slice(1, -1));
-        let r = e.startsWith("...");
+        let r = e.startsWith('...');
         return r && (e = e.slice(3)), { key: e, repeat: r, optional: t };
       }
       function l(e) {
-        let t = (0, a.removeTrailingSlash)(e).slice(1).split("/"),
+        let t = (0, a.removeTrailingSlash)(e).slice(1).split('/'),
           r = {},
           o = 1;
         return {
           parameterizedRoute: t
             .map((e) => {
-              if (!(e.startsWith("[") && e.endsWith("]")))
-                return "/" + (0, n.escapeStringRegexp)(e);
+              if (!(e.startsWith('[') && e.endsWith(']')))
+                return '/' + (0, n.escapeStringRegexp)(e);
               {
                 let { key: t, optional: n, repeat: a } = i(e.slice(1, -1));
                 return (
                   (r[t] = { pos: o++, repeat: a, optional: n }),
-                  a ? (n ? "(?:/(.+?))?" : "/(.+?)") : "/([^/]+?)"
+                  a ? (n ? '(?:/(.+?))?' : '/(.+?)') : '/([^/]+?)'
                 );
               }
             })
-            .join(""),
+            .join(''),
           groups: r,
         };
       }
       function u(e) {
         let { parameterizedRoute: t, groups: r } = l(e);
-        return { re: RegExp("^" + t + "(?:/)?$"), groups: r };
+        return { re: RegExp('^' + t + '(?:/)?$'), groups: r };
       }
       function s(e, t) {
         let r, l;
-        let u = (0, a.removeTrailingSlash)(e).slice(1).split("/"),
+        let u = (0, a.removeTrailingSlash)(e).slice(1).split('/'),
           s =
             ((r = 97),
             (l = 1),
             () => {
-              let e = "";
+              let e = '';
               for (let t = 0; t < l; t++)
                 (e += String.fromCharCode(r)), ++r > 122 && (l++, (r = 97));
               return e;
@@ -4647,27 +4647,27 @@
         return {
           namedParameterizedRoute: u
             .map((e) => {
-              if (!(e.startsWith("[") && e.endsWith("]")))
-                return "/" + (0, n.escapeStringRegexp)(e);
+              if (!(e.startsWith('[') && e.endsWith(']')))
+                return '/' + (0, n.escapeStringRegexp)(e);
               {
                 let { key: r, optional: n, repeat: a } = i(e.slice(1, -1)),
-                  l = r.replace(/\W/g, "");
-                t && (l = "" + o + l);
+                  l = r.replace(/\W/g, '');
+                t && (l = '' + o + l);
                 let u = !1;
                 return (
                   (0 === l.length || l.length > 30) && (u = !0),
                   isNaN(parseInt(l.slice(0, 1))) || (u = !0),
                   u && (l = s()),
-                  t ? (c[l] = "" + o + r) : (c[l] = "" + r),
+                  t ? (c[l] = '' + o + r) : (c[l] = '' + r),
                   a
                     ? n
-                      ? "(?:/(?<" + l + ">.+?))?"
-                      : "/(?<" + l + ">.+?)"
-                    : "/(?<" + l + ">[^/]+?)"
+                      ? '(?:/(?<' + l + '>.+?))?'
+                      : '/(?<' + l + '>.+?)'
+                    : '/(?<' + l + '>[^/]+?)'
                 );
               }
             })
-            .join(""),
+            .join(''),
           routeKeys: c,
         };
       }
@@ -4675,22 +4675,22 @@
         let r = s(e, t);
         return {
           ...u(e),
-          namedRegex: "^" + r.namedParameterizedRoute + "(?:/)?$",
+          namedRegex: '^' + r.namedParameterizedRoute + '(?:/)?$',
           routeKeys: r.routeKeys,
         };
       }
       function f(e, t) {
         let { parameterizedRoute: r } = l(e),
           { catchAll: n = !0 } = t;
-        if ("/" === r) return { namedRegex: "^/" + (n ? ".*" : "") + "$" };
+        if ('/' === r) return { namedRegex: '^/' + (n ? '.*' : '') + '$' };
         let { namedParameterizedRoute: a } = s(e, !1);
-        return { namedRegex: "^" + a + (n ? "(?:(/.*)?)" : "") + "$" };
+        return { namedRegex: '^' + a + (n ? '(?:(/.*)?)' : '') + '$' };
       }
     },
     1062: function (e, t) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "getSortedRoutes", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'getSortedRoutes', {
           enumerable: !0,
           get: function () {
             return n;
@@ -4698,38 +4698,38 @@
         });
       class r {
         insert(e) {
-          this._insert(e.split("/").filter(Boolean), [], !1);
+          this._insert(e.split('/').filter(Boolean), [], !1);
         }
         smoosh() {
           return this._smoosh();
         }
         _smoosh(e) {
-          void 0 === e && (e = "/");
+          void 0 === e && (e = '/');
           let t = [...this.children.keys()].sort();
-          null !== this.slugName && t.splice(t.indexOf("[]"), 1),
-            null !== this.restSlugName && t.splice(t.indexOf("[...]"), 1),
+          null !== this.slugName && t.splice(t.indexOf('[]'), 1),
+            null !== this.restSlugName && t.splice(t.indexOf('[...]'), 1),
             null !== this.optionalRestSlugName &&
-              t.splice(t.indexOf("[[...]]"), 1);
+              t.splice(t.indexOf('[[...]]'), 1);
           let r = t
-            .map((t) => this.children.get(t)._smoosh("" + e + t + "/"))
+            .map((t) => this.children.get(t)._smoosh('' + e + t + '/'))
             .reduce((e, t) => [...e, ...t], []);
           if (
             (null !== this.slugName &&
               r.push(
                 ...this.children
-                  .get("[]")
-                  ._smoosh(e + "[" + this.slugName + "]/")
+                  .get('[]')
+                  ._smoosh(e + '[' + this.slugName + ']/')
               ),
             !this.placeholder)
           ) {
-            let t = "/" === e ? "/" : e.slice(0, -1);
+            let t = '/' === e ? '/' : e.slice(0, -1);
             if (null != this.optionalRestSlugName)
               throw Error(
                 'You cannot define a route with the same specificity as a optional catch-all route ("' +
                   t +
                   '" and "' +
                   t +
-                  "[[..." +
+                  '[[...' +
                   this.optionalRestSlugName +
                   ']]").'
               );
@@ -4739,14 +4739,14 @@
             null !== this.restSlugName &&
               r.push(
                 ...this.children
-                  .get("[...]")
-                  ._smoosh(e + "[..." + this.restSlugName + "]/")
+                  .get('[...]')
+                  ._smoosh(e + '[...' + this.restSlugName + ']/')
               ),
             null !== this.optionalRestSlugName &&
               r.push(
                 ...this.children
-                  .get("[[...]]")
-                  ._smoosh(e + "[[..." + this.optionalRestSlugName + "]]/")
+                  .get('[[...]]')
+                  ._smoosh(e + '[[...' + this.optionalRestSlugName + ']]/')
               ),
             r
           );
@@ -4756,24 +4756,24 @@
             this.placeholder = !1;
             return;
           }
-          if (n) throw Error("Catch-all must be the last part of the URL.");
+          if (n) throw Error('Catch-all must be the last part of the URL.');
           let a = e[0];
-          if (a.startsWith("[") && a.endsWith("]")) {
+          if (a.startsWith('[') && a.endsWith(']')) {
             let r = a.slice(1, -1),
               i = !1;
             if (
-              (r.startsWith("[") &&
-                r.endsWith("]") &&
+              (r.startsWith('[') &&
+                r.endsWith(']') &&
                 ((r = r.slice(1, -1)), (i = !0)),
-              r.startsWith("...") && ((r = r.substring(3)), (n = !0)),
-              r.startsWith("[") || r.endsWith("]"))
+              r.startsWith('...') && ((r = r.substring(3)), (n = !0)),
+              r.startsWith('[') || r.endsWith(']'))
             )
               throw Error(
                 "Segment names may not start or end with extra brackets ('" +
                   r +
                   "')."
               );
-            if (r.startsWith("."))
+            if (r.startsWith('.'))
               throw Error(
                 "Segment names may not start with erroneous periods ('" +
                   r +
@@ -4795,7 +4795,7 @@
                       r +
                       '" repeat within a single dynamic path'
                   );
-                if (e.replace(/\W/g, "") === a.replace(/\W/g, ""))
+                if (e.replace(/\W/g, '') === a.replace(/\W/g, ''))
                   throw Error(
                     'You cannot have the slug names "' +
                       e +
@@ -4818,7 +4818,7 @@
                   );
                 o(this.optionalRestSlugName, r),
                   (this.optionalRestSlugName = r),
-                  (a = "[[...]]");
+                  (a = '[[...]]');
               } else {
                 if (null != this.optionalRestSlugName)
                   throw Error(
@@ -4828,7 +4828,7 @@
                       e[0] +
                       '").'
                   );
-                o(this.restSlugName, r), (this.restSlugName = r), (a = "[...]");
+                o(this.restSlugName, r), (this.restSlugName = r), (a = '[...]');
               }
             } else {
               if (i)
@@ -4837,7 +4837,7 @@
                     e[0] +
                     '").'
                 );
-              o(this.slugName, r), (this.slugName = r), (a = "[]");
+              o(this.slugName, r), (this.slugName = r), (a = '[]');
             }
           }
           this.children.has(a) || this.children.set(a, new r()),
@@ -4857,9 +4857,9 @@
       }
     },
     3009: function (e, t) {
-      "use strict";
+      'use strict';
       let r;
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -4875,17 +4875,17 @@
       function a(e) {
         r = e;
       }
-      ("function" == typeof t.default ||
-        ("object" == typeof t.default && null !== t.default)) &&
+      ('function' == typeof t.default ||
+        ('object' == typeof t.default && null !== t.default)) &&
         void 0 === t.default.__esModule &&
-        (Object.defineProperty(t.default, "__esModule", { value: !0 }),
+        (Object.defineProperty(t.default, '__esModule', { value: !0 }),
         Object.assign(t.default, t),
         (e.exports = t.default));
     },
     4831: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "default", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'default', {
           enumerable: !0,
           get: function () {
             return l;
@@ -4945,8 +4945,8 @@
       }
     },
     6139: function (e, t) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -5000,7 +5000,7 @@
             return _;
           },
         });
-      let r = ["CLS", "FCP", "FID", "INP", "LCP", "TTFB"];
+      let r = ['CLS', 'FCP', 'FID', 'INP', 'LCP', 'TTFB'];
       function n(e) {
         let t,
           r = !1;
@@ -5014,7 +5014,7 @@
         o = (e) => a.test(e);
       function i() {
         let { protocol: e, hostname: t, port: r } = window.location;
-        return e + "//" + t + (r ? ":" + r : "");
+        return e + '//' + t + (r ? ':' + r : '');
       }
       function l() {
         let { href: e } = window.location,
@@ -5022,17 +5022,17 @@
         return e.substring(t.length);
       }
       function u(e) {
-        return "string" == typeof e ? e : e.displayName || e.name || "Unknown";
+        return 'string' == typeof e ? e : e.displayName || e.name || 'Unknown';
       }
       function s(e) {
         return e.finished || e.headersSent;
       }
       function c(e) {
-        let t = e.split("?"),
+        let t = e.split('?'),
           r = t[0];
         return (
-          r.replace(/\\/g, "/").replace(/\/\/+/g, "/") +
-          (t[1] ? "?" + t.slice(1).join("?") : "")
+          r.replace(/\\/g, '/').replace(/\/\/+/g, '/') +
+          (t[1] ? '?' + t.slice(1).join('?') : '')
         );
       }
       async function f(e, t) {
@@ -5054,41 +5054,41 @@
         }
         return n;
       }
-      let d = "undefined" != typeof performance,
+      let d = 'undefined' != typeof performance,
         h =
           d &&
-          ["mark", "measure", "getEntriesByName"].every(
-            (e) => "function" == typeof performance[e]
+          ['mark', 'measure', 'getEntriesByName'].every(
+            (e) => 'function' == typeof performance[e]
           );
       class p extends Error {}
       class m extends Error {}
       class g extends Error {
         constructor(e) {
           super(),
-            (this.code = "ENOENT"),
-            (this.name = "PageNotFoundError"),
-            (this.message = "Cannot find module for page: " + e);
+            (this.code = 'ENOENT'),
+            (this.name = 'PageNotFoundError'),
+            (this.message = 'Cannot find module for page: ' + e);
         }
       }
       class y extends Error {
         constructor(e, t) {
           super(),
             (this.message =
-              "Failed to load static file for page: " + e + " " + t);
+              'Failed to load static file for page: ' + e + ' ' + t);
         }
       }
       class _ extends Error {
         constructor() {
           super(),
-            (this.code = "ENOENT"),
-            (this.message = "Cannot find the middleware module");
+            (this.code = 'ENOENT'),
+            (this.message = 'Cannot find the middleware module');
         }
       }
     },
     6308: function (e, t) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "warnOnce", {
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'warnOnce', {
           enumerable: !0,
           get: function () {
             return r;
@@ -5153,12 +5153,12 @@
           return Object.prototype.hasOwnProperty.call(e, t);
         }),
         (t.r = function (e) {
-          "undefined" != typeof Symbol &&
+          'undefined' != typeof Symbol &&
             Symbol.toStringTag &&
-            Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }),
-            Object.defineProperty(e, "__esModule", { value: !0 });
+            Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
+            Object.defineProperty(e, '__esModule', { value: !0 });
         }),
-        void 0 !== t && (t.ab = "//"),
+        void 0 !== t && (t.ab = '//'),
         (r = {}),
         t.r(r),
         t.d(r, {
@@ -5202,7 +5202,7 @@
         (u = -1),
         (s = function (e) {
           addEventListener(
-            "pageshow",
+            'pageshow',
             function (t) {
               t.persisted && ((u = t.timeStamp), e(t));
             },
@@ -5213,7 +5213,7 @@
           return (
             window.performance &&
             performance.getEntriesByType &&
-            performance.getEntriesByType("navigation")[0]
+            performance.getEntriesByType('navigation')[0]
           );
         }),
         (f = function () {
@@ -5222,23 +5222,23 @@
         }),
         (d = function (e, t) {
           var r = c(),
-            n = "navigate";
+            n = 'navigate';
           return (
             u >= 0
-              ? (n = "back-forward-cache")
+              ? (n = 'back-forward-cache')
               : r &&
                 (n =
                   document.prerendering || f() > 0
-                    ? "prerender"
-                    : r.type.replace(/_/g, "-")),
+                    ? 'prerender'
+                    : r.type.replace(/_/g, '-')),
             {
               name: e,
               value: void 0 === t ? -1 : t,
-              rating: "good",
+              rating: 'good',
               delta: 0,
               entries: [],
-              id: "v3-"
-                .concat(Date.now(), "-")
+              id: 'v3-'
+                .concat(Date.now(), '-')
                 .concat(Math.floor(8999999999999 * Math.random()) + 1e12),
               navigationType: n,
             }
@@ -5258,14 +5258,14 @@
         }),
         (p = function (e, t) {
           var r = function r(n) {
-            ("pagehide" !== n.type && "hidden" !== document.visibilityState) ||
+            ('pagehide' !== n.type && 'hidden' !== document.visibilityState) ||
               (e(n),
               t &&
-                (removeEventListener("visibilitychange", r, !0),
-                removeEventListener("pagehide", r, !0)));
+                (removeEventListener('visibilitychange', r, !0),
+                removeEventListener('pagehide', r, !0)));
           };
-          addEventListener("visibilitychange", r, !0),
-            addEventListener("pagehide", r, !0);
+          addEventListener('visibilitychange', r, !0),
+            addEventListener('pagehide', r, !0);
         }),
         (m = function (e, t, r, n) {
           var a, o;
@@ -5278,16 +5278,16 @@
               (t.delta = o),
               (t.rating =
                 (l = t.value) > r[1]
-                  ? "poor"
+                  ? 'poor'
                   : l > r[0]
-                  ? "needs-improvement"
-                  : "good"),
+                  ? 'needs-improvement'
+                  : 'good'),
               e(t));
           };
         }),
         (g = -1),
         (y = function () {
-          return "hidden" !== document.visibilityState || document.prerendering
+          return 'hidden' !== document.visibilityState || document.prerendering
             ? 1 / 0
             : 0;
         }),
@@ -5318,10 +5318,10 @@
           var r,
             n = [1800, 3e3],
             a = b(),
-            o = d("FCP"),
+            o = d('FCP'),
             i = function (e) {
               e.forEach(function (e) {
-                "first-contentful-paint" === e.name &&
+                'first-contentful-paint' === e.name &&
                   (u && u.disconnect(),
                   e.startTime < a.firstHiddenTime &&
                     ((o.value = e.startTime - f()), o.entries.push(e), r(!0)));
@@ -5330,13 +5330,13 @@
             l =
               window.performance &&
               window.performance.getEntriesByName &&
-              window.performance.getEntriesByName("first-contentful-paint")[0],
-            u = l ? null : h("paint", i);
+              window.performance.getEntriesByName('first-contentful-paint')[0],
+            u = l ? null : h('paint', i);
           (l || u) &&
             ((r = m(e, o, n, t.reportAllChanges)),
             l && i([l]),
             s(function (a) {
-              (r = m(e, (o = d("FCP")), n, t.reportAllChanges)),
+              (r = m(e, (o = d('FCP')), n, t.reportAllChanges)),
                 requestAnimationFrame(function () {
                   requestAnimationFrame(function () {
                     (o.value = performance.now() - a.timeStamp), r(!0);
@@ -5358,7 +5358,7 @@
             a = function (t) {
               w > -1 && e(t);
             },
-            o = d("CLS", 0),
+            o = d('CLS', 0),
             i = 0,
             l = [],
             u = function (e) {
@@ -5375,7 +5375,7 @@
                 }
               });
             },
-            c = h("layout-shift", u);
+            c = h('layout-shift', u);
           c &&
             ((n = m(a, o, r, t.reportAllChanges)),
             p(function () {
@@ -5384,7 +5384,7 @@
             s(function () {
               (i = 0),
                 (w = -1),
-                (n = m(a, (o = d("CLS", 0)), r, t.reportAllChanges));
+                (n = m(a, (o = d('CLS', 0)), r, t.reportAllChanges));
             }));
         }),
         (j = { passive: !0, capture: !0 }),
@@ -5396,7 +5396,7 @@
         (x = function () {
           if (a >= 0 && a < o - O) {
             var e = {
-              entryType: "first-input",
+              entryType: 'first-input',
               name: n.type,
               target: n.target,
               cancelable: n.cancelable,
@@ -5417,7 +5417,7 @@
               a =
                 (e.timeStamp > 1e12 ? new Date() : performance.now()) -
                 e.timeStamp;
-            "pointerdown" == e.type
+            'pointerdown' == e.type
               ? ((t = function () {
                   E(a, e), n();
                 }),
@@ -5425,16 +5425,16 @@
                   n();
                 }),
                 (n = function () {
-                  removeEventListener("pointerup", t, j),
-                    removeEventListener("pointercancel", r, j);
+                  removeEventListener('pointerup', t, j),
+                    removeEventListener('pointercancel', r, j);
                 }),
-                addEventListener("pointerup", t, j),
-                addEventListener("pointercancel", r, j))
+                addEventListener('pointerup', t, j),
+                addEventListener('pointercancel', r, j))
               : E(a, e);
           }
         }),
         (C = function (e) {
-          ["mousedown", "keydown", "touchstart", "pointerdown"].forEach(
+          ['mousedown', 'keydown', 'touchstart', 'pointerdown'].forEach(
             function (t) {
               return e(t, R, j);
             }
@@ -5445,7 +5445,7 @@
           var r,
             o = [100, 300],
             l = b(),
-            u = d("FID"),
+            u = d('FID'),
             c = function (e) {
               e.startTime < l.firstHiddenTime &&
                 ((u.value = e.processingStart - e.startTime),
@@ -5455,7 +5455,7 @@
             f = function (e) {
               e.forEach(c);
             },
-            g = h("first-input", f);
+            g = h('first-input', f);
           (r = m(e, u, o, t.reportAllChanges)),
             g &&
               p(function () {
@@ -5463,7 +5463,7 @@
               }, !0),
             g &&
               s(function () {
-                (r = m(e, (u = d("FID")), o, t.reportAllChanges)),
+                (r = m(e, (u = d('FID')), o, t.reportAllChanges)),
                   (i = []),
                   (a = -1),
                   (n = null),
@@ -5486,10 +5486,10 @@
           return l ? A : performance.interactionCount || 0;
         }),
         (k = function () {
-          "interactionCount" in performance ||
+          'interactionCount' in performance ||
             l ||
-            (l = h("event", I, {
-              type: "event",
+            (l = h('event', I, {
+              type: 'event',
               buffered: !0,
               durationThreshold: 0,
             }));
@@ -5527,11 +5527,11 @@
           var r = [200, 500];
           k();
           var n,
-            a = d("INP"),
+            a = d('INP'),
             o = function (e) {
               e.forEach(function (e) {
                 e.interactionId && F(e),
-                  "first-input" !== e.entryType ||
+                  'first-input' !== e.entryType ||
                     H.some(function (t) {
                       return t.entries.some(function (t) {
                         return (
@@ -5548,10 +5548,10 @@
                 r.latency !== a.value &&
                 ((a.value = r.latency), (a.entries = r.entries), n());
             },
-            i = h("event", o, { durationThreshold: t.durationThreshold || 40 });
+            i = h('event', o, { durationThreshold: t.durationThreshold || 40 });
           (n = m(e, a, r, t.reportAllChanges)),
             i &&
-              (i.observe({ type: "first-input", buffered: !0 }),
+              (i.observe({ type: 'first-input', buffered: !0 }),
               p(function () {
                 o(i.takeRecords()),
                   a.value < 0 && B() > 0 && ((a.value = 0), (a.entries = [])),
@@ -5560,7 +5560,7 @@
               s(function () {
                 (H = []),
                   (D = N()),
-                  (n = m(e, (a = d("INP")), r, t.reportAllChanges));
+                  (n = m(e, (a = d('INP')), r, t.reportAllChanges));
               }));
         }),
         (W = {}),
@@ -5569,7 +5569,7 @@
           var r,
             n = [2500, 4e3],
             a = b(),
-            o = d("LCP"),
+            o = d('LCP'),
             i = function (e) {
               var t = e[e.length - 1];
               if (t) {
@@ -5578,19 +5578,19 @@
                   ((o.value = n), (o.entries = [t]), r());
               }
             },
-            l = h("largest-contentful-paint", i);
+            l = h('largest-contentful-paint', i);
           if (l) {
             r = m(e, o, n, t.reportAllChanges);
             var u = function () {
               W[o.id] ||
                 (i(l.takeRecords()), l.disconnect(), (W[o.id] = !0), r(!0));
             };
-            ["keydown", "click"].forEach(function (e) {
+            ['keydown', 'click'].forEach(function (e) {
               addEventListener(e, u, { once: !0, capture: !0 });
             }),
               p(u, !0),
               s(function (a) {
-                (r = m(e, (o = d("LCP")), n, t.reportAllChanges)),
+                (r = m(e, (o = d('LCP')), n, t.reportAllChanges)),
                   requestAnimationFrame(function () {
                     requestAnimationFrame(function () {
                       (o.value = performance.now() - a.timeStamp),
@@ -5604,15 +5604,15 @@
         (G = function e(t) {
           document.prerendering
             ? addEventListener(
-                "prerenderingchange",
+                'prerenderingchange',
                 function () {
                   return e(t);
                 },
                 !0
               )
-            : "complete" !== document.readyState
+            : 'complete' !== document.readyState
             ? addEventListener(
-                "load",
+                'load',
                 function () {
                   return e(t);
                 },
@@ -5623,7 +5623,7 @@
         (V = function (e, t) {
           t = t || {};
           var r = [800, 1800],
-            n = d("TTFB"),
+            n = d('TTFB'),
             a = m(e, n, r, t.reportAllChanges);
           G(function () {
             var o = c();
@@ -5636,7 +5636,7 @@
               (n.entries = [o]),
                 a(!0),
                 s(function () {
-                  (a = m(e, (n = d("TTFB", 0)), r, t.reportAllChanges))(!0);
+                  (a = m(e, (n = d('TTFB', 0)), r, t.reportAllChanges))(!0);
                 });
             }
           });
@@ -5644,12 +5644,12 @@
         (e.exports = r);
     },
     9423: function (e, t) {
-      "use strict";
+      'use strict';
       function r(e) {
-        return "/api" === e || !!(null == e ? void 0 : e.startsWith("/api/"));
+        return '/api' === e || !!(null == e ? void 0 : e.startsWith('/api/'));
       }
-      Object.defineProperty(t, "__esModule", { value: !0 }),
-        Object.defineProperty(t, "isAPIRoute", {
+      Object.defineProperty(t, '__esModule', { value: !0 }),
+        Object.defineProperty(t, 'isAPIRoute', {
           enumerable: !0,
           get: function () {
             return r;
@@ -5657,8 +5657,8 @@
         });
     },
     676: function (e, t, r) {
-      "use strict";
-      Object.defineProperty(t, "__esModule", { value: !0 }),
+      'use strict';
+      Object.defineProperty(t, '__esModule', { value: !0 }),
         (function (e, t) {
           for (var r in t)
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -5673,18 +5673,18 @@
       let n = r(5410);
       function a(e) {
         return (
-          "object" == typeof e && null !== e && "name" in e && "message" in e
+          'object' == typeof e && null !== e && 'name' in e && 'message' in e
         );
       }
       function o(e) {
         return a(e)
           ? e
-          : Error((0, n.isPlainObject)(e) ? JSON.stringify(e) : e + "");
+          : Error((0, n.isPlainObject)(e) ? JSON.stringify(e) : e + '');
       }
     },
     2431: function () {},
     8754: function (e, t, r) {
-      "use strict";
+      'use strict';
       function n(e) {
         return e && e.__esModule ? e : { default: e };
       }
@@ -5699,9 +5699,9 @@
         });
     },
     1757: function (e, t, r) {
-      "use strict";
+      'use strict';
       function n(e) {
-        if ("function" != typeof WeakMap) return null;
+        if ('function' != typeof WeakMap) return null;
         var t = new WeakMap(),
           r = new WeakMap();
         return (n = function (e) {
@@ -5710,14 +5710,14 @@
       }
       function a(e, t) {
         if (!t && e && e.__esModule) return e;
-        if (null === e || ("object" != typeof e && "function" != typeof e))
+        if (null === e || ('object' != typeof e && 'function' != typeof e))
           return { default: e };
         var r = n(t);
         if (r && r.has(e)) return r.get(e);
         var a = {},
           o = Object.defineProperty && Object.getOwnPropertyDescriptor;
         for (var i in e)
-          if ("default" !== i && Object.prototype.hasOwnProperty.call(e, i)) {
+          if ('default' !== i && Object.prototype.hasOwnProperty.call(e, i)) {
             var l = o ? Object.getOwnPropertyDescriptor(e, i) : null;
             l && (l.get || l.set)
               ? Object.defineProperty(a, i, l)

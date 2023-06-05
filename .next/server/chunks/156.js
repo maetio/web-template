@@ -6,21 +6,21 @@ exports.modules = {
     module.exports = {
       style: {
         fontFamily: "'__Inter_0ec1f4', '__Inter_Fallback_0ec1f4'",
-        fontStyle: "normal",
+        fontStyle: 'normal',
       },
-      className: "__className_0ec1f4",
+      className: '__className_0ec1f4',
     };
 
     /***/
   },
 
   /***/ 739: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "addBasePath", {
+    Object.defineProperty(exports, 'addBasePath', {
       enumerable: true,
       get: function () {
         return addBasePath;
@@ -28,7 +28,7 @@ exports.modules = {
     });
     const _addpathprefix = __webpack_require__(1751);
     const _normalizetrailingslash = __webpack_require__(6089);
-    const basePath = false || "";
+    const basePath = false || '';
     function addBasePath(path, required) {
       if (false) {
       }
@@ -37,11 +37,11 @@ exports.modules = {
       );
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -52,12 +52,12 @@ exports.modules = {
   },
 
   /***/ 4783: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "callServer", {
+    Object.defineProperty(exports, 'callServer', {
       enumerable: true,
       get: function () {
         return callServer;
@@ -67,7 +67,7 @@ exports.modules = {
     async function callServer(actionId, actionArgs) {
       const actionDispatcher = (0, _approuter.getServerActionDispatcher)();
       if (!actionDispatcher) {
-        throw new Error("Invariant: missing action dispatcher.");
+        throw new Error('Invariant: missing action dispatcher.');
       }
       return new Promise((resolve, reject) => {
         actionDispatcher({
@@ -79,11 +79,11 @@ exports.modules = {
       });
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -94,12 +94,12 @@ exports.modules = {
   },
 
   /***/ 4275: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "AppRouterAnnouncer", {
+    Object.defineProperty(exports, 'AppRouterAnnouncer', {
       enumerable: true,
       get: function () {
         return AppRouterAnnouncer;
@@ -107,8 +107,8 @@ exports.modules = {
     });
     const _react = __webpack_require__(8038);
     const _reactdom = __webpack_require__(8704);
-    const ANNOUNCER_TYPE = "next-route-announcer";
-    const ANNOUNCER_ID = "__next-route-announcer__";
+    const ANNOUNCER_TYPE = 'next-route-announcer';
+    const ANNOUNCER_ID = '__next-route-announcer__';
     function getAnnouncerNode() {
       var _existingAnnouncer_shadowRoot;
       const existingAnnouncer = document.getElementsByName(ANNOUNCER_TYPE)[0];
@@ -123,16 +123,16 @@ exports.modules = {
         return existingAnnouncer.shadowRoot.childNodes[0];
       } else {
         const container = document.createElement(ANNOUNCER_TYPE);
-        container.style.cssText = "position:absolute";
-        const announcer = document.createElement("div");
-        announcer.setAttribute("aria-live", "assertive");
-        announcer.setAttribute("id", ANNOUNCER_ID);
-        announcer.setAttribute("role", "alert");
+        container.style.cssText = 'position:absolute';
+        const announcer = document.createElement('div');
+        announcer.setAttribute('aria-live', 'assertive');
+        announcer.setAttribute('id', ANNOUNCER_ID);
+        announcer.setAttribute('role', 'alert');
         announcer.style.cssText =
-          "position:absolute;border:0;height:1px;margin:-1px;padding:0;width:1px;clip:rect(0 0 0 0);overflow:hidden;white-space:nowrap;word-wrap:normal";
+          'position:absolute;border:0;height:1px;margin:-1px;padding:0;width:1px;clip:rect(0 0 0 0);overflow:hidden;white-space:nowrap;word-wrap:normal';
         // Use shadow DOM here to avoid any potential CSS bleed
         const shadow = container.attachShadow({
-          mode: "open",
+          mode: 'open',
         });
         shadow.appendChild(announcer);
         document.body.appendChild(container);
@@ -153,22 +153,22 @@ exports.modules = {
         };
       }, []);
       const [routeAnnouncement, setRouteAnnouncement] = (0, _react.useState)(
-        ""
+        ''
       );
       const previousTitle = (0, _react.useRef)();
       (0, _react.useEffect)(() => {
-        let currentTitle = "";
+        let currentTitle = '';
         if (document.title) {
           currentTitle = document.title;
         } else {
-          const pageHeader = document.querySelector("h1");
+          const pageHeader = document.querySelector('h1');
           if (pageHeader) {
-            currentTitle = pageHeader.innerText || pageHeader.textContent || "";
+            currentTitle = pageHeader.innerText || pageHeader.textContent || '';
           }
         }
         // Only announce the title change, but not for the first load because screen
         // readers do that automatically.
-        if (typeof previousTitle.current !== "undefined") {
+        if (typeof previousTitle.current !== 'undefined') {
           setRouteAnnouncement(currentTitle);
         }
         previousTitle.current = currentTitle;
@@ -181,11 +181,11 @@ exports.modules = {
         : null;
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -196,9 +196,9 @@ exports.modules = {
   },
 
   /***/ 281: /***/ (module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -238,26 +238,26 @@ exports.modules = {
         return FLIGHT_PARAMETERS;
       },
     });
-    const RSC = "RSC";
-    const ACTION = "Next-Action";
-    const NEXT_ROUTER_STATE_TREE = "Next-Router-State-Tree";
-    const NEXT_ROUTER_PREFETCH = "Next-Router-Prefetch";
-    const NEXT_URL = "Next-Url";
-    const FETCH_CACHE_HEADER = "x-vercel-sc-headers";
-    const RSC_CONTENT_TYPE_HEADER = "text/x-component; charset=utf-8";
+    const RSC = 'RSC';
+    const ACTION = 'Next-Action';
+    const NEXT_ROUTER_STATE_TREE = 'Next-Router-State-Tree';
+    const NEXT_ROUTER_PREFETCH = 'Next-Router-Prefetch';
+    const NEXT_URL = 'Next-Url';
+    const FETCH_CACHE_HEADER = 'x-vercel-sc-headers';
+    const RSC_CONTENT_TYPE_HEADER = 'text/x-component; charset=utf-8';
     const RSC_VARY_HEADER =
-      RSC + ", " + NEXT_ROUTER_STATE_TREE + ", " + NEXT_ROUTER_PREFETCH;
+      RSC + ', ' + NEXT_ROUTER_STATE_TREE + ', ' + NEXT_ROUTER_PREFETCH;
     const FLIGHT_PARAMETERS = [
       [RSC],
       [NEXT_ROUTER_STATE_TREE],
       [NEXT_ROUTER_PREFETCH],
     ];
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -268,9 +268,9 @@ exports.modules = {
   },
 
   /***/ 125: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -311,7 +311,7 @@ exports.modules = {
     const _notfoundboundary = __webpack_require__(7944);
     const _findheadincache = __webpack_require__(7997);
     const _infinitepromise = __webpack_require__(6479);
-    const isServer = "undefined" === "undefined";
+    const isServer = 'undefined' === 'undefined';
     // Ensure the initialParallelRoutes are not combined because of double-rendering in the browser with Strict Mode.
     let initialParallelRoutes = isServer ? null : new Map();
     let globalServerActionDispatcher = null;
@@ -346,9 +346,9 @@ exports.modules = {
         ) {
           // This intentionally mutates React state, pushRef is overwritten to ensure additional push/replace calls do not trigger an additional history entry.
           pushRef.pendingPush = false;
-          window.history.pushState(historyState, "", canonicalUrl);
+          window.history.pushState(historyState, '', canonicalUrl);
         } else {
-          window.history.replaceState(historyState, "", canonicalUrl);
+          window.history.replaceState(historyState, '', canonicalUrl);
         }
         sync();
       }, [tree, pushRef, canonicalUrl, sync]);
@@ -402,7 +402,7 @@ exports.modules = {
       }, []);
       // Add memoized pathname/query for useSearchParams and usePathname.
       const { searchParams, pathname } = (0, _react.useMemo)(() => {
-        const url = new URL(canonicalUrl, true ? "http://n" : 0);
+        const url = new URL(canonicalUrl, true ? 'http://n' : 0);
         return {
           // This is turned into a readonly class in `useSearchParams`
           searchParams: url.searchParams,
@@ -509,7 +509,7 @@ exports.modules = {
             _react.default.startTransition(() => {
               navigate(
                 href,
-                "replace",
+                'replace',
                 Boolean(options.forceOptimisticNavigation)
               );
             });
@@ -520,7 +520,7 @@ exports.modules = {
             _react.default.startTransition(() => {
               navigate(
                 href,
-                "push",
+                'push',
                 Boolean(options.forceOptimisticNavigation)
               );
             });
@@ -545,7 +545,7 @@ exports.modules = {
           fastRefresh: () => {
             if (true) {
               throw new Error(
-                "fastRefresh can only be used in development mode. Please use refresh instead."
+                'fastRefresh can only be used in development mode. Please use refresh instead.'
               );
             } else {
             }
@@ -623,9 +623,9 @@ exports.modules = {
       );
       // Register popstate event to call onPopstate.
       (0, _react.useEffect)(() => {
-        window.addEventListener("popstate", onPopState);
+        window.addEventListener('popstate', onPopState);
         return () => {
-          window.removeEventListener("popstate", onPopState);
+          window.removeEventListener('popstate', onPopState);
         };
       }, [onPopState]);
       const head = (0, _react.useMemo)(() => {
@@ -723,11 +723,11 @@ exports.modules = {
       );
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -738,12 +738,12 @@ exports.modules = {
   },
 
   /***/ 2594: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "bailoutToClientRendering", {
+    Object.defineProperty(exports, 'bailoutToClientRendering', {
       enumerable: true,
       get: function () {
         return bailoutToClientRendering;
@@ -771,11 +771,11 @@ exports.modules = {
       return false;
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -786,12 +786,12 @@ exports.modules = {
   },
 
   /***/ 5078: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "clientHookInServerComponentError", {
+    Object.defineProperty(exports, 'clientHookInServerComponentError', {
       enumerable: true,
       get: function () {
         return clientHookInServerComponentError;
@@ -806,11 +806,11 @@ exports.modules = {
       }
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -821,9 +821,9 @@ exports.modules = {
   },
 
   /***/ 1522: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -855,20 +855,20 @@ exports.modules = {
         // https://github.com/sindresorhus/modern-normalize/blob/main/modern-normalize.css#L38-L52
         fontFamily:
           'system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
-        height: "100vh",
-        textAlign: "center",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
+        height: '100vh',
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
       },
       desc: {
-        textAlign: "left",
+        textAlign: 'left',
       },
       text: {
-        fontSize: "14px",
+        fontSize: '14px',
         fontWeight: 400,
-        lineHeight: "3em",
+        lineHeight: '3em',
         margin: 0,
       },
     };
@@ -928,36 +928,36 @@ exports.modules = {
     function GlobalError(param) {
       let { error } = param;
       return /*#__PURE__*/ _react.default.createElement(
-        "html",
+        'html',
         null,
-        /*#__PURE__*/ _react.default.createElement("head", null),
+        /*#__PURE__*/ _react.default.createElement('head', null),
         /*#__PURE__*/ _react.default.createElement(
-          "body",
+          'body',
           null,
           /*#__PURE__*/ _react.default.createElement(
-            "div",
+            'div',
             {
               style: styles.error,
             },
             /*#__PURE__*/ _react.default.createElement(
-              "div",
+              'div',
               {
                 style: styles.desc,
               },
               /*#__PURE__*/ _react.default.createElement(
-                "h2",
+                'h2',
                 {
                   style: styles.text,
                 },
-                "Application error: a client-side exception has occurred (see the browser console for more information)."
+                'Application error: a client-side exception has occurred (see the browser console for more information).'
               ),
               (error == null ? void 0 : error.digest) &&
                 /*#__PURE__*/ _react.default.createElement(
-                  "p",
+                  'p',
                   {
                     style: styles.text,
                   },
-                  "Digest: " + error.digest
+                  'Digest: ' + error.digest
                 )
             )
           )
@@ -985,11 +985,11 @@ exports.modules = {
       );
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -1000,9 +1000,9 @@ exports.modules = {
   },
 
   /***/ 8340: /***/ (module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -1021,19 +1021,19 @@ exports.modules = {
         return DynamicServerError;
       },
     });
-    const DYNAMIC_ERROR_CODE = "DYNAMIC_SERVER_USAGE";
+    const DYNAMIC_ERROR_CODE = 'DYNAMIC_SERVER_USAGE';
     class DynamicServerError extends Error {
       constructor(type) {
-        super("Dynamic server usage: " + type);
+        super('Dynamic server usage: ' + type);
         this.digest = DYNAMIC_ERROR_CODE;
       }
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -1044,14 +1044,14 @@ exports.modules = {
   },
 
   /***/ 6479: /***/ (module, exports) => {
-    "use strict";
+    'use strict';
     /**
      * Used to cache in createInfinitePromise
      */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "createInfinitePromise", {
+    Object.defineProperty(exports, 'createInfinitePromise', {
       enumerable: true,
       get: function () {
         return createInfinitePromise;
@@ -1072,11 +1072,11 @@ exports.modules = {
       return infinitePromise;
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -1087,12 +1087,12 @@ exports.modules = {
   },
 
   /***/ 6249: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "default", {
+    Object.defineProperty(exports, 'default', {
       enumerable: true,
       get: function () {
         return OuterLayoutRouter;
@@ -1138,7 +1138,7 @@ exports.modules = {
                     subTree[0],
                     subTree[1],
                     subTree[2],
-                    "refetch",
+                    'refetch',
                   ],
                 },
               ];
@@ -1170,14 +1170,14 @@ exports.modules = {
       return _reactdom.default.findDOMNode(instance);
     }
     const rectProperties = [
-      "bottom",
-      "height",
-      "left",
-      "right",
-      "top",
-      "width",
-      "x",
-      "y",
+      'bottom',
+      'height',
+      'left',
+      'right',
+      'top',
+      'width',
+      'x',
+      'y',
     ];
     /**
      * Check if a HTMLElement is hidden.
@@ -1200,7 +1200,7 @@ exports.modules = {
      * If the hash fragment is a name, the page has to scroll to the first element with that name.
      */ function getHashFragmentDomNode(hashFragment) {
       // If the hash fragment is `top` the page has to scroll to the top of the page.
-      if (hashFragment === "top") {
+      if (hashFragment === 'top') {
         return document.body;
       }
       var _document_getElementById;
@@ -1319,7 +1319,7 @@ exports.modules = {
         _approutercontext.GlobalLayoutRouterContext
       );
       if (!context) {
-        throw new Error("invariant global layout router not mounted");
+        throw new Error('invariant global layout router not mounted');
       }
       return /*#__PURE__*/ _react.default.createElement(
         InnerScrollAndFocusHandler,
@@ -1346,7 +1346,7 @@ exports.modules = {
         _approutercontext.GlobalLayoutRouterContext
       );
       if (!context) {
-        throw new Error("invariant global layout router not mounted");
+        throw new Error('invariant global layout router not mounted');
       }
       const { changeByServerResponse, tree: fullTree } = context;
       // Read segment path from the parallel router cache node.
@@ -1386,7 +1386,7 @@ exports.modules = {
         /**
          * Router state with refetch marker added
          */ // TODO-APP: remove ''
-        const refetchTree = walkAddRefetch(["", ...segmentPath], fullTree);
+        const refetchTree = walkAddRefetch(['', ...segmentPath], fullTree);
         /**
          * Flight data fetch kicked off during render and put into the cache.
          */ childNodes.set(cacheKey, {
@@ -1413,11 +1413,11 @@ exports.modules = {
       }
       // This case should never happen so it throws an error. It indicates there's a bug in the Next.js.
       if (!childNode) {
-        throw new Error("Child node should always exist");
+        throw new Error('Child node should always exist');
       }
       // This case should never happen so it throws an error. It indicates there's a bug in the Next.js.
       if (childNode.subTreeData && childNode.data) {
-        throw new Error("Child node should not have both subTreeData and data");
+        throw new Error('Child node should not have both subTreeData and data');
       }
       // If cache node has a data request we have to unwrap response by `use` and update the cache.
       if (childNode.data) {
@@ -1428,7 +1428,7 @@ exports.modules = {
           childNode.data
         );
         // Handle case when navigating to page in `pages` from `app`
-        if (typeof flightData === "string") {
+        if (typeof flightData === 'string') {
           window.location.href = url;
           return null;
         }
@@ -1510,7 +1510,7 @@ exports.modules = {
         _approutercontext.LayoutRouterContext
       );
       if (!context) {
-        throw new Error("invariant expected layout router to be mounted");
+        throw new Error('invariant expected layout router to be mounted');
       }
       const { childNodes, tree, url } = context;
       // Get the current parallelRouter cache node
@@ -1548,7 +1548,8 @@ exports.modules = {
           const cacheKey = (0, _createroutercachekey.createRouterCacheKey)(
             preservedSegment
           );
-          return /*
+          return;
+          /*
             - Error boundary
               - Only renders error boundary if error component is provided.
               - Rendered for each segment to ensure they have their own error state.
@@ -1623,11 +1624,11 @@ exports.modules = {
       );
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -1638,9 +1639,9 @@ exports.modules = {
   },
 
   /***/ 5507: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -1662,7 +1663,7 @@ exports.modules = {
     const _getsegmentparam = __webpack_require__(1090);
     const matchSegment = (existingSegment, segment) => {
       // Common case: segment is just a string
-      if (typeof existingSegment === "string" && typeof segment === "string") {
+      if (typeof existingSegment === 'string' && typeof segment === 'string') {
         return existingSegment === segment;
       }
       // Dynamic parameter case: segment is an array with param/value. Both param and value are compared.
@@ -1687,11 +1688,11 @@ exports.modules = {
       );
     };
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -1702,10 +1703,10 @@ exports.modules = {
   },
 
   /***/ 5171: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     // useLayoutSegments() // Only the segments for the current place. ['children', 'dashboard', 'children', 'integrations'] -> /dashboard/integrations (/dashboard/layout.js would get ['children', 'dashboard', 'children', 'integrations'])
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -1760,10 +1761,10 @@ exports.modules = {
     const _redirect = __webpack_require__(6932);
     const _notfound = __webpack_require__(8424);
     const INTERNAL_URLSEARCHPARAMS_INSTANCE = Symbol(
-      "internal for urlsearchparams readonly"
+      'internal for urlsearchparams readonly'
     );
     function readonlyURLSearchParamsError() {
-      return new Error("ReadonlyURLSearchParams cannot be modified");
+      return new Error('ReadonlyURLSearchParams cannot be modified');
     }
     class ReadonlyURLSearchParams {
       [Symbol.iterator]() {
@@ -1795,7 +1796,7 @@ exports.modules = {
     }
     function useSearchParams() {
       (0, _clienthookinservercomponenterror.clientHookInServerComponentError)(
-        "useSearchParams"
+        'useSearchParams'
       );
       const searchParams = (0, _react.useContext)(
         _hooksclientcontext.SearchParamsContext
@@ -1823,7 +1824,7 @@ exports.modules = {
     }
     function usePathname() {
       (0, _clienthookinservercomponenterror.clientHookInServerComponentError)(
-        "usePathname"
+        'usePathname'
       );
       // In the case where this is `null`, the compat types added in `next-env.d.ts`
       // will add a new overload that changes the return type to include `null`.
@@ -1831,11 +1832,11 @@ exports.modules = {
     }
     function useRouter() {
       (0, _clienthookinservercomponenterror.clientHookInServerComponentError)(
-        "useRouter"
+        'useRouter'
       );
       const router = (0, _react.useContext)(_approutercontext.AppRouterContext);
       if (router === null) {
-        throw new Error("invariant expected app router to be mounted");
+        throw new Error('invariant expected app router to be mounted');
       }
       return router;
     }
@@ -1848,7 +1849,7 @@ exports.modules = {
         const segment = parallelRoute[0];
         const isDynamicParameter = Array.isArray(segment);
         const segmentValue = isDynamicParameter ? segment[1] : segment;
-        if (!segmentValue || segmentValue.startsWith("__PAGE__")) continue;
+        if (!segmentValue || segmentValue.startsWith('__PAGE__')) continue;
         if (isDynamicParameter) {
           params[segment[0]] = segment[1];
         }
@@ -1858,7 +1859,7 @@ exports.modules = {
     }
     function useParams() {
       (0, _clienthookinservercomponenterror.clientHookInServerComponentError)(
-        "useParams"
+        'useParams'
       );
       const globalLayoutRouterContext = (0, _react.useContext)(
         _approutercontext.GlobalLayoutRouterContext
@@ -1896,7 +1897,7 @@ exports.modules = {
       if (!node) return segmentPath;
       const segment = node[0];
       const segmentValue = (0, _getsegmentvalue.getSegmentValue)(segment);
-      if (!segmentValue || segmentValue.startsWith("__PAGE__"))
+      if (!segmentValue || segmentValue.startsWith('__PAGE__'))
         return segmentPath;
       segmentPath.push(segmentValue);
       return getSelectedLayoutSegmentPath(
@@ -1907,9 +1908,9 @@ exports.modules = {
       );
     }
     function useSelectedLayoutSegments(parallelRouteKey) {
-      if (parallelRouteKey === void 0) parallelRouteKey = "children";
+      if (parallelRouteKey === void 0) parallelRouteKey = 'children';
       (0, _clienthookinservercomponenterror.clientHookInServerComponentError)(
-        "useSelectedLayoutSegments"
+        'useSelectedLayoutSegments'
       );
       const { tree } = (0, _react.useContext)(
         _approutercontext.LayoutRouterContext
@@ -1917,9 +1918,9 @@ exports.modules = {
       return getSelectedLayoutSegmentPath(tree, parallelRouteKey);
     }
     function useSelectedLayoutSegment(parallelRouteKey) {
-      if (parallelRouteKey === void 0) parallelRouteKey = "children";
+      if (parallelRouteKey === void 0) parallelRouteKey = 'children';
       (0, _clienthookinservercomponenterror.clientHookInServerComponentError)(
-        "useSelectedLayoutSegment"
+        'useSelectedLayoutSegment'
       );
       const selectedLayoutSegments =
         useSelectedLayoutSegments(parallelRouteKey);
@@ -1929,11 +1930,11 @@ exports.modules = {
       return selectedLayoutSegments[0];
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -1944,12 +1945,12 @@ exports.modules = {
   },
 
   /***/ 7944: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "NotFoundBoundary", {
+    Object.defineProperty(exports, 'NotFoundBoundary', {
       enumerable: true,
       get: function () {
         return NotFoundBoundary;
@@ -1962,7 +1963,7 @@ exports.modules = {
     const _navigation = __webpack_require__(5171);
     class NotFoundErrorBoundary extends _react.default.Component {
       static getDerivedStateFromError(error) {
-        if ((error == null ? void 0 : error.digest) === "NEXT_NOT_FOUND") {
+        if ((error == null ? void 0 : error.digest) === 'NEXT_NOT_FOUND') {
           return {
             notFoundTriggered: true,
           };
@@ -1995,9 +1996,9 @@ exports.modules = {
           return /*#__PURE__*/ _react.default.createElement(
             _react.default.Fragment,
             null,
-            /*#__PURE__*/ _react.default.createElement("meta", {
-              name: "robots",
-              content: "noindex",
+            /*#__PURE__*/ _react.default.createElement('meta', {
+              name: 'robots',
+              content: 'noindex',
             }),
             this.props.notFoundStyles,
             this.props.notFound
@@ -2034,11 +2035,11 @@ exports.modules = {
           );
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -2049,9 +2050,9 @@ exports.modules = {
   },
 
   /***/ 8424: /***/ (module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -2070,7 +2071,7 @@ exports.modules = {
         return isNotFoundError;
       },
     });
-    const NOT_FOUND_ERROR_CODE = "NEXT_NOT_FOUND";
+    const NOT_FOUND_ERROR_CODE = 'NEXT_NOT_FOUND';
     function notFound() {
       // eslint-disable-next-line no-throw-literal
       const error = new Error(NOT_FOUND_ERROR_CODE);
@@ -2081,11 +2082,11 @@ exports.modules = {
       return (error == null ? void 0 : error.digest) === NOT_FOUND_ERROR_CODE;
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -2096,9 +2097,9 @@ exports.modules = {
   },
 
   /***/ 606: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -2186,11 +2187,11 @@ exports.modules = {
       );
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -2201,9 +2202,9 @@ exports.modules = {
   },
 
   /***/ 6932: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -2235,15 +2236,15 @@ exports.modules = {
       },
     });
     const _requestasyncstorage = __webpack_require__(4437);
-    const REDIRECT_ERROR_CODE = "NEXT_REDIRECT";
+    const REDIRECT_ERROR_CODE = 'NEXT_REDIRECT';
     var RedirectType;
     (function (RedirectType) {
-      RedirectType["push"] = "push";
-      RedirectType["replace"] = "replace";
+      RedirectType['push'] = 'push';
+      RedirectType['replace'] = 'replace';
     })(RedirectType || (RedirectType = {}));
     function getRedirectError(url, type) {
       const error = new Error(REDIRECT_ERROR_CODE);
-      error.digest = REDIRECT_ERROR_CODE + ";" + type + ";" + url;
+      error.digest = REDIRECT_ERROR_CODE + ';' + type + ';' + url;
       const requestStore = _requestasyncstorage.requestAsyncStorage.getStore();
       if (requestStore) {
         error.mutableCookies = requestStore.mutableCookies;
@@ -2251,37 +2252,37 @@ exports.modules = {
       return error;
     }
     function redirect(url, type) {
-      if (type === void 0) type = "replace";
+      if (type === void 0) type = 'replace';
       throw getRedirectError(url, type);
     }
     function isRedirectError(error) {
-      if (typeof (error == null ? void 0 : error.digest) !== "string")
+      if (typeof (error == null ? void 0 : error.digest) !== 'string')
         return false;
-      const [errorCode, type, destination] = error.digest.split(";", 3);
+      const [errorCode, type, destination] = error.digest.split(';', 3);
       return (
         errorCode === REDIRECT_ERROR_CODE &&
-        (type === "replace" || type === "push") &&
-        typeof destination === "string"
+        (type === 'replace' || type === 'push') &&
+        typeof destination === 'string'
       );
     }
     function getURLFromRedirectError(error) {
       if (!isRedirectError(error)) return null;
       // Slices off the beginning of the digest that contains the code and the
       // separating ';'.
-      return error.digest.split(";", 3)[2];
+      return error.digest.split(';', 3)[2];
     }
     function getRedirectTypeFromError(error) {
       if (!isRedirectError(error)) {
-        throw new Error("Not a redirect error");
+        throw new Error('Not a redirect error');
       }
-      return error.digest.split(";", 3)[1];
+      return error.digest.split(';', 3)[1];
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -2292,12 +2293,12 @@ exports.modules = {
   },
 
   /***/ 7844: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "default", {
+    Object.defineProperty(exports, 'default', {
       enumerable: true,
       get: function () {
         return RenderFromTemplateContext;
@@ -2319,11 +2320,11 @@ exports.modules = {
       );
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -2334,12 +2335,12 @@ exports.modules = {
   },
 
   /***/ 8837: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "applyFlightData", {
+    Object.defineProperty(exports, 'applyFlightData', {
       enumerable: true,
       get: function () {
         return applyFlightData;
@@ -2387,11 +2388,11 @@ exports.modules = {
       return true;
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -2402,12 +2403,12 @@ exports.modules = {
   },
 
   /***/ 951: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "applyRouterStatePatchToTree", {
+    Object.defineProperty(exports, 'applyRouterStatePatchToTree', {
       enumerable: true,
       get: function () {
         return applyRouterStatePatchToTree;
@@ -2421,14 +2422,14 @@ exports.modules = {
       const [patchSegment, patchParallelRoutes] = patchTree;
       // if the applied patch segment is __DEFAULT__ then we can ignore it and return the initial tree
       // this is because the __DEFAULT__ segment is used as a placeholder on navigation
-      if (patchSegment === "__DEFAULT__" && initialSegment !== "__DEFAULT__") {
+      if (patchSegment === '__DEFAULT__' && initialSegment !== '__DEFAULT__') {
         return initialTree;
       }
       if ((0, _matchsegments.matchSegment)(initialSegment, patchSegment)) {
         const newParallelRoutes = {};
         for (const key in initialParallelRoutes) {
           const isInPatchTreeParallelRoutes =
-            typeof patchParallelRoutes[key] !== "undefined";
+            typeof patchParallelRoutes[key] !== 'undefined';
           if (isInPatchTreeParallelRoutes) {
             newParallelRoutes[key] = applyPatch(
               initialParallelRoutes[key],
@@ -2505,11 +2506,11 @@ exports.modules = {
       return tree;
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -2520,9 +2521,9 @@ exports.modules = {
   },
 
   /***/ 226: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -2544,22 +2545,22 @@ exports.modules = {
     const _interceptionroutes = __webpack_require__(8652);
     const _matchsegments = __webpack_require__(5507);
     const segmentToPathname = (segment) => {
-      if (typeof segment === "string") {
+      if (typeof segment === 'string') {
         return segment;
       }
       return segment[1];
     };
     function normalizePathname(pathname) {
       return (
-        pathname.split("/").reduce((acc, segment) => {
+        pathname.split('/').reduce((acc, segment) => {
           if (
-            segment === "" ||
-            (segment.startsWith("(") && segment.endsWith(")"))
+            segment === '' ||
+            (segment.startsWith('(') && segment.endsWith(')'))
           ) {
             return acc;
           }
-          return acc + "/" + segment;
-        }, "") || "/"
+          return acc + '/' + segment;
+        }, '') || '/'
       );
     }
     function extractPathFromFlightRouterState(flightRouterState) {
@@ -2567,13 +2568,13 @@ exports.modules = {
         ? flightRouterState[0][1]
         : flightRouterState[0];
       if (
-        segment === "__DEFAULT__" ||
+        segment === '__DEFAULT__' ||
         _interceptionroutes.INTERCEPTION_ROUTE_MARKERS.some((m) =>
           segment.startsWith(m)
         )
       )
         return undefined;
-      if (segment.startsWith("__PAGE__")) return "";
+      if (segment.startsWith('__PAGE__')) return '';
       const path = [segment];
       var _flightRouterState_;
       const parallelRoutes =
@@ -2587,7 +2588,7 @@ exports.modules = {
         path.push(childrenPath);
       } else {
         for (const [key, value] of Object.entries(parallelRoutes)) {
-          if (key === "children") continue;
+          if (key === 'children') continue;
           const childPath = extractPathFromFlightRouterState(value);
           if (childPath !== undefined) {
             path.push(childPath);
@@ -2595,7 +2596,7 @@ exports.modules = {
         }
       }
       // TODO-APP: optimise this, it's not ideal to join and split
-      return normalizePathname(path.join("/"));
+      return normalizePathname(path.join('/'));
     }
     function computeChangedPathImpl(treeA, treeB) {
       const [segmentA, parallelRoutesA] = treeA;
@@ -2608,7 +2609,7 @@ exports.modules = {
             normalizedSegmentA.startsWith(m) || normalizedSegmentB.startsWith(m)
         )
       ) {
-        return "";
+        return '';
       }
       if (!(0, _matchsegments.matchSegment)(segmentA, segmentB)) {
         var _extractPathFromFlightRouterState;
@@ -2616,7 +2617,7 @@ exports.modules = {
         return (_extractPathFromFlightRouterState =
           extractPathFromFlightRouterState(treeB)) != null
           ? _extractPathFromFlightRouterState
-          : "";
+          : '';
       }
       for (const parallelRouterKey in parallelRoutesA) {
         if (parallelRoutesB[parallelRouterKey]) {
@@ -2625,7 +2626,7 @@ exports.modules = {
             parallelRoutesB[parallelRouterKey]
           );
           if (changedPath !== null) {
-            return segmentToPathname(segmentB) + "/" + changedPath;
+            return segmentToPathname(segmentB) + '/' + changedPath;
           }
         }
       }
@@ -2633,18 +2634,18 @@ exports.modules = {
     }
     function computeChangedPath(treeA, treeB) {
       const changedPath = computeChangedPathImpl(treeA, treeB);
-      if (changedPath == null || changedPath === "/") {
+      if (changedPath == null || changedPath === '/') {
         return changedPath;
       }
       // lightweight normalization to remove route groups
       return normalizePathname(changedPath);
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -2655,12 +2656,12 @@ exports.modules = {
   },
 
   /***/ 8253: /***/ (module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "createHrefFromUrl", {
+    Object.defineProperty(exports, 'createHrefFromUrl', {
       enumerable: true,
       get: function () {
         return createHrefFromUrl;
@@ -2668,14 +2669,14 @@ exports.modules = {
     });
     function createHrefFromUrl(url, includeHash) {
       if (includeHash === void 0) includeHash = true;
-      return url.pathname + url.search + (includeHash ? url.hash : "");
+      return url.pathname + url.search + (includeHash ? url.hash : '');
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -2686,12 +2687,12 @@ exports.modules = {
   },
 
   /***/ 3558: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "createInitialRouterState", {
+    Object.defineProperty(exports, 'createInitialRouterState', {
       enumerable: true,
       get: function () {
         return createInitialRouterState;
@@ -2755,11 +2756,11 @@ exports.modules = {
       };
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -2770,12 +2771,12 @@ exports.modules = {
   },
 
   /***/ 5603: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "createOptimisticTree", {
+    Object.defineProperty(exports, 'createOptimisticTree', {
       enumerable: true,
       get: function () {
         return createOptimisticTree;
@@ -2833,7 +2834,7 @@ exports.modules = {
         result[2] = url;
       }
       if (!parentRefetch && shouldRefetchThisLevel) {
-        result[3] = "refetch";
+        result[3] = 'refetch';
       } else if (segmentMatches && refresh) {
         result[3] = refresh;
       }
@@ -2843,11 +2844,11 @@ exports.modules = {
       return result;
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -2858,32 +2859,32 @@ exports.modules = {
   },
 
   /***/ 5792: /***/ (module, exports) => {
-    "use strict";
+    'use strict';
     /**
      * Create data fetching record for Promise.
      */ // TODO-APP: change `any` to type inference.
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "createRecordFromThenable", {
+    Object.defineProperty(exports, 'createRecordFromThenable', {
       enumerable: true,
       get: function () {
         return createRecordFromThenable;
       },
     });
     function createRecordFromThenable(thenable) {
-      thenable.status = "pending";
+      thenable.status = 'pending';
       thenable.then(
         (value) => {
-          if (thenable.status === "pending") {
-            thenable.status = "fulfilled";
+          if (thenable.status === 'pending') {
+            thenable.status = 'fulfilled';
             thenable.value = value;
           }
         },
         (err) => {
-          if (thenable.status === "pending") {
-            thenable.status = "rejected";
+          if (thenable.status === 'pending') {
+            thenable.status = 'rejected';
             thenable.value = err;
           }
         }
@@ -2891,11 +2892,11 @@ exports.modules = {
       return thenable;
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -2906,12 +2907,12 @@ exports.modules = {
   },
 
   /***/ 5370: /***/ (module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "createRouterCacheKey", {
+    Object.defineProperty(exports, 'createRouterCacheKey', {
       enumerable: true,
       get: function () {
         return createRouterCacheKey;
@@ -2920,17 +2921,17 @@ exports.modules = {
     function createRouterCacheKey(segment, withoutSearchParameters) {
       if (withoutSearchParameters === void 0) withoutSearchParameters = false;
       return Array.isArray(segment)
-        ? segment[0] + "|" + segment[1] + "|" + segment[2]
-        : withoutSearchParameters && segment.startsWith("__PAGE__")
-        ? "__PAGE__"
+        ? segment[0] + '|' + segment[1] + '|' + segment[2]
+        : withoutSearchParameters && segment.startsWith('__PAGE__')
+        ? '__PAGE__'
         : segment;
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -2941,12 +2942,12 @@ exports.modules = {
   },
 
   /***/ 969: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "fetchServerResponse", {
+    Object.defineProperty(exports, 'fetchServerResponse', {
       enumerable: true,
       get: function () {
         return fetchServerResponse;
@@ -2965,7 +2966,7 @@ exports.modules = {
     ) {
       const headers = {
         // Enable flight response
-        [_approuterheaders.RSC]: "1",
+        [_approuterheaders.RSC]: '1',
         // Provide the current router state
         [_approuterheaders.NEXT_ROUTER_STATE_TREE]:
           JSON.stringify(flightRouterState),
@@ -2976,7 +2977,7 @@ exports.modules = {
        * - `prefetchKind` is `full` - we want to prefetch the whole page so same as above
        * - `prefetchKind` is `auto` - if the page is dynamic, prefetch the page data partially, if static prefetch the page data fully
        */ if (prefetchKind === _routerreducertypes.PrefetchKind.AUTO) {
-        headers[_approuterheaders.NEXT_ROUTER_PREFETCH] = "1";
+        headers[_approuterheaders.NEXT_ROUTER_PREFETCH] = '1';
       }
       if (nextUrl) {
         headers[_approuterheaders.NEXT_URL] = nextUrl;
@@ -2989,13 +2990,13 @@ exports.modules = {
         }
         const res = await fetch(fetchUrl, {
           // Backwards compat for older browsers. `same-origin` is the default in modern browsers.
-          credentials: "same-origin",
+          credentials: 'same-origin',
           headers,
         });
         const canonicalUrl = res.redirected
           ? (0, _approuter.urlToUrlWithoutFlightMarker)(res.url)
           : undefined;
-        const contentType = res.headers.get("content-type") || "";
+        const contentType = res.headers.get('content-type') || '';
         let isFlightResponse =
           contentType === _approuterheaders.RSC_CONTENT_TYPE_HEADER;
         if (true) {
@@ -3017,7 +3018,7 @@ exports.modules = {
         return [flightData, canonicalUrl];
       } catch (err) {
         console.error(
-          "Failed to fetch RSC payload. Falling back to browser navigation.",
+          'Failed to fetch RSC payload. Falling back to browser navigation.',
           err
         );
         // If fetch fails handle it like a mpa navigation
@@ -3027,11 +3028,11 @@ exports.modules = {
       }
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -3042,12 +3043,12 @@ exports.modules = {
   },
 
   /***/ 277: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "fillCacheWithDataProperty", {
+    Object.defineProperty(exports, 'fillCacheWithDataProperty', {
       enumerable: true,
       get: function () {
         return fillCacheWithDataProperty;
@@ -3131,11 +3132,11 @@ exports.modules = {
       );
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -3146,12 +3147,12 @@ exports.modules = {
   },
 
   /***/ 4940: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "fillCacheWithNewSubTreeData", {
+    Object.defineProperty(exports, 'fillCacheWithNewSubTreeData', {
       enumerable: true,
       get: function () {
         return fillCacheWithNewSubTreeData;
@@ -3239,11 +3240,11 @@ exports.modules = {
       );
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -3254,12 +3255,12 @@ exports.modules = {
   },
 
   /***/ 985: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "fillLazyItemsTillLeafWithHead", {
+    Object.defineProperty(exports, 'fillLazyItemsTillLeafWithHead', {
       enumerable: true,
       get: function () {
         return fillLazyItemsTillLeafWithHead;
@@ -3348,11 +3349,11 @@ exports.modules = {
       }
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -3363,9 +3364,9 @@ exports.modules = {
   },
 
   /***/ 9362: /***/ (module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -3388,10 +3389,10 @@ exports.modules = {
     const THIRTY_SECONDS = 30 * 1000;
     var PrefetchCacheEntryStatus;
     (function (PrefetchCacheEntryStatus) {
-      PrefetchCacheEntryStatus["fresh"] = "fresh";
-      PrefetchCacheEntryStatus["reusable"] = "reusable";
-      PrefetchCacheEntryStatus["expired"] = "expired";
-      PrefetchCacheEntryStatus["stale"] = "stale";
+      PrefetchCacheEntryStatus['fresh'] = 'fresh';
+      PrefetchCacheEntryStatus['reusable'] = 'reusable';
+      PrefetchCacheEntryStatus['expired'] = 'expired';
+      PrefetchCacheEntryStatus['stale'] = 'stale';
     })(PrefetchCacheEntryStatus || (PrefetchCacheEntryStatus = {}));
     function getPrefetchEntryCacheStatus(param) {
       let { kind, prefetchTime, lastUsedTime } = param;
@@ -3400,28 +3401,28 @@ exports.modules = {
         Date.now() <
         (lastUsedTime != null ? lastUsedTime : prefetchTime) + THIRTY_SECONDS
       ) {
-        return lastUsedTime ? "reusable" : "fresh";
+        return lastUsedTime ? 'reusable' : 'fresh';
       }
       // if the cache entry was prefetched less than 5 mins ago, then we want to re-use only the loading state
-      if (kind === "auto") {
+      if (kind === 'auto') {
         if (Date.now() < prefetchTime + FIVE_MINUTES) {
-          return "stale";
+          return 'stale';
         }
       }
       // if the cache entry was prefetched less than 5 mins ago and was a "full" prefetch, then we want to re-use it "full
-      if (kind === "full") {
+      if (kind === 'full') {
         if (Date.now() < prefetchTime + FIVE_MINUTES) {
-          return "reusable";
+          return 'reusable';
         }
       }
-      return "expired";
+      return 'expired';
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -3432,12 +3433,12 @@ exports.modules = {
   },
 
   /***/ 5098: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "handleMutable", {
+    Object.defineProperty(exports, 'handleMutable', {
       enumerable: true,
       get: function () {
         return handleMutable;
@@ -3449,18 +3450,18 @@ exports.modules = {
       return {
         // Set href.
         canonicalUrl:
-          typeof mutable.canonicalUrl !== "undefined"
+          typeof mutable.canonicalUrl !== 'undefined'
             ? mutable.canonicalUrl === state.canonicalUrl
               ? state.canonicalUrl
               : mutable.canonicalUrl
             : state.canonicalUrl,
         pushRef: {
           pendingPush:
-            typeof mutable.pendingPush !== "undefined"
+            typeof mutable.pendingPush !== 'undefined'
               ? mutable.pendingPush
               : state.pushRef.pendingPush,
           mpaNavigation:
-            typeof mutable.mpaNavigation !== "undefined"
+            typeof mutable.mpaNavigation !== 'undefined'
               ? mutable.mpaNavigation
               : state.pushRef.mpaNavigation,
         },
@@ -3473,7 +3474,7 @@ exports.modules = {
               : state.focusAndScrollRef.apply,
           // #top is handled in layout-router.
           hashFragment:
-            mutable.hashFragment && mutable.hashFragment !== ""
+            mutable.hashFragment && mutable.hashFragment !== ''
               ? decodeURIComponent(mutable.hashFragment.slice(1))
               : state.focusAndScrollRef.hashFragment,
           segmentPaths:
@@ -3489,11 +3490,11 @@ exports.modules = {
           : state.prefetchCache,
         // Apply patched router state.
         tree:
-          typeof mutable.patchedTree !== "undefined"
+          typeof mutable.patchedTree !== 'undefined'
             ? mutable.patchedTree
             : state.tree,
         nextUrl:
-          typeof mutable.patchedTree !== "undefined"
+          typeof mutable.patchedTree !== 'undefined'
             ? (_computeChangedPath = (0,
               _computechangedpath.computeChangedPath)(
                 state.tree,
@@ -3505,11 +3506,11 @@ exports.modules = {
       };
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -3520,12 +3521,12 @@ exports.modules = {
   },
 
   /***/ 1986: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "invalidateCacheBelowFlightSegmentPath", {
+    Object.defineProperty(exports, 'invalidateCacheBelowFlightSegmentPath', {
       enumerable: true,
       get: function () {
         return invalidateCacheBelowFlightSegmentPath;
@@ -3580,11 +3581,11 @@ exports.modules = {
       );
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -3595,12 +3596,12 @@ exports.modules = {
   },
 
   /***/ 6246: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "invalidateCacheByRouterState", {
+    Object.defineProperty(exports, 'invalidateCacheByRouterState', {
       enumerable: true,
       get: function () {
         return invalidateCacheByRouterState;
@@ -3628,11 +3629,11 @@ exports.modules = {
       }
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -3643,12 +3644,12 @@ exports.modules = {
   },
 
   /***/ 9610: /***/ (module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "isNavigatingToNewRootLayout", {
+    Object.defineProperty(exports, 'isNavigatingToNewRootLayout', {
       enumerable: true,
       get: function () {
         return isNavigatingToNewRootLayout;
@@ -3691,11 +3692,11 @@ exports.modules = {
       return isNavigatingToNewRootLayout(currentTreeChild, nextTreeChild);
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -3706,14 +3707,14 @@ exports.modules = {
   },
 
   /***/ 4170: /***/ (module, exports) => {
-    "use strict";
+    'use strict';
     /**
      * Read record value or throw Promise if it's not resolved yet.
      */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "readRecordValue", {
+    Object.defineProperty(exports, 'readRecordValue', {
       enumerable: true,
       get: function () {
         return readRecordValue;
@@ -3721,7 +3722,7 @@ exports.modules = {
     });
     function readRecordValue(thenable) {
       // @ts-expect-error TODO: fix type
-      if (thenable.status === "fulfilled") {
+      if (thenable.status === 'fulfilled') {
         // @ts-expect-error TODO: fix type
         return thenable.value;
       } else {
@@ -3729,11 +3730,11 @@ exports.modules = {
       }
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -3744,12 +3745,12 @@ exports.modules = {
   },
 
   /***/ 7709: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "fastRefreshReducer", {
+    Object.defineProperty(exports, 'fastRefreshReducer', {
       enumerable: true,
       get: function () {
         return fastRefreshReducer;
@@ -3779,7 +3780,7 @@ exports.modules = {
         cache.data = (0, _createrecordfromthenable.createRecordFromThenable)(
           (0, _fetchserverresponse.fetchServerResponse)(
             new URL(href, origin),
-            [state.tree[0], state.tree[1], state.tree[2], "refetch"],
+            [state.tree[0], state.tree[1], state.tree[2], 'refetch'],
             state.nextUrl
           )
         );
@@ -3787,7 +3788,7 @@ exports.modules = {
       const [flightData, canonicalUrlOverride] = (0,
       _readrecordvalue.readRecordValue)(cache.data);
       // Handle case when navigating to page in `pages` from `app`
-      if (typeof flightData === "string") {
+      if (typeof flightData === 'string') {
         return (0, _navigatereducer.handleExternalUrl)(
           state,
           mutable,
@@ -3803,19 +3804,19 @@ exports.modules = {
         // FlightDataPath with more than two items means unexpected Flight data was returned
         if (flightDataPath.length !== 3) {
           // TODO-APP: handle this case better
-          console.log("REFRESH FAILED");
+          console.log('REFRESH FAILED');
           return state;
         }
         // Given the path can only have two items the items are only the router state and subTreeData for the root.
         const [treePatch] = flightDataPath;
         const newTree = (0,
         _applyrouterstatepatchtotree.applyRouterStatePatchToTree)(
-          [""],
+          [''],
           currentTree,
           treePatch
         );
         if (newTree === null) {
-          throw new Error("SEGMENT MISMATCH");
+          throw new Error('SEGMENT MISMATCH');
         }
         if (
           (0, _isnavigatingtonewrootlayout.isNavigatingToNewRootLayout)(
@@ -3857,11 +3858,11 @@ exports.modules = {
     }
     const fastRefreshReducer = true ? fastRefreshReducerNoop : 0;
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -3872,12 +3873,12 @@ exports.modules = {
   },
 
   /***/ 7997: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "findHeadInCache", {
+    Object.defineProperty(exports, 'findHeadInCache', {
       enumerable: true,
       get: function () {
         return findHeadInCache;
@@ -3910,11 +3911,11 @@ exports.modules = {
       return undefined;
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -3925,12 +3926,12 @@ exports.modules = {
   },
 
   /***/ 3715: /***/ (module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "getSegmentValue", {
+    Object.defineProperty(exports, 'getSegmentValue', {
       enumerable: true,
       get: function () {
         return getSegmentValue;
@@ -3940,11 +3941,11 @@ exports.modules = {
       return Array.isArray(segment) ? segment[1] : segment;
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -3955,9 +3956,9 @@ exports.modules = {
   },
 
   /***/ 1935: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -4011,7 +4012,7 @@ exports.modules = {
       )) {
         for (const childSegment of generateSegmentsFromPatch(parallelRoute)) {
           // If the segment is empty, it means we are at the root of the tree
-          if (segment === "") {
+          if (segment === '') {
             segments.push([parallelRouteKey, ...childSegment]);
           } else {
             segments.push([segment, parallelRouteKey, ...childSegment]);
@@ -4058,7 +4059,7 @@ exports.modules = {
       } = action;
       const { pathname, hash } = url;
       const href = (0, _createhreffromurl.createHrefFromUrl)(url);
-      const pendingPush = navigateType === "push";
+      const pendingPush = navigateType === 'push';
       // we want to prune the prefetch cache on every navigation to avoid it growing too large
       (0, _pruneprefetchcache.prunePrefetchCache)(state.prefetchCache);
       const isForCurrentTree =
@@ -4077,9 +4078,9 @@ exports.modules = {
         (prefetchValues == null ? void 0 : prefetchValues.kind) !==
           _routerreducertypes.PrefetchKind.TEMPORARY
       ) {
-        const segments = pathname.split("/");
+        const segments = pathname.split('/');
         // TODO-APP: figure out something better for index pages
-        segments.push("__PAGE__");
+        segments.push('__PAGE__');
         // Optimistic tree case.
         // If the optimistic tree is deeper than the current state leave that deeper part out of the fetch
         const optimisticTree = (0, _createoptimistictree.createOptimisticTree)(
@@ -4107,7 +4108,7 @@ exports.modules = {
         // TODO-APP: re-evaluate if we need to strip the last segment
         const optimisticFlightSegmentPath = segments
           .slice(1)
-          .map((segment) => ["children", segment])
+          .map((segment) => ['children', segment])
           .flat();
         // Copy existing cache nodes as far as possible and fill in `data` property with the started data fetch.
         // The `data` property is used to suspend in layout-router during render if it hasn't resolved yet by the time it renders.
@@ -4174,7 +4175,7 @@ exports.modules = {
       // important: we should only mark the cache node as dirty after we unsuspend from the call above
       prefetchValues.lastUsedTime = Date.now();
       // Handle case when navigating to page in `pages` from `app`
-      if (typeof flightData === "string") {
+      if (typeof flightData === 'string') {
         return handleExternalUrl(state, mutable, flightData, pendingPush);
       }
       let currentTree = state.tree;
@@ -4187,7 +4188,7 @@ exports.modules = {
         // Create new tree based on the flightSegmentPath and router state patch
         let newTree = (0,
         _applyrouterstatepatchtotree.applyRouterStatePatchToTree)(
-          ["", ...flightSegmentPath],
+          ['', ...flightSegmentPath],
           currentTree,
           treePatch
         );
@@ -4196,7 +4197,7 @@ exports.modules = {
         if (newTree === null) {
           newTree = (0,
           _applyrouterstatepatchtotree.applyRouterStatePatchToTree)(
-            ["", ...flightSegmentPath],
+            ['', ...flightSegmentPath],
             treeAtTimeOfPrefetch,
             treePatch
           );
@@ -4214,7 +4215,7 @@ exports.modules = {
             currentCache,
             cache,
             flightDataPath,
-            prefetchValues.kind === "auto" &&
+            prefetchValues.kind === 'auto' &&
               prefetchEntryCacheStatus ===
                 _getprefetchcacheentrystatus.PrefetchCacheEntryStatus.reusable
           );
@@ -4237,7 +4238,7 @@ exports.modules = {
             );
           }
           const hardNavigate = (0, _shouldhardnavigate.shouldHardNavigate)(
-            ["", ...flightSegmentPath],
+            ['', ...flightSegmentPath],
             currentTree
           );
           if (hardNavigate) {
@@ -4262,7 +4263,7 @@ exports.modules = {
             // Filter out the __DEFAULT__ paths as they shouldn't be scrolled to in this case.
             if (
               scrollableSegmentPath[scrollableSegmentPath.length - 1] !==
-              "__DEFAULT__"
+              '__DEFAULT__'
             ) {
               scrollableSegments.push(scrollableSegmentPath);
             }
@@ -4280,11 +4281,11 @@ exports.modules = {
       return (0, _handlemutable.handleMutable)(state, mutable);
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -4295,12 +4296,12 @@ exports.modules = {
   },
 
   /***/ 8411: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "prefetchReducer", {
+    Object.defineProperty(exports, 'prefetchReducer', {
       enumerable: true,
       get: function () {
         return prefetchReducer;
@@ -4363,11 +4364,11 @@ exports.modules = {
       return state;
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -4378,12 +4379,12 @@ exports.modules = {
   },
 
   /***/ 1262: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "prunePrefetchCache", {
+    Object.defineProperty(exports, 'prunePrefetchCache', {
       enumerable: true,
       get: function () {
         return prunePrefetchCache;
@@ -4402,11 +4403,11 @@ exports.modules = {
       }
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -4417,12 +4418,12 @@ exports.modules = {
   },
 
   /***/ 9153: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "refreshReducer", {
+    Object.defineProperty(exports, 'refreshReducer', {
       enumerable: true,
       get: function () {
         return refreshReducer;
@@ -4452,7 +4453,7 @@ exports.modules = {
         cache.data = (0, _createrecordfromthenable.createRecordFromThenable)(
           (0, _fetchserverresponse.fetchServerResponse)(
             new URL(href, origin),
-            [state.tree[0], state.tree[1], state.tree[2], "refetch"],
+            [state.tree[0], state.tree[1], state.tree[2], 'refetch'],
             state.nextUrl
           )
         );
@@ -4460,7 +4461,7 @@ exports.modules = {
       const [flightData, canonicalUrlOverride] = (0,
       _readrecordvalue.readRecordValue)(cache.data);
       // Handle case when navigating to page in `pages` from `app`
-      if (typeof flightData === "string") {
+      if (typeof flightData === 'string') {
         return (0, _navigatereducer.handleExternalUrl)(
           state,
           mutable,
@@ -4475,19 +4476,19 @@ exports.modules = {
         // FlightDataPath with more than two items means unexpected Flight data was returned
         if (flightDataPath.length !== 3) {
           // TODO-APP: handle this case better
-          console.log("REFRESH FAILED");
+          console.log('REFRESH FAILED');
           return state;
         }
         // Given the path can only have two items the items are only the router state and subTreeData for the root.
         const [treePatch] = flightDataPath;
         const newTree = (0,
         _applyrouterstatepatchtotree.applyRouterStatePatchToTree)(
-          [""],
+          [''],
           currentTree,
           treePatch
         );
         if (newTree === null) {
-          throw new Error("SEGMENT MISMATCH");
+          throw new Error('SEGMENT MISMATCH');
         }
         if (
           (0, _isnavigatingtonewrootlayout.isNavigatingToNewRootLayout)(
@@ -4531,11 +4532,11 @@ exports.modules = {
       return (0, _handlemutable.handleMutable)(state, mutable);
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -4546,12 +4547,12 @@ exports.modules = {
   },
 
   /***/ 734: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "restoreReducer", {
+    Object.defineProperty(exports, 'restoreReducer', {
       enumerable: true,
       get: function () {
         return restoreReducer;
@@ -4574,11 +4575,11 @@ exports.modules = {
       };
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -4589,12 +4590,12 @@ exports.modules = {
   },
 
   /***/ 7647: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "serverActionReducer", {
+    Object.defineProperty(exports, 'serverActionReducer', {
       enumerable: true,
       get: function () {
         return serverActionReducer;
@@ -4612,11 +4613,11 @@ exports.modules = {
     async function fetchServerAction(state, param) {
       let { actionId, actionArgs } = param;
       const body = await (0, _client.encodeReply)(actionArgs);
-      const res = await fetch("", {
-        method: "POST",
+      const res = await fetch('', {
+        method: 'POST',
         headers: {
           Accept: _approuterheaders.RSC_CONTENT_TYPE_HEADER,
-          "Next-Action": actionId,
+          'Next-Action': actionId,
           [_approuterheaders.NEXT_ROUTER_STATE_TREE]: JSON.stringify(
             state.tree
           ),
@@ -4628,7 +4629,7 @@ exports.modules = {
         },
         body,
       });
-      const location = res.headers.get("x-action-redirect");
+      const location = res.headers.get('x-action-redirect');
       const redirectLocation = location
         ? new URL(
             (0, _addbasepath.addBasePath)(location),
@@ -4636,7 +4637,7 @@ exports.modules = {
           )
         : undefined;
       let isFlightResponse =
-        res.headers.get("content-type") ===
+        res.headers.get('content-type') ===
         _approuterheaders.RSC_CONTENT_TYPE_HEADER;
       if (isFlightResponse) {
         const result = await (0, _client.createFromFetch)(
@@ -4763,7 +4764,7 @@ exports.modules = {
           action.resolve(actionResult);
         }
       } catch (e) {
-        if (e.status === "rejected") {
+        if (e.status === 'rejected') {
           action.reject(e.value);
         } else {
           throw e;
@@ -4773,11 +4774,11 @@ exports.modules = {
       return state;
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -4788,12 +4789,12 @@ exports.modules = {
   },
 
   /***/ 2813: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "serverPatchReducer", {
+    Object.defineProperty(exports, 'serverPatchReducer', {
       enumerable: true,
       get: function () {
         return serverPatchReducer;
@@ -4814,7 +4815,7 @@ exports.modules = {
       // In that case opt-out of applying the patch given that the data could be stale.
       if (!isForCurrentTree) {
         // TODO-APP: Handle tree mismatch
-        console.log("TREE MISMATCH");
+        console.log('TREE MISMATCH');
         // Keep everything as-is.
         return state;
       }
@@ -4822,7 +4823,7 @@ exports.modules = {
         return (0, _handlemutable.handleMutable)(state, mutable);
       }
       // Handle case when navigating to page in `pages` from `app`
-      if (typeof flightData === "string") {
+      if (typeof flightData === 'string') {
         return (0, _navigatereducer.handleExternalUrl)(
           state,
           mutable,
@@ -4838,12 +4839,12 @@ exports.modules = {
         const [treePatch] = flightDataPath.slice(-3, -2);
         const newTree = (0,
         _applyrouterstatepatchtotree.applyRouterStatePatchToTree)(
-          ["", ...flightSegmentPath],
+          ['', ...flightSegmentPath],
           currentTree,
           treePatch
         );
         if (newTree === null) {
-          throw new Error("SEGMENT MISMATCH");
+          throw new Error('SEGMENT MISMATCH');
         }
         if (
           (0, _isnavigatingtonewrootlayout.isNavigatingToNewRootLayout)(
@@ -4878,11 +4879,11 @@ exports.modules = {
       return (0, _handlemutable.handleMutable)(state, mutable);
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -4893,9 +4894,9 @@ exports.modules = {
   },
 
   /***/ 549: /***/ (module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -4932,25 +4933,25 @@ exports.modules = {
         return ACTION_SERVER_ACTION;
       },
     });
-    const ACTION_REFRESH = "refresh";
-    const ACTION_NAVIGATE = "navigate";
-    const ACTION_RESTORE = "restore";
-    const ACTION_SERVER_PATCH = "server-patch";
-    const ACTION_PREFETCH = "prefetch";
-    const ACTION_FAST_REFRESH = "fast-refresh";
-    const ACTION_SERVER_ACTION = "server-action";
+    const ACTION_REFRESH = 'refresh';
+    const ACTION_NAVIGATE = 'navigate';
+    const ACTION_RESTORE = 'restore';
+    const ACTION_SERVER_PATCH = 'server-patch';
+    const ACTION_PREFETCH = 'prefetch';
+    const ACTION_FAST_REFRESH = 'fast-refresh';
+    const ACTION_SERVER_ACTION = 'server-action';
     var PrefetchKind;
     (function (PrefetchKind) {
-      PrefetchKind["AUTO"] = "auto";
-      PrefetchKind["FULL"] = "full";
-      PrefetchKind["TEMPORARY"] = "temporary";
+      PrefetchKind['AUTO'] = 'auto';
+      PrefetchKind['FULL'] = 'full';
+      PrefetchKind['TEMPORARY'] = 'temporary';
     })(PrefetchKind || (PrefetchKind = {}));
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -4961,12 +4962,12 @@ exports.modules = {
   },
 
   /***/ 5192: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "reducer", {
+    Object.defineProperty(exports, 'reducer', {
       enumerable: true,
       get: function () {
         return reducer;
@@ -5007,7 +5008,7 @@ exports.modules = {
         }
         // This case should never be hit as dispatch is strongly typed.
         default:
-          throw new Error("Unknown action");
+          throw new Error('Unknown action');
       }
     }
     function serverReducer(state, _action) {
@@ -5015,11 +5016,11 @@ exports.modules = {
     }
     const reducer = true ? serverReducer : 0;
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -5030,12 +5031,12 @@ exports.modules = {
   },
 
   /***/ 9425: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "shouldHardNavigate", {
+    Object.defineProperty(exports, 'shouldHardNavigate', {
       enumerable: true,
       get: function () {
         return shouldHardNavigate;
@@ -5065,11 +5066,11 @@ exports.modules = {
       );
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -5080,12 +5081,12 @@ exports.modules = {
   },
 
   /***/ 9859: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "createSearchParamsBailoutProxy", {
+    Object.defineProperty(exports, 'createSearchParamsBailoutProxy', {
       enumerable: true,
       get: function () {
         return createSearchParamsBailoutProxy;
@@ -5098,9 +5099,9 @@ exports.modules = {
         {
           get(_target, prop) {
             // React adds some properties on the object when serializing for client components
-            if (typeof prop === "string") {
+            if (typeof prop === 'string') {
               (0, _staticgenerationbailout.staticGenerationBailout)(
-                "searchParams." + prop
+                'searchParams.' + prop
               );
             }
           },
@@ -5108,11 +5109,11 @@ exports.modules = {
       );
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -5123,12 +5124,12 @@ exports.modules = {
   },
 
   /***/ 9837: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "staticGenerationBailout", {
+    Object.defineProperty(exports, 'staticGenerationBailout', {
       enumerable: true,
       get: function () {
         return staticGenerationBailout;
@@ -5139,7 +5140,7 @@ exports.modules = {
     class StaticGenBailoutError extends Error {
       constructor(...args) {
         super(...args);
-        this.code = "NEXT_STATIC_GEN_BAILOUT";
+        this.code = 'NEXT_STATIC_GEN_BAILOUT';
       }
     }
     const staticGenerationBailout = (reason, opts) => {
@@ -5157,14 +5158,14 @@ exports.modules = {
           ? void 0
           : staticGenerationStore.dynamicShouldError
       ) {
-        const { dynamic = "error", link } = opts || {};
-        const suffix = link ? " See more info here: " + link : "";
+        const { dynamic = 'error', link } = opts || {};
+        const suffix = link ? ' See more info here: ' + link : '';
         throw new StaticGenBailoutError(
           'Page with `dynamic = "' +
             dynamic +
-            "\"` couldn't be rendered statically because it used `" +
+            '"` couldn\'t be rendered statically because it used `' +
             reason +
-            "`." +
+            '`.' +
             suffix
         );
       }
@@ -5184,11 +5185,11 @@ exports.modules = {
       return false;
     };
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -5199,12 +5200,12 @@ exports.modules = {
   },
 
   /***/ 3100: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "default", {
+    Object.defineProperty(exports, 'default', {
       enumerable: true,
       get: function () {
         return StaticGenerationSearchParamsBailoutProvider;
@@ -5225,11 +5226,11 @@ exports.modules = {
       });
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -5240,12 +5241,12 @@ exports.modules = {
   },
 
   /***/ 9051: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "useReducerWithReduxDevtools", {
+    Object.defineProperty(exports, 'useReducerWithReduxDevtools', {
       enumerable: true,
       get: function () {
         return useReducerWithReduxDevtools;
@@ -5256,17 +5257,17 @@ exports.modules = {
       if (val instanceof Map) {
         const obj = {};
         for (const [key, value] of val.entries()) {
-          if (typeof value === "function") {
-            obj[key] = "fn()";
+          if (typeof value === 'function') {
+            obj[key] = 'fn()';
             continue;
           }
-          if (typeof value === "object" && value !== null) {
+          if (typeof value === 'object' && value !== null) {
             if (value.$$typeof) {
               obj[key] = value.$$typeof.toString();
               continue;
             }
             if (value._bundlerConfig) {
-              obj[key] = "FlightData";
+              obj[key] = 'FlightData';
               continue;
             }
           }
@@ -5274,21 +5275,21 @@ exports.modules = {
         }
         return obj;
       }
-      if (typeof val === "object" && val !== null) {
+      if (typeof val === 'object' && val !== null) {
         const obj = {};
         for (const key in val) {
           const value = val[key];
-          if (typeof value === "function") {
-            obj[key] = "fn()";
+          if (typeof value === 'function') {
+            obj[key] = 'fn()';
             continue;
           }
-          if (typeof value === "object" && value !== null) {
+          if (typeof value === 'object' && value !== null) {
             if (value.$$typeof) {
               obj[key] = value.$$typeof.toString();
               continue;
             }
-            if (value.hasOwnProperty("_bundlerConfig")) {
-              obj[key] = "FlightData";
+            if (value.hasOwnProperty('_bundlerConfig')) {
+              obj[key] = 'FlightData';
               continue;
             }
           }
@@ -5323,7 +5324,7 @@ exports.modules = {
         }
         if (
           enabledRef.current === undefined &&
-          typeof window.__REDUX_DEVTOOLS_EXTENSION__ === "undefined"
+          typeof window.__REDUX_DEVTOOLS_EXTENSION__ === 'undefined'
         ) {
           enabledRef.current = false;
           return;
@@ -5331,7 +5332,7 @@ exports.modules = {
         devtoolsConnectionRef.current =
           window.__REDUX_DEVTOOLS_EXTENSION__.connect({
             instanceId: 8000,
-            name: "next-router",
+            name: 'next-router',
           });
         if (devtoolsConnectionRef.current) {
           devtoolsConnectionRef.current.init(
@@ -5350,7 +5351,7 @@ exports.modules = {
         if (devtoolsConnectionRef.current) {
           devtoolsConnectionRef.current.send(
             {
-              type: "RENDER_SYNC",
+              type: 'RENDER_SYNC',
             },
             normalizeRouterState(state)
           );
@@ -5362,11 +5363,11 @@ exports.modules = {
       ? 0
       : useReducerWithReduxDevtoolsNoop;
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -5377,12 +5378,12 @@ exports.modules = {
   },
 
   /***/ 7649: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "default", {
+    Object.defineProperty(exports, 'default', {
       enumerable: true,
       get: function () {
         return _default;
@@ -5406,8 +5407,8 @@ exports.modules = {
     const configEnv = {
       deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
       imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-      path: "/_next/image",
-      loader: "default",
+      path: '/_next/image',
+      loader: 'default',
       dangerouslyAllowSVG: false,
       unoptimized: false,
     };
@@ -5417,8 +5418,8 @@ exports.modules = {
       globalThis.__NEXT_IMAGE_IMPORTED = true;
     }
     const VALID_LOADING_VALUES = /* unused pure expression or super */ null && [
-      "lazy",
-      "eager",
+      'lazy',
+      'eager',
       undefined,
     ];
     function isStaticRequire(src) {
@@ -5429,7 +5430,7 @@ exports.modules = {
     }
     function isStaticImport(src) {
       return (
-        typeof src === "object" &&
+        typeof src === 'object' &&
         (isStaticRequire(src) || isStaticImageData(src))
       );
     }
@@ -5446,18 +5447,18 @@ exports.modules = {
           const smallestRatio = Math.min(...percentSizes) * 0.01;
           return {
             widths: allSizes.filter((s) => s >= deviceSizes[0] * smallestRatio),
-            kind: "w",
+            kind: 'w',
           };
         }
         return {
           widths: allSizes,
-          kind: "w",
+          kind: 'w',
         };
       }
-      if (typeof width !== "number") {
+      if (typeof width !== 'number') {
         return {
           widths: deviceSizes,
-          kind: "w",
+          kind: 'w',
         };
       }
       const widths = [
@@ -5475,7 +5476,7 @@ exports.modules = {
       ];
       return {
         widths,
-        kind: "x",
+        kind: 'x',
       };
     }
     function generateImgAttrs(param) {
@@ -5490,7 +5491,7 @@ exports.modules = {
       const { widths, kind } = getWidths(config, width, sizes);
       const last = widths.length - 1;
       return {
-        sizes: !sizes && kind === "w" ? "100vw" : sizes,
+        sizes: !sizes && kind === 'w' ? '100vw' : sizes,
         srcSet: widths
           .map(
             (w, i) =>
@@ -5500,11 +5501,11 @@ exports.modules = {
                 quality,
                 width: w,
               }) +
-              " " +
-              (kind === "w" ? w : i + 1) +
+              ' ' +
+              (kind === 'w' ? w : i + 1) +
               kind
           )
-          .join(", "),
+          .join(', '),
         // It's intended to keep `src` the last attribute because React updates
         // attributes in order. If we keep `src` the first one, Safari will
         // immediately start to fetch `src`, before `sizes` and `srcSet` are even
@@ -5520,13 +5521,13 @@ exports.modules = {
       };
     }
     function getInt(x) {
-      if (typeof x === "undefined") {
+      if (typeof x === 'undefined') {
         return x;
       }
-      if (typeof x === "number") {
+      if (typeof x === 'number') {
         return Number.isFinite(x) ? x : NaN;
       }
-      if (typeof x === "string" && /^[0-9]+$/.test(x)) {
+      if (typeof x === 'string' && /^[0-9]+$/.test(x)) {
         return parseInt(x, 10);
       }
       return NaN;
@@ -5542,11 +5543,11 @@ exports.modules = {
       setBlurComplete,
       unoptimized
     ) {
-      if (!img || img["data-loaded-src"] === src) {
+      if (!img || img['data-loaded-src'] === src) {
         return;
       }
-      img["data-loaded-src"] = src;
-      const p = "decode" in img ? img.decode() : Promise.resolve();
+      img['data-loaded-src'] = src;
+      const p = 'decode' in img ? img.decode() : Promise.resolve();
       p.catch(() => {}).then(() => {
         if (!img.parentElement || !img.isConnected) {
           // Exit early in case of race condition:
@@ -5556,15 +5557,15 @@ exports.modules = {
           // - decode() completes
           return;
         }
-        if (placeholder === "blur") {
+        if (placeholder === 'blur') {
           setBlurComplete(true);
         }
         if (onLoadRef == null ? void 0 : onLoadRef.current) {
           // Since we don't have the SyntheticEvent here,
           // we must create one with the same shape.
           // See https://reactjs.org/docs/events.html
-          const event = new Event("load");
-          Object.defineProperty(event, "target", {
+          const event = new Event('load');
+          Object.defineProperty(event, 'target', {
             writable: false,
             value: img,
           });
@@ -5598,7 +5599,7 @@ exports.modules = {
       });
     }
     function getDynamicProps(fetchPriority) {
-      const [majorStr, minorStr] = _react.version.split(".");
+      const [majorStr, minorStr] = _react.version.split('.');
       const major = parseInt(majorStr, 10);
       const minor = parseInt(minorStr, 10);
       if (major > 18 || (major === 18 && minor >= 3)) {
@@ -5642,15 +5643,15 @@ exports.modules = {
           onError,
           ...rest
         } = param;
-        loading = isLazy ? "lazy" : loading;
-        return /*#__PURE__*/ _react.default.createElement("img", {
+        loading = isLazy ? 'lazy' : loading;
+        return /*#__PURE__*/ _react.default.createElement('img', {
           ...rest,
           ...getDynamicProps(fetchPriority),
           loading: loading,
           width: widthInt,
           height: heightInt,
-          decoding: "async",
-          "data-nimg": fill ? "fill" : "1",
+          decoding: 'async',
+          'data-nimg': fill ? 'fill' : '1',
           className: className,
           style: {
             ...imgStyle,
@@ -5660,8 +5661,8 @@ exports.modules = {
           ref: (0, _react.useCallback)(
             (img) => {
               if (forwardedRef) {
-                if (typeof forwardedRef === "function") forwardedRef(img);
-                else if (typeof forwardedRef === "object") {
+                if (typeof forwardedRef === 'function') forwardedRef(img);
+                else if (typeof forwardedRef === 'object') {
                   // @ts-ignore - .current is read only it's usually assigned by react internally
                   forwardedRef.current = img;
                 }
@@ -5716,7 +5717,7 @@ exports.modules = {
           onError: (event) => {
             // if the real image fails to load, this will ensure "alt" is visible
             setShowAltText(true);
-            if (placeholder === "blur") {
+            if (placeholder === 'blur') {
               // If the real image fails to load, this will still remove the placeholder.
               setBlurComplete(true);
             }
@@ -5743,7 +5744,7 @@ exports.modules = {
           style,
           onLoad,
           onLoadingComplete,
-          placeholder = "empty",
+          placeholder = 'empty',
           blurDataURL,
           fetchPriority,
           layout,
@@ -5775,14 +5776,14 @@ exports.modules = {
         delete rest.loader;
         // This special value indicates that the user
         // didn't define a "loader" prop or "loader" config.
-        const isDefaultLoader = "__next_img_default" in loader;
+        const isDefaultLoader = '__next_img_default' in loader;
         if (isDefaultLoader) {
-          if (config.loader === "custom") {
+          if (config.loader === 'custom') {
             throw new Error(
               'Image with src "' +
                 src +
                 '" is missing "loader" prop.' +
-                "\nRead more: https://nextjs.org/docs/messages/next-image-missing-loader"
+                '\nRead more: https://nextjs.org/docs/messages/next-image-missing-loader'
             );
           }
         } else {
@@ -5796,22 +5797,22 @@ exports.modules = {
           };
         }
         if (layout) {
-          if (layout === "fill") {
+          if (layout === 'fill') {
             fill = true;
           }
           const layoutToStyle = {
             intrinsic: {
-              maxWidth: "100%",
-              height: "auto",
+              maxWidth: '100%',
+              height: 'auto',
             },
             responsive: {
-              width: "100%",
-              height: "auto",
+              width: '100%',
+              height: 'auto',
             },
           };
           const layoutToSizes = {
-            responsive: "100vw",
-            fill: "100vw",
+            responsive: '100vw',
+            fill: '100vw',
           };
           const layoutStyle = layoutToStyle[layout];
           if (layoutStyle) {
@@ -5825,7 +5826,7 @@ exports.modules = {
             sizes = layoutSizes;
           }
         }
-        let staticSrc = "";
+        let staticSrc = '';
         let widthInt = getInt(width);
         let heightInt = getInt(height);
         let blurWidth;
@@ -5834,13 +5835,13 @@ exports.modules = {
           const staticImageData = isStaticRequire(src) ? src.default : src;
           if (!staticImageData.src) {
             throw new Error(
-              "An object should only be passed to the image component src parameter if it comes from a static image import. It must include src. Received " +
+              'An object should only be passed to the image component src parameter if it comes from a static image import. It must include src. Received ' +
                 JSON.stringify(staticImageData)
             );
           }
           if (!staticImageData.height || !staticImageData.width) {
             throw new Error(
-              "An object should only be passed to the image component src parameter if it comes from a static image import. It must include height and width. Received " +
+              'An object should only be passed to the image component src parameter if it comes from a static image import. It must include height and width. Received ' +
                 JSON.stringify(staticImageData)
             );
           }
@@ -5861,10 +5862,10 @@ exports.modules = {
             }
           }
         }
-        src = typeof src === "string" ? src : staticSrc;
+        src = typeof src === 'string' ? src : staticSrc;
         let isLazy =
-          !priority && (loading === "lazy" || typeof loading === "undefined");
-        if (!src || src.startsWith("data:") || src.startsWith("blob:")) {
+          !priority && (loading === 'lazy' || typeof loading === 'undefined');
+        if (!src || src.startsWith('data:') || src.startsWith('blob:')) {
           // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs
           unoptimized = true;
           isLazy = false;
@@ -5874,7 +5875,7 @@ exports.modules = {
         }
         if (
           isDefaultLoader &&
-          src.endsWith(".svg") &&
+          src.endsWith('.svg') &&
           !config.dangerouslyAllowSVG
         ) {
           // Special case to make svg serve as-is to avoid proxying
@@ -5882,7 +5883,7 @@ exports.modules = {
           unoptimized = true;
         }
         if (priority) {
-          fetchPriority = "high";
+          fetchPriority = 'high';
         }
         const [blurComplete, setBlurComplete] = (0, _react.useState)(false);
         const [showAltText, setShowAltText] = (0, _react.useState)(false);
@@ -5892,9 +5893,9 @@ exports.modules = {
         const imgStyle = Object.assign(
           fill
             ? {
-                position: "absolute",
-                height: "100%",
-                width: "100%",
+                position: 'absolute',
+                height: '100%',
+                width: '100%',
                 left: 0,
                 top: 0,
                 right: 0,
@@ -5906,16 +5907,16 @@ exports.modules = {
           showAltText
             ? {}
             : {
-                color: "transparent",
+                color: 'transparent',
               },
           style
         );
         const blurStyle =
-          placeholder === "blur" && blurDataURL && !blurComplete
+          placeholder === 'blur' && blurDataURL && !blurComplete
             ? {
-                backgroundSize: imgStyle.objectFit || "cover",
-                backgroundPosition: imgStyle.objectPosition || "50% 50%",
-                backgroundRepeat: "no-repeat",
+                backgroundSize: imgStyle.objectFit || 'cover',
+                backgroundPosition: imgStyle.objectPosition || '50% 50%',
+                backgroundRepeat: 'no-repeat',
                 backgroundImage:
                   'url("data:image/svg+xml;charset=utf-8,' +
                   (0, _imageblursvg.getImageBlurSvg)({
@@ -5988,14 +5989,14 @@ exports.modules = {
               /*#__PURE__*/ _react.default.createElement(
                 _head.default,
                 null,
-                /*#__PURE__*/ _react.default.createElement("link", {
+                /*#__PURE__*/ _react.default.createElement('link', {
                   key:
-                    "__nimg-" +
+                    '__nimg-' +
                     imgAttributes.src +
                     imgAttributes.srcSet +
                     imgAttributes.sizes,
-                  rel: "preload",
-                  as: "image",
+                  rel: 'preload',
+                  as: 'image',
                   href: imgAttributes.srcSet ? undefined : imgAttributes.src,
                   imageSrcSet: imgAttributes.srcSet,
                   imageSizes: imgAttributes.sizes,
@@ -6010,11 +6011,11 @@ exports.modules = {
     );
     const _default = Image;
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -6025,12 +6026,12 @@ exports.modules = {
   },
 
   /***/ 6089: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "normalizePathTrailingSlash", {
+    Object.defineProperty(exports, 'normalizePathTrailingSlash', {
       enumerable: true,
       get: function () {
         return normalizePathTrailingSlash;
@@ -6039,25 +6040,25 @@ exports.modules = {
     const _removetrailingslash = __webpack_require__(3297);
     const _parsepath = __webpack_require__(8854);
     const normalizePathTrailingSlash = (path) => {
-      if (!path.startsWith("/") || undefined) {
+      if (!path.startsWith('/') || undefined) {
         return path;
       }
       const { pathname, query, hash } = (0, _parsepath.parsePath)(path);
       if (false) {
       }
       return (
-        "" +
+        '' +
         (0, _removetrailingslash.removeTrailingSlash)(pathname) +
         query +
         hash
       );
     };
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -6068,9 +6069,9 @@ exports.modules = {
   },
 
   /***/ 9040: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -6104,15 +6105,15 @@ exports.modules = {
     function defaultHead(inAmpMode) {
       if (inAmpMode === void 0) inAmpMode = false;
       const head = [
-        /*#__PURE__*/ _react.default.createElement("meta", {
-          charSet: "utf-8",
+        /*#__PURE__*/ _react.default.createElement('meta', {
+          charSet: 'utf-8',
         }),
       ];
       if (!inAmpMode) {
         head.push(
-          /*#__PURE__*/ _react.default.createElement("meta", {
-            name: "viewport",
-            content: "width=device-width",
+          /*#__PURE__*/ _react.default.createElement('meta', {
+            name: 'viewport',
+            content: 'width=device-width',
           })
         );
       }
@@ -6120,7 +6121,7 @@ exports.modules = {
     }
     function onlyReactElement(list, child) {
       // React children can be "string" or "number" in this case we ignore them for backwards compat
-      if (typeof child === "string" || typeof child === "number") {
+      if (typeof child === 'string' || typeof child === 'number') {
         return list;
       }
       // Adds support for React.Fragment
@@ -6129,8 +6130,8 @@ exports.modules = {
           _react.default.Children.toArray(child.props.children).reduce(
             (fragmentList, fragmentChild) => {
               if (
-                typeof fragmentChild === "string" ||
-                typeof fragmentChild === "number"
+                typeof fragmentChild === 'string' ||
+                typeof fragmentChild === 'number'
               ) {
                 return fragmentList;
               }
@@ -6142,7 +6143,7 @@ exports.modules = {
       }
       return list.concat(child);
     }
-    const METATYPES = ["name", "httpEquiv", "charSet", "itemProp"];
+    const METATYPES = ['name', 'httpEquiv', 'charSet', 'itemProp'];
     /*
  returns a function for filtering head child elements
  which shouldn't be duplicated, like <title/>
@@ -6155,9 +6156,9 @@ exports.modules = {
       return (h) => {
         let isUnique = true;
         let hasKey = false;
-        if (h.key && typeof h.key !== "number" && h.key.indexOf("$") > 0) {
+        if (h.key && typeof h.key !== 'number' && h.key.indexOf('$') > 0) {
           hasKey = true;
-          const key = h.key.slice(h.key.indexOf("$") + 1);
+          const key = h.key.slice(h.key.indexOf('$') + 1);
           if (keys.has(key)) {
             isUnique = false;
           } else {
@@ -6166,19 +6167,19 @@ exports.modules = {
         }
         // eslint-disable-next-line default-case
         switch (h.type) {
-          case "title":
-          case "base":
+          case 'title':
+          case 'base':
             if (tags.has(h.type)) {
               isUnique = false;
             } else {
               tags.add(h.type);
             }
             break;
-          case "meta":
+          case 'meta':
             for (let i = 0, len = METATYPES.length; i < len; i++) {
               const metatype = METATYPES[i];
               if (!h.props.hasOwnProperty(metatype)) continue;
-              if (metatype === "charSet") {
+              if (metatype === 'charSet') {
                 if (metaTypes.has(metatype)) {
                   isUnique = false;
                 } else {
@@ -6188,7 +6189,7 @@ exports.modules = {
                 const category = h.props[metatype];
                 const categories = metaCategories[metatype] || new Set();
                 if (
-                  (metatype !== "name" || !hasKey) &&
+                  (metatype !== 'name' || !hasKey) &&
                   categories.has(category)
                 ) {
                   isUnique = false;
@@ -6218,20 +6219,20 @@ exports.modules = {
           const key = c.key || i;
           if (true && !inAmpMode) {
             if (
-              c.type === "link" &&
-              c.props["href"] && // TODO(prateekbh@): Replace this with const from `constants` when the tree shaking works.
+              c.type === 'link' &&
+              c.props['href'] && // TODO(prateekbh@): Replace this with const from `constants` when the tree shaking works.
               [
-                "https://fonts.googleapis.com/css",
-                "https://use.typekit.net/",
-              ].some((url) => c.props["href"].startsWith(url))
+                'https://fonts.googleapis.com/css',
+                'https://use.typekit.net/',
+              ].some((url) => c.props['href'].startsWith(url))
             ) {
               const newProps = {
                 ...(c.props || {}),
               };
-              newProps["data-href"] = newProps["href"];
-              newProps["href"] = undefined;
+              newProps['data-href'] = newProps['href'];
+              newProps['href'] = undefined;
               // Add this attribute to make it easy to identify optimized tags
-              newProps["data-optimized-fonts"] = true;
+              newProps['data-optimized-fonts'] = true;
               return /*#__PURE__*/ _react.default.cloneElement(c, newProps);
             }
           }
@@ -6263,11 +6264,11 @@ exports.modules = {
     }
     const _default = Head;
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -6278,9 +6279,9 @@ exports.modules = {
   },
 
   /***/ 701: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -6321,25 +6322,25 @@ exports.modules = {
   },
 
   /***/ 3904: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
     // This has to be a shared module which is shared between client component error boundary and dynamic component
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "NEXT_DYNAMIC_NO_SSR_CODE", {
+    Object.defineProperty(exports, 'NEXT_DYNAMIC_NO_SSR_CODE', {
       enumerable: true,
       get: function () {
         return NEXT_DYNAMIC_NO_SSR_CODE;
       },
     });
-    const NEXT_DYNAMIC_NO_SSR_CODE = "NEXT_DYNAMIC_NO_SSR_CODE"; //# sourceMappingURL=no-ssr-error.js.map
+    const NEXT_DYNAMIC_NO_SSR_CODE = 'NEXT_DYNAMIC_NO_SSR_CODE'; //# sourceMappingURL=no-ssr-error.js.map
 
     /***/
   },
 
   /***/ 1313: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
     /**
      * Copyright (c) Facebook, Inc. and its affiliates.
      *
@@ -6347,44 +6348,44 @@ exports.modules = {
      * LICENSE file in the root directory of this source tree.
      */ // Modified from https://github.com/facebook/react/blob/main/packages/react-server-dom-webpack/src/ReactFlightWebpackNodeRegister.js
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "createProxy", {
+    Object.defineProperty(exports, 'createProxy', {
       enumerable: true,
       get: function () {
         return createProxy;
       },
     });
-    const CLIENT_REFERENCE = Symbol.for("react.client.reference");
+    const CLIENT_REFERENCE = Symbol.for('react.client.reference');
     const PROMISE_PROTOTYPE = Promise.prototype;
     const deepProxyHandlers = {
       get: function (target, name, _receiver) {
         switch (name) {
           // These names are read by the Flight runtime if you end up using the exports object.
-          case "$$typeof":
+          case '$$typeof':
             // These names are a little too common. We should probably have a way to
             // have the Flight runtime extract the inner target instead.
             return target.$$typeof;
-          case "$$id":
+          case '$$id':
             return target.$$id;
-          case "$$async":
+          case '$$async':
             return target.$$async;
-          case "name":
+          case 'name':
             return target.name;
-          case "displayName":
+          case 'displayName':
             return undefined;
           // We need to special case this because createElement reads it if we pass this
           // reference.
-          case "defaultProps":
+          case 'defaultProps':
             return undefined;
           // Avoid this attempting to be serialized.
-          case "toJSON":
+          case 'toJSON':
             return undefined;
           case Symbol.toPrimitive.toString():
             // @ts-ignore
             return Object.prototype[Symbol.toPrimitive];
-          case "Provider":
+          case 'Provider':
             throw new Error(
               `Cannot render a Client Context Provider on the Server. ` +
                 `Instead, you can export a Client Component wrapper ` +
@@ -6393,16 +6394,16 @@ exports.modules = {
           default:
             break;
         }
-        const expression = String(target.name) + "." + String(name);
+        const expression = String(target.name) + '.' + String(name);
         throw new Error(
           `Cannot access ${expression} on the server. ` +
-            "You cannot dot into a client module from a server component. " +
-            "You can only pass the imported name through."
+            'You cannot dot into a client module from a server component. ' +
+            'You can only pass the imported name through.'
         );
       },
       set: function () {
         throw new Error(
-          "Cannot assign to a client module from a server module."
+          'Cannot assign to a client module from a server module.'
         );
       },
     };
@@ -6410,25 +6411,25 @@ exports.modules = {
       get: function (target, name, _receiver) {
         switch (name) {
           // These names are read by the Flight runtime if you end up using the exports object.
-          case "$$typeof":
+          case '$$typeof':
             return target.$$typeof;
-          case "$$id":
+          case '$$id':
             return target.$$id;
-          case "$$async":
+          case '$$async':
             return target.$$async;
-          case "name":
+          case 'name':
             return target.name;
           // We need to special case this because createElement reads it if we pass this
           // reference.
-          case "defaultProps":
+          case 'defaultProps':
             return undefined;
           // Avoid this attempting to be serialized.
-          case "toJSON":
+          case 'toJSON':
             return undefined;
           case Symbol.toPrimitive.toString():
             // @ts-ignore
             return Object.prototype[Symbol.toPrimitive];
-          case "__esModule":
+          case '__esModule':
             // Something is conditionally checking which export to use. We'll pretend to be
             // an ESM compat module but then we'll check again on the client.
             const moduleId = target.$$id;
@@ -6448,7 +6449,7 @@ exports.modules = {
                 // This a placeholder value that tells the client to conditionally use the
                 // whole object or just the default export.
                 $$id: {
-                  value: target.$$id + "#",
+                  value: target.$$id + '#',
                 },
                 $$async: {
                   value: target.$$async,
@@ -6456,7 +6457,7 @@ exports.modules = {
               }
             );
             return true;
-          case "then":
+          case 'then':
             if (target.then) {
               // Use a cached value
               return target.then;
@@ -6481,7 +6482,7 @@ exports.modules = {
               );
               const proxy = new Proxy(clientReference, proxyHandlers);
               // Treat this as a resolved Promise for React's use()
-              target.status = "fulfilled";
+              target.status = 'fulfilled';
               target.value = proxy;
               const then = (target.then = Object.defineProperties(
                 function then(resolve, _reject) {
@@ -6527,7 +6528,7 @@ exports.modules = {
                 value: CLIENT_REFERENCE,
               },
               $$id: {
-                value: target.$$id + "#" + name,
+                value: target.$$id + '#' + name,
               },
               $$async: {
                 value: target.$$async,
@@ -6547,7 +6548,7 @@ exports.modules = {
       },
       set: function () {
         throw new Error(
-          "Cannot assign to a client module from a server module."
+          'Cannot assign to a client module from a server module.'
         );
       },
     };
@@ -6574,11 +6575,11 @@ exports.modules = {
   },
 
   /***/ 4592: /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
     const { createProxy } = __webpack_require__(1313);
     module.exports = createProxy(
-      "/workspaces/web-template/node_modules/next/dist/client/components/app-router.js"
+      '/workspaces/web-template/node_modules/next/dist/client/components/app-router.js'
     );
     //# sourceMappingURL=app-router.js.map
 
@@ -6586,11 +6587,11 @@ exports.modules = {
   },
 
   /***/ 2673: /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
     const { createProxy } = __webpack_require__(1313);
     module.exports = createProxy(
-      "/workspaces/web-template/node_modules/next/dist/client/components/error-boundary.js"
+      '/workspaces/web-template/node_modules/next/dist/client/components/error-boundary.js'
     );
     //# sourceMappingURL=error-boundary.js.map
 
@@ -6598,11 +6599,11 @@ exports.modules = {
   },
 
   /***/ 6301: /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
     const { createProxy } = __webpack_require__(1313);
     module.exports = createProxy(
-      "/workspaces/web-template/node_modules/next/dist/client/components/layout-router.js"
+      '/workspaces/web-template/node_modules/next/dist/client/components/layout-router.js'
     );
     //# sourceMappingURL=layout-router.js.map
 
@@ -6610,11 +6611,11 @@ exports.modules = {
   },
 
   /***/ 7431: /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
     const { createProxy } = __webpack_require__(1313);
     module.exports = createProxy(
-      "/workspaces/web-template/node_modules/next/dist/client/components/render-from-template-context.js"
+      '/workspaces/web-template/node_modules/next/dist/client/components/render-from-template-context.js'
     );
     //# sourceMappingURL=render-from-template-context.js.map
 
@@ -6622,12 +6623,12 @@ exports.modules = {
   },
 
   /***/ 2527: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "createSearchParamsBailoutProxy", {
+    Object.defineProperty(exports, 'createSearchParamsBailoutProxy', {
       enumerable: true,
       get: function () {
         return createSearchParamsBailoutProxy;
@@ -6640,9 +6641,9 @@ exports.modules = {
         {
           get(_target, prop) {
             // React adds some properties on the object when serializing for client components
-            if (typeof prop === "string") {
+            if (typeof prop === 'string') {
               (0, _staticgenerationbailout.staticGenerationBailout)(
-                "searchParams." + prop
+                'searchParams.' + prop
               );
             }
           },
@@ -6650,11 +6651,11 @@ exports.modules = {
       );
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -6665,11 +6666,11 @@ exports.modules = {
   },
 
   /***/ 6404: /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
     const { createProxy } = __webpack_require__(1313);
     module.exports = createProxy(
-      "/workspaces/web-template/node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js"
+      '/workspaces/web-template/node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js'
     );
     //# sourceMappingURL=static-generation-searchparams-bailout-provider.js.map
 
@@ -6677,11 +6678,11 @@ exports.modules = {
   },
 
   /***/ 9560: /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /* __next_internal_client_entry_do_not_use__  cjs */
     const { createProxy } = __webpack_require__(1313);
     module.exports = createProxy(
-      "/workspaces/web-template/node_modules/next/dist/client/image.js"
+      '/workspaces/web-template/node_modules/next/dist/client/image.js'
     );
     //# sourceMappingURL=image.js.map
 
@@ -6689,7 +6690,7 @@ exports.modules = {
   },
 
   /***/ 362: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
     /**
      * @license React
      * react-dom-server-rendering-stub.production.min.js
@@ -6708,18 +6709,18 @@ exports.modules = {
     };
     function e(c) {
       for (
-        var b = "https://reactjs.org/docs/error-decoder.html?invariant=" + c,
+        var b = 'https://reactjs.org/docs/error-decoder.html?invariant=' + c,
           a = 1;
         a < arguments.length;
         a++
       )
-        b += "&args[]=" + encodeURIComponent(arguments[a]);
+        b += '&args[]=' + encodeURIComponent(arguments[a]);
       return (
-        "Minified React error #" +
+        'Minified React error #' +
         c +
-        "; visit " +
+        '; visit ' +
         b +
-        " for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ' for the full message or use the non-minified dev environment for full errors and additional helpful warnings.'
       );
     }
     var f = d.Dispatcher;
@@ -6749,13 +6750,13 @@ exports.modules = {
       var a = f.current;
       a && a.preload(c, b);
     };
-    exports.version = "18.3.0-canary-16d053d59-20230506";
+    exports.version = '18.3.0-canary-16d053d59-20230506';
 
     /***/
   },
 
   /***/ 6155: /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
     if (true) {
       module.exports = __webpack_require__(362);
@@ -6766,7 +6767,7 @@ exports.modules = {
   },
 
   /***/ 8387: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /**
      * @license React
      * react-server-dom-webpack-server.edge.production.min.js
@@ -6803,21 +6804,21 @@ exports.modules = {
     }
     var p = new TextEncoder();
     function ca(a, b) {
-      "function" === typeof a.error ? a.error(b) : a.close();
+      'function' === typeof a.error ? a.error(b) : a.close();
     }
     var q = JSON.stringify;
     function da(a, b, d) {
       a = q(d, a.toJSON);
-      b = b.toString(16) + ":" + a + "\n";
+      b = b.toString(16) + ':' + a + '\n';
       return p.encode(b);
     }
     function t(a, b, d) {
       a = q(d);
-      b = b.toString(16) + ":" + a + "\n";
+      b = b.toString(16) + ':' + a + '\n';
       return p.encode(b);
     }
-    var u = Symbol.for("react.client.reference"),
-      ea = Symbol.for("react.server.reference"),
+    var u = Symbol.for('react.client.reference'),
+      ea = Symbol.for('react.server.reference'),
       ka = {
         prefetchDNS: fa,
         preconnect: ha,
@@ -6825,65 +6826,65 @@ exports.modules = {
         preinit: ja,
       };
     function fa(a, b) {
-      if ("string" === typeof a) {
+      if ('string' === typeof a) {
         var d = v();
         if (d) {
           var c = d.hints,
-            e = "D" + a;
-          c.has(e) || (c.add(e), b ? A(d, "D", [a, b]) : A(d, "D", a), B(d));
+            e = 'D' + a;
+          c.has(e) || (c.add(e), b ? A(d, 'D', [a, b]) : A(d, 'D', a), B(d));
         }
       }
     }
     function ha(a, b) {
-      if ("string" === typeof a) {
+      if ('string' === typeof a) {
         var d = v();
         if (d) {
           var c = d.hints,
             e =
-              null == b || "string" !== typeof b.crossOrigin
+              null == b || 'string' !== typeof b.crossOrigin
                 ? null
-                : "use-credentials" === b.crossOrigin
-                ? "use-credentials"
-                : "";
-          e = "C" + (null === e ? "null" : e) + "|" + a;
-          c.has(e) || (c.add(e), b ? A(d, "C", [a, b]) : A(d, "C", a), B(d));
+                : 'use-credentials' === b.crossOrigin
+                ? 'use-credentials'
+                : '';
+          e = 'C' + (null === e ? 'null' : e) + '|' + a;
+          c.has(e) || (c.add(e), b ? A(d, 'C', [a, b]) : A(d, 'C', a), B(d));
         }
       }
     }
     function ia(a, b) {
-      if ("string" === typeof a) {
+      if ('string' === typeof a) {
         var d = v();
         if (d) {
           var c = d.hints,
-            e = "L" + a;
-          c.has(e) || (c.add(e), A(d, "L", [a, b]), B(d));
+            e = 'L' + a;
+          c.has(e) || (c.add(e), A(d, 'L', [a, b]), B(d));
         }
       }
     }
     function ja(a, b) {
-      if ("string" === typeof a) {
+      if ('string' === typeof a) {
         var d = v();
         if (d) {
           var c = d.hints,
-            e = "I" + a;
-          c.has(e) || (c.add(e), A(d, "I", [a, b]), B(d));
+            e = 'I' + a;
+          c.has(e) || (c.add(e), A(d, 'I', [a, b]), B(d));
         }
       }
     }
     var la = ba.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.Dispatcher,
-      C = "function" === typeof AsyncLocalStorage,
+      C = 'function' === typeof AsyncLocalStorage,
       na = C ? new AsyncLocalStorage() : null,
-      D = Symbol.for("react.element"),
-      oa = Symbol.for("react.fragment"),
-      pa = Symbol.for("react.provider"),
-      qa = Symbol.for("react.server_context"),
-      ra = Symbol.for("react.forward_ref"),
-      sa = Symbol.for("react.suspense"),
-      ta = Symbol.for("react.suspense_list"),
-      ua = Symbol.for("react.memo"),
-      E = Symbol.for("react.lazy"),
-      va = Symbol.for("react.default_value"),
-      wa = Symbol.for("react.memo_cache_sentinel"),
+      D = Symbol.for('react.element'),
+      oa = Symbol.for('react.fragment'),
+      pa = Symbol.for('react.provider'),
+      qa = Symbol.for('react.server_context'),
+      ra = Symbol.for('react.forward_ref'),
+      sa = Symbol.for('react.suspense'),
+      ta = Symbol.for('react.suspense_list'),
+      ua = Symbol.for('react.memo'),
+      E = Symbol.for('react.lazy'),
+      va = Symbol.for('react.default_value'),
+      wa = Symbol.for('react.memo_cache_sentinel'),
       xa = Symbol.iterator,
       F = null;
     function G(a, b) {
@@ -6894,12 +6895,12 @@ exports.modules = {
         if (null === a) {
           if (null !== d)
             throw Error(
-              "The stacks must reach the root at the same time. This is a bug in React."
+              'The stacks must reach the root at the same time. This is a bug in React.'
             );
         } else {
           if (null === d)
             throw Error(
-              "The stacks must reach the root at the same time. This is a bug in React."
+              'The stacks must reach the root at the same time. This is a bug in React.'
             );
           G(a, d);
           b.context._currentValue = b.value;
@@ -6921,7 +6922,7 @@ exports.modules = {
       a = a.parent;
       if (null === a)
         throw Error(
-          "The depth must equal at least at zero before reaching the root. This is a bug in React."
+          'The depth must equal at least at zero before reaching the root. This is a bug in React.'
         );
       a.depth === b.depth ? G(a, b) : Aa(a, b);
     }
@@ -6929,7 +6930,7 @@ exports.modules = {
       var d = b.parent;
       if (null === d)
         throw Error(
-          "The depth must equal at least at zero before reaching the root. This is a bug in React."
+          'The depth must equal at least at zero before reaching the root. This is a bug in React.'
         );
       a.depth === d.depth ? G(a, d) : Ba(a, d);
       b.context._currentValue = b.value;
@@ -6969,36 +6970,36 @@ exports.modules = {
       d = a[d];
       void 0 === d ? a.push(b) : d !== b && (b.then(Ea, Ea), (b = d));
       switch (b.status) {
-        case "fulfilled":
+        case 'fulfilled':
           return b.value;
-        case "rejected":
+        case 'rejected':
           throw b.reason;
         default:
-          if ("string" !== typeof b.status)
+          if ('string' !== typeof b.status)
             switch (
               ((a = b),
-              (a.status = "pending"),
+              (a.status = 'pending'),
               a.then(
                 function (c) {
-                  if ("pending" === b.status) {
+                  if ('pending' === b.status) {
                     var e = b;
-                    e.status = "fulfilled";
+                    e.status = 'fulfilled';
                     e.value = c;
                   }
                 },
                 function (c) {
-                  if ("pending" === b.status) {
+                  if ('pending' === b.status) {
                     var e = b;
-                    e.status = "rejected";
+                    e.status = 'rejected';
                     e.reason = c;
                   }
                 }
               ),
               b.status)
             ) {
-              case "fulfilled":
+              case 'fulfilled':
                 return b.value;
-              case "rejected":
+              case 'rejected':
                 throw b.reason;
             }
           I = b;
@@ -7009,7 +7010,7 @@ exports.modules = {
     function Ga() {
       if (null === I)
         throw Error(
-          "Expected a suspended thenable. This is a bug in React. Please file an issue."
+          'Expected a suspended thenable. This is a bug in React. Please file an issue.'
         );
       var a = I;
       I = null;
@@ -7058,22 +7059,22 @@ exports.modules = {
       use: La,
     };
     function M() {
-      throw Error("This Hook is not supported in Server Components.");
+      throw Error('This Hook is not supported in Server Components.');
     }
     function Ka() {
       throw Error(
-        "Refreshing the cache is not supported in Server Components."
+        'Refreshing the cache is not supported in Server Components.'
       );
     }
     function Ja() {
       if (null === J)
-        throw Error("useId can only be used while React is rendering");
+        throw Error('useId can only be used while React is rendering');
       var a = J.identifierCount++;
-      return ":" + J.identifierPrefix + "S" + a.toString(32) + ":";
+      return ':' + J.identifierPrefix + 'S' + a.toString(32) + ':';
     }
     function La(a) {
-      if ((null !== a && "object" === typeof a) || "function" === typeof a) {
-        if ("function" === typeof a.then) {
+      if ((null !== a && 'object' === typeof a) || 'function' === typeof a) {
+        if ('function' === typeof a.then) {
           var b = K;
           K += 1;
           null === L && (L = []);
@@ -7081,7 +7082,7 @@ exports.modules = {
         }
         if (a.$$typeof === qa) return a._currentValue;
       }
-      throw Error("An unsupported type was passed to use(): " + String(a));
+      throw Error('An unsupported type was passed to use(): ' + String(a));
     }
     function Na() {
       return new AbortController().signal;
@@ -7114,27 +7115,27 @@ exports.modules = {
     }
     function Sa(a) {
       switch (typeof a) {
-        case "string":
-          return JSON.stringify(10 >= a.length ? a : a.slice(0, 10) + "...");
-        case "object":
-          if (Qa(a)) return "[...]";
+        case 'string':
+          return JSON.stringify(10 >= a.length ? a : a.slice(0, 10) + '...');
+        case 'object':
+          if (Qa(a)) return '[...]';
           a = Ra(a);
-          return "Object" === a ? "{...}" : a;
-        case "function":
-          return "function";
+          return 'Object' === a ? '{...}' : a;
+        case 'function':
+          return 'function';
         default:
           return String(a);
       }
     }
     function N(a) {
-      if ("string" === typeof a) return a;
+      if ('string' === typeof a) return a;
       switch (a) {
         case sa:
-          return "Suspense";
+          return 'Suspense';
         case ta:
-          return "SuspenseList";
+          return 'SuspenseList';
       }
-      if ("object" === typeof a)
+      if ('object' === typeof a)
         switch (a.$$typeof) {
           case ra:
             return N(a.render);
@@ -7147,48 +7148,48 @@ exports.modules = {
               return N(a(b));
             } catch (d) {}
         }
-      return "";
+      return '';
     }
     function O(a, b) {
       var d = Ra(a);
-      if ("Object" !== d && "Array" !== d) return d;
+      if ('Object' !== d && 'Array' !== d) return d;
       d = -1;
       var c = 0;
       if (Qa(a)) {
-        var e = "[";
+        var e = '[';
         for (var f = 0; f < a.length; f++) {
-          0 < f && (e += ", ");
+          0 < f && (e += ', ');
           var g = a[f];
-          g = "object" === typeof g && null !== g ? O(g) : Sa(g);
-          "" + f === b
+          g = 'object' === typeof g && null !== g ? O(g) : Sa(g);
+          '' + f === b
             ? ((d = e.length), (c = g.length), (e += g))
             : (e =
-                10 > g.length && 40 > e.length + g.length ? e + g : e + "...");
+                10 > g.length && 40 > e.length + g.length ? e + g : e + '...');
         }
-        e += "]";
-      } else if (a.$$typeof === D) e = "<" + N(a.type) + "/>";
+        e += ']';
+      } else if (a.$$typeof === D) e = '<' + N(a.type) + '/>';
       else {
-        e = "{";
+        e = '{';
         f = Object.keys(a);
         for (g = 0; g < f.length; g++) {
-          0 < g && (e += ", ");
+          0 < g && (e += ', ');
           var h = f[g],
             k = JSON.stringify(h);
-          e += ('"' + h + '"' === k ? h : k) + ": ";
+          e += ('"' + h + '"' === k ? h : k) + ': ';
           k = a[h];
-          k = "object" === typeof k && null !== k ? O(k) : Sa(k);
+          k = 'object' === typeof k && null !== k ? O(k) : Sa(k);
           h === b
             ? ((d = e.length), (c = k.length), (e += k))
             : (e =
-                10 > k.length && 40 > e.length + k.length ? e + k : e + "...");
+                10 > k.length && 40 > e.length + k.length ? e + k : e + '...');
         }
-        e += "}";
+        e += '}';
       }
       return void 0 === b
         ? e
         : -1 < d && 0 < c
-        ? ((a = " ".repeat(d) + "^".repeat(c)), "\n  " + e + "\n  " + a)
-        : "\n  " + e;
+        ? ((a = ' '.repeat(d) + '^'.repeat(c)), '\n  ' + e + '\n  ' + a)
+        : '\n  ' + e;
     }
     var Ta = aa.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED,
       Ua = Ta.ContextRegistry,
@@ -7200,7 +7201,7 @@ exports.modules = {
     function Ya(a, b, d, c, e) {
       if (null !== Wa.current && Wa.current !== Pa)
         throw Error(
-          "Currently React only supports one RSC renderer at a time."
+          'Currently React only supports one RSC renderer at a time.'
         );
       la.current = ka;
       Wa.current = Pa;
@@ -7227,7 +7228,7 @@ exports.modules = {
           writtenClientReferences: new Map(),
           writtenServerReferences: new Map(),
           writtenProviders: new Map(),
-          identifierPrefix: e || "",
+          identifierPrefix: e || '',
           identifierCount: 1,
           onError: void 0 === d ? Xa : d,
           toJSON: function (r, w) {
@@ -7254,23 +7255,23 @@ exports.modules = {
       a.pendingChunks++;
       var d = ab(a, null, F, a.abortableTasks);
       switch (b.status) {
-        case "fulfilled":
+        case 'fulfilled':
           return (d.model = b.value), db(a, d), d.id;
-        case "rejected":
+        case 'rejected':
           var c = Q(a, b.reason);
           R(a, d.id, c);
           return d.id;
         default:
-          "string" !== typeof b.status &&
-            ((b.status = "pending"),
+          'string' !== typeof b.status &&
+            ((b.status = 'pending'),
             b.then(
               function (e) {
-                "pending" === b.status &&
-                  ((b.status = "fulfilled"), (b.value = e));
+                'pending' === b.status &&
+                  ((b.status = 'fulfilled'), (b.value = e));
               },
               function (e) {
-                "pending" === b.status &&
-                  ((b.status = "rejected"), (b.reason = e));
+                'pending' === b.status &&
+                  ((b.status = 'rejected'), (b.reason = e));
               }
             ));
       }
@@ -7289,26 +7290,26 @@ exports.modules = {
       return d.id;
     }
     function eb(a) {
-      if ("fulfilled" === a.status) return a.value;
-      if ("rejected" === a.status) throw a.reason;
+      if ('fulfilled' === a.status) return a.value;
+      if ('rejected' === a.status) throw a.reason;
       throw a;
     }
     function fb(a) {
       switch (a.status) {
-        case "fulfilled":
-        case "rejected":
+        case 'fulfilled':
+        case 'rejected':
           break;
         default:
-          "string" !== typeof a.status &&
-            ((a.status = "pending"),
+          'string' !== typeof a.status &&
+            ((a.status = 'pending'),
             a.then(
               function (b) {
-                "pending" === a.status &&
-                  ((a.status = "fulfilled"), (a.value = b));
+                'pending' === a.status &&
+                  ((a.status = 'fulfilled'), (a.value = b));
               },
               function (b) {
-                "pending" === a.status &&
-                  ((a.status = "rejected"), (a.reason = b));
+                'pending' === a.status &&
+                  ((a.status = 'rejected'), (a.reason = b));
               }
             ));
       }
@@ -7321,24 +7322,24 @@ exports.modules = {
     function T(a, b, d, c, e, f) {
       if (null !== c && void 0 !== c)
         throw Error(
-          "Refs cannot be used in Server Components, nor passed to Client Components."
+          'Refs cannot be used in Server Components, nor passed to Client Components.'
         );
-      if ("function" === typeof b) {
+      if ('function' === typeof b) {
         if (b.$$typeof === u) return [D, b, d, e];
         K = 0;
         L = f;
         e = b(e);
-        return "object" === typeof e &&
+        return 'object' === typeof e &&
           null !== e &&
-          "function" === typeof e.then
-          ? "fulfilled" === e.status
+          'function' === typeof e.then
+          ? 'fulfilled' === e.status
             ? e.value
             : fb(e)
           : e;
       }
-      if ("string" === typeof b) return [D, b, d, e];
-      if ("symbol" === typeof b) return b === oa ? e.children : [D, b, d, e];
-      if (null != b && "object" === typeof b) {
+      if ('string' === typeof b) return [D, b, d, e];
+      if ('symbol' === typeof b) return b === oa ? e.children : [D, b, d, e];
+      if (null != b && 'object' === typeof b) {
         if (b.$$typeof === u) return [D, b, d, e];
         switch (b.$$typeof) {
           case E:
@@ -7365,7 +7366,7 @@ exports.modules = {
             );
         }
       }
-      throw Error("Unsupported Server Component type: " + Sa(b));
+      throw Error('Unsupported Server Component type: ' + Sa(b));
     }
     function db(a, b) {
       var d = a.pingedTasks;
@@ -7391,21 +7392,21 @@ exports.modules = {
       return e;
     }
     function hb(a, b, d, c) {
-      var e = c.$$async ? c.$$id + "#async" : c.$$id,
+      var e = c.$$async ? c.$$id + '#async' : c.$$id,
         f = a.writtenClientReferences,
         g = f.get(e);
       if (void 0 !== g)
-        return b[0] === D && "1" === d
-          ? "$L" + g.toString(16)
-          : "$" + g.toString(16);
+        return b[0] === D && '1' === d
+          ? '$L' + g.toString(16)
+          : '$' + g.toString(16);
       try {
         var h = a.bundlerConfig,
           k = c.$$id;
-        g = "";
+        g = '';
         var r = h[k];
         if (r) g = r.name;
         else {
-          var w = k.lastIndexOf("#");
+          var w = k.lastIndexOf('#');
           -1 !== w && ((g = k.slice(w + 1)), (r = h[k.slice(0, w)]));
           if (!r)
             throw Error(
@@ -7423,31 +7424,31 @@ exports.modules = {
         a.pendingChunks++;
         var y = a.nextChunkId++,
           ma = q(x),
-          z = y.toString(16) + ":I" + ma + "\n";
+          z = y.toString(16) + ':I' + ma + '\n';
         var vb = p.encode(z);
         a.completedImportChunks.push(vb);
         f.set(e, y);
-        return b[0] === D && "1" === d
-          ? "$L" + y.toString(16)
-          : "$" + y.toString(16);
+        return b[0] === D && '1' === d
+          ? '$L' + y.toString(16)
+          : '$' + y.toString(16);
       } catch (wb) {
         return (
           a.pendingChunks++,
           (b = a.nextChunkId++),
           (d = Q(a, wb)),
           R(a, b, d),
-          "$" + b.toString(16)
+          '$' + b.toString(16)
         );
       }
     }
     function Za(a, b, d, c) {
       switch (c) {
         case D:
-          return "$";
+          return '$';
       }
       for (
         ;
-        "object" === typeof c &&
+        'object' === typeof c &&
         null !== c &&
         (c.$$typeof === D || c.$$typeof === E);
 
@@ -7465,9 +7466,9 @@ exports.modules = {
         } catch (g) {
           d = g === Da ? Ga() : g;
           if (
-            "object" === typeof d &&
+            'object' === typeof d &&
             null !== d &&
-            "function" === typeof d.then
+            'function' === typeof d.then
           )
             return (
               a.pendingChunks++,
@@ -7475,18 +7476,18 @@ exports.modules = {
               (c = a.ping),
               d.then(c, c),
               (a.thenableState = Ha()),
-              "$L" + a.id.toString(16)
+              '$L' + a.id.toString(16)
             );
           a.pendingChunks++;
           c = a.nextChunkId++;
           d = Q(a, d);
           R(a, c, d);
-          return "$L" + c.toString(16);
+          return '$L' + c.toString(16);
         }
       if (null === c) return null;
-      if ("object" === typeof c) {
+      if ('object' === typeof c) {
         if (c.$$typeof === u) return hb(a, b, d, c);
-        if ("function" === typeof c.then) return "$@" + cb(a, c).toString(16);
+        if ('function' === typeof c.then) return '$@' + cb(a, c).toString(16);
         if (c.$$typeof === pa)
           return (
             (c = c._context._globalName),
@@ -7496,15 +7497,15 @@ exports.modules = {
               (a.pendingChunks++,
               (d = a.nextChunkId++),
               b.set(c, d),
-              (c = t(a, d, "$P" + c)),
+              (c = t(a, d, '$P' + c)),
               a.completedJSONChunks.push(c)),
-            "$" + d.toString(16)
+            '$' + d.toString(16)
           );
         if (c === bb) {
           a = F;
           if (null === a)
             throw Error(
-              "Tried to pop a Context at the root of the app. This is a bug in React."
+              'Tried to pop a Context at the root of the app. This is a bug in React.'
             );
           c = a.parentValue;
           a.context._currentValue = c === va ? a.context._defaultValue : c;
@@ -7512,42 +7513,42 @@ exports.modules = {
           return;
         }
         return !Qa(c) &&
-          (null === c || "object" !== typeof c
+          (null === c || 'object' !== typeof c
             ? (a = null)
-            : ((a = (xa && c[xa]) || c["@@iterator"]),
-              (a = "function" === typeof a ? a : null)),
+            : ((a = (xa && c[xa]) || c['@@iterator']),
+              (a = 'function' === typeof a ? a : null)),
           a)
           ? Array.from(c)
           : c;
       }
-      if ("string" === typeof c) {
-        if ("Z" === c[c.length - 1] && b[d] instanceof Date) return "$D" + c;
-        a = "$" === c[0] ? "$" + c : c;
+      if ('string' === typeof c) {
+        if ('Z' === c[c.length - 1] && b[d] instanceof Date) return '$D' + c;
+        a = '$' === c[0] ? '$' + c : c;
         return a;
       }
-      if ("boolean" === typeof c) return c;
-      if ("number" === typeof c)
+      if ('boolean' === typeof c) return c;
+      if ('number' === typeof c)
         return (
           (a = c),
           Number.isFinite(a)
             ? 0 === a && -Infinity === 1 / a
-              ? "$-0"
+              ? '$-0'
               : a
             : Infinity === a
-            ? "$Infinity"
+            ? '$Infinity'
             : -Infinity === a
-            ? "$-Infinity"
-            : "$NaN"
+            ? '$-Infinity'
+            : '$NaN'
         );
-      if ("undefined" === typeof c) return "$undefined";
-      if ("function" === typeof c) {
+      if ('undefined' === typeof c) return '$undefined';
+      if ('function' === typeof c) {
         if (c.$$typeof === u) return hb(a, b, d, c);
         if (c.$$typeof === ea)
           return (
             (d = a.writtenServerReferences),
             (b = d.get(c)),
             void 0 !== b
-              ? (a = "$F" + b.toString(16))
+              ? (a = '$F' + b.toString(16))
               : ((b = c.$$bound),
                 (e = {
                   id: c.$$id,
@@ -7558,56 +7559,56 @@ exports.modules = {
                 (e = da(a, b, e)),
                 a.completedJSONChunks.push(e),
                 d.set(c, b),
-                (a = "$F" + b.toString(16))),
+                (a = '$F' + b.toString(16))),
             a
           );
         if (/^on[A-Z]/.test(d))
           throw Error(
-            "Event handlers cannot be passed to Client Component props." +
+            'Event handlers cannot be passed to Client Component props.' +
               O(b, d) +
-              "\nIf you need interactivity, consider converting part of this to a Client Component."
+              '\nIf you need interactivity, consider converting part of this to a Client Component.'
           );
         throw Error(
           'Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server".' +
             O(b, d)
         );
       }
-      if ("symbol" === typeof c) {
+      if ('symbol' === typeof c) {
         e = a.writtenSymbols;
         f = e.get(c);
-        if (void 0 !== f) return "$" + f.toString(16);
+        if (void 0 !== f) return '$' + f.toString(16);
         f = c.description;
         if (Symbol.for(f) !== c)
           throw Error(
-            "Only global symbols received from Symbol.for(...) can be passed to Client Components. The symbol Symbol.for(" +
-              (c.description + ") cannot be found among global symbols.") +
+            'Only global symbols received from Symbol.for(...) can be passed to Client Components. The symbol Symbol.for(' +
+              (c.description + ') cannot be found among global symbols.') +
               O(b, d)
           );
         a.pendingChunks++;
         d = a.nextChunkId++;
-        b = t(a, d, "$S" + f);
+        b = t(a, d, '$S' + f);
         a.completedImportChunks.push(b);
         e.set(c, d);
-        return "$" + d.toString(16);
+        return '$' + d.toString(16);
       }
-      if ("bigint" === typeof c) return "$n" + c.toString(10);
+      if ('bigint' === typeof c) return '$n' + c.toString(10);
       throw Error(
-        "Type " +
+        'Type ' +
           typeof c +
-          " is not supported in Client Component props." +
+          ' is not supported in Client Component props.' +
           O(b, d)
       );
     }
     function Q(a, b) {
       a = a.onError;
       b = a(b);
-      if (null != b && "string" !== typeof b)
+      if (null != b && 'string' !== typeof b)
         throw Error(
           'onError returned something with a type other than "string". onError should return a string and may return null or undefined but must not return anything else. It received something of type "' +
             typeof b +
             '" instead'
         );
-      return b || "";
+      return b || '';
     }
     function ib(a, b) {
       null !== a.destination
@@ -7618,16 +7619,16 @@ exports.modules = {
       d = {
         digest: d,
       };
-      b = b.toString(16) + ":E" + q(d) + "\n";
+      b = b.toString(16) + ':E' + q(d) + '\n';
       b = p.encode(b);
       a.completedErrorChunks.push(b);
     }
     function A(a, b, d) {
       var c = a.nextChunkId++;
       d = q(d);
-      b = "H" + b;
-      c = c.toString(16) + ":" + b;
-      c = p.encode(c + d + "\n");
+      b = 'H' + b;
+      c = c.toString(16) + ':' + b;
+      c = p.encode(c + d + '\n');
       a.completedHintChunks.push(c);
     }
     function gb(a) {
@@ -7645,14 +7646,14 @@ exports.modules = {
             H(f.context);
             try {
               var h = f.model;
-              if ("object" === typeof h && null !== h && h.$$typeof === D) {
+              if ('object' === typeof h && null !== h && h.$$typeof === D) {
                 var k = h,
                   r = f.thenableState;
                 f.model = h;
                 h = T(g, k.type, k.key, k.ref, k.props, r);
                 for (
                   f.thenableState = null;
-                  "object" === typeof h && null !== h && h.$$typeof === D;
+                  'object' === typeof h && null !== h && h.$$typeof === D;
 
                 )
                   (k = h),
@@ -7666,9 +7667,9 @@ exports.modules = {
             } catch (z) {
               var x = z === Da ? Ga() : z;
               if (
-                "object" === typeof x &&
+                'object' === typeof x &&
                 null !== x &&
-                "function" === typeof x.then
+                'function' === typeof x.then
               ) {
                 var y = f.ping;
                 x.then(y, y);
@@ -7743,7 +7744,7 @@ exports.modules = {
           var c = Q(
             a,
             void 0 === b
-              ? Error("The render was aborted by the server without a reason.")
+              ? Error('The render was aborted by the server without a reason.')
               : b
           );
           a.pendingChunks++;
@@ -7751,7 +7752,7 @@ exports.modules = {
           R(a, e, c);
           d.forEach(function (f) {
             f.status = 3;
-            var g = "$" + e.toString(16);
+            var g = '$' + e.toString(16);
             f = t(a, f.id, g);
             a.completedErrorChunks.push(f);
           });
@@ -7780,11 +7781,11 @@ exports.modules = {
       return null;
     }
     function lb(a, b) {
-      var d = "",
+      var d = '',
         c = a[b];
       if (c) d = c.name;
       else {
-        var e = b.lastIndexOf("#");
+        var e = b.lastIndexOf('#');
         -1 !== e && ((d = b.slice(e + 1)), (c = a[b.slice(0, e)]));
         if (!c)
           throw Error(
@@ -7816,17 +7817,17 @@ exports.modules = {
         } else null !== f && d.push(f);
       }
       if (a.async) {
-        if ((b = mb.get(a.id))) return "fulfilled" === b.status ? null : b;
+        if ((b = mb.get(a.id))) return 'fulfilled' === b.status ? null : b;
         var h = Promise.all(d).then(function () {
           return globalThis.__next_require__(a.id);
         });
         h.then(
           function (k) {
-            h.status = "fulfilled";
+            h.status = 'fulfilled';
             h.value = k;
           },
           function (k) {
-            h.status = "rejected";
+            h.status = 'rejected';
             h.reason = k;
           }
         );
@@ -7838,12 +7839,12 @@ exports.modules = {
     function V(a) {
       if (a.async) {
         var b = mb.get(a.id);
-        if ("fulfilled" === b.status) b = b.value;
+        if ('fulfilled' === b.status) b = b.value;
         else throw b.reason;
       } else b = globalThis.__next_require__(a.id);
-      return "*" === a.name
+      return '*' === a.name
         ? b
-        : "" === a.name
+        : '' === a.name
         ? b.__esModule
           ? b.default
           : b
@@ -7858,15 +7859,15 @@ exports.modules = {
     W.prototype = Object.create(Promise.prototype);
     W.prototype.then = function (a, b) {
       switch (this.status) {
-        case "resolved_model":
+        case 'resolved_model':
           pb(this);
       }
       switch (this.status) {
-        case "fulfilled":
+        case 'fulfilled':
           a(this.value);
           break;
-        case "pending":
-        case "blocked":
+        case 'pending':
+        case 'blocked':
           a && (null === this.value && (this.value = []), this.value.push(a));
           b &&
             (null === this.reason && (this.reason = []), this.reason.push(b));
@@ -7879,9 +7880,9 @@ exports.modules = {
       for (var d = 0; d < a.length; d++) (0, a[d])(b);
     }
     function rb(a, b) {
-      if ("pending" === a.status || "blocked" === a.status) {
+      if ('pending' === a.status || 'blocked' === a.status) {
         var d = a.reason;
-        a.status = "rejected";
+        a.status = 'rejected';
         a.reason = b;
         null !== d && qb(d, b);
       }
@@ -7914,19 +7915,19 @@ exports.modules = {
         var c = JSON.parse(a.value, a._response._fromJSON);
         null !== Y && 0 < Y.deps
           ? ((Y.value = c),
-            (a.status = "blocked"),
+            (a.status = 'blocked'),
             (a.value = null),
             (a.reason = null))
-          : ((a.status = "fulfilled"), (a.value = c));
+          : ((a.status = 'fulfilled'), (a.value = c));
       } catch (e) {
-        (a.status = "rejected"), (a.reason = e);
+        (a.status = 'rejected'), (a.reason = e);
       } finally {
         (X = b), (Y = d);
       }
     }
     function xb(a, b) {
       a._chunks.forEach(function (d) {
-        "pending" === d.status && rb(d, b);
+        'pending' === d.status && rb(d, b);
       });
     }
     function Z(a, b) {
@@ -7936,8 +7937,8 @@ exports.modules = {
         ((c = a._formData.get(a._prefix + b)),
         (c =
           null != c
-            ? new W("resolved_model", c, null, a)
-            : new W("pending", null, null, a)),
+            ? new W('resolved_model', c, null, a)
+            : new W('pending', null, null, a)),
         d.set(b, c));
       return c;
     }
@@ -7954,9 +7955,9 @@ exports.modules = {
         b[d] = e;
         c.deps--;
         0 === c.deps &&
-          "blocked" === a.status &&
+          'blocked' === a.status &&
           ((e = a.value),
-          (a.status = "fulfilled"),
+          (a.status = 'fulfilled'),
           (a.value = c.value),
           null !== e && qb(e, c.value));
       };
@@ -7967,53 +7968,53 @@ exports.modules = {
       };
     }
     function yb(a, b, d, c) {
-      if ("$" === c[0])
+      if ('$' === c[0])
         switch (c[1]) {
-          case "$":
+          case '$':
             return c.slice(1);
-          case "@":
+          case '@':
             return (b = parseInt(c.slice(2), 16)), Z(a, b);
-          case "S":
+          case 'S':
             return Symbol.for(c.slice(2));
-          case "F":
+          case 'F':
             c = parseInt(c.slice(2), 16);
             c = Z(a, c);
-            "resolved_model" === c.status && pb(c);
-            if ("fulfilled" !== c.status) throw c.reason;
+            'resolved_model' === c.status && pb(c);
+            if ('fulfilled' !== c.status) throw c.reason;
             c = c.value;
             return sb(a, c.id, c.bound, X, b, d);
-          case "K":
+          case 'K':
             b = c.slice(2);
-            var e = a._prefix + b + "_",
+            var e = a._prefix + b + '_',
               f = new FormData();
             a._formData.forEach(function (g, h) {
               h.startsWith(e) && f.append(h.slice(e.length), g);
             });
             return f;
-          case "I":
+          case 'I':
             return Infinity;
-          case "-":
-            return "$-0" === c ? -0 : -Infinity;
-          case "N":
+          case '-':
+            return '$-0' === c ? -0 : -Infinity;
+          case 'N':
             return NaN;
-          case "u":
+          case 'u':
             return;
-          case "D":
+          case 'D':
             return new Date(Date.parse(c.slice(2)));
-          case "n":
+          case 'n':
             return BigInt(c.slice(2));
           default:
             c = parseInt(c.slice(1), 16);
             a = Z(a, c);
             switch (a.status) {
-              case "resolved_model":
+              case 'resolved_model':
                 pb(a);
             }
             switch (a.status) {
-              case "fulfilled":
+              case 'fulfilled':
                 return a.value;
-              case "pending":
-              case "blocked":
+              case 'pending':
+              case 'blocked':
                 return (c = X), a.then(tb(c, b, d), ub(c)), null;
               default:
                 throw a.reason;
@@ -8033,13 +8034,13 @@ exports.modules = {
           _formData: d,
           _chunks: c,
           _fromJSON: function (f, g) {
-            return "string" === typeof g ? yb(e, this, f, g) : g;
+            return 'string' === typeof g ? yb(e, this, f, g) : g;
           },
         };
       return e;
     }
     function Ab(a) {
-      xb(a, Error("Connection closed."));
+      xb(a, Error('Connection closed.'));
     }
     function Bb(a, b, d) {
       var c = lb(a, b);
@@ -8060,18 +8061,18 @@ exports.modules = {
       var d = new FormData(),
         c = null;
       a.forEach(function (e, f) {
-        if (f.startsWith("$ACTION_"))
-          if (f.startsWith("$ACTION_REF_")) {
-            e = "$ACTION_" + f.slice(12) + ":";
+        if (f.startsWith('$ACTION_'))
+          if (f.startsWith('$ACTION_REF_')) {
+            e = '$ACTION_' + f.slice(12) + ':';
             e = zb(b, e, a);
             Ab(e);
             e = Z(e, 0);
             e.then(function () {});
-            if ("fulfilled" !== e.status) throw e.reason;
+            if ('fulfilled' !== e.status) throw e.reason;
             e = e.value;
             c = Bb(b, e.id, e.bound);
           } else
-            f.startsWith("$ACTION_ID_") &&
+            f.startsWith('$ACTION_ID_') &&
               ((e = f.slice(11)), (c = Bb(b, e, null)));
         else d.append(f, e);
       });
@@ -8082,12 +8083,12 @@ exports.modules = {
           });
     };
     exports.decodeReply = function (a, b) {
-      if ("string" === typeof a) {
+      if ('string' === typeof a) {
         var d = new FormData();
-        d.append("0", a);
+        d.append('0', a);
         a = d;
       }
-      a = zb(b, "", a);
+      a = zb(b, '', a);
       Ab(a);
       return Z(a, 0);
     };
@@ -8105,14 +8106,14 @@ exports.modules = {
         else {
           var f = function () {
             kb(c, e.reason);
-            e.removeEventListener("abort", f);
+            e.removeEventListener('abort', f);
           };
-          e.addEventListener("abort", f);
+          e.addEventListener('abort', f);
         }
       }
       return new ReadableStream(
         {
-          type: "bytes",
+          type: 'bytes',
           start: function () {
             jb(c);
           },
@@ -8139,7 +8140,7 @@ exports.modules = {
   },
 
   /***/ 7902: /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
     if (true) {
       module.exports = __webpack_require__(8387);
@@ -8150,7 +8151,7 @@ exports.modules = {
   },
 
   /***/ 7789: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
     /**
      * @license React
      * react.shared-subset.production.min.js
@@ -8167,16 +8168,16 @@ exports.modules = {
     function p() {
       return new Map();
     }
-    if ("function" === typeof fetch) {
+    if ('function' === typeof fetch) {
       var q = fetch,
         r = function (a, b) {
           var d = n.current;
           if (!d || (b && b.signal && b.signal !== d.getCacheSignal()))
             return q(a, b);
-          if ("string" !== typeof a || b) {
+          if ('string' !== typeof a || b) {
             var c =
-              "string" === typeof a || a instanceof URL ? new Request(a, b) : a;
-            if (("GET" !== c.method && "HEAD" !== c.method) || c.keepalive)
+              'string' === typeof a || a instanceof URL ? new Request(a, b) : a;
+            if (('GET' !== c.method && 'HEAD' !== c.method) || c.keepalive)
               return q(a, b);
             var e = JSON.stringify([
               c.method,
@@ -8220,43 +8221,43 @@ exports.modules = {
           globalThis.fetch = r;
         } catch (b) {
           console.warn(
-            "React was unable to patch the fetch() function in this environment. Suspensey APIs might not work correctly as a result."
+            'React was unable to patch the fetch() function in this environment. Suspensey APIs might not work correctly as a result.'
           );
         }
       }
     }
-    var t = Symbol.for("react.element"),
-      u = Symbol.for("react.portal"),
-      v = Symbol.for("react.fragment"),
-      w = Symbol.for("react.strict_mode"),
-      x = Symbol.for("react.profiler"),
-      y = Symbol.for("react.provider"),
-      z = Symbol.for("react.server_context"),
-      A = Symbol.for("react.forward_ref"),
-      B = Symbol.for("react.suspense"),
-      C = Symbol.for("react.memo"),
-      aa = Symbol.for("react.lazy"),
-      D = Symbol.for("react.default_value"),
+    var t = Symbol.for('react.element'),
+      u = Symbol.for('react.portal'),
+      v = Symbol.for('react.fragment'),
+      w = Symbol.for('react.strict_mode'),
+      x = Symbol.for('react.profiler'),
+      y = Symbol.for('react.provider'),
+      z = Symbol.for('react.server_context'),
+      A = Symbol.for('react.forward_ref'),
+      B = Symbol.for('react.suspense'),
+      C = Symbol.for('react.memo'),
+      aa = Symbol.for('react.lazy'),
+      D = Symbol.for('react.default_value'),
       E = Symbol.iterator;
     function ba(a) {
-      if (null === a || "object" !== typeof a) return null;
-      a = (E && a[E]) || a["@@iterator"];
-      return "function" === typeof a ? a : null;
+      if (null === a || 'object' !== typeof a) return null;
+      a = (E && a[E]) || a['@@iterator'];
+      return 'function' === typeof a ? a : null;
     }
     function F(a) {
       for (
-        var b = "https://reactjs.org/docs/error-decoder.html?invariant=" + a,
+        var b = 'https://reactjs.org/docs/error-decoder.html?invariant=' + a,
           d = 1;
         d < arguments.length;
         d++
       )
-        b += "&args[]=" + encodeURIComponent(arguments[d]);
+        b += '&args[]=' + encodeURIComponent(arguments[d]);
       return (
-        "Minified React error #" +
+        'Minified React error #' +
         a +
-        "; visit " +
+        '; visit ' +
         b +
-        " for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ' for the full message or use the non-minified dev environment for full errors and additional helpful warnings.'
       );
     }
     var G = {
@@ -8276,12 +8277,12 @@ exports.modules = {
     }
     I.prototype.isReactComponent = {};
     I.prototype.setState = function (a, b) {
-      if ("object" !== typeof a && "function" !== typeof a && null != a)
+      if ('object' !== typeof a && 'function' !== typeof a && null != a)
         throw Error(F(85));
-      this.updater.enqueueSetState(this, a, b, "setState");
+      this.updater.enqueueSetState(this, a, b, 'setState');
     };
     I.prototype.forceUpdate = function (a) {
-      this.updater.enqueueForceUpdate(this, a, "forceUpdate");
+      this.updater.enqueueForceUpdate(this, a, 'forceUpdate');
     };
     function J() {}
     J.prototype = I.prototype;
@@ -8317,15 +8318,15 @@ exports.modules = {
       };
     }
     function Q(a) {
-      return "object" === typeof a && null !== a && a.$$typeof === t;
+      return 'object' === typeof a && null !== a && a.$$typeof === t;
     }
     function escape(a) {
       var b = {
-        "=": "=0",
-        ":": "=2",
+        '=': '=0',
+        ':': '=2',
       };
       return (
-        "$" +
+        '$' +
         a.replace(/[=:]/g, function (d) {
           return b[d];
         })
@@ -8333,22 +8334,22 @@ exports.modules = {
     }
     var R = /\/+/g;
     function S(a, b) {
-      return "object" === typeof a && null !== a && null != a.key
-        ? escape("" + a.key)
+      return 'object' === typeof a && null !== a && null != a.key
+        ? escape('' + a.key)
         : b.toString(36);
     }
     function T(a, b, d, c, e) {
       var f = typeof a;
-      if ("undefined" === f || "boolean" === f) a = null;
+      if ('undefined' === f || 'boolean' === f) a = null;
       var h = !1;
       if (null === a) h = !0;
       else
         switch (f) {
-          case "string":
-          case "number":
+          case 'string':
+          case 'number':
             h = !0;
             break;
-          case "object":
+          case 'object':
             switch (a.$$typeof) {
               case t:
               case u:
@@ -8359,11 +8360,11 @@ exports.modules = {
         return (
           (h = a),
           (e = e(h)),
-          (a = "" === c ? "." + S(h, 0) : c),
+          (a = '' === c ? '.' + S(h, 0) : c),
           M(e)
-            ? ((d = ""),
-              null != a && (d = a.replace(R, "$&/") + "/"),
-              T(e, b, d, "", function (l) {
+            ? ((d = ''),
+              null != a && (d = a.replace(R, '$&/') + '/'),
+              T(e, b, d, '', function (l) {
                 return l;
               }))
             : null != e &&
@@ -8372,32 +8373,32 @@ exports.modules = {
                   e,
                   d +
                     (!e.key || (h && h.key === e.key)
-                      ? ""
-                      : ("" + e.key).replace(R, "$&/") + "/") +
+                      ? ''
+                      : ('' + e.key).replace(R, '$&/') + '/') +
                     a
                 )),
               b.push(e)),
           1
         );
       h = 0;
-      c = "" === c ? "." : c + ":";
+      c = '' === c ? '.' : c + ':';
       if (M(a))
         for (var g = 0; g < a.length; g++) {
           f = a[g];
           var k = c + S(f, g);
           h += T(f, b, d, k, e);
         }
-      else if (((k = ba(a)), "function" === typeof k))
+      else if (((k = ba(a)), 'function' === typeof k))
         for (a = k.call(a), g = 0; !(f = a.next()).done; )
           (f = f.value), (k = c + S(f, g++)), (h += T(f, b, d, k, e));
-      else if ("object" === f)
+      else if ('object' === f)
         throw (
           ((b = String(a)),
           Error(
             F(
               31,
-              "[object Object]" === b
-                ? "object with keys {" + Object.keys(a).join(", ") + "}"
+              '[object Object]' === b
+                ? 'object with keys {' + Object.keys(a).join(', ') + '}'
                 : b
             )
           ))
@@ -8408,7 +8409,7 @@ exports.modules = {
       if (null == a) return a;
       var c = [],
         e = 0;
-      T(a, c, "", "", function (f) {
+      T(a, c, '', '', function (f) {
         return b.call(d, f, e++);
       });
       return c;
@@ -8503,8 +8504,8 @@ exports.modules = {
         for (var c = arguments.length; d < c; d++) {
           var e = arguments[d];
           if (
-            "function" === typeof e ||
-            ("object" === typeof e && null !== e)
+            'function' === typeof e ||
+            ('object' === typeof e && null !== e)
           ) {
             var f = b.o;
             null === f && (b.o = f = new WeakMap());
@@ -8536,7 +8537,7 @@ exports.modules = {
         h = a._owner;
       if (null != b) {
         void 0 !== b.ref && ((f = b.ref), (h = O.current));
-        void 0 !== b.key && (e = "" + b.key);
+        void 0 !== b.key && (e = '' + b.key);
         if (a.type && a.type.defaultProps) var g = a.type.defaultProps;
         for (k in b)
           N.call(b, k) &&
@@ -8566,7 +8567,7 @@ exports.modules = {
         h = null;
       if (null != b)
         for (c in (void 0 !== b.ref && (h = b.ref),
-        void 0 !== b.key && (f = "" + b.key),
+        void 0 !== b.key && (f = '' + b.key),
         b))
           N.call(b, c) && !P.hasOwnProperty(c) && (e[c] = b[c]);
       var g = arguments.length - 2;
@@ -8668,13 +8669,13 @@ exports.modules = {
     exports.useMemo = function (a, b) {
       return W.current.useMemo(a, b);
     };
-    exports.version = "18.3.0-canary-16d053d59-20230506";
+    exports.version = '18.3.0-canary-16d053d59-20230506';
 
     /***/
   },
 
   /***/ 7887: /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
     if (true) {
       module.exports = __webpack_require__(7789);
@@ -8685,9 +8686,9 @@ exports.modules = {
   },
 
   /***/ 3180: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -8729,8 +8730,8 @@ exports.modules = {
      * /app/open-graph.tsx -> /open-graph/route
      * /app/(post)/open-graph.tsx -> /open-graph/route-[0-9a-z]{6}
      */ function getMetadataRouteSuffix(page) {
-      let suffix = "";
-      if ((page.includes("(") && page.includes(")")) || page.includes("@")) {
+      let suffix = '';
+      if ((page.includes('(') && page.includes(')')) || page.includes('@')) {
         suffix = (0, _hash.djb2Hash)(page).toString(36).slice(0, 6);
       }
       return suffix;
@@ -8744,7 +8745,7 @@ exports.modules = {
         routeRegex
       );
       const suffix = getMetadataRouteSuffix(segment);
-      const routeSuffix = suffix ? `-${suffix}` : "";
+      const routeSuffix = suffix ? `-${suffix}` : '';
       const { name, ext } = _path.default.parse(imageSegment);
       return _path.default.join(route, `${name}${routeSuffix}${ext}`);
     }
@@ -8753,13 +8754,13 @@ exports.modules = {
         return page;
       }
       let route = page;
-      let suffix = "";
-      if (route === "/robots") {
-        route += ".txt";
-      } else if (route === "/manifest") {
-        route += ".webmanifest";
-      } else if (route.endsWith("/sitemap")) {
-        route += ".xml";
+      let suffix = '';
+      if (route === '/robots') {
+        route += '.txt';
+      } else if (route === '/manifest') {
+        route += '.webmanifest';
+      } else if (route.endsWith('/sitemap')) {
+        route += '.xml';
       } else {
         // Remove the file extension, e.g. /route-path/robots.txt -> /route-path
         const pathnamePrefix = page.slice(
@@ -8770,7 +8771,7 @@ exports.modules = {
       }
       // Support both /<metadata-route.ext> and custom routes /<metadata-route>/route.ts.
       // If it's a metadata file route, we need to append /[id]/route to the page.
-      if (!route.endsWith("/route")) {
+      if (!route.endsWith('/route')) {
         const isStaticMetadataFile = (0, _ismetadataroute.isMetadataRouteFile)(
           page,
           [],
@@ -8778,14 +8779,14 @@ exports.modules = {
         );
         const { dir, name: baseName, ext } = _path.default.parse(route);
         const isStaticRoute =
-          page.startsWith("/robots") ||
-          page.startsWith("/manifest") ||
+          page.startsWith('/robots') ||
+          page.startsWith('/manifest') ||
           isStaticMetadataFile;
         route = _path.default.posix.join(
           dir,
-          `${baseName}${suffix ? `-${suffix}` : ""}${ext}`,
-          isStaticRoute ? "" : "[[...__metadata_id__]]",
-          "route"
+          `${baseName}${suffix ? `-${suffix}` : ''}${ext}`,
+          isStaticRoute ? '' : '[[...__metadata_id__]]',
+          'route'
         );
       }
       return route;
@@ -8795,9 +8796,9 @@ exports.modules = {
   },
 
   /***/ 8865: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -8821,31 +8822,31 @@ exports.modules = {
     });
     const STATIC_METADATA_IMAGES = {
       icon: {
-        filename: "icon",
-        extensions: ["ico", "jpg", "jpeg", "png", "svg"],
+        filename: 'icon',
+        extensions: ['ico', 'jpg', 'jpeg', 'png', 'svg'],
       },
       apple: {
-        filename: "apple-icon",
-        extensions: ["jpg", "jpeg", "png"],
+        filename: 'apple-icon',
+        extensions: ['jpg', 'jpeg', 'png'],
       },
       favicon: {
-        filename: "favicon",
-        extensions: ["ico"],
+        filename: 'favicon',
+        extensions: ['ico'],
       },
       openGraph: {
-        filename: "opengraph-image",
-        extensions: ["jpg", "jpeg", "png", "gif"],
+        filename: 'opengraph-image',
+        extensions: ['jpg', 'jpeg', 'png', 'gif'],
       },
       twitter: {
-        filename: "twitter-image",
-        extensions: ["jpg", "jpeg", "png", "gif"],
+        filename: 'twitter-image',
+        extensions: ['jpg', 'jpeg', 'png', 'gif'],
       },
     };
     // Match routes that are metadata routes, e.g. /sitemap.xml, /favicon.<ext>, /<icon>.<ext>, etc.
     // TODO-METADATA: support more metadata routes with more extensions
-    const defaultExtensions = ["js", "jsx", "ts", "tsx"];
+    const defaultExtensions = ['js', 'jsx', 'ts', 'tsx'];
     const getExtensionRegexString = (extensions) =>
-      `(?:${extensions.join("|")})`;
+      `(?:${extensions.join('|')})`;
     function isMetadataRouteFile(
       appDirRelativePath,
       pageExtensions,
@@ -8855,25 +8856,25 @@ exports.modules = {
         new RegExp(
           `^[\\\\/]robots${
             withExtension
-              ? `\\.${getExtensionRegexString(pageExtensions.concat("txt"))}$`
-              : ""
+              ? `\\.${getExtensionRegexString(pageExtensions.concat('txt'))}$`
+              : ''
           }`
         ),
         new RegExp(
           `^[\\\\/]manifest${
             withExtension
               ? `\\.${getExtensionRegexString(
-                  pageExtensions.concat("webmanifest", "json")
+                  pageExtensions.concat('webmanifest', 'json')
                 )}$`
-              : ""
+              : ''
           }`
         ),
         new RegExp(`^[\\\\/]favicon\\.ico$`),
         new RegExp(
           `[\\\\/]sitemap${
             withExtension
-              ? `\\.${getExtensionRegexString(pageExtensions.concat("xml"))}$`
-              : ""
+              ? `\\.${getExtensionRegexString(pageExtensions.concat('xml'))}$`
+              : ''
           }`
         ),
         new RegExp(
@@ -8882,7 +8883,7 @@ exports.modules = {
               ? `\\.${getExtensionRegexString(
                   pageExtensions.concat(STATIC_METADATA_IMAGES.icon.extensions)
                 )}$`
-              : ""
+              : ''
           }`
         ),
         new RegExp(
@@ -8891,7 +8892,7 @@ exports.modules = {
               ? `\\.${getExtensionRegexString(
                   pageExtensions.concat(STATIC_METADATA_IMAGES.apple.extensions)
                 )}$`
-              : ""
+              : ''
           }`
         ),
         new RegExp(
@@ -8902,7 +8903,7 @@ exports.modules = {
                     STATIC_METADATA_IMAGES.openGraph.extensions
                   )
                 )}$`
-              : ""
+              : ''
           }`
         ),
         new RegExp(
@@ -8913,17 +8914,17 @@ exports.modules = {
                     STATIC_METADATA_IMAGES.twitter.extensions
                   )
                 )}$`
-              : ""
+              : ''
           }`
         ),
       ];
       return metadataRouteFilesRegex.some((r) => r.test(appDirRelativePath));
     }
     function isMetadataRoute(route) {
-      let page = route.replace(/^\/?app\//, "").replace(/\/route$/, "");
-      if (page[0] !== "/") page = "/" + page;
+      let page = route.replace(/^\/?app\//, '').replace(/\/route$/, '');
+      if (page[0] !== '/') page = '/' + page;
       return (
-        !page.endsWith("/page") &&
+        !page.endsWith('/page') &&
         isMetadataRouteFile(page, defaultExtensions, false)
       );
     } //# sourceMappingURL=is-metadata-route.js.map
@@ -8932,12 +8933,12 @@ exports.modules = {
   },
 
   /***/ 2112: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "acceptLanguage", {
+    Object.defineProperty(exports, 'acceptLanguage', {
       enumerable: true,
       get: function () {
         return acceptLanguage;
@@ -8945,7 +8946,7 @@ exports.modules = {
     });
     function parse(raw, preferences, options) {
       const lowers = new Map();
-      const header = raw.replace(/[ \t]/g, "");
+      const header = raw.replace(/[ \t]/g, '');
       if (preferences) {
         let pos = 0;
         for (const preference of preferences) {
@@ -8955,9 +8956,9 @@ exports.modules = {
             pos: pos++,
           });
           if (options.prefixMatch) {
-            const parts = lower.split("-");
+            const parts = lower.split('-');
             while ((parts.pop(), parts.length > 0)) {
-              const joined = parts.join("-");
+              const joined = parts.join('-');
               if (!lowers.has(joined)) {
                 lowers.set(joined, {
                   orig: preference,
@@ -8968,7 +8969,7 @@ exports.modules = {
           }
         }
       }
-      const parts = header.split(",");
+      const parts = header.split(',');
       const selections = [];
       const map = new Set();
       for (let i = 0; i < parts.length; ++i) {
@@ -8976,7 +8977,7 @@ exports.modules = {
         if (!part) {
           continue;
         }
-        const params = part.split(";");
+        const params = part.split(';');
         if (params.length > 2) {
           throw new Error(`Invalid ${options.type} header`);
         }
@@ -8995,8 +8996,8 @@ exports.modules = {
         map.add(selection.token);
         if (params.length === 2) {
           const q = params[1];
-          const [key, value] = q.split("=");
-          if (!value || (key !== "q" && key !== "Q")) {
+          const [key, value] = q.split('=');
+          if (!value || (key !== 'q' && key !== 'Q')) {
             throw new Error(`Invalid ${options.type} header`);
           }
           const score = parseFloat(value);
@@ -9030,7 +9031,7 @@ exports.modules = {
       }
       const preferred = [];
       for (const selection of values) {
-        if (selection === "*") {
+        if (selection === '*') {
           for (const [preference, value] of lowers) {
             if (!map.has(preference)) {
               preferred.push(value.orig);
@@ -9045,12 +9046,12 @@ exports.modules = {
       }
       return preferred;
     }
-    function acceptLanguage(header = "", preferences) {
+    function acceptLanguage(header = '', preferences) {
       return (
         parse(header, preferences, {
-          type: "accept-language",
+          type: 'accept-language',
           prefixMatch: true,
-        })[0] || ""
+        })[0] || ''
       );
     } //# sourceMappingURL=accept-header.js.map
 
@@ -9058,13 +9059,13 @@ exports.modules = {
   },
 
   /***/ 3099: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /*
 
 Files in the rsc directory are meant to be packaged as part of the RSC graph using next-app-loader.
 
 */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -9097,19 +9098,19 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
           };
     }
     const stylePreloadOptions = {
-      as: "style",
+      as: 'style',
     };
     function preloadStyle(href) {
       _reactdom.default.preload(href, stylePreloadOptions);
     }
     function preloadFont(href, type) {
       _reactdom.default.preload(href, {
-        as: "font",
+        as: 'font',
         type,
       });
     }
     function preconnect(href, crossOrigin) {
-      if (typeof crossOrigin === "string") {
+      if (typeof crossOrigin === 'string') {
         _reactdom.default.preconnect(href, {
           crossOrigin,
         });
@@ -9122,9 +9123,9 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 3958: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -9147,12 +9148,12 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       },
     });
     const _apppaths = __webpack_require__(8401);
-    const INTERCEPTION_ROUTE_MARKERS = ["(..)(..)", "(.)", "(..)", "(...)"];
+    const INTERCEPTION_ROUTE_MARKERS = ['(..)(..)', '(.)', '(..)', '(...)'];
     function isInterceptionRouteAppPath(path) {
       // TODO-APP: add more serious validation
       return (
         path
-          .split("/")
+          .split('/')
           .find((segment) =>
             INTERCEPTION_ROUTE_MARKERS.find((m) => segment.startsWith(m))
           ) !== undefined
@@ -9160,7 +9161,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     }
     function extractInterceptionRouteInformation(path) {
       let interceptingRoute, marker, interceptedRoute;
-      for (const segment of path.split("/")) {
+      for (const segment of path.split('/')) {
         marker = INTERCEPTION_ROUTE_MARKERS.find((m) => segment.startsWith(m));
         if (marker) {
           [interceptingRoute, interceptedRoute] = path.split(marker, 2);
@@ -9174,34 +9175,34 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       }
       interceptingRoute = (0, _apppaths.normalizeAppPath)(interceptingRoute); // normalize the path, e.g. /(blog)/feed -> /feed
       switch (marker) {
-        case "(.)":
+        case '(.)':
           // (.) indicates that we should match with sibling routes, so we just need to append the intercepted route to the intercepting route
-          if (interceptingRoute === "/") {
+          if (interceptingRoute === '/') {
             interceptedRoute = `/${interceptedRoute}`;
           } else {
-            interceptedRoute = interceptingRoute + "/" + interceptedRoute;
+            interceptedRoute = interceptingRoute + '/' + interceptedRoute;
           }
           break;
-        case "(..)":
+        case '(..)':
           // (..) indicates that we should match at one level up, so we need to remove the last segment of the intercepting route
-          if (interceptingRoute === "/") {
+          if (interceptingRoute === '/') {
             throw new Error(
               `Invalid interception route: ${path}. Cannot use (..) marker at the root level, use (.) instead.`
             );
           }
           interceptedRoute = interceptingRoute
-            .split("/")
+            .split('/')
             .slice(0, -1)
             .concat(interceptedRoute)
-            .join("/");
+            .join('/');
           break;
-        case "(...)":
+        case '(...)':
           // (...) will match the route segment in the root directory, so we need to use the root directory to prepend the intercepted route
-          interceptedRoute = "/" + interceptedRoute;
+          interceptedRoute = '/' + interceptedRoute;
           break;
-        case "(..)(..)":
+        case '(..)(..)':
           // (..)(..) indicates that we should match at two levels up, so we need to remove the last two segments of the intercepting route
-          const splitInterceptingRoute = interceptingRoute.split("/");
+          const splitInterceptingRoute = interceptingRoute.split('/');
           if (splitInterceptingRoute.length <= 2) {
             throw new Error(
               `Invalid interception route: ${path}. Cannot use (..)(..) marker at the root level or one level up.`
@@ -9210,10 +9211,10 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
           interceptedRoute = splitInterceptingRoute
             .slice(0, -2)
             .concat(interceptedRoute)
-            .join("/");
+            .join('/');
           break;
         default:
-          throw new Error("Invariant: unexpected marker");
+          throw new Error('Invariant: unexpected marker');
       }
       return {
         interceptingRoute,
@@ -9225,9 +9226,9 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 3271: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
     /* eslint-disable no-redeclare */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -9255,10 +9256,10 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
         return getNextInternalQuery;
       },
     });
-    const NEXT_REQUEST_META = Symbol.for("NextInternalRequestMeta");
+    const NEXT_REQUEST_META = Symbol.for('NextInternalRequestMeta');
     function getRequestMeta(req, key) {
       const meta = req[NEXT_REQUEST_META] || {};
-      return typeof key === "string" ? meta[key] : meta;
+      return typeof key === 'string' ? meta[key] : meta;
     }
     function setRequestMeta(req, meta) {
       req[NEXT_REQUEST_META] = meta;
@@ -9271,13 +9272,13 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     }
     function getNextInternalQuery(query) {
       const keysToInclude = [
-        "__nextDefaultLocale",
-        "__nextFallback",
-        "__nextLocale",
-        "__nextSsgPath",
-        "_nextBubbleNoFallback",
-        "__nextDataReq",
-        "__nextInferredLocaleFromDefault",
+        '__nextDefaultLocale',
+        '__nextFallback',
+        '__nextLocale',
+        '__nextSsgPath',
+        '_nextBubbleNoFallback',
+        '__nextDataReq',
+        '__nextInferredLocaleFromDefault',
       ];
       const nextInternalQuery = {};
       for (const key of keysToInclude) {
@@ -9293,9 +9294,9 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 3160: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -9370,7 +9371,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       if (!defaultRouteRegex) return pathname;
       for (const param of Object.keys(defaultRouteRegex.groups)) {
         const { optional, repeat } = defaultRouteRegex.groups[param];
-        let builtParam = `[${repeat ? "..." : ""}${param}]`;
+        let builtParam = `[${repeat ? '...' : ''}${param}]`;
         if (optional) {
           builtParam = `[${builtParam}]`;
         }
@@ -9379,11 +9380,11 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
           let paramValue;
           const value = params[param];
           if (Array.isArray(value)) {
-            paramValue = value.map((v) => v && encodeURIComponent(v)).join("/");
+            paramValue = value.map((v) => v && encodeURIComponent(v)).join('/');
           } else if (value) {
             paramValue = encodeURIComponent(value);
           } else {
-            paramValue = "";
+            paramValue = '';
           }
           pathname =
             pathname.slice(0, paramIdx) +
@@ -9416,7 +9417,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
         let fsPathname = parsedUrl.pathname;
         const matchesPage = () => {
           const fsPathnameNoSlash = (0,
-          _removetrailingslash.removeTrailingSlash)(fsPathname || "");
+          _removetrailingslash.removeTrailingSlash)(fsPathname || '');
           return (
             fsPathnameNoSlash ===
               (0, _removetrailingslash.removeTrailingSlash)(page) ||
@@ -9427,7 +9428,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
         };
         const checkRewrite = (rewrite) => {
           const matcher = (0, _pathmatch.getPathMatch)(
-            rewrite.source + (trailingSlash ? "(/)?" : ""),
+            rewrite.source + (trailingSlash ? '(/)?' : ''),
             {
               removeUnnamedParams: true,
               strict: true,
@@ -9466,7 +9467,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
             fsPathname = parsedUrl.pathname;
             if (basePath) {
               fsPathname =
-                fsPathname.replace(new RegExp(`^${basePath}`), "") || "/";
+                fsPathname.replace(new RegExp(`^${basePath}`), '') || '/';
             }
             if (i18n) {
               const destLocalePathResult = (0,
@@ -9515,9 +9516,9 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       }
       function handleBasePath(req, parsedUrl) {
         // always strip the basePath if configured since it is required
-        req.url = req.url.replace(new RegExp(`^${basePath}`), "") || "/";
+        req.url = req.url.replace(new RegExp(`^${basePath}`), '') || '/';
         parsedUrl.pathname =
-          parsedUrl.pathname.replace(new RegExp(`^${basePath}`), "") || "/";
+          parsedUrl.pathname.replace(new RegExp(`^${basePath}`), '') || '/';
       }
       function getParamsFromRouteMatches(req, renderOpts, detectedLocale) {
         return (0, _routematcher.getRouteMatcher)(
@@ -9529,7 +9530,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
                 exec: (str) => {
                   const obj = Object.fromEntries(new URLSearchParams(str));
                   const matchesHasLocale =
-                    i18n && detectedLocale && obj["1"] === detectedLocale;
+                    i18n && detectedLocale && obj['1'] === detectedLocale;
                   for (const key of Object.keys(obj)) {
                     const value = obj[key];
                     if (
@@ -9553,7 +9554,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
                       const isCatchAll = Array.isArray(val);
                       const _val = isCatchAll ? val[0] : val;
                       if (
-                        typeof _val === "string" &&
+                        typeof _val === 'string' &&
                         i18n.locales.some((item) => {
                           if (item.toLowerCase() === _val.toLowerCase()) {
                             detectedLocale = item;
@@ -9588,7 +9589,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
                     if (!filterLocaleItem(obj[key])) {
                       let normalizedKey = key;
                       if (matchesHasLocale) {
-                        normalizedKey = parseInt(key, 10) - 1 + "";
+                        normalizedKey = parseInt(key, 10) - 1 + '';
                       }
                       return Object.assign(prev, {
                         [normalizedKey]: obj[key],
@@ -9601,7 +9602,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
               groups,
             };
           })()
-        )(req.headers["x-now-route-matches"]);
+        )(req.headers['x-now-route-matches']);
       }
       function normalizeDynamicRouteParams(params, ignoreOptional) {
         let hasValidParams = true;
@@ -9612,12 +9613,12 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
           };
         params = Object.keys(defaultRouteRegex.groups).reduce((prev, key) => {
           let value = params[key];
-          if (typeof value === "string") {
+          if (typeof value === 'string') {
             value = (0, _apppaths.normalizeRscPath)(value, true);
           }
           if (Array.isArray(value)) {
             value = value.map((val) => {
-              if (typeof val === "string") {
+              if (typeof val === 'string') {
                 val = (0, _apppaths.normalizeRscPath)(val, true);
               }
               return val;
@@ -9641,7 +9642,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
             : value.includes(defaultValue);
           if (
             isDefaultValue ||
-            (typeof value === "undefined" && !(isOptional && ignoreOptional))
+            (typeof value === 'undefined' && !(isOptional && ignoreOptional))
           ) {
             hasValidParams = false;
           }
@@ -9653,7 +9654,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
               (Array.isArray(value) &&
                 value.length === 1 && // fallback optional catch-all SSG pages have
                 // [[...paramName]] for the root path on Vercel
-                (value[0] === "index" || value[0] === `[[...${key}]]`)))
+                (value[0] === 'index' || value[0] === `[[...${key}]]`)))
           ) {
             value = undefined;
             delete params[key];
@@ -9662,10 +9663,10 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
           // so make sure to normalize catch-all values
           if (
             value &&
-            typeof value === "string" &&
+            typeof value === 'string' &&
             defaultRouteRegex.groups[key].repeat
           ) {
-            value = value.split("/");
+            value = value.split('/');
           }
           if (value) {
             prev[key] = value;
@@ -9685,7 +9686,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
         shouldNotRedirect
       ) {
         if (!i18n) return;
-        const pathname = parsedUrl.pathname || "/";
+        const pathname = parsedUrl.pathname || '/';
         let defaultLocale = i18n.defaultLocale;
         let detectedLocale = (0, _detectlocalecookie.detectLocaleCookie)(
           req,
@@ -9696,7 +9697,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
           acceptPreferredLocale =
             i18n.localeDetection !== false
               ? (0, _acceptheader.acceptLanguage)(
-                  req.headers["accept-language"],
+                  req.headers['accept-language'],
                   i18n.locales
                 )
               : detectedLocale;
@@ -9705,7 +9706,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
         }
         const { host } = req.headers || {};
         // remove port from host and remove port if present
-        const hostname = host && host.split(":")[0].toLowerCase();
+        const hostname = host && host.split(':')[0].toLowerCase();
         const detectedDomain = (0, _detectdomainlocale.detectDomainLocale)(
           i18n.domains,
           hostname
@@ -9713,7 +9714,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
         if (detectedDomain) {
           defaultLocale = detectedDomain.defaultLocale;
           detectedLocale = defaultLocale;
-          (0, _requestmeta.addRequestMeta)(req, "__nextIsLocaleDomain", true);
+          (0, _requestmeta.addRequestMeta)(req, '__nextIsLocaleDomain', true);
         }
         // if not domain specific locale use accept-language preferred
         detectedLocale = detectedLocale || acceptPreferredLocale;
@@ -9732,7 +9733,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
             ...parsedUrl,
             pathname: localePathResult.pathname,
           });
-          (0, _requestmeta.addRequestMeta)(req, "__nextStrippedLocale", true);
+          (0, _requestmeta.addRequestMeta)(req, '__nextStrippedLocale', true);
           parsedUrl.pathname = localePathResult.pathname;
         }
         // If a detected locale is a domain specific locale and we aren't already
@@ -9748,10 +9749,10 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
             localeToCheck
           );
           if (matchedDomain && matchedDomain.domain !== detectedDomain.domain) {
-            localeDomainRedirect = `http${matchedDomain.http ? "" : "s"}://${
+            localeDomainRedirect = `http${matchedDomain.http ? '' : 's'}://${
               matchedDomain.domain
             }/${
-              localeToCheck === matchedDomain.defaultLocale ? "" : localeToCheck
+              localeToCheck === matchedDomain.defaultLocale ? '' : localeToCheck
             }`;
           }
         }
@@ -9764,11 +9765,11 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
         // detectedDefaultLocale &&
         // denormalizedPagePath.toLowerCase() === \`/\${i18n.defaultLocale.toLowerCase()}\`
         const shouldAddLocalePrefix =
-          !detectedDefaultLocale && denormalizedPagePath === "/";
+          !detectedDefaultLocale && denormalizedPagePath === '/';
         detectedLocale = detectedLocale || i18n.defaultLocale;
         if (
           !shouldNotRedirect &&
-          !req.headers["x-vercel-id"] &&
+          !req.headers['x-vercel-id'] &&
           i18n.localeDetection !== false &&
           (localeDomainRedirect ||
             shouldAddLocalePrefix ||
@@ -9781,28 +9782,28 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
             shouldStripDefaultLocale &&
             acceptPreferredLocale !== defaultLocale
           ) {
-            const previous = res.getHeader("set-cookie");
-            res.setHeader("set-cookie", [
-              ...(typeof previous === "string"
+            const previous = res.getHeader('set-cookie');
+            res.setHeader('set-cookie', [
+              ...(typeof previous === 'string'
                 ? [previous]
                 : Array.isArray(previous)
                 ? previous
                 : []),
-              _cookie.default.serialize("NEXT_LOCALE", defaultLocale, {
+              _cookie.default.serialize('NEXT_LOCALE', defaultLocale, {
                 httpOnly: true,
-                path: "/",
+                path: '/',
               }),
             ]);
           }
           res.setHeader(
-            "Location",
+            'Location',
             (0, _url.format)({
               // make sure to include any query values when redirecting
               ...parsedUrl,
               pathname: localeDomainRedirect
                 ? localeDomainRedirect
                 : shouldStripDefaultLocale
-                ? basePath || "/"
+                ? basePath || '/'
                 : `${basePath}/${detectedLocale}`,
             })
           );
@@ -9846,9 +9847,9 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 2205: /***/ (module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -10061,118 +10062,118 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       __webpack_require__(2159)
     );
     const COMPILER_NAMES = {
-      client: "client",
-      server: "server",
-      edgeServer: "edge-server",
+      client: 'client',
+      server: 'server',
+      edgeServer: 'edge-server',
     };
     const COMPILER_INDEXES = {
       [COMPILER_NAMES.client]: 0,
       [COMPILER_NAMES.server]: 1,
       [COMPILER_NAMES.edgeServer]: 2,
     };
-    const PHASE_EXPORT = "phase-export";
-    const PHASE_PRODUCTION_BUILD = "phase-production-build";
-    const PHASE_PRODUCTION_SERVER = "phase-production-server";
-    const PHASE_DEVELOPMENT_SERVER = "phase-development-server";
-    const PHASE_TEST = "phase-test";
-    const PAGES_MANIFEST = "pages-manifest.json";
-    const APP_PATHS_MANIFEST = "app-paths-manifest.json";
-    const APP_PATH_ROUTES_MANIFEST = "app-path-routes-manifest.json";
-    const BUILD_MANIFEST = "build-manifest.json";
-    const APP_BUILD_MANIFEST = "app-build-manifest.json";
-    const SUBRESOURCE_INTEGRITY_MANIFEST = "subresource-integrity-manifest";
-    const NEXT_FONT_MANIFEST = "next-font-manifest";
-    const EXPORT_MARKER = "export-marker.json";
-    const EXPORT_DETAIL = "export-detail.json";
-    const PRERENDER_MANIFEST = "prerender-manifest.json";
-    const ROUTES_MANIFEST = "routes-manifest.json";
-    const IMAGES_MANIFEST = "images-manifest.json";
-    const SERVER_FILES_MANIFEST = "required-server-files.json";
-    const DEV_CLIENT_PAGES_MANIFEST = "_devPagesManifest.json";
-    const MIDDLEWARE_MANIFEST = "middleware-manifest.json";
-    const DEV_MIDDLEWARE_MANIFEST = "_devMiddlewareManifest.json";
-    const REACT_LOADABLE_MANIFEST = "react-loadable-manifest.json";
-    const FONT_MANIFEST = "font-manifest.json";
-    const SERVER_DIRECTORY = "server";
-    const CONFIG_FILES = ["next.config.js", "next.config.mjs"];
-    const BUILD_ID_FILE = "BUILD_ID";
-    const BLOCKED_PAGES = ["/_document", "/_app", "/_error"];
-    const CLIENT_PUBLIC_FILES_PATH = "public";
-    const CLIENT_STATIC_FILES_PATH = "static";
-    const CLIENT_STATIC_FILES_RUNTIME = "runtime";
-    const STRING_LITERAL_DROP_BUNDLE = "__NEXT_DROP_CLIENT_FILE__";
-    const NEXT_BUILTIN_DOCUMENT = "__NEXT_BUILTIN_DOCUMENT__";
-    const NEXT_CLIENT_SSR_ENTRY_SUFFIX = ".__sc_client__";
-    const CLIENT_REFERENCE_MANIFEST = "client-reference-manifest";
-    const FLIGHT_SERVER_CSS_MANIFEST = "flight-server-css-manifest";
-    const SERVER_REFERENCE_MANIFEST = "server-reference-manifest";
-    const MIDDLEWARE_BUILD_MANIFEST = "middleware-build-manifest";
+    const PHASE_EXPORT = 'phase-export';
+    const PHASE_PRODUCTION_BUILD = 'phase-production-build';
+    const PHASE_PRODUCTION_SERVER = 'phase-production-server';
+    const PHASE_DEVELOPMENT_SERVER = 'phase-development-server';
+    const PHASE_TEST = 'phase-test';
+    const PAGES_MANIFEST = 'pages-manifest.json';
+    const APP_PATHS_MANIFEST = 'app-paths-manifest.json';
+    const APP_PATH_ROUTES_MANIFEST = 'app-path-routes-manifest.json';
+    const BUILD_MANIFEST = 'build-manifest.json';
+    const APP_BUILD_MANIFEST = 'app-build-manifest.json';
+    const SUBRESOURCE_INTEGRITY_MANIFEST = 'subresource-integrity-manifest';
+    const NEXT_FONT_MANIFEST = 'next-font-manifest';
+    const EXPORT_MARKER = 'export-marker.json';
+    const EXPORT_DETAIL = 'export-detail.json';
+    const PRERENDER_MANIFEST = 'prerender-manifest.json';
+    const ROUTES_MANIFEST = 'routes-manifest.json';
+    const IMAGES_MANIFEST = 'images-manifest.json';
+    const SERVER_FILES_MANIFEST = 'required-server-files.json';
+    const DEV_CLIENT_PAGES_MANIFEST = '_devPagesManifest.json';
+    const MIDDLEWARE_MANIFEST = 'middleware-manifest.json';
+    const DEV_MIDDLEWARE_MANIFEST = '_devMiddlewareManifest.json';
+    const REACT_LOADABLE_MANIFEST = 'react-loadable-manifest.json';
+    const FONT_MANIFEST = 'font-manifest.json';
+    const SERVER_DIRECTORY = 'server';
+    const CONFIG_FILES = ['next.config.js', 'next.config.mjs'];
+    const BUILD_ID_FILE = 'BUILD_ID';
+    const BLOCKED_PAGES = ['/_document', '/_app', '/_error'];
+    const CLIENT_PUBLIC_FILES_PATH = 'public';
+    const CLIENT_STATIC_FILES_PATH = 'static';
+    const CLIENT_STATIC_FILES_RUNTIME = 'runtime';
+    const STRING_LITERAL_DROP_BUNDLE = '__NEXT_DROP_CLIENT_FILE__';
+    const NEXT_BUILTIN_DOCUMENT = '__NEXT_BUILTIN_DOCUMENT__';
+    const NEXT_CLIENT_SSR_ENTRY_SUFFIX = '.__sc_client__';
+    const CLIENT_REFERENCE_MANIFEST = 'client-reference-manifest';
+    const FLIGHT_SERVER_CSS_MANIFEST = 'flight-server-css-manifest';
+    const SERVER_REFERENCE_MANIFEST = 'server-reference-manifest';
+    const MIDDLEWARE_BUILD_MANIFEST = 'middleware-build-manifest';
     const MIDDLEWARE_REACT_LOADABLE_MANIFEST =
-      "middleware-react-loadable-manifest";
-    const CLIENT_STATIC_FILES_RUNTIME_MAIN = "main";
+      'middleware-react-loadable-manifest';
+    const CLIENT_STATIC_FILES_RUNTIME_MAIN = 'main';
     const CLIENT_STATIC_FILES_RUNTIME_MAIN_APP =
-      "" + CLIENT_STATIC_FILES_RUNTIME_MAIN + "-app";
-    const APP_CLIENT_INTERNALS = "app-client-internals";
-    const CLIENT_STATIC_FILES_RUNTIME_REACT_REFRESH = "react-refresh";
-    const CLIENT_STATIC_FILES_RUNTIME_AMP = "amp";
-    const CLIENT_STATIC_FILES_RUNTIME_WEBPACK = "webpack";
-    const CLIENT_STATIC_FILES_RUNTIME_POLYFILLS = "polyfills";
+      '' + CLIENT_STATIC_FILES_RUNTIME_MAIN + '-app';
+    const APP_CLIENT_INTERNALS = 'app-client-internals';
+    const CLIENT_STATIC_FILES_RUNTIME_REACT_REFRESH = 'react-refresh';
+    const CLIENT_STATIC_FILES_RUNTIME_AMP = 'amp';
+    const CLIENT_STATIC_FILES_RUNTIME_WEBPACK = 'webpack';
+    const CLIENT_STATIC_FILES_RUNTIME_POLYFILLS = 'polyfills';
     const CLIENT_STATIC_FILES_RUNTIME_POLYFILLS_SYMBOL = Symbol(
       CLIENT_STATIC_FILES_RUNTIME_POLYFILLS
     );
-    const EDGE_RUNTIME_WEBPACK = "edge-runtime-webpack";
+    const EDGE_RUNTIME_WEBPACK = 'edge-runtime-webpack';
     const TEMPORARY_REDIRECT_STATUS = 307;
     const PERMANENT_REDIRECT_STATUS = 308;
-    const STATIC_PROPS_ID = "__N_SSG";
-    const SERVER_PROPS_ID = "__N_SSP";
-    const PAGE_SEGMENT_KEY = "__PAGE__";
-    const GOOGLE_FONT_PROVIDER = "https://fonts.googleapis.com/";
+    const STATIC_PROPS_ID = '__N_SSG';
+    const SERVER_PROPS_ID = '__N_SSP';
+    const PAGE_SEGMENT_KEY = '__PAGE__';
+    const GOOGLE_FONT_PROVIDER = 'https://fonts.googleapis.com/';
     const OPTIMIZED_FONT_PROVIDERS = [
       {
         url: GOOGLE_FONT_PROVIDER,
-        preconnect: "https://fonts.gstatic.com",
+        preconnect: 'https://fonts.gstatic.com',
       },
       {
-        url: "https://use.typekit.net",
-        preconnect: "https://use.typekit.net",
+        url: 'https://use.typekit.net',
+        preconnect: 'https://use.typekit.net',
       },
     ];
     const DEFAULT_SERIF_FONT = {
-      name: "Times New Roman",
+      name: 'Times New Roman',
       xAvgCharWidth: 821,
       azAvgWidth: 854.3953488372093,
       unitsPerEm: 2048,
     };
     const DEFAULT_SANS_SERIF_FONT = {
-      name: "Arial",
+      name: 'Arial',
       xAvgCharWidth: 904,
       azAvgWidth: 934.5116279069767,
       unitsPerEm: 2048,
     };
-    const STATIC_STATUS_PAGES = ["/500"];
+    const STATIC_STATUS_PAGES = ['/500'];
     const TRACE_OUTPUT_VERSION = 1;
     const TURBO_TRACE_DEFAULT_MEMORY_LIMIT = 6000;
     const RSC_MODULE_TYPES = {
-      client: "client",
-      server: "server",
+      client: 'client',
+      server: 'server',
     };
     const EDGE_UNSUPPORTED_NODE_APIS = [
-      "clearImmediate",
-      "setImmediate",
-      "BroadcastChannel",
-      "ByteLengthQueuingStrategy",
-      "CompressionStream",
-      "CountQueuingStrategy",
-      "DecompressionStream",
-      "DomException",
-      "MessageChannel",
-      "MessageEvent",
-      "MessagePort",
-      "ReadableByteStreamController",
-      "ReadableStreamBYOBRequest",
-      "ReadableStreamDefaultController",
-      "TransformStreamDefaultController",
-      "WritableStreamDefaultController",
+      'clearImmediate',
+      'setImmediate',
+      'BroadcastChannel',
+      'ByteLengthQueuingStrategy',
+      'CompressionStream',
+      'CountQueuingStrategy',
+      'DecompressionStream',
+      'DomException',
+      'MessageChannel',
+      'MessageEvent',
+      'MessagePort',
+      'ReadableByteStreamController',
+      'ReadableStreamBYOBRequest',
+      'ReadableStreamDefaultController',
+      'TransformStreamDefaultController',
+      'WritableStreamDefaultController',
     ];
     const SYSTEM_ENTRYPOINTS = new Set([
       CLIENT_STATIC_FILES_RUNTIME_MAIN,
@@ -10181,11 +10182,11 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       CLIENT_STATIC_FILES_RUNTIME_MAIN_APP,
     ]);
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -10196,13 +10197,13 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 536: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
     // regexp is based on https://github.com/sindresorhus/escape-string-regexp
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "escapeStringRegexp", {
+    Object.defineProperty(exports, 'escapeStringRegexp', {
       enumerable: true,
       get: function () {
         return escapeStringRegexp;
@@ -10213,7 +10214,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     function escapeStringRegexp(str) {
       // see also: https://github.com/lodash/lodash/blob/2da024c3b4f9947a48517639de7560457cd4ec6c/escapeRegExp.js#L23
       if (reHasRegExp.test(str)) {
-        return str.replace(reReplaceRegExp, "\\$&");
+        return str.replace(reReplaceRegExp, '\\$&');
       }
       return str;
     } //# sourceMappingURL=escape-regexp.js.map
@@ -10222,13 +10223,13 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 6230: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
     // http://www.cse.yorku.ca/~oz/hash.html
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "djb2Hash", {
+    Object.defineProperty(exports, 'djb2Hash', {
       enumerable: true,
       get: function () {
         return djb2Hash;
@@ -10247,12 +10248,12 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 8090: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "detectLocaleCookie", {
+    Object.defineProperty(exports, 'detectLocaleCookie', {
       enumerable: true,
       get: function () {
         return detectLocaleCookie;
@@ -10271,7 +10272,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 2080: /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
     /**
      * This module is for next.js server internal usage of path module.
      * It will use native path module for nodejs runtime.
@@ -10288,7 +10289,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 2159: /***/ (module) => {
-    "use strict";
+    'use strict';
     // Note: This file is JS because it's used by the taskfile-swc.js file, which is JS.
     // Keep file changes in sync with the corresponding `.d.ts` files.
     /**
@@ -10298,11 +10299,11 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
      * import.meta: https://caniuse.com/mdn-javascript_operators_import_meta
      */
     const MODERN_BROWSERSLIST_TARGET = [
-      "chrome 64",
-      "edge 79",
-      "firefox 67",
-      "opera 51",
-      "safari 12",
+      'chrome 64',
+      'edge 79',
+      'firefox 67',
+      'opera 51',
+      'safari 12',
     ];
     module.exports = MODERN_BROWSERSLIST_TARGET; //# sourceMappingURL=modern-browserslist-target.js.map
 
@@ -10310,12 +10311,12 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 6115: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "denormalizePagePath", {
+    Object.defineProperty(exports, 'denormalizePagePath', {
       enumerable: true,
       get: function () {
         return denormalizePagePath;
@@ -10325,65 +10326,65 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     const _normalizepathsep = __webpack_require__(9019);
     function denormalizePagePath(page) {
       let _page = (0, _normalizepathsep.normalizePathSep)(page);
-      return _page.startsWith("/index/") && !(0, _utils.isDynamicRoute)(_page)
+      return _page.startsWith('/index/') && !(0, _utils.isDynamicRoute)(_page)
         ? _page.slice(6)
-        : _page !== "/index"
+        : _page !== '/index'
         ? _page
-        : "/";
+        : '/';
     } //# sourceMappingURL=denormalize-page-path.js.map
 
     /***/
   },
 
   /***/ 6921: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
     /**
      * For a given page path, this function ensures that there is a leading slash.
      * If there is not a leading slash, one is added, otherwise it is noop.
      */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "ensureLeadingSlash", {
+    Object.defineProperty(exports, 'ensureLeadingSlash', {
       enumerable: true,
       get: function () {
         return ensureLeadingSlash;
       },
     });
     function ensureLeadingSlash(path) {
-      return path.startsWith("/") ? path : "/" + path;
+      return path.startsWith('/') ? path : '/' + path;
     } //# sourceMappingURL=ensure-leading-slash.js.map
 
     /***/
   },
 
   /***/ 9019: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
     /**
      * For a given page path, this function ensures that there is no backslash
      * escaping slashes in the path. Example:
      *  - `foo\/bar\/baz` -> `foo/bar/baz`
      */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "normalizePathSep", {
+    Object.defineProperty(exports, 'normalizePathSep', {
       enumerable: true,
       get: function () {
         return normalizePathSep;
       },
     });
     function normalizePathSep(path) {
-      return path.replace(/\\/g, "/");
+      return path.replace(/\\/g, '/');
     } //# sourceMappingURL=normalize-path-sep.js.map
 
     /***/
   },
 
   /***/ 8401: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -10405,41 +10406,41 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     const _ensureleadingslash = __webpack_require__(6921);
     function normalizeAppPath(route) {
       return (0, _ensureleadingslash.ensureLeadingSlash)(
-        route.split("/").reduce((pathname, segment, index, segments) => {
+        route.split('/').reduce((pathname, segment, index, segments) => {
           // Empty segments are ignored.
           if (!segment) {
             return pathname;
           }
           // Groups are ignored.
-          if (segment.startsWith("(") && segment.endsWith(")")) {
+          if (segment.startsWith('(') && segment.endsWith(')')) {
             return pathname;
           }
           // Parallel segments are ignored.
-          if (segment.startsWith("@")) {
+          if (segment.startsWith('@')) {
             return pathname;
           }
           // The last segment (if it's a leaf) should be ignored.
           if (
-            (segment === "page" || segment === "route") &&
+            (segment === 'page' || segment === 'route') &&
             index === segments.length - 1
           ) {
             return pathname;
           }
-          return pathname + "/" + segment;
-        }, "")
+          return pathname + '/' + segment;
+        }, '')
       );
     }
     function normalizeRscPath(pathname, enabled) {
-      return enabled ? pathname.replace(/\.rsc($|\?)/, "$1") : pathname;
+      return enabled ? pathname.replace(/\.rsc($|\?)/, '$1') : pathname;
     } //# sourceMappingURL=app-paths.js.map
 
     /***/
   },
 
   /***/ 9824: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -10465,13 +10466,13 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 815: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
     // Identify /[param]/ in route string
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "isDynamicRoute", {
+    Object.defineProperty(exports, 'isDynamicRoute', {
       enumerable: true,
       get: function () {
         return isDynamicRoute;
@@ -10486,12 +10487,12 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 3767: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "parseRelativeUrl", {
+    Object.defineProperty(exports, 'parseRelativeUrl', {
       enumerable: true,
       get: function () {
         return parseRelativeUrl;
@@ -10500,11 +10501,11 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     const _utils = __webpack_require__(1265);
     const _querystring = __webpack_require__(4557);
     function parseRelativeUrl(url, base) {
-      const globalBase = new URL(true ? "http://n" : 0);
+      const globalBase = new URL(true ? 'http://n' : 0);
       const resolvedBase = base
         ? new URL(base, globalBase)
-        : url.startsWith(".")
-        ? new URL(true ? "http://n" : 0)
+        : url.startsWith('.')
+        ? new URL(true ? 'http://n' : 0)
         : globalBase;
       const { pathname, searchParams, search, hash, href, origin } = new URL(
         url,
@@ -10512,7 +10513,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       );
       if (origin !== globalBase.origin) {
         throw new Error(
-          "invariant: invalid relative URL, router received " + url
+          'invariant: invalid relative URL, router received ' + url
         );
       }
       return {
@@ -10528,12 +10529,12 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 429: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "parseUrl", {
+    Object.defineProperty(exports, 'parseUrl', {
       enumerable: true,
       get: function () {
         return parseUrl;
@@ -10542,7 +10543,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     const _querystring = __webpack_require__(4557);
     const _parserelativeurl = __webpack_require__(3767);
     function parseUrl(url) {
-      if (url.startsWith("/")) {
+      if (url.startsWith('/')) {
         return (0, _parserelativeurl.parseRelativeUrl)(url);
       }
       const parsedURL = new URL(url);
@@ -10562,12 +10563,12 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 247: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "getPathMatch", {
+    Object.defineProperty(exports, 'getPathMatch', {
       enumerable: true,
       get: function () {
         return getPathMatch;
@@ -10577,7 +10578,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     function getPathMatch(path, options) {
       const keys = [];
       const regexp = (0, _pathtoregexp.pathToRegexp)(path, keys, {
-        delimiter: "/",
+        delimiter: '/',
         sensitive: false,
         strict: options == null ? void 0 : options.strict,
       });
@@ -10603,7 +10604,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
          * "number" for unnamed parameters.
          */ if (options == null ? void 0 : options.removeUnnamedParams) {
           for (const key of keys) {
-            if (typeof key.name === "number") {
+            if (typeof key.name === 'number') {
               delete res.params[key.name];
             }
           }
@@ -10619,9 +10620,9 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 880: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -10651,7 +10652,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
      * Ensure only a-zA-Z are used for param names for proper interpolating
      * with path-to-regexp
      */ function getSafeParamName(paramName) {
-      let newParamName = "";
+      let newParamName = '';
       for (let i = 0; i < paramName.length; i++) {
         const charCode = paramName.charCodeAt(i);
         if (
@@ -10666,14 +10667,14 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     function escapeSegment(str, segmentName) {
       return str.replace(
         new RegExp(
-          ":" + (0, _escaperegexp.escapeStringRegexp)(segmentName),
-          "g"
+          ':' + (0, _escaperegexp.escapeStringRegexp)(segmentName),
+          'g'
         ),
-        "__ESC_COLON_" + segmentName
+        '__ESC_COLON_' + segmentName
       );
     }
     function unescapeSegments(str) {
-      return str.replace(/__ESC_COLON_/gi, ":");
+      return str.replace(/__ESC_COLON_/gi, ':');
     }
     function matchHas(req, query, has, missing) {
       if (has === void 0) has = [];
@@ -10683,24 +10684,24 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
         let value;
         let key = hasItem.key;
         switch (hasItem.type) {
-          case "header": {
+          case 'header': {
             key = key.toLowerCase();
             value = req.headers[key];
             break;
           }
-          case "cookie": {
+          case 'cookie': {
             value = req.cookies[hasItem.key];
             break;
           }
-          case "query": {
+          case 'query': {
             value = query[key];
             break;
           }
-          case "host": {
+          case 'host': {
             const { host } = (req == null ? void 0 : req.headers) || {};
             // remove port from host if present
             const hostname =
-              host == null ? void 0 : host.split(":")[0].toLowerCase();
+              host == null ? void 0 : host.split(':')[0].toLowerCase();
             value = hostname;
             break;
           }
@@ -10712,7 +10713,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
           params[getSafeParamName(key)] = value;
           return true;
         } else if (value) {
-          const matcher = new RegExp("^" + hasItem.value + "$");
+          const matcher = new RegExp('^' + hasItem.value + '$');
           const matches = Array.isArray(value)
             ? value.slice(-1)[0].match(matcher)
             : value.match(matcher);
@@ -10722,7 +10723,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
                 Object.keys(matches.groups).forEach((groupKey) => {
                   params[groupKey] = matches.groups[groupKey];
                 });
-              } else if (hasItem.type === "host" && matches[0]) {
+              } else if (hasItem.type === 'host' && matches[0]) {
                 params.host = matches[0];
               }
             }
@@ -10740,39 +10741,39 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       return false;
     }
     function compileNonPath(value, params) {
-      if (!value.includes(":")) {
+      if (!value.includes(':')) {
         return value;
       }
       for (const key of Object.keys(params)) {
-        if (value.includes(":" + key)) {
+        if (value.includes(':' + key)) {
           value = value
             .replace(
-              new RegExp(":" + key + "\\*", "g"),
-              ":" + key + "--ESCAPED_PARAM_ASTERISKS"
+              new RegExp(':' + key + '\\*', 'g'),
+              ':' + key + '--ESCAPED_PARAM_ASTERISKS'
             )
             .replace(
-              new RegExp(":" + key + "\\?", "g"),
-              ":" + key + "--ESCAPED_PARAM_QUESTION"
+              new RegExp(':' + key + '\\?', 'g'),
+              ':' + key + '--ESCAPED_PARAM_QUESTION'
             )
             .replace(
-              new RegExp(":" + key + "\\+", "g"),
-              ":" + key + "--ESCAPED_PARAM_PLUS"
+              new RegExp(':' + key + '\\+', 'g'),
+              ':' + key + '--ESCAPED_PARAM_PLUS'
             )
             .replace(
-              new RegExp(":" + key + "(?!\\w)", "g"),
-              "--ESCAPED_PARAM_COLON" + key
+              new RegExp(':' + key + '(?!\\w)', 'g'),
+              '--ESCAPED_PARAM_COLON' + key
             );
         }
       }
       value = value
-        .replace(/(:|\*|\?|\+|\(|\)|\{|\})/g, "\\$1")
-        .replace(/--ESCAPED_PARAM_PLUS/g, "+")
-        .replace(/--ESCAPED_PARAM_COLON/g, ":")
-        .replace(/--ESCAPED_PARAM_QUESTION/g, "?")
-        .replace(/--ESCAPED_PARAM_ASTERISKS/g, "*");
+        .replace(/(:|\*|\?|\+|\(|\)|\{|\})/g, '\\$1')
+        .replace(/--ESCAPED_PARAM_PLUS/g, '+')
+        .replace(/--ESCAPED_PARAM_COLON/g, ':')
+        .replace(/--ESCAPED_PARAM_QUESTION/g, '?')
+        .replace(/--ESCAPED_PARAM_ASTERISKS/g, '*');
       // the value needs to start with a forward-slash to be compiled
       // correctly
-      return (0, _pathtoregexp.compile)("/" + value, {
+      return (0, _pathtoregexp.compile)('/' + value, {
         validate: false,
       })(params).slice(1);
     }
@@ -10792,9 +10793,9 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       const parsedDestination = (0, _parseurl.parseUrl)(escapedDestination);
       const destQuery = parsedDestination.query;
       const destPath = unescapeSegments(
-        "" + parsedDestination.pathname + (parsedDestination.hash || "")
+        '' + parsedDestination.pathname + (parsedDestination.hash || '')
       );
-      const destHostname = unescapeSegments(parsedDestination.hostname || "");
+      const destHostname = unescapeSegments(parsedDestination.hostname || '');
       const destPathParamKeys = [];
       const destHostnameParamKeys = [];
       (0, _pathtoregexp.pathToRegexp)(destPath, destPathParamKeys);
@@ -10823,7 +10824,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
           destQuery[key] = strOrArray.map((value) =>
             compileNonPath(unescapeSegments(value), args.params)
           );
-        } else if (typeof strOrArray === "string") {
+        } else if (typeof strOrArray === 'string') {
           destQuery[key] = compileNonPath(
             unescapeSegments(strOrArray),
             args.params
@@ -10833,7 +10834,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       // add path params to query if it's not a redirect and not
       // already defined in destination query or path
       let paramKeys = Object.keys(args.params).filter(
-        (name) => name !== "nextInternalLocale"
+        (name) => name !== 'nextInternalLocale'
       );
       if (
         args.appendParamsToQuery &&
@@ -10849,27 +10850,27 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       // The compiler also that the interception route marker is an unnamed param, hence '0',
       // so we need to add it to the params object.
       if ((0, _interceptionroutes.isInterceptionRouteAppPath)(destPath)) {
-        for (const segment of destPath.split("/")) {
+        for (const segment of destPath.split('/')) {
           const marker = _interceptionroutes.INTERCEPTION_ROUTE_MARKERS.find(
             (m) => segment.startsWith(m)
           );
           if (marker) {
-            args.params["0"] = marker;
+            args.params['0'] = marker;
             break;
           }
         }
       }
       try {
         newUrl = destPathCompiler(args.params);
-        const [pathname, hash] = newUrl.split("#");
+        const [pathname, hash] = newUrl.split('#');
         parsedDestination.hostname = destHostnameCompiler(args.params);
         parsedDestination.pathname = pathname;
-        parsedDestination.hash = "" + (hash ? "#" : "") + (hash || "");
+        parsedDestination.hash = '' + (hash ? '#' : '') + (hash || '');
         delete parsedDestination.search;
       } catch (err) {
         if (err.message.match(/Expected .*? to not repeat, but got an array/)) {
           throw new Error(
-            "To use a multi-match in the destination you must add `*` at the end of the param name to signify it should repeat. https://nextjs.org/docs/messages/invalid-multi-match"
+            'To use a multi-match in the destination you must add `*` at the end of the param name to signify it should repeat. https://nextjs.org/docs/messages/invalid-multi-match'
           );
         }
         throw err;
@@ -10893,9 +10894,9 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 4557: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -10920,7 +10921,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     function searchParamsToUrlQuery(searchParams) {
       const query = {};
       searchParams.forEach((value, key) => {
-        if (typeof query[key] === "undefined") {
+        if (typeof query[key] === 'undefined') {
           query[key] = value;
         } else if (Array.isArray(query[key])) {
           query[key].push(value);
@@ -10932,13 +10933,13 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     }
     function stringifyUrlQueryParam(param) {
       if (
-        typeof param === "string" ||
-        (typeof param === "number" && !isNaN(param)) ||
-        typeof param === "boolean"
+        typeof param === 'string' ||
+        (typeof param === 'number' && !isNaN(param)) ||
+        typeof param === 'boolean'
       ) {
         return String(param);
       } else {
-        return "";
+        return '';
       }
     }
     function urlQueryToSearchParams(urlQuery) {
@@ -10976,12 +10977,12 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 4060: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "getRouteMatcher", {
+    Object.defineProperty(exports, 'getRouteMatcher', {
       enumerable: true,
       get: function () {
         return getRouteMatcher;
@@ -10999,7 +11000,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
           try {
             return decodeURIComponent(param);
           } catch (_) {
-            throw new _utils.DecodeError("failed to decode param");
+            throw new _utils.DecodeError('failed to decode param');
           }
         };
         const params = {};
@@ -11007,8 +11008,8 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
           const g = groups[slugName];
           const m = routeMatch[g.pos];
           if (m !== undefined) {
-            params[slugName] = ~m.indexOf("/")
-              ? m.split("/").map((entry) => decode(entry))
+            params[slugName] = ~m.indexOf('/')
+              ? m.split('/').map((entry) => decode(entry))
               : g.repeat
               ? [decode(m)]
               : decode(m);
@@ -11022,9 +11023,9 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 9601: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -11048,7 +11049,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     });
     const _escaperegexp = __webpack_require__(536);
     const _removetrailingslash = __webpack_require__(465);
-    const NEXT_QUERY_PARAM_PREFIX = "nxtP";
+    const NEXT_QUERY_PARAM_PREFIX = 'nxtP';
     /**
      * Parses a given parameter from a route to a data structure that can be used
      * to generate the parametrized route. Examples:
@@ -11057,11 +11058,11 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
      *   - `[foo]` -> `{ key: 'foo', repeat: false, optional: true }`
      *   - `bar` -> `{ key: 'bar', repeat: false, optional: false }`
      */ function parseParameter(param) {
-      const optional = param.startsWith("[") && param.endsWith("]");
+      const optional = param.startsWith('[') && param.endsWith(']');
       if (optional) {
         param = param.slice(1, -1);
       }
-      const repeat = param.startsWith("...");
+      const repeat = param.startsWith('...');
       if (repeat) {
         param = param.slice(3);
       }
@@ -11074,13 +11075,13 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     function getParametrizedRoute(route) {
       const segments = (0, _removetrailingslash.removeTrailingSlash)(route)
         .slice(1)
-        .split("/");
+        .split('/');
       const groups = {};
       let groupIndex = 1;
       return {
         parameterizedRoute: segments
           .map((segment) => {
-            if (segment.startsWith("[") && segment.endsWith("]")) {
+            if (segment.startsWith('[') && segment.endsWith(']')) {
               const { key, optional, repeat } = parseParameter(
                 segment.slice(1, -1)
               );
@@ -11091,14 +11092,14 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
               };
               return repeat
                 ? optional
-                  ? "(?:/(.+?))?"
-                  : "/(.+?)"
-                : "/([^/]+?)";
+                  ? '(?:/(.+?))?'
+                  : '/(.+?)'
+                : '/([^/]+?)';
             } else {
-              return "/" + (0, _escaperegexp.escapeStringRegexp)(segment);
+              return '/' + (0, _escaperegexp.escapeStringRegexp)(segment);
             }
           })
-          .join(""),
+          .join(''),
         groups,
       };
     }
@@ -11106,7 +11107,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       const { parameterizedRoute, groups } =
         getParametrizedRoute(normalizedRoute);
       return {
-        re: new RegExp("^" + parameterizedRoute + "(?:/)?$"),
+        re: new RegExp('^' + parameterizedRoute + '(?:/)?$'),
         groups: groups,
       };
     }
@@ -11117,7 +11118,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       let routeKeyCharCode = 97;
       let routeKeyCharLength = 1;
       return () => {
-        let routeKey = "";
+        let routeKey = '';
         for (let i = 0; i < routeKeyCharLength; i++) {
           routeKey += String.fromCharCode(routeKeyCharCode);
           routeKeyCharCode++;
@@ -11132,21 +11133,21 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     function getNamedParametrizedRoute(route, prefixRouteKeys) {
       const segments = (0, _removetrailingslash.removeTrailingSlash)(route)
         .slice(1)
-        .split("/");
+        .split('/');
       const getSafeRouteKey = buildGetSafeRouteKey();
       const routeKeys = {};
       return {
         namedParameterizedRoute: segments
           .map((segment) => {
-            if (segment.startsWith("[") && segment.endsWith("]")) {
+            if (segment.startsWith('[') && segment.endsWith(']')) {
               const { key, optional, repeat } = parseParameter(
                 segment.slice(1, -1)
               );
               // replace any non-word characters since they can break
               // the named regex
-              let cleanedKey = key.replace(/\W/g, "");
+              let cleanedKey = key.replace(/\W/g, '');
               if (prefixRouteKeys) {
-                cleanedKey = "" + NEXT_QUERY_PARAM_PREFIX + cleanedKey;
+                cleanedKey = '' + NEXT_QUERY_PARAM_PREFIX + cleanedKey;
               }
               let invalidKey = false;
               // check if the key is still invalid and fallback to using a known
@@ -11161,20 +11162,20 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
                 cleanedKey = getSafeRouteKey();
               }
               if (prefixRouteKeys) {
-                routeKeys[cleanedKey] = "" + NEXT_QUERY_PARAM_PREFIX + key;
+                routeKeys[cleanedKey] = '' + NEXT_QUERY_PARAM_PREFIX + key;
               } else {
-                routeKeys[cleanedKey] = "" + key;
+                routeKeys[cleanedKey] = '' + key;
               }
               return repeat
                 ? optional
-                  ? "(?:/(?<" + cleanedKey + ">.+?))?"
-                  : "/(?<" + cleanedKey + ">.+?)"
-                : "/(?<" + cleanedKey + ">[^/]+?)";
+                  ? '(?:/(?<' + cleanedKey + '>.+?))?'
+                  : '/(?<' + cleanedKey + '>.+?)'
+                : '/(?<' + cleanedKey + '>[^/]+?)';
             } else {
-              return "/" + (0, _escaperegexp.escapeStringRegexp)(segment);
+              return '/' + (0, _escaperegexp.escapeStringRegexp)(segment);
             }
           })
-          .join(""),
+          .join(''),
         routeKeys,
       };
     }
@@ -11182,26 +11183,26 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       const result = getNamedParametrizedRoute(normalizedRoute, prefixRouteKey);
       return {
         ...getRouteRegex(normalizedRoute),
-        namedRegex: "^" + result.namedParameterizedRoute + "(?:/)?$",
+        namedRegex: '^' + result.namedParameterizedRoute + '(?:/)?$',
         routeKeys: result.routeKeys,
       };
     }
     function getNamedMiddlewareRegex(normalizedRoute, options) {
       const { parameterizedRoute } = getParametrizedRoute(normalizedRoute);
       const { catchAll = true } = options;
-      if (parameterizedRoute === "/") {
-        let catchAllRegex = catchAll ? ".*" : "";
+      if (parameterizedRoute === '/') {
+        let catchAllRegex = catchAll ? '.*' : '';
         return {
-          namedRegex: "^/" + catchAllRegex + "$",
+          namedRegex: '^/' + catchAllRegex + '$',
         };
       }
       const { namedParameterizedRoute } = getNamedParametrizedRoute(
         normalizedRoute,
         false
       );
-      let catchAllGroupedRegex = catchAll ? "(?:(/.*)?)" : "";
+      let catchAllGroupedRegex = catchAll ? '(?:(/.*)?)' : '';
       return {
-        namedRegex: "^" + namedParameterizedRoute + catchAllGroupedRegex + "$",
+        namedRegex: '^' + namedParameterizedRoute + catchAllGroupedRegex + '$',
       };
     } //# sourceMappingURL=route-regex.js.map
 
@@ -11209,12 +11210,12 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 6262: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "getSortedRoutes", {
+    Object.defineProperty(exports, 'getSortedRoutes', {
       enumerable: true,
       get: function () {
         return getSortedRoutes;
@@ -11222,42 +11223,42 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     });
     class UrlNode {
       insert(urlPath) {
-        this._insert(urlPath.split("/").filter(Boolean), [], false);
+        this._insert(urlPath.split('/').filter(Boolean), [], false);
       }
       smoosh() {
         return this._smoosh();
       }
       _smoosh(prefix) {
-        if (prefix === void 0) prefix = "/";
+        if (prefix === void 0) prefix = '/';
         const childrenPaths = [...this.children.keys()].sort();
         if (this.slugName !== null) {
-          childrenPaths.splice(childrenPaths.indexOf("[]"), 1);
+          childrenPaths.splice(childrenPaths.indexOf('[]'), 1);
         }
         if (this.restSlugName !== null) {
-          childrenPaths.splice(childrenPaths.indexOf("[...]"), 1);
+          childrenPaths.splice(childrenPaths.indexOf('[...]'), 1);
         }
         if (this.optionalRestSlugName !== null) {
-          childrenPaths.splice(childrenPaths.indexOf("[[...]]"), 1);
+          childrenPaths.splice(childrenPaths.indexOf('[[...]]'), 1);
         }
         const routes = childrenPaths
-          .map((c) => this.children.get(c)._smoosh("" + prefix + c + "/"))
+          .map((c) => this.children.get(c)._smoosh('' + prefix + c + '/'))
           .reduce((prev, curr) => [...prev, ...curr], []);
         if (this.slugName !== null) {
           routes.push(
             ...this.children
-              .get("[]")
-              ._smoosh(prefix + "[" + this.slugName + "]/")
+              .get('[]')
+              ._smoosh(prefix + '[' + this.slugName + ']/')
           );
         }
         if (!this.placeholder) {
-          const r = prefix === "/" ? "/" : prefix.slice(0, -1);
+          const r = prefix === '/' ? '/' : prefix.slice(0, -1);
           if (this.optionalRestSlugName != null) {
             throw new Error(
               'You cannot define a route with the same specificity as a optional catch-all route ("' +
                 r +
                 '" and "' +
                 r +
-                "[[..." +
+                '[[...' +
                 this.optionalRestSlugName +
                 ']]").'
             );
@@ -11267,15 +11268,15 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
         if (this.restSlugName !== null) {
           routes.push(
             ...this.children
-              .get("[...]")
-              ._smoosh(prefix + "[..." + this.restSlugName + "]/")
+              .get('[...]')
+              ._smoosh(prefix + '[...' + this.restSlugName + ']/')
           );
         }
         if (this.optionalRestSlugName !== null) {
           routes.push(
             ...this.children
-              .get("[[...]]")
-              ._smoosh(prefix + "[[..." + this.optionalRestSlugName + "]]/")
+              .get('[[...]]')
+              ._smoosh(prefix + '[[...' + this.optionalRestSlugName + ']]/')
           );
         }
         return routes;
@@ -11286,33 +11287,33 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
           return;
         }
         if (isCatchAll) {
-          throw new Error("Catch-all must be the last part of the URL.");
+          throw new Error('Catch-all must be the last part of the URL.');
         }
         // The next segment in the urlPaths list
         let nextSegment = urlPaths[0];
         // Check if the segment matches `[something]`
-        if (nextSegment.startsWith("[") && nextSegment.endsWith("]")) {
+        if (nextSegment.startsWith('[') && nextSegment.endsWith(']')) {
           // Strip `[` and `]`, leaving only `something`
           let segmentName = nextSegment.slice(1, -1);
           let isOptional = false;
-          if (segmentName.startsWith("[") && segmentName.endsWith("]")) {
+          if (segmentName.startsWith('[') && segmentName.endsWith(']')) {
             // Strip optional `[` and `]`, leaving only `something`
             segmentName = segmentName.slice(1, -1);
             isOptional = true;
           }
-          if (segmentName.startsWith("...")) {
+          if (segmentName.startsWith('...')) {
             // Strip `...`, leaving only `something`
             segmentName = segmentName.substring(3);
             isCatchAll = true;
           }
-          if (segmentName.startsWith("[") || segmentName.endsWith("]")) {
+          if (segmentName.startsWith('[') || segmentName.endsWith(']')) {
             throw new Error(
               "Segment names may not start or end with extra brackets ('" +
                 segmentName +
                 "')."
             );
           }
-          if (segmentName.startsWith(".")) {
+          if (segmentName.startsWith('.')) {
             throw new Error(
               "Segment names may not start with erroneous periods ('" +
                 segmentName +
@@ -11345,7 +11346,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
                     '" repeat within a single dynamic path'
                 );
               }
-              if (slug.replace(/\W/g, "") === nextSegment.replace(/\W/g, "")) {
+              if (slug.replace(/\W/g, '') === nextSegment.replace(/\W/g, '')) {
                 throw new Error(
                   'You cannot have the slug names "' +
                     slug +
@@ -11372,7 +11373,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
               // slugName is kept as it can only be one particular slugName
               this.optionalRestSlugName = segmentName;
               // nextSegment is overwritten to [[...]] so that it can later be sorted specifically
-              nextSegment = "[[...]]";
+              nextSegment = '[[...]]';
             } else {
               if (this.optionalRestSlugName != null) {
                 throw new Error(
@@ -11387,7 +11388,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
               // slugName is kept as it can only be one particular slugName
               this.restSlugName = segmentName;
               // nextSegment is overwritten to [...] so that it can later be sorted specifically
-              nextSegment = "[...]";
+              nextSegment = '[...]';
             }
           } else {
             if (isOptional) {
@@ -11401,7 +11402,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
             // slugName is kept as it can only be one particular slugName
             this.slugName = segmentName;
             // nextSegment is overwritten to [] so that it can later be sorted specifically
-            nextSegment = "[]";
+            nextSegment = '[]';
           }
         }
         // If this UrlNode doesn't have the nextSegment yet we create a new child UrlNode
@@ -11442,9 +11443,9 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 1265: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
 
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -11505,7 +11506,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
         return MiddlewareNotFoundError;
       },
     });
-    const WEB_VITALS = ["CLS", "FCP", "FID", "INP", "LCP", "TTFB"];
+    const WEB_VITALS = ['CLS', 'FCP', 'FID', 'INP', 'LCP', 'TTFB'];
     function execOnce(fn) {
       let used = false;
       let result;
@@ -11530,7 +11531,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
     const isAbsoluteUrl = (url) => ABSOLUTE_URL_REGEX.test(url);
     function getLocationOrigin() {
       const { protocol, hostname, port } = window.location;
-      return protocol + "//" + hostname + (port ? ":" + port : "");
+      return protocol + '//' + hostname + (port ? ':' + port : '');
     }
     function getURL() {
       const { href } = window.location;
@@ -11538,22 +11539,22 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       return href.substring(origin.length);
     }
     function getDisplayName(Component) {
-      return typeof Component === "string"
+      return typeof Component === 'string'
         ? Component
-        : Component.displayName || Component.name || "Unknown";
+        : Component.displayName || Component.name || 'Unknown';
     }
     function isResSent(res) {
       return res.finished || res.headersSent;
     }
     function normalizeRepeatedSlashes(url) {
-      const urlParts = url.split("?");
+      const urlParts = url.split('?');
       const urlNoQuery = urlParts[0];
       return (
         urlNoQuery // first we replace any non-encoded backslashes with forward
           // then normalize repeated forward slashes
-          .replace(/\\/g, "/")
-          .replace(/\/\/+/g, "/") +
-        (urlParts[1] ? "?" + urlParts.slice(1).join("?") : "")
+          .replace(/\\/g, '/')
+          .replace(/\/\/+/g, '/') +
+        (urlParts[1] ? '?' + urlParts.slice(1).join('?') : '')
       );
     }
     async function loadGetInitialProps(App, ctx) {
@@ -11588,34 +11589,34 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       }
       return props;
     }
-    const SP = typeof performance !== "undefined";
+    const SP = typeof performance !== 'undefined';
     const ST =
       SP &&
-      ["mark", "measure", "getEntriesByName"].every(
-        (method) => typeof performance[method] === "function"
+      ['mark', 'measure', 'getEntriesByName'].every(
+        (method) => typeof performance[method] === 'function'
       );
     class DecodeError extends Error {}
     class NormalizeError extends Error {}
     class PageNotFoundError extends Error {
       constructor(page) {
         super();
-        this.code = "ENOENT";
-        this.name = "PageNotFoundError";
-        this.message = "Cannot find module for page: " + page;
+        this.code = 'ENOENT';
+        this.name = 'PageNotFoundError';
+        this.message = 'Cannot find module for page: ' + page;
       }
     }
     class MissingStaticPage extends Error {
       constructor(page, message) {
         super();
         this.message =
-          "Failed to load static file for page: " + page + " " + message;
+          'Failed to load static file for page: ' + page + ' ' + message;
       }
     }
     class MiddlewareNotFoundError extends Error {
       constructor() {
         super();
-        this.code = "ENOENT";
-        this.message = "Cannot find the middleware module";
+        this.code = 'ENOENT';
+        this.message = 'Cannot find the middleware module';
       }
     } //# sourceMappingURL=utils.js.map
 
@@ -11623,7 +11624,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 993: /***/ (module, __unused_webpack_exports, __webpack_require__) => {
-    "use strict";
+    'use strict';
 
     module.exports = __webpack_require__(9560);
 
@@ -11631,7 +11632,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 5967: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
 
     exports._ = exports._interop_require_default = _interop_require_default;
     function _interop_require_default(obj) {
@@ -11642,10 +11643,10 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 1113: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
 
     function _getRequireWildcardCache(nodeInterop) {
-      if (typeof WeakMap !== "function") return null;
+      if (typeof WeakMap !== 'function') return null;
 
       var cacheBabelInterop = new WeakMap();
       var cacheNodeInterop = new WeakMap();
@@ -11659,7 +11660,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
       if (!nodeInterop && obj && obj.__esModule) return obj;
       if (
         obj === null ||
-        (typeof obj !== "object" && typeof obj !== "function")
+        (typeof obj !== 'object' && typeof obj !== 'function')
       )
         return { default: obj };
 
@@ -11673,7 +11674,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
 
       for (var key in obj) {
         if (
-          key !== "default" &&
+          key !== 'default' &&
           Object.prototype.hasOwnProperty.call(obj, key)
         ) {
           var desc = hasPropertyDescriptor
@@ -11696,7 +11697,7 @@ Files in the rsc directory are meant to be packaged as part of the RSC graph usi
   },
 
   /***/ 1550: /***/ (__unused_webpack_module, exports) => {
-    "use strict";
+    'use strict';
 
     exports._ = exports._interop_require_default = _interop_require_default;
     function _interop_require_default(obj) {

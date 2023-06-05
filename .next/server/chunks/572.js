@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 exports.id = 572;
 exports.ids = [572];
 exports.modules = {
   /***/ 3724: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -54,13 +54,13 @@ exports.modules = {
           };
     }
     const prefixes = {
-      wait: "- " + _chalk.default.cyan("wait"),
-      error: "- " + _chalk.default.red("error"),
-      warn: "- " + _chalk.default.yellow("warn"),
-      ready: "- " + _chalk.default.green("ready"),
-      info: "- " + _chalk.default.cyan("info"),
-      event: "- " + _chalk.default.magenta("event"),
-      trace: "- " + _chalk.default.magenta("trace"),
+      wait: '- ' + _chalk.default.cyan('wait'),
+      error: '- ' + _chalk.default.red('error'),
+      warn: '- ' + _chalk.default.yellow('warn'),
+      ready: '- ' + _chalk.default.green('ready'),
+      info: '- ' + _chalk.default.cyan('info'),
+      event: '- ' + _chalk.default.magenta('event'),
+      trace: '- ' + _chalk.default.magenta('trace'),
     };
     function wait(...message) {
       console.log(prefixes.wait, ...message);
@@ -86,7 +86,7 @@ exports.modules = {
     const warnOnceMessages = new Set();
     function warnOnce(...message) {
       if (!warnOnceMessages.has(message[0])) {
-        warnOnceMessages.add(message.join(" "));
+        warnOnceMessages.add(message.join(' '));
         warn(...message);
       }
     } //# sourceMappingURL=log.js.map
@@ -95,7 +95,7 @@ exports.modules = {
   },
 
   /***/ 42: /***/ (module, exports) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -135,26 +135,26 @@ exports.modules = {
         return FLIGHT_PARAMETERS;
       },
     });
-    const RSC = "RSC";
-    const ACTION = "Next-Action";
-    const NEXT_ROUTER_STATE_TREE = "Next-Router-State-Tree";
-    const NEXT_ROUTER_PREFETCH = "Next-Router-Prefetch";
-    const NEXT_URL = "Next-Url";
-    const FETCH_CACHE_HEADER = "x-vercel-sc-headers";
-    const RSC_CONTENT_TYPE_HEADER = "text/x-component; charset=utf-8";
+    const RSC = 'RSC';
+    const ACTION = 'Next-Action';
+    const NEXT_ROUTER_STATE_TREE = 'Next-Router-State-Tree';
+    const NEXT_ROUTER_PREFETCH = 'Next-Router-Prefetch';
+    const NEXT_URL = 'Next-Url';
+    const FETCH_CACHE_HEADER = 'x-vercel-sc-headers';
+    const RSC_CONTENT_TYPE_HEADER = 'text/x-component; charset=utf-8';
     const RSC_VARY_HEADER =
-      RSC + ", " + NEXT_ROUTER_STATE_TREE + ", " + NEXT_ROUTER_PREFETCH;
+      RSC + ', ' + NEXT_ROUTER_STATE_TREE + ', ' + NEXT_ROUTER_PREFETCH;
     const FLIGHT_PARAMETERS = [
       [RSC],
       [NEXT_ROUTER_STATE_TREE],
       [NEXT_ROUTER_PREFETCH],
     ];
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -165,10 +165,10 @@ exports.modules = {
   },
 
   /***/ 1875: /***/ (module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "DraftMode", {
+    Object.defineProperty(exports, 'DraftMode', {
       enumerable: true,
       get: function () {
         return DraftMode;
@@ -182,7 +182,7 @@ exports.modules = {
       enable() {
         if (
           (0, _staticgenerationbailout.staticGenerationBailout)(
-            "draftMode().enable()"
+            'draftMode().enable()'
           )
         ) {
           return;
@@ -192,7 +192,7 @@ exports.modules = {
       disable() {
         if (
           (0, _staticgenerationbailout.staticGenerationBailout)(
-            "draftMode().disable()"
+            'draftMode().disable()'
           )
         ) {
           return;
@@ -204,11 +204,11 @@ exports.modules = {
       }
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -219,7 +219,7 @@ exports.modules = {
   },
 
   /***/ 3851: /***/ (module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -249,19 +249,19 @@ exports.modules = {
     const _staticgenerationbailout = __webpack_require__(5486);
     const _draftmode = __webpack_require__(1875);
     function headers() {
-      if ((0, _staticgenerationbailout.staticGenerationBailout)("headers")) {
+      if ((0, _staticgenerationbailout.staticGenerationBailout)('headers')) {
         return _headers.HeadersAdapter.seal(new Headers({}));
       }
       const requestStore = _requestasyncstorage.requestAsyncStorage.getStore();
       if (!requestStore) {
         throw new Error(
-          "Invariant: Method expects to have requestAsyncStorage, none available"
+          'Invariant: Method expects to have requestAsyncStorage, none available'
         );
       }
       return requestStore.headers;
     }
     function cookies() {
-      if ((0, _staticgenerationbailout.staticGenerationBailout)("cookies")) {
+      if ((0, _staticgenerationbailout.staticGenerationBailout)('cookies')) {
         return _requestcookies.RequestCookiesAdapter.seal(
           new _cookies.RequestCookies(new Headers({}))
         );
@@ -269,7 +269,7 @@ exports.modules = {
       const requestStore = _requestasyncstorage.requestAsyncStorage.getStore();
       if (!requestStore) {
         throw new Error(
-          "Invariant: Method expects to have requestAsyncStorage, none available"
+          'Invariant: Method expects to have requestAsyncStorage, none available'
         );
       }
       const asyncActionStore =
@@ -288,17 +288,17 @@ exports.modules = {
       const requestStore = _requestasyncstorage.requestAsyncStorage.getStore();
       if (!requestStore) {
         throw new Error(
-          "Invariant: Method expects to have requestAsyncStorage, none available"
+          'Invariant: Method expects to have requestAsyncStorage, none available'
         );
       }
       return new _draftmode.DraftMode(requestStore.draftMode);
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -309,7 +309,7 @@ exports.modules = {
   },
 
   /***/ 4399: /***/ (module, exports) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -328,7 +328,7 @@ exports.modules = {
         return isNotFoundError;
       },
     });
-    const NOT_FOUND_ERROR_CODE = "NEXT_NOT_FOUND";
+    const NOT_FOUND_ERROR_CODE = 'NEXT_NOT_FOUND';
     function notFound() {
       // eslint-disable-next-line no-throw-literal
       const error = new Error(NOT_FOUND_ERROR_CODE);
@@ -339,11 +339,11 @@ exports.modules = {
       return (error == null ? void 0 : error.digest) === NOT_FOUND_ERROR_CODE;
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -354,7 +354,7 @@ exports.modules = {
   },
 
   /***/ 6552: /***/ (module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -386,15 +386,15 @@ exports.modules = {
       },
     });
     const _requestasyncstorage = __webpack_require__(4437);
-    const REDIRECT_ERROR_CODE = "NEXT_REDIRECT";
+    const REDIRECT_ERROR_CODE = 'NEXT_REDIRECT';
     var RedirectType;
     (function (RedirectType) {
-      RedirectType["push"] = "push";
-      RedirectType["replace"] = "replace";
+      RedirectType['push'] = 'push';
+      RedirectType['replace'] = 'replace';
     })(RedirectType || (RedirectType = {}));
     function getRedirectError(url, type) {
       const error = new Error(REDIRECT_ERROR_CODE);
-      error.digest = REDIRECT_ERROR_CODE + ";" + type + ";" + url;
+      error.digest = REDIRECT_ERROR_CODE + ';' + type + ';' + url;
       const requestStore = _requestasyncstorage.requestAsyncStorage.getStore();
       if (requestStore) {
         error.mutableCookies = requestStore.mutableCookies;
@@ -402,37 +402,37 @@ exports.modules = {
       return error;
     }
     function redirect(url, type) {
-      if (type === void 0) type = "replace";
+      if (type === void 0) type = 'replace';
       throw getRedirectError(url, type);
     }
     function isRedirectError(error) {
-      if (typeof (error == null ? void 0 : error.digest) !== "string")
+      if (typeof (error == null ? void 0 : error.digest) !== 'string')
         return false;
-      const [errorCode, type, destination] = error.digest.split(";", 3);
+      const [errorCode, type, destination] = error.digest.split(';', 3);
       return (
         errorCode === REDIRECT_ERROR_CODE &&
-        (type === "replace" || type === "push") &&
-        typeof destination === "string"
+        (type === 'replace' || type === 'push') &&
+        typeof destination === 'string'
       );
     }
     function getURLFromRedirectError(error) {
       if (!isRedirectError(error)) return null;
       // Slices off the beginning of the digest that contains the code and the
       // separating ';'.
-      return error.digest.split(";", 3)[2];
+      return error.digest.split(';', 3)[2];
     }
     function getRedirectTypeFromError(error) {
       if (!isRedirectError(error)) {
-        throw new Error("Not a redirect error");
+        throw new Error('Not a redirect error');
       }
-      return error.digest.split(";", 3)[1];
+      return error.digest.split(';', 3)[1];
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -444,17 +444,17 @@ exports.modules = {
 
   /***/ 2962: /***/ (module) => {
     (() => {
-      "use strict";
+      'use strict';
       var e = {
         339: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.ContextAPI = void 0;
           const n = r(44);
           const a = r(38);
           const o = r(741);
-          const i = "context";
+          const i = 'context';
           const c = new n.NoopContextManager();
           class ContextAPI {
             constructor() {}
@@ -487,7 +487,7 @@ exports.modules = {
           t.ContextAPI = ContextAPI;
         },
         741: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.DiagAPI = void 0;
@@ -495,12 +495,12 @@ exports.modules = {
           const a = r(871);
           const o = r(133);
           const i = r(38);
-          const c = "diag";
+          const c = 'diag';
           class DiagAPI {
             constructor() {
               function _logProxy(e) {
                 return function (...t) {
-                  const r = (0, i.getGlobal)("diag");
+                  const r = (0, i.getGlobal)('diag');
                   if (!r) return;
                   return r[e](...t);
                 };
@@ -515,19 +515,19 @@ exports.modules = {
                 var n, c, s;
                 if (t === e) {
                   const t = new Error(
-                    "Cannot use diag as the logger for itself. Please use a DiagLogger implementation like ConsoleDiagLogger or a custom implementation"
+                    'Cannot use diag as the logger for itself. Please use a DiagLogger implementation like ConsoleDiagLogger or a custom implementation'
                   );
                   e.error(
                     (n = t.stack) !== null && n !== void 0 ? n : t.message
                   );
                   return false;
                 }
-                if (typeof r === "number") {
+                if (typeof r === 'number') {
                   r = {
                     logLevel: r,
                   };
                 }
-                const u = (0, i.getGlobal)("diag");
+                const u = (0, i.getGlobal)('diag');
                 const l = (0, a.createLogLevelDiagLogger)(
                   (c = r.logLevel) !== null && c !== void 0
                     ? c
@@ -538,24 +538,24 @@ exports.modules = {
                   const e =
                     (s = new Error().stack) !== null && s !== void 0
                       ? s
-                      : "<failed to generate stacktrace>";
+                      : '<failed to generate stacktrace>';
                   u.warn(`Current logger will be overwritten from ${e}`);
                   l.warn(
                     `Current logger will overwrite one already registered from ${e}`
                   );
                 }
-                return (0, i.registerGlobal)("diag", l, e, true);
+                return (0, i.registerGlobal)('diag', l, e, true);
               };
               e.setLogger = setLogger;
               e.disable = () => {
                 (0, i.unregisterGlobal)(c, e);
               };
               e.createComponentLogger = (e) => new n.DiagComponentLogger(e);
-              e.verbose = _logProxy("verbose");
-              e.debug = _logProxy("debug");
-              e.info = _logProxy("info");
-              e.warn = _logProxy("warn");
-              e.error = _logProxy("error");
+              e.verbose = _logProxy('verbose');
+              e.debug = _logProxy('debug');
+              e.info = _logProxy('info');
+              e.warn = _logProxy('warn');
+              e.error = _logProxy('error');
             }
             static instance() {
               if (!this._instance) {
@@ -567,14 +567,14 @@ exports.modules = {
           t.DiagAPI = DiagAPI;
         },
         128: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.MetricsAPI = void 0;
           const n = r(333);
           const a = r(38);
           const o = r(741);
-          const i = "metrics";
+          const i = 'metrics';
           class MetricsAPI {
             constructor() {}
             static getInstance() {
@@ -599,7 +599,7 @@ exports.modules = {
           t.MetricsAPI = MetricsAPI;
         },
         930: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.PropagationAPI = void 0;
@@ -609,7 +609,7 @@ exports.modules = {
           const i = r(377);
           const c = r(701);
           const s = r(741);
-          const u = "propagation";
+          const u = 'propagation';
           const l = new a.NoopTextMapPropagator();
           class PropagationAPI {
             constructor() {
@@ -647,7 +647,7 @@ exports.modules = {
           t.PropagationAPI = PropagationAPI;
         },
         967: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.TraceAPI = void 0;
@@ -656,7 +656,7 @@ exports.modules = {
           const o = r(994);
           const i = r(542);
           const c = r(741);
-          const s = "trace";
+          const s = 'trace';
           class TraceAPI {
             constructor() {
               this._proxyTracerProvider = new a.ProxyTracerProvider();
@@ -700,7 +700,7 @@ exports.modules = {
           t.TraceAPI = TraceAPI;
         },
         377: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.deleteBaggage =
@@ -710,7 +710,7 @@ exports.modules = {
               void 0;
           const n = r(339);
           const a = r(421);
-          const o = (0, a.createContextKey)("OpenTelemetry Baggage Key");
+          const o = (0, a.createContextKey)('OpenTelemetry Baggage Key');
           function getBaggage(e) {
             return e.getValue(o) || undefined;
           }
@@ -729,7 +729,7 @@ exports.modules = {
           t.deleteBaggage = deleteBaggage;
         },
         496: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.BaggageImpl = void 0;
@@ -774,14 +774,14 @@ exports.modules = {
           t.BaggageImpl = BaggageImpl;
         },
         817: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.baggageEntryMetadataSymbol = void 0;
-          t.baggageEntryMetadataSymbol = Symbol("BaggageEntryMetadata");
+          t.baggageEntryMetadataSymbol = Symbol('BaggageEntryMetadata');
         },
         701: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.baggageEntryMetadataFromString = t.createBaggage = void 0;
@@ -794,11 +794,11 @@ exports.modules = {
           }
           t.createBaggage = createBaggage;
           function baggageEntryMetadataFromString(e) {
-            if (typeof e !== "string") {
+            if (typeof e !== 'string') {
               i.error(
                 `Cannot create baggage metadata from unknown type: ${typeof e}`
               );
-              e = "";
+              e = '';
             }
             return {
               __TYPE__: o.baggageEntryMetadataSymbol,
@@ -810,7 +810,7 @@ exports.modules = {
           t.baggageEntryMetadataFromString = baggageEntryMetadataFromString;
         },
         388: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.context = void 0;
@@ -818,7 +818,7 @@ exports.modules = {
           t.context = n.ContextAPI.getInstance();
         },
         44: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.NoopContextManager = void 0;
@@ -843,7 +843,7 @@ exports.modules = {
           t.NoopContextManager = NoopContextManager;
         },
         421: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.ROOT_CONTEXT = t.createContextKey = void 0;
@@ -871,7 +871,7 @@ exports.modules = {
           t.ROOT_CONTEXT = new BaseContext();
         },
         920: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.diag = void 0;
@@ -879,34 +879,34 @@ exports.modules = {
           t.diag = n.DiagAPI.instance();
         },
         144: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.DiagComponentLogger = void 0;
           const n = r(38);
           class DiagComponentLogger {
             constructor(e) {
-              this._namespace = e.namespace || "DiagComponentLogger";
+              this._namespace = e.namespace || 'DiagComponentLogger';
             }
             debug(...e) {
-              return logProxy("debug", this._namespace, e);
+              return logProxy('debug', this._namespace, e);
             }
             error(...e) {
-              return logProxy("error", this._namespace, e);
+              return logProxy('error', this._namespace, e);
             }
             info(...e) {
-              return logProxy("info", this._namespace, e);
+              return logProxy('info', this._namespace, e);
             }
             warn(...e) {
-              return logProxy("warn", this._namespace, e);
+              return logProxy('warn', this._namespace, e);
             }
             verbose(...e) {
-              return logProxy("verbose", this._namespace, e);
+              return logProxy('verbose', this._namespace, e);
             }
           }
           t.DiagComponentLogger = DiagComponentLogger;
           function logProxy(e, t, r) {
-            const a = (0, n.getGlobal)("diag");
+            const a = (0, n.getGlobal)('diag');
             if (!a) {
               return;
             }
@@ -915,30 +915,30 @@ exports.modules = {
           }
         },
         689: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.DiagConsoleLogger = void 0;
           const r = [
             {
-              n: "error",
-              c: "error",
+              n: 'error',
+              c: 'error',
             },
             {
-              n: "warn",
-              c: "warn",
+              n: 'warn',
+              c: 'warn',
             },
             {
-              n: "info",
-              c: "info",
+              n: 'info',
+              c: 'info',
             },
             {
-              n: "debug",
-              c: "debug",
+              n: 'debug',
+              c: 'debug',
             },
             {
-              n: "verbose",
-              c: "trace",
+              n: 'verbose',
+              c: 'trace',
             },
           ];
           class DiagConsoleLogger {
@@ -947,10 +947,10 @@ exports.modules = {
                 return function (...t) {
                   if (console) {
                     let r = console[e];
-                    if (typeof r !== "function") {
+                    if (typeof r !== 'function') {
                       r = console.log;
                     }
-                    if (typeof r === "function") {
+                    if (typeof r === 'function') {
                       return r.apply(console, t);
                     }
                   }
@@ -964,7 +964,7 @@ exports.modules = {
           t.DiagConsoleLogger = DiagConsoleLogger;
         },
         871: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.createLogLevelDiagLogger = void 0;
@@ -978,46 +978,46 @@ exports.modules = {
             t = t || {};
             function _filterFunc(r, n) {
               const a = t[r];
-              if (typeof a === "function" && e >= n) {
+              if (typeof a === 'function' && e >= n) {
                 return a.bind(t);
               }
               return function () {};
             }
             return {
-              error: _filterFunc("error", n.DiagLogLevel.ERROR),
-              warn: _filterFunc("warn", n.DiagLogLevel.WARN),
-              info: _filterFunc("info", n.DiagLogLevel.INFO),
-              debug: _filterFunc("debug", n.DiagLogLevel.DEBUG),
-              verbose: _filterFunc("verbose", n.DiagLogLevel.VERBOSE),
+              error: _filterFunc('error', n.DiagLogLevel.ERROR),
+              warn: _filterFunc('warn', n.DiagLogLevel.WARN),
+              info: _filterFunc('info', n.DiagLogLevel.INFO),
+              debug: _filterFunc('debug', n.DiagLogLevel.DEBUG),
+              verbose: _filterFunc('verbose', n.DiagLogLevel.VERBOSE),
             };
           }
           t.createLogLevelDiagLogger = createLogLevelDiagLogger;
         },
         133: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.DiagLogLevel = void 0;
           var r;
           (function (e) {
-            e[(e["NONE"] = 0)] = "NONE";
-            e[(e["ERROR"] = 30)] = "ERROR";
-            e[(e["WARN"] = 50)] = "WARN";
-            e[(e["INFO"] = 60)] = "INFO";
-            e[(e["DEBUG"] = 70)] = "DEBUG";
-            e[(e["VERBOSE"] = 80)] = "VERBOSE";
-            e[(e["ALL"] = 9999)] = "ALL";
+            e[(e['NONE'] = 0)] = 'NONE';
+            e[(e['ERROR'] = 30)] = 'ERROR';
+            e[(e['WARN'] = 50)] = 'WARN';
+            e[(e['INFO'] = 60)] = 'INFO';
+            e[(e['DEBUG'] = 70)] = 'DEBUG';
+            e[(e['VERBOSE'] = 80)] = 'VERBOSE';
+            e[(e['ALL'] = 9999)] = 'ALL';
           })((r = t.DiagLogLevel || (t.DiagLogLevel = {})));
         },
         38: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.unregisterGlobal = t.getGlobal = t.registerGlobal = void 0;
           const n = r(966);
           const a = r(520);
           const o = r(565);
-          const i = a.VERSION.split(".")[0];
+          const i = a.VERSION.split('.')[0];
           const c = Symbol.for(`opentelemetry.js.api.${i}`);
           const s = n._globalThis;
           function registerGlobal(e, t, r, n = false) {
@@ -1070,7 +1070,7 @@ exports.modules = {
           t.unregisterGlobal = unregisterGlobal;
         },
         565: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.isCompatible = t._makeCompatibilityCheck = void 0;
@@ -1141,7 +1141,7 @@ exports.modules = {
           t.isCompatible = _makeCompatibilityCheck(n.VERSION);
         },
         934: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.metrics = void 0;
@@ -1149,18 +1149,18 @@ exports.modules = {
           t.metrics = n.MetricsAPI.getInstance();
         },
         28: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.ValueType = void 0;
           var r;
           (function (e) {
-            e[(e["INT"] = 0)] = "INT";
-            e[(e["DOUBLE"] = 1)] = "DOUBLE";
+            e[(e['INT'] = 0)] = 'INT';
+            e[(e['DOUBLE'] = 1)] = 'DOUBLE';
           })((r = t.ValueType || (t.ValueType = {})));
         },
         962: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.createNoopMeter =
@@ -1245,7 +1245,7 @@ exports.modules = {
           t.createNoopMeter = createNoopMeter;
         },
         333: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.NOOP_METER_PROVIDER = t.NoopMeterProvider = void 0;
@@ -1280,22 +1280,22 @@ exports.modules = {
             function (e, t) {
               for (var r in e)
                 if (
-                  r !== "default" &&
+                  r !== 'default' &&
                   !Object.prototype.hasOwnProperty.call(t, r)
                 )
                   n(t, e, r);
             };
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           a(r(652), t);
         },
         385: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t._globalThis = void 0;
-          t._globalThis = typeof globalThis === "object" ? globalThis : global;
+          t._globalThis = typeof globalThis === 'object' ? globalThis : global;
         },
         652: function (e, t, r) {
           var n =
@@ -1319,18 +1319,18 @@ exports.modules = {
             function (e, t) {
               for (var r in e)
                 if (
-                  r !== "default" &&
+                  r !== 'default' &&
                   !Object.prototype.hasOwnProperty.call(t, r)
                 )
                   n(t, e, r);
             };
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           a(r(385), t);
         },
         251: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.propagation = void 0;
@@ -1338,7 +1338,7 @@ exports.modules = {
           t.propagation = n.PropagationAPI.getInstance();
         },
         600: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.NoopTextMapPropagator = void 0;
@@ -1354,7 +1354,7 @@ exports.modules = {
           t.NoopTextMapPropagator = NoopTextMapPropagator;
         },
         625: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.defaultTextMapSetter = t.defaultTextMapGetter = void 0;
@@ -1382,7 +1382,7 @@ exports.modules = {
           };
         },
         978: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.trace = void 0;
@@ -1390,7 +1390,7 @@ exports.modules = {
           t.trace = n.TraceAPI.getInstance();
         },
         76: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.NonRecordingSpan = void 0;
@@ -1426,7 +1426,7 @@ exports.modules = {
           t.NonRecordingSpan = NonRecordingSpan;
         },
         527: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.NoopTracer = void 0;
@@ -1473,15 +1473,15 @@ exports.modules = {
           t.NoopTracer = NoopTracer;
           function isSpanContext(e) {
             return (
-              typeof e === "object" &&
-              typeof e["spanId"] === "string" &&
-              typeof e["traceId"] === "string" &&
-              typeof e["traceFlags"] === "number"
+              typeof e === 'object' &&
+              typeof e['spanId'] === 'string' &&
+              typeof e['traceId'] === 'string' &&
+              typeof e['traceFlags'] === 'number'
             );
           }
         },
         228: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.NoopTracerProvider = void 0;
@@ -1494,7 +1494,7 @@ exports.modules = {
           t.NoopTracerProvider = NoopTracerProvider;
         },
         387: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.ProxyTracer = void 0;
@@ -1533,7 +1533,7 @@ exports.modules = {
           t.ProxyTracer = ProxyTracer;
         },
         414: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.ProxyTracerProvider = void 0;
@@ -1565,19 +1565,19 @@ exports.modules = {
           t.ProxyTracerProvider = ProxyTracerProvider;
         },
         505: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.SamplingDecision = void 0;
           var r;
           (function (e) {
-            e[(e["NOT_RECORD"] = 0)] = "NOT_RECORD";
-            e[(e["RECORD"] = 1)] = "RECORD";
-            e[(e["RECORD_AND_SAMPLED"] = 2)] = "RECORD_AND_SAMPLED";
+            e[(e['NOT_RECORD'] = 0)] = 'NOT_RECORD';
+            e[(e['RECORD'] = 1)] = 'RECORD';
+            e[(e['RECORD_AND_SAMPLED'] = 2)] = 'RECORD_AND_SAMPLED';
           })((r = t.SamplingDecision || (t.SamplingDecision = {})));
         },
         542: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.getSpanContext =
@@ -1590,7 +1590,7 @@ exports.modules = {
           const n = r(421);
           const a = r(76);
           const o = r(339);
-          const i = (0, n.createContextKey)("OpenTelemetry Context Key SPAN");
+          const i = (0, n.createContextKey)('OpenTelemetry Context Key SPAN');
           function getSpan(e) {
             return e.getValue(i) || undefined;
           }
@@ -1620,15 +1620,15 @@ exports.modules = {
           t.getSpanContext = getSpanContext;
         },
         430: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.TraceStateImpl = void 0;
           const n = r(450);
           const a = 32;
           const o = 512;
-          const i = ",";
-          const c = "=";
+          const i = ',';
+          const c = '=';
           class TraceStateImpl {
             constructor(e) {
               this._internalState = new Map();
@@ -1696,11 +1696,11 @@ exports.modules = {
           t.TraceStateImpl = TraceStateImpl;
         },
         450: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.validateValue = t.validateKey = void 0;
-          const r = "[_0-9a-z-*/]";
+          const r = '[_0-9a-z-*/]';
           const n = `[a-z]${r}{0,255}`;
           const a = `[a-z0-9]${r}{0,240}@[a-z]${r}{0,13}`;
           const o = new RegExp(`^(?:${n}|${a})$`);
@@ -1716,7 +1716,7 @@ exports.modules = {
           t.validateValue = validateValue;
         },
         757: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.createTraceState = void 0;
@@ -1727,7 +1727,7 @@ exports.modules = {
           t.createTraceState = createTraceState;
         },
         304: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.INVALID_SPAN_CONTEXT =
@@ -1735,8 +1735,8 @@ exports.modules = {
             t.INVALID_SPANID =
               void 0;
           const n = r(762);
-          t.INVALID_SPANID = "0000000000000000";
-          t.INVALID_TRACEID = "00000000000000000000000000000000";
+          t.INVALID_SPANID = '0000000000000000';
+          t.INVALID_TRACEID = '00000000000000000000000000000000';
           t.INVALID_SPAN_CONTEXT = {
             traceId: t.INVALID_TRACEID,
             spanId: t.INVALID_SPANID,
@@ -1744,21 +1744,21 @@ exports.modules = {
           };
         },
         902: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.SpanKind = void 0;
           var r;
           (function (e) {
-            e[(e["INTERNAL"] = 0)] = "INTERNAL";
-            e[(e["SERVER"] = 1)] = "SERVER";
-            e[(e["CLIENT"] = 2)] = "CLIENT";
-            e[(e["PRODUCER"] = 3)] = "PRODUCER";
-            e[(e["CONSUMER"] = 4)] = "CONSUMER";
+            e[(e['INTERNAL'] = 0)] = 'INTERNAL';
+            e[(e['SERVER'] = 1)] = 'SERVER';
+            e[(e['CLIENT'] = 2)] = 'CLIENT';
+            e[(e['PRODUCER'] = 3)] = 'PRODUCER';
+            e[(e['CONSUMER'] = 4)] = 'CONSUMER';
           })((r = t.SpanKind || (t.SpanKind = {})));
         },
         994: (e, t, r) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.wrapSpanContext =
@@ -1788,34 +1788,34 @@ exports.modules = {
           t.wrapSpanContext = wrapSpanContext;
         },
         832: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.SpanStatusCode = void 0;
           var r;
           (function (e) {
-            e[(e["UNSET"] = 0)] = "UNSET";
-            e[(e["OK"] = 1)] = "OK";
-            e[(e["ERROR"] = 2)] = "ERROR";
+            e[(e['UNSET'] = 0)] = 'UNSET';
+            e[(e['OK'] = 1)] = 'OK';
+            e[(e['ERROR'] = 2)] = 'ERROR';
           })((r = t.SpanStatusCode || (t.SpanStatusCode = {})));
         },
         762: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.TraceFlags = void 0;
           var r;
           (function (e) {
-            e[(e["NONE"] = 0)] = "NONE";
-            e[(e["SAMPLED"] = 1)] = "SAMPLED";
+            e[(e['NONE'] = 0)] = 'NONE';
+            e[(e['SAMPLED'] = 1)] = 'SAMPLED';
           })((r = t.TraceFlags || (t.TraceFlags = {})));
         },
         520: (e, t) => {
-          Object.defineProperty(t, "__esModule", {
+          Object.defineProperty(t, '__esModule', {
             value: true,
           });
           t.VERSION = void 0;
-          t.VERSION = "1.4.1";
+          t.VERSION = '1.4.1';
         },
       };
       var t = {};
@@ -1836,12 +1836,12 @@ exports.modules = {
         }
         return a.exports;
       }
-      if (typeof __nccwpck_require__ !== "undefined")
-        __nccwpck_require__.ab = __dirname + "/";
+      if (typeof __nccwpck_require__ !== 'undefined')
+        __nccwpck_require__.ab = __dirname + '/';
       var r = {};
       (() => {
         var e = r;
-        Object.defineProperty(e, "__esModule", {
+        Object.defineProperty(e, '__esModule', {
           value: true,
         });
         e.trace =
@@ -1873,189 +1873,189 @@ exports.modules = {
           e.baggageEntryMetadataFromString =
             void 0;
         var t = __nccwpck_require__(701);
-        Object.defineProperty(e, "baggageEntryMetadataFromString", {
+        Object.defineProperty(e, 'baggageEntryMetadataFromString', {
           enumerable: true,
           get: function () {
             return t.baggageEntryMetadataFromString;
           },
         });
         var n = __nccwpck_require__(421);
-        Object.defineProperty(e, "createContextKey", {
+        Object.defineProperty(e, 'createContextKey', {
           enumerable: true,
           get: function () {
             return n.createContextKey;
           },
         });
-        Object.defineProperty(e, "ROOT_CONTEXT", {
+        Object.defineProperty(e, 'ROOT_CONTEXT', {
           enumerable: true,
           get: function () {
             return n.ROOT_CONTEXT;
           },
         });
         var a = __nccwpck_require__(689);
-        Object.defineProperty(e, "DiagConsoleLogger", {
+        Object.defineProperty(e, 'DiagConsoleLogger', {
           enumerable: true,
           get: function () {
             return a.DiagConsoleLogger;
           },
         });
         var o = __nccwpck_require__(133);
-        Object.defineProperty(e, "DiagLogLevel", {
+        Object.defineProperty(e, 'DiagLogLevel', {
           enumerable: true,
           get: function () {
             return o.DiagLogLevel;
           },
         });
         var i = __nccwpck_require__(962);
-        Object.defineProperty(e, "createNoopMeter", {
+        Object.defineProperty(e, 'createNoopMeter', {
           enumerable: true,
           get: function () {
             return i.createNoopMeter;
           },
         });
         var c = __nccwpck_require__(28);
-        Object.defineProperty(e, "ValueType", {
+        Object.defineProperty(e, 'ValueType', {
           enumerable: true,
           get: function () {
             return c.ValueType;
           },
         });
         var s = __nccwpck_require__(625);
-        Object.defineProperty(e, "defaultTextMapGetter", {
+        Object.defineProperty(e, 'defaultTextMapGetter', {
           enumerable: true,
           get: function () {
             return s.defaultTextMapGetter;
           },
         });
-        Object.defineProperty(e, "defaultTextMapSetter", {
+        Object.defineProperty(e, 'defaultTextMapSetter', {
           enumerable: true,
           get: function () {
             return s.defaultTextMapSetter;
           },
         });
         var u = __nccwpck_require__(387);
-        Object.defineProperty(e, "ProxyTracer", {
+        Object.defineProperty(e, 'ProxyTracer', {
           enumerable: true,
           get: function () {
             return u.ProxyTracer;
           },
         });
         var l = __nccwpck_require__(414);
-        Object.defineProperty(e, "ProxyTracerProvider", {
+        Object.defineProperty(e, 'ProxyTracerProvider', {
           enumerable: true,
           get: function () {
             return l.ProxyTracerProvider;
           },
         });
         var g = __nccwpck_require__(505);
-        Object.defineProperty(e, "SamplingDecision", {
+        Object.defineProperty(e, 'SamplingDecision', {
           enumerable: true,
           get: function () {
             return g.SamplingDecision;
           },
         });
         var p = __nccwpck_require__(902);
-        Object.defineProperty(e, "SpanKind", {
+        Object.defineProperty(e, 'SpanKind', {
           enumerable: true,
           get: function () {
             return p.SpanKind;
           },
         });
         var d = __nccwpck_require__(832);
-        Object.defineProperty(e, "SpanStatusCode", {
+        Object.defineProperty(e, 'SpanStatusCode', {
           enumerable: true,
           get: function () {
             return d.SpanStatusCode;
           },
         });
         var _ = __nccwpck_require__(762);
-        Object.defineProperty(e, "TraceFlags", {
+        Object.defineProperty(e, 'TraceFlags', {
           enumerable: true,
           get: function () {
             return _.TraceFlags;
           },
         });
         var f = __nccwpck_require__(757);
-        Object.defineProperty(e, "createTraceState", {
+        Object.defineProperty(e, 'createTraceState', {
           enumerable: true,
           get: function () {
             return f.createTraceState;
           },
         });
         var b = __nccwpck_require__(994);
-        Object.defineProperty(e, "isSpanContextValid", {
+        Object.defineProperty(e, 'isSpanContextValid', {
           enumerable: true,
           get: function () {
             return b.isSpanContextValid;
           },
         });
-        Object.defineProperty(e, "isValidTraceId", {
+        Object.defineProperty(e, 'isValidTraceId', {
           enumerable: true,
           get: function () {
             return b.isValidTraceId;
           },
         });
-        Object.defineProperty(e, "isValidSpanId", {
+        Object.defineProperty(e, 'isValidSpanId', {
           enumerable: true,
           get: function () {
             return b.isValidSpanId;
           },
         });
         var v = __nccwpck_require__(304);
-        Object.defineProperty(e, "INVALID_SPANID", {
+        Object.defineProperty(e, 'INVALID_SPANID', {
           enumerable: true,
           get: function () {
             return v.INVALID_SPANID;
           },
         });
-        Object.defineProperty(e, "INVALID_TRACEID", {
+        Object.defineProperty(e, 'INVALID_TRACEID', {
           enumerable: true,
           get: function () {
             return v.INVALID_TRACEID;
           },
         });
-        Object.defineProperty(e, "INVALID_SPAN_CONTEXT", {
+        Object.defineProperty(e, 'INVALID_SPAN_CONTEXT', {
           enumerable: true,
           get: function () {
             return v.INVALID_SPAN_CONTEXT;
           },
         });
         const O = __nccwpck_require__(388);
-        Object.defineProperty(e, "context", {
+        Object.defineProperty(e, 'context', {
           enumerable: true,
           get: function () {
             return O.context;
           },
         });
         const P = __nccwpck_require__(920);
-        Object.defineProperty(e, "diag", {
+        Object.defineProperty(e, 'diag', {
           enumerable: true,
           get: function () {
             return P.diag;
           },
         });
         const N = __nccwpck_require__(934);
-        Object.defineProperty(e, "metrics", {
+        Object.defineProperty(e, 'metrics', {
           enumerable: true,
           get: function () {
             return N.metrics;
           },
         });
         const S = __nccwpck_require__(251);
-        Object.defineProperty(e, "propagation", {
+        Object.defineProperty(e, 'propagation', {
           enumerable: true,
           get: function () {
             return S.propagation;
           },
         });
         const C = __nccwpck_require__(978);
-        Object.defineProperty(e, "trace", {
+        Object.defineProperty(e, 'trace', {
           enumerable: true,
           get: function () {
             return C.trace;
           },
         });
-        e["default"] = {
+        e['default'] = {
           context: O.context,
           diag: P.diag,
           metrics: N.metrics,
@@ -2070,10 +2070,10 @@ exports.modules = {
   },
 
   /***/ 3942: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "default", {
+    Object.defineProperty(exports, 'default', {
       enumerable: true,
       get: function () {
         return _default;
@@ -2090,7 +2090,7 @@ exports.modules = {
   },
 
   /***/ 9141: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -2152,7 +2152,7 @@ exports.modules = {
         }
         const { parse: parseCookieFn } = __webpack_require__(252);
         return parseCookieFn(
-          Array.isArray(cookie) ? cookie.join("; ") : cookie
+          Array.isArray(cookie) ? cookie.join('; ') : cookie
         );
       };
     }
@@ -2161,11 +2161,11 @@ exports.modules = {
       return res;
     }
     function redirect(res, statusOrUrl, url) {
-      if (typeof statusOrUrl === "string") {
+      if (typeof statusOrUrl === 'string') {
         url = statusOrUrl;
         statusOrUrl = 307;
       }
-      if (typeof statusOrUrl !== "number" || typeof url !== "string") {
+      if (typeof statusOrUrl !== 'number' || typeof url !== 'string') {
         throw new Error(
           `Invalid redirect arguments. Please use a single argument URL, e.g. res.redirect('/destination') or use a status code and URL, e.g. res.redirect(307, '/destination').`
         );
@@ -2199,37 +2199,37 @@ exports.modules = {
         return res;
       }
       const { serialize } = __webpack_require__(252);
-      const previous = res.getHeader("Set-Cookie");
+      const previous = res.getHeader('Set-Cookie');
       res.setHeader(`Set-Cookie`, [
-        ...(typeof previous === "string"
+        ...(typeof previous === 'string'
           ? [previous]
           : Array.isArray(previous)
           ? previous
           : []),
-        serialize(COOKIE_NAME_PRERENDER_BYPASS, "", {
+        serialize(COOKIE_NAME_PRERENDER_BYPASS, '', {
           // To delete a cookie, set `expires` to a date in the past:
           // https://tools.ietf.org/html/rfc6265#section-4.1.1
           // `Max-Age: 0` is not valid, thus ignored, and the cookie is persisted.
           expires: new Date(0),
           httpOnly: true,
-          sameSite: true ? "none" : 0,
-          secure: "production" !== "development",
-          path: "/",
+          sameSite: true ? 'none' : 0,
+          secure: 'production' !== 'development',
+          path: '/',
           ...(options.path !== undefined
             ? {
                 path: options.path,
               }
             : undefined),
         }),
-        serialize(COOKIE_NAME_PRERENDER_DATA, "", {
+        serialize(COOKIE_NAME_PRERENDER_DATA, '', {
           // To delete a cookie, set `expires` to a date in the past:
           // https://tools.ietf.org/html/rfc6265#section-4.1.1
           // `Max-Age: 0` is not valid, thus ignored, and the cookie is persisted.
           expires: new Date(0),
           httpOnly: true,
-          sameSite: true ? "none" : 0,
-          secure: "production" !== "development",
-          path: "/",
+          sameSite: true ? 'none' : 0,
+          secure: 'production' !== 'development',
+          path: '/',
           ...(options.path !== undefined
             ? {
                 path: options.path,
@@ -2287,10 +2287,10 @@ exports.modules = {
   },
 
   /***/ 5744: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "DraftModeProvider", {
+    Object.defineProperty(exports, 'DraftModeProvider', {
       enumerable: true,
       get: function () {
         return DraftModeProvider;
@@ -2325,16 +2325,16 @@ exports.modules = {
       enable() {
         if (!this._previewModeId) {
           throw new Error(
-            "Invariant: previewProps missing previewModeId this should never happen"
+            'Invariant: previewProps missing previewModeId this should never happen'
           );
         }
         this._mutableCookies.set({
           name: _apiutils.COOKIE_NAME_PRERENDER_BYPASS,
           value: this._previewModeId,
           httpOnly: true,
-          sameSite: true ? "none" : 0,
-          secure: "production" !== "development",
-          path: "/",
+          sameSite: true ? 'none' : 0,
+          secure: 'production' !== 'development',
+          path: '/',
         });
       }
       disable() {
@@ -2343,11 +2343,11 @@ exports.modules = {
         // `Max-Age: 0` is not valid, thus ignored, and the cookie is persisted.
         this._mutableCookies.set({
           name: _apiutils.COOKIE_NAME_PRERENDER_BYPASS,
-          value: "",
+          value: '',
           httpOnly: true,
-          sameSite: true ? "none" : 0,
-          secure: "production" !== "development",
-          path: "/",
+          sameSite: true ? 'none' : 0,
+          secure: 'production' !== 'development',
+          path: '/',
           expires: new Date(0),
         });
       }
@@ -2357,10 +2357,10 @@ exports.modules = {
   },
 
   /***/ 3389: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "RequestAsyncStorageWrapper", {
+    Object.defineProperty(exports, 'RequestAsyncStorageWrapper', {
       enumerable: true,
       get: function () {
         return RequestAsyncStorageWrapper;
@@ -2401,7 +2401,7 @@ exports.modules = {
        * @returns the result returned by the callback
        */ wrap(storage, { req, res, renderOpts }, callback) {
         let previewProps = undefined;
-        if (renderOpts && "previewProps" in renderOpts) {
+        if (renderOpts && 'previewProps' in renderOpts) {
           // TODO: investigate why previewProps isn't on RenderOpts
           previewProps = renderOpts.previewProps;
         }
@@ -2449,10 +2449,10 @@ exports.modules = {
   },
 
   /***/ 1482: /***/ (__unused_webpack_module, exports) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "StaticGenerationAsyncStorageWrapper", {
+    Object.defineProperty(exports, 'StaticGenerationAsyncStorageWrapper', {
       enumerable: true,
       get: function () {
         return StaticGenerationAsyncStorageWrapper;
@@ -2496,10 +2496,10 @@ exports.modules = {
   },
 
   /***/ 6221: /***/ (__unused_webpack_module, exports) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "RouteKind", {
+    Object.defineProperty(exports, 'RouteKind', {
       enumerable: true,
       get: function () {
         return RouteKind;
@@ -2510,35 +2510,35 @@ exports.modules = {
       RouteKind[
         /**
          * `PAGES` represents all the React pages that are under `pages/`.
-         */ "PAGES"
-      ] = "PAGES";
+         */ 'PAGES'
+      ] = 'PAGES';
       RouteKind[
         /**
          * `PAGES_API` represents all the API routes under `pages/api/`.
-         */ "PAGES_API"
-      ] = "PAGES_API";
+         */ 'PAGES_API'
+      ] = 'PAGES_API';
       RouteKind[
         /**
          * `APP_PAGE` represents all the React pages that are under `app/` with the
          * filename of `page.{j,t}s{,x}`.
-         */ "APP_PAGE"
-      ] = "APP_PAGE";
+         */ 'APP_PAGE'
+      ] = 'APP_PAGE';
       RouteKind[
         /**
          * `APP_ROUTE` represents all the API routes and metadata routes that are under `app/` with the
          * filename of `route.{j,t}s{,x}`.
-         */ "APP_ROUTE"
-      ] = "APP_ROUTE";
+         */ 'APP_ROUTE'
+      ] = 'APP_ROUTE';
     })(RouteKind || (RouteKind = {})); //# sourceMappingURL=route-kind.js.map
 
     /***/
   },
 
   /***/ 7053: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "autoImplementMethods", {
+    Object.defineProperty(exports, 'autoImplementMethods', {
       enumerable: true,
       get: function () {
         return autoImplementMethods;
@@ -2546,7 +2546,7 @@ exports.modules = {
     });
     const _http = __webpack_require__(1183);
     const _responsehandlers = __webpack_require__(717);
-    const AUTOMATIC_ROUTE_METHODS = ["HEAD", "OPTIONS"];
+    const AUTOMATIC_ROUTE_METHODS = ['HEAD', 'OPTIONS'];
     function autoImplementMethods(handlers) {
       // Loop through all the HTTP methods to create the initial methods object.
       // Each of the methods will be set to the the 405 response handler.
@@ -2574,30 +2574,30 @@ exports.modules = {
         // If the userland module doesn't implement the HEAD method, then
         // we'll automatically implement it by calling the GET method (if it
         // exists).
-        if (method === "HEAD") {
+        if (method === 'HEAD') {
           // If the userland module doesn't implement the GET method, then
           // we're done.
           if (!handlers.GET) break;
           // Implement the HEAD method by calling the GET method.
           methods.HEAD = handlers.GET;
           // Mark it as implemented.
-          implemented.add("HEAD");
+          implemented.add('HEAD');
           continue;
         }
         // If OPTIONS is not provided then implement it.
-        if (method === "OPTIONS") {
+        if (method === 'OPTIONS') {
           // TODO: check if HEAD is implemented, if so, use it to add more headers
           // Get all the methods that were implemented by the userland module.
-          const allow = ["OPTIONS", ...implemented];
+          const allow = ['OPTIONS', ...implemented];
           // If the list of methods doesn't include HEAD, but it includes GET, then
           // add HEAD as it's automatically implemented.
-          if (!implemented.has("HEAD") && implemented.has("GET")) {
-            allow.push("HEAD");
+          if (!implemented.has('HEAD') && implemented.has('GET')) {
+            allow.push('HEAD');
           }
           // Sort and join the list with commas to create the `Allow` header. See:
           // https://httpwg.org/specs/rfc9110.html#field.allow
           const headers = {
-            Allow: allow.sort().join(", "),
+            Allow: allow.sort().join(', '),
           };
           // Implement the OPTIONS method by returning a 204 response with the
           // `Allow` header.
@@ -2607,7 +2607,7 @@ exports.modules = {
               headers,
             });
           // Mark this method as implemented.
-          implemented.add("OPTIONS");
+          implemented.add('OPTIONS');
           continue;
         }
         throw new Error(
@@ -2627,10 +2627,10 @@ exports.modules = {
      * @param urlString the url to clean
      * @returns the cleaned url
      */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "cleanURL", {
+    Object.defineProperty(exports, 'cleanURL', {
       enumerable: true,
       get: function () {
         return cleanURL;
@@ -2638,9 +2638,9 @@ exports.modules = {
     });
     function cleanURL(urlString) {
       const url = new URL(urlString);
-      url.host = "localhost:3000";
-      url.search = "";
-      url.protocol = "http";
+      url.host = 'localhost:3000';
+      url.search = '';
+      url.protocol = 'http';
       return url.toString();
     } //# sourceMappingURL=clean-url.js.map
 
@@ -2648,16 +2648,16 @@ exports.modules = {
   },
 
   /***/ 3383: /***/ (__unused_webpack_module, exports) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "getNonStaticMethods", {
+    Object.defineProperty(exports, 'getNonStaticMethods', {
       enumerable: true,
       get: function () {
         return getNonStaticMethods;
       },
     });
-    const NON_STATIC_METHODS = ["OPTIONS", "POST", "PUT", "DELETE", "PATCH"];
+    const NON_STATIC_METHODS = ['OPTIONS', 'POST', 'PUT', 'DELETE', 'PATCH'];
     function getNonStaticMethods(handlers) {
       // We can currently only statically optimize if only GET/HEAD are used as
       // prerender can't be used conditionally based on the method currently.
@@ -2676,10 +2676,10 @@ exports.modules = {
      * @param absolutePath the absolute path
      * @returns the pathname
      */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "getPathnameFromAbsolutePath", {
+    Object.defineProperty(exports, 'getPathnameFromAbsolutePath', {
       enumerable: true,
       get: function () {
         return getPathnameFromAbsolutePath;
@@ -2687,14 +2687,14 @@ exports.modules = {
     });
     function getPathnameFromAbsolutePath(absolutePath) {
       // Remove prefix including app dir
-      let appDir = "/app/";
+      let appDir = '/app/';
       if (!absolutePath.includes(appDir)) {
-        appDir = "\\app\\";
+        appDir = '\\app\\';
       }
       const [, ...parts] = absolutePath.split(appDir);
       const relativePath = appDir[0] + parts.join(appDir);
       // remove extension
-      const pathname = relativePath.split(".").slice(0, -1).join(".");
+      const pathname = relativePath.split('.').slice(0, -1).join('.');
       return pathname;
     } //# sourceMappingURL=get-pathname-from-absolute-path.js.map
 
@@ -2702,10 +2702,10 @@ exports.modules = {
   },
 
   /***/ 1320: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "proxyRequest", {
+    Object.defineProperty(exports, 'proxyRequest', {
       enumerable: true,
       get: function () {
         return proxyRequest;
@@ -2717,11 +2717,11 @@ exports.modules = {
     function proxyRequest(request, { dynamic }, hooks) {
       function handleNextUrlBailout(prop) {
         switch (prop) {
-          case "search":
-          case "searchParams":
-          case "toString":
-          case "href":
-          case "origin":
+          case 'search':
+          case 'searchParams':
+          case 'toString':
+          case 'href':
+          case 'origin':
             hooks.staticGenerationBailout(`nextUrl.${prop}`);
             return;
           default:
@@ -2731,29 +2731,29 @@ exports.modules = {
       const cache = {};
       const handleForceStatic = (url, prop) => {
         switch (prop) {
-          case "search":
-            return "";
-          case "searchParams":
+          case 'search':
+            return '';
+          case 'searchParams':
             if (!cache.searchParams) cache.searchParams = new URLSearchParams();
             return cache.searchParams;
-          case "url":
-          case "href":
+          case 'url':
+          case 'href':
             if (!cache.url) cache.url = (0, _cleanurl.cleanURL)(url);
             return cache.url;
-          case "toJSON":
-          case "toString":
+          case 'toJSON':
+          case 'toString':
             if (!cache.url) cache.url = (0, _cleanurl.cleanURL)(url);
             if (!cache.toString) cache.toString = () => cache.url;
             return cache.toString;
-          case "headers":
+          case 'headers':
             if (!cache.headers) cache.headers = new Headers();
             return cache.headers;
-          case "cookies":
+          case 'cookies':
             if (!cache.headers) cache.headers = new Headers();
             if (!cache.cookies)
               cache.cookies = new _cookies.RequestCookies(cache.headers);
             return cache.cookies;
-          case "clone":
+          case 'clone':
             if (!cache.url) cache.url = (0, _cleanurl.cleanURL)(url);
             return () => new _nexturl.NextURL(cache.url);
           default:
@@ -2763,12 +2763,12 @@ exports.modules = {
       const wrappedNextUrl = new Proxy(request.nextUrl, {
         get(target, prop) {
           handleNextUrlBailout(prop);
-          if (dynamic === "force-static" && typeof prop === "string") {
+          if (dynamic === 'force-static' && typeof prop === 'string') {
             const result = handleForceStatic(target.href, prop);
             if (result !== undefined) return result;
           }
           const value = target[prop];
-          if (typeof value === "function") {
+          if (typeof value === 'function') {
             return value.bind(target);
           }
           return value;
@@ -2781,19 +2781,19 @@ exports.modules = {
       });
       const handleReqBailout = (prop) => {
         switch (prop) {
-          case "headers":
+          case 'headers':
             hooks.headerHooks.headers();
             return;
           // if request.url is accessed directly instead of
           // request.nextUrl we bail since it includes query
           // values that can be relied on dynamically
-          case "url":
-          case "body":
-          case "blob":
-          case "json":
-          case "text":
-          case "arrayBuffer":
-          case "formData":
+          case 'url':
+          case 'body':
+          case 'blob':
+          case 'json':
+          case 'text':
+          case 'arrayBuffer':
+          case 'formData':
             hooks.staticGenerationBailout(`request.${prop}`);
             return;
           default:
@@ -2803,15 +2803,15 @@ exports.modules = {
       return new Proxy(request, {
         get(target, prop) {
           handleReqBailout(prop);
-          if (prop === "nextUrl") {
+          if (prop === 'nextUrl') {
             return wrappedNextUrl;
           }
-          if (dynamic === "force-static" && typeof prop === "string") {
+          if (dynamic === 'force-static' && typeof prop === 'string') {
             const result = handleForceStatic(target.url, prop);
             if (result !== undefined) return result;
           }
           const value = target[prop];
-          if (typeof value === "function") {
+          if (typeof value === 'function') {
             return value.bind(target);
           }
           return value;
@@ -2828,10 +2828,10 @@ exports.modules = {
   },
 
   /***/ 7714: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "resolveHandlerError", {
+    Object.defineProperty(exports, 'resolveHandlerError', {
       enumerable: true,
       get: function () {
         return resolveHandlerError;
@@ -2844,7 +2844,7 @@ exports.modules = {
       if ((0, _redirect.isRedirectError)(err)) {
         const redirect = (0, _redirect.getURLFromRedirectError)(err);
         if (!redirect) {
-          throw new Error("Invariant: Unexpected redirect url format");
+          throw new Error('Invariant: Unexpected redirect url format');
         }
         // This is a redirect error! Send the redirect response.
         return (0, _responsehandlers.handleTemporaryRedirectResponse)(
@@ -2864,7 +2864,7 @@ exports.modules = {
   },
 
   /***/ 9267: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -2902,7 +2902,7 @@ exports.modules = {
     const _getnonstaticmethods = __webpack_require__(3383);
     const _requestcookies = __webpack_require__(8661);
     function _getRequireWildcardCache(nodeInterop) {
-      if (typeof WeakMap !== "function") return null;
+      if (typeof WeakMap !== 'function') return null;
       var cacheBabelInterop = new WeakMap();
       var cacheNodeInterop = new WeakMap();
       return (_getRequireWildcardCache = function (nodeInterop) {
@@ -2915,7 +2915,7 @@ exports.modules = {
       }
       if (
         obj === null ||
-        (typeof obj !== "object" && typeof obj !== "function")
+        (typeof obj !== 'object' && typeof obj !== 'function')
       ) {
         return {
           default: obj,
@@ -2930,7 +2930,7 @@ exports.modules = {
         Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj) {
         if (
-          key !== "default" &&
+          key !== 'default' &&
           Object.prototype.hasOwnProperty.call(obj, key)
         ) {
           var desc = hasPropertyDescriptor
@@ -2962,9 +2962,9 @@ exports.modules = {
           kind: _routekind.RouteKind.APP_ROUTE,
           pathname,
           // The following aren't needed for the route handler.
-          page: "",
-          bundlePath: "",
-          filename: "",
+          page: '',
+          bundlePath: '',
+          filename: '',
         };
         this.pathname = pathname;
         this.resolvedPagePath = resolvedPagePath;
@@ -2980,10 +2980,10 @@ exports.modules = {
         );
         // Get the dynamic property from the userland module.
         this.dynamic = this.userland.dynamic;
-        if (this.nextConfigOutput === "export") {
-          if (!this.dynamic || this.dynamic === "auto") {
-            this.dynamic = "error";
-          } else if (this.dynamic === "force-dynamic") {
+        if (this.nextConfigOutput === 'export') {
+          if (!this.dynamic || this.dynamic === 'auto') {
+            this.dynamic = 'error';
+          } else if (this.dynamic === 'force-dynamic') {
             throw new Error(
               `export const dynamic = "force-dynamic" on page "${pathname}" cannot be used with "output: export". See more info here: https://nextjs.org/docs/advanced-features/static-html-export`
             );
@@ -3063,13 +3063,13 @@ exports.modules = {
                     if (this.nonStaticMethods) {
                       this.staticGenerationBailout(
                         `non-static methods used ${this.nonStaticMethods.join(
-                          ", "
+                          ', '
                         )}`
                       );
                     }
                     // Update the static generation store based on the dynamic property.
                     switch (this.dynamic) {
-                      case "force-dynamic":
+                      case 'force-dynamic':
                         // The dynamic property is set to force-dynamic, so we should
                         // force the page to be dynamic.
                         staticGenerationStore.forceDynamic = true;
@@ -3077,12 +3077,12 @@ exports.modules = {
                           dynamic: this.dynamic,
                         });
                         break;
-                      case "force-static":
+                      case 'force-static':
                         // The dynamic property is set to force-static, so we should
                         // force the page to be static.
                         staticGenerationStore.forceStatic = true;
                         break;
-                      case "error":
+                      case 'error':
                         // The dynamic property is set to error, so we should throw an
                         // error if the page is being statically generated.
                         staticGenerationStore.dynamicShouldError = true;
@@ -3117,7 +3117,7 @@ exports.modules = {
                     _tracer.getTracer)().getRootSpanAttributes()) == null
                       ? void 0
                       : _getTracer_getRootSpanAttributes.set(
-                          "next.route",
+                          'next.route',
                           route
                         );
                     return (0, _tracer.getTracer)().trace(
@@ -3125,7 +3125,7 @@ exports.modules = {
                       {
                         spanName: `executing api route (app) ${route}`,
                         attributes: {
-                          "next.route": route,
+                          'next.route': route,
                         },
                       },
                       async () => {
@@ -3149,7 +3149,7 @@ exports.modules = {
                           (_staticGenerationStore_tags =
                             staticGenerationStore.tags) == null
                             ? void 0
-                            : _staticGenerationStore_tags.join(",");
+                            : _staticGenerationStore_tags.join(',');
                         // It's possible cookies were set in the handler, so we need
                         // to merge the modified cookies and the returned response
                         // here.
@@ -3185,11 +3185,11 @@ exports.modules = {
           // TODO: validate the correct handling behavior, maybe log something?
           return (0, _responsehandlers.handleInternalServerErrorResponse)();
         }
-        if (response.headers.has("x-middleware-rewrite")) {
+        if (response.headers.has('x-middleware-rewrite')) {
           // TODO: move this error into the `NextResponse.rewrite()` function.
           // TODO-APP: re-enable support below when we can proxy these type of requests
           throw new Error(
-            "NextResponse.rewrite() was used in a app route handler, this is not currently supported. Please remove the invocation to continue."
+            'NextResponse.rewrite() was used in a app route handler, this is not currently supported. Please remove the invocation to continue.'
           );
           // // This is a rewrite created via `NextResponse.rewrite()`. We need to send
           // // the response up so it can be handled by the backing server.
@@ -3207,10 +3207,10 @@ exports.modules = {
           // const { pathname } = parseUrl(relativizeURL(rewritePath, initUrl))
           // response.headers.set('x-middleware-rewrite', pathname)
         }
-        if (response.headers.get("x-middleware-next") === "1") {
+        if (response.headers.get('x-middleware-next') === '1') {
           // TODO: move this error into the `NextResponse.next()` function.
           throw new Error(
-            "NextResponse.next() was used in a app route handler, this is not supported. See here for more info: https://nextjs.org/docs/messages/next-response-next-in-app-route-handler"
+            'NextResponse.next() was used in a app route handler, this is not supported. See here for more info: https://nextjs.org/docs/messages/next-response-next-in-app-route-handler'
           );
         }
         return response;
@@ -3236,7 +3236,7 @@ exports.modules = {
   },
 
   /***/ 717: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -3300,10 +3300,10 @@ exports.modules = {
   },
 
   /***/ 6210: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "RouteModule", {
+    Object.defineProperty(exports, 'RouteModule', {
       enumerable: true,
       get: function () {
         return RouteModule;
@@ -3351,7 +3351,7 @@ exports.modules = {
   },
 
   /***/ 6133: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -3373,7 +3373,7 @@ exports.modules = {
     const _constants = __webpack_require__(3993);
     const _tracer = __webpack_require__(9814);
     const _constants1 = __webpack_require__(8537);
-    const isEdgeRuntime = "nodejs" === "edge";
+    const isEdgeRuntime = 'nodejs' === 'edge';
     function addImplicitTags(staticGenerationStore) {
       const newTags = [];
       const pathname =
@@ -3397,7 +3397,7 @@ exports.modules = {
       if (!staticGenerationStore.fetchMetrics) {
         staticGenerationStore.fetchMetrics = [];
       }
-      const dedupeFields = ["url", "status", "method"];
+      const dedupeFields = ['url', 'status', 'method'];
       // don't add metric if one already exists for the fetch
       if (
         staticGenerationStore.fetchMetrics.some((metric) => {
@@ -3428,30 +3428,30 @@ exports.modules = {
         let url;
         try {
           url = new URL(input instanceof Request ? input.url : input);
-          url.username = "";
-          url.password = "";
+          url.username = '';
+          url.password = '';
         } catch {
           // Error caused by malformed URL should be handled by native fetch
           url = undefined;
         }
-        const fetchUrl = (url == null ? void 0 : url.href) ?? "";
+        const fetchUrl = (url == null ? void 0 : url.href) ?? '';
         const fetchStart = Date.now();
         const method =
           (init == null
             ? void 0
             : (_init_method = init.method) == null
             ? void 0
-            : _init_method.toUpperCase()) || "GET";
+            : _init_method.toUpperCase()) || 'GET';
         return await (0, _tracer.getTracer)().trace(
           _constants.AppRenderSpan.fetch,
           {
             kind: _tracer.SpanKind.CLIENT,
-            spanName: ["fetch", method, fetchUrl].filter(Boolean).join(" "),
+            spanName: ['fetch', method, fetchUrl].filter(Boolean).join(' '),
             attributes: {
-              "http.url": fetchUrl,
-              "http.method": method,
-              "net.peer.name": url == null ? void 0 : url.hostname,
-              "net.peer.port": (url == null ? void 0 : url.port) || undefined,
+              'http.url': fetchUrl,
+              'http.method': method,
+              'net.peer.name': url == null ? void 0 : url.hostname,
+              'net.peer.port': (url == null ? void 0 : url.port) || undefined,
             },
           },
           async () => {
@@ -3460,8 +3460,8 @@ exports.modules = {
               staticGenerationAsyncStorage.getStore();
             const isRequestInput =
               input &&
-              typeof input === "object" &&
-              typeof input.method === "string";
+              typeof input === 'object' &&
+              typeof input.method === 'string';
             const getRequestMeta = (field) => {
               let value = isRequestInput ? input[field] : null;
               return value || (init == null ? void 0 : init[field]);
@@ -3484,7 +3484,7 @@ exports.modules = {
                 ? void 0
                 : (_init_next = init.next) == null
                 ? void 0
-                : _init_next[field]) !== "undefined"
+                : _init_next[field]) !== 'undefined'
                 ? init == null
                   ? void 0
                   : (_init_next1 = init.next) == null
@@ -3498,8 +3498,8 @@ exports.modules = {
             };
             // RequestInit doesn't keep extra fields e.g. next so it's
             // only available if init is used separate
-            let curRevalidate = getNextField("revalidate");
-            const tags = getNextField("tags") || [];
+            let curRevalidate = getNextField('revalidate');
+            const tags = getNextField('tags') || [];
             if (Array.isArray(tags)) {
               if (!staticGenerationStore.tags) {
                 staticGenerationStore.tags = [];
@@ -3517,48 +3517,48 @@ exports.modules = {
               }
             }
             const isOnlyCache =
-              staticGenerationStore.fetchCache === "only-cache";
+              staticGenerationStore.fetchCache === 'only-cache';
             const isForceCache =
-              staticGenerationStore.fetchCache === "force-cache";
+              staticGenerationStore.fetchCache === 'force-cache';
             const isDefaultCache =
-              staticGenerationStore.fetchCache === "default-cache";
+              staticGenerationStore.fetchCache === 'default-cache';
             const isDefaultNoStore =
-              staticGenerationStore.fetchCache === "default-no-store";
+              staticGenerationStore.fetchCache === 'default-no-store';
             const isOnlyNoStore =
-              staticGenerationStore.fetchCache === "only-no-store";
+              staticGenerationStore.fetchCache === 'only-no-store';
             const isForceNoStore =
-              staticGenerationStore.fetchCache === "force-no-store";
-            let _cache = getRequestMeta("cache");
+              staticGenerationStore.fetchCache === 'force-no-store';
+            let _cache = getRequestMeta('cache');
             if (
-              typeof _cache === "string" &&
-              typeof curRevalidate !== "undefined"
+              typeof _cache === 'string' &&
+              typeof curRevalidate !== 'undefined'
             ) {
               console.warn(
                 `Warning: fetch for ${fetchUrl} on ${staticGenerationStore.pathname} specified "cache: ${_cache}" and "revalidate: ${curRevalidate}", only one should be specified.`
               );
               _cache = undefined;
             }
-            if (_cache === "force-cache") {
+            if (_cache === 'force-cache') {
               curRevalidate = false;
             }
-            if (["no-cache", "no-store"].includes(_cache || "")) {
+            if (['no-cache', 'no-store'].includes(_cache || '')) {
               curRevalidate = 0;
             }
-            if (typeof curRevalidate === "number" || curRevalidate === false) {
+            if (typeof curRevalidate === 'number' || curRevalidate === false) {
               revalidate = curRevalidate;
             }
-            let cacheReason = "";
-            const _headers = getRequestMeta("headers");
+            let cacheReason = '';
+            const _headers = getRequestMeta('headers');
             const initHeaders =
-              typeof (_headers == null ? void 0 : _headers.get) === "function"
+              typeof (_headers == null ? void 0 : _headers.get) === 'function'
                 ? _headers
                 : new Headers(_headers || {});
             const hasUnCacheableHeader =
-              initHeaders.get("authorization") || initHeaders.get("cookie");
-            const isUnCacheableMethod = !["get", "head"].includes(
-              ((_getRequestMeta = getRequestMeta("method")) == null
+              initHeaders.get('authorization') || initHeaders.get('cookie');
+            const isUnCacheableMethod = !['get', 'head'].includes(
+              ((_getRequestMeta = getRequestMeta('method')) == null
                 ? void 0
-                : _getRequestMeta.toLowerCase()) || "get"
+                : _getRequestMeta.toLowerCase()) || 'get'
             );
             // if there are authorized headers or a POST method and
             // dynamic data usage was present above the tree we bail
@@ -3568,44 +3568,44 @@ exports.modules = {
               staticGenerationStore.revalidate === 0;
             if (isForceNoStore) {
               revalidate = 0;
-              cacheReason = "fetchCache = force-no-store";
+              cacheReason = 'fetchCache = force-no-store';
             }
             if (isOnlyNoStore) {
-              if (_cache === "force-cache" || revalidate === 0) {
+              if (_cache === 'force-cache' || revalidate === 0) {
                 throw new Error(
                   `cache: 'force-cache' used on fetch for ${fetchUrl} with 'export const fetchCache = 'only-no-store'`
                 );
               }
               revalidate = 0;
-              cacheReason = "fetchCache = only-no-store";
+              cacheReason = 'fetchCache = only-no-store';
             }
-            if (isOnlyCache && _cache === "no-store") {
+            if (isOnlyCache && _cache === 'no-store') {
               throw new Error(
                 `cache: 'no-store' used on fetch for ${fetchUrl} with 'export const fetchCache = 'only-cache'`
               );
             }
             if (
               isForceCache &&
-              (typeof curRevalidate === "undefined" || curRevalidate === 0)
+              (typeof curRevalidate === 'undefined' || curRevalidate === 0)
             ) {
-              cacheReason = "fetchCache = force-cache";
+              cacheReason = 'fetchCache = force-cache';
               revalidate = false;
             }
-            if (typeof revalidate === "undefined") {
+            if (typeof revalidate === 'undefined') {
               if (isDefaultCache) {
                 revalidate = false;
-                cacheReason = "fetchCache = default-cache";
+                cacheReason = 'fetchCache = default-cache';
               } else if (autoNoCache) {
                 revalidate = 0;
-                cacheReason = "auto no cache";
+                cacheReason = 'auto no cache';
               } else if (isDefaultNoStore) {
                 revalidate = 0;
-                cacheReason = "fetchCache = default-no-store";
+                cacheReason = 'fetchCache = default-no-store';
               } else {
-                cacheReason = "auto cache";
+                cacheReason = 'auto cache';
                 revalidate =
-                  typeof staticGenerationStore.revalidate === "boolean" ||
-                  typeof staticGenerationStore.revalidate === "undefined"
+                  typeof staticGenerationStore.revalidate === 'boolean' ||
+                  typeof staticGenerationStore.revalidate === 'undefined'
                     ? false
                     : staticGenerationStore.revalidate;
               }
@@ -3615,16 +3615,16 @@ exports.modules = {
             if (
               // revalidate although if it occurs during build we do
               !autoNoCache &&
-              (typeof staticGenerationStore.revalidate === "undefined" ||
-                (typeof revalidate === "number" &&
+              (typeof staticGenerationStore.revalidate === 'undefined' ||
+                (typeof revalidate === 'number' &&
                   (staticGenerationStore.revalidate === false ||
-                    (typeof staticGenerationStore.revalidate === "number" &&
+                    (typeof staticGenerationStore.revalidate === 'number' &&
                       revalidate < staticGenerationStore.revalidate))))
             ) {
               staticGenerationStore.revalidate = revalidate;
             }
             const isCacheableRevalidate =
-              (typeof revalidate === "number" && revalidate > 0) ||
+              (typeof revalidate === 'number' && revalidate > 0) ||
               revalidate === false;
             let cacheKey;
             if (
@@ -3642,19 +3642,19 @@ exports.modules = {
               }
             }
             const requestInputFields = [
-              "cache",
-              "credentials",
-              "headers",
-              "integrity",
-              "keepalive",
-              "method",
-              "mode",
-              "redirect",
-              "referrer",
-              "referrerPolicy",
-              "signal",
-              "window",
-              "duplex",
+              'cache',
+              'credentials',
+              'headers',
+              'integrity',
+              'keepalive',
+              'method',
+              'mode',
+              'redirect',
+              'referrer',
+              'referrerPolicy',
+              'signal',
+              'window',
+              'duplex',
             ];
             if (isRequestInput) {
               const reqInput = input;
@@ -3679,7 +3679,7 @@ exports.modules = {
             const fetchIdx = staticGenerationStore.nextFetchId ?? 1;
             staticGenerationStore.nextFetchId = fetchIdx + 1;
             const normalizedRevalidate =
-              typeof revalidate !== "number"
+              typeof revalidate !== 'number'
                 ? _constants1.CACHE_ONE_YEAR
                 : revalidate;
             const doOriginalFetch = async (isStale) => {
@@ -3688,7 +3688,7 @@ exports.modules = {
                 ...init,
                 next: {
                   ...(init == null ? void 0 : init.next),
-                  fetchType: "origin",
+                  fetchType: 'origin',
                   fetchIdx,
                 },
               };
@@ -3698,9 +3698,9 @@ exports.modules = {
                     start: fetchStart,
                     url: fetchUrl,
                     cacheReason,
-                    cacheStatus: "miss",
+                    cacheStatus: 'miss',
                     status: res.status,
-                    method: clonedInit.method || "GET",
+                    method: clonedInit.method || 'GET',
                   });
                 }
                 if (
@@ -3714,10 +3714,10 @@ exports.modules = {
                     await staticGenerationStore.incrementalCache.set(
                       cacheKey,
                       {
-                        kind: "FETCH",
+                        kind: 'FETCH',
                         data: {
                           headers: Object.fromEntries(res.headers.entries()),
-                          body: bodyBuffer.toString("base64"),
+                          body: bodyBuffer.toString('base64'),
                           status: res.status,
                           tags,
                         },
@@ -3756,7 +3756,7 @@ exports.modules = {
                   );
               if (
                 (entry == null ? void 0 : entry.value) &&
-                entry.value.kind === "FETCH"
+                entry.value.kind === 'FETCH'
               ) {
                 const currentTags = entry.value.data.tags;
                 // when stale and is revalidating we wait for fresh data
@@ -3806,16 +3806,16 @@ exports.modules = {
                   } else {
                     decodedBody = Buffer.from(
                       resData.body,
-                      "base64"
+                      'base64'
                     ).subarray();
                   }
                   trackFetchMetric(staticGenerationStore, {
                     start: fetchStart,
                     url: fetchUrl,
                     cacheReason,
-                    cacheStatus: "hit",
+                    cacheStatus: 'hit',
                     status: resData.status || 200,
-                    method: (init == null ? void 0 : init.method) || "GET",
+                    method: (init == null ? void 0 : init.method) || 'GET',
                   });
                   return new Response(decodedBody, {
                     headers: resData.headers,
@@ -3825,20 +3825,20 @@ exports.modules = {
               }
             }
             if (staticGenerationStore.isStaticGeneration) {
-              if (init && typeof init === "object") {
+              if (init && typeof init === 'object') {
                 const cache = init.cache;
                 // Delete `cache` property as Cloudflare Workers will throw an error
                 if (isEdgeRuntime) {
                   delete init.cache;
                 }
-                if (cache === "no-store") {
+                if (cache === 'no-store') {
                   staticGenerationStore.revalidate = 0;
                   // TODO: ensure this error isn't logged to the user
                   // seems it's slipping through currently
                   const dynamicUsageReason = `no-store fetch ${input}${
                     staticGenerationStore.pathname
                       ? ` ${staticGenerationStore.pathname}`
-                      : ""
+                      : ''
                   }`;
                   const err = new DynamicServerError(dynamicUsageReason);
                   staticGenerationStore.dynamicUsageStack = err.stack;
@@ -3846,11 +3846,11 @@ exports.modules = {
                     dynamicUsageReason;
                   throw err;
                 }
-                const hasNextConfig = "next" in init;
+                const hasNextConfig = 'next' in init;
                 const next = init.next || {};
                 if (
-                  typeof next.revalidate === "number" &&
-                  (typeof staticGenerationStore.revalidate === "undefined" ||
+                  typeof next.revalidate === 'number' &&
+                  (typeof staticGenerationStore.revalidate === 'undefined' ||
                     next.revalidate < staticGenerationStore.revalidate)
                 ) {
                   const forceDynamic = staticGenerationStore.forceDynamic;
@@ -3863,7 +3863,7 @@ exports.modules = {
                     } fetch ${input}${
                       staticGenerationStore.pathname
                         ? ` ${staticGenerationStore.pathname}`
-                        : ""
+                        : ''
                     }`;
                     const err = new DynamicServerError(dynamicUsageReason);
                     staticGenerationStore.dynamicUsageStack = err.stack;
@@ -3896,7 +3896,7 @@ exports.modules = {
      * next.js's implementation only with known span names defined here.
      **/ // eslint typescript has a bug with TS enums
     /* eslint-disable no-shadow */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -3947,129 +3947,129 @@ exports.modules = {
     });
     var BaseServerSpan;
     (function (BaseServerSpan) {
-      BaseServerSpan["handleRequest"] = "BaseServer.handleRequest";
-      BaseServerSpan["run"] = "BaseServer.run";
-      BaseServerSpan["pipe"] = "BaseServer.pipe";
-      BaseServerSpan["getStaticHTML"] = "BaseServer.getStaticHTML";
-      BaseServerSpan["render"] = "BaseServer.render";
-      BaseServerSpan["renderToResponseWithComponents"] =
-        "BaseServer.renderToResponseWithComponents";
-      BaseServerSpan["renderToResponse"] = "BaseServer.renderToResponse";
-      BaseServerSpan["renderToHTML"] = "BaseServer.renderToHTML";
-      BaseServerSpan["renderError"] = "BaseServer.renderError";
-      BaseServerSpan["renderErrorToResponse"] =
-        "BaseServer.renderErrorToResponse";
-      BaseServerSpan["renderErrorToHTML"] = "BaseServer.renderErrorToHTML";
-      BaseServerSpan["render404"] = "BaseServer.render404";
+      BaseServerSpan['handleRequest'] = 'BaseServer.handleRequest';
+      BaseServerSpan['run'] = 'BaseServer.run';
+      BaseServerSpan['pipe'] = 'BaseServer.pipe';
+      BaseServerSpan['getStaticHTML'] = 'BaseServer.getStaticHTML';
+      BaseServerSpan['render'] = 'BaseServer.render';
+      BaseServerSpan['renderToResponseWithComponents'] =
+        'BaseServer.renderToResponseWithComponents';
+      BaseServerSpan['renderToResponse'] = 'BaseServer.renderToResponse';
+      BaseServerSpan['renderToHTML'] = 'BaseServer.renderToHTML';
+      BaseServerSpan['renderError'] = 'BaseServer.renderError';
+      BaseServerSpan['renderErrorToResponse'] =
+        'BaseServer.renderErrorToResponse';
+      BaseServerSpan['renderErrorToHTML'] = 'BaseServer.renderErrorToHTML';
+      BaseServerSpan['render404'] = 'BaseServer.render404';
     })(BaseServerSpan || (BaseServerSpan = {}));
     var LoadComponentsSpan;
     (function (LoadComponentsSpan) {
-      LoadComponentsSpan["loadDefaultErrorComponents"] =
-        "LoadComponents.loadDefaultErrorComponents";
-      LoadComponentsSpan["loadComponents"] = "LoadComponents.loadComponents";
+      LoadComponentsSpan['loadDefaultErrorComponents'] =
+        'LoadComponents.loadDefaultErrorComponents';
+      LoadComponentsSpan['loadComponents'] = 'LoadComponents.loadComponents';
     })(LoadComponentsSpan || (LoadComponentsSpan = {}));
     var NextServerSpan;
     (function (NextServerSpan) {
-      NextServerSpan["getRequestHandler"] = "NextServer.getRequestHandler";
-      NextServerSpan["getServer"] = "NextServer.getServer";
-      NextServerSpan["getServerRequestHandler"] =
-        "NextServer.getServerRequestHandler";
-      NextServerSpan["createServer"] = "createServer.createServer";
+      NextServerSpan['getRequestHandler'] = 'NextServer.getRequestHandler';
+      NextServerSpan['getServer'] = 'NextServer.getServer';
+      NextServerSpan['getServerRequestHandler'] =
+        'NextServer.getServerRequestHandler';
+      NextServerSpan['createServer'] = 'createServer.createServer';
     })(NextServerSpan || (NextServerSpan = {}));
     var NextNodeServerSpan;
     (function (NextNodeServerSpan) {
-      NextNodeServerSpan["compression"] = "NextNodeServer.compression";
-      NextNodeServerSpan["getBuildId"] = "NextNodeServer.getBuildId";
-      NextNodeServerSpan["generateStaticRoutes"] =
-        "NextNodeServer.generateStaticRoutes";
-      NextNodeServerSpan["generateFsStaticRoutes"] =
-        "NextNodeServer.generateFsStaticRoutes";
-      NextNodeServerSpan["generatePublicRoutes"] =
-        "NextNodeServer.generatePublicRoutes";
-      NextNodeServerSpan["generateImageRoutes"] =
-        "NextNodeServer.generateImageRoutes.route";
-      NextNodeServerSpan["sendRenderResult"] =
-        "NextNodeServer.sendRenderResult";
-      NextNodeServerSpan["sendStatic"] = "NextNodeServer.sendStatic";
-      NextNodeServerSpan["proxyRequest"] = "NextNodeServer.proxyRequest";
-      NextNodeServerSpan["runApi"] = "NextNodeServer.runApi";
-      NextNodeServerSpan["render"] = "NextNodeServer.render";
-      NextNodeServerSpan["renderHTML"] = "NextNodeServer.renderHTML";
-      NextNodeServerSpan["imageOptimizer"] = "NextNodeServer.imageOptimizer";
-      NextNodeServerSpan["getPagePath"] = "NextNodeServer.getPagePath";
-      NextNodeServerSpan["getRoutesManifest"] =
-        "NextNodeServer.getRoutesManifest";
-      NextNodeServerSpan["findPageComponents"] =
-        "NextNodeServer.findPageComponents";
-      NextNodeServerSpan["getFontManifest"] = "NextNodeServer.getFontManifest";
-      NextNodeServerSpan["getServerComponentManifest"] =
-        "NextNodeServer.getServerComponentManifest";
-      NextNodeServerSpan["getRequestHandler"] =
-        "NextNodeServer.getRequestHandler";
-      NextNodeServerSpan["renderToHTML"] = "NextNodeServer.renderToHTML";
-      NextNodeServerSpan["renderError"] = "NextNodeServer.renderError";
-      NextNodeServerSpan["renderErrorToHTML"] =
-        "NextNodeServer.renderErrorToHTML";
-      NextNodeServerSpan["render404"] = "NextNodeServer.render404";
-      NextNodeServerSpan["route"] = "route";
-      NextNodeServerSpan["onProxyReq"] = "onProxyReq";
-      NextNodeServerSpan["apiResolver"] = "apiResolver";
+      NextNodeServerSpan['compression'] = 'NextNodeServer.compression';
+      NextNodeServerSpan['getBuildId'] = 'NextNodeServer.getBuildId';
+      NextNodeServerSpan['generateStaticRoutes'] =
+        'NextNodeServer.generateStaticRoutes';
+      NextNodeServerSpan['generateFsStaticRoutes'] =
+        'NextNodeServer.generateFsStaticRoutes';
+      NextNodeServerSpan['generatePublicRoutes'] =
+        'NextNodeServer.generatePublicRoutes';
+      NextNodeServerSpan['generateImageRoutes'] =
+        'NextNodeServer.generateImageRoutes.route';
+      NextNodeServerSpan['sendRenderResult'] =
+        'NextNodeServer.sendRenderResult';
+      NextNodeServerSpan['sendStatic'] = 'NextNodeServer.sendStatic';
+      NextNodeServerSpan['proxyRequest'] = 'NextNodeServer.proxyRequest';
+      NextNodeServerSpan['runApi'] = 'NextNodeServer.runApi';
+      NextNodeServerSpan['render'] = 'NextNodeServer.render';
+      NextNodeServerSpan['renderHTML'] = 'NextNodeServer.renderHTML';
+      NextNodeServerSpan['imageOptimizer'] = 'NextNodeServer.imageOptimizer';
+      NextNodeServerSpan['getPagePath'] = 'NextNodeServer.getPagePath';
+      NextNodeServerSpan['getRoutesManifest'] =
+        'NextNodeServer.getRoutesManifest';
+      NextNodeServerSpan['findPageComponents'] =
+        'NextNodeServer.findPageComponents';
+      NextNodeServerSpan['getFontManifest'] = 'NextNodeServer.getFontManifest';
+      NextNodeServerSpan['getServerComponentManifest'] =
+        'NextNodeServer.getServerComponentManifest';
+      NextNodeServerSpan['getRequestHandler'] =
+        'NextNodeServer.getRequestHandler';
+      NextNodeServerSpan['renderToHTML'] = 'NextNodeServer.renderToHTML';
+      NextNodeServerSpan['renderError'] = 'NextNodeServer.renderError';
+      NextNodeServerSpan['renderErrorToHTML'] =
+        'NextNodeServer.renderErrorToHTML';
+      NextNodeServerSpan['render404'] = 'NextNodeServer.render404';
+      NextNodeServerSpan['route'] = 'route';
+      NextNodeServerSpan['onProxyReq'] = 'onProxyReq';
+      NextNodeServerSpan['apiResolver'] = 'apiResolver';
     })(NextNodeServerSpan || (NextNodeServerSpan = {}));
     var StartServerSpan;
     (function (StartServerSpan) {
-      StartServerSpan["startServer"] = "startServer.startServer";
+      StartServerSpan['startServer'] = 'startServer.startServer';
     })(StartServerSpan || (StartServerSpan = {}));
     var RenderSpan;
     (function (RenderSpan) {
-      RenderSpan["getServerSideProps"] = "Render.getServerSideProps";
-      RenderSpan["getStaticProps"] = "Render.getStaticProps";
-      RenderSpan["renderToString"] = "Render.renderToString";
-      RenderSpan["renderDocument"] = "Render.renderDocument";
-      RenderSpan["createBodyResult"] = "Render.createBodyResult";
+      RenderSpan['getServerSideProps'] = 'Render.getServerSideProps';
+      RenderSpan['getStaticProps'] = 'Render.getStaticProps';
+      RenderSpan['renderToString'] = 'Render.renderToString';
+      RenderSpan['renderDocument'] = 'Render.renderDocument';
+      RenderSpan['createBodyResult'] = 'Render.createBodyResult';
     })(RenderSpan || (RenderSpan = {}));
     var AppRenderSpan;
     (function (AppRenderSpan) {
-      AppRenderSpan["renderToString"] = "AppRender.renderToString";
-      AppRenderSpan["renderToReadableStream"] =
-        "AppRender.renderToReadableStream";
-      AppRenderSpan["getBodyResult"] = "AppRender.getBodyResult";
-      AppRenderSpan["fetch"] = "AppRender.fetch";
+      AppRenderSpan['renderToString'] = 'AppRender.renderToString';
+      AppRenderSpan['renderToReadableStream'] =
+        'AppRender.renderToReadableStream';
+      AppRenderSpan['getBodyResult'] = 'AppRender.getBodyResult';
+      AppRenderSpan['fetch'] = 'AppRender.fetch';
     })(AppRenderSpan || (AppRenderSpan = {}));
     var RouterSpan;
     (function (RouterSpan) {
-      RouterSpan["executeRoute"] = "Router.executeRoute";
+      RouterSpan['executeRoute'] = 'Router.executeRoute';
     })(RouterSpan || (RouterSpan = {}));
     var NodeSpan;
     (function (NodeSpan) {
-      NodeSpan["runHandler"] = "Node.runHandler";
+      NodeSpan['runHandler'] = 'Node.runHandler';
     })(NodeSpan || (NodeSpan = {}));
     var AppRouteRouteHandlersSpan;
     (function (AppRouteRouteHandlersSpan) {
-      AppRouteRouteHandlersSpan["runHandler"] =
-        "AppRouteRouteHandlers.runHandler";
+      AppRouteRouteHandlersSpan['runHandler'] =
+        'AppRouteRouteHandlers.runHandler';
     })(AppRouteRouteHandlersSpan || (AppRouteRouteHandlersSpan = {}));
     var ResolveMetadataSpan;
     (function (ResolveMetadataSpan) {
-      ResolveMetadataSpan["generateMetadata"] =
-        "ResolveMetadata.generateMetadata";
+      ResolveMetadataSpan['generateMetadata'] =
+        'ResolveMetadata.generateMetadata';
     })(ResolveMetadataSpan || (ResolveMetadataSpan = {}));
     const NextVanillaSpanAllowlist = [
-      "BaseServer.handleRequest",
-      "Render.getServerSideProps",
-      "Render.getStaticProps",
-      "AppRender.fetch",
-      "AppRender.getBodyResult",
-      "Render.renderDocument",
-      "Node.runHandler",
-      "AppRouteRouteHandlers.runHandler",
-      "ResolveMetadata.generateMetadata",
+      'BaseServer.handleRequest',
+      'Render.getServerSideProps',
+      'Render.getStaticProps',
+      'AppRender.fetch',
+      'AppRender.getBodyResult',
+      'Render.renderDocument',
+      'Node.runHandler',
+      'AppRouteRouteHandlers.runHandler',
+      'ResolveMetadata.generateMetadata',
     ]; //# sourceMappingURL=constants.js.map
 
     /***/
   },
 
   /***/ 9814: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -4111,7 +4111,7 @@ exports.modules = {
     const { context, trace, SpanStatusCode, SpanKind } = api;
     const isPromise = (p) => {
       return (
-        p !== null && typeof p === "object" && typeof p.then === "function"
+        p !== null && typeof p === 'object' && typeof p.then === 'function'
       );
     };
     const closeSpanWithError = (span, error) => {
@@ -4126,7 +4126,7 @@ exports.modules = {
     };
     /** we use this map to propagate attributes from nested spans to the top span */ const rootSpanAttributesStore =
       new Map();
-    const rootSpanIdKey = api.createContextKey("next.rootSpanId");
+    const rootSpanIdKey = api.createContextKey('next.rootSpanId');
     let lastSpanId = 0;
     const getSpanId = () => lastSpanId++;
     class NextTracerImpl {
@@ -4135,7 +4135,7 @@ exports.modules = {
        * Since wrap / trace can be defined in any place prior to actual trace subscriber initialization,
        * This should be lazily evaluated.
        */ getTracerInstance() {
-        return trace.getTracer("next.js", "0.0.1");
+        return trace.getTracer('next.js', '0.0.1');
       }
       getContext() {
         return context;
@@ -4147,7 +4147,7 @@ exports.modules = {
         const [type, fnOrOptions, fnOrEmpty] = args;
         // coerce options form overload
         const { fn, options } =
-          typeof fnOrOptions === "function"
+          typeof fnOrOptions === 'function'
             ? {
                 fn: fnOrOptions,
                 options: {},
@@ -4160,7 +4160,7 @@ exports.modules = {
               };
         if (
           (!_constants.NextVanillaSpanAllowlist.includes(type) &&
-            process.env.NEXT_OTEL_VERBOSE !== "1") ||
+            process.env.NEXT_OTEL_VERBOSE !== '1') ||
           options.hideSpan
         ) {
           return fn();
@@ -4178,8 +4178,8 @@ exports.modules = {
         }
         const spanId = getSpanId();
         options.attributes = {
-          "next.span_name": spanName,
-          "next.span_type": type,
+          'next.span_name': spanName,
+          'next.span_type': type,
           ...options.attributes,
         };
         return api.context.with(
@@ -4230,18 +4230,18 @@ exports.modules = {
           args.length === 3 ? args : [args[0], {}, args[1]];
         if (
           !_constants.NextVanillaSpanAllowlist.includes(name) &&
-          process.env.NEXT_OTEL_VERBOSE !== "1"
+          process.env.NEXT_OTEL_VERBOSE !== '1'
         ) {
           return fn;
         }
         return function () {
           let optionsObj = options;
-          if (typeof optionsObj === "function" && typeof fn === "function") {
+          if (typeof optionsObj === 'function' && typeof fn === 'function') {
             optionsObj = optionsObj.apply(this, arguments);
           }
           const lastArgId = arguments.length - 1;
           const cb = arguments[lastArgId];
-          if (typeof cb === "function") {
+          if (typeof cb === 'function') {
             const scopeBoundCb = tracer.getContext().bind(context.active(), cb);
             return tracer.trace(name, optionsObj, (_span, done) => {
               arguments[lastArgId] = function (err) {
@@ -4289,13 +4289,13 @@ exports.modules = {
      * Polyfills the `Headers.getAll(name)` method so it'll work in the edge
      * runtime.
      */
-    if (!("getAll" in Headers.prototype)) {
+    if (!('getAll' in Headers.prototype)) {
       // @ts-expect-error - this is polyfilling this method so it doesn't exist yet
       Headers.prototype.getAll = function (name) {
         name = name.toLowerCase();
-        if (name !== "set-cookie")
+        if (name !== 'set-cookie')
           throw new Error(
-            "Headers.getAll is only supported for Set-Cookie header"
+            'Headers.getAll is only supported for Set-Cookie header'
           );
         const headers = [...this.entries()].filter(([key]) => key === name);
         return headers.map(([, value]) => value);
@@ -4306,7 +4306,7 @@ exports.modules = {
   },
 
   /***/ 222: /***/ (__unused_webpack_module, exports) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -4363,7 +4363,7 @@ exports.modules = {
      * List of valid HTTP methods that can be implemented by Next.js's Custom App
      * Routes.
      */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -4383,13 +4383,13 @@ exports.modules = {
       },
     });
     const HTTP_METHODS = [
-      "GET",
-      "HEAD",
-      "OPTIONS",
-      "POST",
-      "PUT",
-      "DELETE",
-      "PATCH",
+      'GET',
+      'HEAD',
+      'OPTIONS',
+      'POST',
+      'PUT',
+      'DELETE',
+      'PATCH',
     ];
     function isHTTPMethod(maybeMethod) {
       return HTTP_METHODS.includes(maybeMethod);
@@ -4399,10 +4399,10 @@ exports.modules = {
   },
 
   /***/ 3369: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "NextURL", {
+    Object.defineProperty(exports, 'NextURL', {
       enumerable: true,
       get: function () {
         return NextURL;
@@ -4416,18 +4416,18 @@ exports.modules = {
       /(?!^https?:\/\/)(127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}|::1|localhost)/;
     function parseURL(url, base) {
       return new URL(
-        String(url).replace(REGEX_LOCALHOST_HOSTNAME, "localhost"),
-        base && String(base).replace(REGEX_LOCALHOST_HOSTNAME, "localhost")
+        String(url).replace(REGEX_LOCALHOST_HOSTNAME, 'localhost'),
+        base && String(base).replace(REGEX_LOCALHOST_HOSTNAME, 'localhost')
       );
     }
-    const Internal = Symbol("NextURLInternal");
+    const Internal = Symbol('NextURLInternal');
     class NextURL {
       constructor(input, baseOrOpts, opts) {
         let base;
         let options;
         if (
-          (typeof baseOrOpts === "object" && "pathname" in baseOrOpts) ||
-          typeof baseOrOpts === "string"
+          (typeof baseOrOpts === 'object' && 'pathname' in baseOrOpts) ||
+          typeof baseOrOpts === 'string'
         ) {
           base = baseOrOpts;
           options = opts || {};
@@ -4437,7 +4437,7 @@ exports.modules = {
         this[Internal] = {
           url: parseURL(input, base ?? options.base),
           options: options,
-          basePath: "",
+          basePath: '',
         };
         this.analyze();
       }
@@ -4484,7 +4484,7 @@ exports.modules = {
             : _this_Internal_options_nextConfig_i18n1.defaultLocale);
         this[Internal].url.pathname = info.pathname;
         this[Internal].defaultLocale = defaultLocale;
-        this[Internal].basePath = info.basePath ?? "";
+        this[Internal].basePath = info.basePath ?? '';
         this[Internal].buildId = info.buildId;
         this[Internal].locale = info.locale ?? defaultLocale;
         this[Internal].trailingSlash = info.trailingSlash;
@@ -4511,7 +4511,7 @@ exports.modules = {
         this[Internal].buildId = buildId;
       }
       get locale() {
-        return this[Internal].locale ?? "";
+        return this[Internal].locale ?? '';
       }
       set locale(locale) {
         var _this_Internal_options_nextConfig,
@@ -4611,7 +4611,7 @@ exports.modules = {
         return this[Internal].basePath;
       }
       set basePath(value) {
-        this[Internal].basePath = value.startsWith("/") ? value : `/${value}`;
+        this[Internal].basePath = value.startsWith('/') ? value : `/${value}`;
       }
       toString() {
         return this.href;
@@ -4619,7 +4619,7 @@ exports.modules = {
       toJSON() {
         return this.href;
       }
-      [Symbol.for("edge-runtime.inspect.custom")]() {
+      [Symbol.for('edge-runtime.inspect.custom')]() {
         return {
           href: this.href,
           origin: this.origin,
@@ -4644,7 +4644,7 @@ exports.modules = {
   },
 
   /***/ 7304: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -4667,7 +4667,7 @@ exports.modules = {
     class ReadonlyHeadersError extends Error {
       constructor() {
         super(
-          "Headers cannot be modified. Read more: https://nextjs.org/docs/api-reference/headers"
+          'Headers cannot be modified. Read more: https://nextjs.org/docs/api-reference/headers'
         );
       }
       static callable() {
@@ -4684,7 +4684,7 @@ exports.modules = {
             // Because this is just an object, we expect that all "get" operations
             // are for properties. If it's a "get" for a symbol, we'll just return
             // the symbol.
-            if (typeof prop === "symbol") {
+            if (typeof prop === 'symbol') {
               return _reflect.ReflectAdapter.get(target, prop, receiver);
             }
             const lowercased = prop.toLowerCase();
@@ -4695,12 +4695,12 @@ exports.modules = {
               (o) => o.toLowerCase() === lowercased
             );
             // If the original casing doesn't exist, return undefined.
-            if (typeof original === "undefined") return;
+            if (typeof original === 'undefined') return;
             // If the original casing exists, return the value.
             return _reflect.ReflectAdapter.get(target, original, receiver);
           },
           set(target, prop, value, receiver) {
-            if (typeof prop === "symbol") {
+            if (typeof prop === 'symbol') {
               return _reflect.ReflectAdapter.set(target, prop, value, receiver);
             }
             const lowercased = prop.toLowerCase();
@@ -4719,7 +4719,7 @@ exports.modules = {
             );
           },
           has(target, prop) {
-            if (typeof prop === "symbol")
+            if (typeof prop === 'symbol')
               return _reflect.ReflectAdapter.has(target, prop);
             const lowercased = prop.toLowerCase();
             // Let's find the original casing of the key. This assumes that there is
@@ -4729,12 +4729,12 @@ exports.modules = {
               (o) => o.toLowerCase() === lowercased
             );
             // If the original casing doesn't exist, return false.
-            if (typeof original === "undefined") return false;
+            if (typeof original === 'undefined') return false;
             // If the original casing exists, return true.
             return _reflect.ReflectAdapter.has(target, original);
           },
           deleteProperty(target, prop) {
-            if (typeof prop === "symbol")
+            if (typeof prop === 'symbol')
               return _reflect.ReflectAdapter.deleteProperty(target, prop);
             const lowercased = prop.toLowerCase();
             // Let's find the original casing of the key. This assumes that there is
@@ -4744,7 +4744,7 @@ exports.modules = {
               (o) => o.toLowerCase() === lowercased
             );
             // If the original casing doesn't exist, return true.
-            if (typeof original === "undefined") return true;
+            if (typeof original === 'undefined') return true;
             // If the original casing exists, delete the property.
             return _reflect.ReflectAdapter.deleteProperty(target, original);
           },
@@ -4757,9 +4757,9 @@ exports.modules = {
         return new Proxy(headers, {
           get(target, prop, receiver) {
             switch (prop) {
-              case "append":
-              case "delete":
-              case "set":
+              case 'append':
+              case 'delete':
+              case 'set':
                 return ReadonlyHeadersError.callable;
               default:
                 return _reflect.ReflectAdapter.get(target, prop, receiver);
@@ -4774,7 +4774,7 @@ exports.modules = {
        * @param value a header value
        * @returns a merged header value (a string)
        */ merge(value) {
-        if (Array.isArray(value)) return value.join(", ");
+        if (Array.isArray(value)) return value.join(', ');
         return value;
       }
       /**
@@ -4788,7 +4788,7 @@ exports.modules = {
       }
       append(name, value) {
         const existing = this.headers[name];
-        if (typeof existing === "string") {
+        if (typeof existing === 'string') {
           this.headers[name] = [existing, value];
         } else if (Array.isArray(existing)) {
           existing.push(value);
@@ -4801,11 +4801,11 @@ exports.modules = {
       }
       get(name) {
         const value = this.headers[name];
-        if (typeof value !== "undefined") return this.merge(value);
+        if (typeof value !== 'undefined') return this.merge(value);
         return null;
       }
       has(name) {
-        return typeof this.headers[name] !== "undefined";
+        return typeof this.headers[name] !== 'undefined';
       }
       set(name, value) {
         this.headers[name] = value;
@@ -4847,10 +4847,10 @@ exports.modules = {
   },
 
   /***/ 9470: /***/ (__unused_webpack_module, exports) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "ReflectAdapter", {
+    Object.defineProperty(exports, 'ReflectAdapter', {
       enumerable: true,
       get: function () {
         return ReflectAdapter;
@@ -4859,7 +4859,7 @@ exports.modules = {
     class ReflectAdapter {
       static get(target, prop, receiver) {
         const value = Reflect.get(target, prop, receiver);
-        if (typeof value === "function") {
+        if (typeof value === 'function') {
           return value.bind(target);
         }
         return value;
@@ -4879,7 +4879,7 @@ exports.modules = {
   },
 
   /***/ 8661: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -4909,7 +4909,7 @@ exports.modules = {
     class ReadonlyRequestCookiesError extends Error {
       constructor() {
         super(
-          "Cookies can only be modified in a Server Action or Route Handler. Read more: https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options"
+          'Cookies can only be modified in a Server Action or Route Handler. Read more: https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options'
         );
       }
       static callable() {
@@ -4921,9 +4921,9 @@ exports.modules = {
         return new Proxy(cookies, {
           get(target, prop, receiver) {
             switch (prop) {
-              case "clear":
-              case "delete":
-              case "set":
+              case 'clear':
+              case 'delete':
+              case 'set':
                 return ReadonlyRequestCookiesError.callable;
               default:
                 return _reflect.ReflectAdapter.get(target, prop, receiver);
@@ -4932,7 +4932,7 @@ exports.modules = {
         });
       }
     }
-    const SYMBOL_MODIFY_COOKIE_VALUES = Symbol.for("next.mutated.cookies");
+    const SYMBOL_MODIFY_COOKIE_VALUES = Symbol.for('next.mutated.cookies');
     function getModifiedCookieValues(cookies) {
       const modified = cookies[SYMBOL_MODIFY_COOKIE_VALUES];
       if (!modified || !Array.isArray(modified) || modified.length === 0) {
@@ -4992,7 +4992,7 @@ exports.modules = {
               tempCookies.set(cookie);
               serializedCookies.push(tempCookies.toString());
             }
-            res.setHeader("Set-Cookie", serializedCookies);
+            res.setHeader('Set-Cookie', serializedCookies);
           }
         };
         return new Proxy(responseCookes, {
@@ -5003,10 +5003,10 @@ exports.modules = {
                 return modifiedValues;
               // TODO: Throw error if trying to set a cookie after the response
               // headers have been set.
-              case "delete":
+              case 'delete':
                 return function (...args) {
                   modifiedCookies.add(
-                    typeof args[0] === "string" ? args[0] : args[0].name
+                    typeof args[0] === 'string' ? args[0] : args[0].name
                   );
                   try {
                     target.delete(...args);
@@ -5014,10 +5014,10 @@ exports.modules = {
                     updateResponseCookies();
                   }
                 };
-              case "set":
+              case 'set':
                 return function (...args) {
                   modifiedCookies.add(
-                    typeof args[0] === "string" ? args[0] : args[0].name
+                    typeof args[0] === 'string' ? args[0] : args[0].name
                   );
                   try {
                     return target.set(...args);
@@ -5037,7 +5037,7 @@ exports.modules = {
   },
 
   /***/ 4521: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -5067,7 +5067,7 @@ exports.modules = {
     __webpack_unused_export__ = {
       value: true,
     };
-    Object.defineProperty(exports, "E", {
+    Object.defineProperty(exports, 'E', {
       enumerable: true,
       get: function () {
         return ImageResponse;
@@ -5103,10 +5103,10 @@ exports.modules = {
           const options = args[1] || {};
           return new Response(readable, {
             headers: {
-              "content-type": "image/png",
-              "cache-control": false
+              'content-type': 'image/png',
+              'cache-control': false
                 ? 0
-                : "public, immutable, no-transform, max-age=31536000",
+                : 'public, immutable, no-transform, max-age=31536000',
               ...options.headers,
             },
             status: options.status,
@@ -5120,7 +5120,7 @@ exports.modules = {
   },
 
   /***/ 6569: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -5143,11 +5143,11 @@ exports.modules = {
     const _utils = __webpack_require__(7252);
     const _error = __webpack_require__(222);
     const _cookies = __webpack_require__(4521);
-    const INTERNALS = Symbol("internal request");
+    const INTERNALS = Symbol('internal request');
     class NextRequest extends Request {
       constructor(input, init = {}) {
         const url =
-          typeof input !== "string" && "url" in input
+          typeof input !== 'string' && 'url' in input
             ? input.url
             : String(input);
         (0, _utils.validateURL)(url);
@@ -5164,7 +5164,7 @@ exports.modules = {
           url: false ? 0 : nextUrl.toString(),
         };
       }
-      [Symbol.for("edge-runtime.inspect.custom")]() {
+      [Symbol.for('edge-runtime.inspect.custom')]() {
         return {
           cookies: this.cookies,
           geo: this.geo,
@@ -5227,7 +5227,7 @@ exports.modules = {
     __webpack_unused_export__ = {
       value: true,
     };
-    Object.defineProperty(exports, "x", {
+    Object.defineProperty(exports, 'x', {
       enumerable: true,
       get: function () {
         return NextResponse;
@@ -5236,7 +5236,7 @@ exports.modules = {
     const _nexturl = __webpack_require__(3369);
     const _utils = __webpack_require__(7252);
     const _cookies = __webpack_require__(4521);
-    const INTERNALS = Symbol("internal response");
+    const INTERNALS = Symbol('internal response');
     const REDIRECTS = new Set([301, 302, 303, 307, 308]);
     function handleMiddlewareField(init, headers) {
       var _init_request;
@@ -5248,14 +5248,14 @@ exports.modules = {
           : _init_request.headers
       ) {
         if (!(init.request.headers instanceof Headers)) {
-          throw new Error("request.headers must be an instance of Headers");
+          throw new Error('request.headers must be an instance of Headers');
         }
         const keys = [];
         for (const [key, value] of init.request.headers) {
-          headers.set("x-middleware-request-" + key, value);
+          headers.set('x-middleware-request-' + key, value);
           keys.push(key);
         }
-        headers.set("x-middleware-override-headers", keys.join(","));
+        headers.set('x-middleware-override-headers', keys.join(','));
       }
     }
     class NextResponse extends Response {
@@ -5271,7 +5271,7 @@ exports.modules = {
             : undefined,
         };
       }
-      [Symbol.for("edge-runtime.inspect.custom")]() {
+      [Symbol.for('edge-runtime.inspect.custom')]() {
         return {
           cookies: this.cookies,
           url: this.url,
@@ -5296,7 +5296,7 @@ exports.modules = {
       }
       static redirect(url, init) {
         const status =
-          typeof init === "number"
+          typeof init === 'number'
             ? init
             : (init == null ? void 0 : init.status) ?? 307;
         if (!REDIRECTS.has(status)) {
@@ -5304,9 +5304,9 @@ exports.modules = {
             'Failed to execute "redirect" on "response": Invalid status code'
           );
         }
-        const initObj = typeof init === "object" ? init : {};
+        const initObj = typeof init === 'object' ? init : {};
         const headers = new Headers(initObj == null ? void 0 : initObj.headers);
-        headers.set("Location", (0, _utils.validateURL)(url));
+        headers.set('Location', (0, _utils.validateURL)(url));
         return new NextResponse(null, {
           ...initObj,
           headers,
@@ -5316,7 +5316,7 @@ exports.modules = {
       static rewrite(destination, init) {
         const headers = new Headers(init == null ? void 0 : init.headers);
         headers.set(
-          "x-middleware-rewrite",
+          'x-middleware-rewrite',
           (0, _utils.validateURL)(destination)
         );
         handleMiddlewareField(init, headers);
@@ -5327,7 +5327,7 @@ exports.modules = {
       }
       static next(init) {
         const headers = new Headers(init == null ? void 0 : init.headers);
-        headers.set("x-middleware-next", "1");
+        headers.set('x-middleware-next', '1');
         handleMiddlewareField(init, headers);
         return new NextResponse(null, {
           ...init,
@@ -5340,7 +5340,7 @@ exports.modules = {
   },
 
   /***/ 1789: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -5384,14 +5384,14 @@ exports.modules = {
       };
     }
     function userAgent({ headers }) {
-      return userAgentFromString(headers.get("user-agent") || undefined);
+      return userAgentFromString(headers.get('user-agent') || undefined);
     } //# sourceMappingURL=user-agent.js.map
 
     /***/
   },
 
   /***/ 7252: /***/ (__unused_webpack_module, exports) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -5421,8 +5421,8 @@ exports.modules = {
       for (let [key, value] of Object.entries(object)) {
         const values = Array.isArray(value) ? value : [value];
         for (let v of values) {
-          if (typeof v === "undefined") continue;
-          if (typeof v === "number") {
+          if (typeof v === 'undefined') continue;
+          if (typeof v === 'number') {
             v = v.toString();
           }
           headers.append(key, v);
@@ -5449,14 +5449,14 @@ exports.modules = {
       }
       function notSpecialChar() {
         ch = cookiesString.charAt(pos);
-        return ch !== "=" && ch !== ";" && ch !== ",";
+        return ch !== '=' && ch !== ';' && ch !== ',';
       }
       while (pos < cookiesString.length) {
         start = pos;
         cookiesSeparatorFound = false;
         while (skipWhitespace()) {
           ch = cookiesString.charAt(pos);
-          if (ch === ",") {
+          if (ch === ',') {
             // ',' is a cookie separator if we have later first '=', not ';' or ','
             lastComma = pos;
             pos += 1;
@@ -5468,7 +5468,7 @@ exports.modules = {
             // currently special character
             if (
               pos < cookiesString.length &&
-              cookiesString.charAt(pos) === "="
+              cookiesString.charAt(pos) === '='
             ) {
               // we found cookies separator
               cookiesSeparatorFound = true;
@@ -5498,7 +5498,7 @@ exports.modules = {
       const cookies = [];
       if (headers) {
         for (const [key, value] of headers.entries()) {
-          if (key.toLowerCase() === "set-cookie") {
+          if (key.toLowerCase() === 'set-cookie') {
             // We may have gotten a comma joined string of cookies, or multiple
             // set-cookie headers. We need to merge them into one header array
             // to represent all the cookies.
@@ -5530,10 +5530,10 @@ exports.modules = {
   },
 
   /***/ 6056: /***/ (__unused_webpack_module, exports) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "getHostname", {
+    Object.defineProperty(exports, 'getHostname', {
       enumerable: true,
       get: function () {
         return getHostname;
@@ -5547,7 +5547,7 @@ exports.modules = {
         (headers == null ? void 0 : headers.host) &&
         !Array.isArray(headers.host)
       ) {
-        hostname = headers.host.toString().split(":")[0];
+        hostname = headers.host.toString().split(':')[0];
       } else if (parsed.hostname) {
         hostname = parsed.hostname;
       } else return;
@@ -5558,10 +5558,10 @@ exports.modules = {
   },
 
   /***/ 5723: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "addLocale", {
+    Object.defineProperty(exports, 'addLocale', {
       enumerable: true,
       get: function () {
         return addLocale;
@@ -5577,24 +5577,24 @@ exports.modules = {
       // If the path is an API path or the path already has the locale prefix, we
       // don't need to prefix the path.
       if (!ignorePrefix) {
-        if ((0, _pathhasprefix.pathHasPrefix)(lower, "/api")) return path;
+        if ((0, _pathhasprefix.pathHasPrefix)(lower, '/api')) return path;
         if (
-          (0, _pathhasprefix.pathHasPrefix)(lower, "/" + locale.toLowerCase())
+          (0, _pathhasprefix.pathHasPrefix)(lower, '/' + locale.toLowerCase())
         )
           return path;
       }
       // Add the locale prefix to the path.
-      return (0, _addpathprefix.addPathPrefix)(path, "/" + locale);
+      return (0, _addpathprefix.addPathPrefix)(path, '/' + locale);
     } //# sourceMappingURL=add-locale.js.map
 
     /***/
   },
 
   /***/ 2610: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "addPathPrefix", {
+    Object.defineProperty(exports, 'addPathPrefix', {
       enumerable: true,
       get: function () {
         return addPathPrefix;
@@ -5602,21 +5602,21 @@ exports.modules = {
     });
     const _parsepath = __webpack_require__(5084);
     function addPathPrefix(path, prefix) {
-      if (!path.startsWith("/") || !prefix) {
+      if (!path.startsWith('/') || !prefix) {
         return path;
       }
       const { pathname, query, hash } = (0, _parsepath.parsePath)(path);
-      return "" + prefix + pathname + query + hash;
+      return '' + prefix + pathname + query + hash;
     } //# sourceMappingURL=add-path-prefix.js.map
 
     /***/
   },
 
   /***/ 7928: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "addPathSuffix", {
+    Object.defineProperty(exports, 'addPathSuffix', {
       enumerable: true,
       get: function () {
         return addPathSuffix;
@@ -5624,21 +5624,21 @@ exports.modules = {
     });
     const _parsepath = __webpack_require__(5084);
     function addPathSuffix(path, suffix) {
-      if (!path.startsWith("/") || !suffix) {
+      if (!path.startsWith('/') || !suffix) {
         return path;
       }
       const { pathname, query, hash } = (0, _parsepath.parsePath)(path);
-      return "" + pathname + suffix + query + hash;
+      return '' + pathname + suffix + query + hash;
     } //# sourceMappingURL=add-path-suffix.js.map
 
     /***/
   },
 
   /***/ 7723: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "formatNextPathnameInfo", {
+    Object.defineProperty(exports, 'formatNextPathnameInfo', {
       enumerable: true,
       get: function () {
         return formatNextPathnameInfo;
@@ -5662,15 +5662,15 @@ exports.modules = {
         pathname = (0, _addpathsuffix.addPathSuffix)(
           (0, _addpathprefix.addPathPrefix)(
             pathname,
-            "/_next/data/" + info.buildId
+            '/_next/data/' + info.buildId
           ),
-          info.pathname === "/" ? "index.json" : ".json"
+          info.pathname === '/' ? 'index.json' : '.json'
         );
       }
       pathname = (0, _addpathprefix.addPathPrefix)(pathname, info.basePath);
       return !info.buildId && info.trailingSlash
-        ? !pathname.endsWith("/")
-          ? (0, _addpathsuffix.addPathSuffix)(pathname, "/")
+        ? !pathname.endsWith('/')
+          ? (0, _addpathsuffix.addPathSuffix)(pathname, '/')
           : pathname
         : (0, _removetrailingslash.removeTrailingSlash)(pathname);
     } //# sourceMappingURL=format-next-pathname-info.js.map
@@ -5679,10 +5679,10 @@ exports.modules = {
   },
 
   /***/ 9433: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "getNextPathnameInfo", {
+    Object.defineProperty(exports, 'getNextPathnameInfo', {
       enumerable: true,
       get: function () {
         return getNextPathnameInfo;
@@ -5700,7 +5700,7 @@ exports.modules = {
       const info = {
         pathname: pathname,
         trailingSlash:
-          pathname !== "/" ? pathname.endsWith("/") : trailingSlash,
+          pathname !== '/' ? pathname.endsWith('/') : trailingSlash,
       };
       if (
         basePath &&
@@ -5714,16 +5714,16 @@ exports.modules = {
       }
       if (
         options.parseData === true &&
-        info.pathname.startsWith("/_next/data/") &&
-        info.pathname.endsWith(".json")
+        info.pathname.startsWith('/_next/data/') &&
+        info.pathname.endsWith('.json')
       ) {
         const paths = info.pathname
-          .replace(/^\/_next\/data\//, "")
-          .replace(/\.json$/, "")
-          .split("/");
+          .replace(/^\/_next\/data\//, '')
+          .replace(/\.json$/, '')
+          .split('/');
         const buildId = paths[0];
         info.pathname =
-          paths[1] !== "index" ? "/" + paths.slice(1).join("/") : "/";
+          paths[1] !== 'index' ? '/' + paths.slice(1).join('/') : '/';
         info.buildId = buildId;
       }
       // If provided, use the locale route normalizer to detect the locale instead
@@ -5760,18 +5760,18 @@ exports.modules = {
      * them. This is useful to parse full paths on the client side.
      * @param path A path to parse e.g. /foo/bar?id=1#hash
      */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "parsePath", {
+    Object.defineProperty(exports, 'parsePath', {
       enumerable: true,
       get: function () {
         return parsePath;
       },
     });
     function parsePath(path) {
-      const hashIndex = path.indexOf("#");
-      const queryIndex = path.indexOf("?");
+      const hashIndex = path.indexOf('#');
+      const queryIndex = path.indexOf('?');
       const hasQuery =
         queryIndex > -1 && (hashIndex < 0 || queryIndex < hashIndex);
       if (hasQuery || hashIndex > -1) {
@@ -5779,14 +5779,14 @@ exports.modules = {
           pathname: path.substring(0, hasQuery ? queryIndex : hashIndex),
           query: hasQuery
             ? path.substring(queryIndex, hashIndex > -1 ? hashIndex : undefined)
-            : "",
-          hash: hashIndex > -1 ? path.slice(hashIndex) : "",
+            : '',
+          hash: hashIndex > -1 ? path.slice(hashIndex) : '',
         };
       }
       return {
         pathname: path,
-        query: "",
-        hash: "",
+        query: '',
+        hash: '',
       };
     } //# sourceMappingURL=parse-path.js.map
 
@@ -5794,10 +5794,10 @@ exports.modules = {
   },
 
   /***/ 1342: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "pathHasPrefix", {
+    Object.defineProperty(exports, 'pathHasPrefix', {
       enumerable: true,
       get: function () {
         return pathHasPrefix;
@@ -5805,21 +5805,21 @@ exports.modules = {
     });
     const _parsepath = __webpack_require__(5084);
     function pathHasPrefix(path, prefix) {
-      if (typeof path !== "string") {
+      if (typeof path !== 'string') {
         return false;
       }
       const { pathname } = (0, _parsepath.parsePath)(path);
-      return pathname === prefix || pathname.startsWith(prefix + "/");
+      return pathname === prefix || pathname.startsWith(prefix + '/');
     } //# sourceMappingURL=path-has-prefix.js.map
 
     /***/
   },
 
   /***/ 1507: /***/ (__unused_webpack_module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "removePathPrefix", {
+    Object.defineProperty(exports, 'removePathPrefix', {
       enumerable: true,
       get: function () {
         return removePathPrefix;
@@ -5845,12 +5845,12 @@ exports.modules = {
       // Remove the prefix from the path via slicing.
       const withoutPrefix = path.slice(prefix.length);
       // If the path without the prefix starts with a `/` we can return it as is.
-      if (withoutPrefix.startsWith("/")) {
+      if (withoutPrefix.startsWith('/')) {
         return withoutPrefix;
       }
       // If the path without the prefix doesn't start with a `/` we need to add it
       // back to the path to make sure it's a valid path.
-      return "/" + withoutPrefix;
+      return '/' + withoutPrefix;
     } //# sourceMappingURL=remove-path-prefix.js.map
 
     /***/
@@ -5864,7 +5864,7 @@ exports.modules = {
       userAgentFromString: __webpack_require__(1789).userAgentFromString,
       userAgent: __webpack_require__(1789).userAgent,
     };
-    if (typeof URLPattern !== "undefined") {
+    if (typeof URLPattern !== 'undefined') {
       // eslint-disable-next-line no-undef
       serverExports.URLPattern = URLPattern;
     }

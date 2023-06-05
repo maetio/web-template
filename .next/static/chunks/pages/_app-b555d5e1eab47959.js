@@ -3,7 +3,7 @@
   {
     1597: function (n, _, u) {
       (window.__NEXT_P = window.__NEXT_P || []).push([
-        "/_app",
+        '/_app',
         function () {
           return u(3739);
         },

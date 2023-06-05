@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 exports.id = 405;
 exports.ids = [405];
 exports.modules = {
   /***/ 3332: /***/ (module, exports) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -22,19 +22,19 @@ exports.modules = {
         return DynamicServerError;
       },
     });
-    const DYNAMIC_ERROR_CODE = "DYNAMIC_SERVER_USAGE";
+    const DYNAMIC_ERROR_CODE = 'DYNAMIC_SERVER_USAGE';
     class DynamicServerError extends Error {
       constructor(type) {
-        super("Dynamic server usage: " + type);
+        super('Dynamic server usage: ' + type);
         this.digest = DYNAMIC_ERROR_CODE;
       }
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -45,10 +45,10 @@ exports.modules = {
   },
 
   /***/ 5486: /***/ (module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "staticGenerationBailout", {
+    Object.defineProperty(exports, 'staticGenerationBailout', {
       enumerable: true,
       get: function () {
         return staticGenerationBailout;
@@ -59,7 +59,7 @@ exports.modules = {
     class StaticGenBailoutError extends Error {
       constructor(...args) {
         super(...args);
-        this.code = "NEXT_STATIC_GEN_BAILOUT";
+        this.code = 'NEXT_STATIC_GEN_BAILOUT';
       }
     }
     const staticGenerationBailout = (reason, opts) => {
@@ -77,14 +77,14 @@ exports.modules = {
           ? void 0
           : staticGenerationStore.dynamicShouldError
       ) {
-        const { dynamic = "error", link } = opts || {};
-        const suffix = link ? " See more info here: " + link : "";
+        const { dynamic = 'error', link } = opts || {};
+        const suffix = link ? ' See more info here: ' + link : '';
         throw new StaticGenBailoutError(
           'Page with `dynamic = "' +
             dynamic +
-            "\"` couldn't be rendered statically because it used `" +
+            '"` couldn\'t be rendered statically because it used `' +
             reason +
-            "`." +
+            '`.' +
             suffix
         );
       }
@@ -104,11 +104,11 @@ exports.modules = {
       return false;
     };
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -119,7 +119,7 @@ exports.modules = {
   },
 
   /***/ 8537: /***/ (__unused_webpack_module, exports) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
     0 && 0;
@@ -231,25 +231,25 @@ exports.modules = {
         return WEBPACK_LAYERS;
       },
     });
-    const NEXT_QUERY_PARAM_PREFIX = "nxtP";
-    const PRERENDER_REVALIDATE_HEADER = "x-prerender-revalidate";
+    const NEXT_QUERY_PARAM_PREFIX = 'nxtP';
+    const PRERENDER_REVALIDATE_HEADER = 'x-prerender-revalidate';
     const PRERENDER_REVALIDATE_ONLY_GENERATED_HEADER =
-      "x-prerender-revalidate-if-generated";
+      'x-prerender-revalidate-if-generated';
     const CACHE_ONE_YEAR = 31536000;
-    const MIDDLEWARE_FILENAME = "middleware";
+    const MIDDLEWARE_FILENAME = 'middleware';
     const MIDDLEWARE_LOCATION_REGEXP = `(?:src/)?${MIDDLEWARE_FILENAME}`;
-    const INSTRUMENTATION_HOOK_FILENAME = "instrumentation";
+    const INSTRUMENTATION_HOOK_FILENAME = 'instrumentation';
     const INSTRUMENTATION_HOOKS_LOCATION_REGEXP = `(?:src/)?${INSTRUMENTATION_HOOK_FILENAME}`;
-    const PAGES_DIR_ALIAS = "private-next-pages";
-    const DOT_NEXT_ALIAS = "private-dot-next";
-    const ROOT_DIR_ALIAS = "private-next-root-dir";
-    const APP_DIR_ALIAS = "private-next-app-dir";
+    const PAGES_DIR_ALIAS = 'private-next-pages';
+    const DOT_NEXT_ALIAS = 'private-dot-next';
+    const ROOT_DIR_ALIAS = 'private-next-root-dir';
+    const APP_DIR_ALIAS = 'private-next-app-dir';
     const RSC_MOD_REF_PROXY_ALIAS =
-      "next/dist/build/webpack/loaders/next-flight-loader/module-proxy";
-    const RSC_ACTION_VALIDATE_ALIAS = "private-next-rsc-action-validate";
-    const RSC_ACTION_PROXY_ALIAS = "private-next-rsc-action-proxy";
+      'next/dist/build/webpack/loaders/next-flight-loader/module-proxy';
+    const RSC_ACTION_VALIDATE_ALIAS = 'private-next-rsc-action-validate';
+    const RSC_ACTION_PROXY_ALIAS = 'private-next-rsc-action-proxy';
     const RSC_ACTION_CLIENT_WRAPPER_ALIAS =
-      "private-next-rsc-action-client-wrapper";
+      'private-next-rsc-action-client-wrapper';
     const PUBLIC_DIR_MIDDLEWARE_CONFLICT = `You can not have a '_next' folder inside of your public folder. This conflicts with the internal '/_next' route. https://nextjs.org/docs/messages/public-next-folder-conflict`;
     const SSG_GET_INITIAL_PROPS_CONFLICT = `You can not use getInitialProps with getStaticProps. To use SSG, please remove your getInitialProps`;
     const SERVER_PROPS_GET_INIT_PROPS_CONFLICT = `You can not use getInitialProps with getServerSideProps. Please remove getInitialProps.`;
@@ -257,60 +257,60 @@ exports.modules = {
     const STATIC_STATUS_PAGE_GET_INITIAL_PROPS_ERROR = `can not have getInitialProps/getServerSideProps, https://nextjs.org/docs/messages/404-get-initial-props`;
     const SERVER_PROPS_EXPORT_ERROR = `pages with \`getServerSideProps\` can not be exported. See more info here: https://nextjs.org/docs/messages/gssp-export`;
     const GSP_NO_RETURNED_VALUE =
-      "Your `getStaticProps` function did not return an object. Did you forget to add a `return`?";
+      'Your `getStaticProps` function did not return an object. Did you forget to add a `return`?';
     const GSSP_NO_RETURNED_VALUE =
-      "Your `getServerSideProps` function did not return an object. Did you forget to add a `return`?";
+      'Your `getServerSideProps` function did not return an object. Did you forget to add a `return`?';
     const UNSTABLE_REVALIDATE_RENAME_ERROR =
-      "The `unstable_revalidate` property is available for general use.\n" +
-      "Please use `revalidate` instead.";
+      'The `unstable_revalidate` property is available for general use.\n' +
+      'Please use `revalidate` instead.';
     const GSSP_COMPONENT_MEMBER_ERROR = `can not be attached to a page's component and must be exported from the page. See more info here: https://nextjs.org/docs/messages/gssp-component-member`;
     const NON_STANDARD_NODE_ENV = `You are using a non-standard "NODE_ENV" value in your environment. This creates inconsistencies in the project and is strongly advised against. Read more: https://nextjs.org/docs/messages/non-standard-node-env`;
     const SSG_FALLBACK_EXPORT_ERROR = `Pages with \`fallback\` enabled in \`getStaticPaths\` can not be exported. See more info here: https://nextjs.org/docs/messages/ssg-fallback-true-export`;
-    const ESLINT_DEFAULT_DIRS = ["pages", "components", "lib", "src"];
-    const ESLINT_DEFAULT_DIRS_WITH_APP = ["app", ...ESLINT_DEFAULT_DIRS];
+    const ESLINT_DEFAULT_DIRS = ['pages', 'components', 'lib', 'src'];
+    const ESLINT_DEFAULT_DIRS_WITH_APP = ['app', ...ESLINT_DEFAULT_DIRS];
     const ESLINT_PROMPT_VALUES = [
       {
-        title: "Strict",
+        title: 'Strict',
         recommended: true,
         config: {
-          extends: "next/core-web-vitals",
+          extends: 'next/core-web-vitals',
         },
       },
       {
-        title: "Base",
+        title: 'Base',
         config: {
-          extends: "next",
+          extends: 'next',
         },
       },
       {
-        title: "Cancel",
+        title: 'Cancel',
         config: null,
       },
     ];
     const SERVER_RUNTIME = {
-      edge: "edge",
-      experimentalEdge: "experimental-edge",
-      nodejs: "nodejs",
+      edge: 'edge',
+      experimentalEdge: 'experimental-edge',
+      nodejs: 'nodejs',
     };
     const WEBPACK_LAYERS = {
-      shared: "sc_shared",
-      server: "sc_server",
-      client: "sc_client",
-      action: "sc_action",
-      api: "api",
-      middleware: "middleware",
-      edgeAsset: "edge-asset",
-      appClient: "app-client",
+      shared: 'sc_shared',
+      server: 'sc_server',
+      client: 'sc_client',
+      action: 'sc_action',
+      api: 'api',
+      middleware: 'middleware',
+      edgeAsset: 'edge-asset',
+      appClient: 'app-client',
     }; //# sourceMappingURL=constants.js.map
 
     /***/
   },
 
   /***/ 2207: /***/ (__unused_webpack_module, exports) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "detectDomainLocale", {
+    Object.defineProperty(exports, 'detectDomainLocale', {
       enumerable: true,
       get: function () {
         return detectDomainLocale;
@@ -327,7 +327,7 @@ exports.modules = {
         const domainHostname =
           (_item_domain = item.domain) == null
             ? void 0
-            : _item_domain.split(":")[0].toLowerCase();
+            : _item_domain.split(':')[0].toLowerCase();
         if (
           hostname === domainHostname ||
           detectedLocale === item.defaultLocale.toLowerCase() ||
@@ -346,10 +346,10 @@ exports.modules = {
   },
 
   /***/ 9962: /***/ (__unused_webpack_module, exports) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "normalizeLocalePath", {
+    Object.defineProperty(exports, 'normalizeLocalePath', {
       enumerable: true,
       get: function () {
         return normalizeLocalePath;
@@ -358,7 +358,7 @@ exports.modules = {
     function normalizeLocalePath(pathname, locales) {
       let detectedLocale;
       // first item will be empty string from splitting at first char
-      const pathnameParts = pathname.split("/");
+      const pathnameParts = pathname.split('/');
       (locales || []).some((locale) => {
         if (
           pathnameParts[1] &&
@@ -366,7 +366,7 @@ exports.modules = {
         ) {
           detectedLocale = locale;
           pathnameParts.splice(1, 1);
-          pathname = pathnameParts.join("/") || "/";
+          pathname = pathnameParts.join('/') || '/';
           return true;
         }
         return false;
@@ -388,27 +388,27 @@ exports.modules = {
      *   - `/foo/bar` -> `/foo/bar`
      *   - `/` -> `/`
      */
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "removeTrailingSlash", {
+    Object.defineProperty(exports, 'removeTrailingSlash', {
       enumerable: true,
       get: function () {
         return removeTrailingSlash;
       },
     });
     function removeTrailingSlash(route) {
-      return route.replace(/\/$/, "") || "/";
+      return route.replace(/\/$/, '') || '/';
     } //# sourceMappingURL=remove-trailing-slash.js.map
 
     /***/
   },
 
   /***/ 6127: /***/ (module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "actionAsyncStorage", {
+    Object.defineProperty(exports, 'actionAsyncStorage', {
       enumerable: true,
       get: function () {
         return actionAsyncStorage;
@@ -418,11 +418,11 @@ exports.modules = {
     const actionAsyncStorage = (0,
     _asynclocalstorage.createAsyncLocalStorage)();
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -433,10 +433,10 @@ exports.modules = {
   },
 
   /***/ 5862: /***/ (module, exports) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "createAsyncLocalStorage", {
+    Object.defineProperty(exports, 'createAsyncLocalStorage', {
       enumerable: true,
       get: function () {
         return createAsyncLocalStorage;
@@ -445,7 +445,7 @@ exports.modules = {
     class FakeAsyncLocalStorage {
       disable() {
         throw new Error(
-          "Invariant: AsyncLocalStorage accessed in runtime where it is not available"
+          'Invariant: AsyncLocalStorage accessed in runtime where it is not available'
         );
       }
       getStore() {
@@ -454,17 +454,17 @@ exports.modules = {
       }
       run() {
         throw new Error(
-          "Invariant: AsyncLocalStorage accessed in runtime where it is not available"
+          'Invariant: AsyncLocalStorage accessed in runtime where it is not available'
         );
       }
       exit() {
         throw new Error(
-          "Invariant: AsyncLocalStorage accessed in runtime where it is not available"
+          'Invariant: AsyncLocalStorage accessed in runtime where it is not available'
         );
       }
       enterWith() {
         throw new Error(
-          "Invariant: AsyncLocalStorage accessed in runtime where it is not available"
+          'Invariant: AsyncLocalStorage accessed in runtime where it is not available'
         );
       }
     }
@@ -475,11 +475,11 @@ exports.modules = {
       return new FakeAsyncLocalStorage();
     }
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -490,10 +490,10 @@ exports.modules = {
   },
 
   /***/ 4437: /***/ (module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "requestAsyncStorage", {
+    Object.defineProperty(exports, 'requestAsyncStorage', {
       enumerable: true,
       get: function () {
         return requestAsyncStorage;
@@ -503,11 +503,11 @@ exports.modules = {
     const requestAsyncStorage = (0,
     _asynclocalstorage.createAsyncLocalStorage)();
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);
@@ -518,10 +518,10 @@ exports.modules = {
   },
 
   /***/ 94: /***/ (module, exports, __webpack_require__) => {
-    Object.defineProperty(exports, "__esModule", {
+    Object.defineProperty(exports, '__esModule', {
       value: true,
     });
-    Object.defineProperty(exports, "staticGenerationAsyncStorage", {
+    Object.defineProperty(exports, 'staticGenerationAsyncStorage', {
       enumerable: true,
       get: function () {
         return staticGenerationAsyncStorage;
@@ -531,11 +531,11 @@ exports.modules = {
     const staticGenerationAsyncStorage = (0,
     _asynclocalstorage.createAsyncLocalStorage)();
     if (
-      (typeof exports.default === "function" ||
-        (typeof exports.default === "object" && exports.default !== null)) &&
-      typeof exports.default.__esModule === "undefined"
+      (typeof exports.default === 'function' ||
+        (typeof exports.default === 'object' && exports.default !== null)) &&
+      typeof exports.default.__esModule === 'undefined'
     ) {
-      Object.defineProperty(exports.default, "__esModule", {
+      Object.defineProperty(exports.default, '__esModule', {
         value: true,
       });
       Object.assign(exports.default, exports);

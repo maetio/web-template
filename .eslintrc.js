@@ -21,4 +21,4 @@ module.exports = {
   rules: {
     // Add any additional rules or overrides here
   },
-}
+};

@@ -9,13 +9,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <CssBaseline />
-      <header>
-        {/* Add your header component here */}
-      </header>
+      <header>{/* Add your header component here */}</header>
       <main>{children}</main>
-      <footer>
-        {/* Add your footer component here */}
-      </footer>
+      <footer>{/* Add your footer component here */}</footer>
     </>
   );
 };

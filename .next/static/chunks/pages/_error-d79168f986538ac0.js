@@ -3,7 +3,7 @@
   {
     1981: function (n, _, u) {
       (window.__NEXT_P = window.__NEXT_P || []).push([
-        "/_error",
+        '/_error',
         function () {
           return u(8495);
         },

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   Container,
@@ -6,12 +6,12 @@ import {
   Grid,
   Typography,
   Paper,
-} from "@mui/material";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { passwordSchema } from "../../utils/schemas";
-import LockIcon from "@mui/icons-material/Lock";
+} from '@mui/material';
+import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { passwordSchema } from '../../utils/schemas';
+import LockIcon from '@mui/icons-material/Lock';
 
 export const EnterPassword: React.FC<{}> = () => {
   const {
@@ -26,12 +26,12 @@ export const EnterPassword: React.FC<{}> = () => {
 
   const handleReturnClick = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    router.push("/sign-in");
+    router.push('/sign-in');
   };
 
   const submitPassword = (data: any) => {
     console.log(data.password);
-    router.push("/settings");
+    router.push('/settings');
   };
   return (
     <form onSubmit={handleSubmit(submitPassword)}>
@@ -41,7 +41,7 @@ export const EnterPassword: React.FC<{}> = () => {
         direction="column"
         alignItems="center"
         justifyContent="center"
-        sx={{ minHeight: "100vh" }}
+        sx={{ minHeight: '100vh' }}
       >
         <LockIcon sx={{ fontSize: 200 }}></LockIcon>
         <Typography>Enter your password to login.</Typography>
@@ -49,7 +49,7 @@ export const EnterPassword: React.FC<{}> = () => {
         <TextField
           variant="outlined"
           label="Input your password"
-          {...register("password")}
+          {...register('password')}
         ></TextField>
         <Button type="submit">Login</Button>
         <Button onClick={handleReturnClick}>Return to previous screen</Button>

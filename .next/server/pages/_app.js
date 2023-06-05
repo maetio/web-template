@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 (() => {
   var exports = {};
   exports.id = 888;
   exports.ids = [888];
   exports.modules = {
     /***/ 1767: /***/ (module, exports, __webpack_require__) => {
-      Object.defineProperty(exports, "__esModule", {
+      Object.defineProperty(exports, '__esModule', {
         value: true,
       });
-      Object.defineProperty(exports, "default", {
+      Object.defineProperty(exports, 'default', {
         enumerable: true,
         get: function () {
           return App;
@@ -45,11 +45,11 @@
         App.getInitialProps = appGetInitialProps;
       })();
       if (
-        (typeof exports.default === "function" ||
-          (typeof exports.default === "object" && exports.default !== null)) &&
-        typeof exports.default.__esModule === "undefined"
+        (typeof exports.default === 'function' ||
+          (typeof exports.default === 'object' && exports.default !== null)) &&
+        typeof exports.default.__esModule === 'undefined'
       ) {
-        Object.defineProperty(exports.default, "__esModule", {
+        Object.defineProperty(exports.default, '__esModule', {
           value: true,
         });
         Object.assign(exports.default, exports);
@@ -60,13 +60,13 @@
     },
 
     /***/ 9232: /***/ (module) => {
-      module.exports = require("next/dist/shared/lib/utils.js");
+      module.exports = require('next/dist/shared/lib/utils.js');
 
       /***/
     },
 
     /***/ 6689: /***/ (module) => {
-      module.exports = require("react");
+      module.exports = require('react');
 
       /***/
     },
@@ -81,7 +81,7 @@
     },
   };
   // load runtime
-  var __webpack_require__ = require("../webpack-runtime.js");
+  var __webpack_require__ = require('../webpack-runtime.js');
   __webpack_require__.C(exports);
   var __webpack_exec__ = (moduleId) =>
     __webpack_require__((__webpack_require__.s = moduleId));
