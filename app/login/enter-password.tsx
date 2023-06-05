@@ -3,7 +3,7 @@ import { Button, Container, TextField, Grid, Typography, Paper } from '@mui/mate
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router'
 import { yupResolver } from '@hookform/resolvers/yup';
-import { passwordSchema } from '@/utils/schemas';
+import { passwordSchema } from 'app/utils/schemas';
 import LockIcon from '@mui/icons-material/Lock';
 
 
