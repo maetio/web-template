@@ -12,6 +12,9 @@ const firebaseConfig: FirebaseOptions = {
     measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
+/**
+ * Initialize all the firebase apps
+ */
 export const app = initializeApp(firebaseConfig);
 export const auth = initializeAuth(app);
 export const firestore = initializeFirestore(app, {});
