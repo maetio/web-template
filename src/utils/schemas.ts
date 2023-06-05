@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-/**
+/*
  * Schema for a one form input for email
  */
 export const emailSchema = yup.object().shape({

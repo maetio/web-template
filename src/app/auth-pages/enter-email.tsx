@@ -10,7 +10,7 @@ import {
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { emailSchema } from "@/utils/schemas";
+import { emailSchema } from "../../utils/schemas";
 
 export const EnterEmail: React.FC<{}> = () => {
   //useForm & useAuth initialization
