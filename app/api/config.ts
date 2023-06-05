@@ -1,6 +1,10 @@
 import { FirebaseOptions, getApps, initializeApp } from 'firebase/app';
 import { initializeAuth } from 'firebase/auth';
-import { initializeFirestore } from 'firebase/firestore';
+// import { initializeFirestore } from 'firebase/firestore';
+// import NextAuth from "next-auth";
+// import { FirestoreAdapter } from "@next-auth/firebase-adapter";
+// import GoogleProvider from "next-auth/providers/google";
+import { initFirestore } from "@next-auth/firebase-adapter";
 
 // get the firebase config
 const firebaseConfig: FirebaseOptions = {
@@ -12,13 +16,6 @@ const firebaseConfig: FirebaseOptions = {
     appId: process.env.FIREBASE_APP_ID,
     measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
-
-/**
- * Initialize firestore
- */
-// export const firestore = initFirestore({
-//     credential: cert(firebaseConfig)
-// });
 
 /** 
  * Initialize next auth
@@ -41,4 +38,11 @@ const firebaseConfig: FirebaseOptions = {
  */
 export const app = initializeApp(firebaseConfig);
 export const auth = initializeAuth(app);
-export const firestore = initializeFirestore(app, {});
+
+/**
+ * Initialize firestore with next
+ * https://authjs.dev/reference/adapter/firebase#initfirestore
+ * Using the google application credentials defined in .env
+ */
+export const firestore = initFirestore();
+// export const firestore = initializeFirestore(app, {});
