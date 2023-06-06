@@ -21,8 +21,7 @@ functions/lib/
 # storybook
 ./stories/**
 ./stories/
-.storybook/**
-.storybook/
+./storybook-static
 
 # next.js
 ./.next/**
