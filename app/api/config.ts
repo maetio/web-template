@@ -4,24 +4,24 @@ import { initializeAuth } from 'firebase/auth';
 // import NextAuth from "next-auth";
 // import { FirestoreAdapter } from "@next-auth/firebase-adapter";
 // import GoogleProvider from "next-auth/providers/google";
-import { initFirestore } from "@next-auth/firebase-adapter";
+import { initFirestore } from '@next-auth/firebase-adapter';
 
 // get the firebase config
 const firebaseConfig: FirebaseOptions = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.FIREBASE_APP_ID,
-    measurementId: process.env.FIREBASE_MEASUREMENT_ID,
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
-/** 
+/**
  * Initialize next auth
  * Example: https://next-auth.js.org/v3/adapters/firebase#options
  * Firestore Adapter: https://authjs.dev/reference/adapter/firebase
-*/
+ */
 // export default NextAuth({
 //   // https://next-auth.js.org/configuration/providers
 //     providers: [
