@@ -1,7 +1,8 @@
+/* eslint-disable import/extensions */
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import {
   Button,
-  Container,
   TextField,
   Grid,
   Typography,
@@ -11,13 +12,14 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { emailSchema } from 'app/utils/schemas';
 
+// eslint-disable-next-line react/function-component-definition
 export const EnterEmail: React.FC<{}> = () => {
   // useForm & useAuth initialization
   const {
     register,
     handleSubmit,
+    // eslint-disable-next-line no-unused-vars
     formState: { errors },
-    reset,
   } = useForm({
     resolver: yupResolver(emailSchema),
   });
@@ -54,6 +56,7 @@ export const EnterEmail: React.FC<{}> = () => {
           type="email"
           variant="outlined"
           label="Input your email"
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('email')}
         />
         <Button type="submit">Continue</Button>

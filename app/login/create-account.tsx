@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Button, Container, Typography } from '@mui/material';
 
 export const CreateAccount: React.FC<{}> = () => {
-  //user routed to ... screen on click of ... button
+  // user routed to ... screen on click of ... button
   const router = useRouter();
   const handleClick = (e: { preventDefault: () => void }) => {
     e.preventDefault();
