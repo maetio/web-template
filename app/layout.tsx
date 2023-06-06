@@ -17,9 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <MuiProvider>
-          {children}
-        </MuiProvider>
+          <MuiProvider>
+            {children}
+          </MuiProvider>
       </body>
     </html>
   );
