@@ -27,6 +27,7 @@ functions/lib/
 ./.next
 .next
 .next/
+/.next
 
 # production
 ./build
