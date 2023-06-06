@@ -7,9 +7,8 @@ export /**
  *
  * @return {*}
  */
-const Login = () => {
-  return (
-    <Grid
+const Login = () => (
+  <Grid
     container
     spacing={0}
     direction="column"
@@ -20,7 +19,5 @@ const Login = () => {
     <EnterEmail />
   </Grid>
 );
-}
-
 
 export default Login;

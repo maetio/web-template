@@ -3,7 +3,7 @@ import { FirebaseOptions, initializeApp, getApps } from 'firebase/app';
 // import NextAuth from "next-auth";
 // import { FirestoreAdapter } from "@next-auth/firebase-adapter";
 // import GoogleProvider from "next-auth/providers/google";
-// import { initFirestore } from '@next-auth/firebase-adapter';
+import { initFirestore } from '@next-auth/firebase-adapter';
 
 // get the firebase config
 const firebaseConfig: FirebaseOptions = {
@@ -42,5 +42,5 @@ export const app = allApps.length === 0 ? initializeApp(firebaseConfig) : allApp
  * https://authjs.dev/reference/adapter/firebase#initfirestore
  * Using the google application credentials defined in .env
  */
-// export const firestore = initFirestore();
+export const firestore = initFirestore();
 // export const firestore = initializeFirestore(app, {});
