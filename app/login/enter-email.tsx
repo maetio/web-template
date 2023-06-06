@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+'use client';
+
 import React from 'react';
 import {
   Button,
@@ -8,18 +9,13 @@ import {
   Typography,
   Paper,
 } from '@mui/material';
-=======
-"use client";
-import React from 'react';
-import { Button, Container, TextField, Grid, Typography, Paper } from '@mui/material';
->>>>>>> origin/dev
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { emailSchema } from 'app/utils/schemas';
 
 export const EnterEmail: React.FC<{}> = () => {
-  //useForm & useAuth initialization
+  // useForm & useAuth initialization
   const {
     register,
     handleSubmit,
@@ -29,32 +25,22 @@ export const EnterEmail: React.FC<{}> = () => {
     resolver: yupResolver(emailSchema),
   });
 
-  //user routed to SignIn screen on click of 'continue as guest' button
-<<<<<<< HEAD
-  const router = useRouter();
+  // user routed to SignIn screen on click of 'continue as guest' button
+  // const router = useRouter()
   const handleGuestClick = (e: { preventDefault: () => void }) => {
     e.preventDefault();
   };
 
   const submitEmail = async (data: any) => {
     console.log(data.email);
-=======
-  // const router = useRouter()
-  const handleGuestClick = (e: { preventDefault: () => void; }) => {
-  e.preventDefault()
-  }
-
-  const submitEmail = async (data: any) => {
-    console.log(data.email);
     throw Error('testingggg');
->>>>>>> origin/dev
-    /*try {
+    /* try {
       await signUp(data.email);
       router.push('/sign-in');
       reset();
     } catch (error: any) {
       console.log(error.message);
-    }*/
+    } */
   };
   return (
     <form onSubmit={handleSubmit(submitEmail)}>
@@ -66,15 +52,15 @@ export const EnterEmail: React.FC<{}> = () => {
         justifyContent="center"
         sx={{ minHeight: '100vh' }}
       >
-        <Paper variant="outlined"></Paper>
+        <Paper variant="outlined" />
         <Typography>Welcome to Maet!</Typography>
-        <br></br>
+        <br />
         <TextField
           type="email"
           variant="outlined"
           label="Input your email"
           {...register('email')}
-        ></TextField>
+        />
         <Button type="submit">Continue</Button>
         <Button onClick={handleGuestClick}>Continue As Guest</Button>
       </Grid>

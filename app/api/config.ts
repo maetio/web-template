@@ -1,10 +1,10 @@
-import { FirebaseOptions, getApps, initializeApp } from 'firebase/app';
-import { initializeAuth } from 'firebase/auth';
+import { FirebaseOptions, getApps, initializeApp } from "firebase/app";
+import { initializeAuth } from "firebase/auth";
 // import { initializeFirestore } from 'firebase/firestore';
 // import NextAuth from "next-auth";
 // import { FirestoreAdapter } from "@next-auth/firebase-adapter";
 // import GoogleProvider from "next-auth/providers/google";
-import { initFirestore } from '@next-auth/firebase-adapter';
+import { initFirestore } from "@next-auth/firebase-adapter";
 
 // get the firebase config
 const firebaseConfig: FirebaseOptions = {
