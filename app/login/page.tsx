@@ -9,15 +9,17 @@ export /**
  */
 const Login: React.FC<{}> = () => {
   return (
-    <Grid 
-      container
-      spacing={0}
-      direction="column"
-      alignItems="center"
-      justifyContent="center"
-      sx={{minHeight: "100vh"}}>
+    // <Grid 
+    //   container
+    //   spacing={0}
+    //   direction="column"
+    //   alignItems="center"
+    //   justifyContent="center"
+    //   sx={{minHeight: "100vh"}}>
+      <div>
         <EnterEmail />
-    </Grid>
+      </div>
+    // </Grid>
   )
 }
 

@@ -14,7 +14,7 @@ export const EnterEmail: React.FC<{}> = () => {
 
 
   //user routed to SignIn screen on click of 'continue as guest' button
-  const router = useRouter()
+  // const router = useRouter()
   const handleGuestClick = (e: { preventDefault: () => void; }) => {
   e.preventDefault()
   }
