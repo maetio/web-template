@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import {
   Button,
@@ -7,6 +8,11 @@ import {
   Typography,
   Paper,
 } from '@mui/material';
+=======
+"use client";
+import React from 'react';
+import { Button, Container, TextField, Grid, Typography, Paper } from '@mui/material';
+>>>>>>> origin/dev
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -24,6 +30,7 @@ export const EnterEmail: React.FC<{}> = () => {
   });
 
   //user routed to SignIn screen on click of 'continue as guest' button
+<<<<<<< HEAD
   const router = useRouter();
   const handleGuestClick = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -31,6 +38,16 @@ export const EnterEmail: React.FC<{}> = () => {
 
   const submitEmail = async (data: any) => {
     console.log(data.email);
+=======
+  // const router = useRouter()
+  const handleGuestClick = (e: { preventDefault: () => void; }) => {
+  e.preventDefault()
+  }
+
+  const submitEmail = async (data: any) => {
+    console.log(data.email);
+    throw Error('testingggg');
+>>>>>>> origin/dev
     /*try {
       await signUp(data.email);
       router.push('/sign-in');
