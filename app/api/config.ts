@@ -1,20 +1,19 @@
-import { FirebaseOptions, getApps, initializeApp } from 'firebase/app';
-import { initializeAuth } from 'firebase/auth';
+import { FirebaseOptions, initializeApp, getApps } from 'firebase/app';
 // import { initializeFirestore } from 'firebase/firestore';
 // import NextAuth from "next-auth";
 // import { FirestoreAdapter } from "@next-auth/firebase-adapter";
 // import GoogleProvider from "next-auth/providers/google";
-import { initFirestore } from '@next-auth/firebase-adapter';
+// import { initFirestore } from '@next-auth/firebase-adapter';
 
 // get the firebase config
 const firebaseConfig: FirebaseOptions = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.FIREBASE_APP_ID,
-  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 /**
@@ -32,17 +31,16 @@ const firebaseConfig: FirebaseOptions = {
 //     ],
 //     adapter: FirestoreAdapter(firestore),
 // });
-
 /**
  * Initialize all the firebase apps
  */
-export const app = initializeApp(firebaseConfig);
-export const auth = initializeAuth(app);
+const allApps = getApps();
+export const app = allApps.length === 0 ? initializeApp(firebaseConfig) : allApps[0];
 
 /**
  * Initialize firestore with next
  * https://authjs.dev/reference/adapter/firebase#initfirestore
  * Using the google application credentials defined in .env
  */
-export const firestore = initFirestore();
+// export const firestore = initFirestore();
 // export const firestore = initializeFirestore(app, {});

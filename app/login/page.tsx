@@ -7,8 +7,9 @@ export /**
  *
  * @return {*}
  */
-const Login: React.FC<{}> = () => (
-  <Grid
+const Login = () => {
+  return (
+    <Grid
     container
     spacing={0}
     direction="column"
@@ -19,5 +20,7 @@ const Login: React.FC<{}> = () => (
     <EnterEmail />
   </Grid>
 );
+}
+
 
 export default Login;
