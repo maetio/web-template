@@ -9,10 +9,10 @@ import {
   Typography,
   Paper,
 } from '@mui/material';
-import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { emailSchema } from 'app/utils/schemas';
+import { sendPasswordlessLoginEmail } from 'app/api/auth';
 
 export const EnterEmail: React.FC<{}> = () => {
   // useForm & useAuth initialization
@@ -21,19 +21,18 @@ export const EnterEmail: React.FC<{}> = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({
+  } = useForm<{ email: string }>({
     resolver: yupResolver(emailSchema),
   });
 
   // user routed to SignIn screen on click of 'continue as guest' button
   // const router = useRouter()
-  const handleGuestClick = (e: { preventDefault: () => void }) => {
+  const handleGuestClick = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
   };
 
-  const submitEmail = async (data: any) => {
-    console.log(data.email);
-    throw Error('testingggg');
+  const submitEmail = async (data: { email: string }) => {
+    await sendPasswordlessLoginEmail(data.email);
     /* try {
       await signUp(data.email);
       router.push('/sign-in');
