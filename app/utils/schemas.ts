@@ -6,7 +6,7 @@ import * as yup from 'yup';
 export const emailSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
 });
-export interface EmailSchemaType extends yup.InferType<typeof emailSchema> {}
+export type EmailSchemaType = yup.InferType<typeof emailSchema>
 
 export const passwordSchema = yup.object().shape({
   password: yup
@@ -15,5 +15,4 @@ export const passwordSchema = yup.object().shape({
     .min(8, 'Minimum 8 characters'),
 });
 
-export interface passwordSchemaType
-  extends yup.InferType<typeof passwordSchema> {}
+export type passwordSchemaType = yup.InferType<typeof passwordSchema>
