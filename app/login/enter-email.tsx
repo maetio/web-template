@@ -20,7 +20,8 @@ export const EnterEmail: React.FC<{}> = () => {
   }
 
   const submitEmail = async (data: any) => {
-    console.log(data.email)
+    console.log(data.email);
+    throw Error('testingggg');
     /*try {
       await signUp(data.email);
       router.push('/sign-in');
