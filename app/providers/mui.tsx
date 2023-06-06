@@ -1,8 +1,11 @@
-"use client"
+'use client';
+
 import React, { ReactNode } from 'react';
-import { CssBaseline, ThemeProvider, createTheme, useMediaQuery } from "@mui/material";
-import { NextAppDirEmotionCacheProvider } from "tss-react/next/appDir"
-import getDesignTokens from "app/theme";
+import {
+  CssBaseline, ThemeProvider, createTheme, useMediaQuery,
+} from '@mui/material';
+import { NextAppDirEmotionCacheProvider } from 'tss-react/next/appDir';
+import getDesignTokens from 'app/theme';
 
 type Props = {
   children: ReactNode
@@ -14,25 +17,25 @@ export /**
  * https://github.com/mui/material-ui/issues/34898#issuecomment-1473689035
  * https://docs.tss-react.dev/ssr/next.js#mui-and-tss-use-different-caches
  * @param {Props} { children }
- * @return {*} 
+ * @return {*}
  */
 const MuiProvider = ({ children }: Props) => {
-    // for setting color mode
-    const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-    // Update the theme only if the mode changes
-    const theme = React.useMemo(() => createTheme(getDesignTokens(prefersDarkMode ? 'dark' : 'light')), [prefersDarkMode]);
+  // for setting color mode
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  // Update the theme only if the mode changes
+  const theme = React.useMemo(() => createTheme(getDesignTokens(prefersDarkMode ? 'dark' : 'light')), [prefersDarkMode]);
 
-    return (
-        <>
-            <CssBaseline />
-            {/* MUI (but actually underlying Emotion) isn't ready to work with Next's experimental `app/` directory feature.
+  return (
+    <>
+      <CssBaseline />
+      {/* MUI (but actually underlying Emotion) isn't ready to work with Next's experimental `app/` directory feature.
                 I'm using the lowest-code approach suggested by this guy here: https://github.com/emotion-js/emotion/issues/2928#issuecomment-1386197925 */}
-            <NextAppDirEmotionCacheProvider options={{ key: "css" }}>
-                <ThemeProvider theme={theme}>{children}</ThemeProvider>
-            </NextAppDirEmotionCacheProvider>
-        </>
-    )
-}
+      <NextAppDirEmotionCacheProvider options={{ key: 'css' }}>
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      </NextAppDirEmotionCacheProvider>
+    </>
+  );
+};
 
 export default MuiProvider;
 

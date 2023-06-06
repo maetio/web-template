@@ -14,12 +14,12 @@ export const SignIn: React.FC<{}> = () => {
     <Grid
       container
       spacing={0}
-      alignItems={'center'}
-      direction={'column'}
-      justifyContent={'center'}
+      alignItems="center"
+      direction="column"
+      justifyContent="center"
       sx={{ minHeight: '100vh' }}
     >
-      <MarkEmailUnreadIcon sx={{ fontSize: 200 }}></MarkEmailUnreadIcon>
+      <MarkEmailUnreadIcon sx={{ fontSize: 200 }} />
       <Button>Open Email App</Button>
       <Button onClick={handleClick}>Use Password Instead</Button>
     </Grid>
