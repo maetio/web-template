@@ -42,6 +42,7 @@ export const CreateCompetition: React.FC<{}> = () => (
             <FormLabel>End Time</FormLabel>
             <DatePicker/>
             <TimePicker/>
+            <TextField label='Select Location'></TextField>
             <Button sx={{margin: 2}} variant='contained' type='submit'>Create Competition</Button>
         </FormControl>
         </Box>
