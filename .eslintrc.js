@@ -45,8 +45,10 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', {
       devDependencies: ['**/*.test.ts', '**/*.stories.tsx']
     }],
+    'indent': ["error", "tab"],
     'import/extensions': 0,
     // allow global variables to be unused
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+    'no-tabs': 'off'
   }
 };
