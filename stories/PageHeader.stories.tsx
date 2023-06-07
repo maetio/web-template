@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { PageHeader } from '../components/PageHeader';
+import { PageHeader } from '../app/components/PageHeader';
 
 const meta: Meta<typeof PageHeader> = {
 	/* 👇 The title prop is optional.
