@@ -33,6 +33,7 @@ export const CreateCompetition: React.FC<{}> = () => (
                     <FormControlLabel value="Tournament" control={<Radio />} label="Tournament" />
                     <FormControlLabel value="League" control={<Radio />} label="League" />
             </RadioGroup>
+            
             <Button sx={{margin: 2}} variant='contained' type='submit'>Create Competition</Button>
         </FormControl>
         
