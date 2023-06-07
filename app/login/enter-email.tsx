@@ -12,7 +12,7 @@ import {
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { emailSchema } from 'app/utils/schemas';
-// import { sendPasswordlessLoginEmail } from 'app/api/auth';
+import { sendPasswordlessLoginEmail } from 'app/api/auth';
 
 export const EnterEmail: React.FC<{}> = () => {
   // useForm & useAuth initialization
@@ -20,7 +20,6 @@ export const EnterEmail: React.FC<{}> = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<{ email: string }>({
     resolver: yupResolver(emailSchema),
   });
@@ -32,7 +31,7 @@ export const EnterEmail: React.FC<{}> = () => {
   };
 
   const submitEmail = async (data: { email: string }) => {
-    // await sendPasswordlessLoginEmail(data.email);
+    await sendPasswordlessLoginEmail(data.email);
     /* try {
       await signUp(data.email);
       router.push('/sign-in');
