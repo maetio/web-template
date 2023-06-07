@@ -1,12 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   TextField,
   Grid,
   Typography,
   Paper,
+  Box,
 } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -24,6 +25,8 @@ export const EnterEmail: React.FC<{}> = () => {
     resolver: yupResolver(emailSchema),
   });
 
+  // state used to detect if email sent
+  const [sentEmail, setSentEmail] = useState(false);
   // user routed to SignIn screen on click of 'continue as guest' button
   const router = useRouter();
   const handleGuestClick = (e: { preventDefault: () => void; }) => {
@@ -32,15 +35,10 @@ export const EnterEmail: React.FC<{}> = () => {
 
   const submitEmail = async (data: { email: string }) => {
     await sendPasswordlessLoginEmail(data.email);
-    router.push('./sign-in');
-    /* try {
-      await signUp(data.email);
-      router.push('/sign-in');
-      reset();
-    } catch (error: any) {
-      console.log(error.message);
-    } */
+    setSentEmail(true);
+    // router.push('./sign-in');
   };
+
   return (
     <form onSubmit={handleSubmit(submitEmail)}>
       <Grid
@@ -52,15 +50,26 @@ export const EnterEmail: React.FC<{}> = () => {
         sx={{ minHeight: '100vh' }}
       >
         <Paper variant="outlined" />
-        <Typography>Welcome to Maet!</Typography>
-        <br />
-        <TextField
-          type="email"
-          variant="outlined"
-          label="Input your email"
-          {...register('email')}
-        />
-        <Button type="submit">Continue</Button>
+        {sentEmail
+          ? (
+            <Box>
+              <Typography>Check your email inbox for a magic link</Typography>
+              <br />
+            </Box>
+          )
+          : (
+            <Grid item flexDirection="row">
+              <Typography>Welcome to Maet!</Typography>
+              <br />
+              <TextField
+                type="email"
+                variant="outlined"
+                label="Input your email"
+                {...register('email')}
+              />
+              <Button type="submit">Send Magic Link</Button>
+            </Grid>
+          )}
         {/* <Button onClick={handleGuestClick}>Continue As Guest</Button> */}
       </Grid>
     </form>

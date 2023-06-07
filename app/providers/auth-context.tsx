@@ -36,6 +36,7 @@ export const AuthContextProvider = ({
     return () => unsubscribe();
   }, []);
 
+  // memoize user context
   const userContext = useMemo(() => (user), [user]);
   return (
     <AuthContext.Provider value={userContext}>
