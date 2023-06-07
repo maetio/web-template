@@ -3,8 +3,11 @@ import { Autocomplete, Avatar, Box, Button, FormControl, FormControlLabel, FormL
 import { PageHeader } from '../app/components/PageHeader';
 import React from 'react';
 import { purple } from '@mui/material/colors';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 
 export const CreateCompetition: React.FC<{}> = () => (
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
     <Box m={2}
         alignItems="center"
         flex={'row'}
@@ -33,11 +36,14 @@ export const CreateCompetition: React.FC<{}> = () => (
                     <FormControlLabel value="Tournament" control={<Radio />} label="Tournament" />
                     <FormControlLabel value="League" control={<Radio />} label="League" />
             </RadioGroup>
-            
+            <FormLabel>Start Time</FormLabel>
+            <DatePicker label='Start Time'/>
+            <FormLabel>End Time</FormLabel>
+            <DatePicker label='End Time'/>
             <Button sx={{margin: 2}} variant='contained' type='submit'>Create Competition</Button>
         </FormControl>
-        
-    </Box>
+        </Box>
+        </LocalizationProvider>
 );
 
 const options = [
