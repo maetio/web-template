@@ -4,7 +4,7 @@ import { PageHeader } from '../app/components/PageHeader';
 import React from 'react';
 import { purple } from '@mui/material/colors';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { DatePicker, LocalizationProvider, TimePicker } from '@mui/x-date-pickers';
 
 export const CreateCompetition: React.FC<{}> = () => (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -37,9 +37,11 @@ export const CreateCompetition: React.FC<{}> = () => (
                     <FormControlLabel value="League" control={<Radio />} label="League" />
             </RadioGroup>
             <FormLabel>Start Time</FormLabel>
-            <DatePicker label='Start Time'/>
+            <DatePicker/>
+            <TimePicker/>
             <FormLabel>End Time</FormLabel>
-            <DatePicker label='End Time'/>
+            <DatePicker/>
+            <TimePicker/>
             <Button sx={{margin: 2}} variant='contained' type='submit'>Create Competition</Button>
         </FormControl>
         </Box>
