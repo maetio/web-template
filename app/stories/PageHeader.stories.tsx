@@ -1,4 +1,3 @@
-import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { PageHeader } from '../components/PageHeader';
 
@@ -14,9 +13,6 @@ const meta: Meta<typeof PageHeader> = {
 export default meta;
   type Story = StoryObj<typeof PageHeader>;
 
-// 👇 Throws a type error it the args don't match the component props
-export const Primary: Story = () => <PageHeader />;
-Primary.args = {
-	label: 'Header',
-	primary: true,
+export const Primary: Story = {
+	render: () => <PageHeader />,
 };
