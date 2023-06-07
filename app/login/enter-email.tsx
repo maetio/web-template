@@ -3,7 +3,6 @@
 import React from 'react';
 import {
   Button,
-  Container,
   TextField,
   Grid,
   Typography,
@@ -12,6 +11,7 @@ import {
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { emailSchema } from 'app/utils/schemas';
+import { useRouter } from 'next/navigation';
 import { sendPasswordlessLoginEmail } from 'app/api/auth';
 
 export const EnterEmail: React.FC<{}> = () => {
@@ -25,13 +25,14 @@ export const EnterEmail: React.FC<{}> = () => {
   });
 
   // user routed to SignIn screen on click of 'continue as guest' button
-  // const router = useRouter()
+  const router = useRouter();
   const handleGuestClick = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
   };
 
   const submitEmail = async (data: { email: string }) => {
     await sendPasswordlessLoginEmail(data.email);
+    router.push('./sign-in');
     /* try {
       await signUp(data.email);
       router.push('/sign-in');
@@ -60,7 +61,7 @@ export const EnterEmail: React.FC<{}> = () => {
           {...register('email')}
         />
         <Button type="submit">Continue</Button>
-        <Button onClick={handleGuestClick}>Continue As Guest</Button>
+        {/* <Button onClick={handleGuestClick}>Continue As Guest</Button> */}
       </Grid>
     </form>
   );
