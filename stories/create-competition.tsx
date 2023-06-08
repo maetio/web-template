@@ -6,10 +6,12 @@ import { purple } from '@mui/material/colors';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker, LocalizationProvider, TimePicker } from '@mui/x-date-pickers';
 import { useForm } from 'react-hook-form';
+import { competitionFormInput } from 'app/types/competition';
 
-const { register, handleSubmit } = useForm({
+const { register, handleSubmit } = useForm<competitionFormInput>({
     reValidateMode: 'onBlur'
 })
+const onSubmit = (data: competitionFormInput) => console.log(data);
 
 export const CreateCompetition: React.FC<{}> = () => (
     
@@ -23,7 +25,7 @@ export const CreateCompetition: React.FC<{}> = () => (
             textAlign: 'center',
             padding: '3px', }}>
         <PageHeader/>
-        <form onSubmit={handleSubmit(console.log)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl sx={{}}>
             <Avatar sx={{ bgcolor: purple, margin: '12px', width: 50, height: 50 }} variant="square"></Avatar>
             <FormLabel>Competition Name</FormLabel>
