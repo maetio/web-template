@@ -34,4 +34,5 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Resources
-* Setting up [firebase with nextJS 13](https://www.freecodecamp.org/news/create-full-stack-app-with-nextjs13-and-firebase/)
+
+- Setting up [firebase with nextJS 13](https://www.freecodecamp.org/news/create-full-stack-app-with-nextjs13-and-firebase/)

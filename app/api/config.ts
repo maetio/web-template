@@ -1,4 +1,4 @@
-import { FirebaseOptions, initializeApp, getApps } from 'firebase/app';
+import { FirebaseOptions, initializeApp, getApps } from "firebase/app";
 // import { initializeFirestore } from 'firebase/firestore';
 // import NextAuth from "next-auth";
 // import { FirestoreAdapter } from "@next-auth/firebase-adapter";
@@ -35,7 +35,8 @@ const firebaseConfig: FirebaseOptions = {
  * Initialize all the firebase apps
  */
 const allApps = getApps();
-export const app = allApps.length === 0 ? initializeApp(firebaseConfig) : allApps[0];
+export const app =
+  allApps.length === 0 ? initializeApp(firebaseConfig) : allApps[0];
 
 /**
  * Initialize firestore with next

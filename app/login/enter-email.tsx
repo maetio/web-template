@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 import {
   Button,
   Container,
@@ -8,11 +8,11 @@ import {
   Grid,
   Typography,
   Paper,
-} from '@mui/material';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { emailSchema } from 'app/utils/schemas';
-import { sendPasswordlessLoginEmail } from 'app/api/auth';
+} from "@mui/material";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { emailSchema } from "app/utils/schemas";
+import { sendPasswordlessLoginEmail } from "app/api/auth";
 
 export const EnterEmail: React.FC<{}> = () => {
   // useForm & useAuth initialization
@@ -27,7 +27,7 @@ export const EnterEmail: React.FC<{}> = () => {
 
   // user routed to SignIn screen on click of 'continue as guest' button
   // const router = useRouter()
-  const handleGuestClick = (e: { preventDefault: () => void; }) => {
+  const handleGuestClick = (e: { preventDefault: () => void }) => {
     e.preventDefault();
   };
 
@@ -49,7 +49,7 @@ export const EnterEmail: React.FC<{}> = () => {
         direction="column"
         alignItems="center"
         justifyContent="center"
-        sx={{ minHeight: '100vh' }}
+        sx={{ minHeight: "100vh" }}
       >
         <Paper variant="outlined" />
         <Typography>Welcome to Maet!</Typography>
@@ -58,7 +58,7 @@ export const EnterEmail: React.FC<{}> = () => {
           type="email"
           variant="outlined"
           label="Input your email"
-          {...register('email')}
+          {...register("email")}
         />
         <Button type="submit">Continue</Button>
         <Button onClick={handleGuestClick}>Continue As Guest</Button>

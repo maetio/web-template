@@ -1,14 +1,14 @@
-import { Button, Container, Grid } from '@mui/material';
-import React from 'react';
-import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
-import { useRouter } from 'next/router';
+import { Button, Container, Grid } from "@mui/material";
+import React from "react";
+import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
+import { useRouter } from "next/router";
 
 export const SignIn: React.FC<{}> = () => {
   const router = useRouter();
 
   const handleClick = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    router.push('/enter-password');
+    router.push("/enter-password");
   };
   return (
     <Grid
@@ -17,7 +17,7 @@ export const SignIn: React.FC<{}> = () => {
       alignItems="center"
       direction="column"
       justifyContent="center"
-      sx={{ minHeight: '100vh' }}
+      sx={{ minHeight: "100vh" }}
     >
       <MarkEmailUnreadIcon sx={{ fontSize: 200 }} />
       <Button>Open Email App</Button>
