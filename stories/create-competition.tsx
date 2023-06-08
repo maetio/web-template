@@ -18,7 +18,6 @@ export const CreateCompetition: React.FC<{}> = () => {
     const onSubmit = (data: competitionFormInput) => console.log(data);
     
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Box m={2}
             alignItems="center"
             flex={'row'}
@@ -72,18 +71,19 @@ export const CreateCompetition: React.FC<{}> = () => {
                     </RadioGroup>
                     )}
                 />
-                <FormLabel>Start Time</FormLabel>
-                <DatePicker/>
-                <TimePicker/>
-                <FormLabel>End Time</FormLabel>
-                <DatePicker/>
-                <TimePicker/>
-                <TextField {...register('location')} label='Select Location'></TextField>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <FormLabel>Start Time</FormLabel>
+                    <DatePicker/>
+                    <TimePicker/>
+                    <FormLabel>End Time</FormLabel>
+                    <DatePicker/>
+                    <TimePicker/>
+                    <TextField {...register('location')} label='Select Location'></TextField>
+                </LocalizationProvider>
                 <Button sx={{margin: 2}} variant='contained' type='submit'>Create Competition</Button>
             </FormControl>
             </form>
             </Box>
-            </LocalizationProvider>
 )};
 
 const options = [
