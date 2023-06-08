@@ -14,10 +14,6 @@ export const CreateCompetition: React.FC<{}> = () => {
     
     const { register, control, handleSubmit } = useForm<competitionFormInput>({
         reValidateMode: 'onBlur',
-        defaultValues: {
-            sport: '',
-            competitionType: '',
-        }
     });
     const onSubmit = (data: competitionFormInput) => console.log(data);
     
@@ -40,19 +36,25 @@ export const CreateCompetition: React.FC<{}> = () => {
                 <FormLabel>Sport</FormLabel>
                 <Controller
                             // VSCode suggested solution
-                            control={control} render={function ({ field, fieldState, formState, }: 
-                                { field: ControllerRenderProps<competitionFormInput, 'competitionName' | 'sport' | 'competitionType' | 'startTime' | 'endTime' | 'location'>; 
-                                fieldState: ControllerFieldState; 
-                                formState: UseFormStateReturn<competitionFormInput>; }): React.ReactElement<any, string | React.JSXElementConstructor<any>> {
-                                throw new Error('Function not implemented.');
-                            } } 
-                            name={'competitionName'}/>
-                <Autocomplete
-                sx={{margin: 2}}
-                disablePortal 
-                options={options}
-                renderInput={(params) => <TextField {...params} label='Select Your Sport' />}
+                            name={'sport'}
+                            control={control} render={({
+                                field: { onChange, onBlur, value },
+                                formState,
+                            }) => (
+                            <Autocomplete
+                                sx={{margin: 2}}
+                                disablePortal 
+                                options={options}
+                                onChange={(_, sport) => {
+                                    onChange(sport);
+                                    return sport?.label;
+                                }}
+                                renderInput={(params) => 
+                                <TextField {...params} placeholder='Select Your Sport' label='Select Your Sport' />}
+                            />
+                            )}
                 />
+                
                 <FormLabel>Competition Type</FormLabel>
                 <RadioGroup
                     defaultValue="Pickup"
