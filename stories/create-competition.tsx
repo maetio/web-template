@@ -73,7 +73,15 @@ export const CreateCompetition: React.FC<{}> = () => {
                 />
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <FormLabel>Start Time</FormLabel>
-                    <DatePicker/>
+                    <Controller
+                        name={'startDate'}
+                        control={control}
+                        render={({field: { onChange, value }, fieldState: { error } }) => 
+                        <DatePicker
+                            label='Start Time'
+                            onChange={(event) => { onChange(event); }}
+                        />}
+                    />
                     <TimePicker/>
                     <FormLabel>End Time</FormLabel>
                     <DatePicker/>
