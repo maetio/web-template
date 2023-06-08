@@ -5,8 +5,14 @@ import React from 'react';
 import { purple } from '@mui/material/colors';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker, LocalizationProvider, TimePicker } from '@mui/x-date-pickers';
+import { useForm } from 'react-hook-form';
+
+const { register, handleSubmit } = useForm({
+    reValidateMode: 'onBlur'
+})
 
 export const CreateCompetition: React.FC<{}> = () => (
+    
     <LocalizationProvider dateAdapter={AdapterDayjs}>
     <Box m={2}
         alignItems="center"
@@ -17,6 +23,7 @@ export const CreateCompetition: React.FC<{}> = () => (
             textAlign: 'center',
             padding: '3px', }}>
         <PageHeader/>
+        <form onSubmit={handleSubmit(console.log)}>
         <FormControl sx={{}}>
             <Avatar sx={{ bgcolor: purple, margin: '12px', width: 50, height: 50 }} variant="square"></Avatar>
             <FormLabel>Competition Name</FormLabel>
@@ -45,6 +52,7 @@ export const CreateCompetition: React.FC<{}> = () => (
             <TextField label='Select Location'></TextField>
             <Button sx={{margin: 2}} variant='contained' type='submit'>Create Competition</Button>
         </FormControl>
+        </form>
         </Box>
         </LocalizationProvider>
 );
