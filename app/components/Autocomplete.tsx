@@ -1,7 +1,5 @@
-import React from "react";
+import React from 'react';
 
 type Props = {};
 
-export const Autocomplete = (props: Props) => {
-  return <div>AutoSelect</div>;
-};
+export const Autocomplete = (props: Props) => <div>AutoSelect</div>;

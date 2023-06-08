@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 /**
  * Material UI is not yet compatible with server side components
@@ -10,4 +10,4 @@
  * Mui issue tracking here: https://github.com/mui/material-ui/issues/34898#issuecomment-1473689035
  *
  */
-export * from "@mui/material";
+export * from '@mui/material';
