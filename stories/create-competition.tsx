@@ -78,14 +78,38 @@ export const CreateCompetition: React.FC<{}> = () => {
                         control={control}
                         render={({field: { onChange, value }, fieldState: { error } }) => 
                         <DatePicker
+                            label='Start Date'
+                            onChange={(event) => { onChange(event); }}
+                        />}
+                    />
+                   <Controller
+                        name={'startTime'}
+                        control={control}
+                        render={({field: { onChange, value }, fieldState: { error } }) => 
+                        <TimePicker
                             label='Start Time'
                             onChange={(event) => { onChange(event); }}
                         />}
                     />
-                    <TimePicker/>
-                    <FormLabel>End Time</FormLabel>
-                    <DatePicker/>
-                    <TimePicker/>
+                     <FormLabel>End Time</FormLabel>
+                    <Controller
+                        name={'endDate'}
+                        control={control}
+                        render={({field: { onChange, value }, fieldState: { error } }) => 
+                        <DatePicker
+                            label='End Date'
+                            onChange={(event) => { onChange(event); }}
+                        />}
+                    />
+                    <Controller
+                        name={'endTime'}
+                        control={control}
+                        render={({field: { onChange, value }, fieldState: { error } }) => 
+                        <TimePicker
+                            label='End Time'
+                            onChange={(event) => { onChange(event); }}
+                        />}
+                    /> 
                     <TextField {...register('location')} label='Select Location'></TextField>
                 </LocalizationProvider>
                 <Button sx={{margin: 2}} variant='contained' type='submit'>Create Competition</Button>
