@@ -5,7 +5,7 @@ import React from 'react';
 import { purple } from '@mui/material/colors';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker, LocalizationProvider, TimePicker } from '@mui/x-date-pickers';
-import { useForm } from 'react-hook-form';
+import { Controller, ControllerFieldState, ControllerRenderProps, UseFormStateReturn, useForm } from 'react-hook-form';
 import { competitionFormInput } from 'app/types/competition';
 
 
@@ -13,7 +13,11 @@ import { competitionFormInput } from 'app/types/competition';
 export const CreateCompetition: React.FC<{}> = () => {
     
     const { register, control, handleSubmit } = useForm<competitionFormInput>({
-        reValidateMode: 'onBlur'
+        reValidateMode: 'onBlur',
+        defaultValues: {
+            sport: '',
+            competitionType: '',
+        }
     });
     const onSubmit = (data: competitionFormInput) => console.log(data);
     
@@ -34,6 +38,15 @@ export const CreateCompetition: React.FC<{}> = () => {
                 <FormLabel>Competition Name</FormLabel>
                 <TextField {...register("competitionName")} sx={{margin: 2}}label='Session Name'></TextField>
                 <FormLabel>Sport</FormLabel>
+                <Controller
+                            // VSCode suggested solution
+                            control={control} render={function ({ field, fieldState, formState, }: 
+                                { field: ControllerRenderProps<competitionFormInput, 'competitionName' | 'sport' | 'competitionType' | 'startTime' | 'endTime' | 'location'>; 
+                                fieldState: ControllerFieldState; 
+                                formState: UseFormStateReturn<competitionFormInput>; }): React.ReactElement<any, string | React.JSXElementConstructor<any>> {
+                                throw new Error('Function not implemented.');
+                            } } 
+                            name={'competitionName'}/>
                 <Autocomplete
                 sx={{margin: 2}}
                 disablePortal 

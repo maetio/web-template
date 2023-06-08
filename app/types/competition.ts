@@ -2,7 +2,7 @@ export interface competitionFormInput {
     competitionName: string;
     sport: string;
     competitionType: string;
-    startTime: string;
-    endTime: string;
+    startTime: Date;
+    endTime: Date;
     location: string;
 }
