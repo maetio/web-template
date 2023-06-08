@@ -35,34 +35,43 @@ export const CreateCompetition: React.FC<{}> = () => {
                 <TextField {...register("competitionName")} sx={{margin: 2}}label='Session Name'></TextField>
                 <FormLabel>Sport</FormLabel>
                 <Controller
-                            // VSCode suggested solution
-                            name={'sport'}
-                            control={control} render={({
-                                field: { onChange, onBlur, value },
-                                formState,
-                            }) => (
-                            <Autocomplete
-                                sx={{margin: 2}}
-                                disablePortal 
-                                options={options}
-                                onChange={(_, sport) => {
-                                    onChange(sport);
-                                    return sport?.label;
-                                }}
-                                renderInput={(params) => 
-                                <TextField {...params} placeholder='Select Your Sport' label='Select Your Sport' />}
-                            />
-                            )}
+                    name={'sport'}
+                    control={control} render={({
+                        field: { onChange, onBlur, value },
+                        formState,
+                    }) => (
+                    <Autocomplete
+                        sx={{margin: 2}}
+                        disablePortal 
+                        options={options}
+                        onChange={(_, sport) => {
+                            onChange(sport?.label);
+                            return sport;
+                        }}
+                        renderInput={(params) => 
+                        <TextField {...params} placeholder='Select Your Sport' label='Select Your Sport' />}
+                    />
+                    )}
                 />
-                
                 <FormLabel>Competition Type</FormLabel>
-                <RadioGroup
-                    defaultValue="Pickup"
+                <Controller
+                    name='competitionType'
+                    defaultValue={''}
+                    control={control}
+                    render={({ field }) => (
+                    <RadioGroup
+                    {...field}
+                    defaultValue='Pickup'
+                    row
+                    onChange={(_, compType) => field.onChange(compType)}
+                    value={field.value}
                     >
                         <FormControlLabel value="Pickup" control={<Radio />} label="Pickup" />
                         <FormControlLabel value="Tournament" control={<Radio />} label="Tournament" />
                         <FormControlLabel value="League" control={<Radio />} label="League" />
-                </RadioGroup>
+                    </RadioGroup>
+                    )}
+                />
                 <FormLabel>Start Time</FormLabel>
                 <DatePicker/>
                 <TimePicker/>
