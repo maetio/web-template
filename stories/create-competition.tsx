@@ -29,13 +29,11 @@ import {
 } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { competitionFormSchema } from "app/utils/schemas";
 import { competitionFormInput } from "app/types/competition";
 
 export const CreateCompetition: React.FC<{}> = () => {
   const { register, control, handleSubmit } = useForm<competitionFormInput>({
     reValidateMode: "onBlur",
-    resolver: yupResolver(competitionFormSchema)
   });
   const onSubmit = (data: competitionFormInput) => {
     console.log(data);
