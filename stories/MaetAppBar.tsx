@@ -40,7 +40,7 @@ export const MaetAppBar: React.FC<{}> = () => {
     };
   
   return (
-    <AppBar position="static">
+    <AppBar sx={{backgroundColor: 'purple'}} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Avatar src='https://photos.angel.co/startups/i/9037968-d7e5f2cf4293580142ea5be339019780-medium_jpg.jpg?buster=1660311451' alt='logo'/>

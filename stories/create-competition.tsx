@@ -55,10 +55,6 @@ export const CreateCompetition: React.FC<{}> = () => {
       <PageHeader />
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl sx={{}}>
-          <Avatar
-            sx={{ bgcolor: purple, margin: "12px", width: 50, height: 50 }}
-            variant="square"
-          ></Avatar>
           <FormLabel>Competition Name</FormLabel>
           <TextField
             {...register("competitionName")}
