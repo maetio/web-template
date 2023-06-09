@@ -16,27 +16,27 @@ import { Image } from '@mui/icons-material';
 import { SvgIcon } from '@mui/material';
 import { purple } from '@mui/material/colors';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Competitions', 'Players', 'Teams'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
 export const MaetAppBar: React.FC<{}> = () => {
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const [anchorNav, setAnchorNav] = React.useState<null | HTMLElement>(null);
+    const [anchorUser, setAnchorUser] = React.useState<null | HTMLElement>(null);
   
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-      setAnchorElNav(event.currentTarget);
+      setAnchorNav(event.currentTarget);
     };
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-      setAnchorElUser(event.currentTarget);
+      setAnchorUser(event.currentTarget);
     };
   
     const handleCloseNavMenu = () => {
-      setAnchorElNav(null);
+      setAnchorNav(null);
     };
   
     const handleCloseUserMenu = () => {
-      setAnchorElUser(null);
+      setAnchorUser(null);
     };
   
   return (
@@ -75,7 +75,7 @@ export const MaetAppBar: React.FC<{}> = () => {
             </IconButton>
             <Menu
               id="menu-appbar"
-              anchorEl={anchorElNav}
+              anchorEl={anchorNav}
               anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'left',
@@ -85,7 +85,7 @@ export const MaetAppBar: React.FC<{}> = () => {
                 vertical: 'top',
                 horizontal: 'left',
               }}
-              open={Boolean(anchorElNav)}
+              open={Boolean(anchorNav)}
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: 'block', md: 'none' },
@@ -137,7 +137,7 @@ export const MaetAppBar: React.FC<{}> = () => {
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
-              anchorEl={anchorElUser}
+              anchorEl={anchorUser}
               anchorOrigin={{
                 vertical: 'top',
                 horizontal: 'right',
@@ -147,7 +147,7 @@ export const MaetAppBar: React.FC<{}> = () => {
                 vertical: 'top',
                 horizontal: 'right',
               }}
-              open={Boolean(anchorElUser)}
+              open={Boolean(anchorUser)}
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (

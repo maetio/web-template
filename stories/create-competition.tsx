@@ -30,7 +30,7 @@ import {
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { competitionFormInput } from "app/types/competition";
-import { ControlPoint } from "@mui/icons-material";
+import { AddCircle } from "@mui/icons-material";
 
 export const CreateCompetition: React.FC<{}> = () => {
   const { register, control, handleSubmit } = useForm<competitionFormInput>({
@@ -105,6 +105,7 @@ export const CreateCompetition: React.FC<{}> = () => {
                   value="Pickup"
                   control={<Radio />}
                   label="Pickup"
+                  
                 />
                 <FormControlLabel
                   value="Tournament"
@@ -187,7 +188,7 @@ export const CreateCompetition: React.FC<{}> = () => {
               label="Select Location"
             ></TextField>
           </LocalizationProvider>
-          <Button sx={{ margin: 2 }} variant="contained" startIcon={<ControlPoint />} type="submit">
+          <Button sx={{ margin: 2 }} variant="contained" startIcon={<AddCircle />} type="submit">
             Create Competition
           </Button>
         </FormControl>
