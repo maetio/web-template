@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { CreateCompetition } from "./create-competition";
+import { competitionFormSchema } from "app/utils/schemas";
 
 const meta: Meta<typeof CreateCompetition> = {
   /* 👇 The title prop is optional.

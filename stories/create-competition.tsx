@@ -198,6 +198,6 @@ export const CreateCompetition: React.FC<{}> = () => {
 };
 
 const options = [
-  { label: "paddleball", id: 1 },
-  { label: "basketball", id: 2 },
+  { label: "Paddleball", id: 1 },
+  { label: "Basketball", id: 2 },
 ];
