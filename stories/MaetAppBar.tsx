@@ -12,6 +12,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { Image } from '@mui/icons-material';
+import { SvgIcon } from '@mui/material';
+import { purple } from '@mui/material/colors';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -40,7 +43,7 @@ export const MaetAppBar: React.FC<{}> = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Avatar src='https://photos.angel.co/startups/i/9037968-d7e5f2cf4293580142ea5be339019780-medium_jpg.jpg?buster=1660311451' alt='logo'/>
           <Typography
             variant="h6"
             noWrap
@@ -56,7 +59,7 @@ export const MaetAppBar: React.FC<{}> = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -129,7 +132,6 @@ export const MaetAppBar: React.FC<{}> = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
