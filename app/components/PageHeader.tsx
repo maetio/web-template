@@ -1,13 +1,19 @@
+import { Sports } from '@mui/icons-material';
 import {
-	Container, Grid, Typography, Divider,
+	Container, Grid, Typography, Divider, Box,
 } from '@mui/material';
 import React from 'react';
 
 export const PageHeader: React.FC<{}> = () => (
-  <div>
-  <Typography variant="overline" fontWeight="700">
+  <Grid
+    container 
+    flexDirection={"row"} sx={{
+    textAlign: "left",
+  }}>
+    <Typography color={"#4f46e5"} variant="h5" fontWeight="700">
   Create Competition
 		</Typography>
-  <Divider />
-	</div>
+    <Sports sx={{color: "#4f46e5", ml: 1, mt: 0.5}}/>
+  </Grid>
+	
 );
