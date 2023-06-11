@@ -14,5 +14,5 @@ export default meta;
 type Story = StoryObj<typeof MaetAppBar>;
 
 export const Primary: Story = {
-  render: () => <MaetAppBar/>,
+  render: () => <MaetAppBar />,
 };
