@@ -11,6 +11,10 @@ import {
   RadioGroup,
   TextField,
   Typography,
+  ThemeProvider,
+  useMediaQuery,
+  createTheme,
+  Stack,
 } from "@mui/material";
 import { PageHeader } from "../app/components/PageHeader";
 import React from "react";
@@ -32,6 +36,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { competitionFormInput } from "app/types/competition";
 import { AddCircle } from "@mui/icons-material";
+import getDesignTokens from "./theme";
 
 export const CreateCompetition: React.FC<{}> = () => {
   const { register, control, handleSubmit } = useForm<competitionFormInput>({
@@ -40,8 +45,11 @@ export const CreateCompetition: React.FC<{}> = () => {
   const onSubmit = (data: competitionFormInput) => {
     console.log(data);
   }
-
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  // Update the theme only if the mode changes
+  const theme = React.useMemo(() => createTheme(getDesignTokens(prefersDarkMode ? 'dark' : 'light')), [prefersDarkMode]);
   return (
+  <ThemeProvider theme={theme}>
     <Box
       m={2}
       alignItems="center"
@@ -53,10 +61,23 @@ export const CreateCompetition: React.FC<{}> = () => {
         padding: "3px",
       }}
     >
-      <PageHeader />
+   <PageHeader />
+      <Grid
+        container
+        direction="column"
+        justifyContent="flex-start"
+        alignItems="center"
+        width={700}
+        sx={{
+          backgroundColor: '#e7e5e4',
+          border: 1,
+          borderRadius: 1,
+          borderColor: '#e7e5e4'
+        }}
+>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl sx={{}}>
-          <FormLabel>Competition Name</FormLabel>
+          <FormLabel sx={{color: '#4f46e5', fontWeight: 800}} >Competition Name</FormLabel>
           <TextField
             {...register("competitionName")}
             sx={{ margin: 2 }}
@@ -86,37 +107,40 @@ export const CreateCompetition: React.FC<{}> = () => {
             )}
           />
           <FormLabel>Competition Type</FormLabel>
-          <Controller
-            name="competitionType"
-            defaultValue={""}
-            control={control}
-            render={({ field }) => (
-              <RadioGroup
-                {...field}
-                defaultValue="Pickup"
-                row
-                onChange={(_, compType) => field.onChange(compType)}
-                value={field.value}
-              >
-                <FormControlLabel
-                  value="Pickup"
-                  control={<Radio />}
-                  label="Pickup"
-                  
-                />
-                <FormControlLabel
-                  value="Tournament"
-                  control={<Radio />}
-                  label="Tournament"
-                />
-                <FormControlLabel
-                  value="League"
-                  control={<Radio />}
-                  label="League"
-                />
-              </RadioGroup>
-            )}
-          />
+          <Box
+            sx={{backgroundColor: '#e7e5e4'}}>
+            <Controller
+              name="competitionType"
+              defaultValue={""}
+              control={control}
+              render={({ field }) => (
+                <RadioGroup
+                  {...field}
+                  defaultValue="Pickup"
+                  row
+                  onChange={(_, compType) => field.onChange(compType)}
+                  value={field.value}
+                >
+                  <FormControlLabel
+                    value="Pickup"
+                    control={<Radio />}
+                    label="Pickup"
+                    
+                  />
+                  <FormControlLabel
+                    value="Tournament"
+                    control={<Radio />}
+                    label="Tournament"
+                  />
+                  <FormControlLabel
+                    value="League"
+                    control={<Radio />}
+                    label="League"
+                  />
+                </RadioGroup>
+              )}
+            />
+          </Box>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <FormLabel>Start Time</FormLabel>
             <Controller
@@ -190,7 +214,9 @@ export const CreateCompetition: React.FC<{}> = () => {
           </Button>
         </FormControl>
       </form>
+      </Grid>
     </Box>
+  </ThemeProvider>
   );
 };
 
