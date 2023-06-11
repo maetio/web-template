@@ -36,7 +36,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { competitionFormInput } from "app/types/competition";
 import { AddCircle } from "@mui/icons-material";
-import getDesignTokens from "./theme";
+import getDesignTokens from "../app/theme";
 
 export const CreateCompetition: React.FC<{}> = () => {
   const { register, control, handleSubmit } = useForm<competitionFormInput>({
@@ -65,7 +65,7 @@ export const CreateCompetition: React.FC<{}> = () => {
       <Grid
         container
         direction="column"
-        justifyContent="flex-start"
+        justifyContent="center"
         alignItems="center"
         width={700}
         sx={{
@@ -83,7 +83,7 @@ export const CreateCompetition: React.FC<{}> = () => {
             sx={{ margin: 2 }}
             label="Session Name"
           ></TextField>
-          <FormLabel>Sport</FormLabel>
+          <FormLabel sx={{color: '#4f46e5', fontWeight: 700}}>Sport</FormLabel>
           <Controller
             name={"sport"}
             control={control}
@@ -106,7 +106,7 @@ export const CreateCompetition: React.FC<{}> = () => {
               />
             )}
           />
-          <FormLabel>Competition Type</FormLabel>
+          <FormLabel sx={{color: '#4f46e5', fontWeight: 700}}>Competition Type</FormLabel>
           <Box
             sx={{backgroundColor: '#e7e5e4'}}>
             <Controller
@@ -142,7 +142,7 @@ export const CreateCompetition: React.FC<{}> = () => {
             />
           </Box>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <FormLabel>Start Time</FormLabel>
+            <FormLabel sx={{color: '#4f46e5', fontWeight: 700}}>Start Time</FormLabel>
             <Controller
               name={"startDate"}
               control={control}
@@ -173,7 +173,7 @@ export const CreateCompetition: React.FC<{}> = () => {
                 />
               )}
             />
-            <FormLabel>End Time</FormLabel>
+            <FormLabel sx={{color: '#4f46e5', fontWeight: 700}}>End Time</FormLabel>
             <Controller
               name={"endDate"}
               control={control}
