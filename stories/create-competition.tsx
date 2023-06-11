@@ -1,5 +1,6 @@
 import {
   Autocomplete,
+  Grid,
   Avatar,
   Box,
   Button,
@@ -184,7 +185,7 @@ export const CreateCompetition: React.FC<{}> = () => {
               label="Select Location"
             ></TextField>
           </LocalizationProvider>
-          <Button sx={{ margin: 2 }} variant="contained" startIcon={<AddCircle />} type="submit">
+          <Button sx={{ margin: 2, backgroundColor: "#4f46e5" }} variant="contained" startIcon={<AddCircle />} type="submit">
             Create Competition
           </Button>
         </FormControl>

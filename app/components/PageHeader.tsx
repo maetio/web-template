@@ -10,7 +10,7 @@ export const PageHeader: React.FC<{}> = () => (
     flexDirection={"row"} sx={{
     textAlign: "left",
   }}>
-    <Typography color={"#4f46e5"} variant="h5" fontWeight="700">
+    <Typography fontFamily={['Nunito', 'sans-serif']} color={"#4f46e5"} variant="h5" fontWeight="800">
   Create Competition
 		</Typography>
     <Sports sx={{color: "#4f46e5", ml: 1, mt: 0.5}}/>
