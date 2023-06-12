@@ -39,29 +39,31 @@ export const CompetitionCard = (props: Props) => {
 				direction="column"
 				alignItems="flex-start"
 			>
-				<Typography sx={{fontWeight: 400}}>
+				<Typography sx={{fontWeight: 700}}>
 				Grand Prairie Youth Rec Tournament
 				</Typography>
-				
 				<Grid
 					item
+					container
 					xs={6}
 					sx={{
 						display: "flex"
 					}}>
 					<SportsBasketball sx={{color: "orange"}}></SportsBasketball>
-					<Link sx={{color: "#4f46e5"}}></Link>
-					<Typography>Basketball Tournament</Typography>
+					<Link sx={{color: "#4f46e5", ml: 1}}></Link>
+					<Typography sx={{fontWeight: 700, ml: 1}}>Basketball Tournament</Typography>
 				</Grid>
 				<Grid
 					item
+					mt={5}
+					container
+					direction="row"
+					alignItems="flex-end"
+					display="flex"
 					xs={6}
-					sx={{
-						backgroundColor: "#4f46e5",
-						alignItems: "flex-end"
-					}}>
-					<CalendarIcon></CalendarIcon>
-					<Typography>April 7</Typography>
+				>
+					<CalendarIcon sx={{color: "#4f46e5" }}></CalendarIcon>
+					<Typography sx={{fontWeight: 700, ml: 1}}>April 7</Typography>
 				</Grid>
 			</Grid>
 		</Grid>
