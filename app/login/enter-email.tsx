@@ -59,7 +59,6 @@ export const EnterEmail: React.FC<{}> = () => {
           : (
             <Grid
               item
-              direction="column"
               alignItems="center"
               justifyContent="center"
             >

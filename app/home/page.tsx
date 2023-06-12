@@ -19,4 +19,4 @@ const Home = () => (
   </Grid>
 );
 
-export default Login;
+export default Home;
