@@ -161,11 +161,11 @@ export const CreateCompetition: React.FC<{}> = () => {
                       </RadioGroup>
                     )}
                   />
-                  <Typography>
-                    {errors.competitionType?.message}
-                  </Typography>
                 </Grid>
               </Box>
+              <Typography>
+                    {errors.competitionType?.message}
+                  </Typography>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <FormLabel sx={{ color: "#4f46e5", fontWeight: 700 }}>
                   Start Time
@@ -182,6 +182,9 @@ export const CreateCompetition: React.FC<{}> = () => {
                       onChange={(event) => {
                         onChange(event);
                       }}
+                      sx={{
+                        m: 2
+                      }}
                     />
                   )}
                 />
@@ -197,6 +200,9 @@ export const CreateCompetition: React.FC<{}> = () => {
                       label="Start Time"
                       onChange={(event) => {
                         onChange(event);
+                      }}
+                      sx={{
+                        m: 2
                       }}
                     />
                   )}
@@ -217,6 +223,9 @@ export const CreateCompetition: React.FC<{}> = () => {
                       onChange={(event) => {
                         onChange(event);
                       }}
+                      sx={{
+                        m: 2
+                      }}
                     />
                   )}
                 />
@@ -230,6 +239,9 @@ export const CreateCompetition: React.FC<{}> = () => {
                   }) => (
                     <TimePicker
                       label="End Time"
+                      sx={{
+                        m: 2
+                      }}
                       onChange={(event) => {
                         onChange(event);
                       }}
@@ -243,11 +255,14 @@ export const CreateCompetition: React.FC<{}> = () => {
                 <TextField
                   {...register("location")}
                   label="Select Location"
+                  sx={{
+                    m: 2
+                  }}
                 ></TextField>
                 <Typography>{errors.location?.message}</Typography>
               </LocalizationProvider>
               <Button
-                sx={{ margin: 2, backgroundColor: "#4f46e5" }}
+                sx={{ m: 2, backgroundColor: "#4f46e5" }}
                 variant="contained"
                 startIcon={<AddCircle />}
                 type="submit"
