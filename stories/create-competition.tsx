@@ -35,7 +35,7 @@ import {
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { competitionFormInput } from "app/types/competition";
-import { AddCircle } from "@mui/icons-material";
+import { AccountTree, AddCircle, Groups, Tv } from "@mui/icons-material";
 import getDesignTokens from "../app/theme";
 
 export const CreateCompetition: React.FC<{}> = () => {
@@ -113,37 +113,53 @@ export const CreateCompetition: React.FC<{}> = () => {
               <FormLabel sx={{ color: "#4f46e5", fontWeight: 700 }}>
                 Competition Type
               </FormLabel>
-              <Box sx={{ backgroundColor: "#e7e5e4" }}>
-                <Controller
-                  name="competitionType"
-                  defaultValue={""}
-                  control={control}
-                  render={({ field }) => (
-                    <RadioGroup
-                      {...field}
-                      defaultValue="Pickup"
-                      row
-                      onChange={(_, compType) => field.onChange(compType)}
-                      value={field.value}
-                    >
-                      <FormControlLabel
-                        value="Pickup"
-                        control={<Radio />}
-                        label="Pickup"
-                      />
-                      <FormControlLabel
-                        value="Tournament"
-                        control={<Radio />}
-                        label="Tournament"
-                      />
-                      <FormControlLabel
-                        value="League"
-                        control={<Radio />}
-                        label="League"
-                      />
-                    </RadioGroup>
-                  )}
-                />
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                p={2}
+                m={2}
+                sx={{ 
+                  backgroundColor: "#f59e0b",
+                  border: 1,
+                  borderRadius: 1,
+                  borderColor: "#f59e0b"
+                }}
+              >
+                <Grid
+                  >
+                  <Controller
+                    name="competitionType"
+                    defaultValue={""}
+                    control={control}
+                    render={({ field }) => (
+                      <RadioGroup
+                        {...field}
+                        defaultValue="Pickup"
+                        row
+                        onChange={(_, compType) => field.onChange(compType)}
+                        value={field.value}
+                      >
+                        <FormControlLabel
+                          value="Pickup"
+                          control={<Radio />}
+                          label="Pickup"
+                        />
+                        <FormControlLabel
+                          value="Tournament"
+                          control={<Radio />}
+                          label="Tournament"
+                        />
+                        <FormControlLabel
+                          value="League"
+                          control={<Radio />}
+                          label="League"
+                        />
+                      </RadioGroup>
+                      
+                    )}
+                  />
+                  </Grid>
               </Box>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <FormLabel sx={{ color: "#4f46e5", fontWeight: 700 }}>
@@ -212,6 +228,9 @@ export const CreateCompetition: React.FC<{}> = () => {
                     />
                   )}
                 />
+                <FormLabel sx={{ color: "#4f46e5", fontWeight: 700 }}>
+                  Location
+                </FormLabel>
                 <TextField
                   {...register("location")}
                   label="Select Location"
