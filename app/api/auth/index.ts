@@ -60,6 +60,6 @@ export /**
  * @return {*}
  */
 const signInWithLink = async (email: string, link: string) => {
-  if (!isSignInWithEmailLink(auth, link)) throw Error('Not Email Sign in Link');
+  if (!isSignInWithEmailLink(auth, link)) throw Error(`Not Email Sign in Link: ${link}`);
   return signInWithEmailLink(auth, email, link);
 };

@@ -12,9 +12,10 @@ import {
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { emailSchema } from 'app/utils/schemas';
-import { sendPasswordlessLoginEmail } from 'app/api/auth';
+import { sendPasswordlessLoginEmail, signInWithLink } from 'app/api/auth';
 import { useRecoilState } from 'recoil';
 import { UserState } from 'app/recoil-store';
+import { useRouter } from 'next/navigation';
 
 export const EnterEmail: React.FC<{}> = () => {
   // useForm & useAuth initialization
@@ -37,6 +38,11 @@ export const EnterEmail: React.FC<{}> = () => {
     setSentEmail(true);
     setUser({ ...user, email: data.email });
   };
+
+  // get router
+  // console.log('router query', router.query);
+  console.log(window.location.href, document.referrer);
+  signInWithLink('kekoa@maet.io', document.referrer);
 
   return (
     <form onSubmit={handleSubmit(submitEmail)}>
