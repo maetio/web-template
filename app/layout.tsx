@@ -2,9 +2,7 @@ import { MuiProvider } from 'app/providers/mui';
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { AuthContextProvider } from 'app/providers/auth-context';
-import {
-  RecoilRoot,
-} from 'recoil';
+import RecoilRootProvider from 'app/providers/recoil';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,13 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <RecoilRoot>
+        <RecoilRootProvider>
           <AuthContextProvider>
             <MuiProvider>
               {children}
             </MuiProvider>
           </AuthContextProvider>
-        </RecoilRoot>
+        </RecoilRootProvider>
       </body>
     </html>
   );
