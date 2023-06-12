@@ -124,10 +124,10 @@ export const CreateCompetition: React.FC<{}> = () => {
                 p={2}
                 m={2}
                 sx={{
-                  backgroundColor: "#f59e0b",
+                  backgroundColor: "#4f46e5",
                   border: 1,
                   borderRadius: 1,
-                  borderColor: "#f59e0b",
+                  borderColor: "#4f46e5",
                 }}
               >
                 <Grid>

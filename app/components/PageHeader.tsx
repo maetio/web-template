@@ -5,6 +5,7 @@ import React from "react";
 export const PageHeader: React.FC<{}> = () => (
   <Box
     justifyContent="center"
+	alignItems={"center"}
     sx={{
       display: "flex",
       textAlign: "center",
@@ -22,6 +23,6 @@ export const PageHeader: React.FC<{}> = () => (
     >
       Create a Competition
     </Typography>
-    <Sports sx={{ color: "white", ml: 1, mt: 0.6 }} />
+    <Sports sx={{ color: "white", ml: 1 }} />
   </Box>
 );
