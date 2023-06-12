@@ -60,14 +60,14 @@ export const MaetAppBar: React.FC<{}> = () => {
 							fontWeight: 700,
 							letterSpacing: ".3rem",
 							color: "inherit",
-							textDecoration: "none",
+							textDecoration: "none"
 						}}
 					></Typography>
 
 					<Box
 						sx={{
 							flexGrow: 1,
-							display: { xs: "flex", md: "none" },
+							display: { xs: "flex", md: "none" }
 						}}
 					>
 						<IconButton
@@ -85,17 +85,17 @@ export const MaetAppBar: React.FC<{}> = () => {
 							anchorEl={anchorNav}
 							anchorOrigin={{
 								vertical: "bottom",
-								horizontal: "left",
+								horizontal: "left"
 							}}
 							keepMounted
 							transformOrigin={{
 								vertical: "top",
-								horizontal: "left",
+								horizontal: "left"
 							}}
 							open={Boolean(anchorNav)}
 							onClose={handleCloseNavMenu}
 							sx={{
-								display: { xs: "block", md: "none" },
+								display: { xs: "block", md: "none" }
 							}}
 						>
 							{pages.map((page) => (
@@ -126,7 +126,7 @@ export const MaetAppBar: React.FC<{}> = () => {
 							fontWeight: 700,
 							letterSpacing: ".3rem",
 							color: "inherit",
-							textDecoration: "none",
+							textDecoration: "none"
 						}}
 					>
 						LOGO
@@ -134,7 +134,7 @@ export const MaetAppBar: React.FC<{}> = () => {
 					<Box
 						sx={{
 							flexGrow: 1,
-							display: { xs: "none", md: "flex" },
+							display: { xs: "none", md: "flex" }
 						}}
 					>
 						{pages.map((page) => (
@@ -161,12 +161,12 @@ export const MaetAppBar: React.FC<{}> = () => {
 							anchorEl={anchorUser}
 							anchorOrigin={{
 								vertical: "top",
-								horizontal: "right",
+								horizontal: "right"
 							}}
 							keepMounted
 							transformOrigin={{
 								vertical: "top",
-								horizontal: "right",
+								horizontal: "right"
 							}}
 							open={Boolean(anchorUser)}
 							onClose={handleCloseUserMenu}
