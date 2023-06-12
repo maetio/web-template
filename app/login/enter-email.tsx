@@ -58,7 +58,12 @@ export const EnterEmail: React.FC<{}> = () => {
             </Box>
           )
           : (
-            <Grid item flexDirection="row">
+            <Grid
+              item
+              direction="column"
+              alignItems="center"
+              justifyContent="center"
+            >
               <Typography>Welcome to Maet!</Typography>
               <br />
               <TextField
@@ -70,7 +75,6 @@ export const EnterEmail: React.FC<{}> = () => {
               <Button type="submit">Send Magic Link</Button>
             </Grid>
           )}
-        {/* <Button onClick={handleGuestClick}>Continue As Guest</Button> */}
       </Grid>
     </form>
   );
