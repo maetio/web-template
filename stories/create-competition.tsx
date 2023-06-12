@@ -34,16 +34,19 @@ import {
 } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { competitionFormSchema } from "/Users/Toni/The Vault/web-template/app/utils/schemas";
 import { competitionFormInput } from "app/types/competition";
 import { AccountTree, AddCircle, Groups, Tv } from "@mui/icons-material";
 import getDesignTokens from "../app/theme";
 
 export const CreateCompetition: React.FC<{}> = () => {
-  const { register, control, handleSubmit } = useForm<competitionFormInput>({
+  const { register, control, handleSubmit, formState: { errors }, reset } = useForm<competitionFormInput>({
     reValidateMode: "onBlur",
+    resolver: yupResolver(competitionFormSchema)
   });
   const onSubmit = (data: competitionFormInput) => {
     console.log(data);
+    reset();
   };
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   // Update the theme only if the mode changes
@@ -85,6 +88,7 @@ export const CreateCompetition: React.FC<{}> = () => {
                 sx={{ margin: 2 }}
                 label="Session Name"
               ></TextField>
+              <Typography>{errors.competitionName?.message}</Typography>
               <FormLabel sx={{ color: "#4f46e5", fontWeight: 700 }}>
                 Sport
               </FormLabel>
@@ -119,15 +123,14 @@ export const CreateCompetition: React.FC<{}> = () => {
                 justifyContent="center"
                 p={2}
                 m={2}
-                sx={{ 
+                sx={{
                   backgroundColor: "#f59e0b",
                   border: 1,
                   borderRadius: 1,
-                  borderColor: "#f59e0b"
+                  borderColor: "#f59e0b",
                 }}
               >
-                <Grid
-                  >
+                <Grid>
                   <Controller
                     name="competitionType"
                     defaultValue={""}
@@ -156,10 +159,12 @@ export const CreateCompetition: React.FC<{}> = () => {
                           label="League"
                         />
                       </RadioGroup>
-                      
                     )}
                   />
-                  </Grid>
+                  <Typography>
+                    {errors.competitionType?.message}
+                  </Typography>
+                </Grid>
               </Box>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <FormLabel sx={{ color: "#4f46e5", fontWeight: 700 }}>
@@ -180,6 +185,7 @@ export const CreateCompetition: React.FC<{}> = () => {
                     />
                   )}
                 />
+                <Typography>{errors.startDate?.message}</Typography>
                 <Controller
                   name={"startTime"}
                   control={control}
@@ -195,6 +201,7 @@ export const CreateCompetition: React.FC<{}> = () => {
                     />
                   )}
                 />
+                <Typography>{errors.startTime?.message}</Typography>
                 <FormLabel sx={{ color: "#4f46e5", fontWeight: 700 }}>
                   End Time
                 </FormLabel>
@@ -213,6 +220,7 @@ export const CreateCompetition: React.FC<{}> = () => {
                     />
                   )}
                 />
+                <Typography>{errors.endDate?.message}</Typography>
                 <Controller
                   name={"endTime"}
                   control={control}
@@ -228,13 +236,15 @@ export const CreateCompetition: React.FC<{}> = () => {
                     />
                   )}
                 />
-                <FormLabel sx={{ color: "#4f46e5", fontWeight: 700 }}>
+                <Typography>{errors.endDate?.message}</Typography>
+                <FormLabel sx={{ color: "#4f46e5", fontWeight: 700, m: 2 }}>
                   Location
                 </FormLabel>
                 <TextField
                   {...register("location")}
                   label="Select Location"
                 ></TextField>
+                <Typography>{errors.location?.message}</Typography>
               </LocalizationProvider>
               <Button
                 sx={{ margin: 2, backgroundColor: "#4f46e5" }}

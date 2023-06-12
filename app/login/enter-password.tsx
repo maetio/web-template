@@ -27,8 +27,8 @@ export const EnterPassword: React.FC<{}> = () => {
 		router.push('/settings');
 	};
 	return (
-  <form onSubmit={handleSubmit(submitPassword)}>
-  <Grid
+<form onSubmit={handleSubmit(submitPassword)}>
+	<Grid
   container
   spacing={0}
   direction="column"
@@ -36,17 +36,17 @@ export const EnterPassword: React.FC<{}> = () => {
   justifyContent="center"
   sx={{ minHeight: '100vh' }}
 			>
-  <LockIcon sx={{ fontSize: 200 }} />
-  <Typography>Enter your password to login.</Typography>
-  <br />
-  <TextField
-  variant="outlined"
-  label="Input your password"
-  {...register('password')}
-				/>
-  <Button type="submit">Login</Button>
-  <Button onClick={handleReturnClick}>Return to previous screen</Button>
-			</Grid>
-		</form>
+	<LockIcon sx={{ fontSize: 200 }} />
+	<Typography>Enter your password to login.</Typography>
+	<br />
+	<TextField
+	variant="outlined"
+	label="Input your password"
+	{...register('password')}
+					/>
+	<Button type="submit">Login</Button>
+	<Button onClick={handleReturnClick}>Return to previous screen</Button>
+	</Grid>
+</form>
 	);
 };
