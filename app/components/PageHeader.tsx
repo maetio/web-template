@@ -8,7 +8,7 @@ export const PageHeader: React.FC<{}> = () => (
   <Box
   justifyContent="center"
   sx={{
-			display: 'inline-flex',
+			display: 'flex',
 			textAlign: 'center',
 			backgroundColor: '#4f46e5',
 			border: 1,

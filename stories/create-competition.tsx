@@ -55,15 +55,12 @@ export const CreateCompetition: React.FC<{}> = () => {
     <ThemeProvider theme={theme}>
       <PageHeader />
       <Box
-        m={2}
+        mt={2}
         alignItems="center"
         flex={"row"}
         justifyContent={"center"}
         sx={{
-          height: 1,
-          width: 1,
           textAlign: "center",
-          padding: "3px",
         }}
       >
         <Grid
@@ -71,7 +68,6 @@ export const CreateCompetition: React.FC<{}> = () => {
           direction="column"
           justifyContent="center"
           alignItems="center"
-          width={700}
           sx={{
             backgroundColor: "#e7e5e4",
             border: 1,
