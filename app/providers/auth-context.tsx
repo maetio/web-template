@@ -1,3 +1,5 @@
+'use client';
+
 import {
   ReactNode, createContext, useContext, useState, useEffect, useMemo,
 } from 'react';
@@ -31,7 +33,10 @@ export const AuthContextProvider = ({
         setUser(null);
       }
       setLoading(false);
+      console.log('auth state', userObserver?.email, userObserver?.emailVerified);
     });
+
+    console.log('auth context', AuthContext.displayName);
 
     return () => unsubscribe();
   }, []);

@@ -1,5 +1,7 @@
 import { FirebaseOptions, initializeApp, getApps } from 'firebase/app';
-import { ActionCodeSettings, sendSignInLinkToEmail, initializeAuth } from 'firebase/auth';
+import {
+  ActionCodeSettings, sendSignInLinkToEmail, initializeAuth, isSignInWithEmailLink, signInWithEmailLink,
+} from 'firebase/auth';
 // import { initializeFirestore } from 'firebase/firestore';
 // import NextAuth from "next-auth";
 // import { FirestoreAdapter } from "@next-auth/firebase-adapter";
@@ -36,7 +38,7 @@ export async function sendPasswordlessLoginEmail(email: string): Promise<void> {
     handleCodeInApp: true,
     dynamicLinkDomain: process.env.NEXT_PUBLIC_DYNAMIC_LINKS_DOMAIN,
     // URL must be whitelisted in the Firebase Console.
-    url: `https://${process.env.NEXT_PUBLIC_DYNAMIC_LINKS_DOMAIN}`,
+    url: process.env.NEXT_PUBLIC_DYNAMIC_LINK || 'https://localhost:3000',
     iOS: {
       bundleId: 'io.maet.mobile',
     },
@@ -49,3 +51,15 @@ export async function sendPasswordlessLoginEmail(email: string): Promise<void> {
   console.log(actionCodeSettings);
   return sendSignInLinkToEmail(auth, email, actionCodeSettings);
 }
+
+export /**
+ * Function will sign in with the email link
+ *
+ * @param {string} email
+ * @param {string} [link]
+ * @return {*}
+ */
+const signInWithLink = async (email: string, link: string) => {
+  if (!isSignInWithEmailLink(auth, link)) throw Error('Not Email Sign in Link');
+  return signInWithEmailLink(auth, email, link);
+};
