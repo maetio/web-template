@@ -16,7 +16,7 @@ import { sendPasswordlessLoginEmail, signInWithLink } from "app/api/auth";
 import { useRecoilState } from "recoil";
 import { UserState } from "app/recoil-store";
 
-export const EnterEmail: React.FC<{}> = () => {
+export const SignIn: React.FC<{}> = () => {
 	// useForm & useAuth initialization
 	const {
 		register,
