@@ -8,7 +8,7 @@ import {
 	useMediaQuery
 } from "@mui/material";
 import { NextAppDirEmotionCacheProvider } from "tss-react/next/appDir";
-import getDesignTokens from "../theme";
+import getDesignTokens from "../../theme";
 
 type Props = {
 	children: ReactNode;

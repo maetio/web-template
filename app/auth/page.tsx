@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "app/components/mui-server-components";
-import { EnterEmail } from "app/login/enter-email";
+import { EnterEmail } from "app/auth/enter-email";
 
 /**
  * Will return the login screen
