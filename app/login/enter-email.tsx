@@ -1,14 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import {
-  Button,
-  TextField,
-  Grid,
-  Typography,
-  Paper,
-  Box,
-} from '@mui/material';
+import { Button, TextField, Grid, Typography, Paper, Box } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { emailSchema } from 'app/utils/schemas';
@@ -41,8 +34,28 @@ export const EnterEmail: React.FC<{}> = () => {
 
   // get router
   // console.log('router query', router.query);
-  console.log(window.location.href, document.referrer);
-  signInWithLink('kekoa@maet.io', document.referrer);
+  // console.log(window.location.href, document.referrer);
+
+  const signInFnc = async () => {
+    console.log('working', window.location.href);
+    const userCred = await signInWithLink(
+      'sethy8656@gmail.com',
+      window.location.href
+    );
+
+    console.log('userrCred', userCred);
+  };
+
+  if (window.location.href.includes('apiKey')) {
+    signInFnc();
+  }
+
+  // console.log(
+  //   'window location',
+  //   window.location.href,
+  //   'doc ref',
+  //   document.referrer
+  // );
 
   return (
     <form onSubmit={handleSubmit(submitEmail)}>
@@ -55,30 +68,24 @@ export const EnterEmail: React.FC<{}> = () => {
         sx={{ minHeight: '100vh' }}
       >
         <Paper variant="outlined" />
-        {sentEmail
-          ? (
-            <Box>
-              <Typography>Check your email inbox for a magic link</Typography>
-              <br />
-            </Box>
-          )
-          : (
-            <Grid
-              item
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Typography>Welcome to Maet!</Typography>
-              <br />
-              <TextField
-                type="email"
-                variant="outlined"
-                label="Input your email"
-                {...register('email')}
-              />
-              <Button type="submit">Send Magic Link</Button>
-            </Grid>
-          )}
+        {sentEmail ? (
+          <Box>
+            <Typography>Check your email inbox for a magic link</Typography>
+            <br />
+          </Box>
+        ) : (
+          <Grid item alignItems="center" justifyContent="center">
+            <Typography>Welcome to Maet!</Typography>
+            <br />
+            <TextField
+              type="email"
+              variant="outlined"
+              label="Input your email"
+              {...register('email')}
+            />
+            <Button type="submit">Send Magic Link</Button>
+          </Grid>
+        )}
       </Grid>
     </form>
   );
