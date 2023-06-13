@@ -11,16 +11,16 @@ import {
 
 // Utility function to get and set the state from/to local storage
 const localStorageEffect = <T>(key: string): AtomEffect<T> => ({ setSelf, onSet }) => {
-	const savedValue = localStorage.getItem(key)
+	const savedValue = localStorage.getItem(key);
 	if (savedValue != null) {
 	  setSelf(JSON.parse(savedValue));
 	}
 	onSet((newValue, _, isReset) => {
 	  isReset
-		? localStorage.removeItem(key)
-		: localStorage.setItem(key, JSON.stringify(newValue));
+			? localStorage.removeItem(key)
+			: localStorage.setItem(key, JSON.stringify(newValue));
 	});
-  };
+};
 
 export const UserState = atom({
 	key: "userState", // unique ID (with respect to other atoms/selectors)
@@ -28,5 +28,5 @@ export const UserState = atom({
 		id: "",
 		email: ""
 	},
-	effects: [localStorageEffect('userState')],
+	effects: [localStorageEffect("userState")]
 });
