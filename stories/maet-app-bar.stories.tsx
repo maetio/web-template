@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { MaetAppBar } from "./MaetAppBar";
+import { MaetAppBar } from "./maet-app-bar";
 
 const meta: Meta<typeof MaetAppBar> = {
 	/* 👇 The title prop is optional.

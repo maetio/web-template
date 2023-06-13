@@ -15,6 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { Image } from "@mui/icons-material";
 import { SvgIcon } from "@mui/material";
 import { purple } from "@mui/material/colors";
+import MaetIcon from "../app/components/maet-icon";
 
 const pages = ["Competitions", "Players", "Teams"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -44,11 +45,7 @@ export const MaetAppBar: React.FC<{}> = () => {
 		<AppBar sx={{ backgroundColor: "#4f46e5" }} position="static">
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
-					<Avatar
-						src="https://photos.angel.co/startups/i/9037968-d7e5f2cf4293580142ea5be339019780-medium_jpg.jpg?buster=1660311451"
-						alt="logo"
-					/>
-
+					<MaetIcon></MaetIcon>
 					<Box
 						sx={{
 							flexGrow: 1,

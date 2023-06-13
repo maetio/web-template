@@ -36,7 +36,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { CompetitionFormInput } from "app/types/competition";
 import { AccountTree, AddCircle, Groups, Tv } from "@mui/icons-material";
 import { CompetitionFormSchema } from "../app/utils/schemas";
-import { PageHeader } from "../app/components/PageHeader";
+import { PageHeader } from "../app/components/page-header";
 import getDesignTokens from "../app/theme";
 
 const options = [
