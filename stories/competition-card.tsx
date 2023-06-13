@@ -1,12 +1,23 @@
-import { Link, SportsBasketball } from "@mui/icons-material";
+import { Link, SportsBasketball, SportsSoccer, SportsTennis, SportsVolleyball } from "@mui/icons-material";
 import { Box, ButtonBase, Grid, Typography } from "@mui/material";
 import { orange } from "@mui/material/colors";
 import { CalendarIcon, ClockIcon } from "@mui/x-date-pickers";
 import React from "react";
 
-type Props = {}
+// modular props for all competition cards
+type CompetitionCardProps = {
+	name: string,
+	type: string,
+	date: string,
+	sport: SportsIcons,
+	image: React.FC<{}>
+}
+type SportsIcons = {
+	sportName: string,
+	icon: React.FC<{}>
+}
 
-export const CompetitionCard = (props: Props) => {
+export const CompetitionCard = (props: CompetitionCardProps) => {
 	return (
 		<Grid
 			container
@@ -40,7 +51,7 @@ export const CompetitionCard = (props: Props) => {
 				alignItems="flex-start"
 			>
 				<Typography sx={{fontWeight: 700}}>
-				Grand Prairie Youth Rec Tournament
+					{props.name}
 				</Typography>
 				<Grid
 					item
@@ -49,9 +60,9 @@ export const CompetitionCard = (props: Props) => {
 					sx={{
 						display: "flex"
 					}}>
-					<SportsBasketball sx={{color: "orange"}}></SportsBasketball>
-					<Link sx={{color: "#4f46e5", ml: 0.5}}></Link>
-					<Typography sx={{fontWeight: 700, ml: 1}}>Basketball Tournament</Typography>
+					{props.sport.sportName}
+					{props.type}
+					<Typography sx={{ml: 1}}>{props.sport.sportName} Tournament</Typography>
 				</Grid>
 				<Grid
 					item
@@ -63,7 +74,7 @@ export const CompetitionCard = (props: Props) => {
 					xs={6}
 				>
 					<CalendarIcon sx={{color: "#4f46e5" }}></CalendarIcon>
-					<Typography sx={{fontWeight: 700, ml: 1}}>April 7</Typography>
+					<Typography sx={{ ml: 1}}>April 7</Typography>
 				</Grid>
 			</Grid>
 		</Grid>

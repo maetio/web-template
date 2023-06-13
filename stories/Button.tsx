@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import "./button.css";
 
@@ -43,7 +44,7 @@ export const Button = ({
 			className={[
 				"storybook-button",
 				`storybook-button--${size}`,
-				mode,
+				mode
 			].join(" ")}
 			{...props}
 		>
