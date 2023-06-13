@@ -2,19 +2,19 @@
 
 import React, { useState } from "react";
 import {
-  Button,
-  TextField,
-  Grid,
-  Typography,
-  Paper,
-  Box,
-} from '@mui/material';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { emailSchema } from 'app/utils/schemas';
-import { sendPasswordlessLoginEmail, signInWithLink } from 'app/api/auth';
-import { useRecoilState } from 'recoil';
-import { UserState } from 'app/recoil-store';
+	Button,
+	TextField,
+	Grid,
+	Typography,
+	Paper,
+	Box
+} from "@mui/material";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { emailSchema } from "app/utils/schemas";
+import { sendPasswordlessLoginEmail, signInWithLink } from "app/api/auth";
+import { useRecoilState } from "recoil";
+import { UserState } from "app/recoil-store";
 
 export const EnterEmail: React.FC<{}> = () => {
 	// useForm & useAuth initialization
