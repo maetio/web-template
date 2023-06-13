@@ -50,7 +50,7 @@ export const CompetitionCard = (props: Props) => {
 						display: "flex"
 					}}>
 					<SportsBasketball sx={{color: "orange"}}></SportsBasketball>
-					<Link sx={{color: "#4f46e5", ml: 1}}></Link>
+					<Link sx={{color: "#4f46e5", ml: 0.5}}></Link>
 					<Typography sx={{fontWeight: 700, ml: 1}}>Basketball Tournament</Typography>
 				</Grid>
 				<Grid

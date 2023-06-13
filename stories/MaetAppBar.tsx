@@ -48,21 +48,6 @@ export const MaetAppBar: React.FC<{}> = () => {
 						src="https://photos.angel.co/startups/i/9037968-d7e5f2cf4293580142ea5be339019780-medium_jpg.jpg?buster=1660311451"
 						alt="logo"
 					/>
-					<Typography
-						variant="h6"
-						noWrap
-						component="a"
-						href="/"
-						sx={{
-							mr: 2,
-							display: { xs: "none", md: "flex" },
-							fontFamily: "monospace",
-							fontWeight: 700,
-							letterSpacing: ".3rem",
-							color: "inherit",
-							textDecoration: "none"
-						}}
-					></Typography>
 
 					<Box
 						sx={{
@@ -113,24 +98,6 @@ export const MaetAppBar: React.FC<{}> = () => {
 					<AdbIcon
 						sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
 					/>
-					<Typography
-						variant="h5"
-						noWrap
-						component="a"
-						href=""
-						sx={{
-							mr: 2,
-							display: { xs: "flex", md: "none" },
-							flexGrow: 1,
-							fontFamily: "monospace",
-							fontWeight: 700,
-							letterSpacing: ".3rem",
-							color: "inherit",
-							textDecoration: "none"
-						}}
-					>
-						LOGO
-					</Typography>
 					<Box
 						sx={{
 							flexGrow: 1,
@@ -147,7 +114,6 @@ export const MaetAppBar: React.FC<{}> = () => {
 							</Button>
 						))}
 					</Box>
-
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title="Open settings">
 							<IconButton
