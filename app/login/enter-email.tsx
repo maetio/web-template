@@ -15,7 +15,6 @@ import { emailSchema } from 'app/utils/schemas';
 import { sendPasswordlessLoginEmail, signInWithLink } from 'app/api/auth';
 import { useRecoilState } from 'recoil';
 import { UserState } from 'app/recoil-store';
-import { useRouter } from 'next/navigation';
 
 export const EnterEmail: React.FC<{}> = () => {
   // useForm & useAuth initialization
