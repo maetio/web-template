@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import { CssBaseline } from "@mui/material";
+import React, { ReactNode } from 'react';
+import { CssBaseline } from '@mui/material';
 
 interface LayoutProps {
 	children: ReactNode;

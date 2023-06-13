@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid } from "app/components/mui-server-components";
 import { EnterEmail } from "app/login/enter-email";
+import { useRouter } from "next/router";
 
 export /**
  * Will return the login screen

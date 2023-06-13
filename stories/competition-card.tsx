@@ -10,8 +10,9 @@ type CompetitionCardProps = {
 	type: string,
 	date: string,
 	sport: SportsIcons,
-	image: React.FC<{}>
+	image?: React.FC<{}>
 }
+
 type SportsIcons = {
 	sportName: string,
 	icon: React.FC<{}>
@@ -74,7 +75,7 @@ export const CompetitionCard = (props: CompetitionCardProps) => {
 					xs={6}
 				>
 					<CalendarIcon sx={{color: "#4f46e5" }}></CalendarIcon>
-					<Typography sx={{ ml: 1}}>April 7</Typography>
+					<Typography sx={{ ml: 1}}>{props.date}</Typography>
 				</Grid>
 			</Grid>
 		</Grid>

@@ -18,6 +18,10 @@ google-services-prod.plist
 google-services-prod.json
 functions/lib/
 
+# storybook
+./stories/**
+./stories/
+./storybook-static
 
 # next.js
 ./.next/**

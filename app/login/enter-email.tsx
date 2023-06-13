@@ -1,46 +1,49 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
 	Button,
-	Container,
 	TextField,
 	Grid,
 	Typography,
-	Paper
+	Paper,
+	Box
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
-import { sendPasswordlessLoginEmail } from "app/api/auth";
+import { sendPasswordlessLoginEmail, signInWithLink } from "app/api/auth";
+import { useRecoilState } from "recoil";
+import { UserState } from "app/recoil-store";
+import { useRouter } from "next/navigation";
 
 export const EnterEmail: React.FC<{}> = () => {
 	// useForm & useAuth initialization
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
-		reset
+		formState: { errors }
 	} = useForm<{ email: string }>({
 		resolver: yupResolver(emailSchema)
 	});
 
-	// user routed to SignIn screen on click of 'continue as guest' button
-	// const router = useRouter()
-	const handleGuestClick = (e: { preventDefault: () => void }) => {
-		e.preventDefault();
-	};
+	// state used to detect if email sent
+	const [sentEmail, setSentEmail] = useState(false);
+
+	// get user state
+	const [user, setUser] = useRecoilState(UserState);
 
 	const submitEmail = async (data: { email: string }) => {
 		await sendPasswordlessLoginEmail(data.email);
-		/* try {
-      await signUp(data.email);
-      router.push('/sign-in');
-      reset();
-    } catch (error: any) {
-      console.log(error.message);
-    } */
+		setSentEmail(true);
+		setUser({ ...user, email: data.email });
 	};
+
+	// get router
+	// console.log('router query', router.query);
+	console.log(window.location.href, document.referrer);
+	signInWithLink("kekoa@maet.io", document.referrer);
+
 	return (
 		<form onSubmit={handleSubmit(submitEmail)}>
 			<Grid
@@ -52,16 +55,30 @@ export const EnterEmail: React.FC<{}> = () => {
 				sx={{ minHeight: "100vh" }}
 			>
 				<Paper variant="outlined" />
-				<Typography>Welcome to Maet!</Typography>
-				<br />
-				<TextField
-					type="email"
-					variant="outlined"
-					label="Input your email"
-					{...register("email")}
-				/>
-				<Button type="submit">Continue</Button>
-				<Button onClick={handleGuestClick}>Continue As Guest</Button>
+				{sentEmail
+					? (
+						<Box>
+							<Typography>Check your email inbox for a magic link</Typography>
+							<br />
+						</Box>
+					)
+					: (
+						<Grid
+							item
+							alignItems="center"
+							justifyContent="center"
+						>
+							<Typography>Welcome to Maet!</Typography>
+							<br />
+							<TextField
+								type="email"
+								variant="outlined"
+								label="Input your email"
+								{...register("email")}
+							/>
+							<Button type="submit">Send Magic Link</Button>
+						</Grid>
+					)}
 			</Grid>
 		</form>
 	);
