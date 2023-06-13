@@ -1,3 +1,3 @@
-import { Login } from "app/login/page";
+import Login from "app/login/page";
 
 export default Login;
