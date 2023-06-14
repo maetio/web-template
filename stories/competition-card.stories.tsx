@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { CompetitionCard } from "./competition-card";
+import { CompetitionCard, CompetitionCardProps } from "./competition-card";
 
 interface ButtonProps {
 	/**
@@ -39,7 +39,7 @@ const meta: Meta<typeof CompetitionCard> = {
 export default meta;
 type Story = StoryObj<typeof CompetitionCard>;
 
-export const Primary: Story = {
+export const Card: Story = {
 	args: {
 	}
 };

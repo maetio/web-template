@@ -5,19 +5,21 @@ import { CalendarIcon, ClockIcon } from "@mui/x-date-pickers";
 import React from "react";
 
 // modular props for all competition cards
-type CompetitionCardProps = {
+export type CompetitionCardProps = {
 	name: string,
-	type: string,
+	type?: string
 	date: string,
-	sport: SportsIcons,
-	image?: React.FC<{}>
+	sport: Sports,
 }
 
-type SportsIcons = {
+// each sport prop will have a MUI icon and sport name associated with it
+export type Sports = {
 	sportName: string,
-	icon: React.FC<{}>
+	icon: React.ReactNode
 }
 
+
+// eslint-disable-next-line @typescript-eslint/no-shadow
 export const CompetitionCard = (props: CompetitionCardProps) => {
 	return (
 		<Grid
@@ -61,9 +63,9 @@ export const CompetitionCard = (props: CompetitionCardProps) => {
 					sx={{
 						display: "flex"
 					}}>
-					{props.sport.sportName}
-					{props.type}
-					<Typography sx={{ml: 1}}>{props.sport.sportName} Tournament</Typography>
+					<SportsBasketball sx={{color: "orange"}}></SportsBasketball>
+					<Link sx={{color: "#4f46e5"}}></Link>
+					<Typography sx={{ml: 1}}>{props.sport.sportName} {props?.type}</Typography>
 				</Grid>
 				<Grid
 					item

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, Typography } from "app/components/mui-server-components";
 
 /**
@@ -7,6 +7,7 @@ import { Grid, Typography } from "app/components/mui-server-components";
  * @return {*}
  */
 const Home = () => (
+
 	<Grid
 		container
 		spacing={0}
