@@ -7,6 +7,7 @@ export type TeamCardProps = {
     name: string,
     location: string,
     position: number,
+    medalColor?: string,
     score: number,
     change: ScoreChange
 }
@@ -39,7 +40,7 @@ const TeamCard = (props: TeamCardProps) => {
 				justifyContent="center"
 				display="flex"
 			>   
-				<MilitaryTech></MilitaryTech>
+				<MilitaryTech sx={{color: "gold"}}></MilitaryTech>
 				<Typography sx={{fontWeight: 700}}>1</Typography>
 			</Grid>
 			<Grid
