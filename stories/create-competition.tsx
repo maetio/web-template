@@ -67,7 +67,7 @@ export const CreateCompetition: React.FC<{}> = () => {
 	);
 	return (
 		<ThemeProvider theme={theme}>
-			<PageHeader />
+			<PageHeader title={"Create a Competition"} />
 			<Box
 				mt={2}
 				alignItems="center"
