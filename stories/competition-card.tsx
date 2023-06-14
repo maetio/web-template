@@ -37,12 +37,12 @@ export const CompetitionCard = (props: CompetitionCardProps) => {
 			}}>
 			<Grid 
 				container 
-				item xs={3}
+				item 
+				xs={3}
 				alignItems="center"
 			>
 				<ButtonBase sx={{ width: 100, height: 100, border: 1, borderRadius: 1, 
 					borderColor: "#f5f5f4", backgroundColor: "purple", m: 1 }}>
-            
 				</ButtonBase>
 			</Grid>
 			<Grid
