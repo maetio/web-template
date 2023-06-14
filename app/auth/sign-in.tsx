@@ -16,7 +16,7 @@ import { sendPasswordlessLoginEmail, signInWithLink } from "app/api/auth";
 import { useRecoilState } from "recoil";
 import { UserState } from "app/recoil-store";
 
-export const EnterEmail: React.FC<{}> = () => {
+export const SignIn: React.FC<{}> = () => {
 	// useForm & useAuth initialization
 	const {
 		register,
@@ -41,7 +41,9 @@ export const EnterEmail: React.FC<{}> = () => {
 	// get router
 	// console.log('router query', router.query);
 	console.log(window.location.href, document.referrer);
-	signInWithLink("toniakintola@gmail.com", document.referrer);
+	
+	signInWithLink(user.email, window.location.href);
+	console.log("signing", user.email, "in with", window.location.href);
 
 	return (
 		<form onSubmit={handleSubmit(submitEmail)}>

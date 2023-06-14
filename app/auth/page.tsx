@@ -1,9 +1,8 @@
 import React from "react";
 import { Grid } from "app/components/mui-server-components";
-import { EnterEmail } from "app/login/enter-email";
-import { useRouter } from "next/router";
+import { SignIn } from "app/auth/sign-in";
 
-export /**
+/**
  * Will return the login screen
  *
  * @return {*}
@@ -17,7 +16,7 @@ const Login = () => (
 		justifyContent="center"
 		sx={{ minHeight: "100vh" }}
 	>
-		<EnterEmail />
+		<SignIn />
 	</Grid>
 );
 

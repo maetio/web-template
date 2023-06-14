@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography } from "app/components/mui-server-components";
 
-export /**
+/**
  * Will have the home screen render
  *
  * @return {*}
