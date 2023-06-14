@@ -1,15 +1,20 @@
-import { MilitaryTech } from "@mui/icons-material";
-import { ButtonBase, Grid, Typography } from "@mui/material";
+import { MilitaryTech, TrendingUp, TrendingUpOutlined } from "@mui/icons-material";
+import { Box, ButtonBase, Grid, Typography } from "@mui/material";
 import React from "react";
+import MaetIcon from "../app/components/maet-icon";
 
-type TeamCardProps = {
+export type TeamCardProps = {
     name: string,
     location: string,
     position: number,
     score: number,
-    change: number
+    change: ScoreChange
 }
 
+export type ScoreChange = {
+    color: string,
+    magnitude: number
+}
 const TeamCard = (props: TeamCardProps) => {
 	return (
 		<Grid
@@ -45,6 +50,46 @@ const TeamCard = (props: TeamCardProps) => {
 				<ButtonBase sx={{ width: 50, height: 50, border: 1, borderRadius: 1, 
 					borderColor: "#f5f5f4", backgroundColor: "purple", m: 1 }}>
 				</ButtonBase>
+			</Grid>
+			<Grid
+				item
+				container
+				xs={3}
+				direction="column"
+			>
+				<Typography>South Bend</Typography>
+				<Typography sx={{fontWeight: 700}}>Hotshots</Typography>
+			</Grid>
+			<Grid
+				item
+				container
+				xs={5}
+				direction="column"
+				alignItems="flex-end"
+				justifyContent="flex-end"
+			>
+				<Grid
+					container
+					item
+					xs={6}
+					direction="row"
+					alignItems="flex-end"
+					justifyContent="flex-end"
+				>
+					<MaetIcon sx={{mr: 0.5}}></MaetIcon>
+					<Typography sx={{fontWeight: 700, mr: 1}}>906</Typography>
+				</Grid>
+				<Grid
+					container
+					item
+					xs={6}
+					direction="row"
+					alignItems="flex-end"
+					justifyContent="flex-end"
+				>   
+					<TrendingUp sx={{color: "green",  fontSize: 20, mr: 0.2}}></TrendingUp>
+					<Typography sx={{color: "green", mr: 0.5}}>+218</Typography>
+				</Grid>
 			</Grid>
 		</Grid>
 	);
