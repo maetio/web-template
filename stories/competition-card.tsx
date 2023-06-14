@@ -41,7 +41,7 @@ export const CompetitionCard = (props: CompetitionCardProps) => {
 				xs={3}
 				alignItems="center"
 			>
-				<ButtonBase sx={{ width: 100, height: 100, border: 1, borderRadius: 1, 
+				<ButtonBase sx={{ width: 50, height: 50, border: 1, borderRadius: 1, 
 					borderColor: "#f5f5f4", backgroundColor: "purple", m: 1 }}>
 				</ButtonBase>
 			</Grid>

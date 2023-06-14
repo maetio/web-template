@@ -28,8 +28,7 @@ const TeamCard = (props: TeamCardProps) => {
 				border: 1,
 				borderRadius: 2,
 				borderColor: "#f5f5f4",
-				display: "inline-flex",
-				width: 500
+				display: "inline-flex"
 			}}>
 			<Grid 
 				item

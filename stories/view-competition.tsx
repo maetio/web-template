@@ -12,19 +12,41 @@ type ViewCompetitionProps = {
 
 const ViewCompetition = (props: ViewCompetitionProps) => {
 	return (
-		<Grid>
-			<CompetitionCard name={""} date={""} sport={{
-				sportName: "",
-				icon: undefined
-			}}/>
-			<TeamCard name={""} location={""} position={0} score={0} change={{
-				color: "",
-				magnitude: 0
-			}}/>
-			<PlayerCard name={""} position={0} score={0} change={{
-				color: "",
-				magnitude: 0
-			}}/>
+		<Grid
+			container>
+			<Grid
+				container
+				item
+				xs={4}
+				spacing={1}
+			>
+				<CompetitionCard name={""} date={""} sport={{
+					sportName: "",
+					icon: undefined
+				}}/> 
+			</Grid>
+			<Grid
+				container
+				item
+				xs={4}
+				spacing={1}
+			>
+				<TeamCard name={""} location={""} position={0} score={0} change={{
+					color: "",
+					magnitude: 0
+				}}/>
+			</Grid>
+			<Grid
+				container
+				item
+				xs={4}
+				spacing={1}
+			>
+				<PlayerCard name={""} position={0} score={0} change={{
+					color: "",
+					magnitude: 0
+				}}/>
+			</Grid>
 		</Grid>
 	);
 };
