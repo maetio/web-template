@@ -22,6 +22,9 @@ const localStorageEffect = <T>(key: string): AtomEffect<T> => ({ setSelf, onSet 
 	});
 };
 
+/**
+ * User state for the id and email
+ */
 export const UserState = atom({
 	key: "userState", // unique ID (with respect to other atoms/selectors)
 	default: {

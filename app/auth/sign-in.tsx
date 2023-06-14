@@ -42,7 +42,7 @@ export const SignIn: React.FC<{}> = () => {
 	// console.log('router query', router.query);
 	console.log(window.location.href, document.referrer);
 	
-	signInWithLink(user.email, window.location.href);
+	
 	console.log("signing", user.email, "in with", window.location.href);
 
 	return (
