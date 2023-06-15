@@ -1,6 +1,6 @@
-import { Competition } from 'app/types/competition';
-import { Game } from 'app/types/game';
-import { Rating } from 'app/types/rating';
+import { Competition } from "app/types/competition";
+import { Game } from "app/types/game";
+import { Rating } from "app/types/rating";
 
 /**
  * Will define the profile for a given sport and profile type
@@ -17,14 +17,14 @@ export interface Profile {
     lastName: string | null;
     image: string | null;
     userID: string;
-    type: 'host' | 'player';
-    sport: Competition['sport'];
+    type: "host" | "player";
+    sport: Competition["sport"];
     deltaRating?: Rating;
     // current rating of the profile
     rating: Rating;
 }
 
-type Status = 'active' | 'inactive' | 'declined' | 'invited';
+type Status = "active" | "inactive" | "declined" | "invited";
 
 /**
  * Will show the profiles that have played in a game. Could include coaches in future.
@@ -41,9 +41,9 @@ export interface GameProfile extends Profile {
     isCaptain: boolean;
 
     // all taken from the game
-    gameID: Game['id'];
-    sport: Game['sport'];
-    competitionID: Game['competitionID'];
+    gameID: Game["id"];
+    sport: Game["sport"];
+    competitionID: Game["competitionID"];
     // boolean that will say if the server has gone back over the rating system
     serverRated: boolean;
     status: Status;

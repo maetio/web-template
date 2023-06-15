@@ -1,5 +1,5 @@
-import { Rating } from 'app/types/rating';
-import { Location } from './location';
+import { Rating } from "app/types/rating";
+import { Location } from "./location";
 
 /**
  * Type for all competitions
@@ -10,8 +10,8 @@ import { Location } from './location';
  */
 export interface Competition {
     id: string;
-    sport: 'basketball' | 'soccer' | 'volleyball' | 'pickleball';
-    type: 'session' | 'tournament' | 'league';
+    sport: "basketball" | "soccer" | "volleyball" | "pickleball";
+    type: "session" | "tournament" | "league";
     name: string;
     image: string;
     startTimeISO: string;

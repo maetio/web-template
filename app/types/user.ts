@@ -1,4 +1,4 @@
-import { Competition } from './competition';
+import { Competition } from "./competition";
 
 /**
  * Public facing user data. Will be updated in database from the PrivateUserData.
@@ -32,5 +32,5 @@ export interface PrivateUserData extends PublicUserData {
     stripeID?: string;
     charges_enabled?: boolean;
     stripeSeller?: any;
-    activeSport?: Competition['sport'];
+    activeSport?: Competition["sport"];
 }

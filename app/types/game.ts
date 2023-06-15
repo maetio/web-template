@@ -1,8 +1,8 @@
-import { Competition } from 'app/types/competition';
-import { Rating } from 'app/types/rating';
+import { Competition } from "app/types/competition";
+import { Rating } from "app/types/rating";
 
 // define the displayed game status
-export type DisplayedGameStatus = 'pending' | 'unreported' | 'scheduled' | 'verified';
+export type DisplayedGameStatus = "pending" | "unreported" | "scheduled" | "verified";
 export interface Game {
     id: string;
     team1: {
@@ -25,7 +25,7 @@ export interface Game {
         lastName?: string;
         points?: number | null;
     };
-    sport: Competition['sport'];
+    sport: Competition["sport"];
     // need for an "in" query to find games associated with a team
     teamIDs: string[];
     // need to find the games for a certain competition
