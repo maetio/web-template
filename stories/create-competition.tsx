@@ -33,7 +33,7 @@ import {
 } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { CompetitionFormInput } from "app/types/competition";
+import { CompetitionFormInput } from "app/competition-form-types";
 import { AccountTree, AddCircle, Groups, Tv } from "@mui/icons-material";
 import { CompetitionFormSchema } from "../app/utils/schemas";
 import { PageHeader } from "../app/components/page-header";
