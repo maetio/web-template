@@ -74,7 +74,7 @@ const PlayerCard = (props: PlayerCardProps) => {
 					justifyContent="flex-end"
 				>
 					<MaetIcon sx={{mr: 0.5}}></MaetIcon>
-					<Typography sx={{fontWeight: 700, mr: 1}}>1111</Typography>
+					<Typography sx={{fontWeight: 700, mr: 0.5}}>1111</Typography>
 				</Grid>
 				<Grid
 					container
@@ -84,7 +84,7 @@ const PlayerCard = (props: PlayerCardProps) => {
 					alignItems="flex-end"
 					justifyContent="flex-end"
 				>   
-					<TrendingUp sx={{color: "green",  fontSize: 20, mr: 0.2}}></TrendingUp>
+					<TrendingUp sx={{color: "green",  fontSize: 20, mr: 0.5}}></TrendingUp>
 					<Typography sx={{color: "green", mr: 0.5}}>+237</Typography>
 				</Grid>
 			</Grid>
