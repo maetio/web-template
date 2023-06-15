@@ -42,6 +42,7 @@ export const CompetitionCard = (props: CompetitionCardProps) => {
 				item 
 				xs={3}
 				alignItems="center"
+				justifyContent="center"
 			>
 				<ButtonBase sx={{ width: 70, height: 70, border: 1, borderRadius: 1, 
 					borderColor: "#f5f5f4", backgroundColor: "purple", m: 1 }}>
