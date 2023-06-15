@@ -17,7 +17,7 @@ const ViewCompetition = (props: ViewCompetitionProps) => {
 			<Grid
 				container
 				item
-				xs={4}
+				xs={3}
 				spacing={1}
 			>
 				<CompetitionCard name={""} date={""} sport={{
@@ -28,7 +28,7 @@ const ViewCompetition = (props: ViewCompetitionProps) => {
 			<Grid
 				container
 				item
-				xs={4}
+				xs={3}
 				spacing={1}
 			>
 				<TeamCard name={""} location={""} position={0} score={0} change={{
@@ -39,7 +39,7 @@ const ViewCompetition = (props: ViewCompetitionProps) => {
 			<Grid
 				container
 				item
-				xs={4}
+				xs={3}
 				spacing={1}
 			>
 				<PlayerCard name={""} position={0} score={0} change={{
