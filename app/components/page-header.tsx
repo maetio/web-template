@@ -27,6 +27,5 @@ export const PageHeader = (props: PageHeaderProps) => (
 		>
 			{props.title}
 		</Typography>
-		<Sports sx={{ color: "white", ml: 1 }} />
 	</Box>
 );
