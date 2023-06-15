@@ -15,7 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { Image } from "@mui/icons-material";
 import { SvgIcon } from "@mui/material";
 import { purple } from "@mui/material/colors";
-import MaetIcon from "../components/maet-icon";
+import MaetIcon from "./maet-icon";
 
 const pages = ["Competitions", "Players", "Teams"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];

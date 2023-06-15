@@ -29,6 +29,6 @@
 		"**/*.tsx",
 		".next/types/**/*.ts",
 		".storybook/PageHeader.tsx"
-, "app/stories/.stories.tsx"	],
+, "app/components/stories/.stories.tsx"	],
 	"exclude": ["node_modules"]
 }

@@ -35,9 +35,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CompetitionFormInput } from "app/competition-form-types";
 import { AccountTree, AddCircle, Groups, Tv } from "@mui/icons-material";
-import { CompetitionFormSchema } from "../utils/schemas";
-import { PageHeader } from "../components/page-header";
 import getDesignTokens from "../theme";
+import { CompetitionFormSchema } from "../utils/schemas";
+import { PageHeader } from "./page-header";
 
 const options = [
 	{ label: "Paddleball", id: 1 },

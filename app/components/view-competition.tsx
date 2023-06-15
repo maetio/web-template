@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import { PageHeader } from "../components/page-header";
+import { PageHeader } from "./page-header";
 import { CompetitionCard, CompetitionCardProps } from "./competition-card";
 import TeamCard, { TeamCardProps } from "./team-card";
 import PlayerCard, { PlayerCardProps } from "./player-card";
