@@ -1,4 +1,4 @@
-import { Rating } from 'src/types/rating';
+import { Rating } from 'app/types/rating';
 import { Location } from './location';
 
 /**

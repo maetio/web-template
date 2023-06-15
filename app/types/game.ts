@@ -1,5 +1,5 @@
-import { Competition } from 'src/types/competition';
-import { Rating } from 'src/types/rating';
+import { Competition } from 'app/types/competition';
+import { Rating } from 'app/types/rating';
 
 // define the displayed game status
 export type DisplayedGameStatus = 'pending' | 'unreported' | 'scheduled' | 'verified';

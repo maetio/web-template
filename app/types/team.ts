@@ -1,7 +1,7 @@
-import { Competition } from 'src/types/competition';
-import { Rating } from 'src/types/rating';
-import { Location } from 'src/types/location';
-import { Timestamp } from 'firebase/firestore';
+import { Competition } from "app/types/competition";
+import { Rating } from "app/types/rating";
+import { Location } from "app/types/location";
+import { Timestamp } from "firebase/firestore";
 
 /**
  * Team interface, will have a list of users on it
@@ -14,7 +14,7 @@ import { Timestamp } from 'firebase/firestore';
 export interface Team {
     id: string;
     numPlayers?: number;
-    sport: Competition['sport'];
+    sport: Competition["sport"];
     location: Location;
     rating: Rating;
     image: string;
@@ -45,7 +45,7 @@ export interface CompetitionTeam extends Team {
     id: string;
     teamID: string;
     competitionID: string;
-    status: 'active' | 'inactive' | 'declined' | 'invited';
+    status: "active" | "inactive" | "declined" | "invited";
     endTimeISO: string;
 }
 
@@ -84,6 +84,6 @@ export interface TeamMessages {
  * @interface TeamMessagesFireStore
  * @extends {Omit<TeamMessages, 'timeStampISO'>}
  */
-export interface TeamMessagesFireStore extends Omit<TeamMessages, 'timeStampISO'> {
+export interface TeamMessagesFireStore extends Omit<TeamMessages, "timeStampISO"> {
     timeStamp: Timestamp;
 }
