@@ -1,5 +1,4 @@
 import { getCompetitions } from "app/api/fetch/competitions";
-import { CompetitionCard } from "../../stories/competition-card";
 
 export default async function Page() {
 	// fetch the competitions
