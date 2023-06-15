@@ -1,5 +1,6 @@
 // import { initializeFirestore } from 'firebase/firestore';
 import { initFirestore } from "@next-auth/firebase-adapter";
+import { CollectionDataTypes, SubcollectionDataTypes } from "app/types/firebase";
 // import GoogleProvider from 'next-auth/providers/google';
 import { cert } from "firebase-admin/app";
 import { CollectionReference, DocumentData, FirestoreDataConverter, Query, QueryDocumentSnapshot } from "firebase-admin/firestore";
@@ -37,7 +38,7 @@ const genericConverter = <T>() => ({
 const createCollection = <T = DocumentData>(collectionName: string): CollectionReference<T> => {
 	const converter = genericConverter<T>() as FirestoreDataConverter<T>;
 	// return collection(db, collectionName).withConverter<T>(converter);
-	return db.collection(collectionName).withConverter<T>(converter);
+	return firestore.collection(collectionName).withConverter<T>(converter);
 };
 
 /**
