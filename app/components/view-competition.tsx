@@ -1,7 +1,8 @@
 import React from "react";
 import { Grid } from "@mui/material";
+import { CompetitionCard, CompetitionCardProps } from "app/components/competition-card";
+import { getCompetitions } from "../api/fetch/competitions";
 import { PageHeader } from "./page-header";
-import { CompetitionCard, CompetitionCardProps } from "./competition-card";
 import TeamCard, { TeamCardProps } from "./team-card";
 import PlayerCard, { PlayerCardProps } from "./player-card";
 
@@ -11,7 +12,9 @@ type ViewCompetitionProps = {
     teams: TeamCardProps
 }
 
-const ViewCompetition = (props: ViewCompetitionProps) => {
+
+const ViewCompetition = async (props: ViewCompetitionProps) => {
+	const data = await getCompetitions();
 	return (
 		<Grid
 			container
@@ -27,10 +30,7 @@ const ViewCompetition = (props: ViewCompetitionProps) => {
 				spacing={1}
 			>
 				<PageHeader title="Competitions"/>
-				<CompetitionCard name={""} date={""} sport={{
-					sportName: "",
-					icon: undefined
-				}}/> 
+				{data.docs.map((item) => <CompetitionCard key={item.id}/>)}
 			</Grid>
 			<Grid
 				container
@@ -40,10 +40,6 @@ const ViewCompetition = (props: ViewCompetitionProps) => {
 				direction="column"
 			>
 				<PageHeader title="Teams"/>
-				<TeamCard name={""} location={""} position={0} score={0} change={{
-					color: "",
-					magnitude: 0
-				}}/>
 			</Grid>
 			<Grid
 				container
@@ -53,10 +49,6 @@ const ViewCompetition = (props: ViewCompetitionProps) => {
 				direction="column"
 			>
 				<PageHeader title="Players"/>
-				<PlayerCard name={""} position={0} score={0} change={{
-					color: "",
-					magnitude: 0
-				}}/>
 			</Grid>
 		</Grid>
 	);

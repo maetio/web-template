@@ -6,10 +6,11 @@ import React from "react";
 
 // modular props for all competition cards
 export type CompetitionCardProps = {
-	name: string,
+	key: string
+	name?: string,
 	type?: string
-	date: string,
-	sport: Sports,
+	date?: string,
+	sport?: Sports,
 }
 
 // each sport prop will have a MUI icon and sport name associated with it
@@ -57,7 +58,7 @@ export const CompetitionCard = (props: CompetitionCardProps) => {
 				alignItems="flex-start"
 			>
 				<Typography sx={{fontWeight: 700}}>
-					Grand Prairie Basketball
+					{props.name}
 				</Typography>
 				<Grid
 					item
@@ -68,7 +69,7 @@ export const CompetitionCard = (props: CompetitionCardProps) => {
 					}}>
 					<SportsBasketball sx={{color: "orange"}}></SportsBasketball>
 					<Link sx={{color: "#4f46e5"}}></Link>
-					<Typography sx={{ml: 1}}>Basketball Tournament</Typography>
+					<Typography sx={{ml: 1}}>{props.sport?.sportName} {props.type}</Typography>
 				</Grid>
 				<Grid
 					item
@@ -79,7 +80,7 @@ export const CompetitionCard = (props: CompetitionCardProps) => {
 					xs={6}
 				>
 					<CalendarIcon sx={{color: "#4f46e5" }}></CalendarIcon>
-					<Typography sx={{ ml: 1}}>April 17</Typography>
+					<Typography sx={{ ml: 1}}>{props.date}</Typography>
 				</Grid>
 			</Grid>
 		</Grid>

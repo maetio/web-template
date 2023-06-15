@@ -15,6 +15,7 @@ type Story = StoryObj<typeof ViewCompetition>;
 
 export const Primary: Story = {
 	render: () => <ViewCompetition competitions={{
+		key: "",
 		name: "",
 		type: undefined,
 		date: "",
