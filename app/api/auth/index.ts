@@ -38,7 +38,7 @@ export async function sendPasswordlessLoginEmail(email: string): Promise<void> {
 		handleCodeInApp: true,
 		dynamicLinkDomain: process.env.NEXT_PUBLIC_DYNAMIC_LINKS_DOMAIN,
 		// URL must be whitelisted in the Firebase Console.
-		url: process.env.NEXT_PUBLIC_DYNAMIC_LINK_URL || "http://localhost:3000/home",
+		url: process.env.NEXT_PUBLIC_DYNAMIC_LINK || "https://localhost:3000",
 		iOS: {
 			bundleId: "io.maet.mobile"
 		},
@@ -60,13 +60,9 @@ export /**
  * @return {*}
  */
 const signInWithLink = async (email: string, link: string) => {
-	if (isSignInWithEmailLink(auth, link)) {
-		return signInWithEmailLink(auth, email, link);
-	}
-	console.warn("Not a valid email sign in link");
-	return null;
+	if (!isSignInWithEmailLink(auth, link)) throw Error(`Not Email Sign in Link: ${link}`);
+	return signInWithEmailLink(auth, email, link);
 };
-
 /**
  * Sign out the current user
  * https://firebase.google.com/s/#signout
