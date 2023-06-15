@@ -28,7 +28,8 @@ const PlayerCard = (props: PlayerCardProps) => {
 				borderRadius: 2,
 				borderColor: "#f5f5f4",
 				display: "inline-flex",
-				mt: 1
+				mt: 1,
+				height: 100
 			}}>
 			<Grid 
 				item

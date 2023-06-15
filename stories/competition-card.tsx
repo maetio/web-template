@@ -33,8 +33,10 @@ export const CompetitionCard = (props: CompetitionCardProps) => {
 				borderRadius: 2,
 				borderColor: "#f5f5f4",
 				display: "inline-flex",
-				mt: 1
-			}}>
+				mt: 1,
+				height: 100
+			}}
+		>
 			<Grid 
 				container 
 				item 
@@ -54,7 +56,7 @@ export const CompetitionCard = (props: CompetitionCardProps) => {
 				alignItems="flex-start"
 			>
 				<Typography sx={{fontWeight: 700}}>
-					{props.name}
+					Grand Prairie Basketball
 				</Typography>
 				<Grid
 					item
@@ -65,11 +67,10 @@ export const CompetitionCard = (props: CompetitionCardProps) => {
 					}}>
 					<SportsBasketball sx={{color: "orange"}}></SportsBasketball>
 					<Link sx={{color: "#4f46e5"}}></Link>
-					<Typography sx={{ml: 1}}>{props.sport.sportName} {props?.type}</Typography>
+					<Typography sx={{ml: 1}}>Basketball Tournament</Typography>
 				</Grid>
 				<Grid
 					item
-					mt={5}
 					container
 					direction="row"
 					alignItems="flex-end"
@@ -77,7 +78,7 @@ export const CompetitionCard = (props: CompetitionCardProps) => {
 					xs={6}
 				>
 					<CalendarIcon sx={{color: "#4f46e5" }}></CalendarIcon>
-					<Typography sx={{ ml: 1}}>{props.date}</Typography>
+					<Typography sx={{ ml: 1}}>April 17</Typography>
 				</Grid>
 			</Grid>
 		</Grid>
