@@ -72,10 +72,11 @@ const TeamCard = (props: TeamCardProps) => {
 				<Grid
 					container
 					item
-					xs={6}
+					xs={4}
 					direction="row"
 					alignItems="flex-end"
 					justifyContent="flex-end"
+					display="flex"
 				>
 					<MaetIcon sx={{mr: 0.5}}></MaetIcon>
 					<Typography sx={{fontWeight: 700, mr: 1}}>906</Typography>
@@ -83,7 +84,7 @@ const TeamCard = (props: TeamCardProps) => {
 				<Grid
 					container
 					item
-					xs={6}
+					xs={4}
 					direction="row"
 					alignItems="flex-end"
 					justifyContent="flex-end"
