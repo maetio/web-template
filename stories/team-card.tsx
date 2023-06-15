@@ -45,9 +45,9 @@ const TeamCard = (props: TeamCardProps) => {
 			<Grid
 				item
 				container
-				xs={2}
+				xs={4}
 			>
-				<ButtonBase sx={{ width: 50, height: 50, border: 1, borderRadius: 1, 
+				<ButtonBase sx={{ width: 70, height: 70, border: 1, borderRadius: 1, 
 					borderColor: "#f5f5f4", backgroundColor: "purple", m: 1 }}>
 				</ButtonBase>
 			</Grid>
@@ -63,7 +63,7 @@ const TeamCard = (props: TeamCardProps) => {
 			<Grid
 				item
 				container
-				xs={5}
+				xs={3}
 				direction="column"
 				alignItems="flex-end"
 				justifyContent="flex-end"
