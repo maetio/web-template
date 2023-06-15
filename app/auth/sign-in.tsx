@@ -43,6 +43,7 @@ export const SignIn: React.FC<{}> = () => {
 	console.log(window.location.href, document.referrer);
 	
 	
+	console.log("signing", user.email, "in with", window.location.href);
 
 	return (
 		<form onSubmit={handleSubmit(submitEmail)}>

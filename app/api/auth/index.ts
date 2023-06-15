@@ -1,6 +1,6 @@
 import { FirebaseOptions, initializeApp, getApps } from "firebase/app";
 import {
-	ActionCodeSettings, sendSignInLinkToEmail, initializeAuth, isSignInWithEmailLink, signInWithEmailLink
+	ActionCodeSettings, sendSignInLinkToEmail, initializeAuth, isSignInWithEmailLink, signInWithEmailLink, signOut
 } from "firebase/auth";
 // import { initializeFirestore } from 'firebase/firestore';
 // import NextAuth from "next-auth";
@@ -60,6 +60,20 @@ export /**
  * @return {*}
  */
 const signInWithLink = async (email: string, link: string) => {
-	if (!isSignInWithEmailLink(auth, link)) throw Error(`Not Email Sign in Link: ${link}`);
-	return signInWithEmailLink(auth, email, link);
+	if (isSignInWithEmailLink(auth, link)) {
+		return signInWithEmailLink(auth, email, link);
+	}
+	console.warn("Not a valid email sign in link");
+	return null;
 };
+
+/**
+ * Sign out the current user
+ * https://firebase.google.com/s/#signout
+ * @export
+ * @return {*}  {Promise<void>}
+ */
+export async function signOutUser(): Promise<void> {
+	// sign out the current user
+	return signOut(auth);
+}
