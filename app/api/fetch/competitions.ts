@@ -1,5 +1,10 @@
 import { competitionsCollection } from "app/api/config";
 
-export const getCompetitions = async () => {
+export /**
+ * Will fetch all the competitions from the database
+ *
+ * @return {*} 
+ */
+const getCompetitions = async () => {
 	return competitionsCollection.get();
 };

@@ -1,9 +1,11 @@
+import { getCompetitions } from "app/api/fetch/competitions";
+
 export default async function Page() {
-	const data = await getData();
+	// fetch the competitions
+	const data = await getCompetitions();
    
+	// map the data in the page
 	return <main>
-		<h1>
-            Testing
-		</h1>
+		{data.docs.map((item) => <h1 key={item.id}>{item.data().name}</h1>)}
 	</main>;
 }
