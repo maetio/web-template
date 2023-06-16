@@ -10,10 +10,10 @@ import { Competition } from "./competition";
  * @interface PublicUserData
  */
 export interface PublicUserData {
-    id: string;
-    firstName?: string | null;
-    lastName?: string | null;
-    image?: string | null;
+	id: string;
+	firstName?: string | null;
+	lastName?: string | null;
+	image?: string | null;
 }
 
 /**
@@ -24,13 +24,13 @@ export interface PublicUserData {
  * @extends {PublicUserData}
  */
 export interface PrivateUserData extends PublicUserData {
-    email?: string | null;
-    phoneNumber?: string | null;
-    isAnonymous: boolean;
-    emailVerified: boolean;
-    loggedIn: boolean;
-    stripeID?: string;
-    charges_enabled?: boolean;
-    stripeSeller?: any;
-    activeSport?: Competition["sport"];
+	email?: string | null;
+	phoneNumber?: string | null;
+	isAnonymous: boolean;
+	emailVerified: boolean;
+	loggedIn: boolean;
+	stripeID?: string;
+	charges_enabled?: boolean;
+	stripeSeller?: any;
+	activeSport?: Competition["sport"];
 }

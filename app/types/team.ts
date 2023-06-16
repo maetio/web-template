@@ -12,27 +12,27 @@ import { Timestamp } from "firebase/firestore";
  * @interface Team
  */
 export interface Team {
-    id: string;
-    numPlayers?: number;
-    sport: Competition["sport"];
-    location: Location;
-    rating: Rating;
-    image: string;
-    // organization, city, school
-    firstName?: string;
-    // name or team mascot
-    lastName: string;
-    captainID: string;
-    deltaRating?: Rating;
-    // code to join the team
-    joinCode: string;
+	id: string;
+	numPlayers?: number;
+	sport: Competition["sport"];
+	location: Location;
+	rating: Rating;
+	image: string;
+	// organization, city, school
+	firstName?: string;
+	// name or team mascot
+	lastName: string;
+	captainID: string;
+	deltaRating?: Rating;
+	// code to join the team
+	joinCode: string;
 
-    // boolean determines whether the team has played within rating period
-    playedWithinRatingPeriod: boolean;
+	// boolean determines whether the team has played within rating period
+	playedWithinRatingPeriod: boolean;
 
-    // booleans that determine whether to update the team rating
-    updatedAvgPlayerRating: boolean;
-    averagePlayerRating: Rating;
+	// booleans that determine whether to update the team rating
+	updatedAvgPlayerRating: boolean;
+	averagePlayerRating: Rating;
 }
 
 /**
@@ -42,11 +42,11 @@ export interface Team {
  * @interface CompetitionTeam
  */
 export interface CompetitionTeam extends Team {
-    id: string;
-    teamID: string;
-    competitionID: string;
-    status: "active" | "inactive" | "declined" | "invited";
-    endTimeISO: string;
+	id: string;
+	teamID: string;
+	competitionID: string;
+	status: "active" | "inactive" | "declined" | "invited";
+	endTimeISO: string;
 }
 
 /**
@@ -56,10 +56,10 @@ export interface CompetitionTeam extends Team {
  * @interface UserTeam
  */
 export interface UserTeam {
-    id: string;
-    // rating over the course of their duration in the competition
-    deltaRating?: Rating;
-    dateJoinedISO: string;
+	id: string;
+	// rating over the course of their duration in the competition
+	deltaRating?: Rating;
+	dateJoinedISO: string;
 }
 
 /**
@@ -69,11 +69,11 @@ export interface UserTeam {
  * @interface TeamMessages
  */
 export interface TeamMessages {
-    userID: string;
-    message: string;
-    userImage?: string;
-    timeStampISO: string;
-    userInitials: string;
+	userID: string;
+	message: string;
+	userImage?: string;
+	timeStampISO: string;
+	userInitials: string;
 }
 
 /**
@@ -84,6 +84,7 @@ export interface TeamMessages {
  * @interface TeamMessagesFireStore
  * @extends {Omit<TeamMessages, 'timeStampISO'>}
  */
-export interface TeamMessagesFireStore extends Omit<TeamMessages, "timeStampISO"> {
-    timeStamp: Timestamp;
+export interface TeamMessagesFireStore
+	extends Omit<TeamMessages, "timeStampISO"> {
+	timeStamp: Timestamp;
 }

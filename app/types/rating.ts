@@ -5,9 +5,9 @@
  * @interface Rating
  */
 export interface Rating {
-    mean: number;
-    ratingDeviation: number;
-    volatility: number;
-    displayRating: number;
-    numGames: number;
+	mean: number;
+	ratingDeviation: number;
+	volatility: number;
+	displayRating: number;
+	numGames: number;
 }

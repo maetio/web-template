@@ -3,8 +3,8 @@ import { Grid, Typography, Divider, Box } from "@mui/material";
 import React from "react";
 
 export type PageHeaderProps = {
-	title: string
-}
+	title: string;
+};
 
 export const PageHeader = (props: PageHeaderProps) => (
 	<Box

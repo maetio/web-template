@@ -1,25 +1,25 @@
 "use client";
 
 import {
-	ReactNode, createContext, useContext, useState, useEffect, useMemo
+	ReactNode,
+	createContext,
+	useContext,
+	useState,
+	useEffect,
+	useMemo
 } from "react";
-import {
-	onAuthStateChanged,
-	User
-} from "firebase/auth";
+import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "app/api/auth";
 
 type Props = {
-    children: ReactNode;
+	children: ReactNode;
 };
 
 // create auth context
 export const AuthContext = createContext<User | null>(null);
 export const useAuthContext = () => useContext(AuthContext);
 
-export const AuthContextProvider = ({
-	children
-}: Props) => {
+export const AuthContextProvider = ({ children }: Props) => {
 	// set user states
 	const [user, setUser] = useState<User | null>(null);
 	const [loading, setLoading] = useState(true);
@@ -39,7 +39,7 @@ export const AuthContextProvider = ({
 	}, []);
 
 	// memoize user context
-	const userContext = useMemo(() => (user), [user]);
+	const userContext = useMemo(() => user, [user]);
 	return (
 		<AuthContext.Provider value={userContext}>
 			{loading ? <div>Loading...</div> : children}

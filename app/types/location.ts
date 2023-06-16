@@ -5,12 +5,12 @@
  * @interface Location
  */
 export interface Location {
-    name: string;
-    description?: string;
-    address?: string;
-    geohash?: string;
-    latitude: number;
-    longitude: number;
+	name: string;
+	description?: string;
+	address?: string;
+	geohash?: string;
+	latitude: number;
+	longitude: number;
 }
 
 /**
@@ -20,8 +20,8 @@ export interface Location {
  * @interface LocationQuery
  */
 export interface LocationQuery {
-    centerLatitude: number;
-    centerLongitude: number;
-    radiusInM: number;
-    locationLimit: number;
+	centerLatitude: number;
+	centerLongitude: number;
+	radiusInM: number;
+	locationLimit: number;
 }

@@ -34,9 +34,14 @@ const Home = () => {
 			justifyContent="center"
 			sx={{ minHeight: "100vh" }}
 		>
-			<Typography>{userContext?.uid.length ? `You are logged in as ${userContext?.email}.` : "You are not logged in."}</Typography>
+			<Typography>
+				{userContext?.uid.length
+					? `You are logged in as ${userContext?.email}.`
+					: "You are not logged in."}
+			</Typography>
 			<SignOutButton />
-		</Grid>);
+		</Grid>
+	);
 };
 
 export default Home;

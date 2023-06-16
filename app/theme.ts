@@ -37,7 +37,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
 					light: "#e7e5e4"
 				},
 				...customThemePalette
-			}
+			  }
 			: {
 				// palette values for dark mode
 				text: {
@@ -54,26 +54,26 @@ const getDesignTokens = (mode: PaletteMode) => ({
 					light: "#f5f5f5"
 				},
 				...customThemePalette
-			})
+			  })
 	}
 });
 
 export default getDesignTokens;
 
 declare module "@mui/material/styles" {
-  interface Palette {
-    neutral: Palette["primary"];
-  }
-  interface PaletteOptions {
-    neutral: PaletteOptions["primary"];
-  }
+	interface Palette {
+		neutral: Palette["primary"];
+	}
+	interface PaletteOptions {
+		neutral: PaletteOptions["primary"];
+	}
 }
 /*
     Override the color props for the card
     https://mui.com/material-ui/customization/palette/#adding-new-colors
 */
 declare module "@mui/material/Box" {
-  interface CardPropsColorOverrides {
-    neutral: true;
-  }
+	interface CardPropsColorOverrides {
+		neutral: true;
+	}
 }

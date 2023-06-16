@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { CompetitionCard, CompetitionCardProps } from "./competition-card";
 
-
 const meta: Meta<typeof CompetitionCard> = {
 	/* 👇 The title prop is optional.
 	 * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
@@ -9,9 +8,7 @@ const meta: Meta<typeof CompetitionCard> = {
 	 */
 	title: "CompetitionCard",
 	component: CompetitionCard,
-	argTypes: {
-		
-	}
+	argTypes: {}
 };
 
 export default meta;
@@ -19,5 +16,6 @@ type Story = StoryObj<typeof CompetitionCard>;
 
 export const Card: Story = {
 	args: {
+		name: "Grand Prairie Basketball Tournament"
 	}
 };

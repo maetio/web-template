@@ -1,8 +1,4 @@
-import {
-	DefaultValue,
-	AtomEffect,
-	atom
-} from "recoil";
+import { DefaultValue, AtomEffect, atom } from "recoil";
 
 /**
  * For local storage caching
@@ -10,17 +6,19 @@ import {
  */
 
 // Utility function to get and set the state from/to local storage
-const localStorageEffect = <T>(key: string): AtomEffect<T> => ({ setSelf, onSet }) => {
-	const savedValue = localStorage.getItem(key);
-	if (savedValue != null) {
-	  setSelf(JSON.parse(savedValue));
-	}
-	onSet((newValue, _, isReset) => {
-	  isReset
-			? localStorage.removeItem(key)
-			: localStorage.setItem(key, JSON.stringify(newValue));
-	});
-};
+const localStorageEffect =
+	<T>(key: string): AtomEffect<T> =>
+		({ setSelf, onSet }) => {
+			const savedValue = localStorage.getItem(key);
+			if (savedValue != null) {
+				setSelf(JSON.parse(savedValue));
+			}
+			onSet((newValue, _, isReset) => {
+				isReset
+					? localStorage.removeItem(key)
+					: localStorage.setItem(key, JSON.stringify(newValue));
+			});
+		};
 
 /**
  * User state for the id and email

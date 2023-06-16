@@ -8,15 +8,12 @@ const meta: Meta<typeof PlayerCard> = {
 	 */
 	title: "PlayerCard",
 	component: PlayerCard,
-	argTypes: {
-		
-	}
+	argTypes: {}
 };
 
 export default meta;
 type Story = StoryObj<typeof PlayerCard>;
 
 export const Card: Story = {
-	args: {
-	}
+	args: {}
 };

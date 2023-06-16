@@ -1,6 +1,11 @@
 import { FirebaseOptions, initializeApp, getApps } from "firebase/app";
 import {
-	ActionCodeSettings, sendSignInLinkToEmail, initializeAuth, isSignInWithEmailLink, signInWithEmailLink, signOut
+	ActionCodeSettings,
+	sendSignInLinkToEmail,
+	initializeAuth,
+	isSignInWithEmailLink,
+	signInWithEmailLink,
+	signOut
 } from "firebase/auth";
 // import { initializeFirestore } from 'firebase/firestore';
 // import NextAuth from "next-auth";
@@ -23,7 +28,8 @@ const firebaseConfig: FirebaseOptions = {
  * Initialize all the firebase apps and the auth
  */
 const allApps = getApps();
-export const app = allApps.length === 0 ? initializeApp(firebaseConfig) : allApps[0];
+export const app =
+	allApps.length === 0 ? initializeApp(firebaseConfig) : allApps[0];
 export const auth = initializeAuth(app);
 
 /**
@@ -60,7 +66,8 @@ export /**
  * @return {*}
  */
 const signInWithLink = async (email: string, link: string) => {
-	if (!isSignInWithEmailLink(auth, link)) throw Error(`Not Email Sign in Link: ${link}`);
+	if (!isSignInWithEmailLink(auth, link))
+		throw Error(`Not Email Sign in Link: ${link}`);
 	return signInWithEmailLink(auth, email, link);
 };
 /**
