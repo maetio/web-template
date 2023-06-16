@@ -7,7 +7,6 @@ const CreateTeam = (props: Props) => {
 	return (
 		<div>
             Create Team
-			<Link href="/join-team">Join Team</Link>
 		</div>
 	);
 };
