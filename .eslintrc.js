@@ -88,15 +88,5 @@ module.exports = {
 		// disable rules from base configurations
 		"no-console": "off",
 		"prettier/prettier": "off",
-		"comma-dangle": [
-			"error",
-			{
-				arrays: "never",
-				objects: "never",
-				imports: "never",
-				exports: "never",
-				functions: "never",
-			},
-		],
 	},
 };
