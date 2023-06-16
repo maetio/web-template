@@ -137,3 +137,6 @@ dist/
 
 # @end expo-cli
 .vercel
+
+# Storybook
+.storybook
