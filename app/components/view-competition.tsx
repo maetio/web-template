@@ -3,7 +3,7 @@ import { Grid } from "@mui/material";
 import {
 	CompetitionCard,
 	CompetitionCardProps
-} from "app/components/competition-card";
+} from "./competition-card";
 import { getCompetitions } from "../api/fetch/competitions";
 import { PageHeader } from "./page-header";
 import TeamCard, { TeamCardProps } from "./team-card";

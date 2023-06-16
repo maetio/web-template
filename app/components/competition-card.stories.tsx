@@ -15,7 +15,5 @@ export default meta;
 type Story = StoryObj<typeof CompetitionCard>;
 
 export const Card: Story = {
-	args: {
-		name: "Grand Prairie Basketball Tournament"
-	}
+	args: {}
 };
