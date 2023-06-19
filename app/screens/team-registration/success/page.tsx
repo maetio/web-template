@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 type Props = {}
@@ -9,6 +10,7 @@ const Success = (props: Props) => {
 			<div>
 				<h2>Download Maet App in App Store</h2>
 			</div>
+			<Link href="/screens/view-competition">View Competitions</Link>
 		</div>
 	);
 };
