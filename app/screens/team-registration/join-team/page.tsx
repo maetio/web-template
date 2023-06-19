@@ -9,7 +9,7 @@ const JoinTeam = (props: Props) => {
 		<div>
 			<h1>Join Team</h1>
 			<div>
-				<label>Enter Passcode: </label>
+				<label>Enter Passcode to Join Team: </label>
 				<input type="text"></input>
 			</div>
 			<Link href="/screens/team-registration/success">Success</Link>
