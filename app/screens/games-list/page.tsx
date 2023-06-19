@@ -8,8 +8,7 @@ const GamesList = (props: Props) => {
 		<div>
 			<h1>Games List</h1>
 			<div>
-				<Link href="/screens/view-game"></Link>
-				<Link href="/screens/edit-game"></Link>
+				<Link href="/screens/view-game">View Game</Link>
 			</div>
 		</div>
 	);

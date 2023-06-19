@@ -6,7 +6,7 @@ type Props = {}
 const PlayerRankings = (props: Props) => {
 	return (
 		<div>
-			<h1>PlayerRankings</h1>
+			<h1>Player Rankings</h1>
 			<div>
 				<Link href="/screens/view-player">View Player</Link>
 			</div>

@@ -8,8 +8,8 @@ const HostHome = (props: Props) => {
 		<div>
 			<h1>Host Home</h1>
 			<div>
-				<Link href="/screens/view-competition"></Link>
-				<Link href="/screens/create-competition"></Link>
+				<Link href="/screens/view-competition">View Competition </Link>
+				<Link href="/screens/create-competition">Create Competition</Link>
 			</div>
 		</div>
 	);
