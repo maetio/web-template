@@ -42,9 +42,9 @@ export const auth = initializeAuth(app);
 export async function sendPasswordlessLoginEmail(email: string): Promise<void> {
 	const actionCodeSettings: ActionCodeSettings = {
 		handleCodeInApp: true,
-		dynamicLinkDomain: process.env.NEXT_PUBLIC_DYNAMIC_LINKS_DOMAIN,
+		// dynamicLinkDomain: process.env.NEXT_PUBLIC_DYNAMIC_LINKS_DOMAIN,
 		// URL must be whitelisted in the Firebase Console.
-		url: process.env.NEXT_PUBLIC_DYNAMIC_LINK || "http://localhost:3000",
+		url: process.env.NEXT_PUBLIC_DYNAMIC_LINK || "http://localhost:3000/home",
 		iOS: {
 			bundleId: "io.maet.mobile"
 		},
