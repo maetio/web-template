@@ -20,7 +20,15 @@ export interface ScoreChange {
 	color: string;
 	magnitude: number;
 }
-const TeamCard = (props: TeamCardProps) => {
+export /** 
+ * Card that renders the initial team data
+ *
+ * @param {*} {
+ *		TeamCardProps
+ *	}
+ *  @return {*}
+ * 
+*/ const TeamCard = (props: TeamCardProps) => {
 	return (
 		<Grid
 			container

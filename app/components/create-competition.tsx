@@ -44,7 +44,16 @@ const options = [
 	{ label: "Basketball", id: 2 }
 ];
 
-export const CreateCompetition: React.FC<{}> = () => {
+export /** 
+ * Form that allows user to create competitions 
+ * and takes user's competition data as an input
+ *
+ * @param {*} {
+ *	}
+ *  @return {*}
+ * 
+*/ 
+const CreateCompetition: React.FC<{}> = () => {
 	const {
 		register,
 		control,

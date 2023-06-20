@@ -18,6 +18,15 @@ export interface PlayerCardProps {
 
 
 
+export /** 
+ * Card that renders the initial player data
+ *
+ * @param {*} {
+ *		PlayerCardProps
+ *	}
+ *  @return {*}
+ * 
+*/
 const PlayerCard = (props: PlayerCardProps) => {
 	return (
 		<Grid

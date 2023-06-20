@@ -15,6 +15,15 @@ type ViewCompetitionProps = {
 	teams: TeamCardProps;
 };
 
+export /** 
+ * Screen of CompetitionCards, PlayerCards, and TeamCards
+ *
+ * @param {*} {
+ *		ViewCompetitionProps
+ *	}
+ *  @return {*}
+ * 
+*/
 const ViewCompetition = async (props: ViewCompetitionProps) => {
 	const data = await getCompetitions();
 	return (

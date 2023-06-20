@@ -9,7 +9,7 @@ import { Box, ButtonBase, Grid, Typography } from "@mui/material";
 import { orange } from "@mui/material/colors";
 import { CalendarIcon, ClockIcon } from "@mui/x-date-pickers";
 import React from "react";
-
+import { Sports } from "app/types";
 // modular props for all competition cards
 export interface CompetitionCardProps {
 	key: string;
@@ -19,14 +19,21 @@ export interface CompetitionCardProps {
 	sport?: Sports;
 }
 
-// each sport prop will have a MUI icon and sport name associated with it
-export interface Sports {
-	sportName: string;
-	icon: React.ReactNode;
-}
+
 
 // eslint-disable-next-line @typescript-eslint/no-shadow
-export const CompetitionCard = (props: CompetitionCardProps) => {
+
+export /** 
+ * Card that renders the initial competition data
+ *
+ * @param {*} {
+ *		name,
+ *		competition,
+ *	}
+ *  @return {*}
+ * 
+*/ 
+const CompetitionCard: React.FC<CompetitionCardProps> = (props) => {
 	return (
 		<Grid
 			container

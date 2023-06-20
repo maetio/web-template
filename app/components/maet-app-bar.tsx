@@ -20,7 +20,14 @@ import MaetIcon from "./maet-icon";
 const pages = ["Competitions", "Players", "Teams"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-export const MaetAppBar: React.FC<{}> = () => {
+export /** 
+ * AppBar that enables user navigation between screens
+ *
+ * @param {*} {
+ *	}
+ *  @return {*}
+ * 
+*/ const MaetAppBar: React.FC<{}> = () => {
 	const [anchorNav, setAnchorNav] = React.useState<null | HTMLElement>(null);
 	const [anchorUser, setAnchorUser] = React.useState<null | HTMLElement>(
 		null

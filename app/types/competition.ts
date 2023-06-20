@@ -39,3 +39,9 @@ export interface UserCompetition {
 export interface TeamCompetition extends UserCompetition {
 	id: string;
 }
+
+// each sport prop will have a MUI icon and sport name associated with it
+export interface Sports {
+	sportName?: string;
+	icon?: React.ReactNode;
+}

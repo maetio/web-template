@@ -6,7 +6,15 @@ export interface PageHeaderProps {
 	title: string;
 }
 
-export const PageHeader = (props: PageHeaderProps) => (
+export /** 
+ * Reusable page header
+ *
+ * @param {*} {
+ *		title,
+ *	}
+ *  @return {*}
+ * 
+*/  const PageHeader = (props: PageHeaderProps) => (
 	<Box
 		justifyContent="center"
 		alignItems={"center"}
