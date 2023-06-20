@@ -5,6 +5,7 @@ import {
 } from "@mui/icons-material";
 import { Avatar, ButtonBase, Grid, Typography } from "@mui/material";
 import React from "react";
+import { RatingChange } from "app/types";
 import MaetIcon from "./maet-icon";
 
 export type PlayerCardProps = {
@@ -12,13 +13,11 @@ export type PlayerCardProps = {
 	position: number;
 	medalColor?: string;
 	score: number;
-	change: ScoreChange;
+	change: RatingChange;
 };
 
-export type ScoreChange = {
-	color: string;
-	magnitude: number;
-};
+
+
 const PlayerCard = (props: PlayerCardProps) => {
 	return (
 		<Grid
