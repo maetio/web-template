@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Grid } from "app/components/mui-server-components";
-import { signInWithLink } from "app/api/auth";
-import { useRecoilValue } from "recoil";
-import { UserState } from "app/recoil-store";
 import { CheckoutButton } from "app/components/checkout-button";
 
 const Home = () => {

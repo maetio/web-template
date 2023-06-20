@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import { signOutUser } from "app/api/auth";
 import { useAuthContext } from "app/components/providers/auth-context";
@@ -18,8 +18,18 @@ export const CheckoutButton: React.FC<{}> = () => {
 
 	// handle button click button
 	const handleClick = () => {
+		if (!userContext?.uid.length) {
+			router.push("/");
+		}
 		console.log("pressed");
 	};
+
+	// useEffect(() => {
+	// 	console.log("user lenghts", userContext?.uid.length);
+	// 	if (!userContext?.uid.length) {
+	// 		router.push("/");
+	// 	}
+	// }, [router, userContext?.uid.length]);
 
 	return <Button onClick={handleClick}>Checkout</Button>;
 };
