@@ -25,6 +25,7 @@ export const SignIn: React.FC<{}> = () => {
 	// get user state
 	const [user, setUser] = useRecoilState(UserState);
 
+	// send email link to user 
 	const submitEmail = async (data: { email: string }) => {
 		await sendPasswordlessLoginEmail(data.email);
 		setSentEmail(true);
