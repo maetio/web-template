@@ -7,7 +7,7 @@ import { Box, ButtonBase, Grid, Typography } from "@mui/material";
 import React from "react";
 import MaetIcon from "./maet-icon";
 
-export type TeamCardProps = {
+export interface TeamCardProps = {
 	name: string;
 	location: string;
 	position: number;
@@ -16,7 +16,7 @@ export type TeamCardProps = {
 	change: ScoreChange;
 };
 
-export type ScoreChange = {
+export interface ScoreChange = {
 	color: string;
 	magnitude: number;
 };

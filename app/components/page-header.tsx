@@ -2,7 +2,7 @@ import { CheckBox, Sports } from "@mui/icons-material";
 import { Grid, Typography, Divider, Box } from "@mui/material";
 import React from "react";
 
-export type PageHeaderProps = {
+export interface PageHeaderProps = {
 	title: string;
 };
 

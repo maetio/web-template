@@ -11,19 +11,19 @@ import { CalendarIcon, ClockIcon } from "@mui/x-date-pickers";
 import React from "react";
 
 // modular props for all competition cards
-export type CompetitionCardProps = {
+export interface CompetitionCardProps {
 	key: string;
 	name?: string;
 	type?: string;
 	date?: string;
 	sport?: Sports;
-};
+}
 
 // each sport prop will have a MUI icon and sport name associated with it
-export type Sports = {
+export interface Sports {
 	sportName: string;
 	icon: React.ReactNode;
-};
+}
 
 // eslint-disable-next-line @typescript-eslint/no-shadow
 export const CompetitionCard = (props: CompetitionCardProps) => {

@@ -15,5 +15,7 @@ export default meta;
 type Story = StoryObj<typeof CompetitionCard>;
 
 export const Card: Story = {
-	args: {}
+	args: {
+		
+	}
 };

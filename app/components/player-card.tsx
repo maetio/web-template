@@ -8,13 +8,13 @@ import React from "react";
 import { RatingChange } from "app/types";
 import MaetIcon from "./maet-icon";
 
-export type PlayerCardProps = {
+export interface PlayerCardProps {
 	name: string;
 	position: number;
 	medalColor?: string;
 	score: number;
 	change: RatingChange;
-};
+}
 
 
 
