@@ -1,8 +1,8 @@
 import React from "react";
 import { Grid } from "app/components/mui-server-components";
-import { CheckoutButton } from "app/components/checkout-button";
+import CheckoutButton from "app/components/checkout-button";
 
-const Home = () => {
+const Stripe = () => {
 	return (
 		<Grid
 			container
@@ -17,4 +17,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Stripe;

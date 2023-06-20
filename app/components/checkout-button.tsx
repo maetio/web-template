@@ -1,35 +1,63 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "@mui/material";
 import { signOutUser } from "app/api/auth";
 import { useAuthContext } from "app/components/providers/auth-context";
 import { useRouter } from "next/navigation";
+import {
+	useStripe,
+	useElements,
+	PaymentElement,
+} from "@stripe/react-stripe-js";
 
-export const CheckoutButton: React.FC<{}> = () => {
-	// state used to detect if email sent
-	const [sentEmail, setSentEmail] = useState(false);
+const CheckoutButton = () => {
+	const stripe = useStripe();
+	const elements = useElements();
 
-	// get the auth context
-	const userContext = useAuthContext();
+	const [errorMessage, setErrorMessage] = useState<string>();
 
-	// get the next router
-	const router = useRouter();
+	const handleSubmit = async () => {
+		// We don't want to let default form submission happen here,
+		// which would refresh the page.
+		// event.preventDefault();
 
-	// handle button click button
-	const handleClick = () => {
-		if (!userContext?.uid.length) {
-			router.push("/");
+		if (!stripe || !elements) {
+			// Stripe.js hasn't yet loaded.
+			// Make sure to disable form submission until Stripe.js has loaded.
+			return;
 		}
-		console.log("pressed");
+
+		const { error } = await stripe.confirmPayment({
+			//`Elements` instance that was used to create the Payment Element
+			elements,
+			confirmParams: {
+				return_url: "https://example.com/order/123/complete",
+			},
+		});
+
+		if (error) {
+			// This point will only be reached if there is an immediate error when
+			// confirming the payment. Show error to your customer (for example, payment
+			// details incomplete)
+			setErrorMessage(error?.message);
+		} else {
+			// Your customer will be redirected to your `return_url`. For some payment
+			// methods like iDEAL, your customer will be redirected to an intermediate
+			// site first to authorize the payment, then redirected to the `return_url`.
+		}
 	};
 
-	// useEffect(() => {
-	// 	console.log("user lenghts", userContext?.uid.length);
-	// 	if (!userContext?.uid.length) {
-	// 		router.push("/");
-	// 	}
-	// }, [router, userContext?.uid.length]);
-
-	return <Button onClick={handleClick}>Checkout</Button>;
+	return (
+		<form>
+			<PaymentElement />
+			<Button onClick={handleSubmit} disabled={!stripe}>
+				Submit
+			</Button>
+			{/* Show error message to your customers */}
+			{errorMessage && <div>{errorMessage}</div>}
+		</form>
+	);
 };
+
+export default CheckoutButton;
