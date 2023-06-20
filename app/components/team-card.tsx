@@ -7,19 +7,19 @@ import { Box, ButtonBase, Grid, Typography } from "@mui/material";
 import React from "react";
 import MaetIcon from "./maet-icon";
 
-export interface TeamCardProps = {
+export interface TeamCardProps  {
 	name: string;
 	location: string;
 	position: number;
 	medalColor?: string;
 	score: number;
 	change: ScoreChange;
-};
+}
 
-export interface ScoreChange = {
+export interface ScoreChange {
 	color: string;
 	magnitude: number;
-};
+}
 const TeamCard = (props: TeamCardProps) => {
 	return (
 		<Grid

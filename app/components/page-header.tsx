@@ -2,9 +2,9 @@ import { CheckBox, Sports } from "@mui/icons-material";
 import { Grid, Typography, Divider, Box } from "@mui/material";
 import React from "react";
 
-export interface PageHeaderProps = {
+export interface PageHeaderProps {
 	title: string;
-};
+}
 
 export const PageHeader = (props: PageHeaderProps) => (
 	<Box

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+// eslint-disable-next-line import/no-named-as-default
 import TeamCard from "./team-card";
 
 const meta: Meta<typeof TeamCard> = {
@@ -15,5 +16,14 @@ export default meta;
 type Story = StoryObj<typeof TeamCard>;
 
 export const Card: Story = {
-	args: {}
+	args: {
+		name: "Stars",
+		location: "South Bend",
+		position: 1,
+		score: 500,
+		change: {
+			color: "green",
+			magnitude: 75
+		}
+	}
 };
