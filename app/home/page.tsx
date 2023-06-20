@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid, TextField, Typography } from "@mui/material";
 import { signInWithLink } from "app/api/auth";
 import { useRecoilValue } from "recoil";
 import { UserState } from "app/recoil-store";
@@ -34,9 +34,16 @@ const Home = () => {
 			justifyContent="center"
 			sx={{ minHeight: "100vh" }}
 		>
-			<Typography>{userContext?.uid.length ? `You are logged in as ${userContext?.email}.` : "You are not logged in."}</Typography>
+			<Typography>
+				{userContext?.uid.length
+					? `You are logged in as ${userContext?.email}.`
+					: "You are not logged in."}
+			</Typography>
+			<TextField label="First Name"></TextField>
+			<TextField label="Last Name"></TextField>
 			<SignOutButton />
-		</Grid>);
+		</Grid>
+	);
 };
 
 export default Home;

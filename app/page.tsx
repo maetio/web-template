@@ -1,3 +1,3 @@
-import Login from "app/auth/page";
+import Login from "./auth/page";
 
 export default Login;
