@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid, TextField, Typography } from "@mui/material";
 import { signInWithLink } from "app/api/auth";
 import { useRecoilValue } from "recoil";
 import { UserState } from "app/recoil-store";
 import { SignOutButton } from "app/components/sign-out-button";
 import { useAuthContext } from "app/components/providers/auth-context";
+import { useForm } from "react-hook-form";
 
 /**
  * Will have the home screen render
@@ -39,6 +40,8 @@ const Home = () => {
 					? `You are logged in as ${userContext?.email}.`
 					: "You are not logged in."}
 			</Typography>
+			<TextField label="First Name"></TextField>
+			<TextField label="Last Name"></TextField>
 			<SignOutButton />
 		</Grid>
 	);

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import ViewCompetition from "./view-competition";
+import { ViewCompetition } from "./view-competition";
 
 const meta: Meta<typeof ViewCompetition> = {
 	/* 👇 The title prop is optional.

@@ -6,8 +6,8 @@ import {
 } from "./competition-card";
 import { getCompetitions } from "../api/fetch/competitions";
 import { PageHeader } from "./page-header";
-import TeamCard, { TeamCardProps } from "./team-card";
-import PlayerCard, { PlayerCardProps } from "./player-card";
+import { TeamCard, TeamCardProps } from "./team-card";
+import { PlayerCard, PlayerCardProps } from "./player-card";
 
 type ViewCompetitionProps = {
 	competitions: CompetitionCardProps;
