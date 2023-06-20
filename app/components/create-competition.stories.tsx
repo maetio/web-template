@@ -14,5 +14,5 @@ export default meta;
 type Story = StoryObj<typeof CreateCompetition>;
 
 export const Primary: Story = {
-	render: () => <CreateCompetition />
+	args: {}
 };
