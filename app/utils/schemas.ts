@@ -29,3 +29,11 @@ export const CompetitionFormSchema = yup.object().shape({
 });
 
 export type CompFormSchema = yup.InferType<typeof CompetitionFormSchema>;
+
+// New schema for editing profile
+export const editProfileSchema = yup.object().shape({
+	firstName: yup.string(),
+	lastName: yup.string(),
+});
+export type EditProfileSchemaType = yup.InferType<typeof editProfileSchema>
+

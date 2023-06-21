@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import { signInWithLink } from "app/api/auth";
 import { useRecoilValue } from "recoil";
@@ -8,40 +8,13 @@ import { UserState } from "app/recoil-store";
 import { SignOutButton } from "app/components/sign-out-button";
 import { useAuthContext } from "app/components/providers/auth-context";
 import { useForm } from "react-hook-form";
-import { privateUserCollection } from "app/api/config";
 import { PrivateUserData } from "app/types";
-import { doc, setDoc, or } from "firebase/firestore";
-import { database } from "firebase-admin";
-
-const useUpdatePrivateUserData = () => {
-	const [isLoading, setisLoading] = useState(false);
-	const [isSuccess, setisSuccess] = useState(false);
-	const [error, setError] = useState("");
-
-	const writeToFirestore = useCallback(async (userData: { id: string } & Partial<PrivateUserData>, newUser?: boolean) => {
-		setisLoading(true);
-		setisSuccess(false);
-		setError("");
-
-		try {
-			const userRef = privateUserCollection.doc(userData.id);
-			await userRef.set(userData, { merge: !newUser });
-
-			setisLoading(false);
-			setisSuccess(true);
-		// eslint-disable-next-line @typescript-eslint/no-shadow
-		} catch (error: any) {
-			setisLoading(false);
-			setisSuccess(false);
-			setError(error.message);
-		}
-	}, []);
-
-	return { isLoading, isSuccess, error, writeToFirestore };
-};
+import { useUpdatePrivateUserData } from "app/client-hooks/user-api";
+import { EditProfileSchemaType, editProfileSchema } from "app/utils/schemas";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 
-
+export
 /**
  * Will have the home screen render
  *
@@ -62,33 +35,40 @@ const Home = () => {
 	const {isLoading, isSuccess, error, writeToFirestore} = useUpdatePrivateUserData();
 
 
-	// asynchronous function that handles updates to private user data (on click of form submission button)
-	 const handleUpdatePrivateUserData = async (userData: { id: string } & Partial<PrivateUserData>, newUser?: boolean) => {
+	// set up react hook form that will take user firstName and lastName as inputs
+	const { register, handleSubmit, reset } = useForm({
+		defaultValues: {
+			firstName: "",
+			lastName: ""
+		},
+		resolver: yupResolver(editProfileSchema)
+	});
 		
-		await writeToFirestore(userData, newUser);
+	// asynchronous function that handles updates to private user data (on click of form submission button)
+	 const handleUpdatePrivateUserData = async ({firstName, lastName}: EditProfileSchemaType) => {
+		
+		const userData = {
+			firstName,
+			lastName,
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			id: userContext!.uid
+		};
+
+		await writeToFirestore(userData, true);
 		if(isSuccess) {
 			console.log("Private user data successfully mutated");
 		}
 		else {
 			console.log("Mutation request failed");
 		}
+		reset();
 	};
 
 
-	// set up react hook form that will take user firstName and lastName as inputs
-	const { register, handleSubmit } = useForm({
-		defaultValues: {
-			firstName: "",
-			lastName: "",
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			id: userContext!.uid,
-			newUser: true
-		}
-	});
 
 
 	return (
-		<form onSubmit={handleSubmit((data) => handleUpdatePrivateUserData(data))}>
+		<form onSubmit={handleSubmit(handleUpdatePrivateUserData)}>
 			<Grid
 				container
 				spacing={0}
