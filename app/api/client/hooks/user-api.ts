@@ -11,9 +11,11 @@ export /**
  * @return {*} 
  */
 const useUpdatePrivateUserData = () => {
-	const firestoreQuery = async (userData: { id: string } & Partial<PrivateUserData>, newUser?: boolean) => {
+	// define firestore query
+	const firestoreQuery = async (userData: { id: string } & Partial<PrivateUserData>) => {
 		const userRef = doc(privateUserCollection, userData.id);
-		return setDoc(userRef, userData, { merge: !newUser });
+		return setDoc(userRef, userData, { merge: true });
 	};
+	// convert to hook and return it
 	return useCreateFirestoreHook(firestoreQuery);
 };

@@ -2,13 +2,20 @@
 
 import { useState, useCallback } from "react";
 
+
+/**
+ * Define the hook return parameters
+ *
+ * @interface HookReturnParameters
+ * @template T
+ */
 interface HookReturnParameters<T> {
     data: T | undefined;
     isLoading: boolean;
     isSuccess: boolean;
     error: string;
 }
-
+// define the function type
 type FunctionType<T, R> = (arg: T) => Promise<R | undefined>;
 
 export /**

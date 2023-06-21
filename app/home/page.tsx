@@ -31,7 +31,7 @@ const Home = () => {
 	// get the auth context
 	const userContext = useAuthContext();
 
-	const {isLoading, isSuccess, error, writeToFirestore} = useUpdatePrivateUserData();
+	const [{ isLoading, isSuccess, error }, updateData] = useUpdatePrivateUserData();
 
 
 	// set up react hook form that will take user firstName and lastName as inputs
@@ -53,7 +53,7 @@ const Home = () => {
 			id: userContext!.uid
 		};
 
-		await writeToFirestore(userData, true);
+		await updateData(userData);
 		if(isSuccess) {
 			console.log("Private user data successfully mutated");
 		}
