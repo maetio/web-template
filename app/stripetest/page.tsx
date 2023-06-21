@@ -13,14 +13,14 @@ const StripeTest = () => {
 		console.log("auth token", userToken);
 		console.log("userContext", userContext?.uid);
 		const response = await fetch(
-			`${process.env.STRIPE_HTTP_LINK}/stripe-session-id/vorTWuhfyOZYucw78p1F`,
+			"https://us-central1-maet-dev-ced69.cloudfunctions.net/stripeCallableFunction/stripe-session-id/vorTWuhfyOZYucw78p1F",
 			{
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
-					authtoken: userToken
+					authtoken: userToken,
 				},
-				body: JSON.stringify({ userID: userContext?.uid })
+				body: JSON.stringify({ userID: userContext?.uid }),
 			}
 		);
 

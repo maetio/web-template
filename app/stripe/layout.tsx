@@ -15,32 +15,33 @@ const stripePromise = loadStripe(
 export default function Layout({ children }: { children: React.ReactNode }) {
 	const userContext = useAuthContext();
 
-	const [token, setToken] = useState<string>();
 	const [options, setOptions] = useState();
+
+	const [token, setToken] = useState<string>();
 	const fetchClientSecret = async (userToken: string) => {
+		console.log("auth token", userToken);
+		console.log("userContext", userContext?.uid);
 		const response = await fetch(
-			`${
-				process.env.STRIPE_HTTP_LINK
-			}/stripe-session-id/${"test comp id"}`,
+			"https://us-central1-maet-dev-ced69.cloudfunctions.net/stripeCallableFunction/stripe-session-id/vorTWuhfyOZYucw78p1F",
 			{
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
-					authtoken: userToken
+					authtoken: userToken,
 				},
-				body: JSON.stringify(userContext?.uid)
+				body: JSON.stringify({ userID: userContext?.uid }),
 			}
 		);
 
 		const jsonRes = await response.json();
 
-		console.log("response from api", jsonRes);
-
 		setOptions({
 			clientSecret: jsonRes.paymentIntent,
 			// Fully customizable with appearance API.
-			appearance: {}
+			appearance: {},
 		});
+
+		console.log("response from api", jsonRes);
 	};
 
 	const initializePaymentSheet = async () => {
@@ -49,6 +50,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 		const { currentUser } = auth;
 		const authToken = await currentUser?.getIdToken();
 		setToken(authToken);
+
 		// end auth token
 
 		// await getSessionID({
@@ -56,7 +58,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 		// 	userID: user.id,
 		// 	userToken: authToken || "failed",
 		// });
-		await fetchClientSecret(token);
+		if (authToken) {
+			await fetchClientSecret(authToken);
+		}
 		// console.log('session data', sessionIdData);
 	};
 
@@ -66,8 +70,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 	}, []);
 
 	return (
-		<Elements stripe={stripePromise} options={options}>
-			{children}
-		</Elements>
+		<>
+			{options ? (
+				<Elements stripe={stripePromise} options={options}>
+					{children}
+				</Elements>
+			) : null}
+		</>
 	);
 }

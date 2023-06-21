@@ -2,7 +2,19 @@ import { CheckBox, Sports } from "@mui/icons-material";
 import { Grid, Typography, Divider, Box } from "@mui/material";
 import React from "react";
 
-export const PageHeader: React.FC<{}> = () => (
+export interface PageHeaderProps {
+	title: string;
+}
+
+export /** 
+ * Reusable page header
+ *
+ * @param {*} {
+ *		title,
+ *	}
+ *  @return {*}
+ * 
+*/  const PageHeader = (props: PageHeaderProps) => (
 	<Box
 		justifyContent="center"
 		alignItems={"center"}
@@ -21,8 +33,7 @@ export const PageHeader: React.FC<{}> = () => (
 			variant="h5"
 			fontWeight="800"
 		>
-			Create a Competition
+			{props.title}
 		</Typography>
-		<Sports sx={{ color: "white", ml: 1 }} />
 	</Box>
 );

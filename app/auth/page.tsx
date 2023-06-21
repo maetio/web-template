@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "app/components/mui-server-components";
-import { SignIn } from "app/auth/sign-in";
+import { SignIn } from "./sign-in";
 
 /**
  * Will return the login screen

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { Button, Grid, Typography } from "@mui/material";
+import { Grid, TextField, Typography, Button } from "@mui/material";
 import { signInWithLink } from "app/api/auth";
 import { useRecoilValue } from "recoil";
 import { UserState } from "app/recoil-store";
@@ -58,6 +58,9 @@ const Home = () => {
 			>
 				Go to Stripe test
 			</Button>
+			{/* <TextField label="First Name"></TextField>
+			<TextField label="Last Name"></TextField> */}
+			<SignOutButton />
 		</Grid>
 	);
 };
