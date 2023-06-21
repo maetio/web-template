@@ -24,8 +24,8 @@ const useUpdatePrivateUserData = () => {
 		setError("");
 
 		try {
-			const userRef = doc(privateUserCollection, userData.id);
-			await setDoc(userRef, userData, { merge: !newUser });
+			const userRef = privateUserCollection.doc(userData.id);
+			await userRef.set(userData, { merge: !newUser });
 
 			setisLoading(false);
 			setisSuccess(true);
