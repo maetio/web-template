@@ -1,10 +1,8 @@
-// import { initializeFirestore } from 'firebase/firestore';
 import { initFirestore } from "@next-auth/firebase-adapter";
 import {
 	CollectionDataTypes,
 	SubcollectionDataTypes
 } from "app/types/firebase";
-// import GoogleProvider from 'next-auth/providers/google';
 import { cert } from "firebase-admin/app";
 import {
 	CollectionReference,
