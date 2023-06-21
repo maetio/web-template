@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import { signOutUser } from "app/api/auth";
+import { signOutUser } from "app/api/client/auth";
 import { useAuthContext } from "app/components/providers/auth-context";
 import { useRouter } from "next/navigation";
 

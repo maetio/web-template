@@ -12,7 +12,7 @@ import {
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
-import { sendPasswordlessLoginEmail, signInWithLink } from "app/api/auth";
+import { sendPasswordlessLoginEmail, signInWithLink } from "app/api/client/auth";
 import { useRecoilState } from "recoil";
 import { UserState } from "app/recoil-store";
 import { useRouter } from "next/navigation";

@@ -1,4 +1,4 @@
-import { getCompetitions } from "app/api/fetch/competitions";
+import { getCompetitions } from "app/api/server/competitions";
 
 export default async function Page() {
 	// fetch the competitions

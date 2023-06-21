@@ -4,7 +4,7 @@ import {
 	CompetitionCard,
 	CompetitionCardProps
 } from "./competition-card";
-import { getCompetitions } from "../api/fetch/competitions";
+import { getCompetitions } from "../api/server/competitions";
 import { PageHeader } from "./page-header";
 import { TeamCard, TeamCardProps } from "./team-card";
 import { PlayerCard, PlayerCardProps } from "./player-card";
