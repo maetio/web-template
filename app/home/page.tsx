@@ -9,7 +9,7 @@ import { SignOutButton } from "app/components/sign-out-button";
 import { useAuthContext } from "app/components/providers/auth-context";
 import { useForm } from "react-hook-form";
 import { PrivateUserData } from "app/types";
-import { useUpdatePrivateUserData } from "app/client-hooks/user-api";
+import { useUpdatePrivateUserData } from "app/api/client/hooks/user-api";
 import { EditProfileSchemaType, editProfileSchema } from "app/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 
