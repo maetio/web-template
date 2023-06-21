@@ -21,7 +21,9 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<RecoilRootProvider>
 					<AuthContextProvider>
-						<MuiProvider>{children}</MuiProvider>
+						<MuiProvider>
+							{children}
+						</MuiProvider>
 					</AuthContextProvider>
 				</RecoilRootProvider>
 			</body>

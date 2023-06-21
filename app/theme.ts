@@ -60,6 +60,8 @@ const getDesignTokens = (mode: PaletteMode) => ({
 
 export default getDesignTokens;
 
+
+
 declare module "@mui/material/styles" {
 	interface Palette {
 		neutral: Palette["primary"];
