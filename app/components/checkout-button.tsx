@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import {
 	useStripe,
 	useElements,
-	PaymentElement,
+	PaymentElement
 } from "@stripe/react-stripe-js";
 
 const CheckoutButton = () => {
@@ -29,11 +29,11 @@ const CheckoutButton = () => {
 		}
 
 		const { error } = await stripe.confirmPayment({
-			//`Elements` instance that was used to create the Payment Element
+			// `Elements` instance that was used to create the Payment Element
 			elements,
 			confirmParams: {
-				return_url: "https://example.com/order/123/complete",
-			},
+				return_url: "https://example.com/order/123/complete"
+			}
 		});
 
 		if (error) {

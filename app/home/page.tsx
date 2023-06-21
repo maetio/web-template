@@ -51,6 +51,13 @@ const Home = () => {
 			>
 				Go to Stripe
 			</Button>
+			<Button
+				onClick={() => {
+					router.push("/stripetest");
+				}}
+			>
+				Go to Stripe test
+			</Button>
 		</Grid>
 	);
 };
