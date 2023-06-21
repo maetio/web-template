@@ -5,7 +5,6 @@ export /**
  *
  * @return {*}
  */
-
 const getCompetitions = async () => {
 	return competitionsCollection.get();
 };
