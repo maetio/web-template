@@ -18,9 +18,9 @@ const StripeTest = () => {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
-					authtoken: userToken,
+					authtoken: userToken
 				},
-				body: JSON.stringify({ userID: userContext?.uid }),
+				body: JSON.stringify({ userID: userContext?.uid })
 			}
 		);
 
