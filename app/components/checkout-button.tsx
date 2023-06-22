@@ -2,13 +2,10 @@
 
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import { signOutUser } from "app/api/auth";
-import { useAuthContext } from "app/components/providers/auth-context";
-import { useRouter } from "next/navigation";
 import {
 	useStripe,
 	useElements,
-	PaymentElement
+	PaymentElement,
 } from "@stripe/react-stripe-js";
 
 const CheckoutButton = () => {
@@ -32,8 +29,8 @@ const CheckoutButton = () => {
 			// `Elements` instance that was used to create the Payment Element
 			elements,
 			confirmParams: {
-				return_url: "https://example.com/order/123/complete"
-			}
+				return_url: "https://example.com/order/123/complete",
+			},
 		});
 
 		if (error) {
