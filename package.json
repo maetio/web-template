@@ -74,6 +74,7 @@
 		"path": false,
 		"os": false,
 		"net": false,
-		"tls": false
+		"tls": false,
+		"child_process": false
 	}
 }
