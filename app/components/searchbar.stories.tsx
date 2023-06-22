@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { PlayerCard }from "./player-card";
+import SearchBar from "./searchbar";
 
-const meta: Meta<typeof PlayerCard> = {
+const meta: Meta<typeof SearchBar> = {
 	/* 👇 The title prop is optional.
 	 * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
 	 * to learn how to generate automatic titles
 	 */
-	title: "PlayerCard",
-	component: PlayerCard,
+	title: "SearchBar",
+	component: SearchBar,
 	argTypes: {}
 };
 
 export default meta;
-type Story = StoryObj<typeof PlayerCard>;
+type Story = StoryObj<typeof SearchBar>;
 
 export const Card: Story = {
 	args: {

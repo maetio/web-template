@@ -6,7 +6,7 @@ const meta: Meta<typeof PageHeader> = {
 	 * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
 	 * to learn how to generate automatic titles
 	 */
-	title: "PlayerCard",
+	title: "PageHeader",
 	component: PageHeader,
 	argTypes: {}
 };
