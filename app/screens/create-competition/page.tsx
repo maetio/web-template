@@ -1,14 +1,12 @@
 import Link from "next/link";
 import React from "react";
 
-type Props = {}
+type Props = {};
 
 const CreateCompetition = (props: Props) => {
 	return (
 		<div>
-			<h1>
-			Create Competition Page
-			</h1>
+			<h1>Create Competition Page</h1>
 			<div>
 				<Link href="/screens/view-competition">View Competitions</Link>
 			</div>

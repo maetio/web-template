@@ -1,6 +1,6 @@
 import React from "react";
 
-type Props = {}
+type Props = {};
 
 const EditTeam = (props: Props) => {
 	return (

@@ -5,7 +5,7 @@ import {
 	CssBaseline,
 	ThemeProvider,
 	createTheme,
-	useMediaQuery
+	useMediaQuery,
 } from "@mui/material";
 import { NextAppDirEmotionCacheProvider } from "tss-react/next/appDir";
 import getDesignTokens from "../../theme";

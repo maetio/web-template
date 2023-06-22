@@ -7,12 +7,12 @@ const meta: Meta<typeof CreateCompetition> = {
 	 * to learn how to generate automatic titles
 	 */
 	title: "CreateCompetition",
-	component: CreateCompetition
+	component: CreateCompetition,
 };
 
 export default meta;
 type Story = StoryObj<typeof CreateCompetition>;
 
 export const Primary: Story = {
-	args: {}
+	args: {},
 };

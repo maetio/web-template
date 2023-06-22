@@ -7,12 +7,12 @@ const meta: Meta<typeof MaetAppBar> = {
 	 * to learn how to generate automatic titles
 	 */
 	title: "MaetAppBar",
-	component: MaetAppBar
+	component: MaetAppBar,
 };
 
 export default meta;
 type Story = StoryObj<typeof MaetAppBar>;
 
 export const Primary: Story = {
-	args: {}
+	args: {},
 };

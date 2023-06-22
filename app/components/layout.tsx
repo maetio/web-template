@@ -9,7 +9,9 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => (
 	<>
 		<CssBaseline />
-		<header><MaetAppBar/></header>
+		<header>
+			<MaetAppBar />
+		</header>
 		<main>{children}</main>
 		<footer>{/* Add your footer component here */}</footer>
 	</>
