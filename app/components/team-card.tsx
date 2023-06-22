@@ -7,6 +7,7 @@ import MaetIcon from "./maet-icon";
 
 export interface TeamCardProps {
 	name: string;
+	image: string;
 	score: number;
 }
 
@@ -52,36 +53,23 @@ export /**
 						borderRadius: 1,
 						borderColor: "#f5f5f4",
 						backgroundColor: "purple",
-						m: 1,
+						ml: 2
 					}}
 				></ButtonBase>
-				<Typography sx={{ fontWeight: 700 }}>Hotshots</Typography>
-			</Grid>
-			<Grid item container xs={3} direction="column">
-				
+				<Typography sx={{ fontWeight: 700, ml: 2 }}>{props.name}</Typography>
 			</Grid>
 			<Grid
 				item
 				container
-				xs={3}
-				direction="column"
+				xs={8}
+				direction="row"
 				alignItems="flex-end"
 				justifyContent="flex-end"
 			>
-				<Grid
-					container
-					item
-					xs={4}
-					direction="row"
-					alignItems="flex-end"
-					justifyContent="flex-end"
-					display="flex"
-				>
-					<MaetIcon sx={{ mr: 0.5 }}></MaetIcon>
-					<Typography sx={{ fontWeight: 700, mr: 0.5 }}>
-						906
-					</Typography>
-				</Grid>
+				<MaetIcon sx={{ mr: 1 }}></MaetIcon>
+				<Typography sx={{ fontWeight: 300, mr: 4 }}>
+					{props.score}
+				</Typography>
 			</Grid>
 		</Grid>
 	);

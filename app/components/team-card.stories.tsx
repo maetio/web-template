@@ -16,5 +16,8 @@ export default meta;
 type Story = StoryObj<typeof TeamCard>;
 
 export const Card: Story = {
-	args: {},
+	args: {
+		name: "Team Name",
+		score: 99
+	},
 };
