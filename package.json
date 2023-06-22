@@ -31,6 +31,7 @@
 		"firebase": "^9.22.1",
 		"firebase-admin": "^11.9.0",
 		"init": "^0.1.2",
+		"net": "^1.0.2",
 		"next": "13.4.4",
 		"next-auth": "^4.22.1",
 		"prettier": "^2.8.8",
@@ -68,8 +69,8 @@
 	},
 	"browser": {
 		"fs": false,
-		"path": false, 
-		"os": false, 
+		"path": false,
+		"os": false,
 		"net": false,
 		"tls": false
 	}
