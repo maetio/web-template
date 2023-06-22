@@ -1,7 +1,13 @@
 import React from "react";
 
-type Props = {};
+type TeamSearchBarProps = {};
 
-export const TeamSearchBar = (props: Props) => {
+export /**
+ * Search bar for finding teams
+ * 
+ * @param {TeamSearchBarProps} props 
+ * @returns 
+ */
+const TeamSearchBar = (props: TeamSearchBarProps) => {
 	return <div>TeamSearchBar</div>;
 };
