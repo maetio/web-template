@@ -6,7 +6,13 @@ export interface SubmitButtonProps {
 	color: string;
 }
 
-export const SubmitButton = (props: SubmitButtonProps) => {
+export /**
+ * Submit button for all form screens
+ * 
+ * @param {SubmitButtonProps} props 
+ * @returns 
+ */
+const  SubmitButton = (props: SubmitButtonProps) => {
 	return (
 		<Button
 			variant="contained"
