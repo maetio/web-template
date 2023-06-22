@@ -1,7 +1,5 @@
-"use client";
-
-import { Button } from "@mui/material";
 import React from "react";
+import { Button } from "../mui-server-components";
 
 export interface SubmitButtonProps {
 	title: string;

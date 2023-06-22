@@ -1,7 +1,5 @@
-"use client";
-
-import { Box, ButtonBase, Grid, Typography } from "@mui/material";
 import React from "react";
+import { Box, ButtonBase, Grid, Typography } from "../mui-server-components";
 import { MaetIcon } from "../maet-icon";
 
 export interface TeamCardProps {

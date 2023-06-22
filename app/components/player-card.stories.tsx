@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { PlayerCard } from "../screens/player-card";
+import  { PlayerCard } from "./player-card/page";
 
 const meta: Meta<typeof PlayerCard> = {
 	/* 👇 The title prop is optional.

@@ -1,12 +1,8 @@
-import {
-	MilitaryTech,
-	TrendingUp,
-	TrendingUpOutlined,
-} from "@mui/icons-material";
-import { Avatar, ButtonBase, Grid, Typography } from "@mui/material";
+
 import React from "react";
 import { RatingChange } from "app/types";
-import MaetIcon from "../maet-icon";
+import { Avatar, ButtonBase, Grid, Typography } from "../mui-server-components";
+import { MaetIcon } from "../maet-icon";
 
 export interface PlayerCardProps {
 	name: string;
@@ -64,4 +60,3 @@ const PlayerCard = (props: PlayerCardProps) => {
 	);
 };
 
-export default PlayerCard;

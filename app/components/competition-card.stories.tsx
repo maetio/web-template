@@ -15,13 +15,6 @@ export default meta;
 type Story = StoryObj<typeof CompetitionCard>;
 
 export const Card: Story = {
-	args: {
-		key: "new_key",
-		name: "Grand Prairie Tournament",
-		type: "League",
-		date: "April 7",
-		sport: {
-			sportName: "Basketball",
-		},
-	},
+	args: { }
 };
+
