@@ -14,6 +14,6 @@ const meta: Meta<typeof TextField> = {
 export default meta;
 type Story = StoryObj<typeof TextField>;
 
-export const Card: Story = {
+export const Primary: Story = {
 	args: {},
 };

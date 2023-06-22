@@ -10,6 +10,7 @@ import { orange } from "@mui/material/colors";
 import { CalendarIcon, ClockIcon } from "@mui/x-date-pickers";
 import React from "react";
 import { Sports } from "app/types";
+
 // modular props for all competition cards
 export interface CompetitionCardProps {
 	key: string;

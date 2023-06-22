@@ -1,6 +1,6 @@
 "use client";
 
-import { privateUserCollection } from "app/api/config";
+import { privateUserCollection } from "app/api/client/config";
 import { PrivateUserData } from "app/types";
 import { useState, useCallback } from "react";
 

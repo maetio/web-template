@@ -1,6 +1,5 @@
 "use client";
 
-import { MilitaryTech } from "@mui/icons-material";
 import { Box, ButtonBase, Grid, Typography } from "@mui/material";
 import React from "react";
 import MaetIcon from "./maet-icon";

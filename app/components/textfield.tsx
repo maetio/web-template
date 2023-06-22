@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import { M_PLUS_1 } from "next/font/google";
 import React from "react";
 
 type Props = {};
