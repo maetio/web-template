@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import { useUpdatePrivateUserData } from "app/api/client/hooks/user-api";
 import { EditProfileSchemaType, editProfileSchema } from "app/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export /**
  * Will have the home screen render
@@ -76,20 +76,6 @@ const Home = () => {
 				justifyContent="center"
 				sx={{ minHeight: "100vh" }}
 			>
-				<Button
-					onClick={() => {
-						router.push("/stripe");
-					}}
-				>
-					Go to Stripe
-				</Button>
-				<Button
-					onClick={() => {
-						router.push("/stripetest");
-					}}
-				>
-					Go to Stripe test
-				</Button>
 				<Typography>
 					{userContext?.uid.length
 						? `You are logged in as ${userContext?.email}.`
@@ -106,6 +92,14 @@ const Home = () => {
 				></TextField>
 				<Button variant="outlined" type="submit" sx={{ m: 2 }}>
 					Submit
+				</Button>
+
+				<Button
+					onClick={() => {
+						router.push("/stripe");
+					}}
+				>
+					Go to Stripe
 				</Button>
 
 				<SignOutButton />

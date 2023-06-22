@@ -8,7 +8,12 @@ import {
 	PaymentElement,
 } from "@stripe/react-stripe-js";
 
-const CheckoutButton = () => {
+/**
+ * Contains the stripe form, as well as checkout button that confirms the order
+ *
+ * @return {*} 
+ */
+const StripeForm = () => {
 	const stripe = useStripe();
 	const elements = useElements();
 
