@@ -2,7 +2,7 @@
 
 import { Box, ButtonBase, Grid, Typography } from "@mui/material";
 import React from "react";
-import MaetIcon from "app/components/maet-icon";
+import { MaetIcon } from "../maet-icon";
 
 export interface TeamCardProps {
 	name: string;

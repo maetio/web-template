@@ -6,7 +6,7 @@ import {
 import { Avatar, ButtonBase, Grid, Typography } from "@mui/material";
 import React from "react";
 import { RatingChange } from "app/types";
-import MaetIcon from "../components/maet-icon";
+import MaetIcon from "../maet-icon";
 
 export interface PlayerCardProps {
 	name: string;

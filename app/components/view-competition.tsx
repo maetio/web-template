@@ -1,10 +1,10 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import { TeamCardProps } from "app/screens/team-card";
-import { CompetitionCard, CompetitionCardProps } from "./competition-card";
+import { TeamCardProps } from "./team-card/team-card";
+import { CompetitionCard, CompetitionCardProps } from "./competition-card/page";
 import { getCompetitions } from "../api/server/competitions";
 import { PageHeader } from "./page-header";
-import { PlayerCard, PlayerCardProps } from "../screens/player-card";
+import { PlayerCard, PlayerCardProps }from "./player-card/page";
 
 type ViewCompetitionProps = {
 	competitions: CompetitionCardProps;
