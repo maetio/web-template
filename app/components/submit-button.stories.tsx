@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import SubmitButton from "./submit-button";
+import { SubmitButton , SubmitButtonProps }from "./submit-button";
 
 const meta: Meta<typeof SubmitButton> = {
 	/* 👇 The title prop is optional.
@@ -16,6 +16,7 @@ type Story = StoryObj<typeof SubmitButton>;
 
 export const Card: Story = {
 	args: {
-		title: "Submit"
+		title: "Submit",
+		color: "#818CF8"
 	}
 };
