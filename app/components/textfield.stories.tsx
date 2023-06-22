@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { TextField } from "./textfield";
+import { TextField } from "app/screens/textfield";
 
 const meta: Meta<typeof TextField> = {
 	/* 👇 The title prop is optional.

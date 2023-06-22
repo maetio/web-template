@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 // eslint-disable-next-line import/no-named-as-default
-import TeamCard from "./team-card";
+import TeamCard from "app/screens/team-card";
 
 const meta: Meta<typeof TeamCard> = {
 	/* 👇 The title prop is optional.

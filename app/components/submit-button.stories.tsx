@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { SubmitButton, SubmitButtonProps } from "./submit-button";
+import { SubmitButton } from "app/screens/submit-button";
 
 const meta: Meta<typeof SubmitButton> = {
 	/* 👇 The title prop is optional.
