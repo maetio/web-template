@@ -1,29 +1,29 @@
-"use client";
-
-import { Box, ButtonBase, Grid, Typography } from "@mui/material";
+import {
+	MilitaryTech,
+	TrendingUp,
+	TrendingUpOutlined,
+} from "@mui/icons-material";
+import { Avatar, ButtonBase, Grid, Typography } from "@mui/material";
 import React from "react";
-import MaetIcon from "./maet-icon";
+import { RatingChange } from "app/types";
+import MaetIcon from "../components/maet-icon";
 
-export interface TeamCardProps {
+export interface PlayerCardProps {
 	name: string;
 	image: string;
 	score: number;
 }
 
-/* export interface ScoreChange {
-	color: string;
-	magnitude: number;
-}
-*/
 export /**
- * Card that renders the initial team data
+ * Card that renders the initial player data
  *
  * @param {*} {
- *		TeamCardProps
+ *		PlayerCardProps
  *	}
  *  @return {*}
  *
- */ const TeamCard = (props: TeamCardProps) => {
+ */
+const PlayerCard = (props: PlayerCardProps) => {
 	return (
 		<Grid
 			container
@@ -44,17 +44,7 @@ export /**
 				xs={4}
 				alignItems="center"
 			>
-				<ButtonBase
-					sx={{
-						width: 70,
-						height: 70,
-						border: 1,
-						borderRadius: 1,
-						borderColor: "#f5f5f4",
-						backgroundColor: "purple",
-						ml: 2
-					}}
-				></ButtonBase>
+				<Avatar></Avatar>
 				<Typography sx={{ fontWeight: 700, ml: 2 }}>{props.name}</Typography>
 			</Grid>
 			<Grid
@@ -74,4 +64,4 @@ export /**
 	);
 };
 
-export default TeamCard;
+export default PlayerCard;
