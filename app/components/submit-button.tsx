@@ -1,10 +1,13 @@
+import { Button } from "@mui/material";
 import React from "react";
 
-type Props = {}
+type SubmitButtonProps = {
+    title: string
+}
 
-const SubmitButton = (props: Props) => {
+const SubmitButton = (props: SubmitButtonProps) => {
 	return (
-		<div>SubmitButton</div>
+		<Button variant="contained" sx={{borderRadius: 8}}>{props.title}</Button>
 	);
 };
 
