@@ -2,11 +2,16 @@
 
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import { signOutUser } from "app/api/auth";
+import { signOutUser } from "app/api/client/auth";
 import { useAuthContext } from "app/components/providers/auth-context";
 import { useRouter } from "next/navigation";
 
-export const SignOutButton: React.FC<{}> = () => {
+export /**
+ * Button to sign out user
+ * 
+ * @returns 
+ */
+const SignOutButton: React.FC<{}> = () => {
 	// state used to detect if email sent
 	const [sentEmail, setSentEmail] = useState(false);
 

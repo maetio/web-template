@@ -20,14 +20,14 @@ import MaetIcon from "./maet-icon";
 const pages = ["Competitions", "Players", "Teams"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-export /** 
+export /**
  * AppBar that enables user navigation between screens
  *
  * @param {*} {
  *	}
  *  @return {*}
- * 
-*/ const MaetAppBar: React.FC<{}> = () => {
+ *
+ */ const MaetAppBar: React.FC<{}> = () => {
 	const [anchorNav, setAnchorNav] = React.useState<null | HTMLElement>(null);
 	const [anchorUser, setAnchorUser] = React.useState<null | HTMLElement>(
 		null
@@ -56,7 +56,7 @@ export /**
 					<Box
 						sx={{
 							flexGrow: 1,
-							display: { xs: "flex", md: "none" }
+							display: { xs: "flex", md: "none" },
 						}}
 					>
 						<IconButton
@@ -74,17 +74,17 @@ export /**
 							anchorEl={anchorNav}
 							anchorOrigin={{
 								vertical: "bottom",
-								horizontal: "left"
+								horizontal: "left",
 							}}
 							keepMounted
 							transformOrigin={{
 								vertical: "top",
-								horizontal: "left"
+								horizontal: "left",
 							}}
 							open={Boolean(anchorNav)}
 							onClose={handleCloseNavMenu}
 							sx={{
-								display: { xs: "block", md: "none" }
+								display: { xs: "block", md: "none" },
 							}}
 						>
 							{pages.map((page) => (
@@ -105,7 +105,7 @@ export /**
 					<Box
 						sx={{
 							flexGrow: 1,
-							display: { xs: "none", md: "flex" }
+							display: { xs: "none", md: "flex" },
 						}}
 					>
 						{pages.map((page) => (
@@ -131,12 +131,12 @@ export /**
 							anchorEl={anchorUser}
 							anchorOrigin={{
 								vertical: "top",
-								horizontal: "right"
+								horizontal: "right",
 							}}
 							keepMounted
 							transformOrigin={{
 								vertical: "top",
-								horizontal: "right"
+								horizontal: "right",
 							}}
 							open={Boolean(anchorUser)}
 							onClose={handleCloseUserMenu}

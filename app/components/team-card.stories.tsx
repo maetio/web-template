@@ -9,7 +9,7 @@ const meta: Meta<typeof TeamCard> = {
 	 */
 	title: "TeamCard",
 	component: TeamCard,
-	argTypes: {}
+	argTypes: {},
 };
 
 export default meta;
@@ -17,13 +17,7 @@ type Story = StoryObj<typeof TeamCard>;
 
 export const Card: Story = {
 	args: {
-		name: "Stars",
-		location: "South Bend",
-		position: 1,
-		score: 500,
-		change: {
-			color: "green",
-			magnitude: 75
-		}
-	}
+		name: "Team Name",
+		score: 99
+	},
 };

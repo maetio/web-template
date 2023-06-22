@@ -15,10 +15,10 @@ const config: StorybookConfig = {
 	},
 	core: {
 		builder: {
-			name: '@storybook/builder-webpack5',
+			name: "@storybook/builder-webpack5",
 			options: {
-			  fsCache: true,
-			  lazyCompilation: true,
+				fsCache: true,
+				lazyCompilation: true,
 			},
 		},
 	},
@@ -26,18 +26,18 @@ const config: StorybookConfig = {
 		autodocs: "tag",
 	},
 	webpackFinal: async (config, { configType }) => {
-        config.resolve = {
-            ...config.resolve,
-            fallback: {
-                ...(config.resolve || {}).fallback,
-                fs: false,
-                stream: false,
-                os: false,
-            },
-        }
+		config.resolve = {
+			...config.resolve,
+			fallback: {
+				...(config.resolve || {}).fallback,
+				fs: false,
+				stream: false,
+				os: false,
+			},
+		};
 
-        // Return the altered config
-        return config
-    },
+		// Return the altered config
+		return config;
+	},
 };
 export default config;

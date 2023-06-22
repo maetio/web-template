@@ -8,16 +8,16 @@ export const customThemePalette = {
 	// mode: 'dark',
 	// mode: 'light',
 	primary: {
-		main: "#4f46e5"
+		main: "#4f46e5",
 	},
 	secondary: {
-		main: "#f59e0b"
-	}
+		main: "#f59e0b",
+	},
 };
 
 const getDesignTokens = (mode: PaletteMode) => ({
 	typography: {
-		fontFamily: ["Nunito", "sans-serif"].join(",")
+		fontFamily: ["Nunito", "sans-serif"].join(","),
 	},
 	palette: {
 		mode,
@@ -25,37 +25,37 @@ const getDesignTokens = (mode: PaletteMode) => ({
 			? {
 				text: {
 					primary: "#262626",
-					secondary: "#525252"
+					secondary: "#525252",
 				},
 				background: {
 					default: "#f5f5f4",
-					paper: "#f5f5f4"
+					paper: "#f5f5f4",
 				},
 				neutral: {
 					main: "#e7e5e4",
 					dark: "#262626",
-					light: "#e7e5e4"
+					light: "#e7e5e4",
 				},
-				...customThemePalette
+				...customThemePalette,
 			  }
 			: {
 				// palette values for dark mode
 				text: {
 					primary: "#e5e5e5",
-					secondary: "#d4d4d4"
+					secondary: "#d4d4d4",
 				},
 				background: {
 					default: "#171717",
-					paper: "#171717"
+					paper: "#171717",
 				},
 				neutral: {
 					main: "#262626",
 					dark: "#262626",
-					light: "#f5f5f5"
+					light: "#f5f5f5",
 				},
-				...customThemePalette
-			  })
-	}
+				...customThemePalette,
+			  }),
+	},
 });
 
 export default getDesignTokens;

@@ -2,7 +2,7 @@ import { TextField } from "@mui/material";
 import Link from "next/link";
 import React from "react";
 
-type Props = {}
+type Props = {};
 
 const JoinTeam = (props: Props) => {
 	return (

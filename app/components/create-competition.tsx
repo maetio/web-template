@@ -14,7 +14,7 @@ import {
 	ThemeProvider,
 	useMediaQuery,
 	createTheme,
-	Stack
+	Stack,
 } from "@mui/material";
 import React from "react";
 import { purple } from "@mui/material/colors";
@@ -22,14 +22,14 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import {
 	DatePicker,
 	LocalizationProvider,
-	TimePicker
+	TimePicker,
 } from "@mui/x-date-pickers";
 import {
 	Controller,
 	ControllerFieldState,
 	ControllerRenderProps,
 	UseFormStateReturn,
-	useForm
+	useForm,
 } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -41,28 +41,28 @@ import { PageHeader } from "./page-header";
 
 const options = [
 	{ label: "Paddleball", id: 1 },
-	{ label: "Basketball", id: 2 }
+	{ label: "Basketball", id: 2 },
 ];
 
-export /** 
- * Form that allows user to create competitions 
+export /**
+ * Form that allows user to create competitions
  * and takes user's competition data as an input
  *
  * @param {*} {
  *	}
  *  @return {*}
- * 
-*/ 
+ *
+ */
 const CreateCompetition: React.FC<{}> = () => {
 	const {
 		register,
 		control,
 		handleSubmit,
 		formState: { errors },
-		reset
+		reset,
 	} = useForm<CompetitionFormInput>({
 		reValidateMode: "onBlur",
-		resolver: yupResolver(CompetitionFormSchema)
+		resolver: yupResolver(CompetitionFormSchema),
 	});
 	const onSubmit = (data: CompetitionFormInput) => {
 		console.log(data);
@@ -83,7 +83,7 @@ const CreateCompetition: React.FC<{}> = () => {
 				flex={"row"}
 				justifyContent={"center"}
 				sx={{
-					textAlign: "center"
+					textAlign: "center",
 				}}
 			>
 				<Grid
@@ -95,7 +95,7 @@ const CreateCompetition: React.FC<{}> = () => {
 						backgroundColor: "#e7e5e4",
 						border: 1,
 						borderRadius: 1,
-						borderColor: "#e7e5e4"
+						borderColor: "#e7e5e4",
 					}}
 				>
 					<form onSubmit={handleSubmit(onSubmit)}>
@@ -123,7 +123,7 @@ const CreateCompetition: React.FC<{}> = () => {
 								control={control}
 								render={({
 									field: { onChange, onBlur, value },
-									formState
+									formState,
 								}) => (
 									<Autocomplete
 										sx={{ margin: 2 }}
@@ -158,7 +158,7 @@ const CreateCompetition: React.FC<{}> = () => {
 									backgroundColor: "#4f46e5",
 									border: 1,
 									borderRadius: 1,
-									borderColor: "#4f46e5"
+									borderColor: "#4f46e5",
 								}}
 							>
 								<Grid>
@@ -210,7 +210,7 @@ const CreateCompetition: React.FC<{}> = () => {
 									control={control}
 									render={({
 										field: { onChange, value },
-										fieldState: { error }
+										fieldState: { error },
 									}) => (
 										<DatePicker
 											label="Start Date"
@@ -218,7 +218,7 @@ const CreateCompetition: React.FC<{}> = () => {
 												onChange(event);
 											}}
 											sx={{
-												m: 2
+												m: 2,
 											}}
 										/>
 									)}
@@ -231,7 +231,7 @@ const CreateCompetition: React.FC<{}> = () => {
 									control={control}
 									render={({
 										field: { onChange, value },
-										fieldState: { error }
+										fieldState: { error },
 									}) => (
 										<TimePicker
 											label="Start Time"
@@ -239,7 +239,7 @@ const CreateCompetition: React.FC<{}> = () => {
 												onChange(event);
 											}}
 											sx={{
-												m: 2
+												m: 2,
 											}}
 										/>
 									)}
@@ -257,7 +257,7 @@ const CreateCompetition: React.FC<{}> = () => {
 									control={control}
 									render={({
 										field: { onChange, value },
-										fieldState: { error }
+										fieldState: { error },
 									}) => (
 										<DatePicker
 											label="End Date"
@@ -265,7 +265,7 @@ const CreateCompetition: React.FC<{}> = () => {
 												onChange(event);
 											}}
 											sx={{
-												m: 2
+												m: 2,
 											}}
 										/>
 									)}
@@ -278,12 +278,12 @@ const CreateCompetition: React.FC<{}> = () => {
 									control={control}
 									render={({
 										field: { onChange, value },
-										fieldState: { error }
+										fieldState: { error },
 									}) => (
 										<TimePicker
 											label="End Time"
 											sx={{
-												m: 2
+												m: 2,
 											}}
 											onChange={(event) => {
 												onChange(event);
@@ -298,7 +298,7 @@ const CreateCompetition: React.FC<{}> = () => {
 									sx={{
 										color: "#4f46e5",
 										fontWeight: 700,
-										m: 2
+										m: 2,
 									}}
 								>
 									Location
@@ -307,7 +307,7 @@ const CreateCompetition: React.FC<{}> = () => {
 									{...register("location")}
 									label="Select Location"
 									sx={{
-										m: 2
+										m: 2,
 									}}
 								></TextField>
 								<Typography>

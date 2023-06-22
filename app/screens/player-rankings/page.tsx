@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-type Props = {}
+type Props = {};
 
 const PlayerRankings = (props: Props) => {
 	return (

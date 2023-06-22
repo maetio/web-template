@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-type Props = {}
+type Props = {};
 
 const HostHome = (props: Props) => {
 	return (
@@ -9,7 +9,9 @@ const HostHome = (props: Props) => {
 			<h1>Host Home</h1>
 			<div>
 				<Link href="/screens/view-competition">View Competition </Link>
-				<Link href="/screens/create-competition">Create Competition</Link>
+				<Link href="/screens/create-competition">
+					Create Competition
+				</Link>
 			</div>
 		</div>
 	);

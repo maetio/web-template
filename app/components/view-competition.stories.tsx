@@ -7,46 +7,12 @@ const meta: Meta<typeof ViewCompetition> = {
 	 * to learn how to generate automatic titles
 	 */
 	title: "ViewCompetition",
-	component: ViewCompetition
+	component: ViewCompetition,
 };
 
 export default meta;
 type Story = StoryObj<typeof ViewCompetition>;
 
 export const Primary: Story = {
-	render: () => (
-		<ViewCompetition
-			competitions={{
-				key: "",
-				name: "",
-				type: undefined,
-				date: "",
-				sport: {
-					sportName: "",
-					icon: undefined
-				}
-			}}
-			players={{
-				name: "",
-				position: 0,
-				medalColor: undefined,
-				score: 0,
-				change: {
-					color: "",
-					magnitude: 0
-				}
-			}}
-			teams={{
-				name: "",
-				location: "",
-				position: 0,
-				medalColor: undefined,
-				score: 0,
-				change: {
-					color: "",
-					magnitude: 0
-				}
-			}}
-		/>
-	)
+	render: () => <div></div>,
 };

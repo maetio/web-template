@@ -12,7 +12,7 @@ export interface Rating {
 	numGames: number;
 }
 
-export interface RatingChange  {
+export interface RatingChange {
 	color: string;
 	magnitude: number;
 }

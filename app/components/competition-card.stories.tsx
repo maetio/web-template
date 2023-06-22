@@ -8,7 +8,7 @@ const meta: Meta<typeof CompetitionCard> = {
 	 */
 	title: "CompetitionCard",
 	component: CompetitionCard,
-	argTypes: {}
+	argTypes: {},
 };
 
 export default meta;
@@ -21,7 +21,7 @@ export const Card: Story = {
 		type: "League",
 		date: "April 7",
 		sport: {
-			sportName: "Basketball"
-		}
-	}
+			sportName: "Basketball",
+		},
+	},
 };
