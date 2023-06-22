@@ -1,13 +1,11 @@
 "use client";
 
-import {
-	MilitaryTech,
-} from "@mui/icons-material";
+import { MilitaryTech } from "@mui/icons-material";
 import { Box, ButtonBase, Grid, Typography } from "@mui/material";
 import React from "react";
 import MaetIcon from "./maet-icon";
 
-export interface TeamCardProps  {
+export interface TeamCardProps {
 	name: string;
 	score: number;
 }
@@ -17,15 +15,15 @@ export interface TeamCardProps  {
 	magnitude: number;
 }
 */
-export /** 
+export /**
  * Card that renders the initial team data
  *
  * @param {*} {
  *		TeamCardProps
  *	}
  *  @return {*}
- * 
-*/ const TeamCard = (props: TeamCardProps) => {
+ *
+ */ const TeamCard = (props: TeamCardProps) => {
 	return (
 		<Grid
 			container
@@ -37,7 +35,7 @@ export /**
 				borderColor: "#f5f5f4",
 				display: "inline-flex",
 				mt: 1,
-				height: 100
+				height: 100,
 			}}
 		>
 			<Grid
@@ -61,7 +59,7 @@ export /**
 						borderRadius: 1,
 						borderColor: "#f5f5f4",
 						backgroundColor: "purple",
-						m: 1
+						m: 1,
 					}}
 				></ButtonBase>
 			</Grid>

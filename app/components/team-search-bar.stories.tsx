@@ -8,12 +8,12 @@ const meta: Meta<typeof TeamSearchBar> = {
 	 */
 	title: "TeamSearchBar",
 	component: TeamSearchBar,
-	argTypes: {}
+	argTypes: {},
 };
 
 export default meta;
 type Story = StoryObj<typeof TeamSearchBar>;
 
 export const Card: Story = {
-	args: {}
+	args: {},
 };

@@ -8,11 +8,13 @@ import { doc, setDoc } from "firebase/firestore";
 export /**
  * Hook to update the private user data
  *
- * @return {*} 
+ * @return {*}
  */
 const useUpdatePrivateUserData = () => {
 	// define firestore query
-	const firestoreQuery = async (userData: { id: string } & Partial<PrivateUserData>) => {
+	const firestoreQuery = async (
+		userData: { id: string } & Partial<PrivateUserData>
+	) => {
 		const userRef = doc(privateUserCollection, userData.id);
 		return setDoc(userRef, userData, { merge: true });
 	};

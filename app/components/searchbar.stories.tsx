@@ -8,7 +8,7 @@ const meta: Meta<typeof SearchBar> = {
 	 */
 	title: "SearchBar",
 	component: SearchBar,
-	argTypes: {}
+	argTypes: {},
 };
 
 export default meta;
@@ -22,7 +22,7 @@ export const Card: Story = {
 		score: 600,
 		change: {
 			color: "green",
-			magnitude: 50
-		}
-	}
+			magnitude: 50,
+		},
+	},
 };

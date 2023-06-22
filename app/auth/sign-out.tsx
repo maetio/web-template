@@ -5,7 +5,10 @@ import { Button, TextField, Grid, Typography, Paper, Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
-import { sendPasswordlessLoginEmail, signInWithLink } from "app/api/client/auth";
+import {
+	sendPasswordlessLoginEmail,
+	signInWithLink,
+} from "app/api/client/auth";
 import { useRecoilState } from "recoil";
 import { UserState } from "app/recoil-store";
 
@@ -14,9 +17,9 @@ export const SignIn: React.FC<{}> = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors }
+		formState: { errors },
 	} = useForm<{ email: string }>({
-		resolver: yupResolver(emailSchema)
+		resolver: yupResolver(emailSchema),
 	});
 
 	// state used to detect if email sent
@@ -25,7 +28,7 @@ export const SignIn: React.FC<{}> = () => {
 	// get user state
 	const [user, setUser] = useRecoilState(UserState);
 
-	// send email link to user 
+	// send email link to user
 	const submitEmail = async (data: { email: string }) => {
 		await sendPasswordlessLoginEmail(data.email);
 		setSentEmail(true);

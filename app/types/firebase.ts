@@ -5,7 +5,7 @@ import {
 	CompetitionProfile,
 	GameProfile,
 	Profile,
-	TeamProfile
+	TeamProfile,
 } from "app/types/profile";
 import { CompetitionTeam, Team, TeamMessagesFireStore } from "app/types/team";
 import { PrivateUserData } from "app/types/user";

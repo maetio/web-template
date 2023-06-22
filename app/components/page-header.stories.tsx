@@ -8,7 +8,7 @@ const meta: Meta<typeof PageHeader> = {
 	 */
 	title: "PageHeader",
 	component: PageHeader,
-	argTypes: {}
+	argTypes: {},
 };
 
 export default meta;
@@ -16,6 +16,6 @@ type Story = StoryObj<typeof PageHeader>;
 
 export const Card: Story = {
 	args: {
-		title: "Reusable Page Header"
-	}
+		title: "Reusable Page Header",
+	},
 };

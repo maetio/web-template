@@ -1,6 +1,11 @@
 import { auth } from "app/api/client/config";
-import { ActionCodeSettings, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink, signOut } from "firebase/auth";
-
+import {
+	ActionCodeSettings,
+	sendSignInLinkToEmail,
+	isSignInWithEmailLink,
+	signInWithEmailLink,
+	signOut,
+} from "firebase/auth";
 
 /**
  * Function will send the passwordless login email to the user's email
@@ -14,15 +19,17 @@ export async function sendPasswordlessLoginEmail(email: string): Promise<void> {
 		handleCodeInApp: true,
 		// dynamicLinkDomain: process.env.NEXT_PUBLIC_DYNAMIC_LINKS_DOMAIN,
 		// URL must be whitelisted in the Firebase Console.
-		url: process.env.NEXT_PUBLIC_DYNAMIC_LINK || "http://localhost:3000/home",
+		url:
+			process.env.NEXT_PUBLIC_DYNAMIC_LINK ||
+			"http://localhost:3000/home",
 		iOS: {
-			bundleId: "io.maet.mobile"
+			bundleId: "io.maet.mobile",
 		},
 		android: {
 			packageName: "io.maet.mobile",
-			installApp: true
+			installApp: true,
 			// minimumVersion: '8',
-		}
+		},
 	};
 	console.log(actionCodeSettings);
 	return sendSignInLinkToEmail(auth, email, actionCodeSettings);

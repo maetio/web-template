@@ -1,7 +1,7 @@
 import {
 	MilitaryTech,
 	TrendingUp,
-	TrendingUpOutlined
+	TrendingUpOutlined,
 } from "@mui/icons-material";
 import { Avatar, ButtonBase, Grid, Typography } from "@mui/material";
 import React from "react";
@@ -16,17 +16,15 @@ export interface PlayerCardProps {
 	change: RatingChange;
 }
 
-
-
-export /** 
+export /**
  * Card that renders the initial player data
  *
  * @param {*} {
  *		PlayerCardProps
  *	}
  *  @return {*}
- * 
-*/
+ *
+ */
 const PlayerCard = (props: PlayerCardProps) => {
 	return (
 		<Grid
@@ -41,7 +39,7 @@ const PlayerCard = (props: PlayerCardProps) => {
 				borderColor: "#f5f5f4",
 				display: "inline-flex",
 				mt: 1,
-				height: 100
+				height: 100,
 			}}
 		>
 			<Grid

@@ -7,14 +7,12 @@ const meta: Meta<typeof ViewCompetition> = {
 	 * to learn how to generate automatic titles
 	 */
 	title: "ViewCompetition",
-	component: ViewCompetition
+	component: ViewCompetition,
 };
 
 export default meta;
 type Story = StoryObj<typeof ViewCompetition>;
 
 export const Primary: Story = {
-	render: () => (
-		<div></div>
-	)
+	render: () => <div></div>,
 };

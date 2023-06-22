@@ -3,7 +3,7 @@ import {
 	SportsBasketball,
 	SportsSoccer,
 	SportsTennis,
-	SportsVolleyball
+	SportsVolleyball,
 } from "@mui/icons-material";
 import { Box, ButtonBase, Grid, Typography } from "@mui/material";
 import { orange } from "@mui/material/colors";
@@ -19,11 +19,9 @@ export interface CompetitionCardProps {
 	sport?: Sports;
 }
 
-
-
 // eslint-disable-next-line @typescript-eslint/no-shadow
 
-export /** 
+export /**
  * Card that renders the initial competition data
  *
  * @param {*} {
@@ -31,8 +29,8 @@ export /**
  *		competition,
  *	}
  *  @return {*}
- * 
-*/ 
+ *
+ */
 const CompetitionCard: React.FC<CompetitionCardProps> = (props) => {
 	return (
 		<Grid
@@ -47,7 +45,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = (props) => {
 				borderColor: "#f5f5f4",
 				display: "inline-flex",
 				mt: 1,
-				height: 100
+				height: 100,
 			}}
 		>
 			<Grid
@@ -65,7 +63,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = (props) => {
 						borderRadius: 1,
 						borderColor: "#f5f5f4",
 						backgroundColor: "purple",
-						m: 1
+						m: 1,
 					}}
 				></ButtonBase>
 			</Grid>
@@ -83,7 +81,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = (props) => {
 					container
 					xs={6}
 					sx={{
-						display: "flex"
+						display: "flex",
 					}}
 				>
 					<SportsBasketball

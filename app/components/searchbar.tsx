@@ -1,11 +1,9 @@
 import React from "react";
 
-type Props = {}
+type Props = {};
 
 const SearchBar = (props: Props) => {
-	return (
-		<div>SearchBar</div>
-	);
+	return <div>SearchBar</div>;
 };
 
 export default SearchBar;

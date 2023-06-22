@@ -1,10 +1,7 @@
 import React from "react";
 
-type Props = {}
+type Props = {};
 
 export const TeamSearchBar = (props: Props) => {
-	return (
-		<div>TeamSearchBar</div>
-	);
+	return <div>TeamSearchBar</div>;
 };
-

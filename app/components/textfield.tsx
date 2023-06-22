@@ -1,10 +1,7 @@
 import React from "react";
 
-type Props = {}
+type Props = {};
 
 export const TextField = (props: Props) => {
-	return (
-		<div>TextField</div>
-	);
+	return <div>TextField</div>;
 };
-

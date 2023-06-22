@@ -1,7 +1,7 @@
 import { initFirestore } from "@next-auth/firebase-adapter";
 import {
 	CollectionDataTypes,
-	SubcollectionDataTypes
+	SubcollectionDataTypes,
 } from "app/types/firebase";
 import { cert } from "firebase-admin/app";
 import {
@@ -9,7 +9,7 @@ import {
 	DocumentData,
 	FirestoreDataConverter,
 	Query,
-	QueryDocumentSnapshot
+	QueryDocumentSnapshot,
 } from "firebase-admin/firestore";
 
 /**
@@ -21,8 +21,8 @@ export const firestore = initFirestore({
 	credential: cert({
 		projectId: process.env.FIREBASE_PROJECT_ID,
 		clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-		privateKey: process.env.FIREBASE_PRIVATE_KEY
-	})
+		privateKey: process.env.FIREBASE_PRIVATE_KEY,
+	}),
 });
 
 /**
@@ -32,7 +32,7 @@ export const firestore = initFirestore({
  */
 const genericConverter = <T>() => ({
 	toFirestore: (inputData: T) => inputData,
-	fromFirestore: (snapshot: QueryDocumentSnapshot): T => snapshot.data() as T
+	fromFirestore: (snapshot: QueryDocumentSnapshot): T => snapshot.data() as T,
 });
 
 /**

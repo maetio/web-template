@@ -12,9 +12,7 @@ import { useUpdatePrivateUserData } from "app/api/client/hooks/user-api";
 import { EditProfileSchemaType, editProfileSchema } from "app/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-
-export
-/**
+export /**
  * Will have the home screen render
  *
  * @return {*}
@@ -27,44 +25,42 @@ const Home = () => {
 	useEffect(() => {
 		signInWithLink(user.email, window.location.href);
 	}, [user.email]);
-		
+
 	// get the auth context
 	const userContext = useAuthContext();
 
-	const [{ isLoading, isSuccess, error }, updateData] = useUpdatePrivateUserData();
-
+	const [{ isLoading, isSuccess, error }, updateData] =
+		useUpdatePrivateUserData();
 
 	// set up react hook form that will take user firstName and lastName as inputs
 	const { register, handleSubmit, reset } = useForm({
 		defaultValues: {
 			firstName: "",
-			lastName: ""
+			lastName: "",
 		},
-		resolver: yupResolver(editProfileSchema)
+		resolver: yupResolver(editProfileSchema),
 	});
-		
+
 	// asynchronous function that handles updates to private user data (on click of form submission button)
-	 const handleUpdatePrivateUserData = async ({firstName, lastName}: EditProfileSchemaType) => {
-		
+	const handleUpdatePrivateUserData = async ({
+		firstName,
+		lastName,
+	}: EditProfileSchemaType) => {
 		const userData = {
 			firstName,
 			lastName,
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			id: userContext!.uid
+			id: userContext!.uid,
 		};
 
 		await updateData(userData);
-		if(isSuccess) {
+		if (isSuccess) {
 			console.log("Private user data successfully mutated");
-		}
-		else {
+		} else {
 			console.log("Mutation request failed");
 		}
 		reset();
 	};
-
-
-
 
 	return (
 		<form onSubmit={handleSubmit(handleUpdatePrivateUserData)}>
@@ -81,9 +77,18 @@ const Home = () => {
 						? `You are logged in as ${userContext?.email}.`
 						: "You are not logged in."}
 				</Typography>
-				<TextField {...register("firstName", { required: true })} sx={{m: 3}} label="First Name"></TextField>
-				<TextField {...register("lastName", { required: true })} label="Last Name"></TextField>
-				<Button variant="outlined" type="submit" sx={{m: 2}}>Submit</Button>
+				<TextField
+					{...register("firstName", { required: true })}
+					sx={{ m: 3 }}
+					label="First Name"
+				></TextField>
+				<TextField
+					{...register("lastName", { required: true })}
+					label="Last Name"
+				></TextField>
+				<Button variant="outlined" type="submit" sx={{ m: 2 }}>
+					Submit
+				</Button>
 
 				<SignOutButton />
 			</Grid>
