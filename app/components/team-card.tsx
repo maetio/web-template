@@ -9,17 +9,14 @@ import MaetIcon from "./maet-icon";
 
 export interface TeamCardProps  {
 	name: string;
-	location: string;
-	position: number;
-	medalColor?: string;
 	score: number;
-	change: ScoreChange;
 }
 
-export interface ScoreChange {
+/* export interface ScoreChange {
 	color: string;
 	magnitude: number;
 }
+*/
 export /** 
  * Card that renders the initial team data
  *
@@ -36,9 +33,7 @@ export /**
 			justifyContent="flex-start"
 			alignItems="center"
 			sx={{
-				backgroundColor: "#f5f5f4",
-				border: 1,
-				borderRadius: 2,
+				borderBottom: 1,
 				borderColor: "#f5f5f4",
 				display: "inline-flex",
 				mt: 1,
@@ -71,7 +66,6 @@ export /**
 				></ButtonBase>
 			</Grid>
 			<Grid item container xs={3} direction="column">
-				<Typography>South Bend</Typography>
 				<Typography sx={{ fontWeight: 700 }}>Hotshots</Typography>
 			</Grid>
 			<Grid
@@ -94,21 +88,6 @@ export /**
 					<MaetIcon sx={{ mr: 0.5 }}></MaetIcon>
 					<Typography sx={{ fontWeight: 700, mr: 0.5 }}>
 						906
-					</Typography>
-				</Grid>
-				<Grid
-					container
-					item
-					xs={4}
-					direction="row"
-					alignItems="flex-end"
-					justifyContent="flex-end"
-				>
-					<TrendingUp
-						sx={{ color: "green", fontSize: 20, mr: 0.5 }}
-					></TrendingUp>
-					<Typography sx={{ color: "green", mr: 0.5 }}>
-						+218
 					</Typography>
 				</Grid>
 			</Grid>
