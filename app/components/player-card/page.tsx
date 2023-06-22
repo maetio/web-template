@@ -1,6 +1,5 @@
 
 import React from "react";
-import { RatingChange } from "app/types";
 import { Avatar, ButtonBase, Grid, Typography } from "../mui-server-components";
 import { MaetIcon } from "../maet-icon";
 
@@ -60,3 +59,4 @@ const PlayerCard = (props: PlayerCardProps) => {
 	);
 };
 
+export default PlayerCard;

@@ -21,7 +21,7 @@ export /**
  *  @return {*}
  *
  */
-const CompetitionCard: React.FC<CompetitionCardProps> = (props) => {
+const CompetitionCard = (props: CompetitionCardProps) => {
 	return (
 		<Grid
 			container
@@ -88,3 +88,5 @@ const CompetitionCard: React.FC<CompetitionCardProps> = (props) => {
 		</Grid>
 	);
 };
+
+export default CompetitionCard;
