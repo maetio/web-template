@@ -11,5 +11,3 @@
  *
  */
 export * from "@mui/material";
-
-export const autocompleter = 0;
