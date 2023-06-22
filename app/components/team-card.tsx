@@ -1,7 +1,7 @@
+"use client";
+
 import {
 	MilitaryTech,
-	TrendingUp,
-	TrendingUpOutlined
 } from "@mui/icons-material";
 import { Box, ButtonBase, Grid, Typography } from "@mui/material";
 import React from "react";

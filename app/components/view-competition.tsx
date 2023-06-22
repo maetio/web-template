@@ -30,9 +30,6 @@ const ViewCompetition = async (props: ViewCompetitionProps) => {
 		<Grid container direction="row" justifyContent="flex-start" spacing={2}>
 			<Grid container item xs={4} direction="column" spacing={1}>
 				<PageHeader title="Competitions" />
-				{data.docs.map((item) => (
-					<CompetitionCard key={item.id} />
-				))}
 			</Grid>
 			<Grid container item xs={4} spacing={1} direction="column">
 				<PageHeader title="Teams" />
