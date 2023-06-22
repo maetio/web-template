@@ -16,13 +16,7 @@ type Story = StoryObj<typeof PlayerCard>;
 
 export const Card: Story = {
 	args: {
-		name: "Jay Boog",
-		position: 1,
-		medalColor: "gold",
-		score: 600,
-		change: {
-			color: "green",
-			magnitude: 50,
-		},
+		name: "Player Name",
+		score: 99
 	},
 };
