@@ -38,19 +38,12 @@ export /**
 				height: 100,
 			}}
 		>
-			<Grid
-				item
-				container
-				xs={2}
-				direction="row"
+			<Grid 
+				item 
+				container 
+				xs={4}
 				alignItems="center"
-				justifyContent="center"
-				display="flex"
 			>
-				<MilitaryTech sx={{ color: "gold" }}></MilitaryTech>
-				<Typography sx={{ fontWeight: 700 }}>1</Typography>
-			</Grid>
-			<Grid item container xs={4}>
 				<ButtonBase
 					sx={{
 						width: 70,
@@ -62,9 +55,10 @@ export /**
 						m: 1,
 					}}
 				></ButtonBase>
+				<Typography sx={{ fontWeight: 700 }}>Hotshots</Typography>
 			</Grid>
 			<Grid item container xs={3} direction="column">
-				<Typography sx={{ fontWeight: 700 }}>Hotshots</Typography>
+				
 			</Grid>
 			<Grid
 				item
