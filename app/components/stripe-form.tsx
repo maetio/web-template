@@ -62,4 +62,4 @@ const StripeForm = () => {
 	);
 };
 
-export default CheckoutButton;
+export default StripeForm;
