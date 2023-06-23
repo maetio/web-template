@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { TeamSearchBar } from "./tsb/team-search-bar";
+import { TeamSearchBar } from "./tsb/page";
 
 const meta: Meta<typeof TeamSearchBar> = {
 	/* 👇 The title prop is optional.
