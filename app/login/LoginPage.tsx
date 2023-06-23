@@ -8,7 +8,6 @@ import { useFirebaseAuth } from "../../auth/firebase";
 import { clientConfig } from "../../config/client-config";
 import { getGoogleProvider, loginWithProvider } from "./firebase";
 import { useAuth } from "../../auth/hooks";
-import styles from "./login.module.css";
 
 export function LoginPage() {
 	const router = useRouter();
@@ -37,10 +36,10 @@ export function LoginPage() {
 	});
 
 	return (
-		<div className={styles.page}>
+		<div>
 			<h2>next-firebase-auth-edge example login page</h2>
 			{!tenant && !isLoading && !hasLogged && (
-				<div className={styles.info}>
+				<div>
 					<p>
 						No user found. Singing in as anonymous...{" "}
 						<CircularProgress />
@@ -56,7 +55,7 @@ export function LoginPage() {
 				</Button>
 			)}
 			{hasLogged && (
-				<div className={styles.info}>
+				<div>
 					<p>
 						Redirecting to{" "}
 						<strong>{params?.get("redirect") || "/"}</strong>{" "}
