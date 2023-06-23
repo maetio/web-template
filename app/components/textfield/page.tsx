@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "../mui-server-components";
+import { Typography, Grid, TextField } from "../mui-server-components";
 
 type TextFieldProps = {};
 
@@ -9,10 +9,15 @@ export /**
  * @param {TextFieldProps} props 
  * @returns 
  */
-const  TextField = (props: TextFieldProps) => {
+const InputField = (props: TextFieldProps) => {
 	return(
-		<Box sx={{backgroundColor: "#FAFAFA", border: 1, borderColor: "#D9D9D9", borderRadius: 15}}>
-			<Typography>Input Field</Typography>
-		</Box>
+		<Grid
+			container 
+			alignItems="center"
+			sx={{backgroundColor: "#D9D9D9", border: 1, borderColor: "#D9D9D9", borderRadius: 2, m: 2, height: 70}}>
+			<TextField sx={{fontWeight: 700, ml: 2}}>Input Field</TextField>
+		</Grid>
 	) ;
 };
+
+export default InputField;

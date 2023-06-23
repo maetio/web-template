@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { TextField } from "app/components/textfield/page";
+import { InputField} from "app/components/textfield/page";
 
-const meta: Meta<typeof TextField> = {
+const meta: Meta<typeof InputField> = {
 	/* 👇 The title prop is optional.
 	 * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
 	 * to learn how to generate automatic titles
 	 */
-	title: "TextField",
-	component: TextField,
+	title: "InputField",
+	component: InputField,
 	argTypes: {},
 };
 
 export default meta;
-type Story = StoryObj<typeof TextField>;
+type Story = StoryObj<typeof InputField>;
 
 export const Primary: Story = {
 	args: {},
