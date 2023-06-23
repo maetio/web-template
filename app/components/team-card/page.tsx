@@ -4,7 +4,7 @@ import { MaetIcon } from "../maet-icon";
 
 export interface TeamCardProps {
 	name: string;
-	image: string;
+	image?: string;
 	score: number;
 }
 
@@ -33,10 +33,17 @@ export /**
 				borderColor: "#f5f5f4",
 				display: "inline-flex",
 				mt: 1,
-				height: 100,
+				height: 60,
+				width: 480
 			}}
 		>
-			<Grid item container xs={4} alignItems="center">
+			<Grid 
+				item 
+				container 
+				xs={6} 
+				alignItems="center"
+				direction="row"
+			>
 				<Box
 					sx={{
 						ml: 2,
@@ -55,7 +62,7 @@ export /**
 			<Grid
 				item
 				container
-				xs={8}
+				xs={6}
 				direction="row"
 				alignItems="flex-end"
 				justifyContent="flex-end"
