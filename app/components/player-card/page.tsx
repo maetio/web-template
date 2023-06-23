@@ -39,7 +39,7 @@ const PlayerCard = (props: PlayerCardProps) => {
 				xs={4}
 				alignItems="center"
 			>
-				<Avatar></Avatar>
+				<Avatar sx={{ml: 2}}></Avatar>
 				<Typography sx={{ fontWeight: 700, ml: 2 }}>{props.name}</Typography>
 			</Grid>
 			<Grid
