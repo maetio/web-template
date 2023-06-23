@@ -1,5 +1,6 @@
 "use client";
 
+import { Cancel } from "@mui/icons-material";
 import { InputField } from "app/components/input-field/page";
 import {
 	Box,
@@ -21,6 +22,7 @@ const JoinTeam = (props: Props) => {
 			alignItems="center"
 			justifyContent="center"
 		>
+
 			<Grid
 				sx={{
 					width: 1000,
@@ -32,10 +34,27 @@ const JoinTeam = (props: Props) => {
 				}}
 				container
 			>
-				<Grid container direction="column" alignItems="center">
+				<Grid
+					container
+					direction="row"
+					justifyContent="flex-end"
+					alignItems="flex-end"
+					sx={{
+						width: 900
+					}}
+					
+				>
+					<Cancel></Cancel>
+				</Grid>
+				<Grid 
+					container 
+					direction="column" 
+					alignItems="center"
+					item
+				>
 					<Box
 						sx={{
-							mt: 4,
+							mb: 1,
 							backgroundImage:
 								"linear-gradient(180deg, #908EEA 0%, #BEFBE5 100%)",
 							width: 250,
@@ -54,7 +73,7 @@ const JoinTeam = (props: Props) => {
 					<Grid
 						container
 						direction="column"
-						sx={{ mt: 1, mb: 4, width: 360 }}
+						sx={{ mt: 1, mb: 3, width: 360 }}
 					>
 						<PlayerCard name="Player Name" score={99} />
 						<PlayerCard name="Player Name" score={99} />
