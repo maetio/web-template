@@ -42,17 +42,9 @@ export /**
 				xs={4}
 				alignItems="center"
 			>
-				<ButtonBase
-					sx={{
-						width: 70,
-						height: 70,
-						border: 1,
-						borderRadius: 1,
-						borderColor: "#f5f5f4",
-						backgroundColor: "purple",
-						ml: 2
-					}}
-				></ButtonBase>
+				<Box sx={{ml: 2, backgroundImage: props.image || "linear-gradient(207deg, #EAE68E 13.76%, #FBBEBE 60.61%, #BEE1FB 100%);", 
+					borderRadius: 2, width: 40, height: 41}}>
+				</Box>
 				<Typography sx={{ fontWeight: 700, ml: 2 }}>{props.name}</Typography>
 			</Grid>
 			<Grid

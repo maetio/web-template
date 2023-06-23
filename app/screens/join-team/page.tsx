@@ -39,9 +39,15 @@ const JoinTeam = (props: Props) => {
 					</Typography>
 					<InputField label="Enter Team Passcode"></InputField>
 					<Typography>Team Roster</Typography>
-					<Box sx={{m: 2}}>
+					<Grid 
+						container
+						direction="column"
+						sx={{m: 2, width: 360}}
+					>
 						<PlayerCard name="Player Name" score={99} />
-					</Box>
+						<PlayerCard name="Player Name" score={99} />
+						<PlayerCard name="Player Name" score={99} />
+					</Grid>
 					<SubmitButton title="Join Team" color="#818CF8"></SubmitButton>   
 				</Grid>
 			</Grid>
