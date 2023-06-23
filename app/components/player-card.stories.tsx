@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import  { PlayerCard } from "./player-card/page";
+import { PlayerCard } from "./player-card/page";
 
 const meta: Meta<typeof PlayerCard> = {
 	/* 👇 The title prop is optional.
@@ -17,6 +17,6 @@ type Story = StoryObj<typeof PlayerCard>;
 export const Card: Story = {
 	args: {
 		name: "Player Name",
-		score: 99
+		score: 99,
 	},
 };

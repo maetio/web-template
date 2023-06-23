@@ -1,6 +1,11 @@
-
 import React from "react";
-import { Avatar, Box, ButtonBase, Grid, Typography } from "../mui-server-components";
+import {
+	Avatar,
+	Box,
+	ButtonBase,
+	Grid,
+	Typography,
+} from "../mui-server-components";
 import { MaetIcon } from "../maet-icon";
 
 export interface PlayerCardProps {
@@ -31,17 +36,24 @@ const PlayerCard = (props: PlayerCardProps) => {
 				display: "inline-flex",
 				mt: 1,
 				height: 60,
-				width: 377
+				width: 377,
 			}}
 		>
-			<Grid 
-				item 
-				container 
-				xs={6}
-				alignItems="center"
-			>
-				<Box sx={{ml: 2, backgroundImage: props.image || "linear-gradient(207deg, #EAE68E 13.76%, #FBBEBE 60.61%, #BEE1FB 100%);", borderRadius: "50%", width: 40, height: 41}}></Box>
-				<Typography sx={{ fontWeight: 700, ml: 2 }}>{props.name}</Typography>
+			<Grid item container xs={6} alignItems="center">
+				<Box
+					sx={{
+						ml: 2,
+						backgroundImage:
+							props.image ||
+							"linear-gradient(207deg, #EAE68E 13.76%, #FBBEBE 60.61%, #BEE1FB 100%);",
+						borderRadius: "50%",
+						width: 40,
+						height: 41,
+					}}
+				></Box>
+				<Typography sx={{ fontWeight: 700, ml: 2 }}>
+					{props.name}
+				</Typography>
 			</Grid>
 			<Grid
 				item

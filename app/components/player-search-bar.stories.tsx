@@ -15,5 +15,5 @@ export default meta;
 type Story = StoryObj<typeof PlayerSearchBar>;
 
 export const Card: Story = {
-	args: {}
+	args: {},
 };

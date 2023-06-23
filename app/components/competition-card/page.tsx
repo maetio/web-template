@@ -73,8 +73,7 @@ const CompetitionCard = (props: CompetitionCardProps) => {
 					sx={{
 						display: "flex",
 					}}
-				>
-				</Grid>
+				></Grid>
 				<Grid
 					item
 					container
@@ -82,8 +81,7 @@ const CompetitionCard = (props: CompetitionCardProps) => {
 					alignItems="flex-end"
 					display="flex"
 					xs={6}
-				>
-				</Grid>
+				></Grid>
 			</Grid>
 		</Grid>
 	);

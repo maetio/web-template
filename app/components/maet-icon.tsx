@@ -2,7 +2,6 @@ import React from "react";
 import { SvgIcon, SvgIconProps } from "./mui-server-components";
 
 export const MaetIcon: React.FC<SvgIconProps> = (props) => {
-	
 	return (
 		<SvgIcon viewBox="0 0 1500.000000 1500.000000" {...props}>
 			<path
@@ -16,4 +15,3 @@ export const MaetIcon: React.FC<SvgIconProps> = (props) => {
 		</SvgIcon>
 	);
 };
-

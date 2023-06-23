@@ -11,20 +11,35 @@ type SearchBarProps = {
 
 /**
  * Search bar "input field" to be used for larger team and player search bar components
- * 
- * @param {SearchBarProps} props 
- * @returns 
+ *
+ * @param {SearchBarProps} props
+ * @returns
  */
 const SearchBar = (props: SearchBarProps) => {
-	return(
-		<TextField 
+	return (
+		<TextField
 			color="primary"
-			label={props.label || "Search"} 
-			sx={{ fieldset: { border: 1, borderRadius: 3,  borderColor: "#D9D9D9" }, mt: 2, ml: 2, backgroundColor: "#f5f5f5", width: 390, borderRadius: 3 }}
+			label={props.label || "Search"}
+			sx={{
+				fieldset: {
+					border: 1,
+					borderRadius: 3,
+					borderColor: "#D9D9D9",
+				},
+				mt: 2,
+				ml: 2,
+				backgroundColor: "#f5f5f5",
+				width: 390,
+				borderRadius: 3,
+			}}
 			InputProps={{
-				endAdornment: <InputAdornment position="end">
-					<Search sx={{stroke: "#404040", strokeWidth: 2}}></Search>
-				</InputAdornment>
+				endAdornment: (
+					<InputAdornment position="end">
+						<Search
+							sx={{ stroke: "#404040", strokeWidth: 2 }}
+						></Search>
+					</InputAdornment>
+				),
 			}}
 		></TextField>
 	);

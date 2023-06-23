@@ -8,8 +8,8 @@ import { useRouter } from "next/navigation";
 
 export /**
  * Button to sign out user
- * 
- * @returns 
+ *
+ * @returns
  */
 const SignOutButton: React.FC<{}> = () => {
 	// state used to detect if email sent

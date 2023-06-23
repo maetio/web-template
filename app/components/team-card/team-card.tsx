@@ -36,16 +36,21 @@ export /**
 				height: 100,
 			}}
 		>
-			<Grid 
-				item 
-				container 
-				xs={4}
-				alignItems="center"
-			>
-				<Box sx={{ml: 2, backgroundImage: props.image || "linear-gradient(207deg, #EAE68E 13.76%, #FBBEBE 60.61%, #BEE1FB 100%);", 
-					borderRadius: 2, width: 40, height: 41}}>
-				</Box>
-				<Typography sx={{ fontWeight: 700, ml: 2 }}>{props.name}</Typography>
+			<Grid item container xs={4} alignItems="center">
+				<Box
+					sx={{
+						ml: 2,
+						backgroundImage:
+							props.image ||
+							"linear-gradient(207deg, #EAE68E 13.76%, #FBBEBE 60.61%, #BEE1FB 100%);",
+						borderRadius: 2,
+						width: 40,
+						height: 41,
+					}}
+				></Box>
+				<Typography sx={{ fontWeight: 700, ml: 2 }}>
+					{props.name}
+				</Typography>
 			</Grid>
 			<Grid
 				item
