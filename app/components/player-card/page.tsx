@@ -36,7 +36,7 @@ const PlayerCard = (props: PlayerCardProps) => {
 				display: "inline-flex",
 				mt: 1,
 				height: 60,
-				width: 377,
+				width: 480,
 			}}
 		>
 			<Grid item container xs={6} alignItems="center">

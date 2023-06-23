@@ -73,7 +73,7 @@ const JoinTeam = (props: Props) => {
 					<Grid
 						container
 						direction="column"
-						sx={{ mt: 1, mb: 3, width: 360 }}
+						sx={{ mt: 1, mb: 3, width: 480 }}
 					>
 						<PlayerCard name="Player Name" score={99} />
 						<PlayerCard name="Player Name" score={99} />
