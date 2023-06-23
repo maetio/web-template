@@ -16,7 +16,7 @@ const TeamSearchBar = (props: TeamSearchBarProps) => {
 		<Grid
 			container
 			direction="column"
-			sx={{width: 480, height: 1200, borderRadius: 4, borderColor: "#D9D9D9"}}
+			sx={{width: 480, height: 283, border: 1, borderRadius: 4, borderColor: "#D9D9D9"}}
 		>
 			<Grid
 				container

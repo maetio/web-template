@@ -26,8 +26,6 @@ const SearchBar = (props: SearchBarProps) => {
 					borderRadius: 3,
 					borderColor: "#D9D9D9",
 				},
-				mt: 2,
-				ml: 2,
 				backgroundColor: "#f5f5f5",
 				width: 480,
 				borderRadius: 3,
