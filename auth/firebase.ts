@@ -8,7 +8,7 @@ const getFirebaseApp = async (options: FirebaseOptions) => {
 	) as FirebaseApp;
 };
 
-const getAuth = async (options: FirebaseOptions) => {
+const getAuthApp = async (options: FirebaseOptions) => {
 	const app = await getFirebaseApp(options);
 	const { getAuth } = await import("firebase/auth");
 
@@ -17,7 +17,7 @@ const getAuth = async (options: FirebaseOptions) => {
 
 export const useFirebaseAuth = (options: FirebaseOptions) => {
 	const getFirebaseAuth = async () => {
-		return getAuth(options);
+		return getAuthApp(options);
 	};
 
 	return { getFirebaseAuth };
