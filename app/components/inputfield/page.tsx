@@ -16,12 +16,7 @@ const InputField = (props: TextFieldProps) => {
 	return(
 		<TextField 
 			label={props.label || "Input Field"} 
-			sx={{ fieldset: { border: 1, borderRadius: 2,  borderColor: "#D9D9D9" }, mt: 2, ml: 2, backgroundColor: "#f5f5f5" }}
-			InputProps={{
-				startAdornment: <InputAdornment position="end">
-					<Search></Search>
-				</InputAdornment>
-			}}
+			sx={{ fieldset: { border: 1, borderRadius: 3,  borderColor: "#D9D9D9" }, mt: 2, ml: 2, backgroundColor: "#f5f5f5", width: 390, borderRadius: 3 }}
 		></TextField>
 	);
 };

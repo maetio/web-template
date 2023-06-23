@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Search } from "@mui/icons-material";
-import { InputField } from "../textfield/page";
+import { InputField } from "../inputfield/page";
 import { InputAdornment, TextField } from "../mui-server-components";
 
 type SearchBarProps = {
@@ -18,11 +18,12 @@ type SearchBarProps = {
 const SearchBar = (props: SearchBarProps) => {
 	return(
 		<TextField 
+			color="primary"
 			label={props.label || "Search"} 
-			sx={{ fieldset: { border: 1, borderRadius: 2,  borderColor: "#D9D9D9" }, mt: 2, ml: 2, backgroundColor: "#f5f5f5" }}
+			sx={{ fieldset: { border: 1, borderRadius: 3,  borderColor: "#D9D9D9" }, mt: 2, ml: 2, backgroundColor: "#f5f5f5", width: 390, borderRadius: 3 }}
 			InputProps={{
-				startAdornment: <InputAdornment position="end">
-					<Search></Search>
+				endAdornment: <InputAdornment position="end">
+					<Search sx={{stroke: "#404040", strokeWidth: 2}}></Search>
 				</InputAdornment>
 			}}
 		></TextField>
