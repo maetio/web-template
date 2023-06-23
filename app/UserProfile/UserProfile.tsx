@@ -3,12 +3,12 @@
 import * as React from "react";
 import { useLoadingCallback } from "react-loading-hook";
 import { useRouter } from "next/navigation";
+import { Button, CircularProgress } from "@mui/material";
+import Image from "next/image";
 import { useAuth } from "../../auth/hooks";
 import styles from "./UserProfile.module.css";
 import { useFirebaseAuth } from "../../auth/firebase";
 import { clientConfig } from "../../config/client-config";
-import { Button } from "../../ui/button";
-import { LoadingIcon } from "../../ui/icons";
 
 export function UserProfile() {
 	const router = useRouter();
@@ -74,7 +74,7 @@ export function UserProfile() {
 		return (
 			<div className={styles.container}>
 				<h3 className={styles.title}>
-					You are being logged out... <LoadingIcon />
+					You are being logged out... <CircularProgress />
 				</h3>
 			</div>
 		);
@@ -89,39 +89,38 @@ export function UserProfile() {
 			<h3 className={styles.title}>You are logged in as</h3>
 			<div className={styles.content}>
 				<div className={styles.avatar}>
-					{tenant.photoUrl && <img src={tenant.photoUrl} />}
+					{tenant.photoUrl && (
+						<Image alt="user image" src={tenant.photoUrl} />
+					)}
 				</div>
 				<span>{tenant.email}</span>
 			</div>
 			<div className={styles.buttonGroup}>
-				<Button
-					loading={isClaimsLoading}
-					disabled={isClaimsLoading}
-					onClick={handleClaims}
-				>
-					Set custom user claims
+				<Button disabled={isClaimsLoading} onClick={handleClaims}>
+					{isClaimsLoading ? (
+						<CircularProgress />
+					) : (
+						"Set custom user claims"
+					)}
+				</Button>
+				<Button disabled={isRefreshLoading} onClick={handleRefresh}>
+					{isRefreshLoading ? <CircularProgress /> : "Refresh tokens"}
 				</Button>
 				<Button
-					loading={isRefreshLoading}
-					disabled={isRefreshLoading}
-					onClick={handleRefresh}
-				>
-					Refresh tokens
-				</Button>
-				<Button
-					loading={isUserCounterLoading}
 					disabled={isUserCounterLoading}
 					onClick={handleUserCounter}
 				>
-					Update user counter in database
+					{isUserCounterLoading ? (
+						<CircularProgress />
+					) : (
+						"Update user counter in database"
+					)}
 				</Button>
-				<Button
-					loading={isLogoutLoading}
-					disabled={isLogoutLoading}
-					onClick={handleLogout}
-				>
-					Log out
+
+				<Button disabled={isLogoutLoading} onClick={handleLogout}>
+					{isLogoutLoading ? <CircularProgress /> : "Log Out"}
 				</Button>
+
 				<Button onClick={handleRedirect}>Redirect</Button>
 			</div>
 		</div>
