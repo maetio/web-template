@@ -108,3 +108,8 @@ a {
 		color-scheme: dark;
 	}
 }
+
+.MuiInputLabel-root {
+	font-weight: 700 !important;
+  }
+  

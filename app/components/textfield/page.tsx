@@ -1,7 +1,9 @@
 import React from "react";
-import { Typography, Grid, TextField } from "../mui-server-components";
+import { Typography, Grid, TextField, FormControl, Input, OutlinedInput, InputLabel } from "../mui-server-components";
 
-type TextFieldProps = {};
+type TextFieldProps = {
+	label: string;
+};
 
 export /**
  * Reusable text field for user inputs
@@ -11,13 +13,8 @@ export /**
  */
 const InputField = (props: TextFieldProps) => {
 	return(
-		<Grid
-			container 
-			alignItems="center"
-			sx={{backgroundColor: "#D9D9D9", border: 1, borderColor: "#D9D9D9", borderRadius: 2, m: 2, height: 70}}>
-			<TextField sx={{fontWeight: 700, ml: 2}}>Input Field</TextField>
-		</Grid>
-	) ;
+		<TextField label={props.label || "Input Field"} sx={{ mt: 2, ml: 2, backgroundColor: "FAFAFA", borderColor: "#D9D9D9" }}></TextField>
+	);
 };
 
 export default InputField;
