@@ -1,4 +1,4 @@
-import { FirebaseApp, FirebaseOptions, getApp } from "@firebase/app";
+import { FirebaseApp, FirebaseOptions } from "@firebase/app";
 
 const getFirebaseApp = async (options: FirebaseOptions) => {
 	const { getApp, getApps, initializeApp } = await import("firebase/app");
