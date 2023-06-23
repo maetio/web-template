@@ -32,6 +32,7 @@ const CreateTeam = (props: CreateTeamProps) => {
 					backgroundColor: "#FAFAFA",
 				}}
 				container
+				alignItems="center"
 			>
 				<Grid
 					container

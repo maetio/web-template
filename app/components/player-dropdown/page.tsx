@@ -19,7 +19,7 @@ const PlayerDropdown = (props: PlayerDropdownProps) => {
 			container
 			direction="column"
 			alignItems="center"
-			sx={{pt: -1, width: 479, height: 250, border: 1, borderTop: 0, borderRadius: 3, borderColor: "#D9D9D9"}}
+			sx={{pt: -1, width: 480, height: 250, border: 1, borderTop: 0, borderRadius: 3, borderColor: "#D9D9D9"}}
 		>
 			<Grid
 				container
