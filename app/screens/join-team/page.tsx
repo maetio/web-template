@@ -1,3 +1,5 @@
+"use client";
+
 import { InputField } from "app/components/input-field/page";
 import {
 	Box,
