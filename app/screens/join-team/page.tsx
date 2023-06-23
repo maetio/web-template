@@ -1,4 +1,6 @@
-import { Grid, Typography } from "app/components/mui-server-components";
+import { InputField } from "app/components/input-field/page";
+import { Box, FormLabel, Grid, Typography } from "app/components/mui-server-components";
+import { PlayerCard } from "app/components/player-card/page";
 import { SubmitButton } from "app/components/submit-button/page";
 import React from "react";
 
@@ -21,15 +23,25 @@ const JoinTeam = (props: Props) => {
 					direction="column"
 					alignItems="center"
 				>
+					<Box
+						sx={{mt: 4, backgroundImage: "linear-gradient(180deg, #908EEA 0%, #BEFBE5 100%)", width: 250,
+							height: 250, borderRadius: 4}}>
+					</Box>
 					<Typography 
 						variant="h2" 
 						sx={{fontWeight: 700}}
 					>
                         Team Name
 					</Typography>
-					<Typography>
+					<Typography
+						variant="h6">
                         Contact the team captain for the team passcode
 					</Typography>
+					<InputField label="Enter Team Passcode"></InputField>
+					<Typography>Team Roster</Typography>
+					<Box sx={{m: 2}}>
+						<PlayerCard name="Player Name" score={99} />
+					</Box>
 					<SubmitButton title="Join Team" color="#818CF8"></SubmitButton>   
 				</Grid>
 			</Grid>
