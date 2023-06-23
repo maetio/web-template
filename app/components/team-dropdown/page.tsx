@@ -20,13 +20,15 @@ const TeamDropdown = (props: TeamDropdownProps) => {
 		<Grid
 			container
 			direction="column"
-			sx={{width: 480, height: 250, border: 1, borderRadius: 4, borderColor: "#D9D9D9"}}
+			justifyContent="flex-start"
+			sx={{width: 480, height: 250, border: 1, borderRadius: 3, borderColor: "#D9D9D9"}}
 		>
 			<Grid
 				container
 				item
 				xs={3}
 				direction="column"
+				justifyContent="flex-start"
 			>
 				<SearchBar label="Search or Create Team"/>
 			</Grid>

@@ -18,13 +18,15 @@ const PlayerDropdown = (props: PlayerDropdownProps) => {
 		<Grid
 			container
 			direction="column"
-			sx={{width: 480, height: 250, border: 1, borderRadius: 4, borderColor: "#D9D9D9"}}
+			alignItems="center"
+			sx={{pt: -1, width: 479, height: 250, border: 1, borderTop: 0, borderRadius: 3, borderColor: "#D9D9D9"}}
 		>
 			<Grid
 				container
 				item
 				xs={3}
 				direction="column"
+				alignItems="flex-start"
 			>
 				<SearchBar label="Search for Player"/>
 			</Grid>
