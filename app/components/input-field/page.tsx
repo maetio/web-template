@@ -35,7 +35,7 @@ const InputField = (props: TextFieldProps) => {
 				ml: 2,
 				mb: 2,
 				backgroundColor: "#f5f5f5",
-				width: 390,
+				width: 480,
 				borderRadius: 3,
 			}}
 		></TextField>
