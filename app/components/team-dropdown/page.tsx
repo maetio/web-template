@@ -1,44 +1,20 @@
 import React from "react";
-import SearchBar from "../search-bar/page";
+import Dropdown from "../search-bar/page";
 import { Grid } from "../mui-server-components";
 import { PlayerCard } from "../player-card/page";
 
-type TeamSearchBarProps = {};
+type TeamDropdownProps = {};
 
 /**
  * Search bar for finding teams
- * tsb = TeamSearchBar
- * @param {TeamSearchBarProps} props
+ * tsb = TeamDropdown
+ * @param {TeamDropdownProps} props
  * @returns
  */
-const TeamSearchBar = (props: TeamSearchBarProps) => {
+const TeamDropdown = (props: TeamDropdownProps) => {
 	return(
-		<Grid
-			container
-			direction="column"
-			sx={{width: 480, height: 283, border: 1, borderRadius: 4, borderColor: "#D9D9D9"}}
-		>
-			<Grid
-				container
-				item
-				xs={3}
-				direction="column"
-			>
-				<SearchBar label="Search for Player"/>
-			</Grid>
-			<Grid
-				container
-				item
-				xs={6}
-				direction="column"
-				justifyContent="flex-start"
-			>
-				<PlayerCard name="Player Name" score={99}/>
-				<PlayerCard name="Player Name" score={99}/>
-			</Grid>
-		</Grid>
-		
+		<div></div>
 	);
 };
 
-export default TeamSearchBar;
+export default TeamDropdown;

@@ -1,12 +1,12 @@
 import React from "react";
 import { Avatar, Chip } from "../mui-server-components";
 
-export interface TeamSearchBarChipProps {
+export interface TeamDropdownChipProps {
 	label: string;
 	image?: string;
 }
 
-const TeamSearchBarChip = (props: TeamSearchBarChipProps) => {
+const TeamDropdownChip = (props: TeamDropdownChipProps) => {
 	return (
 		<Chip
 			sx={{ backgroundColor: "#EEF2FF" }}
@@ -16,4 +16,4 @@ const TeamSearchBarChip = (props: TeamSearchBarChipProps) => {
 	);
 };
 
-export default TeamSearchBarChip;
+export default TeamDropdownChip;

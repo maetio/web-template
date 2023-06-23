@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import PlayerSearchBar from "./psb/player-search-bar";
+import PlayerSearchBar from "./player-dropdown/page";
 
 const meta: Meta<typeof PlayerSearchBar> = {
 	/* 👇 The title prop is optional.
