@@ -6,7 +6,7 @@ type PlayerSearchBarProps = {};
 
 /**
  * Search bar for finding players
- *
+ * psb = PlayerSearchBar
  * @param {PlayerSearchBarProps} props
  * @returns
  */
