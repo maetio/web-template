@@ -18,7 +18,8 @@ export const authConfig = {
 	cookieSerializeOptions: {
 		path: "/",
 		httpOnly: true,
-		secure: serverConfig.useSecureCookies, // Set this to true on HTTPS environments
+		// secure: serverConfig.useSecureCookies, // Set this to true on HTTPS environments
+		secure: false,
 		sameSite: "lax" as const,
 		maxAge: 12 * 60 * 60 * 24 * 1000, // twelve days
 	},
