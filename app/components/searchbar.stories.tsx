@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import SearchBar from "./searchbar/page";
+import SearchBar from "./search-bar/page";
 
 const meta: Meta<typeof SearchBar> = {
 	/* 👇 The title prop is optional.
