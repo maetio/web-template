@@ -2,15 +2,14 @@
 
 import { MuiProvider } from "app/components/providers/mui";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Nunito } from "next/font/google";
 import { AuthContextProvider } from "app/components/providers/auth-context";
 import RecoilRootProvider from "app/components/providers/recoil";
 import { ThemeProvider, createTheme, useMediaQuery } from "@mui/material";
 import React from "react";
 import getDesignTokens from "./theme";
 
-const inter = Inter({ subsets: ["latin"] });
-
+const inter = Nunito({ subsets: ["latin"] });
 // had to comment out metadata export for now because of "use client directive"
 
 /* export const metadata = {

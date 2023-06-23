@@ -24,7 +24,7 @@ const JoinTeam = (props: Props) => {
 			<Grid
 				sx={{
 					width: 1000,
-					height: 800,
+					height: 850,
 					border: 1,
 					borderColor: "#FAFAFA",
 					borderRadius: 30,
@@ -54,7 +54,7 @@ const JoinTeam = (props: Props) => {
 					<Grid
 						container
 						direction="column"
-						sx={{ m: 2, width: 360 }}
+						sx={{ mt: 1, mb: 4, width: 360 }}
 					>
 						<PlayerCard name="Player Name" score={99} />
 						<PlayerCard name="Player Name" score={99} />
