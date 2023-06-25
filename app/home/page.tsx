@@ -12,6 +12,9 @@ import { useUpdatePrivateUserData } from "app/api/client/hooks/user-api";
 import { EditProfileSchemaType, editProfileSchema } from "app/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
+import { UserProfile } from "app/UserProfile";
+import { mapFirebaseResponseToTenant } from "app/login/firebase";
+import { useAuth } from "../../auth/hooks";
 
 export /**
  * Will have the home screen render
@@ -22,13 +25,37 @@ const Home = () => {
 	// get user state
 	const user = useRecoilValue(UserState);
 
+	const { tenant } = useAuth();
+
 	// get the next router
 	const router = useRouter();
 
-	// use effect hook to sign in with email link
+	const handleLogin = async () => {
+		const userCred = await signInWithLink(user.email, window.location.href);
+		const idTokenResult = await userCred.user.getIdTokenResult();
+		const ten = await mapFirebaseResponseToTenant(
+			idTokenResult,
+			userCred.user
+		);
+		console.log("ten from login function", ten);
+		await fetch("/api/login", {
+			method: "GET",
+			headers: {
+				Authorization: `Bearer ${userCred}`,
+			},
+		});
+	};
+
 	useEffect(() => {
-		signInWithLink(user.email, window.location.href);
-	}, [user.email]);
+		handleLogin();
+	}, []);
+
+	// use effect hook to sign in with email link
+	useEffect(() => {}, [user.email]);
+
+	useEffect(() => {
+		console.log("tenant from UE", tenant);
+	}, [tenant]);
 
 	// get the auth context
 	const userContext = useAuthContext();
@@ -103,6 +130,7 @@ const Home = () => {
 				</Button>
 
 				<SignOutButton />
+				<UserProfile />
 			</Grid>
 		</form>
 	);

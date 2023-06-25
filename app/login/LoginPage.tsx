@@ -8,6 +8,7 @@ import { useFirebaseAuth } from "../../auth/firebase";
 import { clientConfig } from "../../config/client-config";
 import { getGoogleProvider, loginWithProvider } from "./firebase";
 import { useAuth } from "../../auth/hooks";
+import { EnterEmail } from "../loginT/enter-email";
 
 export function LoginPage() {
 	const router = useRouter();
@@ -46,6 +47,7 @@ export function LoginPage() {
 					</p>
 				</div>
 			)}
+			<EnterEmail />
 			{!hasLogged && (
 				<Button
 					disabled={isLoading || !tenant}

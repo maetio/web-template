@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { Button, CircularProgress } from "@mui/material";
 import Image from "next/image";
 import { useAuth } from "../../auth/hooks";
-import styles from "./UserProfile.module.css";
 import { useFirebaseAuth } from "../../auth/firebase";
 import { clientConfig } from "../../config/client-config";
 
@@ -72,8 +71,8 @@ export function UserProfile() {
 
 	if (!tenant && hasLoggedOut) {
 		return (
-			<div className={styles.container}>
-				<h3 className={styles.title}>
+			<div>
+				<h3>
 					You are being logged out... <CircularProgress />
 				</h3>
 			</div>
@@ -85,17 +84,17 @@ export function UserProfile() {
 	}
 
 	return (
-		<div className={styles.container}>
-			<h3 className={styles.title}>You are logged in as</h3>
-			<div className={styles.content}>
-				<div className={styles.avatar}>
+		<div>
+			<h3>You are logged in as</h3>
+			<div>
+				<div>
 					{tenant.photoUrl && (
 						<Image alt="user image" src={tenant.photoUrl} />
 					)}
 				</div>
 				<span>{tenant.email}</span>
 			</div>
-			<div className={styles.buttonGroup}>
+			<div>
 				<Button disabled={isClaimsLoading} onClick={handleClaims}>
 					{isClaimsLoading ? (
 						<CircularProgress />
