@@ -46,6 +46,12 @@ const Home = () => {
 		});
 	};
 
+	const handleAddCounter = async () => {
+		await fetch("/api/user-counters", {
+			method: "POST",
+		});
+	};
+
 	useEffect(() => {
 		handleLogin();
 	}, []);
@@ -128,6 +134,7 @@ const Home = () => {
 				>
 					Go to Stripe
 				</Button>
+				<Button onClick={handleAddCounter}>Add counter</Button>
 
 				<SignOutButton />
 				<UserProfile />
