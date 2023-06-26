@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
+export type ViewCompetitionProps = {};
 
-const ViewCompetition = (props: Props) => {
+export const ViewCompetition = (props: ViewCompetitionProps) => {
 	return (
 		<div>
 			<h1>View Competition</h1>

@@ -1,8 +1,8 @@
 import React from "react";
 
-type Props = {};
+export type ViewPlayerProps = {};
 
-const ViewPlayer = (props: Props) => {
+export const ViewPlayer = (props: ViewPlayerProps) => {
 	return (
 		<div>
 			<h1>View Player</h1>

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
+export type HostHomeProps = {};
 
-const HostHome = (props: Props) => {
+export const HostHome = (props: HostHomeProps) => {
 	return (
 		<div>
 			<h1>Host Home</h1>

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
+type UserRegistrationProps = {};
 
-const UserRegistration = (props: Props) => {
+export const UserRegistration = (props: UserRegistrationProps) => {
 	return (
 		<div>
 			<h1>User Registration</h1>

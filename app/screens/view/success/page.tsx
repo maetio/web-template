@@ -1,11 +1,9 @@
 import React from "react";
 
-type Props = {}
+export type SuccessProps = {};
 
-const Success = (props: Props) => {
-	return (
-		<div>Success</div>
-	);
+export const Success = (props: SuccessProps) => {
+	return <div>Success</div>;
 };
 
 export default Success;
