@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, ButtonBase, Grid, Typography } from "../../mui-server-components";
-import { MaetIcon } from "../../maet-icon";
+import { Box, ButtonBase, Grid, Typography } from "../../providers/mui-server-components";
+import { MaetIcon } from "../../icons/maet-icon";
 
 export interface TeamCardProps {
 	name: string;

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ControlPoint } from "@mui/icons-material";
-import { Grid, Typography } from "../../mui-server-components";
+import { Grid, Typography } from "../../providers/mui-server-components";
 import SearchBar from "../search-bar/page";
 import { TeamCard } from "../../cards/team-card/page";
 

@@ -9,7 +9,7 @@ import {
 	OutlinedInput,
 	InputLabel,
 	InputAdornment,
-} from "../../mui-server-components";
+} from "../../providers/mui-server-components";
 
 type TextFieldProps = {
 	label: string;

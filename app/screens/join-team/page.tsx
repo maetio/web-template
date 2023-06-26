@@ -7,7 +7,7 @@ import {
 	FormLabel,
 	Grid,
 	Typography,
-} from "app/components/mui-server-components";
+} from "app/components/providers/mui-server-components";
 import { PlayerCard } from "app/components/cards/player-card/page";
 import { SubmitButton } from "app/components/user-input/submit-button/page";
 import React from "react";

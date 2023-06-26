@@ -5,8 +5,8 @@ import {
 	ButtonBase,
 	Grid,
 	Typography,
-} from "../../mui-server-components";
-import { MaetIcon } from "../../maet-icon";
+} from "../../providers/mui-server-components";
+import { MaetIcon } from "../../icons/maet-icon";
 
 export interface PlayerCardProps {
 	name: string;

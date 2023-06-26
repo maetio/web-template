@@ -1,5 +1,5 @@
 import React from "react";
-import { SvgIcon, SvgIconProps } from "./mui-server-components";
+import { SvgIcon, SvgIconProps } from "../providers/mui-server-components";
 
 export const MaetIcon: React.FC<SvgIconProps> = (props) => {
 	return (

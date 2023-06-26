@@ -5,7 +5,7 @@ import { Button, Grid, TextField, Typography } from "@mui/material";
 import { signInWithLink } from "app/api/client/auth";
 import { useRecoilValue } from "recoil";
 import { UserState } from "app/recoil-store";
-import { SignOutButton } from "app/components/sign-out-button";
+import { SignOutButton } from "app/components/user-input/sign-out-button";
 import { useAuthContext } from "app/components/providers/auth-context";
 import { useForm } from "react-hook-form";
 import { useUpdatePrivateUserData } from "app/api/client/hooks/user-api";
