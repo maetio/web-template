@@ -22,10 +22,9 @@ const JoinCompetition = (props: JoinCompetitionProps) => {
 
 			<Grid
 				sx={{
-					width: 1100,
-					height: 850,
+					width: 600,
+					height: 950,
 					border: 1, 
-					borderColor: red
 				}}
 				container
 			>
@@ -34,6 +33,9 @@ const JoinCompetition = (props: JoinCompetitionProps) => {
 					direction="column" 
 					alignItems="center"
 					item
+					sx={{
+						width: 600
+					}}
 				>
 					<Box
 						sx={{
@@ -45,13 +47,17 @@ const JoinCompetition = (props: JoinCompetitionProps) => {
 						}}
 					></Box>
 					<Typography variant="h2" sx={{ fontWeight: 700, mb: 1 }}>{props.competitionName || "Competition Name"}</Typography>
-					<Typography>Description:</Typography>
 					<Grid
 						container
 						item
 						direction="column"
-						alignItems="flex-start"
+						alignItems="center"
+						sx={{
+							width: 520,
+							border: 1
+						}}
 					>
+						<Typography>Description:</Typography>
 					</Grid>
 					
 					<Grid
