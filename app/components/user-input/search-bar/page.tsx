@@ -3,7 +3,10 @@
 import React from "react";
 import { Search } from "@mui/icons-material";
 import { InputField } from "../input-field/page";
-import { InputAdornment, TextField } from "../../providers/mui-server-components";
+import {
+	InputAdornment,
+	TextField,
+} from "../../providers/mui-server-components";
 
 export type SearchBarProps = {
 	label: string;

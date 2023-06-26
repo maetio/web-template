@@ -6,12 +6,11 @@ import { Grid, Typography } from "../../providers/mui-server-components";
 import { SearchBar } from "../search-bar/page";
 import { TeamCard } from "../../cards/team-card/page";
 
-export interface TeamDropdownProps  {
-	name?: String
+export interface TeamDropdownProps {
+	name?: String;
 }
 
-export
-/**
+export /**
  * Search bar for finding teams
  * tsb = TeamDropdown
  * @param {TeamDropdownProps} props
@@ -19,12 +18,19 @@ export
  */
 
 const TeamDropdown = () => {
-	return(
+	return (
 		<Grid
 			container
 			direction="column"
 			justifyContent="flex-start"
-			sx={{width: 480, height: 250, border: 1, borderRadius: 3, borderTop: 0, borderColor: "#D9D9D9"}}
+			sx={{
+				width: 480,
+				height: 250,
+				border: 1,
+				borderRadius: 3,
+				borderTop: 0,
+				borderColor: "#D9D9D9",
+			}}
 		>
 			<Grid
 				container
@@ -34,7 +40,7 @@ const TeamDropdown = () => {
 				justifyContent="flex-start"
 				alignItems="flex-start"
 			>
-				<SearchBar label="Search or Create Team"/>
+				<SearchBar label="Search or Create Team" />
 			</Grid>
 			<Grid
 				container
@@ -43,16 +49,11 @@ const TeamDropdown = () => {
 				direction="column"
 				justifyContent="flex-start"
 			>
-				<TeamCard name="Team Name" score={99}/>
-				<TeamCard name="Team Name" score={99}/>
+				<TeamCard name="Team Name" score={99} />
+				<TeamCard name="Team Name" score={99} />
 			</Grid>
-			<Grid
-				container
-				item
-				xs={2}
-				direction="row"
-			>
-				<ControlPoint sx={{ ml: 3}}></ControlPoint>
+			<Grid container item xs={2} direction="row">
+				<ControlPoint sx={{ ml: 3 }}></ControlPoint>
 				<Typography sx={{ ml: 3 }}>Create New Team</Typography>
 			</Grid>
 		</Grid>

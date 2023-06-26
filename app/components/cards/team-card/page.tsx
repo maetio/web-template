@@ -1,5 +1,10 @@
 import React from "react";
-import { Box, ButtonBase, Grid, Typography } from "../../providers/mui-server-components";
+import {
+	Box,
+	ButtonBase,
+	Grid,
+	Typography,
+} from "../../providers/mui-server-components";
 import { MaetIcon } from "../../icons/maet-icon";
 
 export interface TeamCardProps {
@@ -34,16 +39,10 @@ export /**
 				display: "inline-flex",
 				mt: 1,
 				height: 60,
-				width: 480
+				width: 480,
 			}}
 		>
-			<Grid 
-				item 
-				container 
-				xs={6} 
-				alignItems="center"
-				direction="row"
-			>
+			<Grid item container xs={6} alignItems="center" direction="row">
 				<Box
 					sx={{
 						ml: 2,

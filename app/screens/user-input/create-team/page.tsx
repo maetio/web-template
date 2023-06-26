@@ -2,15 +2,19 @@
 
 import { Cancel, Panorama } from "@mui/icons-material";
 import { InputField } from "app/components/user-input/input-field/page";
-import { Box, Grid, Typography } from "app/components/providers/mui-server-components";
+import {
+	Box,
+	Grid,
+	Typography,
+} from "app/components/providers/mui-server-components";
 import { PlayerCard } from "app/components/cards/player-card/page";
-import PlayerDropdown from "app/components/user-input/player-dropdown/page";
+import { PlayerDropdown } from "app/components/user-input/player-dropdown/page";
 import { SubmitButton } from "app/components/user-input/submit-button/page";
 import React from "react";
 
 export interface CreateTeamProps {
-    name: string,
-    image?: string
+	name: string;
+	image?: string;
 }
 
 const CreateTeam = (props: CreateTeamProps) => {
@@ -21,7 +25,6 @@ const CreateTeam = (props: CreateTeamProps) => {
 			alignItems="center"
 			justifyContent="center"
 		>
-
 			<Grid
 				sx={{
 					width: 1100,
@@ -40,18 +43,12 @@ const CreateTeam = (props: CreateTeamProps) => {
 					justifyContent="flex-end"
 					alignItems="flex-end"
 					sx={{
-						width: 900
+						width: 900,
 					}}
-					
 				>
 					<Cancel></Cancel>
 				</Grid>
-				<Grid 
-					container 
-					direction="column" 
-					alignItems="center"
-					item
-				>
+				<Grid container direction="column" alignItems="center" item>
 					<Grid
 						container
 						direction="row"
@@ -65,7 +62,7 @@ const CreateTeam = (props: CreateTeamProps) => {
 							borderRadius: 4,
 						}}
 					>
-						<Panorama sx={{m: 1}}></Panorama>
+						<Panorama sx={{ m: 1 }}></Panorama>
 						<Typography>Upload a picture</Typography>
 					</Grid>
 					<InputField label="Team Name"></InputField>
@@ -75,7 +72,7 @@ const CreateTeam = (props: CreateTeamProps) => {
 						direction="column"
 						sx={{ mt: 1, mb: 3, width: 480 }}
 					>
-						<PlayerDropdown/>
+						<PlayerDropdown />
 					</Grid>
 					<SubmitButton
 						title="Create Team"

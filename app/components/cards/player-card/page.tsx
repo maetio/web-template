@@ -39,12 +39,7 @@ const PlayerCard = (props: PlayerCardProps) => {
 				width: 480,
 			}}
 		>
-			<Grid 
-				item 
-				container 
-				xs={6} 
-				alignItems="center"
-			>
+			<Grid item container xs={6} alignItems="center">
 				<Box
 					sx={{
 						ml: 2,

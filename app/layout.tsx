@@ -17,17 +17,16 @@ const nunito = Nunito({ subsets: ["latin"] });
 	description: "NextJS, Typescript, MUI, Firebase starter",
 }; */
 
-
-function CustomThemeProvider({children}: {children: React.ReactNode }) {
+function CustomThemeProvider({ children }: { children: React.ReactNode }) {
 	// for setting color mode
 	const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 	// Update the theme only if the mode changes
-	const theme = React.useMemo(() => createTheme(getDesignTokens(prefersDarkMode ? "dark" : "light")), [prefersDarkMode]);
+	const theme = React.useMemo(
+		() => createTheme(getDesignTokens(prefersDarkMode ? "dark" : "light")),
+		[prefersDarkMode]
+	);
 	return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }
-
-
-
 
 export default function RootLayout({
 	children,

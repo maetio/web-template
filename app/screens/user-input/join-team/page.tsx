@@ -13,8 +13,8 @@ import { SubmitButton } from "app/components/user-input/submit-button/page";
 import React from "react";
 
 type JoinTeamProps = {
-    image?: string
-    teamName: string
+	image?: string;
+	teamName: string;
 };
 
 const JoinTeam = (props: JoinTeamProps) => {
@@ -25,7 +25,6 @@ const JoinTeam = (props: JoinTeamProps) => {
 			alignItems="center"
 			justifyContent="center"
 		>
-
 			<Grid
 				sx={{
 					width: 1100,
@@ -43,23 +42,18 @@ const JoinTeam = (props: JoinTeamProps) => {
 					justifyContent="flex-end"
 					alignItems="flex-end"
 					sx={{
-						width: 1000
+						width: 1000,
 					}}
-					
 				>
 					<Cancel></Cancel>
 				</Grid>
-				<Grid 
-					container 
-					direction="column" 
-					alignItems="center"
-					item
-				>
+				<Grid container direction="column" alignItems="center" item>
 					<Box
 						sx={{
 							mb: 1,
 							backgroundImage:
-								props.image || "linear-gradient(180deg, #908EEA 0%, #BEFBE5 100%)",
+								props.image ||
+								"linear-gradient(180deg, #908EEA 0%, #BEFBE5 100%)",
 							width: 250,
 							height: 250,
 							borderRadius: 4,
@@ -82,10 +76,7 @@ const JoinTeam = (props: JoinTeamProps) => {
 						<PlayerCard name="Player Name" score={99} />
 						<PlayerCard name="Player Name" score={99} />
 					</Grid>
-					<SubmitButton
-						title="Join Team"
-						color="#818CF8"
-					/>
+					<SubmitButton title="Join Team" color="#818CF8" />
 				</Grid>
 			</Grid>
 		</Grid>

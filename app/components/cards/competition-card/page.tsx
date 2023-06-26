@@ -1,5 +1,10 @@
 import React from "react";
-import { Box, ButtonBase, Grid, Typography } from "../../providers/mui-server-components";
+import {
+	Box,
+	ButtonBase,
+	Grid,
+	Typography,
+} from "../../providers/mui-server-components";
 
 // modular props for all competition cards
 export interface CompetitionCardProps {

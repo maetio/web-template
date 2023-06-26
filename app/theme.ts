@@ -1,4 +1,9 @@
-import { PaletteMode, ThemeOptions, ThemeProvider, createTheme } from "@mui/material";
+import {
+	PaletteMode,
+	ThemeOptions,
+	ThemeProvider,
+	createTheme,
+} from "@mui/material";
 import { useMemo } from "react";
 
 /*
@@ -15,7 +20,6 @@ export const customThemePalette = {
 		main: "#f59e0b",
 	},
 };
-  
 
 const getDesignTokens = (mode: PaletteMode) => ({
 	typography: {
