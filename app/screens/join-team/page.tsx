@@ -43,7 +43,7 @@ const JoinTeam = (props: JoinTeamProps) => {
 					justifyContent="flex-end"
 					alignItems="flex-end"
 					sx={{
-						width: 900
+						width: 1000
 					}}
 					
 				>
@@ -85,7 +85,7 @@ const JoinTeam = (props: JoinTeamProps) => {
 					<SubmitButton
 						title="Join Team"
 						color="#818CF8"
-					></SubmitButton>
+					/>
 				</Grid>
 			</Grid>
 		</Grid>

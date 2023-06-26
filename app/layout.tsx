@@ -9,7 +9,7 @@ import { ThemeProvider, createTheme, useMediaQuery } from "@mui/material";
 import React from "react";
 import getDesignTokens from "./theme";
 
-const inter = Nunito({ subsets: ["latin"] });
+const nunito = Nunito({ subsets: ["latin"] });
 // had to comment out metadata export for now because of "use client directive"
 
 /* export const metadata = {
@@ -36,7 +36,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>
+			<body className={nunito.className}>
 				<RecoilRootProvider>
 					<AuthContextProvider>
 						<MuiProvider>
