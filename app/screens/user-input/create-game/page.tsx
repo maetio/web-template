@@ -1,8 +1,8 @@
 import React from "react";
 
-type Props = {};
+export type CreateGameProps = {};
 
-const CreateGame = (props: Props) => {
+export const CreateGame = (props: CreateGameProps) => {
 	return (
 		<div>
 			<h1>Create Game</h1>

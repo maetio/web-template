@@ -1,8 +1,8 @@
 import React from "react";
 
-type Props = {};
+export type InputScoresProps = {};
 
-const InputScores = (props: Props) => {
+export const InputScores = (props: InputScoresProps) => {
 	return (
 		<div>
 			<h1>Input Scores</h1>

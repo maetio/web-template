@@ -12,12 +12,12 @@ import { PlayerCard } from "app/components/cards/player-card/page";
 import { SubmitButton } from "app/components/user-input/submit-button/page";
 import React from "react";
 
-type JoinTeamProps = {
+export type JoinTeamProps = {
 	image?: string;
 	teamName: string;
 };
 
-const JoinTeam = (props: JoinTeamProps) => {
+export const JoinTeam = (props: JoinTeamProps) => {
 	return (
 		<Grid
 			sx={{ height: "100vh", backgroundColor: "#D9D9D9" }}

@@ -1,8 +1,8 @@
 import React from "react";
 
-type Props = {};
+export type EditTeamProps = {};
 
-const EditTeam = (props: Props) => {
+export const EditTeam = (props: EditTeamProps) => {
 	return (
 		<div>
 			<h1>Edit Team</h1>

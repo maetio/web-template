@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
+export type SetRosterProps = {};
 
-const SetRoster = (props: Props) => {
+export const SetRoster = (props: SetRosterProps) => {
 	return (
 		<div>
 			<h1>Pay Entrance</h1>

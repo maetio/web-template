@@ -17,7 +17,7 @@ export interface CreateTeamProps {
 	image?: string;
 }
 
-const CreateTeam = (props: CreateTeamProps) => {
+export const CreateTeam = (props: CreateTeamProps) => {
 	return (
 		<Grid
 			sx={{ height: "100vh", backgroundColor: "#D9D9D9" }}

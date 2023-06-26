@@ -1,8 +1,8 @@
 import React from "react";
 
-type Props = {};
+export type EditGameProps = {};
 
-const EditGame = (props: Props) => {
+export const EditGame = (props: EditGameProps) => {
 	return (
 		<div>
 			<h1>Edit Game</h1>

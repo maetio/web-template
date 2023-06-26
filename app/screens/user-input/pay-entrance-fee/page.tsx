@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
+export type PayEntranceFeeProps = {};
 
-const PayEntranceFee = (props: Props) => {
+export const PayEntranceFee = (props: PayEntranceFeeProps) => {
 	return (
 		<div>
 			<h1>Pay Entrance</h1>

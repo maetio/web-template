@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
+export type SelectTeamProps = {};
 
-const SelectTeam = (props: Props) => {
+export const SelectTeam = (props: SelectTeamProps) => {
 	return (
 		<div>
 			<h1>Select Team Page</h1>
