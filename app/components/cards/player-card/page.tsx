@@ -1,27 +1,29 @@
 import React from "react";
-import { Box, ButtonBase, Grid, Typography } from "../mui-server-components";
-import { MaetIcon } from "../maet-icon";
+import {
+	Avatar,
+	Box,
+	ButtonBase,
+	Grid,
+	Typography,
+} from "../../mui-server-components";
+import { MaetIcon } from "../../maet-icon";
 
-export interface TeamCardProps {
+export interface PlayerCardProps {
 	name: string;
 	image?: string;
 	score: number;
 }
 
-/* export interface ScoreChange {
-	color: string;
-	magnitude: number;
-}
-*/
 export /**
- * Card that renders the initial team data
+ * Card that renders the initial player data
  *
  * @param {*} {
- *		TeamCardProps
+ *		PlayerCardProps
  *	}
  *  @return {*}
  *
- */ const TeamCard = (props: TeamCardProps) => {
+ */
+const PlayerCard = (props: PlayerCardProps) => {
 	return (
 		<Grid
 			container
@@ -30,11 +32,11 @@ export /**
 			alignItems="center"
 			sx={{
 				borderBottom: 1,
-				borderColor: "#f5f5f4",
+				borderColor: "#E5E5E5",
 				display: "inline-flex",
 				mt: 1,
 				height: 60,
-				width: 480
+				width: 480,
 			}}
 		>
 			<Grid 
@@ -42,7 +44,6 @@ export /**
 				container 
 				xs={6} 
 				alignItems="center"
-				direction="row"
 			>
 				<Box
 					sx={{
@@ -50,7 +51,7 @@ export /**
 						backgroundImage:
 							props.image ||
 							"linear-gradient(207deg, #EAE68E 13.76%, #FBBEBE 60.61%, #BEE1FB 100%);",
-						borderRadius: 2,
+						borderRadius: "50%",
 						width: 40,
 						height: 41,
 					}}
@@ -76,4 +77,4 @@ export /**
 	);
 };
 
-export default TeamCard;
+export default PlayerCard;

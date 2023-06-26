@@ -2,9 +2,9 @@
 
 import React from "react";
 import { ControlPoint } from "@mui/icons-material";
-import { Grid, Typography } from "../mui-server-components";
+import { Grid, Typography } from "../../mui-server-components";
 import SearchBar  from "../search-bar/page";
-import { PlayerCard } from "../player-card/page";
+import { PlayerCard } from "../../cards/player-card/page";
 
 type PlayerDropdownProps = {};
 

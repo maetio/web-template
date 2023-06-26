@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { CompetitionCard, CompetitionCardProps } from "./competition-card/page";
+import { CompetitionCard, CompetitionCardProps } from "./cards/competition-card/page";
 
 const meta: Meta<typeof CompetitionCard> = {
 	/* 👇 The title prop is optional.

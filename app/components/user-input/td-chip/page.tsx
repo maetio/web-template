@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Chip } from "../mui-server-components";
+import { Avatar, Chip } from "../../mui-server-components";
 
 export interface TeamDropdownChipProps {
 	label: string;

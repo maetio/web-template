@@ -1,9 +1,9 @@
 import { red } from "@mui/material/colors";
 import { Box, Grid, Typography } from "app/components/mui-server-components";
-import { PlayerCard } from "app/components/player-card/page";
-import PlayerDropdown from "app/components/player-dropdown/page";
-import { SubmitButton } from "app/components/submit-button/page";
-import TeamDropdown from "app/components/team-dropdown/page";
+import { PlayerCard } from "app/components/cards/player-card/page";
+import PlayerDropdown from "app/components/user-input/player-dropdown/page";
+import { SubmitButton } from "app/components/user-input/submit-button/page";
+import TeamDropdown from "app/components/user-input/team-dropdown/page";
 import React from "react";
 
 interface JoinCompetitionProps {

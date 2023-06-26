@@ -1,11 +1,11 @@
 "use client";
 
 import { Cancel, Panorama } from "@mui/icons-material";
-import { InputField } from "app/components/input-field/page";
+import { InputField } from "app/components/user-input/input-field/page";
 import { Box, Grid, Typography } from "app/components/mui-server-components";
-import { PlayerCard } from "app/components/player-card/page";
-import PlayerDropdown from "app/components/player-dropdown/page";
-import { SubmitButton } from "app/components/submit-button/page";
+import { PlayerCard } from "app/components/cards/player-card/page";
+import PlayerDropdown from "app/components/user-input/player-dropdown/page";
+import { SubmitButton } from "app/components/user-input/submit-button/page";
 import React from "react";
 
 export interface CreateTeamProps {

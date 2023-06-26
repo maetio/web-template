@@ -1,15 +1,15 @@
 "use client";
 
 import { Cancel } from "@mui/icons-material";
-import { InputField } from "app/components/input-field/page";
+import { InputField } from "app/components/user-input/input-field/page";
 import {
 	Box,
 	FormLabel,
 	Grid,
 	Typography,
 } from "app/components/mui-server-components";
-import { PlayerCard } from "app/components/player-card/page";
-import { SubmitButton } from "app/components/submit-button/page";
+import { PlayerCard } from "app/components/cards/player-card/page";
+import { SubmitButton } from "app/components/user-input/submit-button/page";
 import React from "react";
 
 type JoinTeamProps = {
