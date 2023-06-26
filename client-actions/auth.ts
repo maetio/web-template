@@ -1,4 +1,4 @@
-import { auth } from "app/api/client/config";
+import { auth } from "./config";
 import {
 	ActionCodeSettings,
 	sendSignInLinkToEmail,

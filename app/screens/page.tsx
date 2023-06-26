@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { Grid, Typography } from "@mui/material";
-import { signInWithLink } from "app/api/client/auth";
+import { signInWithLink } from "../../client-actions/auth";
 import { useRecoilValue } from "recoil";
 import { UserState } from "app/recoil-store";
 import { SignOutButton } from "app/components/sign-out-button";

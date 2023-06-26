@@ -1,6 +1,6 @@
 "use client";
 
-import { useCreateFirestoreHook } from "app/api/client/hooks/template";
+import { useCreateFirestoreHook } from "./template";
 
 export /**
  * Fetches stripe information from our node/express backend from firebase

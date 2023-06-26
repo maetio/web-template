@@ -2,34 +2,37 @@
 
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import { signOutUser } from "app/api/client/auth";
 import { useAuthContext } from "app/components/providers/auth-context";
 import { useRouter } from "next/navigation";
+import { signOutUser } from "../../client-actions/auth";
+import { useAuth } from "../../auth/hooks";
 
 export /**
  * Button to sign out user
- * 
- * @returns 
+ *
+ * @returns
  */
 const SignOutButton: React.FC<{}> = () => {
 	// state used to detect if email sent
 	const [sentEmail, setSentEmail] = useState(false);
 
 	// get the auth context
-	const userContext = useAuthContext();
+	// const userContext = useAuthContext();
+
+	const { tenant } = useAuth();
 
 	// get the next router
 	const router = useRouter();
 
 	// handle button click button
 	const handleClick = () => {
-		if (userContext?.uid.length) return signOutUser();
+		if (tenant?.idToken) return signOutUser();
 		return router.push("/auth");
 	};
 
 	return (
 		<Button onClick={handleClick}>
-			{userContext?.uid.length ? "Sign Out" : "Login"}
+			{tenant?.idToken ? "Sign Out" : "Login"}
 		</Button>
 	);
 };

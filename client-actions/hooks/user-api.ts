@@ -1,9 +1,9 @@
 "use client";
 
-import { privateUserCollection } from "app/api/client/config";
-import { useCreateFirestoreHook } from "app/api/client/hooks/template";
 import { PrivateUserData } from "app/types";
 import { doc, setDoc } from "firebase/firestore";
+import { privateUserCollection } from "../config";
+import { useCreateFirestoreHook } from "./template";
 
 export /**
  * Hook to update the private user data

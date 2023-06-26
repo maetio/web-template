@@ -8,7 +8,7 @@ import { emailSchema } from "app/utils/schemas";
 import {
 	sendPasswordlessLoginEmail,
 	signInWithLink,
-} from "app/api/client/auth";
+} from "../../../client-actions/auth";
 import { useRecoilState } from "recoil";
 import { UserState } from "app/recoil-store";
 

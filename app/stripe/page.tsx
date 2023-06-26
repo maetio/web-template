@@ -6,7 +6,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { getAuth } from "firebase/auth";
 import StripeForm from "app/components/stripe-form";
 import { Grid } from "@mui/material";
-import { useGetStripeSecret } from "app/api/client/hooks/stripe-api";
+import { useGetStripeSecret } from "../../client-actions/hooks/stripe-api";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -17,7 +17,7 @@ const stripePromise = loadStripe(
 /**
  * Display stripe example
  *
- * @return {*} 
+ * @return {*}
  */
 const StripePage = () => {
 	const [options, setOptions] = useState<{

@@ -25,7 +25,9 @@ export async function POST(request: NextRequest) {
 
 	const { firstName, lastName, id } = await request.json();
 
-	console.log("body in the request", firstName);
+	console.log("body in the request", firstName, lastName, id);
+
+	console.log("token information", tokens);
 
 	if (!tokens) {
 		throw new Error("Cannot update counter of unauthenticated user");
@@ -33,7 +35,7 @@ export async function POST(request: NextRequest) {
 
 	const db = getFirestore(getFirebaseAdminApp());
 	const snapshot = await db
-		.collection("user-counters")
+		.collection("private-user-data")
 		.doc(tokens.decodedToken.uid)
 		.get();
 

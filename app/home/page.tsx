@@ -2,18 +2,18 @@
 
 import React, { useEffect } from "react";
 import { Button, Grid, TextField, Typography } from "@mui/material";
-import { signInWithLink } from "app/api/client/auth";
 import { useRecoilValue } from "recoil";
 import { UserState } from "app/recoil-store";
 import { SignOutButton } from "app/components/sign-out-button";
 import { useAuthContext } from "app/components/providers/auth-context";
 import { useForm } from "react-hook-form";
-import { useUpdatePrivateUserData } from "app/api/client/hooks/user-api";
 import { EditProfileSchemaType, editProfileSchema } from "app/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 import { UserProfile } from "app/UserProfile";
 import { mapFirebaseResponseToTenant } from "app/login/firebase";
+import { useUpdatePrivateUserData } from "../../client-actions/hooks/user-api";
+import { signInWithLink } from "../../client-actions/auth";
 import { useAuth } from "../../auth/hooks";
 
 export /**
@@ -43,12 +43,6 @@ const Home = () => {
 			headers: {
 				Authorization: `Bearer ${userCred}`,
 			},
-		});
-	};
-
-	const handleAddCounter = async () => {
-		await fetch("/api/user-counters", {
-			method: "POST",
 		});
 	};
 
@@ -152,7 +146,6 @@ const Home = () => {
 				>
 					Go to Stripe
 				</Button>
-				<Button onClick={handleAddCounter}>Add counter</Button>
 
 				<SignOutButton />
 				<UserProfile />
