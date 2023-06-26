@@ -30,32 +30,14 @@ export async function POST(request: NextRequest) {
 	console.log("token information", tokens);
 
 	if (!tokens) {
-		throw new Error("Cannot update counter of unauthenticated user");
+		throw new Error("Cannot add name of unauthenticated user");
 	}
 
 	const db = getFirestore(getFirebaseAdminApp());
 	const snapshot = await db
 		.collection("private-user-data")
 		.doc(tokens.decodedToken.uid)
-		.get();
+		.set({ firstName, lastName, id }, { merge: true });
 
-	const currentUserCounter = await snapshot.data();
-
-	if (!snapshot.exists || !currentUserCounter) {
-		const userCounter = {
-			id: tokens.decodedToken.uid,
-			count: 1,
-		};
-
-		await snapshot.ref.create(userCounter);
-		return NextResponse.json(userCounter);
-	}
-
-	const newUserCounter = {
-		...currentUserCounter,
-		count: currentUserCounter.count + 1,
-	};
-	await snapshot.ref.update(newUserCounter);
-
-	return NextResponse.json(newUserCounter);
+	return NextResponse.json(snapshot);
 }

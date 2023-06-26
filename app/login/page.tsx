@@ -1,4 +1,4 @@
-import { LoginPage as ClientLoginPage } from "./LoginPage";
+import { LoginPage as ClientLoginPage } from "./login-page";
 
 export default function Login() {
 	return <ClientLoginPage />;
