@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
+export type Props = {};
 
-const GamesList = (props: Props) => {
+export const GamesList = (props: Props) => {
 	return (
 		<div>
 			<h1>Games List</h1>

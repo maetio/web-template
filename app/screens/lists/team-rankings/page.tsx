@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
+export type TeamRankingsProps = {};
 
-const TeamRankings = (props: Props) => {
+export const TeamRankings = (props: TeamRankingsProps) => {
 	return (
 		<div>
 			<h1>Team Rankings</h1>
