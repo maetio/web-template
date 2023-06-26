@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import { useAuthContext } from "app/components/providers/auth-context";
 import { useRouter } from "next/navigation";
+import { signOut } from "firebase/auth";
 import { signOutUser } from "../../client-actions/auth";
 import { useAuth } from "../../auth/hooks";
 import { useFirebaseAuth } from "../../auth/firebase";
@@ -24,13 +25,12 @@ const SignOutButton: React.FC<{}> = () => {
 	// handle button click button
 	const handleClick = async () => {
 		const auth = await getFirebaseAuth();
-		const { signOut } = await import("firebase/auth");
 		await signOut(auth);
-		await fetch("/api/logout", {
+		await fetch("http://localhost:3000//api/logout", {
 			method: "GET",
 		});
-		window.location.reload();
-		// return router.push("/auth");
+		// window.location.reload();
+		return router.push("/auth");
 	};
 
 	return (

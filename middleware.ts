@@ -18,6 +18,12 @@ function redirectToLogin(request: NextRequest) {
 	return NextResponse.redirect(url);
 }
 
+console.log(
+	"something from middleware",
+	authConfig.serviceAccount,
+	authConfig.apiKey
+);
+
 const { setCustomUserClaims, getUser } = getFirebaseAuth(
 	authConfig.serviceAccount,
 	authConfig.apiKey
@@ -35,6 +41,7 @@ export async function middleware(request: NextRequest) {
 				});
 
 				const user = await getUser(decodedToken.uid);
+				console.log("user from middle ware", user);
 				const response = new NextResponse(
 					JSON.stringify(user.customClaims),
 					{

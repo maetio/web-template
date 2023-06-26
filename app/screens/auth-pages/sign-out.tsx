@@ -5,12 +5,12 @@ import { Button, TextField, Grid, Typography, Paper, Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
+import { useRecoilState } from "recoil";
+import { UserState } from "app/recoil-store";
 import {
 	sendPasswordlessLoginEmail,
 	signInWithLink,
 } from "../../../client-actions/auth";
-import { useRecoilState } from "recoil";
-import { UserState } from "app/recoil-store";
 
 export const SignIn: React.FC<{}> = () => {
 	// useForm & useAuth initialization
