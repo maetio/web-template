@@ -8,7 +8,7 @@ import { useFirebaseAuth } from "../../auth/firebase";
 import { clientConfig } from "../../config/client-config";
 import { getGoogleProvider, loginWithProvider } from "./firebase";
 import { useAuth } from "../../auth/hooks";
-import { EnterEmail } from "../loginT/enter-email";
+import { EnterEmail } from "./enter-email";
 
 export function LoginPage() {
 	const router = useRouter();
