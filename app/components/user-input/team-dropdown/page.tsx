@@ -3,11 +3,14 @@
 import React from "react";
 import { ControlPoint } from "@mui/icons-material";
 import { Grid, Typography } from "../../providers/mui-server-components";
-import SearchBar from "../search-bar/page";
+import { SearchBar } from "../search-bar/page";
 import { TeamCard } from "../../cards/team-card/page";
 
-type TeamDropdownProps = {};
+export interface TeamDropdownProps  {
+	name?: String
+}
 
+export
 /**
  * Search bar for finding teams
  * tsb = TeamDropdown
@@ -15,7 +18,7 @@ type TeamDropdownProps = {};
  * @returns
  */
 
-const TeamDropdown = (props: TeamDropdownProps) => {
+const TeamDropdown = () => {
 	return(
 		<Grid
 			container

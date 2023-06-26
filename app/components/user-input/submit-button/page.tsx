@@ -27,3 +27,5 @@ const SubmitButton = (props: SubmitButtonProps) => {
 		</Button>
 	);
 };
+
+export default SubmitButton;

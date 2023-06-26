@@ -5,7 +5,7 @@ export interface PlayerDropdownChipProps {
 	label: string;
 	image: string;
 }
-
+export
 /**
  * Chip that populates the search bar textfield when the user selects a player/team
  *

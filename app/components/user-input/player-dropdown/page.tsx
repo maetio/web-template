@@ -3,17 +3,20 @@
 import React from "react";
 import { ControlPoint } from "@mui/icons-material";
 import { Grid, Typography } from "../../providers/mui-server-components";
-import SearchBar  from "../search-bar/page";
+import { SearchBar } from "../search-bar/page";
 import { PlayerCard } from "../../cards/player-card/page";
 
-type PlayerDropdownProps = {};
+export interface PlayerDropdownProps {
+	name?: String
+}
 
+export
 /**
  * Search bar for finding players
  * @param {PlayerDropdownProps} props
  * @returns
  */
-const PlayerDropdown = (props: PlayerDropdownProps) => {
+const PlayerDropdown = () => {
 	return (
 		<Grid
 			container
