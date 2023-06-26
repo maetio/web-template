@@ -6,6 +6,8 @@ import { useAuthContext } from "app/components/providers/auth-context";
 import { useRouter } from "next/navigation";
 import { signOutUser } from "../../client-actions/auth";
 import { useAuth } from "../../auth/hooks";
+import { useFirebaseAuth } from "../../auth/firebase";
+import { clientConfig } from "../../config/client-config";
 
 export /**
  * Button to sign out user
@@ -13,21 +15,22 @@ export /**
  * @returns
  */
 const SignOutButton: React.FC<{}> = () => {
-	// state used to detect if email sent
-	const [sentEmail, setSentEmail] = useState(false);
-
-	// get the auth context
-	// const userContext = useAuthContext();
-
 	const { tenant } = useAuth();
+	const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
 
 	// get the next router
 	const router = useRouter();
 
 	// handle button click button
-	const handleClick = () => {
-		if (tenant?.idToken) return signOutUser();
-		return router.push("/auth");
+	const handleClick = async () => {
+		const auth = await getFirebaseAuth();
+		const { signOut } = await import("firebase/auth");
+		await signOut(auth);
+		await fetch("/api/logout", {
+			method: "GET",
+		});
+		window.location.reload();
+		// return router.push("/auth");
 	};
 
 	return (
