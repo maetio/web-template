@@ -1,3 +1,5 @@
+"use client";
+
 import {
 	Box,
 	Grid,
@@ -8,10 +10,17 @@ import { PlayerDropdown } from "app/components/user-input/player-dropdown/page";
 import { SubmitButton } from "app/components/user-input/submit-button/page";
 import { TeamDropdown } from "app/components/user-input/team-dropdown/page";
 import React from "react";
+import { LocationOn, SportsBasketball } from "@mui/icons-material";
+import { CalendarIcon } from "@mui/x-date-pickers";
 
 export interface JoinCompetitionProps {
-	competitionName: String;
-	image: String;
+	competitionName?: String;
+	image?: String;
+	description?: String;
+	competitionType?: String;
+	date?: String;
+	location?: String;
+	price?: String;
 }
 
 export const JoinCompetition = (props: JoinCompetitionProps) => {
@@ -26,7 +35,6 @@ export const JoinCompetition = (props: JoinCompetitionProps) => {
 				sx={{
 					width: 600,
 					height: 950,
-					border: 1,
 				}}
 				container
 			>
@@ -56,13 +64,57 @@ export const JoinCompetition = (props: JoinCompetitionProps) => {
 						container
 						item
 						direction="column"
-						alignItems="center"
+						alignItems="flex-start"
 						sx={{
 							width: 520,
-							border: 1,
 						}}
 					>
-						<Typography>Description:</Typography>
+						<Typography sx={{ color: "#A3A3A3" }}>
+							Description: Lorem ipsum dolor sit amet, consectetur
+							adipiscing elit, sed do eiusmod tempor incididunt ut
+							labore et dolore magna aliqua.
+						</Typography>
+						<Grid container item alignItems="flex-start">
+							<SportsBasketball
+								sx={{ mr: 0.5, color: "#A3A3A3" }}
+							></SportsBasketball>
+							<Typography sx={{ color: "#A3A3A3" }}>
+								{"Basketball Tournament" ||
+									props.competitionType}
+							</Typography>
+						</Grid>
+						<Grid container item alignItems="flex-start">
+							<CalendarIcon
+								sx={{ mr: 0.5, color: "#A3A3A3" }}
+							></CalendarIcon>
+							<Typography sx={{ color: "#A3A3A3" }}>
+								{"June 27 at 12:00 PM" || props.date}
+							</Typography>
+						</Grid>
+						<Grid container item alignItems="flex-start">
+							<LocationOn
+								sx={{ mr: 0.5, color: "#A3A3A3" }}
+							></LocationOn>
+							<Typography sx={{ color: "#A3A3A3" }}>
+								{"1234 Neighborhood St, City, IN" ||
+									props.location}
+							</Typography>
+						</Grid>
+						<Grid container item alignItems="flex-start">
+							<Typography
+								sx={{
+									fontWeight: 700,
+									ml: 1,
+									mr: 0.5,
+									color: "#A3A3A3",
+								}}
+							>
+								{"$99" || props.price}
+							</Typography>
+							<Typography sx={{ color: "#A3A3A3" }}>
+								per team
+							</Typography>
+						</Grid>
 					</Grid>
 
 					<Grid container direction="column"></Grid>
@@ -73,7 +125,7 @@ export const JoinCompetition = (props: JoinCompetitionProps) => {
 					>
 						<TeamDropdown />
 					</Grid>
-					<SubmitButton title="Join Team" color="#818CF8" />
+					<SubmitButton title="Join Competition" color="#818CF8" />
 				</Grid>
 			</Grid>
 		</Grid>
