@@ -79,6 +79,26 @@ const Home = () => {
 	});
 
 	// asynchronous function that handles updates to private user data (on click of form submission button)
+	// const handleUpdatePrivateUserData = async ({
+	// 	firstName,
+	// 	lastName,
+	// }: EditProfileSchemaType) => {
+	// 	const userData = {
+	// 		firstName,
+	// 		lastName,
+	// 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+	// 		id: userContext!.uid,
+	// 	};
+
+	// 	await updateData(userData);
+	// 	if (isSuccess) {
+	// 		console.log("Private user data successfully mutated");
+	// 	} else {
+	// 		console.log("Mutation request failed");
+	// 	}
+	// 	reset();
+	// };
+
 	const handleUpdatePrivateUserData = async ({
 		firstName,
 		lastName,
@@ -86,16 +106,14 @@ const Home = () => {
 		const userData = {
 			firstName,
 			lastName,
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			id: userContext!.uid,
+			id: "123abc",
 		};
 
-		await updateData(userData);
-		if (isSuccess) {
-			console.log("Private user data successfully mutated");
-		} else {
-			console.log("Mutation request failed");
-		}
+		await fetch("/api/update-name", {
+			method: "POST",
+			body: JSON.stringify(userData),
+		});
+
 		reset();
 	};
 
