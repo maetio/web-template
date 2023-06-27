@@ -1,3 +1,5 @@
+"use client";
+
 import { DefaultValue, AtomEffect, atom } from "recoil";
 
 /**

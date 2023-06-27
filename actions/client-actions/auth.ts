@@ -4,11 +4,12 @@ import {
 	isSignInWithEmailLink,
 	signInWithEmailLink,
 	signOut,
+	Auth,
 } from "firebase/auth";
 // import { auth } from "./config";
 
 // import { auth } from "../config/client-config";
-import { auth } from "./config";
+// import { auth } from "./config";
 
 /**
  * Function will send the passwordless login email to the user's email
@@ -17,7 +18,10 @@ import { auth } from "./config";
  * @param {string} email
  * @return {*}  {Promise<void>}
  */
-export async function sendPasswordlessLoginEmail(email: string): Promise<void> {
+export async function sendPasswordlessLoginEmail(
+	auth: Auth,
+	email: string
+): Promise<void> {
 	const actionCodeSettings: ActionCodeSettings = {
 		handleCodeInApp: true,
 		// dynamicLinkDomain: process.env.NEXT_PUBLIC_DYNAMIC_LINKS_DOMAIN,
