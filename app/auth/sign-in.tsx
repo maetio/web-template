@@ -36,18 +36,18 @@ export const SignIn: React.FC<{}> = () => {
 		setSentEmail(true);
 	};
 
-	useEffect(() => {
-		// get router
-		// console.log('router query', router.query);
-		console.log(window.location.href, document.referrer);
+	// useEffect(() => {
+	// 	// get router
+	// 	// console.log('router query', router.query);
+	// 	console.log(window.location.href, document.referrer);
 
-		console.log(
-			"signing",
-			"sethy8656@gmail.com",
-			"in with",
-			window.location.href
-		);
-	}, [sentEmail, setSentEmail]);
+	// 	console.log(
+	// 		"signing",
+	// 		"sethy8656@gmail.com",
+	// 		"in with",
+	// 		window.location.href
+	// 	);
+	// }, [sentEmail, setSentEmail]);
 
 	return (
 		<form onSubmit={handleSubmit(submitEmail)}>

@@ -1,4 +1,4 @@
-import { ServerAuthProvider } from "../../auth/server-auth-provider";
+import { ServerAuthProvider } from "auth/server-auth-provider";
 
 export default function LoginLayout({
 	children,

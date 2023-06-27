@@ -24,6 +24,7 @@ const SignOutButton: React.FC<{}> = () => {
 
 	// handle button click button
 	const handleClick = async () => {
+		localStorage.clear();
 		const auth = await getFirebaseAuth();
 		await signOut(auth);
 		await fetch("http://localhost:3000//api/logout", {

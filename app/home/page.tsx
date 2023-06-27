@@ -25,8 +25,9 @@ export /**
 const Home = () => {
 	// get user state
 
-
 	const { tenant } = useAuth();
+
+	console.log("tenant", tenant);
 
 	const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
 
@@ -37,7 +38,7 @@ const Home = () => {
 		const auth = await getFirebaseAuth();
 		const userCred = await signInWithLink(
 			auth,
-			"sethy8656@gmail.com",
+			localStorage.getItem("email") || "",
 			window.location.href
 		);
 		const idTokenResult = await userCred.user.getIdTokenResult();

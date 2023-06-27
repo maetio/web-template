@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { startTransition } from "react";
+import { startTransition, useEffect, useState, useRef } from "react";
 import type { User as FirebaseUser } from "firebase/auth";
 import { IdTokenResult } from "firebase/auth";
 import { useFirebaseAuth } from "./firebase";
@@ -50,13 +50,13 @@ export interface AuthProviderProps {
 	children: React.ReactNode;
 }
 
-export const AuthProvider: React.FunctionComponent<AuthProviderProps> = ({
+export const AuthProvider: React.FC<AuthProviderProps> = ({
 	defaultTenant,
 	children,
 }) => {
 	const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
-	const firstLoadRef = React.useRef(true);
-	const [tenant, setTenant] = React.useState(defaultTenant);
+	const firstLoadRef = useRef(true);
+	const [tenant, setTenant] = useState(defaultTenant);
 
 	const handleIdTokenChanged = async (firebaseUser: FirebaseUser | null) => {
 		if (firebaseUser && tenant && firebaseUser.uid === tenant.id) {
@@ -66,22 +66,22 @@ export const AuthProvider: React.FunctionComponent<AuthProviderProps> = ({
 
 		const auth = await getFirebaseAuth();
 
-		if (!firebaseUser && firstLoadRef.current) {
-			const { signInAnonymously } = await import("firebase/auth");
-			firstLoadRef.current = false;
-			const credential = await signInAnonymously(auth);
-			await fetch("/api/login", {
-				method: "GET",
-				headers: {
-					Authorization: `Bearer ${
-						(
-							await credential.user.getIdTokenResult()
-						).token
-					}`,
-				},
-			});
-			return;
-		}
+		// if (!firebaseUser && firstLoadRef.current) {
+		// 	const { signInAnonymously } = await import("firebase/auth");
+		// 	firstLoadRef.current = false;
+		// 	const credential = await signInAnonymously(auth);
+		// 	await fetch("/api/login", {
+		// 		method: "GET",
+		// 		headers: {
+		// 			Authorization: `Bearer ${
+		// 				(
+		// 					await credential.user.getIdTokenResult()
+		// 				).token
+		// 			}`,
+		// 		},
+		// 	});
+		// 	return;
+		// }
 
 		if (!firebaseUser) {
 			firstLoadRef.current = false;
@@ -104,7 +104,7 @@ export const AuthProvider: React.FunctionComponent<AuthProviderProps> = ({
 		return onIdTokenChanged(auth, handleIdTokenChanged);
 	};
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const unsubscribePromise = registerChangeListener();
 
 		return () => {

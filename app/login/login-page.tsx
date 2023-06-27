@@ -20,11 +20,7 @@ export function LoginPage() {
 		setHasLogged(false);
 		const { GoogleAuthProvider } = await import("firebase/auth");
 		const auth = await getFirebaseAuth();
-		// const tenant = await loginWithProvider(
-		// 	auth,
-		// 	await getGoogleProvider(auth),
-		// 	GoogleAuthProvider.credentialFromError
-		// );
+
 		await fetch("/api/login", {
 			method: "GET",
 			headers: {

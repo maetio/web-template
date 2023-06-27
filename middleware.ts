@@ -14,15 +14,11 @@ function redirectToLogin(request: NextRequest) {
 
 	const url = request.nextUrl.clone();
 	url.pathname = "/login";
-	url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
-	return NextResponse.redirect(url);
-}
+	// url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
+	url.search = `${url.search}`;
 
-console.log(
-	"something from middleware",
-	authConfig.serviceAccount,
-	authConfig.apiKey
-);
+	// return NextResponse.redirect(url);
+}
 
 const { setCustomUserClaims, getUser } = getFirebaseAuth(
 	authConfig.serviceAccount,
@@ -41,7 +37,6 @@ export async function middleware(request: NextRequest) {
 				});
 
 				const user = await getUser(decodedToken.uid);
-				console.log("user from middle ware", user);
 				const response = new NextResponse(
 					JSON.stringify(user.customClaims),
 					{

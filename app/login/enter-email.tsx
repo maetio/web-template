@@ -31,9 +31,10 @@ export const EnterEmail: React.FC<{}> = () => {
 	// get user state
 
 	const submitEmail = async (data: { email: string }) => {
+		console.log("email inputed", data.email);
 		const auth = await getFirebaseAuth();
-
 		await sendPasswordlessLoginEmail(auth, data.email);
+		localStorage.setItem("email", data.email);
 		setSentEmail(true);
 	};
 
