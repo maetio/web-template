@@ -5,8 +5,6 @@ import { Button, TextField, Grid, Typography, Paper, Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
-import { useRecoilState } from "recoil";
-import { UserState } from "app/recoil-store";
 import { useFirebaseAuth } from "auth/firebase";
 import { clientConfig } from "config/client-config";
 import {
@@ -30,7 +28,6 @@ export const SignIn: React.FC<{}> = () => {
 	const [sentEmail, setSentEmail] = useState(false);
 
 	// get user state
-	const [user, setUser] = useRecoilState(UserState);
 
 	// send email link to user
 	const submitEmail = async (data: { email: string }) => {
@@ -38,7 +35,6 @@ export const SignIn: React.FC<{}> = () => {
 
 		await sendPasswordlessLoginEmail(auth, data.email);
 		setSentEmail(true);
-		setUser({ ...user, email: data.email });
 	};
 
 	// get router
@@ -46,7 +42,6 @@ export const SignIn: React.FC<{}> = () => {
 	console.log(window.location.href, document.referrer);
 
 	// signInWithLink(user.email, window.location.href);
-	console.log("signing", user.email, "in with", window.location.href);
 
 	return (
 		<form onSubmit={handleSubmit(submitEmail)}>

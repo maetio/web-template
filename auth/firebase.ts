@@ -1,4 +1,5 @@
 import { FirebaseApp, FirebaseOptions } from "@firebase/app";
+import { getAuth } from "@firebase/auth";
 
 const getFirebaseApp = async (options: FirebaseOptions) => {
 	const { getApp, getApps, initializeApp } = await import("firebase/app");
@@ -11,7 +12,6 @@ const getFirebaseApp = async (options: FirebaseOptions) => {
 export const getAuthApp = async (options: FirebaseOptions) => {
 	const app = await getFirebaseApp(options);
 	console.log("app from thing", app);
-	const { getAuth } = await import("firebase/auth");
 
 	return getAuth(app);
 };

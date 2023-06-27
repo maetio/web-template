@@ -3,7 +3,7 @@
 import { MuiProvider } from "app/components/providers/mui";
 import "./globals.css";
 import { Nunito } from "next/font/google";
-import RecoilRootProvider from "app/components/providers/recoil";
+// import RecoilRootProvider from "app/components/providers/recoil";
 import { ThemeProvider, createTheme, useMediaQuery } from "@mui/material";
 import React from "react";
 import getDesignTokens from "./theme";
@@ -35,11 +35,11 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={nunito.className}>
-				<RecoilRootProvider>
-					<MuiProvider>
-						<CustomThemeProvider>{children}</CustomThemeProvider>
-					</MuiProvider>
-				</RecoilRootProvider>
+				{/* <RecoilRootProvider> */}
+				<MuiProvider>
+					<CustomThemeProvider>{children}</CustomThemeProvider>
+				</MuiProvider>
+				{/* </RecoilRootProvider> */}
 			</body>
 		</html>
 	);

@@ -5,8 +5,6 @@ import { Button, TextField, Grid, Typography, Paper, Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
-import { useRecoilState } from "recoil";
-import { UserState } from "app/recoil-store";
 import { useRouter } from "next/navigation";
 import {
 	sendPasswordlessLoginEmail,
@@ -31,14 +29,12 @@ export const EnterEmail: React.FC<{}> = () => {
 	const [sentEmail, setSentEmail] = useState(false);
 
 	// get user state
-	const [user, setUser] = useRecoilState(UserState);
 
 	const submitEmail = async (data: { email: string }) => {
 		const auth = await getFirebaseAuth();
 
 		await sendPasswordlessLoginEmail(auth, data.email);
 		setSentEmail(true);
-		setUser({ ...user, email: data.email });
 	};
 
 	return (

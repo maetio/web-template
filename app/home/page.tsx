@@ -3,7 +3,6 @@
 import React, { useEffect } from "react";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import { useRecoilValue } from "recoil";
-import { UserState } from "app/recoil-store";
 import { SignOutButton } from "app/components/user-input";
 // import { useAuthContext } from "app/components/providers/auth-context";
 import { useForm } from "react-hook-form";
@@ -25,7 +24,7 @@ export /**
  */
 const Home = () => {
 	// get user state
-	const user = useRecoilValue(UserState);
+
 
 	const { tenant } = useAuth();
 
@@ -38,7 +37,7 @@ const Home = () => {
 		const auth = await getFirebaseAuth();
 		const userCred = await signInWithLink(
 			auth,
-			user.email,
+			"sethy8656@gmail.com",
 			window.location.href
 		);
 		const idTokenResult = await userCred.user.getIdTokenResult();
@@ -63,7 +62,7 @@ const Home = () => {
 	}, []);
 
 	// use effect hook to sign in with email link
-	useEffect(() => {}, [user.email]);
+	// useEffect(() => {}, [user.email]);
 
 	useEffect(() => {
 		console.log("tenant from UE", tenant);

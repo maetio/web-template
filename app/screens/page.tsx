@@ -2,8 +2,6 @@
 
 import React, { useEffect } from "react";
 import { Grid, Typography } from "@mui/material";
-import { useRecoilValue } from "recoil";
-import { UserState } from "app/recoil-store";
 import { SignOutButton } from "app/components/user-input";
 // import { useAuthContext } from "app/components/providers/auth-context";
 import { signInWithLink } from "actions/client-actions/auth";
@@ -17,20 +15,18 @@ import { clientConfig } from "config/client-config";
  */
 const Home = () => {
 	// get user state
-	const user = useRecoilValue(UserState);
 
 	const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
 
 	const handleSignIn = async () => {
-		const auth = await getFirebaseAuth()
-		signInWithLink(auth, user.email, window.location.href);
-
-	}
+		const auth = await getFirebaseAuth();
+		signInWithLink(auth, "sethy8656@gmail.com", window.location.href);
+	};
 
 	// use effect hook to sign in with email link
 	useEffect(() => {
-		handleSignIn()
-	}, [user.email]);
+		handleSignIn();
+	}, []);
 
 	// get the auth context
 	// const userContext = useAuthContext();
