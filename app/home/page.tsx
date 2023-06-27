@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { UserState } from "app/recoil-store";
-import { SignOutButton } from "app/components/sign-out-button";
+import { SignOutButton } from "app/components/user-input";
 // import { useAuthContext } from "app/components/providers/auth-context";
 import { useForm } from "react-hook-form";
 import { EditProfileSchemaType, editProfileSchema } from "app/utils/schemas";
@@ -12,9 +12,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 import { UserProfile } from "app/UserProfile";
 import { mapFirebaseResponseToTenant } from "app/login/firebase";
-import { useUpdatePrivateUserData } from "../../actions/client-actions/hooks/user-api";
-import { signInWithLink } from "../../actions/client-actions/auth";
-import { useAuth } from "../../auth/hooks";
+import { useUpdatePrivateUserData } from "actions/client-actions/hooks/user-api";
+import { signInWithLink } from "actions/client-actions/auth";
+import { useAuth } from "auth/hooks";
+import { useFirebaseAuth } from "auth/firebase";
+import { clientConfig } from "config/client-config";
 
 export /**
  * Will have the home screen render
@@ -27,11 +29,18 @@ const Home = () => {
 
 	const { tenant } = useAuth();
 
+	const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
+
 	// get the next router
 	const router = useRouter();
 
 	const handleLogin = async () => {
-		const userCred = await signInWithLink(user.email, window.location.href);
+		const auth = await getFirebaseAuth();
+		const userCred = await signInWithLink(
+			auth,
+			user.email,
+			window.location.href
+		);
 		const idTokenResult = await userCred.user.getIdTokenResult();
 		const ten = await mapFirebaseResponseToTenant(
 			idTokenResult,

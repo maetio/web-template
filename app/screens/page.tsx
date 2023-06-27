@@ -4,9 +4,11 @@ import React, { useEffect } from "react";
 import { Grid, Typography } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { UserState } from "app/recoil-store";
-import { SignOutButton } from "app/components/sign-out-button";
+import { SignOutButton } from "app/components/user-input";
 // import { useAuthContext } from "app/components/providers/auth-context";
-import { signInWithLink } from "../../actions/client-actions/auth";
+import { signInWithLink } from "actions/client-actions/auth";
+import { useFirebaseAuth } from "auth/firebase";
+import { clientConfig } from "config/client-config";
 
 /**
  * Will have the home screen render
@@ -17,9 +19,17 @@ const Home = () => {
 	// get user state
 	const user = useRecoilValue(UserState);
 
+	const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
+
+	const handleSignIn = async () => {
+		const auth = await getFirebaseAuth()
+		signInWithLink(auth, user.email, window.location.href);
+
+	}
+
 	// use effect hook to sign in with email link
 	useEffect(() => {
-		signInWithLink(user.email, window.location.href);
+		handleSignIn()
 	}, [user.email]);
 
 	// get the auth context

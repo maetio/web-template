@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "app/components/mui-server-components";
+import { Grid } from "app/components/providers/mui-server-components";
 import { SignIn } from "./sign-in";
 
 /**

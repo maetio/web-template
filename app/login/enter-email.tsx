@@ -11,7 +11,9 @@ import { useRouter } from "next/navigation";
 import {
 	sendPasswordlessLoginEmail,
 	signInWithLink,
-} from "../../actions/client-actions/auth";
+} from "actions/client-actions/auth";
+import { useFirebaseAuth } from "auth/firebase";
+import { clientConfig } from "config/client-config";
 
 export const EnterEmail: React.FC<{}> = () => {
 	// useForm & useAuth initialization
@@ -23,6 +25,8 @@ export const EnterEmail: React.FC<{}> = () => {
 		resolver: yupResolver(emailSchema),
 	});
 
+	const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
+
 	// state used to detect if email sent
 	const [sentEmail, setSentEmail] = useState(false);
 
@@ -30,7 +34,9 @@ export const EnterEmail: React.FC<{}> = () => {
 	const [user, setUser] = useRecoilState(UserState);
 
 	const submitEmail = async (data: { email: string }) => {
-		await sendPasswordlessLoginEmail(data.email);
+		const auth = await getFirebaseAuth();
+
+		await sendPasswordlessLoginEmail(auth, data.email);
 		setSentEmail(true);
 		setUser({ ...user, email: data.email });
 	};

@@ -49,7 +49,7 @@ export /**
  * @param {string} [link]
  * @return {*}
  */
-const signInWithLink = async (email: string, link: string) => {
+const signInWithLink = async (auth: Auth, email: string, link: string) => {
 	if (!isSignInWithEmailLink(auth, link))
 		throw Error(`Not Email Sign in Link: ${link}`);
 	return signInWithEmailLink(auth, email, link);
@@ -60,7 +60,7 @@ const signInWithLink = async (email: string, link: string) => {
  * @export
  * @return {*}  {Promise<void>}
  */
-export async function signOutUser(): Promise<void> {
-	// sign out the current user
-	return signOut(auth);
-}
+// export async function signOutUser(): Promise<void> {
+// 	// sign out the current user
+// 	return signOut(auth);
+// }
