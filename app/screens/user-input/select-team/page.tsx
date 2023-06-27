@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-export type SelectTeamProps = {};
+// export interface SelectTeamProps = {};
 
-export const SelectTeam = (props: SelectTeamProps) => {
+export const SelectTeam: React.FC<{}> = () => {
 	return (
 		<div>
 			<h1>Select Team Page</h1>

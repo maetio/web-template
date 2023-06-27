@@ -20,13 +20,12 @@ export /**
  * Card that renders the initial competition data
  *
  * @param {*} {
- *		name,
- *		competition,
+ *		name, key
  *	}
  *  @return {*}
  *
  */
-const CompetitionCard = (props: CompetitionCardProps) => {
+const CompetitionCard: React.FC<CompetitionCardProps> = ({name, key}) => {
 	return (
 		<Grid
 			container
@@ -70,7 +69,7 @@ const CompetitionCard = (props: CompetitionCardProps) => {
 				direction="column"
 				alignItems="flex-start"
 			>
-				<Typography sx={{ fontWeight: 700 }}>{props.name}</Typography>
+				<Typography sx={{ fontWeight: 700 }}>{name}</Typography>
 				<Grid
 					item
 					container

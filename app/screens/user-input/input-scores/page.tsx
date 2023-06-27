@@ -1,8 +1,8 @@
 import React from "react";
 
-export type InputScoresProps = {};
+// export interface InputScoresProps = {};
 
-export const InputScores = (props: InputScoresProps) => {
+export const InputScores: React.FC<{}> = () => {
 	return (
 		<div>
 			<h1>Input Scores</h1>

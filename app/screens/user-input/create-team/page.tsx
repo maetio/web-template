@@ -17,7 +17,7 @@ export interface CreateTeamProps {
 	image?: string;
 }
 
-export const CreateTeam = (props: CreateTeamProps) => {
+export const CreateTeam: React.FC<CreateTeamProps> = ({name, image}) => {
 	return (
 		<Grid
 			sx={{ height: "100vh", backgroundColor: "#D9D9D9" }}

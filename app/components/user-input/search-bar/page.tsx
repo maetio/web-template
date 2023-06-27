@@ -8,21 +8,21 @@ import {
 	TextField,
 } from "../../providers/mui-server-components";
 
-export type SearchBarProps = {
+export interface SearchBarProps {
 	label: string;
-};
+}
 
 /**
  * Search bar "input field" to be used for larger team and player search bar components
  *
- * @param {SearchBarProps} props
+ * @param {SearchBarProps}
  * @returns
  */
-export const SearchBar = (props: SearchBarProps) => {
+export const SearchBar: React.FC<SearchBarProps> = ({label}) => {
 	return (
 		<TextField
 			color="primary"
-			label={props.label || "Search"}
+			label={label || "Search"}
 			sx={{
 				fieldset: {
 					border: 1,

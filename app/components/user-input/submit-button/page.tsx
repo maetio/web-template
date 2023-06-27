@@ -9,21 +9,21 @@ export interface SubmitButtonProps {
 export /**
  * Submit button for all form screens
  *
- * @param {SubmitButtonProps} props
+ * @param {SubmitButtonProps}
  * @returns
  */
-const SubmitButton = (props: SubmitButtonProps) => {
+const SubmitButton: React.FC<SubmitButtonProps> = ({title, color}) => {
 	return (
 		<Button
 			variant="contained"
 			sx={{
 				borderRadius: 8,
-				backgroundColor: props.color,
+				backgroundColor: color,
 				width: 480,
 				height: 50,
 			}}
 		>
-			{props.title}
+			{title}
 		</Button>
 	);
 };

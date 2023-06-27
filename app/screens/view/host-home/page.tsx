@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-export type HostHomeProps = {};
+// export interface HostHomeProps = {};
 
-export const HostHome = (props: HostHomeProps) => {
+export const HostHome: React.FC<{}> = () => {
 	return (
 		<div>
 			<h1>Host Home</h1>

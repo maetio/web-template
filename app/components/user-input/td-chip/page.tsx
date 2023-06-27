@@ -6,12 +6,12 @@ export interface TeamDropdownChipProps {
 	image?: string;
 }
 
-const TeamDropdownChip = (props: TeamDropdownChipProps) => {
+const TeamDropdownChip: React.FC<TeamDropdownChipProps> = ({label, image}) => {
 	return (
 		<Chip
 			sx={{ backgroundColor: "#EEF2FF" }}
 			avatar={<Avatar>PN</Avatar>}
-			label={props.label || "Player Name"}
+			label={label || "Player Name"}
 		/>
 	);
 };

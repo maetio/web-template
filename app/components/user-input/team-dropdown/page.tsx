@@ -7,17 +7,17 @@ import { SearchBar } from "../search-bar/page";
 import { TeamCard } from "../../cards/team-card/page";
 
 export interface TeamDropdownProps {
-	name?: String;
+	name?: string;
 }
 
 export /**
  * Search bar for finding teams
  * tsb = TeamDropdown
- * @param {TeamDropdownProps} props
+ * @param {TeamDropdownProps}
  * @returns
  */
 
-const TeamDropdown = () => {
+const TeamDropdown: React.FC<TeamDropdownProps> = ({name}) => {
 	return (
 		<Grid
 			container

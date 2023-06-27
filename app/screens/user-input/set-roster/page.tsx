@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-export type SetRosterProps = {};
+// export interface SetRosterProps = {};
 
-export const SetRoster = (props: SetRosterProps) => {
+export const SetRoster: React.FC<{}> = () => {
 	return (
 		<div>
 			<h1>Pay Entrance</h1>

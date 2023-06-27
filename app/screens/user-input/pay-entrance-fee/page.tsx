@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-export type PayEntranceFeeProps = {};
+// export interface PayEntranceFeeProps = {};
 
-export const PayEntranceFee = (props: PayEntranceFeeProps) => {
+export const PayEntranceFee: React.FC<{}> = () => {
 	return (
 		<div>
 			<h1>Pay Entrance</h1>

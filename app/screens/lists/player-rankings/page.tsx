@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-export type PlayerRankingsProps = {};
+// export interface PlayerRankingsProps = {};
 
-export const PlayerRankings = (props: PlayerRankingsProps) => {
+export const PlayerRankings: React.FC<{}> = () => {
 	return (
 		<div>
 			<h1>Player Rankings</h1>

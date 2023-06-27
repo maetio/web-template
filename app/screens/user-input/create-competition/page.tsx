@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-type CreateCompetitionProps = {};
+// export interface CreateCompetitionProps = {};
 
-export const CreateCompetition = (props: CreateCompetitionProps) => {
+export const CreateCompetition: React.FC<{}> = () => {
 	return (
 		<div>
 			<h1>Create Competition Page</h1>

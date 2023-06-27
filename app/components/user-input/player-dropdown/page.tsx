@@ -12,10 +12,10 @@ export interface PlayerDropdownProps {
 
 export /**
  * Search bar for finding players
- * @param {PlayerDropdownProps} props
+ * @param {PlayerDropdownProps}
  * @returns
  */
-const PlayerDropdown = () => {
+const PlayerDropdown: React.FC<PlayerDropdownProps> = ({name}) => {
 	return (
 		<Grid
 			container

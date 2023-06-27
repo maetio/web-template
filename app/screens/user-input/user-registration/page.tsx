@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-type UserRegistrationProps = {};
+// export interface UserRegistrationProps = {};
 
-export const UserRegistration = (props: UserRegistrationProps) => {
+export const UserRegistration: React.FC<{}> = () => {
 	return (
 		<div>
 			<h1>User Registration</h1>

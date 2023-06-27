@@ -11,12 +11,12 @@ export /**
  * @param {PlayerDropdownChipProps} props
  * @returns
  */
-const DropdownChip = (props: PlayerDropdownChipProps) => {
+const DropdownChip: React.FC<PlayerDropdownChipProps> = ({label, image}) => {
 	return (
 		<Chip
 			sx={{ backgroundColor: "#EEF2FF" }}
-			avatar={<Avatar src={props.image}>PN</Avatar>}
-			label={props.label || "Player Name"}
+			avatar={<Avatar src={image}>PN</Avatar>}
+			label={label || "Player Name"}
 		/>
 	);
 };

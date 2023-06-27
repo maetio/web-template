@@ -1,8 +1,8 @@
 import React from "react";
 
-export type SuccessProps = {};
+// export interface SuccessProps = {};
 
-export const Success = (props: SuccessProps) => {
+export const Success: React.FC<{}> = () => {
 	return <div>Success</div>;
 };
 

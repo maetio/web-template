@@ -23,7 +23,7 @@ export /**
  *  @return {*}
  *
  */
-const PlayerCard = (props: PlayerCardProps) => {
+const PlayerCard: React.FC<PlayerCardProps> = ({name, image, score}) => {
 	return (
 		<Grid
 			container
@@ -44,7 +44,7 @@ const PlayerCard = (props: PlayerCardProps) => {
 					sx={{
 						ml: 2,
 						backgroundImage:
-							props.image ||
+							image ||
 							"linear-gradient(207deg, #EAE68E 13.76%, #FBBEBE 60.61%, #BEE1FB 100%);",
 						borderRadius: "50%",
 						width: 40,
@@ -52,7 +52,7 @@ const PlayerCard = (props: PlayerCardProps) => {
 					}}
 				></Box>
 				<Typography sx={{ fontWeight: 700, ml: 2 }}>
-					{props.name}
+					{name}
 				</Typography>
 			</Grid>
 			<Grid
@@ -65,7 +65,7 @@ const PlayerCard = (props: PlayerCardProps) => {
 			>
 				<MaetIcon sx={{ mr: 1 }}></MaetIcon>
 				<Typography sx={{ fontWeight: 300, mr: 4 }}>
-					{props.score}
+					{score}
 				</Typography>
 			</Grid>
 		</Grid>

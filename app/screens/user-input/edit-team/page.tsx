@@ -1,8 +1,8 @@
 import React from "react";
 
-export type EditTeamProps = {};
+// export interface EditTeamProps = {};
 
-export const EditTeam = (props: EditTeamProps) => {
+export const EditTeam: React.FC<{}> = () => {
 	return (
 		<div>
 			<h1>Edit Team</h1>

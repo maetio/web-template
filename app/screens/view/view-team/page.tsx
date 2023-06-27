@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-export type ViewTeamProps = {};
+// export interface ViewTeamProps = {};
 
-export const ViewTeam = (props: ViewTeamProps) => {
+export const ViewTeam: React.FC<{}> = () => {
 	return (
 		<div>
 			<h1>View Team</h1>

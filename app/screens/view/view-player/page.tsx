@@ -1,8 +1,8 @@
 import React from "react";
 
-export type ViewPlayerProps = {};
+// export interface ViewPlayerProps = {};
 
-export const ViewPlayer = (props: ViewPlayerProps) => {
+export const ViewPlayer: React.FC<{}> = () => {
 	return (
 		<div>
 			<h1>View Player</h1>

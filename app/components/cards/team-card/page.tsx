@@ -26,7 +26,7 @@ export /**
  *	}
  *  @return {*}
  *
- */ const TeamCard = (props: TeamCardProps) => {
+ */ const TeamCard: React.FC<TeamCardProps> = ({name, image, score}) => {
 	return (
 		<Grid
 			container
@@ -47,7 +47,7 @@ export /**
 					sx={{
 						ml: 2,
 						backgroundImage:
-							props.image ||
+							image ||
 							"linear-gradient(207deg, #EAE68E 13.76%, #FBBEBE 60.61%, #BEE1FB 100%);",
 						borderRadius: 2,
 						width: 40,
@@ -55,7 +55,7 @@ export /**
 					}}
 				></Box>
 				<Typography sx={{ fontWeight: 700, ml: 2 }}>
-					{props.name}
+					{name}
 				</Typography>
 			</Grid>
 			<Grid
@@ -68,7 +68,7 @@ export /**
 			>
 				<MaetIcon sx={{ mr: 1 }}></MaetIcon>
 				<Typography sx={{ fontWeight: 300, mr: 4 }}>
-					{props.score}
+					{score}
 				</Typography>
 			</Grid>
 		</Grid>

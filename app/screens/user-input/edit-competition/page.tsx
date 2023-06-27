@@ -1,8 +1,8 @@
 import React from "react";
 
-export type EditCompetitionProps = {};
+// export interface EditCompetitionProps = {};
 
-export const EditCompetition = (props: EditCompetitionProps) => {
+export const EditCompetition: React.FC<{}> = () => {
 	return (
 		<div>
 			<h1>Edit Competition</h1>

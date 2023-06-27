@@ -12,12 +12,12 @@ import { PlayerCard } from "app/components/cards/player-card/page";
 import { SubmitButton } from "app/components/user-input/submit-button/page";
 import React from "react";
 
-export type JoinTeamProps = {
+export interface JoinTeamProps {
 	image?: string;
 	teamName: string;
-};
+}
 
-export const JoinTeam = (props: JoinTeamProps) => {
+export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 	return (
 		<Grid
 			sx={{ height: "100vh", backgroundColor: "#D9D9D9" }}
@@ -51,16 +51,14 @@ export const JoinTeam = (props: JoinTeamProps) => {
 					<Box
 						sx={{
 							mb: 1,
-							backgroundImage:
-								props.image ||
-								"linear-gradient(180deg, #908EEA 0%, #BEFBE5 100%)",
+							backgroundImage: "linear-gradient(180deg, #908EEA 0%, #BEFBE5 100%)" || image,
 							width: 250,
 							height: 250,
 							borderRadius: 4,
 						}}
 					></Box>
 					<Typography variant="h2" sx={{ fontWeight: 700 }}>
-						{"Team Name" || props.teamName}
+						{"Team Name" || teamName}
 					</Typography>
 					<Typography variant="h6">
 						Contact the team captain for the team passcode

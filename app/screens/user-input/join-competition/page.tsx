@@ -23,7 +23,8 @@ export interface JoinCompetitionProps {
 	price?: String;
 }
 
-export const JoinCompetition = (props: JoinCompetitionProps) => {
+export const JoinCompetition: React.FC<JoinCompetitionProps> = ({competitionName, image, description,
+	competitionType, date, location, price}) => {
 	return (
 		<Grid
 			sx={{ height: "100vh" }}
@@ -58,7 +59,7 @@ export const JoinCompetition = (props: JoinCompetitionProps) => {
 						}}
 					></Box>
 					<Typography variant="h2" sx={{ fontWeight: 700, mb: 1 }}>
-						{props.competitionName || "Competition Name"}
+						{competitionName || "Competition Name"}
 					</Typography>
 					<Grid
 						container
@@ -80,7 +81,7 @@ export const JoinCompetition = (props: JoinCompetitionProps) => {
 							></SportsBasketball>
 							<Typography sx={{ color: "#A3A3A3" }}>
 								{"Basketball Tournament" ||
-									props.competitionType}
+									competitionType}
 							</Typography>
 						</Grid>
 						<Grid container item alignItems="flex-start">
@@ -88,7 +89,7 @@ export const JoinCompetition = (props: JoinCompetitionProps) => {
 								sx={{ mr: 0.5, color: "#A3A3A3" }}
 							></CalendarIcon>
 							<Typography sx={{ color: "#A3A3A3" }}>
-								{"June 27 at 12:00 PM" || props.date}
+								{"June 27 at 12:00 PM" || date}
 							</Typography>
 						</Grid>
 						<Grid container item alignItems="flex-start">
@@ -97,7 +98,7 @@ export const JoinCompetition = (props: JoinCompetitionProps) => {
 							></LocationOn>
 							<Typography sx={{ color: "#A3A3A3" }}>
 								{"1234 Neighborhood St, City, IN" ||
-									props.location}
+									location}
 							</Typography>
 						</Grid>
 						<Grid container item alignItems="flex-start">
@@ -109,7 +110,7 @@ export const JoinCompetition = (props: JoinCompetitionProps) => {
 									color: "#A3A3A3",
 								}}
 							>
-								{"$99" || props.price}
+								{"$99" || price}
 							</Typography>
 							<Typography sx={{ color: "#A3A3A3" }}>
 								per team

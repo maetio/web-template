@@ -1,8 +1,8 @@
 import React from "react";
 
-export type EditGameProps = {};
+// export interface EditGameProps = {};
 
-export const EditGame = (props: EditGameProps) => {
+export const EditGame: React.FC<{}> = () => {
 	return (
 		<div>
 			<h1>Edit Game</h1>

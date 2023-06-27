@@ -11,20 +11,20 @@ import {
 	InputAdornment,
 } from "../../providers/mui-server-components";
 
-type TextFieldProps = {
+interface InputFieldProps {
 	label: string;
-};
+}
 
 export /**
  * Reusable text field for user inputs
  *
- * @param {TextFieldProps} props
+ * @param {TextFieldProps}
  * @returns
  */
-const InputField = (props: TextFieldProps) => {
+const InputField: React.FC<InputFieldProps> = ({label}) => {
 	return (
 		<TextField
-			label={props.label || "Input Field"}
+			label={label || "Input Field"}
 			sx={{
 				fieldset: {
 					border: 1,
