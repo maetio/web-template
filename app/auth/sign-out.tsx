@@ -10,7 +10,7 @@ import { UserState } from "app/recoil-store";
 import {
 	sendPasswordlessLoginEmail,
 	signInWithLink,
-} from "../../client-actions/auth";
+} from "../../actions/client-actions/auth";
 
 export const SignIn: React.FC<{}> = () => {
 	// useForm & useAuth initialization

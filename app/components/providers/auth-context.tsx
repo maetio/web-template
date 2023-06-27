@@ -9,7 +9,7 @@ import {
 	useMemo,
 } from "react";
 import { onAuthStateChanged, User } from "firebase/auth";
-import { auth } from "../../../client-actions/config";
+import { auth } from "../../../actions/client-actions/config";
 
 type Props = {
 	children: ReactNode;

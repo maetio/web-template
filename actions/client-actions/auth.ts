@@ -5,9 +5,10 @@ import {
 	signInWithEmailLink,
 	signOut,
 } from "firebase/auth";
+// import { auth } from "./config";
+
+// import { auth } from "../config/client-config";
 import { auth } from "./config";
-import { useFirebaseAuth } from "../auth/firebase";
-import { clientConfig } from "../config/client-config";
 
 /**
  * Function will send the passwordless login email to the user's email

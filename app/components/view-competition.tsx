@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import { CompetitionCard, CompetitionCardProps } from "./competition-card";
-import { getCompetitions } from "../../server-actions/competitions";
+import { getCompetitions } from "../../actions/server-actions/competitions";
 import { PageHeader } from "./page-header";
 import { TeamCard, TeamCardProps } from "./team-card";
 import { PlayerCard, PlayerCardProps } from "./player-card";

@@ -1,4 +1,4 @@
-import { getCompetitions } from "../../server-actions/competitions";
+import { getCompetitions } from "../../actions/server-actions/competitions";
 
 export default async function Page() {
 	// fetch the competitions

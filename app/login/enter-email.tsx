@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import {
 	sendPasswordlessLoginEmail,
 	signInWithLink,
-} from "../../client-actions/auth";
+} from "../../actions/client-actions/auth";
 
 export const EnterEmail: React.FC<{}> = () => {
 	// useForm & useAuth initialization

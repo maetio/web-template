@@ -5,15 +5,15 @@ import { Button, Grid, TextField, Typography } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { UserState } from "app/recoil-store";
 import { SignOutButton } from "app/components/sign-out-button";
-import { useAuthContext } from "app/components/providers/auth-context";
+// import { useAuthContext } from "app/components/providers/auth-context";
 import { useForm } from "react-hook-form";
 import { EditProfileSchemaType, editProfileSchema } from "app/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 import { UserProfile } from "app/UserProfile";
 import { mapFirebaseResponseToTenant } from "app/login/firebase";
-import { useUpdatePrivateUserData } from "../../client-actions/hooks/user-api";
-import { signInWithLink } from "../../client-actions/auth";
+import { useUpdatePrivateUserData } from "../../actions/client-actions/hooks/user-api";
+import { signInWithLink } from "../../actions/client-actions/auth";
 import { useAuth } from "../../auth/hooks";
 
 export /**
@@ -47,7 +47,10 @@ const Home = () => {
 	};
 
 	useEffect(() => {
-		handleLogin();
+		if (window.location.href.includes("apiKey")) {
+			console.log("fired");
+			handleLogin();
+		}
 	}, []);
 
 	// use effect hook to sign in with email link
@@ -58,7 +61,7 @@ const Home = () => {
 	}, [tenant]);
 
 	// get the auth context
-	const userContext = useAuthContext();
+	// const userContext = useAuthContext();
 
 	const [{ isLoading, isSuccess, error }, updateData] =
 		useUpdatePrivateUserData();
@@ -102,11 +105,12 @@ const Home = () => {
 				justifyContent="center"
 				sx={{ minHeight: "100vh" }}
 			>
-				<Typography>
+				{/* <Typography>
 					{userContext?.uid.length
 						? `You are logged in as ${userContext?.email}.`
 						: "You are not logged in."}
-				</Typography>
+				</Typography> */}
+				<Typography>testing</Typography>
 				<TextField
 					{...register("firstName", { required: true })}
 					sx={{ m: 3 }}

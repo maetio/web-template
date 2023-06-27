@@ -5,8 +5,8 @@ import { Grid, Typography } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { UserState } from "app/recoil-store";
 import { SignOutButton } from "app/components/sign-out-button";
-import { useAuthContext } from "app/components/providers/auth-context";
-import { signInWithLink } from "../../client-actions/auth";
+// import { useAuthContext } from "app/components/providers/auth-context";
+import { signInWithLink } from "../../actions/client-actions/auth";
 
 /**
  * Will have the home screen render
@@ -23,7 +23,7 @@ const Home = () => {
 	}, [user.email]);
 
 	// get the auth context
-	const userContext = useAuthContext();
+	// const userContext = useAuthContext();
 
 	return (
 		<Grid
@@ -34,11 +34,12 @@ const Home = () => {
 			justifyContent="center"
 			sx={{ minHeight: "100vh" }}
 		>
-			<Typography>
+			{/* <Typography>
 				{userContext?.uid.length
 					? `You are logged in as ${userContext?.email}.`
 					: "You are not logged in."}
-			</Typography>
+			</Typography> */}
+			<Typography>testing</Typography>
 			<SignOutButton />
 		</Grid>
 	);
