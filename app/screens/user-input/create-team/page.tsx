@@ -16,20 +16,22 @@ import React from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const CreateTeamSchema = yup.object().shape({
-	teamName: yup.string().required(),
-	teamLocation: yup.string().required(),
+	teamName: yup.string().required("Team Name is required"),
+	teamLocation: yup.string().required("Team Location is required"),
 });
 export interface CreateTeamProps {
 	name: string;
 	image?: string;
 }
 
+
 export const CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm({ resolver: yupResolver(CreateTeamSchema) });
+		reset
+	} = useForm({ resolver: yupResolver(CreateTeamSchema), });
 
 	return (
 		<form onSubmit={handleSubmit((data) => console.log(data))}>

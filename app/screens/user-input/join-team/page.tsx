@@ -12,17 +12,24 @@ import { PlayerCard } from "app/components/cards/player-card/page";
 import { SubmitButton } from "app/components/user-input/submit-button/page";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 
 export interface JoinTeamProps {
 	image?: string;
 	teamName: string;
 }
 
+const JoinTeamSchema = Yup.object().shape({
+	passcode: Yup.string().required("Full name is required")
+});
+	
+
 export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
-	const { register, handleSubmit } = useForm();
+	const { register, handleSubmit } = useForm({resolver: yupResolver(JoinTeamSchema)});
 
 	return (
-		<form onSubmit={handleSubmit((data) => console.log(data.passcode))}>
+		<form onSubmit={handleSubmit((data) => console.log(data))}>
 			<Grid
 				sx={{ height: "100vh", backgroundColor: "#D9D9D9" }}
 				container
