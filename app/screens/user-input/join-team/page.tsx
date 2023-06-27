@@ -23,7 +23,7 @@ export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 	const { register, handleSubmit } = useForm();
 
 	return (
-		<form onSubmit={handleSubmit((data) => console.log(data))}>
+		<form onSubmit={handleSubmit((data) => console.log(data.passcode))}>
 			<Grid
 				sx={{ height: "100vh", backgroundColor: "#D9D9D9" }}
 				container
@@ -68,7 +68,7 @@ export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 						<Typography variant="h6">
 							Contact the team captain for the team passcode
 						</Typography>
-						<InputField {...register("passcode")} label="Enter Team Passcode"></InputField>
+						<InputField id="passcode" register={register} label="Enter Team Passcode"></InputField>
 						<Typography>Team Roster</Typography>
 						<Grid
 							container
@@ -79,9 +79,7 @@ export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 							<PlayerCard name="Player Name" score={99} />
 							<PlayerCard name="Player Name" score={99} />
 						</Grid>
-						<SubmitButton color="#818CF8">
-							Join Team
-						</SubmitButton>
+						<SubmitButton title="Join Team" color="#818CF8"/>
 					</Grid>
 				</Grid>
 			</Grid>

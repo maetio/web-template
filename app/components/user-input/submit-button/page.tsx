@@ -4,8 +4,8 @@ import React from "react";
 import { Button, ButtonTypeMap, ExtendButtonBase } from "../../providers/mui-server-components";
 
 export interface SubmitButtonProps {
-	children: React.ReactNode;
 	color: string;
+	title: string;
 }
 export /**
  * Submit button for all form screens
@@ -13,7 +13,7 @@ export /**
  * @param {SubmitButtonProps}
  * @returns
  */
-const SubmitButton: React.FC<SubmitButtonProps> = ({children, color, ...props}) => {
+const SubmitButton: React.FC<SubmitButtonProps> = ({title, color, ...props}) => {
 	return (
 		<Button
 			{...props}
@@ -26,7 +26,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({children, color, ...props}) 
 			}}
 			type="submit"
 		>
-			{children}
+			{title}
 		</Button>
 	);
 };

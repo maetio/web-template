@@ -65,8 +65,8 @@ export const CreateTeam: React.FC<CreateTeamProps> = ({name, image}) => {
 						<Panorama sx={{ m: 1 }}></Panorama>
 						<Typography>Upload a picture</Typography>
 					</Grid>
-					<InputField label="Team Name"></InputField>
-					<InputField label="Team Location"></InputField>
+					<InputField id="teamName" label="Team Name"></InputField>
+					<InputField id="teamName" label="Team Location"></InputField>
 					<Grid
 						container
 						direction="column"
@@ -76,9 +76,8 @@ export const CreateTeam: React.FC<CreateTeamProps> = ({name, image}) => {
 					</Grid>
 					<SubmitButton
 						color="#818CF8"
-					>
-						Create Team
-					</SubmitButton>
+						title="Create Team"
+					/>
 				</Grid>
 			</Grid>
 		</Grid>
