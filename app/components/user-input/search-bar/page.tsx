@@ -11,6 +11,7 @@ export interface SearchBarProps {
 	label: string;
 }
 
+
 /**
  * Search bar "input field" to be used for larger team and player search bar components
  *
@@ -18,6 +19,7 @@ export interface SearchBarProps {
  * @returns
  */
 export const SearchBar: React.FC<SearchBarProps> = ({label}) => {
+
 	return (
 		<TextField
 			color="primary"
@@ -33,8 +35,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({label}) => {
 				borderRadius: 3,
 			}}
 			InputProps={{
-				endAdornment: (
-					<InputAdornment position="end">
+				startAdornment: (
+					<InputAdornment position="start">
 						<Search
 							sx={{ stroke: "#404040", strokeWidth: 2 }}
 						></Search>
