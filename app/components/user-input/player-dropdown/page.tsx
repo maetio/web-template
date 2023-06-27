@@ -2,7 +2,13 @@
 
 import React from "react";
 import { ControlPoint } from "@mui/icons-material";
-import { Autocomplete, Grid, TextField, Typography, createFilterOptions } from "../../providers/mui-server-components";
+import {
+	Autocomplete,
+	Grid,
+	TextField,
+	Typography,
+	createFilterOptions,
+} from "../../providers/mui-server-components";
 import { SearchBar } from "../search-bar/page";
 import { PlayerCard } from "../../cards/player-card/page";
 import { InputField } from "../input-field/page";
@@ -16,10 +22,10 @@ export interface PlayerOptionType {
 	title: string;
 }
 
-const testPlayers: readonly PlayerOptionType[] = 
-	[{title: "Jay Boog"}, {title: "Big Baller"}]
-;
-
+const testPlayers: readonly PlayerOptionType[] = [
+	{ title: "Jay Boog" },
+	{ title: "Big Baller" },
+];
 const filter = createFilterOptions<PlayerOptionType>();
 
 export /**
@@ -28,8 +34,7 @@ export /**
  * @returns
  */
 
-const PlayerDropdown: React.FC<PlayerDropdownProps> = ({name}) => {
-
+const PlayerDropdown: React.FC<PlayerDropdownProps> = ({ name }) => {
 	const [value, setValue] = React.useState<PlayerOptionType | null>(null);
 
 	return (
@@ -41,22 +46,21 @@ const PlayerDropdown: React.FC<PlayerDropdownProps> = ({name}) => {
 			getOptionLabel={(option) => {
 				// Value selected with enter, right from the input
 				if (typeof option === "string") {
-				  return option;
+					return option;
 				}
 				// Add "xxx" option created dynamically
 				if (option.inputValue) {
-				  return option.inputValue;
+					return option.inputValue;
 				}
 				// Regular option
 				return option.title;
-			  }}
-			  renderOption={(props, option) => <li {...props}>{option.title}</li>}
+			}}
+			renderOption={(props, option) => <li {...props}>{option.title}</li>}
 			options={testPlayers}
 			sx={{ width: 300 }}
-			renderInput={(params) => <InputField {...params} label="SKU" />} />
-	  );
+			renderInput={(params) => <InputField {...params} label="SKU" />}
+		/>
+	);
 };
-
-
 
 export default PlayerDropdown;

@@ -23,8 +23,15 @@ export interface JoinCompetitionProps {
 	price?: String;
 }
 
-export const JoinCompetition: React.FC<JoinCompetitionProps> = ({competitionName, image, description,
-	competitionType, date, location, price}) => {
+export const JoinCompetition: React.FC<JoinCompetitionProps> = ({
+	competitionName,
+	image,
+	description,
+	competitionType,
+	date,
+	location,
+	price,
+}) => {
 	return (
 		<Grid
 			sx={{ height: "100vh" }}
@@ -80,8 +87,7 @@ export const JoinCompetition: React.FC<JoinCompetitionProps> = ({competitionName
 								sx={{ mr: 0.5, color: "#A3A3A3" }}
 							></SportsBasketball>
 							<Typography sx={{ color: "#A3A3A3" }}>
-								{"Basketball Tournament" ||
-									competitionType}
+								{"Basketball Tournament" || competitionType}
 							</Typography>
 						</Grid>
 						<Grid container item alignItems="flex-start">
@@ -97,8 +103,7 @@ export const JoinCompetition: React.FC<JoinCompetitionProps> = ({competitionName
 								sx={{ mr: 0.5, color: "#A3A3A3" }}
 							></LocationOn>
 							<Typography sx={{ color: "#A3A3A3" }}>
-								{"1234 Neighborhood St, City, IN" ||
-									location}
+								{"1234 Neighborhood St, City, IN" || location}
 							</Typography>
 						</Grid>
 						<Grid container item alignItems="flex-start">
@@ -126,7 +131,7 @@ export const JoinCompetition: React.FC<JoinCompetitionProps> = ({competitionName
 					>
 						<TeamDropdown />
 					</Grid>
-					<SubmitButton title="Join Competition" color="#818CF8"/>
+					<SubmitButton title="Join Competition" color="#818CF8" />
 				</Grid>
 			</Grid>
 		</Grid>

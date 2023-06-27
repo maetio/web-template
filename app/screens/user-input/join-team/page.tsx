@@ -19,7 +19,6 @@ export interface JoinTeamProps {
 }
 
 export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
-
 	const { register, handleSubmit } = useForm();
 
 	return (
@@ -56,7 +55,9 @@ export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 						<Box
 							sx={{
 								mb: 1,
-								backgroundImage: "linear-gradient(180deg, #908EEA 0%, #BEFBE5 100%)" || image,
+								backgroundImage:
+									"linear-gradient(180deg, #908EEA 0%, #BEFBE5 100%)" ||
+									image,
 								width: 250,
 								height: 250,
 								borderRadius: 4,
@@ -68,7 +69,11 @@ export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 						<Typography variant="h6">
 							Contact the team captain for the team passcode
 						</Typography>
-						<InputField id="passcode" register={register} label="Enter Team Passcode"></InputField>
+						<InputField
+							id="passcode"
+							register={register}
+							label="Enter Team Passcode"
+						></InputField>
 						<Typography>Team Roster</Typography>
 						<Grid
 							container
@@ -79,7 +84,7 @@ export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 							<PlayerCard name="Player Name" score={99} />
 							<PlayerCard name="Player Name" score={99} />
 						</Grid>
-						<SubmitButton title="Join Team" color="#818CF8"/>
+						<SubmitButton title="Join Team" color="#818CF8" />
 					</Grid>
 				</Grid>
 			</Grid>

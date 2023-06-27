@@ -11,17 +11,25 @@ import { PlayerCard } from "app/components/cards/player-card/page";
 import { PlayerDropdown } from "app/components/user-input/player-dropdown/page";
 import { SubmitButton } from "app/components/user-input/submit-button/page";
 import { useForm } from "react-hook-form";
-
+import * as yup from "yup";
 import React from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
 
+const CreateTeamSchema = yup.object().shape({
+	teamName: yup.string().required(),
+	teamLocation: yup.string().required(),
+});
 export interface CreateTeamProps {
 	name: string;
 	image?: string;
 }
 
-export const CreateTeam: React.FC<CreateTeamProps> = ({name, image}) => {
-
-	const { register, handleSubmit, formState: { errors } } = useForm();
+export const CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({ resolver: yupResolver(CreateTeamSchema) });
 
 	return (
 		<form onSubmit={handleSubmit((data) => console.log(data))}>
@@ -71,19 +79,24 @@ export const CreateTeam: React.FC<CreateTeamProps> = ({name, image}) => {
 							<Panorama sx={{ m: 1 }}></Panorama>
 							<Typography>Upload a picture</Typography>
 						</Grid>
-						<InputField id="teamName" register={register} label="Team Name"></InputField>
-						<InputField id="teamLocation" register={register} label="Team Location"></InputField>
+						<InputField
+							id="teamName"
+							register={register}
+							label="Team Name"
+						></InputField>
+						<InputField
+							id="teamLocation"
+							register={register}
+							label="Team Location"
+						></InputField>
 						<Grid
 							container
 							direction="column"
 							sx={{ mt: 1, mb: 3, width: 480 }}
 						>
-							<PlayerDropdown/>
+							<PlayerDropdown />
 						</Grid>
-						<SubmitButton
-							color="#818CF8"
-							title="Create Team"
-						/>
+						<SubmitButton color="#818CF8" title="Create Team" />
 					</Grid>
 				</Grid>
 			</Grid>

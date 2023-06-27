@@ -6,7 +6,10 @@ export interface TeamDropdownChipProps {
 	image?: string;
 }
 
-const TeamDropdownChip: React.FC<TeamDropdownChipProps> = ({label, image}) => {
+const TeamDropdownChip: React.FC<TeamDropdownChipProps> = ({
+	label,
+	image,
+}) => {
 	return (
 		<Chip
 			sx={{ backgroundColor: "#EEF2FF" }}

@@ -3,13 +3,11 @@
 import React, { InputHTMLAttributes } from "react";
 import { Search } from "@mui/icons-material";
 import { FieldValues, UseFormRegister } from "react-hook-form";
-import {
-	TextField,
-} from "../../providers/mui-server-components";
+import { TextField } from "../../providers/mui-server-components";
 
 interface InputFieldProps {
-	id: string
-	label: string,
+	id: string;
+	label: string;
 	register?: UseFormRegister<FieldValues>;
 }
 
@@ -19,7 +17,12 @@ export /**
  * @param {TextFieldProps}
  * @returns
  */
-const InputField: React.FC<InputFieldProps> = ({label, id, register, ...props}) => {
+const InputField: React.FC<InputFieldProps> = ({
+	label,
+	id,
+	register,
+	...props
+}) => {
 	return (
 		<TextField
 			{...props}
@@ -40,7 +43,6 @@ const InputField: React.FC<InputFieldProps> = ({label, id, register, ...props}) 
 				width: 480,
 				borderRadius: 3,
 			}}
-			
 		></TextField>
 	);
 };

@@ -1,7 +1,11 @@
 "use client";
 
 import React from "react";
-import { Button, ButtonTypeMap, ExtendButtonBase } from "../../providers/mui-server-components";
+import {
+	Button,
+	ButtonTypeMap,
+	ExtendButtonBase,
+} from "../../providers/mui-server-components";
 
 export interface SubmitButtonProps {
 	color: string;
@@ -13,7 +17,11 @@ export /**
  * @param {SubmitButtonProps}
  * @returns
  */
-const SubmitButton: React.FC<SubmitButtonProps> = ({title, color, ...props}) => {
+const SubmitButton: React.FC<SubmitButtonProps> = ({
+	title,
+	color,
+	...props
+}) => {
 	return (
 		<Button
 			{...props}

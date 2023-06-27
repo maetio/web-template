@@ -11,15 +11,13 @@ export interface SearchBarProps {
 	label: string;
 }
 
-
 /**
  * Search bar "input field" to be used for larger team and player search bar components
  *
  * @param {SearchBarProps}
  * @returns
  */
-export const SearchBar: React.FC<SearchBarProps> = ({label}) => {
-
+export const SearchBar: React.FC<SearchBarProps> = ({ label }) => {
 	return (
 		<TextField
 			color="primary"
