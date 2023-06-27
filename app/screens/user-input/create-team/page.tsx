@@ -75,9 +75,10 @@ export const CreateTeam: React.FC<CreateTeamProps> = ({name, image}) => {
 						<PlayerDropdown />
 					</Grid>
 					<SubmitButton
-						title="Create Team"
 						color="#818CF8"
-					></SubmitButton>
+					>
+						Create Team
+					</SubmitButton>
 				</Grid>
 			</Grid>
 		</Grid>

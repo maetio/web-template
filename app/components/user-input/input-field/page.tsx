@@ -1,18 +1,13 @@
-import React from "react";
+"use client";
+
+import React, { InputHTMLAttributes } from "react";
 import { Search } from "@mui/icons-material";
 import {
-	Typography,
-	Grid,
 	TextField,
-	FormControl,
-	Input,
-	OutlinedInput,
-	InputLabel,
-	InputAdornment,
 } from "../../providers/mui-server-components";
 
 interface InputFieldProps {
-	label: string;
+	label: string,
 }
 
 export /**
@@ -21,9 +16,10 @@ export /**
  * @param {TextFieldProps}
  * @returns
  */
-const InputField: React.FC<InputFieldProps> = ({label}) => {
+const InputField: React.FC<InputFieldProps> = (label, {...props}) => {
 	return (
 		<TextField
+			{...props}
 			label={label || "Input Field"}
 			sx={{
 				fieldset: {

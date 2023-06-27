@@ -1,20 +1,22 @@
+"use client";
+
 import React from "react";
-import { Button } from "../../providers/mui-server-components";
+import { Button, ButtonTypeMap, ExtendButtonBase } from "../../providers/mui-server-components";
 
 export interface SubmitButtonProps {
-	title: string;
+	children: React.ReactNode;
 	color: string;
 }
-
 export /**
  * Submit button for all form screens
  *
  * @param {SubmitButtonProps}
  * @returns
  */
-const SubmitButton: React.FC<SubmitButtonProps> = ({title, color}) => {
+const SubmitButton: React.FC<SubmitButtonProps> = ({children, color, ...props}) => {
 	return (
 		<Button
+			{...props}
 			variant="contained"
 			sx={{
 				borderRadius: 8,
@@ -22,8 +24,9 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({title, color}) => {
 				width: 480,
 				height: 50,
 			}}
+			type="submit"
 		>
-			{title}
+			{children}
 		</Button>
 	);
 };

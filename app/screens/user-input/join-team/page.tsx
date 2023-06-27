@@ -11,6 +11,7 @@ import {
 import { PlayerCard } from "app/components/cards/player-card/page";
 import { SubmitButton } from "app/components/user-input/submit-button/page";
 import React from "react";
+import { useForm } from "react-hook-form";
 
 export interface JoinTeamProps {
 	image?: string;
@@ -18,66 +19,73 @@ export interface JoinTeamProps {
 }
 
 export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
+
+	const { register, handleSubmit } = useForm();
+
 	return (
-		<Grid
-			sx={{ height: "100vh", backgroundColor: "#D9D9D9" }}
-			container
-			alignItems="center"
-			justifyContent="center"
-		>
+		<form onSubmit={handleSubmit((data) => console.log(data))}>
 			<Grid
-				sx={{
-					width: 1100,
-					height: 850,
-					border: 1,
-					borderColor: "#FAFAFA",
-					borderRadius: 30,
-					backgroundColor: "#FAFAFA",
-				}}
+				sx={{ height: "100vh", backgroundColor: "#D9D9D9" }}
 				container
+				alignItems="center"
+				justifyContent="center"
 			>
 				<Grid
-					container
-					direction="row"
-					justifyContent="flex-end"
-					alignItems="flex-end"
 					sx={{
-						width: 1000,
+						width: 1100,
+						height: 850,
+						border: 1,
+						borderColor: "#FAFAFA",
+						borderRadius: 30,
+						backgroundColor: "#FAFAFA",
 					}}
+					container
 				>
-					<Cancel></Cancel>
-				</Grid>
-				<Grid container direction="column" alignItems="center" item>
-					<Box
-						sx={{
-							mb: 1,
-							backgroundImage: "linear-gradient(180deg, #908EEA 0%, #BEFBE5 100%)" || image,
-							width: 250,
-							height: 250,
-							borderRadius: 4,
-						}}
-					></Box>
-					<Typography variant="h2" sx={{ fontWeight: 700 }}>
-						{"Team Name" || teamName}
-					</Typography>
-					<Typography variant="h6">
-						Contact the team captain for the team passcode
-					</Typography>
-					<InputField label="Enter Team Passcode"></InputField>
-					<Typography>Team Roster</Typography>
 					<Grid
 						container
-						direction="column"
-						sx={{ mt: 1, mb: 3, width: 480 }}
+						direction="row"
+						justifyContent="flex-end"
+						alignItems="flex-end"
+						sx={{
+							width: 1000,
+						}}
 					>
-						<PlayerCard name="Player Name" score={99} />
-						<PlayerCard name="Player Name" score={99} />
-						<PlayerCard name="Player Name" score={99} />
+						<Cancel></Cancel>
 					</Grid>
-					<SubmitButton title="Join Team" color="#818CF8" />
+					<Grid container direction="column" alignItems="center" item>
+						<Box
+							sx={{
+								mb: 1,
+								backgroundImage: "linear-gradient(180deg, #908EEA 0%, #BEFBE5 100%)" || image,
+								width: 250,
+								height: 250,
+								borderRadius: 4,
+							}}
+						></Box>
+						<Typography variant="h2" sx={{ fontWeight: 700 }}>
+							{"Team Name" || teamName}
+						</Typography>
+						<Typography variant="h6">
+							Contact the team captain for the team passcode
+						</Typography>
+						<InputField {...register("passcode")} label="Enter Team Passcode"></InputField>
+						<Typography>Team Roster</Typography>
+						<Grid
+							container
+							direction="column"
+							sx={{ mt: 1, mb: 3, width: 480 }}
+						>
+							<PlayerCard name="Player Name" score={99} />
+							<PlayerCard name="Player Name" score={99} />
+							<PlayerCard name="Player Name" score={99} />
+						</Grid>
+						<SubmitButton color="#818CF8">
+							Join Team
+						</SubmitButton>
+					</Grid>
 				</Grid>
 			</Grid>
-		</Grid>
+		</form>
 	);
 };
 

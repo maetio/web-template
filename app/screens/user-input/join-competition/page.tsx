@@ -126,7 +126,9 @@ export const JoinCompetition: React.FC<JoinCompetitionProps> = ({competitionName
 					>
 						<TeamDropdown />
 					</Grid>
-					<SubmitButton title="Join Competition" color="#818CF8" />
+					<SubmitButton color="#818CF8">
+						Join Competition
+					</SubmitButton>
 				</Grid>
 			</Grid>
 		</Grid>
