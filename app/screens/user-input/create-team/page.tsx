@@ -24,14 +24,13 @@ export interface CreateTeamProps {
 	image?: string;
 }
 
-
 export const CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset
-	} = useForm({ resolver: yupResolver(CreateTeamSchema), });
+		reset,
+	} = useForm({ resolver: yupResolver(CreateTeamSchema) });
 
 	return (
 		<form onSubmit={handleSubmit((data) => console.log(data))}>

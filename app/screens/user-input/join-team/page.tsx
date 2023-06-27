@@ -21,12 +21,13 @@ export interface JoinTeamProps {
 }
 
 const JoinTeamSchema = Yup.object().shape({
-	passcode: Yup.string().required("Full name is required")
+	passcode: Yup.string().required("Full name is required"),
 });
-	
 
 export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
-	const { register, handleSubmit } = useForm({resolver: yupResolver(JoinTeamSchema)});
+	const { register, handleSubmit } = useForm({
+		resolver: yupResolver(JoinTeamSchema),
+	});
 
 	return (
 		<form onSubmit={handleSubmit((data) => console.log(data))}>
