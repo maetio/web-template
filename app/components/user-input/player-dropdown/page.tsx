@@ -16,9 +16,9 @@ export interface PlayerOptionType {
 	title: string;
 }
 
-const testPlayers: PlayerOptionType[] = [
-	{title: "Jay Boog"}
-];
+const testPlayers: readonly PlayerOptionType[] = 
+	[{title: "Jay Boog"}, {title: "Big Baller"}]
+;
 
 const filter = createFilterOptions<PlayerOptionType>();
 
@@ -38,6 +38,19 @@ const PlayerDropdown: React.FC<PlayerDropdownProps> = ({name}) => {
 			disablePortal={true}
 			id="combo-box-demo"
 			freeSolo
+			getOptionLabel={(option) => {
+				// Value selected with enter, right from the input
+				if (typeof option === "string") {
+				  return option;
+				}
+				// Add "xxx" option created dynamically
+				if (option.inputValue) {
+				  return option.inputValue;
+				}
+				// Regular option
+				return option.title;
+			  }}
+			  renderOption={(props, option) => <li {...props}>{option.title}</li>}
 			options={testPlayers}
 			sx={{ width: 300 }}
 			renderInput={(params) => <InputField {...params} label="SKU" />} />

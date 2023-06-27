@@ -78,7 +78,7 @@ export const CreateTeam: React.FC<CreateTeamProps> = ({name, image}) => {
 							direction="column"
 							sx={{ mt: 1, mb: 3, width: 480 }}
 						>
-							<PlayerDropdown />
+							<PlayerDropdown/>
 						</Grid>
 						<SubmitButton
 							color="#818CF8"
