@@ -1,4 +1,10 @@
-import { PaletteMode } from "@mui/material";
+import {
+	PaletteMode,
+	ThemeOptions,
+	ThemeProvider,
+	createTheme,
+} from "@mui/material";
+import { useMemo } from "react";
 
 /*
   Adding new colors: https://mui.com/material-ui/customization/palette/#adding-new-colors
