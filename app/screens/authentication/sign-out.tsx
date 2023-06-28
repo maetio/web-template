@@ -36,13 +36,6 @@ export const SignIn: React.FC<{}> = () => {
 		setSentEmail(true);
 	};
 
-	// get router
-	// console.log('router query', router.query);
-	console.log(window.location.href, document.referrer);
-
-	// signInWithLink(auth, user.email, window.location.href);
-	// console.log("signing", "sethy8656@gmail.com", "in with", window.location.href);
-
 	return (
 		<form onSubmit={handleSubmit(submitEmail)}>
 			<Grid

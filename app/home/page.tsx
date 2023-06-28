@@ -27,7 +27,7 @@ const Home = () => {
 
 	const { tenant } = useAuth();
 
-	console.log("tenant", tenant);
+	console.log("tenant from home page", tenant);
 
 	const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
 
@@ -47,17 +47,17 @@ const Home = () => {
 			userCred.user
 		);
 		console.log("ten from login function", ten);
+		console.log("token sent", idTokenResult.token);
 		await fetch("/api/login", {
 			method: "GET",
 			headers: {
-				Authorization: `Bearer ${userCred}`,
+				Authorization: `Bearer ${idTokenResult.token}`,
 			},
 		});
 	};
 
 	useEffect(() => {
 		if (window.location.href.includes("apiKey")) {
-			console.log("fired");
 			handleLogin();
 		}
 	}, []);

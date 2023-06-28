@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import {
 	authentication,
-	// refreshAuthCookies,
+	refreshAuthCookies,
 } from "next-firebase-auth-edge/lib/next/middleware";
 import { getFirebaseAuth } from "next-firebase-auth-edge/lib/auth";
 import { setAuthCookies } from "next-firebase-auth-edge/lib/next/cookies";
@@ -17,6 +17,8 @@ function redirectToLogin(request: NextRequest) {
 	url.pathname = "/login";
 	// url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
 	url.search = `${url.search}`;
+
+	console.log("middle ware fired");
 
 	// return NextResponse.redirect(url);
 }
@@ -46,8 +48,10 @@ export async function middleware(request: NextRequest) {
 					}
 				);
 
-				// await refreshAuthCookies(token, response, authConfig);
-				await setAuthCookies(response.headers, authConfig);
+				console.log("middle ware fired");
+
+				await refreshAuthCookies(token, response, authConfig);
+				// await setAuthCookies(response.headers, authConfig);
 				return response;
 			}
 
