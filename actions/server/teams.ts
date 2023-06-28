@@ -1,6 +1,6 @@
 import { Team } from "app/types";
 import { doc, getDoc } from "firebase/firestore";
-import { teamsCollection } from "./config";
+import { teamsCollection } from "config/server-collections";
 
 export /**
  * Will fetch all the teams from the database
