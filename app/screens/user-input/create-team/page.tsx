@@ -4,6 +4,7 @@ import { Cancel, Panorama } from "@mui/icons-material";
 import { InputField } from "app/components/user-input/input-field/page";
 import {
 	Box,
+	Button,
 	Grid,
 	Typography,
 } from "app/components/providers/mui-server-components";
@@ -24,7 +25,13 @@ export interface CreateTeamProps {
 	image?: string;
 }
 
-export const CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
+export /**
+ * 
+ * 
+ * @param {CreateTeamProps} { name, image } 
+ * @returns 
+ */
+const  CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
 	const {
 		register,
 		handleSubmit,
@@ -51,34 +58,40 @@ export const CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
 					}}
 					container
 					alignItems="center"
+					justifyContent="flex-start"
 				>
 					<Grid
 						container
+						item
 						direction="row"
 						justifyContent="flex-end"
 						alignItems="flex-end"
 						sx={{
-							width: 900,
+							width: 1000,
 						}}
 					>
 						<Cancel></Cancel>
 					</Grid>
-					<Grid container direction="column" alignItems="center" item>
+					<Grid sx={{height: 800}} container item direction="column" alignItems="center" justifyContent="flex-start">
 						<Grid
 							container
+							item
 							direction="row"
 							alignItems="center"
 							justifyContent="center"
 							sx={{
-								mb: 1,
+								mb: 3,
 								backgroundColor: "#D9D9D9",
 								width: 250,
 								height: 250,
 								borderRadius: 4,
 							}}
 						>
-							<Panorama sx={{ m: 1 }}></Panorama>
-							<Typography>Upload a picture</Typography>
+							<Button>
+								<Panorama sx={{ m: 1 }}></Panorama>
+								<Typography>Upload a picture</Typography>
+							</Button>
+							
 						</Grid>
 						<InputField
 							id="teamName"
@@ -93,7 +106,7 @@ export const CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
 						<Grid
 							container
 							direction="column"
-							sx={{ mt: 1, mb: 3, width: 480 }}
+							sx={{ width: 480, mb: 5, ml: -2, height: 200 }}
 						>
 							<PlayerDropdown />
 						</Grid>
