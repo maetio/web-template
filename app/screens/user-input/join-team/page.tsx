@@ -83,7 +83,6 @@ export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 						</Typography>
 						<InputField
 							id="passcode"
-							register={register}
 							label="Enter Team Passcode"
 						></InputField>
 						<Typography>Team Roster</Typography>

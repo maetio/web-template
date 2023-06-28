@@ -97,12 +97,10 @@ const  CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
 						</Grid>
 						<InputField
 							id="teamName"
-							register={register}
 							label="Team Name"
 						></InputField>
 						<InputField
 							id="teamLocation"
-							register={register}
 							label="Team Location"
 						></InputField>
 						<Grid
