@@ -8,7 +8,7 @@ import { emailSchema } from "app/utils/schemas";
 import {
 	sendPasswordlessLoginEmail,
 	signInWithLink,
-} from "actions/client-actions/auth";
+} from "actions/client/auth";
 import { useFirebaseAuth } from "auth/firebase";
 import { clientConfig } from "config/client-config";
 

@@ -2,9 +2,10 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import {
 	authentication,
-	refreshAuthCookies,
+	// refreshAuthCookies,
 } from "next-firebase-auth-edge/lib/next/middleware";
 import { getFirebaseAuth } from "next-firebase-auth-edge/lib/auth";
+import { setAuthCookies } from "next-firebase-auth-edge/lib/next/cookies";
 import { authConfig } from "./config/server-config";
 
 function redirectToLogin(request: NextRequest) {
@@ -45,7 +46,8 @@ export async function middleware(request: NextRequest) {
 					}
 				);
 
-				await refreshAuthCookies(token, response, authConfig);
+				// await refreshAuthCookies(token, response, authConfig);
+				await setAuthCookies(response.headers, authConfig);
 				return response;
 			}
 

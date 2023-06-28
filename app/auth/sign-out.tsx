@@ -10,7 +10,7 @@ import { clientConfig } from "config/client-config";
 import {
 	sendPasswordlessLoginEmail,
 	signInWithLink,
-} from "../../actions/client-actions/auth";
+} from "../../actions/client/auth";
 
 export const SignIn: React.FC<{}> = () => {
 	// useForm & useAuth initialization
