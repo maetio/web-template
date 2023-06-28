@@ -4,6 +4,7 @@ import { Cancel, Panorama } from "@mui/icons-material";
 import { InputField } from "app/components/user-input/input-field/page";
 import {
 	Box,
+	Button,
 	Grid,
 	Typography,
 } from "app/components/providers/mui-server-components";
@@ -77,8 +78,11 @@ export const CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
 								borderRadius: 4,
 							}}
 						>
-							<Panorama sx={{ m: 1 }}></Panorama>
-							<Typography>Upload a picture</Typography>
+							<Button>
+								<Panorama sx={{ m: 1 }}></Panorama>
+								<Typography>Upload a picture</Typography>
+							</Button>
+							
 						</Grid>
 						<InputField
 							id="teamName"

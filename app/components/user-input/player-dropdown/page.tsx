@@ -58,7 +58,7 @@ const PlayerDropdown: React.FC<PlayerDropdownProps> = ({ name }) => {
 			renderOption={(props, option) => <li {...props}>{option.title}</li>}
 			options={testPlayers}
 			sx={{ width: 300 }}
-			renderInput={(params) => <InputField {...params} label="SKU" />}
+			renderInput={(params) => <InputField {...params} label="Search" />}
 		/>
 	);
 };
