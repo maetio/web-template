@@ -129,7 +129,7 @@ export const JoinCompetition: React.FC<JoinCompetitionProps> = ({
 						direction="column"
 						sx={{ mt: 4, mb: 9, width: 480 }}
 					>
-						<TeamDropdown />
+						<PlayerDropdown />
 					</Grid>
 					<SubmitButton title="Join Competition" color="#818CF8" />
 				</Grid>

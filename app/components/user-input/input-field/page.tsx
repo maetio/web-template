@@ -2,12 +2,13 @@
 
 import React, { InputHTMLAttributes } from "react";
 import { Search } from "@mui/icons-material";
-import { FieldValues, UseFormRegister, useFormContext } from "react-hook-form";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 import { TextField } from "../../providers/mui-server-components";
 
 interface InputFieldProps {
 	id: string;
 	label: string;
+	register?: UseFormRegister<FieldValues>;
 }
 
 export /**
@@ -19,15 +20,16 @@ export /**
 const InputField: React.FC<InputFieldProps> = ({
 	label,
 	id,
+	register,
 	...props
 }) => {
-	const { register } = useFormContext();
 	return (
 		<TextField
+			{...props}
 			label={label}
 			id={id}
 			type="text"
-			{...(register(id))}
+			{...(register && register(id))}
 			sx={{
 				fieldset: {
 					border: 1,
