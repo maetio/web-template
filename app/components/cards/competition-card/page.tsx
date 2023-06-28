@@ -25,7 +25,7 @@ export /**
  *  @return {*}
  *
  */
-const CompetitionCard: React.FC<CompetitionCardProps> = ({name, key}) => {
+const CompetitionCard: React.FC<CompetitionCardProps> = ({ name, key }) => {
 	return (
 		<Grid
 			container

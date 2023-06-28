@@ -1,18 +1,14 @@
-import React from "react";
+"use client";
+
+import React, { InputHTMLAttributes } from "react";
 import { Search } from "@mui/icons-material";
-import {
-	Typography,
-	Grid,
-	TextField,
-	FormControl,
-	Input,
-	OutlinedInput,
-	InputLabel,
-	InputAdornment,
-} from "../../providers/mui-server-components";
+import { FieldValues, UseFormRegister } from "react-hook-form";
+import { TextField } from "../../providers/mui-server-components";
 
 interface InputFieldProps {
+	id: string;
 	label: string;
+	register?: UseFormRegister<FieldValues>;
 }
 
 export /**
@@ -21,10 +17,19 @@ export /**
  * @param {TextFieldProps}
  * @returns
  */
-const InputField: React.FC<InputFieldProps> = ({label}) => {
+const InputField: React.FC<InputFieldProps> = ({
+	label,
+	id,
+	register,
+	...props
+}) => {
 	return (
 		<TextField
+			{...props}
 			label={label || "Input Field"}
+			id="id"
+			type="text"
+			{...(register && register(id))}
 			sx={{
 				fieldset: {
 					border: 1,

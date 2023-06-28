@@ -17,7 +17,7 @@ export /**
  * @returns
  */
 
-const TeamDropdown: React.FC<TeamDropdownProps> = ({name}) => {
+const TeamDropdown: React.FC<TeamDropdownProps> = ({ name }) => {
 	return (
 		<Grid
 			container

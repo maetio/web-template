@@ -4,6 +4,7 @@ import {
 	ThemeProvider,
 	createTheme,
 } from "@mui/material";
+import { Nunito } from "next/font/google";
 import { useMemo } from "react";
 
 /*

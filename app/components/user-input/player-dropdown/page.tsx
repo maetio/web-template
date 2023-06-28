@@ -2,59 +2,64 @@
 
 import React from "react";
 import { ControlPoint } from "@mui/icons-material";
-import { Grid, Typography } from "../../providers/mui-server-components";
+import {
+	Autocomplete,
+	Grid,
+	TextField,
+	Typography,
+	createFilterOptions,
+} from "../../providers/mui-server-components";
 import { SearchBar } from "../search-bar/page";
 import { PlayerCard } from "../../cards/player-card/page";
+import { InputField } from "../input-field/page";
 
 export interface PlayerDropdownProps {
 	name?: String;
 }
+
+export interface PlayerOptionType {
+	inputValue?: string;
+	title: string;
+}
+
+const testPlayers: readonly PlayerOptionType[] = [
+	{ title: "Jay Boog" },
+	{ title: "Big Baller" },
+];
+const filter = createFilterOptions<PlayerOptionType>();
 
 export /**
  * Search bar for finding players
  * @param {PlayerDropdownProps}
  * @returns
  */
-const PlayerDropdown: React.FC<PlayerDropdownProps> = ({name}) => {
+
+const PlayerDropdown: React.FC<PlayerDropdownProps> = ({ name }) => {
+	const [value, setValue] = React.useState<PlayerOptionType | null>(null);
+
 	return (
-		<Grid
-			container
-			direction="column"
-			alignItems="center"
-			sx={{
-				pt: -1,
-				width: 480,
-				height: 250,
-				border: 1,
-				borderTop: 0,
-				borderRadius: 3,
-				borderColor: "#D9D9D9",
+		<Autocomplete
+			openOnFocus={false}
+			disablePortal={true}
+			id="combo-box-demo"
+			freeSolo
+			getOptionLabel={(option) => {
+				// Value selected with enter, right from the input
+				if (typeof option === "string") {
+					return option;
+				}
+				// Add "xxx" option created dynamically
+				if (option.inputValue) {
+					return option.inputValue;
+				}
+				// Regular option
+				return option.title;
 			}}
-		>
-			<Grid
-				container
-				item
-				xs={3}
-				direction="column"
-				alignItems="flex-start"
-			>
-				<SearchBar label="Search for Player" />
-			</Grid>
-			<Grid
-				container
-				item
-				xs={7}
-				direction="column"
-				justifyContent="flex-start"
-			>
-				<PlayerCard name="Player Name" score={99} />
-				<PlayerCard name="Player Name" score={99} />
-			</Grid>
-			<Grid container item xs={2} direction="row">
-				<ControlPoint sx={{ ml: 3 }}></ControlPoint>
-				<Typography sx={{ ml: 3 }}>Invite Player</Typography>
-			</Grid>
-		</Grid>
+			renderOption={(props, option) => <li {...props}>{option.title}</li>}
+			options={testPlayers}
+			sx={{ width: 300 }}
+			renderInput={(params) => <InputField {...params} label="SKU" />}
+		/>
 	);
 };
 

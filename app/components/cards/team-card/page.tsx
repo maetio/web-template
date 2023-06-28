@@ -26,7 +26,7 @@ export /**
  *	}
  *  @return {*}
  *
- */ const TeamCard: React.FC<TeamCardProps> = ({name, image, score}) => {
+ */ const TeamCard: React.FC<TeamCardProps> = ({ name, image, score }) => {
 	return (
 		<Grid
 			container
@@ -54,9 +54,7 @@ export /**
 						height: 41,
 					}}
 				></Box>
-				<Typography sx={{ fontWeight: 700, ml: 2 }}>
-					{name}
-				</Typography>
+				<Typography sx={{ fontWeight: 700, ml: 2 }}>{name}</Typography>
 			</Grid>
 			<Grid
 				item
@@ -67,9 +65,7 @@ export /**
 				justifyContent="flex-end"
 			>
 				<MaetIcon sx={{ mr: 1 }}></MaetIcon>
-				<Typography sx={{ fontWeight: 300, mr: 4 }}>
-					{score}
-				</Typography>
+				<Typography sx={{ fontWeight: 300, mr: 4 }}>{score}</Typography>
 			</Grid>
 		</Grid>
 	);
