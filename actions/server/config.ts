@@ -11,6 +11,7 @@ import {
 	Query,
 	QueryDocumentSnapshot,
 } from "firebase-admin/firestore";
+import { authConfig } from "config/server-config";
 
 /**
  * Initialize firestore with next
@@ -20,8 +21,8 @@ import {
 export const firestore = initFirestore({
 	credential: cert({
 		projectId: process.env.FIREBASE_PROJECT_ID,
-		clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-		privateKey: process.env.FIREBASE_PRIVATE_KEY,
+		clientEmail: authConfig.serviceAccount.clientEmail,
+		privateKey: authConfig.serviceAccount.privateKey,
 	}),
 });
 
