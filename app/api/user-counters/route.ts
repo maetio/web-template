@@ -23,11 +23,13 @@ const getFirebaseAdminApp = () => {
 export async function POST(request: NextRequest) {
 	const tokens = await getTokens(request.cookies, authConfig);
 
-	console.log("auth config", authConfig);
+	// console.log("auth config", authConfig);
 
 	if (!tokens) {
 		throw new Error("Cannot update counter of unauthenticated user");
 	}
+
+	console.log(tokens.decodedToken.email);
 
 	const db = getFirestore(getFirebaseAdminApp());
 	const snapshot = await db

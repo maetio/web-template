@@ -41,6 +41,8 @@ const Home = () => {
 			localStorage.getItem("email") || "",
 			window.location.href
 		);
+
+		console.log("user cred after signin function", userCred);
 		const idTokenResult = await userCred.user.getIdTokenResult();
 		const ten = await mapFirebaseResponseToTenant(
 			idTokenResult,
@@ -139,6 +141,13 @@ const Home = () => {
 					}}
 				>
 					Go to Stripe
+				</Button>
+				<Button
+					onClick={() => {
+						router.push("/profile");
+					}}
+				>
+					user profile
 				</Button>
 
 				<SignOutButton />
