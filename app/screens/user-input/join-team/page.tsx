@@ -59,7 +59,7 @@ export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 							width: 1000,
 						}}
 					>
-						<Button sx={{color: "#333333"}}>
+						<Button sx={{color: "#333333", mr: 8}}>
 							<Cancel></Cancel>
 						</Button>
 					</Grid>

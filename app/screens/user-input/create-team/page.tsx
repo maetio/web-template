@@ -67,10 +67,9 @@ const  CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
 						justifyContent="flex-end"
 						alignItems="flex-end"
 						sx={{
-							width: 1000,
 						}}
 					>
-						<Button sx={{color: "#333333"}}>
+						<Button sx={{color: "#333333", mr: 8}}>
 							<Cancel></Cancel>
 						</Button>
 					</Grid>
