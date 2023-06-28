@@ -9,9 +9,9 @@ import {
 import { MaetIcon } from "../../icons/maet-icon";
 
 export interface PlayerCardProps {
-	name: string;
+	name?: string;
 	image?: string;
-	score: number;
+	score?: number;
 }
 
 export /**

@@ -8,9 +8,9 @@ import {
 import { MaetIcon } from "../../icons/maet-icon";
 
 export interface TeamCardProps {
-	name: string;
+	name?: string;
 	image?: string;
-	score: number;
+	score?: number;
 }
 
 /* export interface ScoreChange {
@@ -47,7 +47,6 @@ export /**
 					sx={{
 						ml: 2,
 						backgroundImage:
-							image ||
 							"linear-gradient(207deg, #EAE68E 13.76%, #FBBEBE 60.61%, #BEE1FB 100%);",
 						borderRadius: 2,
 						width: 40,
