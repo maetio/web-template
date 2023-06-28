@@ -70,7 +70,9 @@ const  CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
 							width: 1000,
 						}}
 					>
-						<Cancel></Cancel>
+						<Button sx={{color: "#333333"}}>
+							<Cancel></Cancel>
+						</Button>
 					</Grid>
 					<Grid sx={{height: 800}} container item direction="column" alignItems="center" justifyContent="flex-start">
 						<Grid

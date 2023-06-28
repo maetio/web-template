@@ -4,6 +4,7 @@ import { Cancel } from "@mui/icons-material";
 import { InputField } from "app/components/user-input/input-field/page";
 import {
 	Box,
+	Button,
 	FormLabel,
 	Grid,
 	Typography,
@@ -58,7 +59,9 @@ export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 							width: 1000,
 						}}
 					>
-						<Cancel></Cancel>
+						<Button sx={{color: "#333333"}}>
+							<Cancel></Cancel>
+						</Button>
 					</Grid>
 					<Grid container direction="column" alignItems="center" item>
 						<Box
