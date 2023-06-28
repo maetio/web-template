@@ -25,7 +25,13 @@ export interface CreateTeamProps {
 	image?: string;
 }
 
-export const CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
+export /**
+ * 
+ * 
+ * @param {CreateTeamProps} { name, image } 
+ * @returns 
+ */
+const  CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
 	const {
 		register,
 		handleSubmit,
@@ -52,26 +58,29 @@ export const CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
 					}}
 					container
 					alignItems="center"
+					justifyContent="flex-start"
 				>
 					<Grid
 						container
+						item
 						direction="row"
 						justifyContent="flex-end"
 						alignItems="flex-end"
 						sx={{
-							width: 900,
+							width: 1000,
 						}}
 					>
 						<Cancel></Cancel>
 					</Grid>
-					<Grid container direction="column" alignItems="center" item>
+					<Grid sx={{height: 800}} container item direction="column" alignItems="center" justifyContent="flex-start">
 						<Grid
 							container
+							item
 							direction="row"
 							alignItems="center"
 							justifyContent="center"
 							sx={{
-								mb: 1,
+								mb: 3,
 								backgroundColor: "#D9D9D9",
 								width: 250,
 								height: 250,
@@ -97,7 +106,7 @@ export const CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
 						<Grid
 							container
 							direction="column"
-							sx={{ mt: 1, mb: 3, width: 480 }}
+							sx={{ width: 480, mb: 2, ml: -2 }}
 						>
 							<PlayerDropdown />
 						</Grid>
