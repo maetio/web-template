@@ -106,7 +106,7 @@ const  CreateTeam: React.FC<CreateTeamProps> = ({ name, image }) => {
 						<Grid
 							container
 							direction="column"
-							sx={{ width: 480, mb: 2, ml: -2 }}
+							sx={{ width: 480, mb: 5, ml: -2, height: 200 }}
 						>
 							<PlayerDropdown />
 						</Grid>

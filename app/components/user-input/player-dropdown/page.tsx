@@ -55,6 +55,7 @@ const PlayerDropdown: React.FC<PlayerDropdownProps> = ({ name }) => {
 				// Regular option
 				return option.title;
 			}}
+			// eslint-disable-next-line react/jsx-props-no-spreading
 			renderOption={(props, option) => <li {...props}>{option.title}</li>}
 			options={testPlayers}
 			sx={{ width: 480 }}
