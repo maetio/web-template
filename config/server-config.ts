@@ -25,3 +25,4 @@ export const authConfig = {
 	},
 	serviceAccount: serverConfig.serviceAccount,
 };
+
