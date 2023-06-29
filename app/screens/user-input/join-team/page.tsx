@@ -25,11 +25,17 @@ const JoinTeamSchema = Yup.object().shape({
 	passcode: Yup.string().required("Passcode is required"),
 });
 
-export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
+export /**
+ * Screen where the user can join a team that they have selected
+ *
+ * @param {string} image
+ * @param {string} teamName
+ * @returns
+ */
+const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 	const { register, handleSubmit, reset } = useForm({
 		resolver: yupResolver(JoinTeamSchema),
 	});
-
 
 	return (
 		<form onSubmit={handleSubmit((data) => console.log(data))}>
@@ -59,7 +65,7 @@ export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 							width: 1000,
 						}}
 					>
-						<Button sx={{color: "#333333", mr: 8}}>
+						<Button sx={{ color: "#333333", mr: 8 }}>
 							<Cancel></Cancel>
 						</Button>
 					</Grid>

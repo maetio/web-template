@@ -4,7 +4,7 @@ import { Grid } from "app/components/providers/mui-server-components";
 import { getCompetitions } from "../../actions/server/competitions";
 
 export default async function Page() {
-	// fetch the competitions
+	// fetch the teams & competitions
 	const data = await getCompetitions();
 	const teamData = await getTeams();
 
@@ -16,7 +16,12 @@ export default async function Page() {
 			))}
 			<Grid container direction="column">
 				{teamData.docs.map((item) => (
-					<TeamCard key={item.id} name={item.data().firstName} score={item.data().numPlayers} image={item.data().image}/>
+					<TeamCard
+						key={item.id}
+						name={item.data().firstName}
+						score={item.data().numPlayers}
+						image={item.data().image}
+					/>
 				))}
 			</Grid>
 		</main>

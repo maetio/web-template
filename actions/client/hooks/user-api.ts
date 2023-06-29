@@ -2,7 +2,7 @@
 
 import { PrivateUserData } from "app/types";
 import { doc, setDoc } from "firebase/firestore";
-import { privateUserCollection } from "../config";
+import { privateUserCollection } from "actions/client/config";
 import { useCreateFirestoreHook } from "./template";
 
 export /**
