@@ -20,7 +20,7 @@ function redirectToLogin(request: NextRequest) {
 
 	console.log("middle ware fired");
 
-	// return NextResponse.redirect(url);
+	return NextResponse.redirect(url);
 }
 
 const { setCustomUserClaims, getUser } = getFirebaseAuth(
@@ -58,7 +58,8 @@ export async function middleware(request: NextRequest) {
 			return NextResponse.next();
 		},
 		handleInvalidToken: async () => {
-			return redirectToLogin(request);
+			// return redirectToLogin(request);
+			return NextResponse.json({ message: "not logged in" });
 		},
 		handleError: async (error) => {
 			console.error("Unhandled authentication error", { error });
