@@ -5,7 +5,6 @@ import {
 	refreshAuthCookies,
 } from "next-firebase-auth-edge/lib/next/middleware";
 import { getFirebaseAuth } from "next-firebase-auth-edge/lib/auth";
-import { setAuthCookies } from "next-firebase-auth-edge/lib/next/cookies";
 import { authConfig } from "./config/server-config";
 
 function redirectToLogin(request: NextRequest) {
@@ -17,7 +16,7 @@ function redirectToLogin(request: NextRequest) {
 	url.pathname = "/login";
 	url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
 
-	// return NextResponse.redirect(url);
+	return NextResponse.json({ message: "not logged in" });
 }
 
 const { setCustomUserClaims, getUser } = getFirebaseAuth(
@@ -48,7 +47,6 @@ export async function middleware(request: NextRequest) {
 				console.log("middle ware fired");
 
 				await refreshAuthCookies(token, response, authConfig);
-				// await setAuthCookies(response.headers, authConfig);
 				return response;
 			}
 
