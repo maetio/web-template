@@ -12,7 +12,14 @@ const CREDENTIAL_ALREADY_IN_USE_ERROR = "auth/credential-already-in-use";
 export const isCredentialAlreadyInUseError = (e: AuthError) =>
 	e?.code === CREDENTIAL_ALREADY_IN_USE_ERROR;
 
-export const mapFirebaseResponseToTenant = async (
+export /**
+ * used for adding for adding tenant to global state
+ *
+ * @param {IdTokenResult} result
+ * @param {FirebaseUser} user
+ * @return {*}  {Promise<Tenant>}
+ */
+const mapFirebaseResponseToTenant = async (
 	result: IdTokenResult,
 	user: FirebaseUser
 ): Promise<Tenant> => {
@@ -54,7 +61,13 @@ export const logout = async (auth: Auth): Promise<void> => {
 	return signOut(auth);
 };
 
-export const getGoogleProvider = async (auth: Auth) => {
+export /**
+ * NOT CURRENTLY USED, does something with the google auth
+ *
+ * @param {Auth} auth
+ * @return {*} 
+ */
+const getGoogleProvider = async (auth: Auth) => {
 	const { GoogleAuthProvider, useDeviceLanguage } = await import(
 		"firebase/auth"
 	);
@@ -71,7 +84,15 @@ export const getGoogleProvider = async (auth: Auth) => {
 	return provider;
 };
 
-export const loginWithProvider = async (
+export /**
+ * NOT CURRENTLY USED used for logging in with google auth
+ *
+ * @param {Auth} auth
+ * @param {AuthProvider} provider
+ * @param {((error: AuthError) => OAuthCredential | null)} credentialFromError
+ * @return {*}  {Promise<Tenant>}
+ */
+const loginWithProvider = async (
 	auth: Auth,
 	provider: AuthProvider,
 	credentialFromError: (error: AuthError) => OAuthCredential | null

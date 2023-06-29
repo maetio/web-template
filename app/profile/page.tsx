@@ -1,7 +1,13 @@
 import Link from "next/link";
-import { UserProfile } from "app/user-profile/index";
+import { UserProfile } from "app/components/layout/user-profile";
 import { ServerAuthProvider } from "auth/server-auth-provider";
 
+/**
+ * server component that displays the profile screen
+ *
+ * @export
+ * @return {*}
+ */
 export default function Profile() {
 	return (
 		<div>

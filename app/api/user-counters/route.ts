@@ -20,6 +20,13 @@ const getFirebaseAdminApp = () => {
 	return initializeApp();
 };
 
+/**
+ *user counter example from the library
+ *
+ * @export
+ * @param {NextRequest} request
+ * @return {*} 
+ */
 export async function POST(request: NextRequest) {
 	const tokens = await getTokens(request.cookies, authConfig);
 

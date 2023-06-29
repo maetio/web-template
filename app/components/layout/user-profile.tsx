@@ -5,10 +5,16 @@ import { useLoadingCallback } from "react-loading-hook";
 import { useRouter } from "next/navigation";
 import { Button, CircularProgress } from "@mui/material";
 import Image from "next/image";
-import { useAuth } from "../../auth/hooks";
-import { useFirebaseAuth } from "../../auth/firebase";
-import { clientConfig } from "../../config/client-config";
+import { useAuth } from "../../../auth/hooks";
+import { useFirebaseAuth } from "../../../auth/firebase";
+import { clientConfig } from "../../../config/client-config";
 
+/**
+ * displays user profile
+ *
+ * @export
+ * @return {*}
+ */
 export function UserProfile() {
 	const router = useRouter();
 	const { tenant } = useAuth();

@@ -6,6 +6,12 @@ import { AuthProvider } from "./client-auth-provider";
 import { serverConfig } from "../config/server-config";
 import { Tenant } from "./types";
 
+/**
+ * takes token and store tenant value in server
+ *
+ * @param {Tokens} { token, decodedToken }
+ * @return {*}  {Tenant}
+ */
 const mapTokensToTenant = ({ token, decodedToken }: Tokens): Tenant => {
 	const customClaims = filterStandardClaims(decodedToken);
 
@@ -29,6 +35,17 @@ const mapTokensToTenant = ({ token, decodedToken }: Tokens): Tenant => {
 	};
 };
 
+/**
+ * server auth proivder to keep track of user on server
+ *
+ * @export
+ * @param {{
+ * 	children: React.ReactNode;
+ * }} {
+ * 	children,
+ * }
+ * @return {*}
+ */
 export async function ServerAuthProvider({
 	children,
 }: {
