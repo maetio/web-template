@@ -90,18 +90,19 @@ const Home = () => {
 		firstName,
 		lastName,
 	}: EditProfileSchemaType) => {
-		if (tenant?.id) {
-			const userData = {
-				firstName,
-				lastName,
-				id: tenant?.id,
-			};
+		console.log("sumbit fired", firstName, lastName);
+		// if (tenant?.id) {
+		const userData = {
+			firstName,
+			lastName,
+			id: tenant?.id || "",
+		};
 
-			await fetch("/api/update-name", {
-				method: "POST",
-				body: JSON.stringify(userData),
-			});
-		}
+		await fetch("/api/update-name", {
+			method: "POST",
+			body: JSON.stringify(userData),
+		});
+		// }
 
 		reset();
 	};
