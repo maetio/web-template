@@ -15,10 +15,7 @@ function redirectToLogin(request: NextRequest) {
 
 	const url = request.nextUrl.clone();
 	url.pathname = "/login";
-	// url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
-	url.search = `${url.search}`;
-
-	console.log("middle ware fired");
+	url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
 
 	return NextResponse.redirect(url);
 }

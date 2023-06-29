@@ -1,6 +1,6 @@
-import { getApps, initializeApp } from "@firebase/app";
-import { initializeAuth } from "@firebase/auth";
-import { FirebaseOptions } from "firebase/app";
+// import { getApps, initializeApp } from "@firebase/app";
+// import { initializeAuth } from "@firebase/auth";
+// import { FirebaseOptions } from "firebase/app";
 
 export const clientConfig = {
 	redirectUrl: process.env.NEXT_PUBLIC_REDIRECT_URL,
@@ -17,7 +17,7 @@ export const clientConfig = {
 /**
  * Initialize all the firebase apps and the auth
  */
-const allApps = getApps();
-export const app =
-	allApps.length === 0 ? initializeApp(clientConfig) : allApps[0];
-export const auth = initializeAuth(app);
+// const allApps = getApps();
+// export const app =
+// 	allApps.length === 0 ? initializeApp(clientConfig) : allApps[0];
+// export const auth = initializeAuth(app);
