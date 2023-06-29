@@ -13,6 +13,12 @@ import { Button, CircularProgress } from "@mui/material";
 // import { useAuth } from "../../auth/hooks";
 import { EnterEmail } from "./enter-email";
 
+/**
+ * login page that will be used for google authentication in the future
+ *
+ * @export
+ * @return {*} 
+ */
 export function LoginPage() {
 	// all the commented out code is for google auth
 

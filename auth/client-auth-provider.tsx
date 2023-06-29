@@ -9,6 +9,13 @@ import { clientConfig } from "../config/client-config";
 import { Tenant } from "./types";
 import { AuthContext } from "./context";
 
+/**
+ * updates tenant on client
+ *
+ * @param {IdTokenResult} result
+ * @param {FirebaseUser} user
+ * @return {*}  {Tenant}
+ */
 const mapFirebaseResponseToTenant = (
 	result: IdTokenResult,
 	user: FirebaseUser
@@ -50,7 +57,16 @@ export interface AuthProviderProps {
 	children: React.ReactNode;
 }
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({
+export /**
+ * client auth proivder to keep track of tenant/user
+ *
+ * @param {*} {
+ * 	defaultTenant,
+ * 	children,
+ * }
+ * @return {*} 
+ */
+const AuthProvider: React.FC<AuthProviderProps> = ({
 	defaultTenant,
 	children,
 }) => {

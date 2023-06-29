@@ -19,7 +19,13 @@ export const getAuthApp = async (options: FirebaseOptions) => {
 	return getAuth(app);
 };
 
-export const useFirebaseAuth = (options: FirebaseOptions) => {
+export /**
+ * hook used for getting auth instance inside client component
+ *
+ * @param {FirebaseOptions} options
+ * @return {*}
+ */
+const useFirebaseAuth = (options: FirebaseOptions) => {
 	const getFirebaseAuth = async () => {
 		return getAuthApp(options);
 	};

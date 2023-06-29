@@ -1,1 +1,1 @@
-export { UserProfile } from "./user-profile";
+export { UserProfile } from "../components/layout/user-profile";

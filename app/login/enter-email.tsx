@@ -13,7 +13,12 @@ import {
 import { useFirebaseAuth } from "auth/firebase";
 import { clientConfig } from "config/client-config";
 
-export const EnterEmail: React.FC<{}> = () => {
+export /**
+ * Enter email form
+ *
+ * @return {*}
+ */
+const EnterEmail: React.FC<{}> = () => {
 	// useForm & useAuth initialization
 	const {
 		register,
