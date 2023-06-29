@@ -20,7 +20,7 @@ function redirectToLogin(request: NextRequest) {
 
 	console.log("middle ware fired");
 
-	return NextResponse.redirect(url);
+	// return NextResponse.redirect(url);
 }
 
 const { setCustomUserClaims, getUser } = getFirebaseAuth(

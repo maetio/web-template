@@ -64,24 +64,24 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
 			return;
 		}
 
-		const auth = await getFirebaseAuth();
+		// const auth = await getFirebaseAuth();
 
-		if (!firebaseUser && firstLoadRef.current) {
-			const { signInAnonymously } = await import("firebase/auth");
-			firstLoadRef.current = false;
-			const credential = await signInAnonymously(auth);
-			await fetch("/api/login", {
-				method: "GET",
-				headers: {
-					Authorization: `Bearer ${
-						(
-							await credential.user.getIdTokenResult()
-						).token
-					}`,
-				},
-			});
-			return;
-		}
+		// if (!firebaseUser && firstLoadRef.current) {
+		// 	const { signInAnonymously } = await import("firebase/auth");
+		// 	firstLoadRef.current = false;
+		// 	const credential = await signInAnonymously(auth);
+		// 	await fetch("/api/login", {
+		// 		method: "GET",
+		// 		headers: {
+		// 			Authorization: `Bearer ${
+		// 				(
+		// 					await credential.user.getIdTokenResult()
+		// 				).token
+		// 			}`,
+		// 		},
+		// 	});
+		// 	return;
+		// }
 
 		if (!firebaseUser) {
 			firstLoadRef.current = false;
