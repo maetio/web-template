@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { UserProfile } from "app/UserProfile/index";
+import { UserProfile } from "app/user-profile/index";
 import { ServerAuthProvider } from "auth/server-auth-provider";
 
 export default function Profile() {

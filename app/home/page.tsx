@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { EditProfileSchemaType, editProfileSchema } from "app/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
-import { UserProfile } from "app/UserProfile";
+import { UserProfile } from "app/user-profile";
 import { mapFirebaseResponseToTenant } from "app/login/firebase";
 import { useUpdatePrivateUserData } from "actions/client/hooks/user-api";
 import { signInWithLink } from "actions/client/auth";
