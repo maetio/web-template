@@ -1,4 +1,4 @@
-import { competitionsCollection } from "./config";
+import { competitionsCollection } from "config/server-collections";
 
 export /**
  * Will fetch all the competitions from the database

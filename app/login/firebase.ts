@@ -4,8 +4,7 @@ import type {
 	AuthProvider,
 	OAuthCredential,
 } from "firebase/auth";
-import { IdTokenResult } from "firebase/auth";
-import { User as FirebaseUser } from "@firebase/auth";
+import { IdTokenResult, User as FirebaseUser } from "firebase/auth";
 import { filterStandardClaims } from "next-firebase-auth-edge/lib/auth/tenant";
 import { Tenant } from "../../auth/types";
 
@@ -102,7 +101,10 @@ export const loginWithProvider = async (
 			}
 
 			const idTokenResult = await result.user.getIdTokenResult();
-			return await mapFirebaseResponseToTenant(idTokenResult, result.user);
+			return await mapFirebaseResponseToTenant(
+				idTokenResult,
+				result.user
+			);
 		} catch (error: any) {
 			// If provider account is already linked with other anonymous user,
 			// delete anonymous user, and then login with provider credential

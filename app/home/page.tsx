@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { EditProfileSchemaType, editProfileSchema } from "app/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
-import { UserProfile } from "app/UserProfile";
+import { UserProfile } from "app/user-profile";
 import { mapFirebaseResponseToTenant } from "app/login/firebase";
 import { useUpdatePrivateUserData } from "actions/client/hooks/user-api";
 import { signInWithLink } from "actions/client/auth";
@@ -27,7 +27,7 @@ const Home = () => {
 
 	const { tenant } = useAuth();
 
-	console.log("tenant", tenant);
+	console.log("tenant from home page", tenant);
 
 	const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
 
@@ -41,23 +41,25 @@ const Home = () => {
 			localStorage.getItem("email") || "",
 			window.location.href
 		);
+
+		console.log("user cred after signin function", userCred);
 		const idTokenResult = await userCred.user.getIdTokenResult();
 		const ten = await mapFirebaseResponseToTenant(
 			idTokenResult,
 			userCred.user
 		);
 		console.log("ten from login function", ten);
+		console.log("token sent", idTokenResult.token);
 		await fetch("/api/login", {
 			method: "GET",
 			headers: {
-				Authorization: `Bearer ${userCred}`,
+				Authorization: `Bearer ${idTokenResult.token}`,
 			},
 		});
 	};
 
 	useEffect(() => {
 		if (window.location.href.includes("apiKey")) {
-			console.log("fired");
 			handleLogin();
 		}
 	}, []);
@@ -139,6 +141,13 @@ const Home = () => {
 					}}
 				>
 					Go to Stripe
+				</Button>
+				<Button
+					onClick={() => {
+						router.push("/profile");
+					}}
+				>
+					user profile
 				</Button>
 
 				<SignOutButton />
