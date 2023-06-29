@@ -11,7 +11,7 @@ import {
 /**
  * Contains the stripe form, as well as checkout button that confirms the order
  *
- * @return {*} 
+ * @return {*}
  */
 const StripeForm = () => {
 	const stripe = useStripe();

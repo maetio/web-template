@@ -4,6 +4,7 @@ import { Cancel } from "@mui/icons-material";
 import { InputField } from "app/components/user-input/input-field/page";
 import {
 	Box,
+	Button,
 	FormLabel,
 	Grid,
 	Typography,
@@ -24,11 +25,17 @@ const JoinTeamSchema = Yup.object().shape({
 	passcode: Yup.string().required("Passcode is required"),
 });
 
-export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
+export /**
+ * Screen where the user can join a team that they have selected
+ *
+ * @param {string} image
+ * @param {string} teamName
+ * @returns
+ */
+const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 	const { register, handleSubmit, reset } = useForm({
 		resolver: yupResolver(JoinTeamSchema),
 	});
-
 
 	return (
 		<form onSubmit={handleSubmit((data) => console.log(data))}>
@@ -58,7 +65,9 @@ export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 							width: 1000,
 						}}
 					>
-						<Cancel></Cancel>
+						<Button sx={{ color: "#333333", mr: 8 }}>
+							<Cancel></Cancel>
+						</Button>
 					</Grid>
 					<Grid container direction="column" alignItems="center" item>
 						<Box
@@ -80,7 +89,6 @@ export const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 						</Typography>
 						<InputField
 							id="passcode"
-							register={register}
 							label="Enter Team Passcode"
 						></InputField>
 						<Typography>Team Roster</Typography>

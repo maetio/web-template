@@ -17,7 +17,7 @@ function redirectToLogin(request: NextRequest) {
 	url.pathname = "/login";
 	url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
 
-	return NextResponse.redirect(url);
+	// return NextResponse.redirect(url);
 }
 
 const { setCustomUserClaims, getUser } = getFirebaseAuth(

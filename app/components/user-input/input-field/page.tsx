@@ -14,7 +14,7 @@ interface InputFieldProps {
 export /**
  * Reusable text field for user inputs
  *
- * @param {TextFieldProps}
+ * @param {InputFieldProps}
  * @returns
  */
 const InputField: React.FC<InputFieldProps> = ({
@@ -26,8 +26,8 @@ const InputField: React.FC<InputFieldProps> = ({
 	return (
 		<TextField
 			{...props}
-			label={label || "Input Field"}
-			id="id"
+			label={label}
+			id={id}
 			type="text"
 			{...(register && register(id))}
 			sx={{

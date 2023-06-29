@@ -12,6 +12,7 @@ import { TeamDropdown } from "app/components/user-input/team-dropdown/page";
 import React from "react";
 import { LocationOn, SportsBasketball } from "@mui/icons-material";
 import { CalendarIcon } from "@mui/x-date-pickers";
+import { getCompetitions } from "actions/server/competitions";
 
 export interface JoinCompetitionProps {
 	competitionName?: String;
@@ -23,7 +24,21 @@ export interface JoinCompetitionProps {
 	price?: String;
 }
 
-export const JoinCompetition: React.FC<JoinCompetitionProps> = ({
+export /**
+ * Screen where the user will join a competition of their choice; server side component, competition data is fetched asynchronously
+ *
+ * @param {JoinCompetitionProps} {
+ * 	competitionName,
+ * 	image,
+ * 	description,
+ * 	competitionType,
+ * 	date,
+ * 	location,
+ * 	price,
+ * }
+ * @returns
+ */
+const JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 	competitionName,
 	image,
 	description,
@@ -32,6 +47,7 @@ export const JoinCompetition: React.FC<JoinCompetitionProps> = ({
 	location,
 	price,
 }) => {
+	const data = await getCompetitions();
 	return (
 		<Grid
 			sx={{ height: "100vh" }}
@@ -129,7 +145,7 @@ export const JoinCompetition: React.FC<JoinCompetitionProps> = ({
 						direction="column"
 						sx={{ mt: 4, mb: 9, width: 480 }}
 					>
-						<TeamDropdown />
+						<PlayerDropdown />
 					</Grid>
 					<SubmitButton title="Join Competition" color="#818CF8" />
 				</Grid>

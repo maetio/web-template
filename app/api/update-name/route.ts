@@ -5,13 +5,6 @@ import { getTokens } from "next-firebase-auth-edge/lib/next/tokens";
 import { authConfig } from "config/server-config";
 import { privateUserCollection } from "config/server-collections";
 
-/**
- * Post request that updates private-user-data
- *
- * @export
- * @param {NextRequest} request
- * @return {*}
- */
 export async function POST(request: NextRequest) {
 	const tokens = await getTokens(request.cookies, authConfig);
 
