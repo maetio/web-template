@@ -11,6 +11,15 @@ const getTeams = async () => {
 	return teamsCollection.get();
 };
 
+export /**
+ * Will fetch one competition from the database
+ * 
+ * @param {string} id 
+ * @returns 
+ */
+const getTeam = async (id: string) => {
+	return teamsCollection.doc(id).get();
+};
 /*
 const getTeam = async (id: string): Promise<{ id: string } & Partial<Team>> => {
 	const docRef = doc(teamsCollection, id);

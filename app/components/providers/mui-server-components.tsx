@@ -12,6 +12,6 @@
  * Mui issue tracking here: https://github.com/mui/material-ui/issues/34898#issuecomment-1473689035
  *
  */
-export * from "@mui/material";
-export { SportsBasketball, LocationOn } from "@mui/icons-material";
+export {Grid, Button, Box, Typography, TextField, Avatar, Chip, FormLabel} from "@mui/material";
+export { SportsBasketball, LocationOn, Cancel, DataArray } from "@mui/icons-material";
 export { CalendarIcon } from "@mui/x-date-pickers";

@@ -2,7 +2,6 @@ import React from "react";
 import {
 	Avatar,
 	Box,
-	ButtonBase,
 	Grid,
 	Typography,
 } from "../../providers/mui-server-components";
