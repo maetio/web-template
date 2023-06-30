@@ -1,4 +1,3 @@
-"use client";
 
 import {
 	Box,
@@ -12,7 +11,7 @@ import { TeamDropdown } from "app/components/user-input/team-dropdown/page";
 import React from "react";
 import { LocationOn, SportsBasketball } from "@mui/icons-material";
 import { CalendarIcon } from "@mui/x-date-pickers";
-import { getCompetitions } from "actions/server/competitions";
+import { getCompetition, getCompetitions } from "actions/server/competitions";
 
 export interface JoinCompetitionProps {
 	competitionName?: String;
@@ -48,7 +47,8 @@ const  JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 	location,
 	price,
 }) => {
-	const data = await getCompetitions();
+	const id = "XcxEgr62pG7FfSGRD3Iv";
+	const data = await getCompetition(id);
 	return (
 		<Grid
 			sx={{ height: "100vh" }}
@@ -83,7 +83,7 @@ const  JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 						}}
 					></Box>
 					<Typography variant="h2" sx={{ fontWeight: 700, mb: 1 }}>
-						{competitionName || "Competition Name"}
+						{data.data()?.name}
 					</Typography>
 					<Grid
 						container
@@ -104,7 +104,7 @@ const  JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 								sx={{ mr: 0.5, color: "#A3A3A3" }}
 							></SportsBasketball>
 							<Typography sx={{ color: "#A3A3A3" }}>
-								{"Basketball Tournament" || competitionType}
+								{data.data()?.sport} {data.data()?.type}
 							</Typography>
 						</Grid>
 						<Grid container item alignItems="flex-start">
@@ -112,7 +112,7 @@ const  JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 								sx={{ mr: 0.5, color: "#A3A3A3" }}
 							></CalendarIcon>
 							<Typography sx={{ color: "#A3A3A3" }}>
-								{"June 27 at 12:00 PM" || date}
+								{data.data()?.startTimeISO}
 							</Typography>
 						</Grid>
 						<Grid container item alignItems="flex-start">
@@ -120,7 +120,7 @@ const  JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 								sx={{ mr: 0.5, color: "#A3A3A3" }}
 							></LocationOn>
 							<Typography sx={{ color: "#A3A3A3" }}>
-								{"1234 Neighborhood St, City, IN" || location}
+								{data.data()?.location?.address}
 							</Typography>
 						</Grid>
 						<Grid container item alignItems="flex-start">

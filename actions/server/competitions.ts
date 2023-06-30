@@ -1,3 +1,4 @@
+import { Competition, EndTimestamp, StartTimestamp } from "app/types";
 import { competitionsCollection } from "config/server-collections";
 
 export /**
@@ -7,4 +8,14 @@ export /**
  */
 const getCompetitions = async () => {
 	return competitionsCollection.get();
+};
+
+export /**
+ * Will fetch one competition from the database
+ * 
+ * @param {string} id 
+ * @returns 
+ */
+const getCompetition = async (id: string) => {
+	return competitionsCollection.doc(id).get();
 };
