@@ -1,7 +1,10 @@
 
 import {
 	Box,
+	CalendarIcon,
 	Grid,
+	LocationOn,
+	SportsBasketball,
 	Typography,
 } from "app/components/providers/mui-server-components";
 import { PlayerCard } from "app/components/cards/player-card/page";
@@ -9,8 +12,6 @@ import { PlayerDropdown } from "app/components/user-input/player-dropdown/page";
 import { SubmitButton } from "app/components/user-input/submit-button/page";
 import { TeamDropdown } from "app/components/user-input/team-dropdown/page";
 import React from "react";
-import { LocationOn, SportsBasketball } from "@mui/icons-material";
-import { CalendarIcon } from "@mui/x-date-pickers";
 import { getCompetition, getCompetitions } from "actions/server/competitions";
 
 export interface JoinCompetitionProps {
