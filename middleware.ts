@@ -14,9 +14,10 @@ function redirectToLogin(request: NextRequest) {
 
 	const url = request.nextUrl.clone();
 	url.pathname = "/login";
-	url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
+	// url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
 
-	return NextResponse.json({ message: "not logged in" });
+	// return NextResponse.json({ message: "not logged in" });
+	// return NextResponse.redirect("/login");
 }
 
 const { setCustomUserClaims, getUser } = getFirebaseAuth(
@@ -54,7 +55,7 @@ export async function middleware(request: NextRequest) {
 		},
 		handleInvalidToken: async () => {
 			// return redirectToLogin(request);
-			return NextResponse.json({ message: "not logged in" });
+			// return NextResponse.json({ message: "not logged in" });
 		},
 		handleError: async (error) => {
 			console.error("Unhandled authentication error", { error });
