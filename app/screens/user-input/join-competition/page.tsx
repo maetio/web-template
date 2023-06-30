@@ -24,9 +24,10 @@ export interface JoinCompetitionProps {
 	price?: String;
 }
 
+
 export /**
  * Screen where the user will join a competition of their choice; server side component, competition data is fetched asynchronously
- *
+ * 
  * @param {JoinCompetitionProps} {
  * 	competitionName,
  * 	image,
@@ -35,10 +36,10 @@ export /**
  * 	date,
  * 	location,
  * 	price,
- * }
- * @returns
+ * } 
+ * @returns 
  */
-const JoinCompetition: React.FC<JoinCompetitionProps> = async ({
+const  JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 	competitionName,
 	image,
 	description,
