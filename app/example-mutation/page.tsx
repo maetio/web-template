@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ServerAuthProvider } from "auth/server-auth-provider";
-import { ExampleMutation } from "./example-mutation";
+import { ExampleMutation } from "./example-mutation-server";
+import { ExampleMutationClient } from "./example-mutation-client";
 
 /**
  * server component that displays the profile screen
@@ -21,6 +22,7 @@ export default function Profile() {
 			<ServerAuthProvider>
 				<ExampleMutation />
 			</ServerAuthProvider>
+			<ExampleMutationClient />
 		</div>
 	);
 }
