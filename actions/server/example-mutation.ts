@@ -6,6 +6,15 @@ import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { privateUserCollection } from "config/server-collections";
 
+/**
+ * server action mutation example used on in server component.
+ * @remarks
+ * doing it insdie a formAction or an action like the documentation explains
+ * https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions#invocation
+ *
+ * @export
+ * @param {FormData} data
+ */
 export async function updateUserNameServer(data: FormData) {
 	const firstName = data.get("firstName")?.toString();
 	const lastName = data?.get("lastName")?.toString();
@@ -45,6 +54,16 @@ export async function updateUserNameServer(data: FormData) {
 	revalidatePath("/");
 }
 
+/**
+ * server action identical to the other example, however needed to change a few types since 
+ * client called server actions don't use the FormData type
+ *
+ * @export
+ * @param {{
+ * 	firstName: string;
+ * 	lastName: string;
+ * }} data
+ */
 export async function updateUserNameClient(data: {
 	firstName: string;
 	lastName: string;
