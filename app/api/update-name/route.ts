@@ -5,6 +5,13 @@ import { getTokens } from "next-firebase-auth-edge/lib/next/tokens";
 import { authConfig } from "config/server-config";
 import { privateUserCollection } from "config/server-collections";
 
+/**
+ * post request to add firstname and lastname to DB
+ *
+ * @export
+ * @param {NextRequest} request
+ * @return {*}
+ */
 export async function POST(request: NextRequest) {
 	const tokens = await getTokens(request.cookies, authConfig);
 

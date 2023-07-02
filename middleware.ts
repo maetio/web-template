@@ -5,7 +5,6 @@ import {
 	refreshAuthCookies,
 } from "next-firebase-auth-edge/lib/next/middleware";
 import { getFirebaseAuth } from "next-firebase-auth-edge/lib/auth";
-import { setAuthCookies } from "next-firebase-auth-edge/lib/next/cookies";
 import { authConfig } from "./config/server-config";
 
 function redirectToLogin(request: NextRequest) {
@@ -15,9 +14,10 @@ function redirectToLogin(request: NextRequest) {
 
 	const url = request.nextUrl.clone();
 	url.pathname = "/login";
-	url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
+	// url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
 
-	// return NextResponse.redirect(url);
+	// return NextResponse.json({ message: "not logged in" });
+	// return NextResponse.redirect("/login");
 }
 
 const { setCustomUserClaims, getUser } = getFirebaseAuth(
@@ -48,7 +48,6 @@ export async function middleware(request: NextRequest) {
 				console.log("middle ware fired");
 
 				await refreshAuthCookies(token, response, authConfig);
-				// await setAuthCookies(response.headers, authConfig);
 				return response;
 			}
 
@@ -56,7 +55,7 @@ export async function middleware(request: NextRequest) {
 		},
 		handleInvalidToken: async () => {
 			// return redirectToLogin(request);
-			return NextResponse.json({ message: "not logged in" });
+			// return NextResponse.json({ message: "not logged in" });
 		},
 		handleError: async (error) => {
 			console.error("Unhandled authentication error", { error });

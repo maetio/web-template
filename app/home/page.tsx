@@ -9,7 +9,6 @@ import { useForm } from "react-hook-form";
 import { EditProfileSchemaType, editProfileSchema } from "app/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
-import { UserProfile } from "app/user-profile";
 import { mapFirebaseResponseToTenant } from "app/login/firebase";
 import { useUpdatePrivateUserData } from "actions/client/hooks/user-api";
 import { signInWithLink } from "actions/client/auth";
@@ -150,9 +149,15 @@ const Home = () => {
 				>
 					user profile
 				</Button>
+				<Button
+					onClick={() => {
+						router.push("/example-mutation");
+					}}
+				>
+					example mutation
+				</Button>
 
 				<SignOutButton />
-				<UserProfile />
 			</Grid>
 		</form>
 	);
