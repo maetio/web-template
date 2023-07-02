@@ -10,16 +10,16 @@ import { SubmitButton } from "app/components/user-input/submit-button/page";
 import React from "react";
 import { LocationOn, SportsBasketball } from "@mui/icons-material";
 import { CalendarIcon } from "@mui/x-date-pickers";
-// import { getCompetitions } from "actions/server/competitions";
+import Image from "next/image";
 
 export interface JoinCompetitionProps {
-	competitionName?: String;
-	image?: String;
-	description?: String;
-	competitionType?: String;
-	date?: String;
-	location?: String;
-	price?: String;
+	competitionName?: string;
+	image?: string;
+	description?: string;
+	competitionType?: string;
+	date?: string;
+	location?: string;
+	price?: number;
 }
 
 export /**
@@ -36,7 +36,7 @@ export /**
  * }
  * @returns
  */
-const JoinCompetition: React.FC<JoinCompetitionProps> = async ({
+const JoinCompetition: React.FC<JoinCompetitionProps> = ({
 	competitionName,
 	image,
 	description,
@@ -45,7 +45,6 @@ const JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 	location,
 	price,
 }) => {
-	// const data = await getCompetitions();
 	return (
 		<Grid
 			sx={{ height: "100vh" }}
@@ -69,7 +68,8 @@ const JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 						width: 600,
 					}}
 				>
-					<Box
+					{/* linear gradient example */}
+					{/* <Box
 						sx={{
 							mb: 2,
 							backgroundImage:
@@ -78,9 +78,16 @@ const JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 							height: 250,
 							borderRadius: 4,
 						}}
-					></Box>
+					/> */}
+					{/* image example */}
+					<img
+						src={image || ""}
+						alt="Girl in a jacket"
+						width="250"
+						height="250"
+					/>
 					<Typography variant="h2" sx={{ fontWeight: 700, mb: 1 }}>
-						{competitionName || "Competition Name"}
+						{competitionName}
 					</Typography>
 					<Grid
 						container
@@ -92,16 +99,14 @@ const JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 						}}
 					>
 						<Typography sx={{ color: "#A3A3A3" }}>
-							Description: Lorem ipsum dolor sit amet, consectetur
-							adipiscing elit, sed do eiusmod tempor incididunt ut
-							labore et dolore magna aliqua.
+							{description}
 						</Typography>
 						<Grid container item alignItems="flex-start">
 							<SportsBasketball
 								sx={{ mr: 0.5, color: "#A3A3A3" }}
 							></SportsBasketball>
 							<Typography sx={{ color: "#A3A3A3" }}>
-								{"Basketball Tournament" || competitionType}
+								{competitionType}
 							</Typography>
 						</Grid>
 						<Grid container item alignItems="flex-start">
@@ -109,7 +114,7 @@ const JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 								sx={{ mr: 0.5, color: "#A3A3A3" }}
 							></CalendarIcon>
 							<Typography sx={{ color: "#A3A3A3" }}>
-								{"June 27 at 12:00 PM" || date}
+								{date}
 							</Typography>
 						</Grid>
 						<Grid container item alignItems="flex-start">
@@ -117,7 +122,7 @@ const JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 								sx={{ mr: 0.5, color: "#A3A3A3" }}
 							></LocationOn>
 							<Typography sx={{ color: "#A3A3A3" }}>
-								{"1234 Neighborhood St, City, IN" || location}
+								{location}
 							</Typography>
 						</Grid>
 						<Grid container item alignItems="flex-start">
@@ -129,7 +134,7 @@ const JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 									color: "#A3A3A3",
 								}}
 							>
-								{"$99" || price}
+								{price}
 							</Typography>
 							<Typography sx={{ color: "#A3A3A3" }}>
 								per team
@@ -152,3 +157,13 @@ const JoinCompetition: React.FC<JoinCompetitionProps> = async ({
 	);
 };
 
+JoinCompetition.defaultProps = {
+	competitionName: "balls",
+	image: "https://www.investopedia.com/thmb/ckPwC5ARwco1nOSCKVGE57se8MI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1245748917-99e3329a7b8147e8ab648806220ce153.jpg",
+	description:
+		"Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	competitionType: "Basketball Tournament",
+	date: "June 27 at 12:00 PM",
+	location: "1234 Neighborhood St, City, IN",
+	price: 5,
+};
