@@ -5,6 +5,7 @@ import { ControlPoint } from "@mui/icons-material";
 import { InputField } from "app/components/user-input";
 import {
 	Autocomplete,
+	Box,
 	Grid,
 	TextField,
 	Typography,
@@ -16,9 +17,11 @@ import { Competition, Profile, Team } from "app/types";
 
 // declare algolia index
 const algoliaClient = algoliasearch(
-	process.env.ALGOLIA_APP_ID || "",
-	process.env.ALGOLIA_SEARCH || ""
+	process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || "",
+	process.env.NEXT_PUBLIC_ALGOLIA_SEARCH || ""
 );
+
+console.log("algolia client", algoliaClient);
 
 type AlgoliaIndexes = "profiles" | "teams";
 // | "competition-teams"
@@ -60,7 +63,7 @@ export const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
 		AlgoliaSearchTypes[IndexT][]
 	>([]);
 
-	const searchIndex = algoliaClient.initIndex(algoliaIndex);
+	const searchIndex = algoliaClient.initIndex(algoliaIndex || "profiles");
 
 	// create the algolia search, set the results
 	const createSearch = async (
@@ -96,41 +99,25 @@ export const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
 		if (text.length === 0) {
 			setSearchResults([]);
 		}
+		console.log(hits);
 		return hits;
 	};
 
 	return (
-		<Autocomplete
-			id="grouped-demo"
-			openOnFocus={false}
-			disablePortal={true}
-			freeSolo
-			options={testPlayers}
-			getOptionLabel={(option) => {
-				// Value selected with enter, right from the input
-				if (typeof option === "string") {
-					return option;
-				}
-				// Add "xxx" option created dynamically
-				if (option.inputValue) {
-					return option.inputValue;
-				}
-				// Regular option
-				return option.title;
-			}}
-			// options={options.sort(
-			// 	(a, b) => -b.firstLetter.localeCompare(a.firstLetter)
-			// )}
-			// groupBy={(option) => option.firstLetter}
-			sx={{ width: 300 }}
-			renderInput={(params) => <InputField {...params} label="Search" />}
-			renderGroup={(params) => (
-				<li key={params.key}>
-					{/* <GroupHeader>{params.group}</GroupHeader>
-					<GroupItems>{params.children}</GroupItems> */}
-				</li>
-			)}
-		/>
+		<Box>
+			<InputField
+				onChange={(e) => {
+					console.log(e.target.value);
+					console.log(
+						process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+						process.env.NEXT_PUBLIC_ALGOLIA_SEARCH
+					);
+					createSearch(e.target.value);
+				}}
+				id="daw"
+				label="Search"
+			/>
+		</Box>
 	);
 };
 

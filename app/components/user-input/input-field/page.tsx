@@ -43,7 +43,7 @@ const InputField: React.FC<InputFieldProps> = ({
 				width: 480,
 				borderRadius: 3,
 			}}
-		></TextField>
+		/>
 	);
 };
 
