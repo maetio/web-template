@@ -134,7 +134,7 @@ const JoinCompetition: React.FC<JoinCompetitionProps> = ({
 									color: "#A3A3A3",
 								}}
 							>
-								{price}
+								${price}
 							</Typography>
 							<Typography sx={{ color: "#A3A3A3" }}>
 								per team
@@ -158,7 +158,7 @@ const JoinCompetition: React.FC<JoinCompetitionProps> = ({
 };
 
 JoinCompetition.defaultProps = {
-	competitionName: "balls",
+	competitionName: "example name",
 	image: "https://www.investopedia.com/thmb/ckPwC5ARwco1nOSCKVGE57se8MI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1245748917-99e3329a7b8147e8ab648806220ce153.jpg",
 	description:
 		"Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
