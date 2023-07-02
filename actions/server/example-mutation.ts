@@ -26,19 +26,10 @@ export async function updateUserNameServer(data: FormData) {
 	}
 
 	if (tokens) {
-		// const { firstName, lastName, id } = await request.json();
-
-		console.log("body in the request", firstName, lastName, 1);
-
-		console.log("token information", tokens);
-
-		console.log("fired");
-
 		if (!tokens) {
 			throw new Error("Cannot add name of unauthenticated user");
 		}
 
-		// const db = getFirestore(getFirebaseAdminApp());
 		const snapshot = await privateUserCollection
 			.doc(tokens.decodedToken.uid)
 			.set(
@@ -55,7 +46,7 @@ export async function updateUserNameServer(data: FormData) {
 }
 
 /**
- * server action identical to the other example, however needed to change a few types since 
+ * server action identical to the other example, however needed to change a few types since
  * client called server actions don't use the FormData type
  *
  * @export
@@ -87,7 +78,6 @@ export async function updateUserNameClient(data: {
 			throw new Error("Cannot add name of unauthenticated user");
 		}
 
-		// const db = getFirestore(getFirebaseAdminApp());
 		const snapshot = await privateUserCollection
 			.doc(tokens.decodedToken.uid)
 			.set(
