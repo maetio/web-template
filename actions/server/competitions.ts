@@ -7,7 +7,8 @@ export /**
  * @return {*}
  */
 const getCompetitions = async () => {
-	return competitionsCollection.get();
+	const data = await competitionsCollection.get();
+	return data;
 };
 
 export /**
@@ -17,5 +18,6 @@ export /**
  * @returns 
  */
 const getCompetition = async (id: string) => {
-	return competitionsCollection.doc(id).get();
+	const data = await competitionsCollection.doc(id).get();
+	return data;
 };

@@ -8,7 +8,8 @@ export /**
  * @return {*}
  */
 const getTeams = async () => {
-	return teamsCollection.get();
+	const data = await teamsCollection.get();
+	return data;
 };
 
 export /**
@@ -18,7 +19,8 @@ export /**
  * @returns 
  */
 const getTeam = async (id: string) => {
-	return teamsCollection.doc(id).get();
+	const data = await teamsCollection.doc(id).get();
+	return data;
 };
 /*
 const getTeam = async (id: string): Promise<{ id: string } & Partial<Team>> => {
