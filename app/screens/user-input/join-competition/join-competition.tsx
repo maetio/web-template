@@ -10,8 +10,7 @@ import { SubmitButton } from "app/components/user-input/submit-button/page";
 import React from "react";
 import { LocationOn, SportsBasketball } from "@mui/icons-material";
 import { CalendarIcon } from "@mui/x-date-pickers";
-import Image from "next/image";
-
+import { AlgoliaSearchComp } from "app/components/user-input/algolia-search";
 export interface JoinCompetitionProps {
 	competitionName?: string;
 	image?: string;
@@ -149,6 +148,7 @@ const JoinCompetition: React.FC<JoinCompetitionProps> = ({
 						sx={{ mt: 4, mb: 9, width: 480 }}
 					>
 						<PlayerDropdown />
+						<AlgoliaSearchComp />
 					</Grid>
 					<SubmitButton title="Join Competition" color="#818CF8" />
 				</Grid>
