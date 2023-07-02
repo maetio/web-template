@@ -2,17 +2,15 @@
 
 import React from "react";
 import { ControlPoint } from "@mui/icons-material";
+import { InputField } from "app/components/user-input";
 import {
 	Autocomplete,
 	Grid,
 	TextField,
 	Typography,
 	createFilterOptions,
-	Box,
-} from "../../providers/mui-server-components";
-import { SearchBar } from "../search-bar/page";
+} from "app/components/providers/mui-server-components";
 import { PlayerCard } from "../../cards/player-card/page";
-import { InputField } from "../input-field/page";
 
 export interface PlayerDropdownProps {
 	name?: String;
@@ -35,7 +33,7 @@ export /**
  * @returns
  */
 
-const PlayerDropdown: React.FC<PlayerDropdownProps> = ({ name }) => {
+const AlgoliaSearchComp: React.FC<PlayerDropdownProps> = ({ name }) => {
 	const [value, setValue] = React.useState<PlayerOptionType | null>(null);
 
 	return (
@@ -57,23 +55,7 @@ const PlayerDropdown: React.FC<PlayerDropdownProps> = ({ name }) => {
 				return option.title;
 			}}
 			// eslint-disable-next-line react/jsx-props-no-spreading
-			renderOption={(props, option) => (
-				<Box mt={1}>
-					<Box
-						sx={{
-							ml: 2,
-							backgroundImage:
-								"linear-gradient(207deg, #EAE68E 13.76%, #FBBEBE 60.61%, #BEE1FB 100%);",
-							borderRadius: "50%",
-							width: 40,
-							height: 40,
-						}}
-						{...props}
-					>
-						<Typography>{option.title}</Typography>
-					</Box>
-				</Box>
-			)}
+			renderOption={(props, option) => <li {...props}>{option.title}</li>}
 			options={testPlayers}
 			sx={{ width: 480 }}
 			renderInput={(params) => <InputField {...params} label="Search" />}
