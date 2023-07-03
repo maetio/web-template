@@ -12,7 +12,7 @@ import {
 	createFilterOptions,
 } from "app/components/providers/mui-server-components";
 import algoliasearch from "algoliasearch";
-import { PlayerCard } from "app/components/cards";
+import { PlayerCard, TeamCard } from "app/components/cards";
 import { Competition, Profile, Team } from "app/types";
 
 // declare algolia index
@@ -116,18 +116,36 @@ export const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
 				}}
 				label="Search"
 			/>
-			{searchResults.map((item) => (
-				<PlayerCard
-					key={item.id}
-					image={item.image || undefined}
-					name={
-						item.lastName || item.firstName
-							? `${item.firstName} ${item.lastName}`
-							: ""
+			{searchResults
+				? searchResults.map((item) => {
+					if (algoliaIndex === "profiles") {
+						return (
+							<PlayerCard
+								key={item.id}
+								image={item.image || undefined}
+								name={
+									item.lastName || item.firstName
+										? `${item.firstName} ${item.lastName}`
+										: ""
+								}
+								score={item.rating?.displayRating}
+							/>
+						);
 					}
-					score={item.rating?.displayRating}
-				/>
-			))}
+					return (
+						<TeamCard
+							key={item.id}
+							image={item.image || undefined}
+							name={
+								item.lastName || item.firstName
+									? `${item.firstName} ${item.lastName}`
+									: ""
+							}
+							score={item.rating?.displayRating}
+						/>
+					);
+				  })
+				: undefined}
 		</Box>
 	);
 };

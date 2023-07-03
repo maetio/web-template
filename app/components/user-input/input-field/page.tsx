@@ -30,6 +30,7 @@ const InputField: React.FC<InputFieldProps> = ({
 }) => {
 	return (
 		<TextField
+			autoComplete="off"
 			{...props}
 			onChange={onChange}
 			label={label}
