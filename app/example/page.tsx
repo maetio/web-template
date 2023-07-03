@@ -1,7 +1,7 @@
 import { getTeams } from "actions/server/teams";
 import { PlayerCard, TeamCard } from "app/components/cards";
 import { Grid } from "app/components/providers/mui-server-components";
-import { getCompetitions } from "../../actions/server/competitions";
+import { getCompetition, getCompetitions } from "actions/server/competitions";
 
 export default async function Page() {
 	// fetch the teams & competitions

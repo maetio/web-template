@@ -2,9 +2,7 @@
 
 import React from "react";
 import {
-	Button,
-	ButtonTypeMap,
-	ExtendButtonBase,
+	Button
 } from "../../providers/mui-server-components";
 
 export interface SubmitButtonProps {
