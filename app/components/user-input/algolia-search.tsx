@@ -63,7 +63,7 @@ export const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
 		AlgoliaSearchTypes[IndexT][]
 	>([]);
 
-	const searchIndex = algoliaClient.initIndex(algoliaIndex || "profiles");
+	const searchIndex = algoliaClient.initIndex(algoliaIndex);
 
 	// create the algolia search, set the results
 	const createSearch = async (
@@ -116,6 +116,34 @@ export const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
 				}}
 				id="daw"
 				label="Search"
+			/>
+			<Autocomplete
+				openOnFocus={false}
+				disablePortal={true}
+				id="combo-box-demo"
+				freeSolo
+				getOptionLabel={(option) => {
+					// Value selected with enter, right from the input
+					if (typeof option === "string") {
+						return option;
+					}
+					// Add "xxx" option created dynamically
+					if (option.inputValue) {
+						return option.inputValue;
+					}
+					// Regular option
+					return option.title;
+				}}
+				// eslint-disable-next-line react/jsx-props-no-spreading
+				renderOption={(props, option) => (
+					// eslint-disable-next-line react/jsx-props-no-spreading
+					<li {...props}>{option.title}</li>
+				)}
+				options={testPlayers}
+				sx={{ width: 480 }}
+				renderInput={(params) => (
+					<InputField {...params} label="Search" />
+				)}
 			/>
 		</Box>
 	);

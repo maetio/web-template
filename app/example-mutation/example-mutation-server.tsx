@@ -10,6 +10,7 @@ export function ExampleMutation() {
 	return (
 		<form action={updateUserNameServer} className="flex gap-2 items-center">
 			<input
+				required
 				type="text"
 				name="firstName"
 				className="text-2xl p-1 rounded-lg flex-grow w-full"

@@ -19,8 +19,10 @@ export async function updateUserNameServer(data: FormData) {
 	const firstName = data.get("firstName")?.toString();
 	const lastName = data?.get("lastName")?.toString();
 
+	// get the token from the cookies
 	const tokens = await getTokens(cookies(), authConfig);
 
+	// handle if there is no user
 	if (!tokens) {
 		throw new Error("Cannot update counter of unauthenticated user");
 	}
@@ -29,7 +31,7 @@ export async function updateUserNameServer(data: FormData) {
 		if (!tokens) {
 			throw new Error("Cannot add name of unauthenticated user");
 		}
-
+		// set user data
 		const snapshot = await privateUserCollection
 			.doc(tokens.decodedToken.uid)
 			.set(
@@ -61,8 +63,10 @@ export async function updateUserNameClient(data: {
 }) {
 	const { firstName, lastName } = data;
 
+	// get the token from the cookies
 	const tokens = await getTokens(cookies(), authConfig);
 
+	// handle if there is no user
 	if (!tokens) {
 		throw new Error("Cannot update counter of unauthenticated user");
 	}
@@ -78,6 +82,7 @@ export async function updateUserNameClient(data: {
 			throw new Error("Cannot add name of unauthenticated user");
 		}
 
+		// set user data
 		const snapshot = await privateUserCollection
 			.doc(tokens.decodedToken.uid)
 			.set(

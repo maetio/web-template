@@ -1,3 +1,5 @@
+"use server";
+
 import { competitionsCollection } from "config/server-collections";
 
 export /**
@@ -6,5 +8,6 @@ export /**
  * @return {*}
  */
 const getCompetitions = async () => {
-	return competitionsCollection.get();
+	const data = await competitionsCollection.get();
+	return data;
 };

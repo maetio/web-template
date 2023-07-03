@@ -20,6 +20,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
  * @return {*} 
  */
 export function ExampleMutationClient() {
+	// form validation on client
 	const { register, handleSubmit, reset } = useForm({
 		defaultValues: {
 			firstName: "",
@@ -28,8 +29,10 @@ export function ExampleMutationClient() {
 		resolver: yupResolver(editProfileSchema),
 	});
 
+	// useTransition is used to handle loading state inside client component
 	const [handleUserCounterAction, startTransition] = useTransition();
 
+	// handle the transaction without returning a promise(since useTransition can't take in promises)
 	const handleTransaction = ({
 		firstName,
 		lastName,
