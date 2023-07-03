@@ -16,13 +16,15 @@ import {
 	createTheme,
 	Stack,
 } from "@mui/material";
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { purple } from "@mui/material/colors";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import {
 	DatePicker,
+	DateValidationError,
 	LocalizationProvider,
 	TimePicker,
+	TimeValidationError,
 } from "@mui/x-date-pickers";
 import {
 	Controller,
@@ -38,6 +40,7 @@ import { AccountTree, AddCircle, Groups, Tv } from "@mui/icons-material";
 import getDesignTokens from "../../../theme";
 import { CompetitionFormSchema } from "../../../utils/schemas";
 import { PageHeader } from "../../../components/layout/page-header";
+import { PickerChangeHandlerContext } from "@mui/x-date-pickers/internals/hooks/usePicker/usePickerValue.types";
 
 const options = [
 	{ label: "Paddleball", id: 1 },
@@ -209,13 +212,22 @@ const CreateCompetition: React.FC<{}> = () => {
 									name={"startDate"}
 									control={control}
 									render={({
-										field: { onChange, value },
+										field: { onChange, value: fieldValue },
 										fieldState: { error },
 									}) => (
 										<DatePicker
 											label="Start Date"
-											onChange={(event) => {
-												onChange(event);
+											onChange={(
+												value:
+													| Date
+													| React.ChangeEvent<Element>
+													| null,
+												context: PickerChangeHandlerContext<DateValidationError>
+											) => {
+												// console.log(context);
+												if (value) {
+													onChange(value);
+												}
 											}}
 											sx={{
 												m: 2,
@@ -230,13 +242,22 @@ const CreateCompetition: React.FC<{}> = () => {
 									name={"startTime"}
 									control={control}
 									render={({
-										field: { onChange, value },
+										field: { onChange, value: fieldValue },
 										fieldState: { error },
 									}) => (
 										<TimePicker
 											label="Start Time"
-											onChange={(event) => {
-												onChange(event);
+											onChange={(
+												value:
+													| Date
+													| React.ChangeEvent<Element>
+													| null,
+												context: PickerChangeHandlerContext<TimeValidationError>
+											) => {
+												// console.log(context);
+												if (value) {
+													onChange(value);
+												}
 											}}
 											sx={{
 												m: 2,
@@ -256,13 +277,22 @@ const CreateCompetition: React.FC<{}> = () => {
 									name={"endDate"}
 									control={control}
 									render={({
-										field: { onChange, value },
+										field: { onChange, value: fieldValue },
 										fieldState: { error },
 									}) => (
 										<DatePicker
 											label="End Date"
-											onChange={(event) => {
-												onChange(event);
+											onChange={(
+												value:
+													| Date
+													| React.ChangeEvent<Element>
+													| null,
+												context: PickerChangeHandlerContext<DateValidationError>
+											) => {
+												// console.log(context);
+												if (value) {
+													onChange(value);
+												}
 											}}
 											sx={{
 												m: 2,
@@ -277,7 +307,7 @@ const CreateCompetition: React.FC<{}> = () => {
 									name={"endTime"}
 									control={control}
 									render={({
-										field: { onChange, value },
+										field: { onChange, value: fieldValue },
 										fieldState: { error },
 									}) => (
 										<TimePicker
@@ -285,8 +315,17 @@ const CreateCompetition: React.FC<{}> = () => {
 											sx={{
 												m: 2,
 											}}
-											onChange={(event) => {
-												onChange(event);
+											onChange={(
+												value:
+													| Date
+													| React.ChangeEvent<Element>
+													| null,
+												context: PickerChangeHandlerContext<TimeValidationError>
+											) => {
+												// console.log(context);
+												if (value) {
+													onChange(value);
+												}
 											}}
 										/>
 									)}
