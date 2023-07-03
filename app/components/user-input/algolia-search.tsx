@@ -99,13 +99,13 @@ export const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
 		if (text.length === 0) {
 			setSearchResults([]);
 		}
-		console.log(hits);
 		return hits;
 	};
 
 	return (
 		<Box>
-			{/* <InputField
+			<InputField
+				id="input"
 				onChange={(e) => {
 					console.log(e.target.value);
 					console.log(
@@ -114,48 +114,20 @@ export const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
 					);
 					createSearch(e.target.value);
 				}}
-				id="daw"
 				label="Search"
-			/> */}
-			<Autocomplete
-				openOnFocus={false}
-				disablePortal={true}
-				id="combo-box-demo"
-				freeSolo
-				getOptionLabel={(option) => {
-					// Value selected with enter, right from the input
-					if (typeof option === "string") {
-						return option;
-					}
-					// Add "xxx" option created dynamically
-					if (option.inputValue) {
-						return option.inputValue;
-					}
-					// Regular option
-					return option.title;
-				}}
-				// eslint-disable-next-line react/jsx-props-no-spreading
-				renderOption={(props, option) => (
-					// eslint-disable-next-line react/jsx-props-no-spreading
-					<li {...props}>{option.title}</li>
-				)}
-				options={testPlayers}
-				sx={{ width: 480 }}
-				renderInput={(params) => (
-					<InputField
-						onChange={(e) => {
-							console.log(e.target.value);
-							console.log(
-								process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-								process.env.NEXT_PUBLIC_ALGOLIA_SEARCH
-							);
-							createSearch(e.target.value);
-						}}
-						{...params}
-						label="Search"
-					/>
-				)}
 			/>
+			{searchResults.map((item) => (
+				<PlayerCard
+					key={item.id}
+					image={item.image || undefined}
+					name={
+						item.lastName || item.firstName
+							? `${item.firstName} ${item.lastName}`
+							: ""
+					}
+					score={item.rating?.displayRating}
+				/>
+			))}
 		</Box>
 	);
 };
