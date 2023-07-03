@@ -31,18 +31,18 @@ export function UserProfile() {
 		window.location.reload();
 	});
 
-	// const [handleRefresh, isRefreshLoading] = useLoadingCallback(async () => {
-	// 	if (!tenant) {
-	// 		return;
-	// 	}
+	const [handleRefresh, isRefreshLoading] = useLoadingCallback(async () => {
+		if (!tenant) {
+			return;
+		}
 
-	// 	await fetch("/api/refresh-tokens", {
-	// 		method: "GET",
-	// 		headers: {
-	// 			Authorization: `Bearer ${tenant.idToken}`,
-	// 		},
-	// 	});
-	// });
+		await fetch("/api/refresh-tokens", {
+			method: "GET",
+			headers: {
+				Authorization: `Bearer ${tenant.idToken}`,
+			},
+		});
+	});
 
 	const [handleClaims, isClaimsLoading] = useLoadingCallback(async () => {
 		if (!tenant) {
@@ -108,9 +108,9 @@ export function UserProfile() {
 						"Set custom user claims"
 					)}
 				</Button>
-				{/* <Button disabled={isRefreshLoading} onClick={handleRefresh}>
+				<Button disabled={isRefreshLoading} onClick={handleRefresh}>
 					{isRefreshLoading ? <CircularProgress /> : "Refresh tokens"}
-				</Button> */}
+				</Button>
 				<Button
 					disabled={isUserCounterLoading}
 					onClick={handleUserCounter}

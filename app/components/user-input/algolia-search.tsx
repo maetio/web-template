@@ -105,7 +105,7 @@ export const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
 
 	return (
 		<Box>
-			<InputField
+			{/* <InputField
 				onChange={(e) => {
 					console.log(e.target.value);
 					console.log(
@@ -116,7 +116,7 @@ export const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
 				}}
 				id="daw"
 				label="Search"
-			/>
+			/> */}
 			<Autocomplete
 				openOnFocus={false}
 				disablePortal={true}
@@ -142,7 +142,18 @@ export const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
 				options={testPlayers}
 				sx={{ width: 480 }}
 				renderInput={(params) => (
-					<InputField {...params} label="Search" />
+					<InputField
+						onChange={(e) => {
+							console.log(e.target.value);
+							console.log(
+								process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+								process.env.NEXT_PUBLIC_ALGOLIA_SEARCH
+							);
+							createSearch(e.target.value);
+						}}
+						{...params}
+						label="Search"
+					/>
 				)}
 			/>
 		</Box>

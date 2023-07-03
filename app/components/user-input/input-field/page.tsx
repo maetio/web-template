@@ -1,14 +1,18 @@
 "use client";
 
-import React, { InputHTMLAttributes } from "react";
+import React, { ChangeEvent, InputHTMLAttributes } from "react";
 import { Search } from "@mui/icons-material";
 import { FieldValues, UseFormRegister } from "react-hook-form";
-import { TextField } from "../../providers/mui-server-components";
+import {
+	TextField,
+	TextFieldVariants,
+} from "../../providers/mui-server-components";
 
 interface InputFieldProps {
 	id: string;
 	label: string;
 	register?: UseFormRegister<FieldValues>;
+	onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export /**
@@ -21,11 +25,13 @@ const InputField: React.FC<InputFieldProps> = ({
 	label,
 	id,
 	register,
+	onChange,
 	...props
 }) => {
 	return (
 		<TextField
 			{...props}
+			onChange={onChange}
 			label={label}
 			id={id}
 			type="text"
