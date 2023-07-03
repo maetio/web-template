@@ -1,5 +1,3 @@
-import { Team } from "app/types";
-import { doc, getDoc } from "firebase/firestore";
 import { teamsCollection } from "config/server-collections";
 
 export /**
@@ -14,9 +12,9 @@ const getTeams = async () => {
 
 export /**
  * Will fetch one competition from the database
- * 
- * @param {string} id 
- * @returns 
+ *
+ * @param {string} id
+ * @returns
  */
 const getTeam = async (id: string) => {
 	const data = await teamsCollection.doc(id).get();

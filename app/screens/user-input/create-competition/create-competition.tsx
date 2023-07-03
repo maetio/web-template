@@ -1,7 +1,6 @@
 import {
 	Autocomplete,
 	Grid,
-	Avatar,
 	Box,
 	Button,
 	FormControl,
@@ -14,10 +13,8 @@ import {
 	ThemeProvider,
 	useMediaQuery,
 	createTheme,
-	Stack,
 } from "@mui/material";
-import React, { ChangeEvent } from "react";
-import { purple } from "@mui/material/colors";
+import React from "react";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import {
 	DatePicker,
@@ -26,21 +23,14 @@ import {
 	TimePicker,
 	TimeValidationError,
 } from "@mui/x-date-pickers";
-import {
-	Controller,
-	ControllerFieldState,
-	ControllerRenderProps,
-	UseFormStateReturn,
-	useForm,
-} from "react-hook-form";
-import * as yup from "yup";
+import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CompetitionFormInput } from "app/types/competition-form-types";
-import { AccountTree, AddCircle, Groups, Tv } from "@mui/icons-material";
+import { AddCircle } from "@mui/icons-material";
+import { PickerChangeHandlerContext } from "@mui/x-date-pickers/internals/hooks/usePicker/usePickerValue.types";
 import getDesignTokens from "../../../theme";
 import { CompetitionFormSchema } from "../../../utils/schemas";
 import { PageHeader } from "../../../components/layout/page-header";
-import { PickerChangeHandlerContext } from "@mui/x-date-pickers/internals/hooks/usePicker/usePickerValue.types";
 
 const options = [
 	{ label: "Paddleball", id: 1 },

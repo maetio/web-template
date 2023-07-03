@@ -1,16 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { ControlPoint } from "@mui/icons-material";
 import { InputField } from "app/components/user-input";
-import {
-	Autocomplete,
-	Box,
-	Grid,
-	TextField,
-	Typography,
-	createFilterOptions,
-} from "app/components/providers/mui-server-components";
+import { Box } from "app/components/providers/mui-server-components";
 import algoliasearch from "algoliasearch";
 import { PlayerCard, TeamCard } from "app/components/cards";
 import { Competition, Profile, Team } from "app/types";
@@ -46,18 +38,13 @@ export interface AlgoliaSearchCompProps<IndexT extends AlgoliaIndexes> {
 	competitionID?: string;
 }
 
-const testPlayers: readonly any[] = [
-	{ title: "Jay Boog" },
-	{ title: "Big Baller" },
-];
-
 export const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
 	label,
 	algoliaIndex,
 	hitsPerPage,
 	sportsSelected,
-	competitionID,
-}: AlgoliaSearchCompProps<IndexT>) => {
+}: // competitionID,
+AlgoliaSearchCompProps<IndexT>) => {
 	// set states
 	const [searchResults, setSearchResults] = useState<
 		AlgoliaSearchTypes[IndexT][]
@@ -114,7 +101,7 @@ export const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
 					);
 					createSearch(e.target.value);
 				}}
-				label="Search"
+				label={label || ""}
 			/>
 			{searchResults
 				? searchResults.map((item) => {

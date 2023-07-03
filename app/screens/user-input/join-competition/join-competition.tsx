@@ -1,16 +1,14 @@
 "use client";
 
 import {
-	Box,
 	Grid,
 	Typography,
 } from "app/components/providers/mui-server-components";
-import { PlayerDropdown } from "app/components/user-input/player-dropdown/page";
+import { AlgoliaSearchComp } from "app/components/user-input/algolia-search";
 import { SubmitButton } from "app/components/user-input/submit-button/page";
 import React from "react";
 import { LocationOn, SportsBasketball } from "@mui/icons-material";
 import { CalendarIcon } from "@mui/x-date-pickers";
-import { AlgoliaSearchComp } from "app/components/user-input/algolia-search";
 
 export interface JoinCompetitionProps {
 	competitionName?: string;
@@ -148,8 +146,14 @@ const JoinCompetition: React.FC<JoinCompetitionProps> = ({
 						direction="column"
 						sx={{ mt: 4, mb: 9, width: 480 }}
 					>
-						<AlgoliaSearchComp algoliaIndex="profiles" />
-						<AlgoliaSearchComp algoliaIndex="teams" />
+						<AlgoliaSearchComp
+							algoliaIndex="profiles"
+							label="Search"
+						/>
+						<AlgoliaSearchComp
+							algoliaIndex="teams"
+							label="Search"
+						/>
 					</Grid>
 					<SubmitButton title="Join Competition" color="#818CF8" />
 				</Grid>

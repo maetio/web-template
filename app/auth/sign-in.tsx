@@ -1,14 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, TextField, Grid, Typography, Paper, Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
-import {
-	sendPasswordlessLoginEmail,
-	signInWithLink,
-} from "actions/client/auth";
+import { sendPasswordlessLoginEmail } from "actions/client/auth";
 import { useFirebaseAuth } from "auth/firebase";
 import { clientConfig } from "config/client-config";
 
@@ -35,19 +32,6 @@ export const SignIn: React.FC<{}> = () => {
 		await sendPasswordlessLoginEmail(auth, data.email);
 		setSentEmail(true);
 	};
-
-	// useEffect(() => {
-	// 	// get router
-	// 	// console.log('router query', router.query);
-	// 	console.log(window.location.href, document.referrer);
-
-	// 	console.log(
-	// 		"signing",
-	// 		"sethy8656@gmail.com",
-	// 		"in with",
-	// 		window.location.href
-	// 	);
-	// }, [sentEmail, setSentEmail]);
 
 	return (
 		<form onSubmit={handleSubmit(submitEmail)}>

@@ -1,7 +1,6 @@
 "use client";
 
-import React, { ChangeEvent, InputHTMLAttributes } from "react";
-import { Search } from "@mui/icons-material";
+import React, { ChangeEvent } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { TextFieldProps } from "@mui/material/TextField/TextField";
 import { TextField } from "../../providers/mui-server-components";
