@@ -1,10 +1,9 @@
-"use client";
 
-import { Cancel } from "@mui/icons-material";
 import { InputField } from "app/components/user-input/input-field/page";
 import {
 	Box,
 	Button,
+	Cancel,
 	FormLabel,
 	Grid,
 	Typography,
@@ -15,6 +14,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { getTeam } from "actions/server/teams";
 
 export interface JoinTeamProps {
 	image?: string;
@@ -32,11 +32,13 @@ export /**
  * @param {string} teamName
  * @returns
  */
-const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
+const JoinTeam: React.FC<JoinTeamProps> = async (image, teamName) => {
 	const { register, handleSubmit, reset } = useForm({
 		resolver: yupResolver(JoinTeamSchema),
 	});
 
+	const id = "63AuFoQ7jcYal0ttQcT0";
+	const teamData = await getTeam(id);
 	return (
 		<form onSubmit={handleSubmit((data) => console.log(data))}>
 			<Grid
@@ -82,7 +84,7 @@ const JoinTeam: React.FC<JoinTeamProps> = (image, teamName) => {
 							}}
 						></Box>
 						<Typography variant="h2" sx={{ fontWeight: 700 }}>
-							{"Team Name" || teamName}
+							{teamData.data()?.firstName}
 						</Typography>
 						<Typography variant="h6">
 							Contact the team captain for the team passcode

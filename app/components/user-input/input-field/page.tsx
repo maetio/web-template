@@ -3,12 +3,10 @@
 import React, { ChangeEvent, InputHTMLAttributes } from "react";
 import { Search } from "@mui/icons-material";
 import { FieldValues, UseFormRegister } from "react-hook-form";
-import {
-	TextField,
-	TextFieldVariants,
-} from "../../providers/mui-server-components";
+import { TextFieldProps } from "@mui/material/TextField/TextField";
+import { TextField } from "../../providers/mui-server-components";
 
-interface InputFieldProps {
+interface InputFieldProps extends Omit<TextFieldProps, "variant"> {
 	id: string;
 	label: string;
 	register?: UseFormRegister<FieldValues>;
@@ -26,6 +24,7 @@ const InputField: React.FC<InputFieldProps> = ({
 	id,
 	register,
 	onChange,
+	sx,
 	...props
 }) => {
 	return (
@@ -44,11 +43,11 @@ const InputField: React.FC<InputFieldProps> = ({
 					borderColor: "#D9D9D9",
 				},
 				mt: 2,
-				ml: 2,
 				mb: 2,
 				backgroundColor: "#f5f5f5",
 				width: 480,
 				borderRadius: 3,
+				...sx,
 			}}
 		/>
 	);

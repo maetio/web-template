@@ -8,6 +8,6 @@ export /**
  * @return {*}
  */
 const getCompetitions = async () => {
-	const data = await competitionsCollection.get();
-	return data;
+	const competitions = await competitionsCollection.get();
+	return competitions;
 };
