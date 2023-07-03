@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "app/components/providers/mui-server-components";
+import { Box, Grid, LocationOn, Typography } from "app/components/providers/mui-server-components";
 import React from "react";
 
 // export interface ViewCompetitionProps {};
@@ -11,7 +11,7 @@ export
  * @param {ViewCompetitionProps} props 
  * @returns 
  */
-const ViewCompetition = (props: ViewCompetitionProps) => {
+const ViewCompetition = () => {
 	return (
 		<Grid
 			container
@@ -46,8 +46,18 @@ const ViewCompetition = (props: ViewCompetitionProps) => {
 							borderRadius: 4,
 						}}
 					></Box>
-					<Grid direction="column">
-						<Grid direction="row"></Grid>
+					<Grid sx={{border: 1}} direction="column">
+						<Grid direction="row">
+							<Grid
+							    direction="column"
+								container
+								justifyContent="center"
+								alignContent="center"
+							>
+								<LocationOn></LocationOn>
+								<Typography>1234 Neighborhood St</Typography>
+							</Grid>
+						</Grid>
 						<Grid direction="row"></Grid>
 					</Grid>
 				</Grid>

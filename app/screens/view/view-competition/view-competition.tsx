@@ -1,9 +1,13 @@
 import Link from "next/link";
 import React from "react";
 
-// export interface ViewCompetitionProps = {};
 
-export const ViewCompetition: React.FC<{}> = () => {
+export  /**
+ * This component contains the links to the other screens that the view-competition screen flows to 
+ * 
+ * @returns 
+ */
+const  ViewCompetition: React.FC<{}> = () => {
 	return (
 		<div>
 			<h1>View Competition</h1>
