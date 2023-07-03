@@ -22,7 +22,7 @@ const ViewCompetition = (props: ViewCompetitionProps) => {
 				container
 				item
 				justifyContent="flex-start"
-				direction="row"
+				direction="column"
 			>
 				<Grid
 					container
@@ -30,7 +30,7 @@ const ViewCompetition = (props: ViewCompetitionProps) => {
 					direction="row"
 				>
 					<Typography sx={{fontWeight: 700}} variant="h5">Competition Name</Typography>
-					<Typography sx={{ml: 3, fontWeight: 700}}>Host Name</Typography>
+					<Typography sx={{ml: 2, fontWeight: 700}}>Host Name</Typography>
 				</Grid>
 				<Grid
 			        container
@@ -46,6 +46,10 @@ const ViewCompetition = (props: ViewCompetitionProps) => {
 							borderRadius: 4,
 						}}
 					></Box>
+					<Grid direction="column">
+						<Grid direction="row"></Grid>
+						<Grid direction="row"></Grid>
+					</Grid>
 				</Grid>
 				
 			</Grid>
