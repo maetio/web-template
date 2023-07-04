@@ -6,6 +6,7 @@ import { Nunito } from "next/font/google";
 import { ThemeProvider, createTheme, useMediaQuery } from "@mui/material";
 import React from "react";
 import getDesignTokens from "./theme";
+import Header from "app/components/header";
 
 const nunito = Nunito({ subsets: ["latin"] });
 // had to comment out metadata export for now because of "use client directive"
@@ -35,7 +36,10 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={nunito.className}>
 				<MuiProvider>
-					<CustomThemeProvider>{children}</CustomThemeProvider>
+					<CustomThemeProvider>
+						<Header />
+						{children}
+					</CustomThemeProvider>
 				</MuiProvider>
 			</body>
 		</html>
