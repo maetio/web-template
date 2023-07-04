@@ -9,7 +9,6 @@ import { EditProfileSchemaType, editProfileSchema } from "app/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 import { mapFirebaseResponseToTenant } from "app/login/firebase";
-import { useUpdatePrivateUserData } from "actions/client/hooks/user-api";
 import { signInWithLink } from "actions/client/auth";
 import { useAuth } from "auth/hooks";
 import { useFirebaseAuth } from "auth/firebase";
@@ -22,7 +21,6 @@ export /**
  */
 const Home = () => {
 	// get user state
-
 	const { tenant } = useAuth();
 
 	console.log("tenant from home page", tenant);
@@ -56,11 +54,12 @@ const Home = () => {
 		});
 	};
 
+	// will sign in the user
 	useEffect(() => {
 		if (window.location.href.includes("apiKey")) {
 			handleLogin();
 		}
-	}, []);
+	});
 
 	// use effect hook to sign in with email link
 	// useEffect(() => {}, [user.email]);
@@ -71,9 +70,6 @@ const Home = () => {
 
 	// get the auth context
 	// const userContext = useAuthContext();
-
-	const [{ isLoading, isSuccess, error }, updateData] =
-		useUpdatePrivateUserData();
 
 	// set up react hook form that will take user firstName and lastName as inputs
 	const { register, handleSubmit, reset } = useForm({
@@ -115,11 +111,6 @@ const Home = () => {
 				justifyContent="center"
 				sx={{ minHeight: "100vh" }}
 			>
-				{/* <Typography>
-					{userContext?.uid.length
-						? `You are logged in as ${userContext?.email}.`
-						: "You are not logged in."}
-				</Typography> */}
 				<Typography>testing</Typography>
 				<TextField
 					{...register("firstName", { required: true })}

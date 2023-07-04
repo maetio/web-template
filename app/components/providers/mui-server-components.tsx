@@ -1,7 +1,5 @@
 "use client";
 
-
-
 /**
  * Material UI is not yet compatible with server side components
  * This is a temporary workaround so that mui components can be imported into server side components

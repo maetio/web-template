@@ -1,12 +1,9 @@
-"use client";
-
 import { MuiProvider } from "app/components/providers/mui";
 import "./globals.css";
 import { Nunito } from "next/font/google";
-import { ThemeProvider, createTheme, useMediaQuery } from "@mui/material";
 import React from "react";
-import getDesignTokens from "./theme";
 import Header from "app/components/header";
+import { ServerAuthProvider } from "auth/server-auth-provider";
 
 const nunito = Nunito({ subsets: ["latin"] });
 // had to comment out metadata export for now because of "use client directive"
@@ -15,17 +12,6 @@ const nunito = Nunito({ subsets: ["latin"] });
 	title: "Maet Web Template",
 	description: "NextJS, Typescript, MUI, Firebase starter",
 }; */
-
-function CustomThemeProvider({ children }: { children: React.ReactNode }) {
-	// for setting color mode
-	const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-	// Update the theme only if the mode changes
-	const theme = React.useMemo(
-		() => createTheme(getDesignTokens(prefersDarkMode ? "dark" : "light")),
-		[prefersDarkMode]
-	);
-	return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
-}
 
 export default function RootLayout({
 	children,
@@ -36,10 +22,11 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={nunito.className}>
 				<MuiProvider>
-					<CustomThemeProvider>
+					{/* @ts-expect-error https://github.com/vercel/next.js/issues/43537 */}
+					<ServerAuthProvider>
 						<Header />
 						{children}
-					</CustomThemeProvider>
+					</ServerAuthProvider>
 				</MuiProvider>
 			</body>
 		</html>
