@@ -1,11 +1,15 @@
-import { auth } from "app/api/client/config";
 import {
 	ActionCodeSettings,
 	sendSignInLinkToEmail,
 	isSignInWithEmailLink,
 	signInWithEmailLink,
 	signOut,
+	Auth,
 } from "firebase/auth";
+// import { auth } from "./config";
+
+// import { auth } from "../config/client-config";
+// import { auth } from "./config";
 
 /**
  * Function will send the passwordless login email to the user's email
@@ -14,7 +18,10 @@ import {
  * @param {string} email
  * @return {*}  {Promise<void>}
  */
-export async function sendPasswordlessLoginEmail(email: string): Promise<void> {
+export async function sendPasswordlessLoginEmail(
+	auth: Auth,
+	email: string
+): Promise<void> {
 	const actionCodeSettings: ActionCodeSettings = {
 		handleCodeInApp: true,
 		// dynamicLinkDomain: process.env.NEXT_PUBLIC_DYNAMIC_LINKS_DOMAIN,
@@ -31,7 +38,6 @@ export async function sendPasswordlessLoginEmail(email: string): Promise<void> {
 			// minimumVersion: '8',
 		},
 	};
-	console.log(actionCodeSettings);
 	return sendSignInLinkToEmail(auth, email, actionCodeSettings);
 }
 
@@ -42,7 +48,7 @@ export /**
  * @param {string} [link]
  * @return {*}
  */
-const signInWithLink = async (email: string, link: string) => {
+const signInWithLink = async (auth: Auth, email: string, link: string) => {
 	if (!isSignInWithEmailLink(auth, link))
 		throw Error(`Not Email Sign in Link: ${link}`);
 	return signInWithEmailLink(auth, email, link);
@@ -53,7 +59,7 @@ const signInWithLink = async (email: string, link: string) => {
  * @export
  * @return {*}  {Promise<void>}
  */
-export async function signOutUser(): Promise<void> {
-	// sign out the current user
-	return signOut(auth);
-}
+// export async function signOutUser(): Promise<void> {
+// 	// sign out the current user
+// 	return signOut(auth);
+// }

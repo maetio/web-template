@@ -1,6 +1,6 @@
 "use client";
 
-import { useCreateFirestoreHook } from "app/api/client/hooks/template";
+import { useCreateFirestoreHook } from "./template";
 
 export /**
  * Fetches stripe information from our node/express backend from firebase
@@ -16,8 +16,6 @@ const useGetStripeSecret = () => {
 		userToken: string;
 		userID: string;
 	}) => {
-		console.log("auth token", userToken);
-		console.log("userContext", userID);
 		const response = await fetch(
 			"https://us-central1-maet-dev-ced69.cloudfunctions.net/stripeCallableFunction/stripe-session-id/XcxEgr62pG7FfSGRD3Iv",
 			{

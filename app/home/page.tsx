@@ -2,16 +2,19 @@
 
 import React, { useEffect } from "react";
 import { Button, Grid, TextField, Typography } from "@mui/material";
-import { signInWithLink } from "app/api/client/auth";
 import { useRecoilValue } from "recoil";
-import { UserState } from "app/recoil-store";
-import { SignOutButton } from "app/components/user-input/sign-out-button";
-import { useAuthContext } from "app/components/providers/auth-context";
+import { SignOutButton } from "app/components/user-input";
+// import { useAuthContext } from "app/components/providers/auth-context";
 import { useForm } from "react-hook-form";
-import { useUpdatePrivateUserData } from "app/api/client/hooks/user-api";
 import { EditProfileSchemaType, editProfileSchema } from "app/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
+import { mapFirebaseResponseToTenant } from "app/login/firebase";
+import { useUpdatePrivateUserData } from "actions/client/hooks/user-api";
+import { signInWithLink } from "actions/client/auth";
+import { useAuth } from "auth/hooks";
+import { useFirebaseAuth } from "auth/firebase";
+import { clientConfig } from "config/client-config";
 
 export /**
  * Will have the home screen render
@@ -20,18 +23,55 @@ export /**
  */
 const Home = () => {
 	// get user state
-	const user = useRecoilValue(UserState);
+
+	const { tenant } = useAuth();
+
+	console.log("tenant from home page", tenant);
+
+	const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
 
 	// get the next router
 	const router = useRouter();
 
-	// use effect hook to sign in with email link
+	const handleLogin = async () => {
+		const auth = await getFirebaseAuth();
+		const userCred = await signInWithLink(
+			auth,
+			localStorage.getItem("email") || "",
+			window.location.href
+		);
+
+		console.log("user cred after signin function", userCred);
+		const idTokenResult = await userCred.user.getIdTokenResult();
+		const ten = await mapFirebaseResponseToTenant(
+			idTokenResult,
+			userCred.user
+		);
+		console.log("ten from login function", ten);
+		console.log("token sent", idTokenResult.token);
+		await fetch("/api/login", {
+			method: "GET",
+			headers: {
+				Authorization: `Bearer ${idTokenResult.token}`,
+			},
+		});
+	};
+
 	useEffect(() => {
-		signInWithLink(user.email, window.location.href);
-	}, [user.email]);
+		if (window.location.href.includes("apiKey")) {
+			handleLogin();
+		}
+	}, []);
+
+	// use effect hook to sign in with email link
+	// useEffect(() => {}, [user.email]);
+
+	useEffect(() => {
+		console.log("tenant from UE", tenant);
+	}, [tenant]);
 
 	// get the auth context
-	const userContext = useAuthContext();
+	// const userContext = useAuthContext();
 
 	const [{ isLoading, isSuccess, error }, updateData] =
 		useUpdatePrivateUserData();
@@ -45,24 +85,24 @@ const Home = () => {
 		resolver: yupResolver(editProfileSchema),
 	});
 
-	// asynchronous function that handles updates to private user data (on click of form submission button)
 	const handleUpdatePrivateUserData = async ({
 		firstName,
 		lastName,
 	}: EditProfileSchemaType) => {
+		console.log("sumbit fired", firstName, lastName);
+		// if (tenant?.id) {
 		const userData = {
 			firstName,
 			lastName,
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			id: userContext!.uid,
+			id: tenant?.id || "",
 		};
 
-		await updateData(userData);
-		if (isSuccess) {
-			console.log("Private user data successfully mutated");
-		} else {
-			console.log("Mutation request failed");
-		}
+		await fetch("/api/update-name", {
+			method: "POST",
+			body: JSON.stringify(userData),
+		});
+		// }
+
 		reset();
 	};
 
@@ -76,11 +116,12 @@ const Home = () => {
 				justifyContent="center"
 				sx={{ minHeight: "100vh" }}
 			>
-				<Typography>
+				{/* <Typography>
 					{userContext?.uid.length
 						? `You are logged in as ${userContext?.email}.`
 						: "You are not logged in."}
-				</Typography>
+				</Typography> */}
+				<Typography>testing</Typography>
 				<TextField
 					{...register("firstName", { required: true })}
 					sx={{ m: 3 }}
@@ -100,6 +141,20 @@ const Home = () => {
 					}}
 				>
 					Go to Stripe
+				</Button>
+				<Button
+					onClick={() => {
+						router.push("/profile");
+					}}
+				>
+					user profile
+				</Button>
+				<Button
+					onClick={() => {
+						router.push("/example-mutation");
+					}}
+				>
+					example mutation
 				</Button>
 
 				<SignOutButton />

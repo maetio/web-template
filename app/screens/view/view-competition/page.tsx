@@ -1,21 +1,69 @@
-import Link from "next/link";
+import { Box, Grid, LocationOn, Typography } from "app/components/providers/mui-server-components";
 import React from "react";
 
-// export interface ViewCompetitionProps = {};
+// export interface ViewCompetitionProps {};
 
-export const ViewCompetition: React.FC<{}> = () => {
+export 
+/**
+ * This screen shows competition information, top players & teams for the competition,
+ * & games on the competition schedule
+ * 
+ * @param {ViewCompetitionProps} props 
+ * @returns 
+ */
+const ViewCompetition = () => {
 	return (
-		<div>
-			<h1>View Competition</h1>
-			<div>
-				<Link href="/screens/create-game">Create Game </Link>
-				<Link href="/screens/edit-competition">Edit Competition </Link>
-				<Link href="/screens/input-scores">Input Scores </Link>
-				<Link href="/screens/team-rankings">Team Rankings </Link>
-				<Link href="/screens/player-rankings">Player Rankings </Link>
-				<Link href="/screens/games-list">Games List </Link>
-			</div>
-		</div>
+		<Grid
+			container
+			direction="row"
+			sx={{ml: 10, mr: 10}}
+		>
+			<Grid
+				container
+				item
+				justifyContent="flex-start"
+				direction="column"
+			>
+				<Grid
+					container
+					item
+					direction="row"
+				>
+					<Typography sx={{fontWeight: 700}} variant="h5">Competition Name</Typography>
+					<Typography sx={{ml: 2, fontWeight: 700}}>Host Name</Typography>
+				</Grid>
+				<Grid
+			        container
+					item
+					direction="row"
+				>
+					<Box
+						sx={{
+							mb: 1,
+							backgroundImage: "linear-gradient(180deg, #908EEA 0%, #BEFBE5 100%)",
+							width: 250,
+							height: 250,
+							borderRadius: 4,
+						}}
+					></Box>
+					<Grid sx={{border: 1}} direction="column">
+						<Grid direction="row">
+							<Grid
+							    direction="column"
+								container
+								justifyContent="center"
+								alignContent="center"
+							>
+								<LocationOn></LocationOn>
+								<Typography>1234 Neighborhood St</Typography>
+							</Grid>
+						</Grid>
+						<Grid direction="row"></Grid>
+					</Grid>
+				</Grid>
+				
+			</Grid>
+		</Grid>
 	);
 };
 

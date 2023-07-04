@@ -5,12 +5,9 @@ import { Button, TextField, Grid, Typography, Paper, Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
-import {
-	sendPasswordlessLoginEmail,
-	signInWithLink,
-} from "app/api/client/auth";
-import { useRecoilState } from "recoil";
-import { UserState } from "app/recoil-store";
+import { useFirebaseAuth } from "auth/firebase";
+import { clientConfig, auth } from "config/client-config";
+import { sendPasswordlessLoginEmail } from "actions/client/auth";
 
 export const SignIn: React.FC<{}> = () => {
 	// useForm & useAuth initialization
@@ -22,25 +19,20 @@ export const SignIn: React.FC<{}> = () => {
 		resolver: yupResolver(emailSchema),
 	});
 
+	// const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
+
 	// state used to detect if email sent
 	const [sentEmail, setSentEmail] = useState(false);
 
 	// get user state
-	const [user, setUser] = useRecoilState(UserState);
 
 	// send email link to user
 	const submitEmail = async (data: { email: string }) => {
-		await sendPasswordlessLoginEmail(data.email);
+		// const auth = await getFirebaseAuth();
+
+		await sendPasswordlessLoginEmail(auth, data.email);
 		setSentEmail(true);
-		setUser({ ...user, email: data.email });
 	};
-
-	// get router
-	// console.log('router query', router.query);
-	console.log(window.location.href, document.referrer);
-
-	signInWithLink(user.email, window.location.href);
-	console.log("signing", user.email, "in with", window.location.href);
 
 	return (
 		<form onSubmit={handleSubmit(submitEmail)}>

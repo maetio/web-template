@@ -8,9 +8,9 @@ import {
 import { MaetIcon } from "../../icons/maet-icon";
 
 export interface TeamCardProps {
-	name: string;
+	name?: string;
 	image?: string;
-	score: number;
+	score?: number;
 }
 
 /* export interface ScoreChange {
@@ -26,7 +26,7 @@ export /**
  *	}
  *  @return {*}
  *
- */ const TeamCard: React.FC<TeamCardProps> = ({name, image, score}) => {
+ */ const TeamCard: React.FC<TeamCardProps> = ({ name, image, score }) => {
 	return (
 		<Grid
 			container
@@ -47,16 +47,13 @@ export /**
 					sx={{
 						ml: 2,
 						backgroundImage:
-							image ||
 							"linear-gradient(207deg, #EAE68E 13.76%, #FBBEBE 60.61%, #BEE1FB 100%);",
 						borderRadius: 2,
 						width: 40,
 						height: 41,
 					}}
 				></Box>
-				<Typography sx={{ fontWeight: 700, ml: 2 }}>
-					{name}
-				</Typography>
+				<Typography sx={{ fontWeight: 700, ml: 2 }}>{name}</Typography>
 			</Grid>
 			<Grid
 				item
@@ -67,9 +64,7 @@ export /**
 				justifyContent="flex-end"
 			>
 				<MaetIcon sx={{ mr: 1 }}></MaetIcon>
-				<Typography sx={{ fontWeight: 300, mr: 4 }}>
-					{score}
-				</Typography>
+				<Typography sx={{ fontWeight: 300, mr: 4 }}>{score}</Typography>
 			</Grid>
 		</Grid>
 	);

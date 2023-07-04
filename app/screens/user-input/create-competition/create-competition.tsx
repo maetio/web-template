@@ -1,7 +1,6 @@
 import {
 	Autocomplete,
 	Grid,
-	Avatar,
 	Box,
 	Button,
 	FormControl,
@@ -14,27 +13,21 @@ import {
 	ThemeProvider,
 	useMediaQuery,
 	createTheme,
-	Stack,
 } from "@mui/material";
 import React from "react";
-import { purple } from "@mui/material/colors";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import {
 	DatePicker,
+	DateValidationError,
 	LocalizationProvider,
 	TimePicker,
+	TimeValidationError,
 } from "@mui/x-date-pickers";
-import {
-	Controller,
-	ControllerFieldState,
-	ControllerRenderProps,
-	UseFormStateReturn,
-	useForm,
-} from "react-hook-form";
-import * as yup from "yup";
+import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CompetitionFormInput } from "app/types/competition-form-types";
-import { AccountTree, AddCircle, Groups, Tv } from "@mui/icons-material";
+import { AddCircle } from "@mui/icons-material";
+import { PickerChangeHandlerContext } from "@mui/x-date-pickers/internals/hooks/usePicker/usePickerValue.types";
 import getDesignTokens from "../../../theme";
 import { CompetitionFormSchema } from "../../../utils/schemas";
 import { PageHeader } from "../../../components/layout/page-header";
@@ -130,7 +123,7 @@ const CreateCompetition: React.FC<{}> = () => {
 										disablePortal
 										options={options}
 										onChange={(_, sport) => {
-											onChange(sport?.label);
+											if (sport) onChange(sport?.label);
 											return sport;
 										}}
 										renderInput={(params) => (
@@ -209,13 +202,21 @@ const CreateCompetition: React.FC<{}> = () => {
 									name={"startDate"}
 									control={control}
 									render={({
-										field: { onChange, value },
+										field: { onChange, value: fieldValue },
 										fieldState: { error },
 									}) => (
 										<DatePicker
 											label="Start Date"
-											onChange={(event) => {
-												onChange(event);
+											onChange={(
+												value:
+													| Date
+													| React.ChangeEvent<Element>
+													| null,
+												context: PickerChangeHandlerContext<DateValidationError>
+											) => {
+												if (value) {
+													onChange(value);
+												}
 											}}
 											sx={{
 												m: 2,
@@ -230,13 +231,21 @@ const CreateCompetition: React.FC<{}> = () => {
 									name={"startTime"}
 									control={control}
 									render={({
-										field: { onChange, value },
+										field: { onChange, value: fieldValue },
 										fieldState: { error },
 									}) => (
 										<TimePicker
 											label="Start Time"
-											onChange={(event) => {
-												onChange(event);
+											onChange={(
+												value:
+													| Date
+													| React.ChangeEvent<Element>
+													| null,
+												context: PickerChangeHandlerContext<TimeValidationError>
+											) => {
+												if (value) {
+													onChange(value);
+												}
 											}}
 											sx={{
 												m: 2,
@@ -256,13 +265,21 @@ const CreateCompetition: React.FC<{}> = () => {
 									name={"endDate"}
 									control={control}
 									render={({
-										field: { onChange, value },
+										field: { onChange, value: fieldValue },
 										fieldState: { error },
 									}) => (
 										<DatePicker
 											label="End Date"
-											onChange={(event) => {
-												onChange(event);
+											onChange={(
+												value:
+													| Date
+													| React.ChangeEvent<Element>
+													| null,
+												context: PickerChangeHandlerContext<DateValidationError>
+											) => {
+												if (value) {
+													onChange(value);
+												}
 											}}
 											sx={{
 												m: 2,
@@ -277,7 +294,7 @@ const CreateCompetition: React.FC<{}> = () => {
 									name={"endTime"}
 									control={control}
 									render={({
-										field: { onChange, value },
+										field: { onChange, value: fieldValue },
 										fieldState: { error },
 									}) => (
 										<TimePicker
@@ -285,8 +302,16 @@ const CreateCompetition: React.FC<{}> = () => {
 											sx={{
 												m: 2,
 											}}
-											onChange={(event) => {
-												onChange(event);
+											onChange={(
+												value:
+													| Date
+													| React.ChangeEvent<Element>
+													| null,
+												context: PickerChangeHandlerContext<TimeValidationError>
+											) => {
+												if (value) {
+													onChange(value);
+												}
 											}}
 										/>
 									)}

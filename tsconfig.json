@@ -20,7 +20,10 @@
 			}
 		],
 		"paths": {
-			"app/*": ["./app/*"]
+			"app/*": ["./app/*"],
+			"config/*": ["./config/*"],
+			"auth/*": ["./auth/*"],
+			"actions/*": ["./actions/*"]
 		}
 	},
 	"include": [

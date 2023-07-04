@@ -2,16 +2,15 @@ import React from "react";
 import {
 	Avatar,
 	Box,
-	ButtonBase,
 	Grid,
 	Typography,
 } from "../../providers/mui-server-components";
 import { MaetIcon } from "../../icons/maet-icon";
 
 export interface PlayerCardProps {
-	name: string;
+	name?: string;
 	image?: string;
-	score: number;
+	score?: number;
 }
 
 export /**
@@ -23,7 +22,7 @@ export /**
  *  @return {*}
  *
  */
-const PlayerCard: React.FC<PlayerCardProps> = ({name, image, score}) => {
+const PlayerCard: React.FC<PlayerCardProps> = ({ name, image, score }) => {
 	return (
 		<Grid
 			container
@@ -51,9 +50,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({name, image, score}) => {
 						height: 41,
 					}}
 				></Box>
-				<Typography sx={{ fontWeight: 700, ml: 2 }}>
-					{name}
-				</Typography>
+				<Typography sx={{ fontWeight: 700, ml: 2 }}>{name}</Typography>
 			</Grid>
 			<Grid
 				item
@@ -64,9 +61,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({name, image, score}) => {
 				justifyContent="flex-end"
 			>
 				<MaetIcon sx={{ mr: 1 }}></MaetIcon>
-				<Typography sx={{ fontWeight: 300, mr: 4 }}>
-					{score}
-				</Typography>
+				<Typography sx={{ fontWeight: 300, mr: 4 }}>{score}</Typography>
 			</Grid>
 		</Grid>
 	);

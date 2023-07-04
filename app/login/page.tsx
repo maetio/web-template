@@ -1,24 +1,11 @@
-import React from "react";
-import { Grid } from "app/components/providers/mui-server-components";
-import { EnterEmail } from "app/login/enter-email";
-import { useRouter } from "next/router";
+import { LoginPage as ClientLoginPage } from "./login-page";
 
-export /**
- * Will return the login screen
+/**
+ *server component that displays client login button
  *
- * @return {*}
+ * @export
+ * @return {*} 
  */
-const Login = () => (
-	<Grid
-		container
-		spacing={0}
-		direction="column"
-		alignItems="center"
-		justifyContent="center"
-		sx={{ minHeight: "100vh" }}
-	>
-		<EnterEmail />
-	</Grid>
-);
-
-export default Login;
+export default function Login() {
+	return <ClientLoginPage />;
+}
