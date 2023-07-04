@@ -31,6 +31,6 @@ export async function GET(_request: Request, { params }: { params: { queryParams
 	const endTimestamp = Timestamp.fromDate(endTime ? new Date(endTime) : futureDate);
 
 	// set the use cases for the query
-	const querySnapshot = await competitionsCollection.where("startTimestamp", ">=", startTimestamp).where("startTimestamp", "<=", endTimestamp).get();
+	const querySnapshot = await competitionsCollection.where("startTimestamp", ">=", startTimestamp).where("startTimestamp", "<=", endTimestamp).orderBy("startTimestamp").get();
 	return NextResponse.json(querySnapshot.docs);
 }
