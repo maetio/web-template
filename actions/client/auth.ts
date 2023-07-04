@@ -27,8 +27,8 @@ export async function sendPasswordlessLoginEmail(
 		// dynamicLinkDomain: process.env.NEXT_PUBLIC_DYNAMIC_LINKS_DOMAIN,
 		// URL must be whitelisted in the Firebase Console.
 		url:
-			process.env.NEXT_PUBLIC_DYNAMIC_LINK ||
-			"http://localhost:3000/home",
+			process.env.NEXT_PUBLIC_DYNAMIC_LINK_URL ||
+			"http://localhost:3000/",
 		iOS: {
 			bundleId: "io.maet.mobile",
 		},

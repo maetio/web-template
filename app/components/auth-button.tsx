@@ -8,7 +8,7 @@ import { useFirebaseAuth } from "auth/firebase";
 import { clientConfig } from "config/client-config";
 import { signOut } from "firebase/auth";
 import { Button } from "@mui/material";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export /**
  * Will have the home screen render
@@ -66,7 +66,7 @@ const AuthButton = () => {
 		if (window.location.href.includes("apiKey")) {
 			handleLogin();
 		}
-	});
+	}, []);
 
 	return (
 		<Button onClick={tenant?.idToken ? () => handleLogout() : () => router.push("/login")}>
@@ -74,5 +74,3 @@ const AuthButton = () => {
 		</Button>
 	);
 };
-
-export default AuthButton;
