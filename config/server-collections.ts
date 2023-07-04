@@ -152,21 +152,3 @@ export const gameProfileCollectionGroup =
 	createCollectionGroup<SubcollectionDataTypes["game-profiles"]>(
 		"game-profiles"
 	);
-
-/**
- * Initialize next auth
- * Example: https://next-auth.js.org/v3/adapters/firebase#options
- * Firestore Adapter: https://authjs.dev/reference/adapter/firebase
- */
-// export default NextAuth({
-//   // https://next-auth.js.org/configuration/providers
-//   providers: [
-//     GoogleProvider({
-//       clientId: process.env.GOOGLE_CLIENT_ID || '',
-//       clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-//     }),
-//   ],
-//   adapter: FirestoreAdapter(firestore),
-// });
-
-// export const firestore = initializeFirestore(app, {});
