@@ -6,11 +6,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
 import { useFirebaseAuth } from "auth/firebase";
-import { clientConfig } from "config/client-config";
-import {
-	sendPasswordlessLoginEmail,
-	signInWithLink,
-} from "../../actions/client/auth";
+import { clientConfig, auth } from "config/client-config";
+import { sendPasswordlessLoginEmail } from "actions/client/auth";
 
 export const SignIn: React.FC<{}> = () => {
 	// useForm & useAuth initialization
@@ -22,7 +19,7 @@ export const SignIn: React.FC<{}> = () => {
 		resolver: yupResolver(emailSchema),
 	});
 
-	const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
+	// const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
 
 	// state used to detect if email sent
 	const [sentEmail, setSentEmail] = useState(false);
@@ -31,17 +28,11 @@ export const SignIn: React.FC<{}> = () => {
 
 	// send email link to user
 	const submitEmail = async (data: { email: string }) => {
-		const auth = await getFirebaseAuth();
+		// const auth = await getFirebaseAuth();
 
 		await sendPasswordlessLoginEmail(auth, data.email);
 		setSentEmail(true);
 	};
-
-	// get router
-	// console.log('router query', router.query);
-	console.log(window.location.href, document.referrer);
-
-	// signInWithLink(user.email, window.location.href);
 
 	return (
 		<form onSubmit={handleSubmit(submitEmail)}>

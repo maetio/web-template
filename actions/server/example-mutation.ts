@@ -32,16 +32,14 @@ export async function updateUserNameServer(data: FormData) {
 			throw new Error("Cannot add name of unauthenticated user");
 		}
 		// set user data
-		const snapshot = await privateUserCollection
-			.doc(tokens.decodedToken.uid)
-			.set(
-				{
-					firstName: firstName || "",
-					lastName: lastName || "",
-					id: tokens.decodedToken.uid,
-				},
-				{ merge: true }
-			);
+		await privateUserCollection.doc(tokens.decodedToken.uid).set(
+			{
+				firstName: firstName || "",
+				lastName: lastName || "",
+				id: tokens.decodedToken.uid,
+			},
+			{ merge: true }
+		);
 	}
 
 	revalidatePath("/");
@@ -72,27 +70,20 @@ export async function updateUserNameClient(data: {
 	}
 
 	if (tokens) {
-		console.log("body in the request", firstName, lastName, 1);
-
-		console.log("token information", tokens);
-
-		console.log("fired");
 
 		if (!tokens) {
 			throw new Error("Cannot add name of unauthenticated user");
 		}
 
 		// set user data
-		const snapshot = await privateUserCollection
-			.doc(tokens.decodedToken.uid)
-			.set(
-				{
-					firstName: firstName || "",
-					lastName: lastName || "",
-					id: tokens.decodedToken.uid,
-				},
-				{ merge: true }
-			);
+		await privateUserCollection.doc(tokens.decodedToken.uid).set(
+			{
+				firstName: firstName || "",
+				lastName: lastName || "",
+				id: tokens.decodedToken.uid,
+			},
+			{ merge: true }
+		);
 	}
 
 	revalidatePath("/");

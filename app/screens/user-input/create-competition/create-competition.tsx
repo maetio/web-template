@@ -214,7 +214,6 @@ const CreateCompetition: React.FC<{}> = () => {
 													| null,
 												context: PickerChangeHandlerContext<DateValidationError>
 											) => {
-												// console.log(context);
 												if (value) {
 													onChange(value);
 												}
@@ -244,7 +243,6 @@ const CreateCompetition: React.FC<{}> = () => {
 													| null,
 												context: PickerChangeHandlerContext<TimeValidationError>
 											) => {
-												// console.log(context);
 												if (value) {
 													onChange(value);
 												}
@@ -279,7 +277,6 @@ const CreateCompetition: React.FC<{}> = () => {
 													| null,
 												context: PickerChangeHandlerContext<DateValidationError>
 											) => {
-												// console.log(context);
 												if (value) {
 													onChange(value);
 												}
@@ -312,7 +309,6 @@ const CreateCompetition: React.FC<{}> = () => {
 													| null,
 												context: PickerChangeHandlerContext<TimeValidationError>
 											) => {
-												// console.log(context);
 												if (value) {
 													onChange(value);
 												}

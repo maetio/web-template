@@ -3,9 +3,9 @@
 import * as React from "react";
 import { startTransition, useEffect, useState, useRef } from "react";
 import type { User as FirebaseUser } from "firebase/auth";
-import { IdTokenResult } from "firebase/auth";
+import { IdTokenResult, onIdTokenChanged } from "firebase/auth";
 import { useFirebaseAuth } from "./firebase";
-import { clientConfig } from "../config/client-config";
+import { clientConfig, auth } from "../config/client-config";
 import { Tenant } from "./types";
 import { AuthContext } from "./context";
 
@@ -64,23 +64,23 @@ export /**
  * 	defaultTenant,
  * 	children,
  * }
- * @return {*} 
+ * @return {*}
  */
 const AuthProvider: React.FC<AuthProviderProps> = ({
 	defaultTenant,
 	children,
 }) => {
-	const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
+	// const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
 	const firstLoadRef = useRef(true);
 	const [tenant, setTenant] = useState(defaultTenant);
 
 	const handleIdTokenChanged = async (firebaseUser: FirebaseUser | null) => {
+		console.log("firebase user", firebaseUser);
+
 		if (firebaseUser && tenant && firebaseUser.uid === tenant.id) {
 			firstLoadRef.current = false;
 			return;
 		}
-
-		// const auth = await getFirebaseAuth();
 
 		// if (!firebaseUser && firstLoadRef.current) {
 		// 	const { signInAnonymously } = await import("firebase/auth");
@@ -99,6 +99,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({
 		// 	return;
 		// }
 
+		console.log("second check", !firebaseUser);
 		if (!firebaseUser) {
 			firstLoadRef.current = false;
 			startTransition(() => {
@@ -115,9 +116,11 @@ const AuthProvider: React.FC<AuthProviderProps> = ({
 	};
 
 	const registerChangeListener = async () => {
-		const auth = await getFirebaseAuth();
-		const { onIdTokenChanged } = await import("firebase/auth");
-		return onIdTokenChanged(auth, handleIdTokenChanged);
+		// const auth = await getFirebaseAuth();
+
+		const user = onIdTokenChanged(auth, handleIdTokenChanged);
+		console.log("user chnaged", user);
+		return user;
 	};
 
 	useEffect(() => {

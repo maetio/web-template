@@ -14,10 +14,10 @@ function redirectToLogin(request: NextRequest) {
 
 	const url = request.nextUrl.clone();
 	url.pathname = "/login";
-	// url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
+	url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
 
 	// return NextResponse.json({ message: "not logged in" });
-	// return NextResponse.redirect("/login");
+	return NextResponse.redirect("/login");
 }
 
 const { setCustomUserClaims, getUser } = getFirebaseAuth(
@@ -44,8 +44,6 @@ export async function middleware(request: NextRequest) {
 						headers: { "content-type": "application/json" },
 					}
 				);
-
-				console.log("middle ware fired");
 
 				await refreshAuthCookies(token, response, authConfig);
 				return response;

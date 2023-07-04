@@ -1,5 +1,5 @@
 import { getTeams } from "actions/server/teams";
-import { PlayerCard, TeamCard } from "app/components/cards";
+import { TeamCard } from "app/components/cards";
 import { Grid } from "app/components/providers/mui-server-components";
 import { getCompetitions } from "actions/server/competitions";
 

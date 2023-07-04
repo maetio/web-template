@@ -17,12 +17,6 @@ export async function POST(request: NextRequest) {
 
 	const { firstName, lastName, id } = await request.json();
 
-	console.log("body in the request", firstName, lastName, id);
-
-	console.log("token information", tokens);
-
-	console.log("fired");
-
 	if (!tokens) {
 		throw new Error("Cannot add name of unauthenticated user");
 	}

@@ -38,7 +38,20 @@ export interface AlgoliaSearchCompProps<IndexT extends AlgoliaIndexes> {
 	competitionID?: string;
 }
 
-export const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
+export /**
+ * Prebuild search component that searches algolia index
+ *
+ * @template IndexT
+ * @param {// competitionID,
+ * AlgoliaSearchCompProps<IndexT>} {
+ * 	label,
+ * 	algoliaIndex,
+ * 	hitsPerPage,
+ * 	sportsSelected,
+ * }
+ * @return {*} 
+ */
+const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
 	label,
 	algoliaIndex,
 	hitsPerPage,

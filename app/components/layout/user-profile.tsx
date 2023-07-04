@@ -6,8 +6,9 @@ import { useRouter } from "next/navigation";
 import { Button, CircularProgress } from "@mui/material";
 import Image from "next/image";
 import { useAuth } from "auth/hooks";
-import { useFirebaseAuth } from "auth/firebase";
-import { clientConfig } from "config/client-config";
+// import { useFirebaseAuth } from "auth/firebase";
+import { clientConfig, auth } from "config/client-config";
+import { signOut } from "firebase/auth";
 
 /**
  * displays user profile
@@ -18,11 +19,10 @@ import { clientConfig } from "config/client-config";
 export function UserProfile() {
 	const router = useRouter();
 	const { tenant } = useAuth();
-	const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
+	// const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
 	const [hasLoggedOut, setHasLoggedOut] = React.useState(false);
 	const [handleLogout, isLogoutLoading] = useLoadingCallback(async () => {
-		const auth = await getFirebaseAuth();
-		const { signOut } = await import("firebase/auth");
+		// const auth = await getFirebaseAuth();
 		await signOut(auth);
 		setHasLoggedOut(true);
 		await fetch("/api/logout", {
@@ -30,6 +30,8 @@ export function UserProfile() {
 		});
 		window.location.reload();
 	});
+
+	console.log("tenant from profile screen", tenant);
 
 	const [handleRefresh, isRefreshLoading] = useLoadingCallback(async () => {
 		if (!tenant) {

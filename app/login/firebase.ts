@@ -6,7 +6,7 @@ import type {
 } from "firebase/auth";
 import { IdTokenResult, User as FirebaseUser } from "firebase/auth";
 import { filterStandardClaims } from "next-firebase-auth-edge/lib/auth/tenant";
-import { Tenant } from "../../auth/types";
+import { Tenant } from "auth/types";
 
 const CREDENTIAL_ALREADY_IN_USE_ERROR = "auth/credential-already-in-use";
 export const isCredentialAlreadyInUseError = (e: AuthError) =>

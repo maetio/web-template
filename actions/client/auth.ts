@@ -38,7 +38,6 @@ export async function sendPasswordlessLoginEmail(
 			// minimumVersion: '8',
 		},
 	};
-	console.log(actionCodeSettings);
 	return sendSignInLinkToEmail(auth, email, actionCodeSettings);
 }
 

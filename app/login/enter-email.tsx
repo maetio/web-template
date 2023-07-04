@@ -11,7 +11,7 @@ import {
 	signInWithLink,
 } from "actions/client/auth";
 import { useFirebaseAuth } from "auth/firebase";
-import { clientConfig } from "config/client-config";
+import { clientConfig, auth } from "config/client-config";
 
 export /**
  * Enter email form
@@ -37,7 +37,7 @@ const EnterEmail: React.FC<{}> = () => {
 
 	const submitEmail = async (data: { email: string }) => {
 		console.log("email inputed", data.email);
-		const auth = await getFirebaseAuth();
+		// const auth = await getFirebaseAuth();
 		await sendPasswordlessLoginEmail(auth, data.email);
 		localStorage.setItem("email", data.email);
 		setSentEmail(true);
