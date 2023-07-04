@@ -3,7 +3,7 @@ import { CompetitionsResponseType } from "app/types/next-api";
 
 export default async function Home() {
 	// fetch competition data
-	const competitionResponse = await fetch("/api/competitions/all");
+	const competitionResponse = await fetch(`${process.env.NEXT_PUBLIC_PROJECT_DOMAIN}/api/competitions/all`);
 	const competitions: CompetitionsResponseType = await competitionResponse.json();
 
 	// return the component
