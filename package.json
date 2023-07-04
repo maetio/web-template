@@ -42,7 +42,6 @@
 		"react-dom": "18.2.0",
 		"react-hook-form": "^7.44.3",
 		"react-loading-hook": "^1.0.0",
-		"recoil": "^0.7.7",
 		"storybook": "^7.0.23",
 		"tls": "^0.0.1",
 		"tss-react": "^4.8.6",
