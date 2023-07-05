@@ -30,7 +30,7 @@ import { AddCircle } from "@mui/icons-material";
 import { PickerChangeHandlerContext } from "@mui/x-date-pickers/internals/hooks/usePicker/usePickerValue.types";
 import getDesignTokens from "../../../theme";
 import { CompetitionFormSchema } from "../../../utils/schemas";
-import { PageHeader } from "../../../components/layout/page-header";
+import { PageHeader } from "../../../components/layout/page-header/page";
 
 const options = [
 	{ label: "Paddleball", id: 1 },
