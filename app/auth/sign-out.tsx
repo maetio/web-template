@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
 import { useFirebaseAuth } from "auth/firebase";
 import { clientConfig, auth } from "config/client";
-import { sendPasswordlessLoginEmail } from "actions/client/auth";
+import { sendPasswordlessLoginEmail } from "config/client-auth";
 
 export const SignIn: React.FC<{}> = () => {
 	// useForm & useAuth initialization

@@ -1,15 +1,11 @@
+import { auth } from "config/client";
 import {
 	ActionCodeSettings,
 	sendSignInLinkToEmail,
 	isSignInWithEmailLink,
 	signInWithEmailLink,
 	signOut,
-	Auth,
 } from "firebase/auth";
-// import { auth } from "./config";
-
-// import { auth } from "../config/client-config";
-// import { auth } from "./config";
 
 /**
  * Function will send the passwordless login email to the user's email
@@ -19,7 +15,6 @@ import {
  * @return {*}  {Promise<void>}
  */
 export async function sendPasswordlessLoginEmail(
-	auth: Auth,
 	email: string
 ): Promise<void> {
 	const actionCodeSettings: ActionCodeSettings = {
@@ -48,10 +43,27 @@ export /**
  * @param {string} [link]
  * @return {*}
  */
-const signInWithLink = async (auth: Auth, email: string, link: string) => {
+const signInWithLink = async (email: string, link: string) => {
 	if (!isSignInWithEmailLink(auth, link))
 		throw Error(`Not Email Sign in Link: ${link}`);
-	return signInWithEmailLink(auth, email, link);
+	
+	// get user credential and sign in with firebase
+	const userCredential = await signInWithEmailLink(auth, email, link);
+	
+	// get the id token from firebase
+	const idTokenResult = await userCredential.user.getIdTokenResult();
+
+	// set the token as the cookie in firebase auth edge
+	// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
+	await fetch("/api/login", {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${idTokenResult.token}`,
+		},
+	});
+
+	// return the user credential
+	return userCredential;
 };
 /**
  * Sign out the current user
@@ -59,7 +71,13 @@ const signInWithLink = async (auth: Auth, email: string, link: string) => {
  * @export
  * @return {*}  {Promise<void>}
  */
-// export async function signOutUser(): Promise<void> {
-// 	// sign out the current user
-// 	return signOut(auth);
-// }
+export async function signOutUser(): Promise<void> {
+	// sign out the current user
+	await signOut(auth);
+
+	// Remove authentication cookies for firebase auth edge
+	// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
+	await fetch("/api/logout", {
+		method: "GET",
+	});
+}

@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { mapFirebaseResponseToTenant } from "auth/map-firebase-tenant";
-import { signInWithLink } from "actions/client/auth";
+import { signInWithLink } from "config/client-auth";
 import { useAuth } from "auth/hooks";
 import { useFirebaseAuth } from "auth/firebase";
 import { clientConfig } from "config/client";
@@ -53,7 +53,7 @@ const AuthButton = () => {
 		localStorage.clear();
 		const auth = await getFirebaseAuth();
 		await signOut(auth);
-		await fetch("http://localhost:3000//api/logout", {
+		await fetch("http://localhost:3000/api/logout", {
 			method: "GET",
 		});
 		// window.location.reload();

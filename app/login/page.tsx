@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
 import {
 	sendPasswordlessLoginEmail,
-} from "actions/client/auth";
+} from "config/client-auth";
 import { useFirebaseAuth } from "auth/firebase";
 import { clientConfig, auth } from "config/client";
 

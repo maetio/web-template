@@ -5,7 +5,7 @@ import { Button, TextField, Grid, Typography, Paper, Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
-import { sendPasswordlessLoginEmail } from "actions/client/auth";
+import { sendPasswordlessLoginEmail } from "config/client-auth";
 import { useFirebaseAuth } from "auth/firebase";
 import { clientConfig } from "config/client";
 
