@@ -4,7 +4,7 @@ import { authConfig } from "config/server-config";
 import { getTokens } from "next-firebase-auth-edge/lib/next/tokens";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
-import { privateUserCollection } from "config/server-collections";
+import { privateUserCollection } from "config/server";
 
 /**
  * server action mutation example used on in server component.

@@ -3,7 +3,7 @@ import admin from "firebase-admin";
 import { getFirestore } from "firebase-admin/firestore";
 import { getTokens } from "next-firebase-auth-edge/lib/next/tokens";
 import { authConfig } from "config/server-config";
-import { privateUserCollection } from "config/server-collections";
+import { privateUserCollection } from "config/server";
 
 /**
  * post request to add firstname and lastname to DB

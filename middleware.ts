@@ -5,8 +5,8 @@ import {
 	refreshAuthCookies,
 } from "next-firebase-auth-edge/lib/next/middleware";
 import { getFirebaseAuth } from "next-firebase-auth-edge/lib/auth";
-import { authConfig } from "./config/server-config";
 
+// function that will redirect the user to the login page if they are not logged in.
 function redirectToLogin(request: NextRequest) {
 	if (request.nextUrl.pathname === "/login") {
 		return NextResponse.next();
@@ -16,7 +16,6 @@ function redirectToLogin(request: NextRequest) {
 	url.pathname = "/login";
 	url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
 
-	// return NextResponse.json({ message: "not logged in" });
 	return NextResponse.redirect("/login");
 }
 
@@ -27,9 +26,15 @@ const { setCustomUserClaims, getUser } = getFirebaseAuth(
 
 export async function middleware(request: NextRequest) {
 	return authentication(request, {
+		// these api routes are automatically created by the middleware
+		// see here: https://github.com/awinogrodzki/next-firebase-auth-edge/issues/34
 		loginPath: "/api/login",
 		logoutPath: "/api/logout",
+
+		// extend the auth config
 		...authConfig,
+
+		// for handling a valid token
 		handleValidToken: async ({ token, decodedToken }) => {
 			if (request.nextUrl.pathname === "/api/custom-claims") {
 				await setCustomUserClaims(decodedToken.uid, {
@@ -51,10 +56,14 @@ export async function middleware(request: NextRequest) {
 
 			return NextResponse.next();
 		},
+
+		// redirect to the login page when an invalid token is received
 		handleInvalidToken: async () => {
-			// return redirectToLogin(request);
-			// return NextResponse.json({ message: "not logged in" });
+			console.warn("Invalid token - redirecting to login");
+			return redirectToLogin(request);
 		},
+
+		// handle error by redirecting to the login page again
 		handleError: async (error) => {
 			console.error("Unhandled authentication error", { error });
 			return redirectToLogin(request);

@@ -5,7 +5,7 @@ import { startTransition, useEffect, useState, useRef } from "react";
 import type { User as FirebaseUser } from "firebase/auth";
 import { IdTokenResult, onIdTokenChanged } from "firebase/auth";
 import { useFirebaseAuth } from "./firebase";
-import { clientConfig, auth } from "../config/client-config";
+import { clientConfig, auth } from "../config/client";
 import { Tenant } from "./types";
 import { AuthContext } from "./context";
 

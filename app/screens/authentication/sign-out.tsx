@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
 import { useFirebaseAuth } from "auth/firebase";
-import { clientConfig } from "config/client-config";
+import { clientConfig } from "config/client";
 import {
 	sendPasswordlessLoginEmail,
 	signInWithLink,

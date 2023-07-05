@@ -1,4 +1,4 @@
-import { teamsCollection } from "config/server-collections";
+import { teamsCollection } from "config/server";
 
 export /**
  * Will fetch all the teams from the database

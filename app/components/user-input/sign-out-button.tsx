@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
 import { useAuth } from "auth/hooks";
 import { useFirebaseAuth } from "auth/firebase";
-import { clientConfig } from "config/client-config";
+import { clientConfig } from "config/client";
 // import { signOutUser } from "../../actions/client-actions/auth";
 
 export /**

@@ -5,7 +5,7 @@ import { mapFirebaseResponseToTenant } from "auth/map-firebase-tenant";
 import { signInWithLink } from "actions/client/auth";
 import { useAuth } from "auth/hooks";
 import { useFirebaseAuth } from "auth/firebase";
-import { clientConfig } from "config/client-config";
+import { clientConfig } from "config/client";
 import { signOut } from "firebase/auth";
 import { Button } from "@mui/material";
 import { useRouter } from "next/navigation";
@@ -18,8 +18,6 @@ export /**
 const AuthButton = () => {
 	// get user state
 	const { tenant } = useAuth();
-
-	console.log("tenant from home page", tenant);
 
 	// get the next router
 	const router = useRouter();

@@ -6,7 +6,7 @@ import { SignOutButton } from "app/components/user-input";
 // import { useAuthContext } from "app/components/providers/auth-context";
 import { signInWithLink } from "actions/client/auth";
 import { useFirebaseAuth } from "auth/firebase";
-import { clientConfig } from "config/client-config";
+import { clientConfig } from "config/client";
 
 /**
  * Will have the home screen render

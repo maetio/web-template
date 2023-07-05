@@ -9,7 +9,7 @@ import {
 	sendPasswordlessLoginEmail,
 } from "actions/client/auth";
 import { useFirebaseAuth } from "auth/firebase";
-import { clientConfig, auth } from "config/client-config";
+import { clientConfig, auth } from "config/client";
 
 export /**
  * Enter email form

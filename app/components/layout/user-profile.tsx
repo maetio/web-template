@@ -7,7 +7,7 @@ import { Button, CircularProgress } from "@mui/material";
 import Image from "next/image";
 import { useAuth } from "auth/hooks";
 // import { useFirebaseAuth } from "auth/firebase";
-import { clientConfig, auth } from "config/client-config";
+import { clientConfig, auth } from "config/client";
 import { signOut } from "firebase/auth";
 
 /**
