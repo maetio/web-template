@@ -6,12 +6,11 @@ import Header from "app/components/header";
 import { ServerAuthProvider } from "auth/server-auth-provider";
 
 const nunito = Nunito({ subsets: ["latin"] });
-// had to comment out metadata export for now because of "use client directive"
 
-/* export const metadata = {
+export const metadata = {
 	title: "Maet Web Template",
-	description: "NextJS, Typescript, MUI, Firebase starter",
-}; */
+	description: "NextJS, Typescript, MUI, Firebase Auth,",
+};
 
 export default function RootLayout({
 	children,
