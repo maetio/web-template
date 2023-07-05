@@ -65,7 +65,7 @@ export /**
  * NOT CURRENTLY USED, does something with the google auth
  *
  * @param {Auth} auth
- * @return {*} 
+ * @return {*}
  */
 const getGoogleProvider = async (auth: Auth) => {
 	const { GoogleAuthProvider, useDeviceLanguage } = await import(

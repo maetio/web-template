@@ -9,7 +9,7 @@ import { ServerAuthProvider } from "auth/server-auth-provider";
  * }} {
  * 	children,
  * }
- * @return {*} 
+ * @return {*}
  */
 export default function LoginLayout({
 	children,

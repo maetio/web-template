@@ -11,13 +11,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 /**
- * an example of using a server action inside a client component. 
+ * an example of using a server action inside a client component.
  * @remarks
  * used the useTransition hook like the next documentation recommended here
  * https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions#custom-invocation-without-starttransition
  *
  * @export
- * @return {*} 
+ * @return {*}
  */
 export function ExampleMutationClient() {
 	// form validation on client

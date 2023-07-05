@@ -1,6 +1,4 @@
-import {
-	PaletteMode,
-} from "@mui/material";
+import { PaletteMode } from "@mui/material";
 
 /*
   Adding new colors: https://mui.com/material-ui/customization/palette/#adding-new-colors

@@ -1,7 +1,5 @@
 "use client";
 
-
-
 /**
  * Material UI is not yet compatible with server side components
  * This is a temporary workaround so that mui components can be imported into server side components
@@ -12,7 +10,26 @@
  * Mui issue tracking here: https://github.com/mui/material-ui/issues/34898#issuecomment-1473689035
  *
  */
-export { Grid, Button, Box, Typography, TextField, Avatar, Chip, FormLabel, ButtonBase, SvgIcon, Autocomplete, createFilterOptions, InputAdornment } from "@mui/material";
+export {
+	Grid,
+	Button,
+	Box,
+	Typography,
+	TextField,
+	Avatar,
+	Chip,
+	FormLabel,
+	ButtonBase,
+	SvgIcon,
+	Autocomplete,
+	createFilterOptions,
+	InputAdornment,
+} from "@mui/material";
 export type { SvgIconProps } from "@mui/material";
-export { SportsBasketball, LocationOn, Cancel, DataArray } from "@mui/icons-material";
+export {
+	SportsBasketball,
+	LocationOn,
+	Cancel,
+	DataArray,
+} from "@mui/icons-material";
 export { CalendarIcon } from "@mui/x-date-pickers";

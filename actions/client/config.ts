@@ -35,7 +35,6 @@ export const app =
 	allApps.length === 0 ? initializeApp(firebaseConfig) : allApps[0];
 export const auth = initializeAuth(app);
 
-
 /**
  * Initialize firestore and define typed helping collection function
  * @references

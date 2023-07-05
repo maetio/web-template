@@ -1,9 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-	Button
-} from "../../providers/mui-server-components";
+import { Button } from "../../providers/mui-server-components";
 
 export interface SubmitButtonProps {
 	color: string;

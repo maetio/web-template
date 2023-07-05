@@ -25,11 +25,10 @@ const getFirebaseAdminApp = () => {
  *
  * @export
  * @param {NextRequest} request
- * @return {*} 
+ * @return {*}
  */
 export async function POST(request: NextRequest) {
 	const tokens = await getTokens(request.cookies, authConfig);
-
 
 	if (!tokens) {
 		throw new Error("Cannot update counter of unauthenticated user");

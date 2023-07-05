@@ -1,4 +1,3 @@
-
 import { InputField } from "app/components/user-input/input-field/page";
 import {
 	Box,

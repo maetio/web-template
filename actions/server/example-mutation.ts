@@ -70,7 +70,6 @@ export async function updateUserNameClient(data: {
 	}
 
 	if (tokens) {
-
 		if (!tokens) {
 			throw new Error("Cannot add name of unauthenticated user");
 		}

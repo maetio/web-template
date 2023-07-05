@@ -49,7 +49,7 @@ export /**
  * 	hitsPerPage,
  * 	sportsSelected,
  * }
- * @return {*} 
+ * @return {*}
  */
 const AlgoliaSearchComp = <IndexT extends AlgoliaIndexes>({
 	label,

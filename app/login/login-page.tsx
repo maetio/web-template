@@ -17,7 +17,7 @@ import { EnterEmail } from "./enter-email";
  * login page that will be used for google authentication in the future
  *
  * @export
- * @return {*} 
+ * @return {*}
  */
 export function LoginPage() {
 	// all the commented out code is for google auth
