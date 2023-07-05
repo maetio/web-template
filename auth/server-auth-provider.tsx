@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import { Tokens } from "next-firebase-auth-edge/lib/auth";
 import { filterStandardClaims } from "next-firebase-auth-edge/lib/auth/tenant";
 import { AuthProvider } from "./client-auth-provider";
-import { serverConfig } from "../config/server-config";
 import { Tenant } from "./types";
 
 

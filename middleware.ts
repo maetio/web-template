@@ -5,6 +5,7 @@ import {
 	refreshAuthCookies,
 } from "next-firebase-auth-edge/lib/next/middleware";
 import { getFirebaseAuth } from "next-firebase-auth-edge/lib/auth";
+import { FirebaseApiKey, FirebaseServiceAccount } from "config/server";
 
 // function that will redirect the user to the login page if they are not logged in.
 function redirectToLogin(request: NextRequest) {
@@ -19,11 +20,46 @@ function redirectToLogin(request: NextRequest) {
 	return NextResponse.redirect("/login");
 }
 
+/**
+ * Next Firebase Auth Edge provides lower level building blocks for custom functionality
+ * https://github.com/awinogrodzki/next-firebase-auth-edge#getfirebaseauth
+ */
 const { setCustomUserClaims, getUser } = getFirebaseAuth(
-	authConfig.serviceAccount,
-	authConfig.apiKey
+	FirebaseServiceAccount,
+	FirebaseApiKey
 );
 
+/**
+ * Options for the auth edge authentication
+ * Set here for reusability in the firebase auth custom functions
+ */
+const AuthEdgeOptions = {
+	// set the cookie parameters
+	// see here: https://github.com/awinogrodzki/next-firebase-auth-edge#options
+	cookieName: "AuthToken",
+	cookieSignatureKeys: ["secret1", "secret2"],
+	cookieSerializeOptions: {
+		path: "/",
+		httpOnly: true,
+		// secure: false, // Set this to true on HTTPS environments
+		// sameSite: "lax" as const, // Decide if lax or strict is better
+		sameSite: "strict" as const,
+		maxAge: 12 * 60 * 60 * 24 * 1000, // twelve days
+	},
+
+	// define the firebase service account and api key
+	serviceAccount: FirebaseServiceAccount,
+	apiKey: FirebaseApiKey,
+};
+
+/**
+ * Define the middleware for firebase auth edge
+ * https://github.com/awinogrodzki/next-firebase-auth-edge
+ *
+ * @export
+ * @param {NextRequest} request
+ * @return {*} 
+ */
 export async function middleware(request: NextRequest) {
 	return authentication(request, {
 		// these api routes are automatically created by the middleware
@@ -31,16 +67,22 @@ export async function middleware(request: NextRequest) {
 		loginPath: "/api/login",
 		logoutPath: "/api/logout",
 
-		// extend the auth config
-		...authConfig,
+		// extends the auth edge options defined above
+		...AuthEdgeOptions,
 
 		// for handling a valid token
 		handleValidToken: async ({ token, decodedToken }) => {
+
+			// for handling a request to update the custom claims of a firebase user
 			if (request.nextUrl.pathname === "/api/custom-claims") {
+
+				// set the custom claims using the auth edge library
+				// see claims on firebase here: https://firebase.google.com/docs/auth/admin/custom-claims
 				await setCustomUserClaims(decodedToken.uid, {
 					someClaims: ["someValue"],
 				});
 
+				// get the authetnicated user
 				const user = await getUser(decodedToken.uid);
 				const response = new NextResponse(
 					JSON.stringify(user.customClaims),
@@ -50,7 +92,8 @@ export async function middleware(request: NextRequest) {
 					}
 				);
 
-				await refreshAuthCookies(token, response, authConfig);
+				// refresh the user's auth cookies
+				await refreshAuthCookies(token, response, AuthEdgeOptions);
 				return response;
 			}
 
