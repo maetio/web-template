@@ -4,7 +4,6 @@ import {
 	Box,
 	Button,
 	Cancel,
-	FormLabel,
 	Grid,
 	Typography,
 } from "app/components/providers/mui-server-components";
@@ -32,8 +31,8 @@ export /**
  * @param {string} teamName
  * @returns
  */
-const JoinTeam: React.FC<JoinTeamProps> = async (image, teamName) => {
-	const { register, handleSubmit, reset } = useForm({
+const JoinTeam: React.FC<JoinTeamProps> = async (image) => {
+	const { handleSubmit } = useForm({
 		resolver: yupResolver(JoinTeamSchema),
 	});
 

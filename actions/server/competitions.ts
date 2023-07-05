@@ -1,4 +1,3 @@
-import { Competition, EndTimestamp, StartTimestamp } from "app/types";
 import { competitionsCollection } from "config/server-collections";
 
 export /**

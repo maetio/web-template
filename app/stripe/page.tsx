@@ -25,7 +25,7 @@ const StripePage = () => {
 		appearance: any;
 	}>();
 
-	const [{ data, isLoading, isSuccess, error }, fetchStripeData] =
+	const [{ data }, fetchStripeData] =
 		useGetStripeSecret();
 
 	const initializePaymentSheet = async () => {
