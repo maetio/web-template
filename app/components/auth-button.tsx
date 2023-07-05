@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { mapFirebaseResponseToTenant } from "auth/server-auth-provider";
+import { mapFirebaseResponseToTenant } from "auth/map-firebase-tenant";
 import { signInWithLink } from "actions/client/auth";
 import { useAuth } from "auth/hooks";
 import { useFirebaseAuth } from "auth/firebase";
