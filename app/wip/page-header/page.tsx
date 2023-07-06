@@ -28,10 +28,10 @@ export /**
             				Maet
 						</Typography>
 					</Grid>
-					<Grid container item xs={6} justifyContent="center" alignItems="center">
+					<Grid container item xs={5} justifyContent="center" alignItems="center">
 						<SearchBar label="Search"/>
 					</Grid>
-					<Grid container item xs={3} justifyContent="flex-end" alignItems="center">
+					<Grid container item xs={4} justifyContent="flex-end" alignItems="center">
 						<Link style={{ padding: "8px" }} href="/">
 							<text>Home</text>
 						</Link>
