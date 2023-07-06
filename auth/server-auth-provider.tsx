@@ -2,7 +2,7 @@ import { AuthContextProvider } from "auth/client-auth-provider";
 import { getServerAuthUser } from "auth/server";
 
 /**
- * server auth proivder to keep track of user on server
+ * Server auth proivder to keep track of user on server
  *
  * @export
  * @param {{
@@ -17,6 +17,7 @@ export async function ServerAuthProvider({
 }: {
 	children: React.ReactNode;
 }) {
+	// fetch the server auth user
 	const user = await getServerAuthUser();
 
 	return <AuthContextProvider defaultUser={user}>{children}</AuthContextProvider>;

@@ -14,7 +14,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { getTeam } from "actions/server/teams";
+import { getTeam } from "../../../../server-actions/server/teams";
 
 export interface JoinTeamProps {
 	image?: string;

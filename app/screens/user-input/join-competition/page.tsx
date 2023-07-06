@@ -1,4 +1,4 @@
-import { getCompetitions } from "actions/server/competitions";
+import { getCompetitions } from "../../../../server-actions/competitions";
 import { Grid } from "app/components/providers/mui-server-components";
 import React from "react";
 import { JoinCompetition } from "./join-competition";

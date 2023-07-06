@@ -1,7 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
-import { updateUserNameClient } from "actions/server/example-mutation";
+import { updateUserNameClient } from "../../server-actions/server/example-mutation";
 import {
 	Button,
 	TextField,

@@ -1,9 +1,8 @@
 "use server";
 
-import { getTokens } from "next-firebase-auth-edge/lib/next/tokens";
 import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
 import { privateUserCollection } from "config/server";
+import { getServerAuthUser } from "auth/server";
 
 /**
  * server action mutation example used on in server component.
@@ -18,24 +17,24 @@ export async function updateUserNameServer(data: FormData) {
 	const firstName = data.get("firstName")?.toString();
 	const lastName = data?.get("lastName")?.toString();
 
-	// get the token from the cookies
-	const tokens = await getTokens(cookies(), authConfig);
+	// get the user for the server
+	const user = await getServerAuthUser();
 
 	// handle if there is no user
-	if (!tokens) {
+	if (!user) {
 		throw new Error("Cannot update counter of unauthenticated user");
 	}
 
-	if (tokens) {
-		if (!tokens) {
+	if (user) {
+		if (!user) {
 			throw new Error("Cannot add name of unauthenticated user");
 		}
 		// set user data
-		await privateUserCollection.doc(tokens.decodedToken.uid).set(
+		await privateUserCollection.doc(user.id).set(
 			{
 				firstName: firstName || "",
 				lastName: lastName || "",
-				id: tokens.decodedToken.uid,
+				id: user.id,
 			},
 			{ merge: true }
 		);
@@ -60,26 +59,26 @@ export async function updateUserNameClient(data: {
 }) {
 	const { firstName, lastName } = data;
 
-	// get the token from the cookies
-	const tokens = await getTokens(cookies(), authConfig);
+	// get the user for the server
+	const user = await getServerAuthUser();
 
 	// handle if there is no user
-	if (!tokens) {
+	if (!user) {
 		throw new Error("Cannot update counter of unauthenticated user");
 	}
 
-	if (tokens) {
+	if (user) {
 
-		if (!tokens) {
+		if (!user) {
 			throw new Error("Cannot add name of unauthenticated user");
 		}
 
 		// set user data
-		await privateUserCollection.doc(tokens.decodedToken.uid).set(
+		await privateUserCollection.doc(user.id).set(
 			{
 				firstName: firstName || "",
 				lastName: lastName || "",
-				id: tokens.decodedToken.uid,
+				id: user.id,
 			},
 			{ merge: true }
 		);

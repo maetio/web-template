@@ -1,4 +1,4 @@
-import { updateUserNameServer } from "actions/server/example-mutation";
+import { updateUserNameServer } from "../../server-actions/server/example-mutation";
 
 /**
  * an example of a server component calling a server action mutation
