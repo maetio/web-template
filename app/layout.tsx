@@ -20,13 +20,14 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={nunito.className}>
-				<MuiProvider>
-					{/* @ts-expect-error https://github.com/vercel/next.js/issues/43537 */}
-					<ServerAuthProvider>
+				{/* @ts-expect-error https://github.com/vercel/next.js/issues/43537 */}
+				<ServerAuthProvider>
+					<MuiProvider>
 						<Header />
 						{children}
-					</ServerAuthProvider>
-				</MuiProvider>
+					</MuiProvider>
+				</ServerAuthProvider>
+
 			</body>
 		</html>
 	);

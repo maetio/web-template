@@ -9,15 +9,17 @@ import { FirebaseApiKey, FirebaseAuthEdgeOptions, FirebaseServiceAccount } from 
 
 // function that will redirect the user to the login page if they are not logged in.
 function redirectToLogin(request: NextRequest) {
+	// already in login page
 	if (request.nextUrl.pathname === "/login") {
 		return NextResponse.next();
 	}
 
+	// redirect to login page
 	const url = request.nextUrl.clone();
 	url.pathname = "/login";
 	url.search = `redirect=${request.nextUrl.pathname}${url.search}`;
 
-	return NextResponse.redirect("/login");
+	return NextResponse.redirect(url);
 }
 
 /**
@@ -78,16 +80,16 @@ export async function middleware(request: NextRequest) {
 		},
 
 		// redirect to the login page when an invalid token is received
-		handleInvalidToken: async () => {
-			console.warn("Invalid token - redirecting to login");
-			return redirectToLogin(request);
-		},
+		// handleInvalidToken: async () => {
+		// 	console.warn("Invalid token - redirecting to login");
+		// 	return redirectToLogin(request);
+		// },
 
-		// handle error by redirecting to the login page again
-		handleError: async (error) => {
-			console.error("Unhandled authentication error", { error });
-			return redirectToLogin(request);
-		},
+		// // handle error by redirecting to the login page again
+		// handleError: async (error) => {
+		// 	console.error("Unhandled authentication error", { error });
+		// 	return redirectToLogin(request);
+		// },
 	});
 }
 

@@ -56,6 +56,7 @@ const signInWithLink = async (email: string | null, link: string) => {
 	// get the id token from firebase
 	const idTokenResult = await userCredential.user.getIdTokenResult();
 
+	console.log('setting token in link function');
 	// set the cookie with firebase auth edge middleware
 	// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
 	await fetch("/api/login", {
