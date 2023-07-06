@@ -23,6 +23,7 @@ export const AuthContextProvider: React.FC<{ defaultUser: AuthUser | null; child
 
 	// detect the auth state change
 	useEffect(() => {
+		// use the firebase on auth state changed listener
 		const unsubscribe = onAuthStateChanged(auth, (userObserver) => {
 			if (userObserver) {
 				setUser({

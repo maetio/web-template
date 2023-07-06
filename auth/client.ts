@@ -43,9 +43,12 @@ export /**
  * @param {string} [link]
  * @return {*}
  */
-const signInWithLink = async (email: string, link: string) => {
+const signInWithLink = async (email: string | null, link: string) => {
 	if (!isSignInWithEmailLink(auth, link))
 		throw Error(`Not Email Sign in Link: ${link}`);
+
+	if (!email)
+		throw Error(`Not valid email: ${email}`);
 	
 	// get user credential and sign in with firebase
 	const userCredential = await signInWithEmailLink(auth, email, link);

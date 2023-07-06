@@ -20,18 +20,19 @@ export /**
 			<Toolbar>
 				<Grid container direction="row" alignItems="center" sx={{ flexGrow: 1, flexShrink: 1 }}>
 					<Grid container item xs={3} alignItems="center" justifyContent="center">
-						<MaetIcon color="primary"/>
-						<Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "#818CF8", ml: 2}}>
+						<Link style={{ padding: "8px" }} href="/">
+
+							<MaetIcon color="primary"/>
+							<Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "#818CF8", ml: 2}}>
             				Maet
-						</Typography>
+							</Typography>
+						</Link>
+					
 					</Grid>
 					<Grid container item xs={5} justifyContent="center" alignItems="center">
 						<SearchBar label="Search"/>
 					</Grid>
 					<Grid container item xs={4} justifyContent="flex-end" alignItems="center">
-						<Link style={{ padding: "8px" }} href="/">
-							<text>Home</text>
-						</Link>
 						<AuthButton />
 						<Box
 							sx={{
