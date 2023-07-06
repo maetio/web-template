@@ -29,7 +29,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ label, width }) => {
 					borderRadius: 3,
 					borderColor: "#D9D9D9",
 				},
-				width: 200,
+				flexShrink: 1,
 				borderRadius: 3,
 			}}
 			InputProps={{

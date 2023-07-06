@@ -34,6 +34,6 @@
 		".storybook/PageHeader.tsx",
 		"app/components/stories/.stories.tsx",
 		"app/components"
-	],
+, "app/wip/page-header"	],
 	"exclude": ["node_modules"]
 }

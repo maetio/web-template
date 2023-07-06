@@ -21,7 +21,7 @@ export /**
 	 <Box sx={{ flexGrow: 1, border: 1, borderColor: "#E5E5E5" }}>
 		<AppBar position="static" sx={{backgroundColor: "#FFFFFF"}}>
 			<Toolbar>
-				<Grid container direction="row" alignItems="center">
+				<Grid container direction="row" alignItems="center" sx={{ flexGrow: 1, flexShrink: 1 }}>
 					<Grid container item xs={3} alignItems="center" justifyContent="center">
 						<MaetIcon color="primary"/>
 						<Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "#818CF8", ml: 2}}>
