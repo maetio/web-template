@@ -5,9 +5,6 @@ import Link from "next/link";
 import React from "react";
 import { AuthButton } from "./auth-button";
 
-export interface PageHeaderProps {
-	title?: string;
-}
 
 export /**
  * Reusable page header/toolbar
@@ -17,7 +14,7 @@ export /**
  *	}
  *  @return {*}
  *
- */ const PageHeader = () => (
+ */ const Header = () => (
 	 <Box sx={{ flexGrow: 1, border: 1, borderColor: "#E5E5E5" }}>
 		<AppBar position="static" sx={{backgroundColor: "#FFFFFF"}}>
 			<Toolbar>
@@ -53,5 +50,3 @@ export /**
 	</Box>
 
 );
-
-export default PageHeader;
