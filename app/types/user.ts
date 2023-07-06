@@ -1,19 +1,20 @@
+import { UserRecord } from "firebase-admin/lib/auth/user-record";
 import { Competition } from "./competition";
 
+
 /**
- * Public facing user data. Will be updated in database from the PrivateUserData.
- *
- * @remarks
- * Should be read-only from the database.
+ * Auth User to set for the auth context
  *
  * @export
- * @interface PublicUserData
+ * @interface AuthUser
  */
-export interface PublicUserData {
+export interface AuthUser {
 	id: string;
-	firstName?: string | null;
-	lastName?: string | null;
-	image?: string | null;
+	email: string | null | undefined;
+	emailVerified: boolean;
+	isAnonymous: boolean;
+	customClaims: UserRecord["customClaims"] | undefined;
+	phoneNumber: string | null | undefined;
 }
 
 /**
@@ -23,11 +24,10 @@ export interface PublicUserData {
  * @interface PrivateUserData
  * @extends {PublicUserData}
  */
-export interface PrivateUserData extends PublicUserData {
-	email?: string | null;
-	phoneNumber?: string | null;
-	isAnonymous: boolean;
-	emailVerified: boolean;
+export interface PrivateUserData extends AuthUser {
+	firstName?: string | null;
+	lastName?: string | null;
+	image?: string | null;
 	loggedIn: boolean;
 	stripeID?: string;
 	charges_enabled?: boolean;
