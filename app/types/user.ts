@@ -13,7 +13,7 @@ export interface AuthUser {
 	email: string | null | undefined;
 	emailVerified: boolean;
 	isAnonymous: boolean;
-	customClaims: UserRecord["customClaims"] | undefined;
+	customClaims?: UserRecord["customClaims"];
 	phoneNumber: string | null | undefined;
 }
 

@@ -5,30 +5,33 @@ import {
 } from "react";
 import {
 	onAuthStateChanged,
-	User
 } from "firebase/auth";
 import { auth } from "config/client";
-
-type Props = {
-    children: ReactNode;
-};
+import { AuthUser } from "app/types";
 
 // create auth context
-export const AuthContext = createContext<User | null>(null);
+export const AuthContext = createContext<AuthUser | null>(null);
 export const useAuthContext = () => useContext(AuthContext);
 
-export const AuthContextProvider = ({
+export const AuthContextProvider: React.FC<{ defaultUser: AuthUser | null; children: ReactNode }> = ({
+	defaultUser,
 	children
-}: Props) => {
+}) => {
 	// set user states
-	const [user, setUser] = useState<User | null>(null);
+	const [user, setUser] = useState<AuthUser | null>(defaultUser);
 	const [loading, setLoading] = useState(true);
 
 	// detect the auth state change
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (userObserver) => {
 			if (userObserver) {
-				setUser(userObserver);
+				setUser({
+					id: userObserver.uid,
+					email: userObserver.email,
+					emailVerified: userObserver.emailVerified,
+					isAnonymous: false,
+					phoneNumber: userObserver.phoneNumber
+				});
 			} else {
 				setUser(null);
 			}
