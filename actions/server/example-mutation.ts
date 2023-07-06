@@ -1,6 +1,5 @@
 "use server";
 
-import { authConfig } from "config/server-config";
 import { getTokens } from "next-firebase-auth-edge/lib/next/tokens";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";

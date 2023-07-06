@@ -3,7 +3,7 @@ import "./globals.css";
 import { Nunito } from "next/font/google";
 import React from "react";
 import Header from "app/components/header";
-import { ServerAuthProvider } from "auth/server-auth-provider";
+import { ServerAuthProvider } from "../auth-old/server-auth-provider";
 
 const nunito = Nunito({ subsets: ["latin"] });
 

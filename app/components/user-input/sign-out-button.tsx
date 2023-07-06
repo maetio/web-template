@@ -5,8 +5,8 @@ import { Button } from "@mui/material";
 // import { useAuthContext } from "app/components/providers/auth-context";
 import { useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
-import { useAuth } from "auth/hooks";
-import { useFirebaseAuth } from "auth/firebase";
+import { useAuth } from "../../../auth-old/hooks";
+import { useFirebaseAuth } from "../../../auth-old/firebase";
 import { clientConfig } from "config/client";
 // import { signOutUser } from "../../actions/client-actions/auth";
 

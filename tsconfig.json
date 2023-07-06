@@ -22,7 +22,7 @@
 		"paths": {
 			"app/*": ["./app/*"],
 			"config/*": ["./config/*"],
-			"auth/*": ["./auth/*"],
+			"auth/*": ["auth-old/*"],
 			"actions/*": ["./actions/*"]
 		}
 	},

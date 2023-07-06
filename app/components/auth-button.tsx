@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { mapFirebaseResponseToTenant } from "auth/map-firebase-tenant";
-import { signInWithLink } from "config/client-auth";
-import { useAuth } from "auth/hooks";
-import { useFirebaseAuth } from "auth/firebase";
+import { mapFirebaseResponseToTenant } from "../../auth-old/map-firebase-tenant";
+import { signInWithLink } from "../../auth/client";
+import { useAuth } from "../../auth-old/hooks";
+import { useFirebaseAuth } from "../../auth-old/firebase";
 import { clientConfig } from "config/client";
 import { signOut } from "firebase/auth";
 import { Button } from "@mui/material";

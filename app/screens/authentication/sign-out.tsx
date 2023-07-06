@@ -5,12 +5,12 @@ import { Button, TextField, Grid, Typography, Paper, Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
-import { useFirebaseAuth } from "auth/firebase";
+import { useFirebaseAuth } from "../../../auth-old/firebase";
 import { clientConfig } from "config/client";
 import {
 	sendPasswordlessLoginEmail,
 	signInWithLink,
-} from "config/client-auth";
+} from "../../../auth/client";
 
 export const SignIn: React.FC<{}> = () => {
 	// useForm & useAuth initialization

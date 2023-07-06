@@ -4,8 +4,8 @@ import React, { useEffect } from "react";
 import { Grid, Typography } from "@mui/material";
 import { SignOutButton } from "app/components/user-input";
 // import { useAuthContext } from "app/components/providers/auth-context";
-import { signInWithLink } from "config/client-auth";
-import { useFirebaseAuth } from "auth/firebase";
+import { signInWithLink } from "../../auth/client";
+import { useFirebaseAuth } from "../../auth-old/firebase";
 import { clientConfig } from "config/client";
 
 /**

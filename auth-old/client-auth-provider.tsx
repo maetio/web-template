@@ -4,8 +4,7 @@ import * as React from "react";
 import { startTransition, useEffect, useState, useRef } from "react";
 import type { User as FirebaseUser } from "firebase/auth";
 import { IdTokenResult, onIdTokenChanged } from "firebase/auth";
-import { useFirebaseAuth } from "./firebase";
-import { clientConfig, auth } from "../config/client";
+import { auth } from "../config/client";
 import { Tenant } from "./types";
 import { AuthContext } from "./context";
 
@@ -117,7 +116,6 @@ const AuthProvider: React.FC<AuthProviderProps> = ({
 
 	const registerChangeListener = async () => {
 		// const auth = await getFirebaseAuth();
-
 		const user = onIdTokenChanged(auth, handleIdTokenChanged);
 		console.log("user chnaged", user);
 		return user;
@@ -125,7 +123,6 @@ const AuthProvider: React.FC<AuthProviderProps> = ({
 
 	useEffect(() => {
 		const unsubscribePromise = registerChangeListener();
-
 		return () => {
 			unsubscribePromise.then((unsubscribe) => unsubscribe());
 		};

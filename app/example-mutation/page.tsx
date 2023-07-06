@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ServerAuthProvider } from "auth/server-auth-provider";
+import { ServerAuthProvider } from "../../auth-old/server-auth-provider";
 import { ExampleMutation } from "./example-mutation-server";
 import { ExampleMutationClient } from "./example-mutation-client";
 

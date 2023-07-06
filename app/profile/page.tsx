@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { UserProfile } from "app/components/layout/user-profile";
-import { ServerAuthProvider } from "auth/server-auth-provider";
+import { ServerAuthProvider } from "../../auth-old/server-auth-provider";
 
 /**
  * server component that displays the profile screen
