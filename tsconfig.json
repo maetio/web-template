@@ -23,7 +23,7 @@
 			"app/*": ["./app/*"],
 			"config/*": ["./config/*"],
 			"auth/*": ["./auth/*"],
-			"actions/*": ["server-actions/*"]
+			"server-actions/*": ["./server-actions/*"]
 		}
 	},
 	"include": [

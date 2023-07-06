@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { UserProfile } from "app/components/layout/user-profile";
-import { ServerAuthProvider } from "../../auth-old/server-auth-provider";
 
 /**
  * server component that displays the profile screen
@@ -18,9 +17,7 @@ export default function Profile() {
 			</nav>
 			<h1>Profile page</h1>
 			<p>This page is server-side rendered</p>
-			<ServerAuthProvider>
-				<UserProfile />
-			</ServerAuthProvider>
+			<UserProfile />
 		</div>
 	);
 }

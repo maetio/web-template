@@ -7,9 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
 import {
 	sendPasswordlessLoginEmail,
-} from "../../auth/client";
-import { useFirebaseAuth } from "../../auth-old/firebase";
-import { clientConfig, auth } from "config/client";
+} from "auth/client";
 
 export /**
  * Enter email form
@@ -26,17 +24,13 @@ const LoginPage: React.FC<{}> = () => {
 		resolver: yupResolver(emailSchema),
 	});
 
-	const { getFirebaseAuth } = useFirebaseAuth(clientConfig);
-
 	// state used to detect if email sent
 	const [sentEmail, setSentEmail] = useState(false);
 
-	// get user state
-
+	// submit email form
 	const submitEmail = async (data: { email: string }) => {
 		console.log("email inputed", data.email);
-		// const auth = await getFirebaseAuth();
-		await sendPasswordlessLoginEmail(auth, data.email);
+		await sendPasswordlessLoginEmail(data.email);
 		localStorage.setItem("email", data.email);
 		setSentEmail(true);
 	};
@@ -72,6 +66,7 @@ const LoginPage: React.FC<{}> = () => {
 						<Button type="submit">Send Magic Link</Button>
 					</Grid>
 				)}
+				{errors ? <Typography>{errors?.email?.message}</Typography> : null}
 			</Grid>
 		</form>
 	);
