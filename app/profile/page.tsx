@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { UserProfile } from "app/components/layout/user-profile";
+// import { UserProfile } from "app/components/layout/user-profile";
 
 /**
  * server component that displays the profile screen
@@ -17,7 +17,7 @@ export default function Profile() {
 			</nav>
 			<h1>Profile page</h1>
 			<p>This page is server-side rendered</p>
-			<UserProfile />
+			{/* <UserProfile /> */}
 		</div>
 	);
 }

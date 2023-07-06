@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ServerAuthProvider } from "../../auth-old/server-auth-provider";
 import { ExampleMutation } from "./example-mutation-server";
 import { ExampleMutationClient } from "./example-mutation-client";
 
@@ -19,9 +18,7 @@ export default function Profile() {
 			</nav>
 			<h1>Profile page</h1>
 			<p>This page is server-side rendered</p>
-			<ServerAuthProvider>
-				<ExampleMutation />
-			</ServerAuthProvider>
+			<ExampleMutation />
 			<ExampleMutationClient />
 		</div>
 	);

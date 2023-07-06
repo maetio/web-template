@@ -2,9 +2,7 @@
 
 import React, { useEffect } from "react";
 import { signInWithLink } from "auth/client";
-import { clientConfig } from "config/client";
-import { signOut } from "firebase/auth";
-import { Avatar, Box, Button, Stack, Typography } from "@mui/material";
+import { Avatar, Button, Stack, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { indigo } from "@mui/material/colors";
 import { useAuthContext } from "auth/auth-context-provider";

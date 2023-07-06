@@ -3,7 +3,7 @@ import { Typography, Box, AppBar, Toolbar, Grid } from "app/components/providers
 import { SearchBar } from "app/components/user-input";
 import Link from "next/link";
 import React from "react";
-import { AuthButton } from "app/components/auth-button";
+import { ProfileButton } from "app/components/profile-button";
 
 
 export /**
@@ -33,7 +33,7 @@ export /**
 						<SearchBar label="Search"/>
 					</Grid>
 					<Grid container item xs={4} justifyContent="flex-end" alignItems="center">
-						<AuthButton />
+						<ProfileButton />
 						<Box
 							sx={{
 								backgroundImage: "linear-gradient(207deg, #EAE68E 13.76%, #FBBEBE 60.61%, #BEE1FB 100%);",

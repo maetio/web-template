@@ -1,7 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
-import { updateUserNameClient } from "../../server-actions/server/example-mutation";
+import { updateUserNameClient } from "server-actions/example-mutation";
 import {
 	Button,
 	TextField,
@@ -21,7 +21,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
  */
 export function ExampleMutationClient() {
 	// form validation on client
-	const { register, handleSubmit, reset } = useForm({
+	const { register, handleSubmit } = useForm({
 		defaultValues: {
 			firstName: "",
 			lastName: "",

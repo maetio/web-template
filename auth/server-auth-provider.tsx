@@ -1,4 +1,4 @@
-import { AuthContextProvider } from "auth/client-auth-provider";
+import { AuthContextProvider } from "auth/auth-context-provider";
 import { getServerAuthUser } from "auth/server";
 
 /**

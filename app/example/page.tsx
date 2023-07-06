@@ -1,4 +1,4 @@
-import { getTeams } from "../../server-actions/server/teams";
+import { getTeams } from "server-actions/teams";
 import { TeamCard } from "app/components/cards";
 import { Grid } from "app/components/providers/mui-server-components";
 import { getCompetitions } from "../../server-actions/competitions";
