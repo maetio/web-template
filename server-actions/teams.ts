@@ -1,3 +1,5 @@
+"use server";
+
 import { teamsCollection } from "config/server";
 
 export /**

@@ -1,6 +1,7 @@
 import { getApps, initializeApp } from "firebase/app";
 import { initializeAuth } from "firebase/auth";
 
+// define client configuration
 export const clientConfig = {
 	redirectUrl: process.env.NEXT_PUBLIC_REDIRECT_URL,
 	apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -13,7 +14,10 @@ export const clientConfig = {
 	measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
+// define the apps
 const allApps = getApps();
 export const app =
 	allApps.length === 0 ? initializeApp(clientConfig) : allApps[0];
+
+// export client auth
 export const auth = initializeAuth(app);

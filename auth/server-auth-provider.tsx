@@ -1,3 +1,5 @@
+"use server";
+
 import { AuthContextProvider } from "auth/auth-context-provider";
 import { getServerAuthUser } from "auth/server";
 
