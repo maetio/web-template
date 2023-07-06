@@ -3,7 +3,7 @@ import { Typography, Box, AppBar, Toolbar, Grid } from "app/components/providers
 import { SearchBar } from "app/components/user-input";
 import Link from "next/link";
 import React from "react";
-import { AuthButton } from "./auth-button";
+import { AuthButton } from "app/components/auth-button";
 
 
 export /**

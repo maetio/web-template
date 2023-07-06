@@ -5,7 +5,7 @@ import { Search } from "@mui/icons-material";
 import {
 	InputAdornment,
 	TextField,
-} from "../../providers/mui-server-components";
+} from "app/components/providers/mui-server-components";
 
 export interface SearchBarProps {
 	label: string;
