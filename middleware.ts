@@ -1,4 +1,4 @@
-import type { NextRequest } from "next/server";
+/* import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import {
 	authentication,
@@ -65,3 +65,4 @@ export async function middleware(request: NextRequest) {
 export const config = {
 	matcher: ["/", "/((?!_next/static|favicon.ico|logo.svg).*)"],
 };
+*/
