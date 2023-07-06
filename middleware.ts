@@ -5,7 +5,7 @@ import {
 	refreshAuthCookies,
 } from "next-firebase-auth-edge/lib/next/middleware";
 import { getFirebaseAuth } from "next-firebase-auth-edge/lib/auth";
-import { FirebaseApiKey, FirebaseServiceAccount } from "config/server";
+import { FirebaseApiKey, FirebaseAuthEdgeOptions, FirebaseServiceAccount } from "config/server";
 
 // function that will redirect the user to the login page if they are not logged in.
 function redirectToLogin(request: NextRequest) {
@@ -30,29 +30,6 @@ const { setCustomUserClaims, getUser } = getFirebaseAuth(
 );
 
 /**
- * Options for the auth edge authentication
- * Set here for reusability in the firebase auth custom functions
- */
-const AuthEdgeOptions = {
-	// set the cookie parameters
-	// see here: https://github.com/awinogrodzki/next-firebase-auth-edge#options
-	cookieName: "AuthToken",
-	cookieSignatureKeys: ["secret1", "secret2"],
-	cookieSerializeOptions: {
-		path: "/",
-		httpOnly: true,
-		// secure: false, // Set this to true on HTTPS environments
-		// sameSite: "lax" as const, // Decide if lax or strict is better
-		sameSite: "strict" as const,
-		maxAge: 12 * 60 * 60 * 24 * 1000, // twelve days
-	},
-
-	// define the firebase service account and api key
-	serviceAccount: FirebaseServiceAccount,
-	apiKey: FirebaseApiKey,
-};
-
-/**
  * Define the middleware for firebase auth edge
  * https://github.com/awinogrodzki/next-firebase-auth-edge
  *
@@ -68,7 +45,7 @@ export async function middleware(request: NextRequest) {
 		logoutPath: "/api/logout",
 
 		// extends the auth edge options defined above
-		...AuthEdgeOptions,
+		...FirebaseAuthEdgeOptions,
 
 		// for handling a valid token
 		handleValidToken: async ({ token, decodedToken }) => {
@@ -93,7 +70,7 @@ export async function middleware(request: NextRequest) {
 				);
 
 				// refresh the user's auth cookies
-				await refreshAuthCookies(token, response, AuthEdgeOptions);
+				await refreshAuthCookies(token, response, FirebaseAuthEdgeOptions);
 				return response;
 			}
 

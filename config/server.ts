@@ -30,6 +30,29 @@ export const FirebaseServiceAccount: ServiceAccount = {
  */
 export const FirebaseApiKey: string = process.env.FIREBASE_API_KEY || "";
 
+export /**
+ * Options for the auth edge authentication
+ * Set here for reusability in the firebase auth custom functions
+ */
+const FirebaseAuthEdgeOptions = {
+	// set the cookie parameters
+	// see here: https://github.com/awinogrodzki/next-firebase-auth-edge#options
+	cookieName: "AuthToken",
+	cookieSignatureKeys: ["secret1", "secret2"],
+	cookieSerializeOptions: {
+		path: "/",
+		httpOnly: true,
+		// secure: false, // Set this to true on HTTPS environments
+		// sameSite: "lax" as const, // Decide if lax or strict is better
+		sameSite: "strict" as const,
+		maxAge: 12 * 60 * 60 * 24 * 1000, // twelve days
+	},
+
+	// define the firebase service account and api key
+	serviceAccount: FirebaseServiceAccount,
+	apiKey: FirebaseApiKey,
+};
+
 /**
  * Initialize firestore with next
  * https://authjs.dev/reference/adapter/firebase#initfirestore
