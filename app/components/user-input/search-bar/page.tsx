@@ -9,6 +9,7 @@ import {
 
 export interface SearchBarProps {
 	label: string;
+	width?: number
 }
 
 /**
@@ -17,7 +18,7 @@ export interface SearchBarProps {
  * @param {SearchBarProps}
  * @returns
  */
-export const SearchBar: React.FC<SearchBarProps> = ({ label }) => {
+export const SearchBar: React.FC<SearchBarProps> = ({ label, width }) => {
 	return (
 		<TextField
 			color="primary"
@@ -28,8 +29,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({ label }) => {
 					borderRadius: 3,
 					borderColor: "#D9D9D9",
 				},
-				backgroundColor: "#f5f5f5",
-				width: 480,
+				flexGrow: 1,
+				flexBasis: 2,
 				borderRadius: 3,
 			}}
 			InputProps={{

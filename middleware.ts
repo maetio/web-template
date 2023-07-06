@@ -1,3 +1,5 @@
+import { NextRequest } from "next/server";
+
 /* import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import {
@@ -61,8 +63,11 @@ export async function middleware(request: NextRequest) {
 		},
 	});
 }
-
+/*
 export const config = {
 	matcher: ["/", "/((?!_next/static|favicon.ico|logo.svg).*)"],
 };
 */
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-empty-function
+export async function middleware (_request: NextRequest) {}
+export default middleware;
