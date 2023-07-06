@@ -1,6 +1,7 @@
 import { MaetIcon } from "app/components/icons";
 import { Typography, Box, AppBar, Toolbar, Grid } from "app/components/providers/mui-server-components";
 import { SearchBar } from "app/components/user-input";
+import Link from "next/link";
 import React from "react";
 
 export interface PageHeaderProps {
@@ -16,7 +17,7 @@ export /**
  *  @return {*}
  *
  */ const PageHeader = () => (
-	<Box sx={{ flexGrow: 1, border: 1, borderColor: "#E5E5E5" }}>
+	/* <Box sx={{ flexGrow: 1, border: 1, borderColor: "#E5E5E5" }}>
 		<AppBar position="static" sx={{backgroundColor: "#FFFFFF"}}>
 			<Toolbar>
 				<Grid container direction="row" alignItems="center">
@@ -44,6 +45,13 @@ export /**
 			
 		</AppBar>
 	</Box>
+	*/
+	<nav>
+		<Link style={{ padding: "8px" }} href="/">
+			<text>Home</text>
+		</Link>
+		<AuthButton />
+	</nav>
 );
 
 export default PageHeader;
