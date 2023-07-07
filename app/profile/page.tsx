@@ -9,6 +9,7 @@ import { updateUserNameServer } from "server-actions/users";
 export default function Profile() {
 	return (
 		<form action={updateUserNameServer} className="flex gap-2 items-center">
+			<h1>Edit Profile Data</h1>
 			<input
 				required
 				type="text"

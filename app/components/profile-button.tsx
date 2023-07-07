@@ -26,11 +26,11 @@ const ProfileButton = () => {
 	}, []);
 
 	return (
-		<div onClick={user?.id ? () => router.push("/profile") : () => router.push("/login")}>
+		<button onClick={user?.id ? () => router.push("/profile") : () => router.push("/login")}>
 			{user?.id ? <div>
 				<div>{user?.email?.at(0)}</div>
 				<text>{user.email}</text>
 			</div> : "Login"}
-		</div>
+		</button>
 	);
 };
