@@ -86,10 +86,10 @@ export async function middleware(request: NextRequest) {
 		// },
 
 		// // handle error by redirecting to the login page again
-		// handleError: async (error) => {
-		// 	console.error("Unhandled authentication error", { error });
-		// 	return redirectToLogin(request);
-		// },
+		handleError: async (error) => {
+			console.error("Unhandled authentication error", { error });
+			return redirectToLogin(request);
+		},
 	});
 }
 
