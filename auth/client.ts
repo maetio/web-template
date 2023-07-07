@@ -6,6 +6,7 @@ import {
 	signInWithEmailLink,
 	signOut,
 } from "firebase/auth";
+import { getAndUpdateUserData } from "server-actions/users";
 
 /**
  * Function will send the passwordless login email to the user's email
@@ -65,9 +66,8 @@ const signInWithLink = async (email: string | null, link: string) => {
 		},
 	});
 
-	// get the private user data
-	
-	// set the data with the information updated from the client
+	// initialize the user data
+	await getAndUpdateUserData({ email: userCredential.user.email, emailVerified: userCredential.user.emailVerified });
 
 	// return the user credential
 	return userCredential;

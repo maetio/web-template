@@ -1,4 +1,4 @@
-import { updateUserData } from "server-actions/users";
+import { getUserData, updateUserData } from "server-actions/users";
 
 /**
  * Define the submitting form action
@@ -22,10 +22,14 @@ const submitFormAction = async (data: FormData) => {
  * @export
  * @return {*}
  */
-export default function Profile() {
+export default async function Profile() {
+	// fetch the user data
+	const userData = await getUserData();
 	return (
 		<form action={submitFormAction} className="flex gap-2 items-center">
 			<h1>Edit Profile Data</h1>
+			<p>{userData?.email}</p>
+			<p>{userData?.firstName} {userData?.lastName}</p>
 			<input
 				required
 				type="text"

@@ -29,7 +29,14 @@ export async function updateUserData(userData: Partial<PrivateUserData>) {
 	revalidatePath("/");
 }
 
-export async function getAndUpdateUserData(userData: Omit<Partial<PrivateUserData>, "id">) {
+/**
+ * Function is used for initialization and getting the initial data from the server
+ *
+ * @export
+ * @param {(Omit<Partial<PrivateUserData>, "id"> | undefined)} userData
+ * @return {*} 
+ */
+export async function getAndUpdateUserData(userData: Omit<Partial<PrivateUserData>, "id"> | undefined) {
 	// get the user for the server
 	const user = await getServerAuthUser();
 
@@ -44,16 +51,14 @@ export async function getAndUpdateUserData(userData: Omit<Partial<PrivateUserDat
 	// set updated user data
 	const initialUserData: PrivateUserData = {
 		id: user.id,
-		email: user.email,
+		email: user.email || null,
 		emailVerified: user.emailVerified,
 		isAnonymous: user.isAnonymous,
-		phoneNumber: user.phoneNumber,
+		phoneNumber: user.phoneNumber || null,
 		loggedIn: true,
 		firstName: null,
 		lastName: null,
 		image: null,
-		stripeID: undefined,
-		activeSport: undefined,
 	};
 
 	// merge the data to create the updated user data
@@ -66,4 +71,25 @@ export async function getAndUpdateUserData(userData: Omit<Partial<PrivateUserDat
 	revalidatePath("/");
 
 	return updatedUserData;
+}
+
+/**
+ * Function will fetch the user data
+ *
+ * @export
+ * @return {*} 
+ */
+export async function getUserData() {
+	// get the user for the server
+	const user = await getServerAuthUser();
+
+	// handle if there is no user
+	if (!user) {
+		throw new Error("Cannot get information for unauthenticated user");
+	}
+
+	// check if user data
+	const existingUserDoc = await privateUserCollection.doc(user.id).get();
+
+	return existingUserDoc.data();
 }
