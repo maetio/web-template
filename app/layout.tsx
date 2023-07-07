@@ -1,4 +1,3 @@
-import { MuiProvider } from "app/components/providers/mui";
 import "./globals.css";
 import { Nunito } from "next/font/google";
 import React from "react";
@@ -9,7 +8,7 @@ const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata = {
 	title: "Maet Web Template",
-	description: "NextJS, Typescript, MUI, Firebase Auth,",
+	description: "NextJS, Typescript, Firebase Auth,",
 };
 
 export default function RootLayout({
@@ -22,10 +21,8 @@ export default function RootLayout({
 			<body className={nunito.className}>
 				{/* @ts-expect-error https://github.com/vercel/next.js/issues/43537 */}
 				<ServerAuthProvider>
-					<MuiProvider>
-						<Header />
-						{children}
-					</MuiProvider>
+					<Header />
+					{children}
 				</ServerAuthProvider>
 
 			</body>

@@ -2,9 +2,7 @@
 
 import React, { useEffect } from "react";
 import { signInWithLink } from "auth/client";
-import { Avatar, Button, Stack, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { indigo } from "@mui/material/colors";
 import { useAuthContext } from "auth/auth-context-provider";
 
 export /**
@@ -28,11 +26,11 @@ const ProfileButton = () => {
 	}, []);
 
 	return (
-		<Button onClick={user?.id ? () => router.push("/profile") : () => router.push("/login")}>
-			{user?.id ? <Stack>
-				<Avatar sx={{ backgroundColor: indigo[500] }}>{user?.email?.at(0)}</Avatar>
-				<Typography>{user.email}</Typography>
-			</Stack> : "Login"}
-		</Button>
+		<div onClick={user?.id ? () => router.push("/profile") : () => router.push("/login")}>
+			{user?.id ? <div>
+				<div>{user?.email?.at(0)}</div>
+				<text>{user.email}</text>
+			</div> : "Login"}
+		</div>
 	);
 };

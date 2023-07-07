@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "@mui/material";
 import {
 	useStripe,
 	useElements,
@@ -53,9 +52,9 @@ const StripeForm = () => {
 	return (
 		<form>
 			<PaymentElement />
-			<Button onClick={handleSubmit} disabled={!stripe}>
+			<button onClick={handleSubmit} disabled={!stripe}>
 				Submit
-			</Button>
+			</button>
 			{/* Show error message to your customers */}
 			{errorMessage && <div>{errorMessage}</div>}
 		</form>

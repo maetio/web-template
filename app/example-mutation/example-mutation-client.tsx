@@ -2,10 +2,6 @@
 
 import { useTransition } from "react";
 import { updateUserNameClient } from "server-actions/users";
-import {
-	Button,
-	TextField,
-} from "app/components/providers/mui-server-components";
 import { EditProfileSchemaType, editProfileSchema } from "app/utils/schemas";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -46,7 +42,7 @@ export function ExampleMutationClient() {
 
 	return (
 		<form className="flex gap-2 items-center">
-			<TextField
+			{/* <TextField
 				{...register("firstName", { required: true })}
 				sx={{ m: 3 }}
 				label="First Name"
@@ -64,7 +60,7 @@ export function ExampleMutationClient() {
 				sx={{ m: 2 }}
 			>
 				Submit
-			</Button>
+			</Button> */}
 		</form>
 	);
 }

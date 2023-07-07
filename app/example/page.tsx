@@ -1,12 +1,11 @@
 import { getTeams } from "server-actions/teams";
 import { TeamCard } from "app/components/cards";
-import { Grid } from "app/components/providers/mui-server-components";
 import { getCompetitions } from "server-actions/competitions";
 
 export default async function Page() {
 	// fetch the teams & competitions
 	const data = await getCompetitions();
-	const teamData = await getTeams();
+	// const teamData = await getTeams();
 
 	// map the data in the page
 	return (
@@ -14,7 +13,7 @@ export default async function Page() {
 			{data.docs.map((item) => (
 				<h1 key={item.id}>{item.data().name}</h1>
 			))}
-			<Grid container direction="column">
+			{/* <Grid container direction="column">
 				{teamData.docs.map((item) => (
 					<TeamCard
 						key={item.id}
@@ -23,7 +22,7 @@ export default async function Page() {
 						image={item.data().image}
 					/>
 				))}
-			</Grid>
+			</Grid> */}
 		</main>
 	);
 }

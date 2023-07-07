@@ -28,7 +28,6 @@ export const AuthContextProvider: React.FC<{ defaultUser: AuthUser | null; child
 			const email = localStorage.getItem("email");
 			signInWithLink(email, window.location.href);
 		}
-		console.log('inside use effect', window.location.href);
 	}, []);
 
 	// detect the auth state change
@@ -50,7 +49,6 @@ export const AuthContextProvider: React.FC<{ defaultUser: AuthUser | null; child
 
 				// set the cookie with firebase auth edge middleware
 				// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
-				console.log('setting token in context');
 				await fetch("/api/login", {
 					method: "GET",
 					headers: {

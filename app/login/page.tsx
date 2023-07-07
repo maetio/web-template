@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button, TextField, Grid, Typography, Paper, Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "app/utils/schemas";
@@ -37,7 +36,7 @@ const LoginPage: React.FC<{}> = () => {
 
 	return (
 		<form onSubmit={handleSubmit(submitEmail)}>
-			<Grid
+			{/* <Grid
 				container
 				spacing={0}
 				direction="column"
@@ -67,7 +66,7 @@ const LoginPage: React.FC<{}> = () => {
 					</Grid>
 				)}
 				{errors ? <Typography>{errors?.email?.message}</Typography> : null}
-			</Grid>
+			</Grid> */}
 		</form>
 	);
 };
