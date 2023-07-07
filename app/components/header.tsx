@@ -14,8 +14,12 @@ export /**
  *  @return {*}
  *
  */ const Header = () => (
-	<div className="bg-gray-50 flex">
-		<ProfileButton/>
+	<div className="bg-gray-50 flex items-center">
+		<MaetIcon/>
+		<text className="text-sm ml-2">Maet</text>
+		<input className=""></input>
+		<button>Login</button>
+		<div className=" w-12 h-12 rounded-full  bg-gradient-to-b from-purple-600 to-blue-600"></div>
 	</div>
 	//  <Box sx={{ flexGrow: 1, border: 1, borderColor: "#E5E5E5" }}>
 	// 	<AppBar position="static" sx={{backgroundColor: "#FFFFFF"}}>
