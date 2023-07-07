@@ -1,5 +1,5 @@
 import { PlayersResponseType } from "app/types/next-api";
-import { competitionProfilesSubcollection, profileCollection } from "config/server";
+import { competitionTeamsSubcollection, teamsCollection } from "config/server";
 import { NextResponse } from "next/server";
  
 /**
@@ -19,12 +19,12 @@ export async function GET(_request: Request, { params }: { params: { queryParams
 	try {
 		// if the comp id is provided, return all the players by default
 		if (compID && compID !== "all") {
-			const querySnapshot = await competitionProfilesSubcollection(compID).orderBy("rating.displayRating").limit(Number(number) || 5).get();
+			const querySnapshot = await competitionTeamsSubcollection(compID).orderBy("rating.displayRating").limit(Number(number) || 5).get();
 			return NextResponse.json(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
 		}
 
 		// get the whole collection group
-		const querySnapshot = await profileCollection.orderBy("rating.displayRating").limit(Number(number) || 5).get();
+		const querySnapshot = await teamsCollection.orderBy("rating.displayRating").limit(Number(number) || 5).get();
 		return NextResponse.json(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
 	} catch (error: any) {
 		console.log(error);

@@ -1,5 +1,5 @@
 import React from "react";
-import { CompetitionsResponseType } from "app/types/next-api";
+import { CompetitionsResponseType, PlayersResponseType } from "app/types/next-api";
 
 export default async function ViewCompScreen({ params }: { params: { id: string } }) {
 	// get competition data
@@ -7,19 +7,20 @@ export default async function ViewCompScreen({ params }: { params: { id: string 
 	const competitions: CompetitionsResponseType = await competitionResponse.json();
 
 	// get the competition teams
-	const competitionTeams = [];
+	const playersResponse = await fetch(`${process.env.NEXT_PUBLIC_PROJECT_DOMAIN}/api/players/${params.id}`);
+	const players: PlayersResponseType = await playersResponse.json();
 
 	// get the competition players
-	const competitionPlayers = [];
+	const teams = [];
 
 	return (
 		<main>
 			<h1>Competition Name: {competitions?.at(0)?.name}</h1>
-			{competitionTeams.map((team) => (
+			{teams.map((team) => (
 				<h3 key={team.id}>{team.name}</h3>
 			))}
-			{competitionPlayers.map((player) => (
-				<h3 key={player.id}>{player.name}</h3>
+			{players.map((player) => (
+				<h3 key={player.id}>{player.firstName}</h3>
 			))}
 		</main>
 	);
