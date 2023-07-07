@@ -14,7 +14,9 @@ export /**
  *  @return {*}
  *
  */ const Header = () => (
-	<div></div>
+	<div className="bg-gray-50 flex">
+		<ProfileButton/>
+	</div>
 	//  <Box sx={{ flexGrow: 1, border: 1, borderColor: "#E5E5E5" }}>
 	// 	<AppBar position="static" sx={{backgroundColor: "#FFFFFF"}}>
 	// 		<Toolbar>
@@ -24,7 +26,7 @@ export /**
 
 	// 						<MaetIcon color="primary"/>
 	// 						<Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "#818CF8", ml: 2}}>
-    //         				Maet
+	//         				Maet
 	// 						</Typography>
 	// 					</Link>
 					
