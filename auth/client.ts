@@ -33,7 +33,7 @@ export async function sendPasswordlessLoginEmail(
 			// minimumVersion: '8',
 		},
 	};
-	return sendSignInLinkToEmail(auth, email, actionCodeSettings);
+	await sendSignInLinkToEmail(auth, email, actionCodeSettings);
 }
 
 export /**
@@ -56,7 +56,6 @@ const signInWithLink = async (email: string | null, link: string) => {
 	// get the id token from firebase
 	const idTokenResult = await userCredential.user.getIdTokenResult();
 
-	console.log('setting token in link function');
 	// set the cookie with firebase auth edge middleware
 	// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
 	await fetch("/api/login", {
@@ -65,6 +64,10 @@ const signInWithLink = async (email: string | null, link: string) => {
 			Authorization: `Bearer ${idTokenResult.token}`,
 		},
 	});
+
+	// get the private user data
+	
+	// set the data with the information updated from the client
 
 	// return the user credential
 	return userCredential;
