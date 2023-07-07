@@ -6,3 +6,5 @@ import { CollectionDataTypes, SubcollectionDataTypes } from "app/types";
 export type CompetitionsResponseType = ({ id: string } & Partial<CollectionDataTypes["competitions"]>)[];
 
 export type PlayersResponseType = ({ id: string } & Partial<SubcollectionDataTypes["competition-profiles"]>)[];
+
+export type TeamsResponseType = ({ id: string } & Partial<SubcollectionDataTypes["competition-teams"]>)[];

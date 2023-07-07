@@ -1,4 +1,4 @@
-import { PlayersResponseType } from "app/types/next-api";
+import { TeamsResponseType } from "app/types/next-api";
 import { competitionTeamsSubcollection, teamsCollection } from "config/server";
 import { NextResponse } from "next/server";
  
@@ -12,7 +12,7 @@ import { NextResponse } from "next/server";
  * @param {{ params: { queryParams: String[] } }} { params }
  * @return {*} 
  */
-export async function GET(_request: Request, { params }: { params: { queryParams: Array<string | undefined> } }): Promise<NextResponse<PlayersResponseType>> {
+export async function GET(_request: Request, { params }: { params: { queryParams: Array<string | undefined> } }): Promise<NextResponse<TeamsResponseType>> {
 	// get the parameters from the query
 	const [compID, number] = params.queryParams;
 
