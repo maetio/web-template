@@ -18,7 +18,6 @@ const LoginPage: React.FC<{}> = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
 	} = useForm<{ email: string }>({
 		resolver: yupResolver(emailSchema),
 	});
@@ -35,38 +34,26 @@ const LoginPage: React.FC<{}> = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit(submitEmail)}>
-			{/* <Grid
-				container
-				spacing={0}
-				direction="column"
-				alignItems="center"
-				justifyContent="center"
-				sx={{ minHeight: "100vh" }}
-			>
-				<Paper variant="outlined" />
-				{sentEmail ? (
-					<Box>
-						<Typography>
-							Check your email inbox for a magic link
-						</Typography>
-						<br />
-					</Box>
-				) : (
-					<Grid item alignItems="center" justifyContent="center">
-						<Typography>Welcome to Maet!</Typography>
-						<br />
-						<TextField
-							type="email"
-							variant="outlined"
-							label="Input your email"
-							{...register("email")}
-						/>
-						<Button type="submit">Send Magic Link</Button>
-					</Grid>
-				)}
-				{errors ? <Typography>{errors?.email?.message}</Typography> : null}
-			</Grid> */}
+		<form onSubmit={handleSubmit(submitEmail)} className="flex gap-2 items-center">
+			<input
+				// eslint-disable-next-line react/jsx-props-no-spreading
+				{...register("email")}
+				required
+				type="text"
+				name="email"
+				className="text-2xl p-1 rounded-lg flex-grow w-full"
+				placeholder="Enter Email"
+				autoFocus
+			/>
+			{sentEmail ?
+				<div>Sent!</div> : 			
+				<button
+					type="submit"
+					className="p-2 text-xl rounded-2xl text-black border-solid border-black border-2 max-w-xs bg-green-500 hover:cursor-pointer hover:bg-green-400"
+				>
+					Send Magic Link
+				</button>
+			}
 		</form>
 	);
 };
