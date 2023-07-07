@@ -15,20 +15,19 @@ export /**
  *  @return {*}
  *
  */ const Header = () => (
-	 <Box sx={{ flexGrow: 1, borderBottom: 1, borderBottomColor: "#E5E5E5" }}>
+	 <Box sx={{ flexGrow: 1, border: 1, borderColor: "#E5E5E5" }}>
 		<AppBar position="static" sx={{backgroundColor: "#FFFFFF"}}>
 			<Toolbar>
-				<Grid container direction="row" alignItems="center" sx={{ flexGrow: 1, flexShrink: 1, mb: 1 }}>
-					<Grid container item xs={3} direction="row" alignItems="center" justifyContent="flex-start">
-						<Link href="/">
-							<Grid container direction="row" alignItems="center" >
-								<MaetIcon color="primary"/>
-								<Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "#818CF8", ml: 2}}>
-            				Maet
-								</Typography>
-							</Grid>
-						</Link>
+				<Grid container direction="row" alignItems="center" sx={{ flexGrow: 1, flexShrink: 1 }}>
+					<Grid container item xs={3} alignItems="center" justifyContent="center">
+						<Link style={{ padding: "8px" }} href="/">
 
+							<MaetIcon color="primary"/>
+							<Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "#818CF8", ml: 2}}>
+            				Maet
+							</Typography>
+						</Link>
+					
 					</Grid>
 					<Grid container item xs={5} justifyContent="center" alignItems="center">
 						<SearchBar label="Search"/>
