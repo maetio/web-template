@@ -27,7 +27,6 @@ const LoginPage: React.FC<{}> = () => {
 
 	// submit email form
 	const submitEmail = async (data: { email: string }) => {
-		console.log("email inputed", data.email);
 		await sendPasswordlessLoginEmail(data.email);
 		localStorage.setItem("email", data.email);
 		setSentEmail(true);
