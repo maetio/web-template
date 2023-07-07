@@ -22,6 +22,7 @@ export /**
  *
  */ const TeamCard: React.FC<TeamCardProps> = ({ name, image, score }) => {
 	return (
+		<div></div>
 		// <Grid
 		// 	container
 		// 	direction="row"
