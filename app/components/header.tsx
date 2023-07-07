@@ -14,12 +14,18 @@ export /**
  *  @return {*}
  *
  */ const Header = () => (
-	<div className="bg-gray-50 flex items-center">
-		<MaetIcon/>
-		<text className="text-sm ml-2">Maet</text>
-		<input className=""></input>
-		<button>Login</button>
-		<div className=" w-12 h-12 rounded-full  bg-gradient-to-b from-purple-600 to-blue-600"></div>
+	<div className="bg-gray-50 grid grid-cols-12 gap-3 items-center">
+		<div className="col-span-4 items-center flex ml-2">
+			<MaetIcon/>
+			<text className="text-sm ml-2">Maet</text>
+		</div>
+		<div className="col-span-4 items-center justify-center flex">
+			<input id="search" placeholder="Search..." className="rounded h-6"></input>
+		</div>
+		<div className="justify-end col-span-4 items-center flex mr-2">
+			<ProfileButton/>
+			<div className=" w-12 h-12 rounded-full  bg-gradient-to-b from-purple-600 to-blue-600"></div>
+		</div>
 	</div>
 	//  <Box sx={{ flexGrow: 1, border: 1, borderColor: "#E5E5E5" }}>
 	// 	<AppBar position="static" sx={{backgroundColor: "#FFFFFF"}}>
