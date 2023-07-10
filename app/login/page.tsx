@@ -32,8 +32,7 @@ const LoginPage: React.FC<{}> = () => {
 		setSentEmail(true);
 	};
 
-	return (<div></div>
-	/*
+	return (
 		<div className="flex max-h-full max-w-full items-center">
 			<div className="inline-block h-40 bg-lightGray items-center justify-center">
 				<form onSubmit={handleSubmit(submitEmail)} className="flex gap-2 items-center">
@@ -59,7 +58,6 @@ const LoginPage: React.FC<{}> = () => {
 				</form>
 			</div>
 		</div>
-		*/
 	);
 };
 
