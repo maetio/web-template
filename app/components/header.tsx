@@ -13,11 +13,13 @@ export /**
  *  @return {*}
  *
  */ const Header = () => (
-	<div className="bg-gray-50 grid grid-cols-12 gap-3 items-center">
-		<div className="col-span-4 items-center flex ml-2">
+	<div className="grid grid-cols-12 gap-3 h-16 items-center border-b">
+		<div className="col-span-5 items-center flex ml-6">
 			<Link href="/">
-				<MaetIcon/>
-				<p className="text-sm ml-2">Maet</p>
+				<div className="flex items center">
+					<MaetIcon/>
+					<p className="text-lg ml-4 text-primaryMain">Maet</p>
+				</div>
 			</Link>
 		</div>
 		<div className="col-span-2 items-center justify-center flex-1">
