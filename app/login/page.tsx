@@ -14,7 +14,7 @@ const LoginPage: React.FC<{}> = () => {
 	const referringURL = document.referrer.startsWith(BaseURL) && !document.referrer.endsWith("login") ? document.referrer : undefined;
 
 	return (
-		<AuthEmailForm referringURL={referringURL} />
+		<AuthEmailForm redirectURL={referringURL} />
 	);
 };
 

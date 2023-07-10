@@ -2,8 +2,12 @@ import React from "react";
 import { CompetitionsResponseType, PlayersResponseType, TeamsResponseType } from "types/next-api";
 import { BaseURL } from "config/constants";
 import Link from "next/link";
+import { getUserData } from "server-actions/users";
 
 export default async function ViewCompScreen({ params }: { params: { id: string } }) {
+	// get the user data
+	const user = await getUserData();
+
 	// get competition data
 	const competitionResponse = await fetch(`${BaseURL}/api/competitions/${params.id}`);
 	const competitions: CompetitionsResponseType = await competitionResponse.json();
@@ -22,7 +26,7 @@ export default async function ViewCompScreen({ params }: { params: { id: string 
 			<h1>Competition Name: {competitionData?.name}</h1>
 			<br />
 			<br />
-			<Link href={`/join-comp/${competitionData?.id}`}>
+			<Link href={user?.id ? `/join-comp/${competitionData?.id}` : `/comp-login/${competitionData?.id}`}>
 				<h2>Join Competition</h2>
 			</Link>
 			<br />

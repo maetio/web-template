@@ -3,15 +3,10 @@ import { CompetitionsResponseType, PlayerResponseType } from "types/next-api";
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
 import { getOrCreateProfile } from "server-actions/profiles";
-import { redirect } from "next/navigation";
 
 export default async function JoinCompScreen({ params }: { params: { id: string } }) {
 	// get the user data
 	const user = await getUserData();
-
-	// if user is not signed in, redirect to login screen
-	// const router = useRouter();
-	if (!user) redirect("/login");
 
 	// get competition data
 	const competitionResponse = await fetch(`${BaseURL}/api/competitions/${params.id}`);

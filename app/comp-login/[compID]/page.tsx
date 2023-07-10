@@ -13,7 +13,7 @@ export default async function CompLoginPage({ params }: { params: { compID: stri
 		<main>
 			<h1>Get a magic link to join the competition.</h1>
 			<h1>Competition Name: {competitionData?.name}</h1>
-			<AuthEmailForm referringURL={`${BaseURL}/comp-login/${params.compID}`} />
+			<AuthEmailForm redirectURL={`${BaseURL}/join-comp/${params.compID}`} />
 		</main>
 	);
 }

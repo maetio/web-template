@@ -13,7 +13,7 @@ export /**
  *
  * @return {*}
  */
-const AuthEmailForm: React.FC<{ referringURL?: string }> = ({ referringURL }) => {
+const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 	// useForm & useAuth initialization
 	const {
 		register,
@@ -27,7 +27,7 @@ const AuthEmailForm: React.FC<{ referringURL?: string }> = ({ referringURL }) =>
 
 	// submit email form
 	const submitEmail = async (data: { email: string }) => {
-		await sendPasswordlessLoginEmail(data.email, referringURL);
+		await sendPasswordlessLoginEmail(data.email, redirectURL);
 		localStorage.setItem("email", data.email);
 		setSentEmail(true);
 	};
