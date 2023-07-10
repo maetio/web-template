@@ -5,7 +5,7 @@ import {
 	refreshAuthCookies,
 } from "next-firebase-auth-edge/lib/next/middleware";
 import { getFirebaseAuth } from "next-firebase-auth-edge/lib/auth";
-import { FirebaseApiKey, FirebaseAuthEdgeOptions, FirebaseServiceAccount } from "config/server-env";
+import { FirebaseApiKey, FirebaseAuthEdgeOptions, FirebaseServiceAccount } from "config/constants";
 
 // function that will redirect the user to the login page if they are not logged in.
 function redirectToLogin(request: NextRequest) {

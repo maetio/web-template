@@ -1,7 +1,7 @@
 import React from "react";
 import { CompetitionsResponseType, PlayerResponseType } from "app/types/next-api";
 import { getServerAuthUser } from "auth/server";
-import { BaseURL } from "config/server";
+import { BaseURL } from "config/constants";
 
 export default async function ViewCompScreen({ params }: { params: { id: string } }) {
 	// get competition data

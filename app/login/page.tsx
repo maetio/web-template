@@ -7,6 +7,7 @@ import { emailSchema } from "app/utils/schemas";
 import {
 	sendPasswordlessLoginEmail,
 } from "auth/client";
+import { BaseURL } from "config/constants";
 
 export /**
  * Enter email form
@@ -27,7 +28,7 @@ const LoginPage: React.FC<{}> = () => {
 
 	// submit email form
 	const submitEmail = async (data: { email: string }) => {
-		await sendPasswordlessLoginEmail(data.email);
+		await sendPasswordlessLoginEmail(data.email, document.referrer.startsWith(BaseURL) ? document.referrer : undefined);
 		localStorage.setItem("email", data.email);
 		setSentEmail(true);
 	};
