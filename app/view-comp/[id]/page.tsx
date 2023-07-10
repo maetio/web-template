@@ -1,6 +1,6 @@
 import React from "react";
 import { CompetitionsResponseType, PlayersResponseType, TeamsResponseType } from "app/types/next-api";
-import { BaseURL } from "config/server";
+import { BaseURL } from "config/constants";
 import Link from "next/link";
 
 export default async function ViewCompScreen({ params }: { params: { id: string } }) {

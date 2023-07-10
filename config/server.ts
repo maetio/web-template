@@ -11,14 +11,7 @@ import {
 	QueryDocumentSnapshot,
 } from "firebase-admin/firestore";
 import { cert } from "firebase-admin/app";
-import { FirebaseServiceAccount } from "config/server-env";
-
-/**
- * The base url for the server side code
- * https://github.com/vercel/next.js/discussions/16429
- * Defaults to vercel url, will fallback to env variable for local host
- */
-export const BaseURL = process.env.NEXT_PUBLIC_VERCEL_URL ?? process.env.NEXT_PUBLIC_SITE_URL;
+import { FirebaseServiceAccount } from "config/constants";
 
 /**
  * Initialize firestore with next
