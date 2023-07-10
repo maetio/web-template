@@ -15,19 +15,19 @@ export /**
 	<div className="grid grid-cols-12 gap-3 items-center h-16 border-b">
 		<div className="col-span-5 items-center flex ml-6">
 			<MaetIcon/>
-			<text className="text-sm ml-4 text-primaryMain">Maet</text>
+			<text className="text-lg ml-4 text-primaryMain">Maet</text>
 		</div>
-		<div className="col-span-2 items-center justify-center flex">
+		<div className="col-span-2 items-center justify-center flex-1">
 			<div className="flex justify-end items-center relative">
-				<input id="search" placeholder="Search" className=" px-2 flex-1 rounded-lg h-8 border text-sm placeholder-black"></input>
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4 -ml-6 stroke-2">
+				<input id="search" placeholder="Search" className=" px-2 flex-1 rounded-large h-10 border text-sm placeholder-black"></input>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-5 h-5 -ml-8 stroke-2">
 					<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
 				</svg>
 			</div>
 		</div>
 		<div className="justify-end col-span-5 items-center flex mr-6">
 			<ProfileButton/>
-			<div className=" w-8 h-8 rounded-full ml-4  bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+			<div className=" w-8 h-8 rounded-full ml-4 bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 		</div>
 	</div>
 	//  <Box sx={{ flexGrow: 1, border: 1, borderColor: "#E5E5E5" }}>

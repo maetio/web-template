@@ -12,6 +12,9 @@ module.exports = {
         gradientOrange: "#fbbebe",
         gradientBlue: "#bee1fb"
       },
+      borderRadius: {
+        "large": "12px"
+      }
     },
   },
   plugins: [],
