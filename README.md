@@ -2,9 +2,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Overview
 Configured with the following:
-* Material UI: A temporary workaround due to emotion's incompatibility with NEXTJS 13 app router
+* Tailwind
 * Firebase Authentication: Passwordless login.
 * Firebase Next Auth Edge: to link client side authentication with the server
+
 
 ## Organization
 * Config: contains the files that initialize the database and authentication logic for client and server.
