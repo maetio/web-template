@@ -60,5 +60,3 @@ const AuthEmailForm: React.FC<{ referringURL?: string }> = ({ referringURL }) =>
 		</div>
 	);
 };
-
-export default AuthEmailForm;

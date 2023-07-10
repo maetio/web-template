@@ -3,7 +3,7 @@ import { CompetitionsResponseType, PlayerResponseType } from "types/next-api";
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
 import { getOrCreateProfile } from "server-actions/profiles";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 export default async function JoinCompScreen({ params }: { params: { id: string } }) {
 	// get the user data
