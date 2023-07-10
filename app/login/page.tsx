@@ -26,7 +26,8 @@ const LoginPage: React.FC<{}> = () => {
 	// state used to detect if email sent
 	const [sentEmail, setSentEmail] = useState(false);
 
-	// set the url to refer back to
+	// set the url to refer back after email sign in
+	console.log("Referring link", document.referrer);
 	const referringURL = document.referrer.startsWith(BaseURL) && !document.referrer.endsWith("login") ? document.referrer : undefined;
 
 	// submit email form

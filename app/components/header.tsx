@@ -2,7 +2,6 @@ import React from "react";
 import { MaetIcon } from "app/components/icons";
 import { ProfileButton } from "app/components/profile-button";
 import Link from "next/link";
-import { getUserData } from "server-actions/users";
 
 
 /**
@@ -11,10 +10,7 @@ import { getUserData } from "server-actions/users";
  * @export
  * @return {*} 
  */
-export async function Header() {
-	// fetch the user data
-	const userData = await getUserData();
-	
+export async function Header() {	
 	return (
 		<div className="grid grid-cols-12 gap-3 h-16 items-center border-b">
 			<div className="col-span-5 items-center flex ml-6">
