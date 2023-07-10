@@ -76,7 +76,7 @@ module.exports = {
 		],
 		"import/extensions": 0,
 		// allow global variables to be unused
-		"no-unused-vars": "off",
+		"no-unused-vars": "error",
 		"no-tabs": "off",
 		indent: ["error", "tab"],
 		"linebreak-style": ["error", "unix"],
@@ -88,15 +88,5 @@ module.exports = {
 		// disable rules from base configurations
 		"no-console": "off",
 		"prettier/prettier": "off",
-		"comma-dangle": [
-			"error",
-			{
-				arrays: "never",
-				objects: "never",
-				imports: "never",
-				exports: "never",
-				functions: "never",
-			},
-		],
 	},
 };

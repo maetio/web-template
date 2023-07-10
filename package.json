@@ -12,18 +12,16 @@
 		"build-storybook": "storybook build"
 	},
 	"dependencies": {
-		"@emotion/react": "^11.11.0",
-		"@emotion/server": "^11.11.0",
-		"@emotion/styled": "^11.11.0",
 		"@hookform/resolvers": "^3.1.0",
-		"@mui/icons-material": "^5.11.16",
-		"@mui/material": "^5.13.4",
-		"@mui/x-data-grid": "^6.6.0",
-		"@mui/x-date-pickers": "^6.6.0",
 		"@next-auth/firebase-adapter": "^2.0.1",
+		"@stripe/react-stripe-js": "^2.1.1",
+		"@stripe/stripe-js": "^1.54.1",
 		"@types/node": "20.2.5",
 		"@types/react": "18.2.8",
 		"@types/react-dom": "18.2.4",
+		"algoliasearch": "^4.18.0",
+		"autoprefixer": "^10.4.14",
+		"child_process": "^1.0.2",
 		"dayjs": "^1.11.8",
 		"eslint": "8.22.0",
 		"eslint-config-next": "13.4.4",
@@ -31,16 +29,21 @@
 		"firebase": "^9.22.1",
 		"firebase-admin": "^11.9.0",
 		"init": "^0.1.2",
-		"next": "13.4.4",
-		"next-auth": "^4.22.1",
+		"next": "13.4.6",
+		"next-firebase-auth-edge": "^0.7.6",
+		"postcss": "^8.4.25",
 		"prettier": "^2.8.8",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-hook-form": "^7.44.3",
-		"recoil": "^0.7.7",
-		"storybook": "^7.0.18",
+		"react-loading-hook": "^1.0.0",
+		"storybook": "^7.0.23",
+		"tailwindcss": "^3.3.2",
+		"tls": "^0.0.1",
 		"tss-react": "^4.8.6",
 		"typescript": "5.1.3",
+		"upgrade": "^1.1.0",
+		"webpack": "^5.88.0",
 		"yup": "^1.2.0"
 	},
 	"devDependencies": {
@@ -63,5 +66,13 @@
 		"eslint-plugin-react": "^7.32.2",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-storybook": "^0.6.12"
+	},
+	"browser": {
+		"fs": false,
+		"path": false,
+		"os": false,
+		"net": false,
+		"tls": false,
+		"child_process": false
 	}
 }
