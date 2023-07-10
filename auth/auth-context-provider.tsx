@@ -7,19 +7,19 @@ import {
 	onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "config/client";
-import { AuthUser } from "types/";
-import { signInWithLink } from "auth/client";
+import { AuthUser, PrivateUserData } from "types/index";
+import { getPrivateUserData, signInWithLink } from "auth/client";
 
 // create auth context
 export const AuthContext = createContext<AuthUser | null>(null);
 export const useAuthContext = () => useContext(AuthContext);
 
-export const AuthContextProvider: React.FC<{ defaultUser: AuthUser | null; children: ReactNode }> = ({
+export const AuthContextProvider: React.FC<{ defaultUser: PrivateUserData | null; children: ReactNode }> = ({
 	defaultUser,
 	children
 }) => {
 	// set user states
-	const [user, setUser] = useState<AuthUser | null>(defaultUser);
+	const [user, setUser] = useState<PrivateUserData | null>(defaultUser);
 	const [loading, setLoading] = useState(true);
 
 	// will sign in the user if there is an email link referred
@@ -35,13 +35,18 @@ export const AuthContextProvider: React.FC<{ defaultUser: AuthUser | null; child
 		// use the firebase on auth state changed listener
 		const unsubscribe = onAuthStateChanged(auth, async (userObserver) => {
 			if (userObserver) {
+				// fetch the private user data
+				const userData = await getPrivateUserData(userObserver.uid);
+
 				// set the user state
 				setUser({
+					...userData,
 					id: userObserver.uid,
 					email: userObserver.email,
 					emailVerified: userObserver.emailVerified,
 					isAnonymous: false,
-					phoneNumber: userObserver.phoneNumber
+					phoneNumber: userObserver.phoneNumber,
+					loggedIn: true,
 				});
 
 				// get the id token from firebase
