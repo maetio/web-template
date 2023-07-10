@@ -34,7 +34,7 @@ export async function Header() {
 				</div>
 			</div>
 			<div className="justify-end col-span-5 items-center flex mr-6">
-				<ProfileButton user={userData}/>
+				<ProfileButton />
 				<div className=" w-8 h-8 rounded-full ml-4 bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 			</div>
 		</div>

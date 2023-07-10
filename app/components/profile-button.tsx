@@ -2,15 +2,18 @@
 
 import React, { useEffect } from "react";
 import { signInWithLink } from "auth/client";
-import { PrivateUserData } from "types/user";
 import Link from "next/link";
+import { useAuthContext } from "auth/auth-context-provider";
 
 export /**
  * Will have the home screen render
  *
  * @return {*}
  */
-const ProfileButton = ({ user }: { user: Partial<PrivateUserData> | undefined }) => {
+const ProfileButton = () => {
+	// get the user context
+	const user = useAuthContext();
+
 	// will sign in the user if there is an email link referred
 	useEffect(() => {
 		if (window.location.href.includes("apiKey")) {

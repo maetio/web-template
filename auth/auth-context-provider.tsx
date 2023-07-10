@@ -7,11 +7,11 @@ import {
 	onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "config/client";
-import { AuthUser, PrivateUserData } from "types/index";
+import { PrivateUserData } from "types/index";
 import { getPrivateUserData, signInWithLink } from "auth/client";
 
 // create auth context
-export const AuthContext = createContext<AuthUser | null>(null);
+export const AuthContext = createContext<PrivateUserData | null>(null);
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthContextProvider: React.FC<{ defaultUser: PrivateUserData | null; children: ReactNode }> = ({
