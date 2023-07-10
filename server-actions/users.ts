@@ -27,6 +27,8 @@ export async function updateUserData(userData: Partial<PrivateUserData>) {
 	await privateUserCollection.doc(user.id).set(userData, { merge: true });
 
 	revalidatePath("/");
+	revalidatePath("/components/profile-button");
+	revalidatePath("/auth/server-auth-provider");
 }
 
 /**
@@ -69,6 +71,7 @@ export async function getAndUpdateUserData(userData: Omit<Partial<PrivateUserDat
 
 	// revalidate the path
 	revalidatePath("/");
+	revalidatePath("/components/profile-button");
 
 	return updatedUserData;
 }
