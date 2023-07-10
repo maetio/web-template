@@ -99,6 +99,6 @@ a {
 	}
 }
 
-.MuiInputLabel-root {
-	font-weight: 700 !important;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

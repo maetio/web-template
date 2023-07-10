@@ -16,6 +16,17 @@ API endpoints for our application. Primarily used for reading data.
 * `teams/[compID]/[num]`: fetch the top few number of teams in a competition.
 * `team-players/[teamID]`: fetch all the players within a certain team, sorted by rating. **UNIMPLEMENTED**
 
+## POST Endpoints
+* Create Team: Have the ability to make teams in retool.
+    * The initial create team will make the team with the captain.
+    * The second endpoint will add a player to the team with a list of player ids.
+
+## Report Game Endpoint
+* Add a endpoint that has a route for a body
+* Needs a header for authorization to make such a request
+* Needs a body to put the players for both teams
+    * Body also has the team name for both
+
 
 ## Resources
 Video on API Routing [here](https://www.youtube.com/watch?v=J4pdHM-oG-s&t=0s).
