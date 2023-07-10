@@ -1,17 +1,18 @@
 import React from "react";
 import { CompetitionsResponseType, PlayersResponseType, TeamsResponseType } from "app/types/next-api";
+import { BaseURL } from "config/server";
 
 export default async function ViewCompScreen({ params }: { params: { id: string } }) {
 	// get competition data
-	const competitionResponse = await fetch(`${process.env.NEXT_PUBLIC_PROJECT_DOMAIN}/api/competitions/${params.id}`);
+	const competitionResponse = await fetch(`${BaseURL}/api/competitions/${params.id}`);
 	const competitions: CompetitionsResponseType = await competitionResponse.json();
 
 	// get the competition players
-	const playersResponse = await fetch(`${process.env.NEXT_PUBLIC_PROJECT_DOMAIN}/api/players/${params.id}`);
+	const playersResponse = await fetch(`${BaseURL}/api/players/${params.id}`);
 	const players: PlayersResponseType = await playersResponse.json();
 
 	// get the competition teams
-	const teamsResponse = await fetch(`${process.env.NEXT_PUBLIC_PROJECT_DOMAIN}/api/teams/${params.id}`);
+	const teamsResponse = await fetch(`${BaseURL}/api/teams/${params.id}`);
 	const teams: TeamsResponseType = await teamsResponse.json();
 
 	return (

@@ -14,6 +14,13 @@ import { cert } from "firebase-admin/app";
 import { FirebaseServiceAccount } from "config/server-env";
 
 /**
+ * The base url for the server side code
+ * https://github.com/vercel/next.js/discussions/16429
+ * Defaults to vercel url, will fallback to env variable for local host
+ */
+export const BaseURL = process.env.NEXT_PUBLIC_VERCEL_URL ?? process.env.NEXT_PUBLIC_SITE_URL;
+
+/**
  * Initialize firestore with next
  * https://authjs.dev/reference/adapter/firebase#initfirestore
  * Using the google application credentials defined in .env
