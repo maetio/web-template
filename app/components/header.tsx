@@ -1,6 +1,7 @@
 import React from "react";
 import { MaetIcon } from "app/components/icons";
 import { ProfileButton } from "app/components/profile-button";
+import Link from "next/link";
 
 
 export /**
@@ -12,10 +13,12 @@ export /**
  *  @return {*}
  *
  */ const Header = () => (
-	<div className="grid grid-cols-12 gap-3 items-center h-16 border-b">
-		<div className="col-span-5 items-center flex ml-6">
-			<MaetIcon/>
-			<text className="text-lg ml-4 text-primaryMain">Maet</text>
+	<div className="bg-gray-50 grid grid-cols-12 gap-3 items-center">
+		<div className="col-span-4 items-center flex ml-2">
+			<Link href="/">
+				<MaetIcon/>
+				<p className="text-sm ml-2">Maet</p>
+			</Link>
 		</div>
 		<div className="col-span-2 items-center justify-center flex-1">
 			<div className="flex justify-end items-center relative">
