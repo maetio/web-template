@@ -17,7 +17,7 @@ export /**
 		<div className="col-span-5 items-center flex ml-6">
 			<Link href="/">
 				<div className="flex items center">
-					<MaetIcon/>
+					<MaetIcon color="primaryMain"/>
 					<text className="text-lg ml-4 text-primaryMain">Maet</text>
 				</div>
 			</Link>
