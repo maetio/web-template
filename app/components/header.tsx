@@ -12,17 +12,17 @@ export /**
  *  @return {*}
  *
  */ const Header = () => (
-	<div className="bg-gray-50 grid grid-cols-12 gap-3 items-center">
-		<div className="col-span-4 items-center flex ml-2">
+	<div className="grid grid-cols-12 gap-3 items-center h-16 border-b">
+		<div className="col-span-4 items-center flex ml-6">
 			<MaetIcon/>
-			<text className="text-sm ml-2">Maet</text>
+			<text className="text-sm ml-4">Maet</text>
 		</div>
 		<div className="col-span-4 items-center justify-center flex">
-			<input id="search" placeholder="Search..." className="rounded h-6"></input>
+			<input id="search" placeholder="Search" className=" px-2 rounded h-8 border placeholder-black"></input>
 		</div>
-		<div className="justify-end col-span-4 items-center flex mr-2">
+		<div className="justify-end col-span-4 items-center flex mr-6">
 			<ProfileButton/>
-			<div className=" w-12 h-12 rounded-full  bg-gradient-to-b from-purple-600 to-blue-600"></div>
+			<div className=" w-12 h-12 rounded-full ml-4  bg-gradient-to-b from-purple-600 to-blue-600"></div>
 		</div>
 	</div>
 	//  <Box sx={{ flexGrow: 1, border: 1, borderColor: "#E5E5E5" }}>
