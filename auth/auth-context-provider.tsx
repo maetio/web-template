@@ -7,7 +7,7 @@ import {
 	onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "config/client";
-import { AuthUser } from "../types";
+import { AuthUser } from "types/";
 import { signInWithLink } from "auth/client";
 
 // create auth context
@@ -57,6 +57,12 @@ export const AuthContextProvider: React.FC<{ defaultUser: AuthUser | null; child
 				});
 			} else {
 				setUser(null);
+
+				// Remove authentication cookies for firebase auth edge
+				// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
+				await fetch("/api/logout", {
+					method: "GET",
+				});
 			}
 			setLoading(false);
 		});
