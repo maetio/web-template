@@ -1,31 +1,15 @@
-"use client";
-
-import { MuiProvider } from "app/components/providers/mui";
 import "./globals.css";
 import { Nunito } from "next/font/google";
-// import RecoilRootProvider from "app/components/providers/recoil";
-import { ThemeProvider, createTheme, useMediaQuery } from "@mui/material";
 import React from "react";
-import getDesignTokens from "./theme";
+import { Header } from "app/components/header";
+import { ServerAuthProvider } from "auth/server-auth-provider";
 
 const nunito = Nunito({ subsets: ["latin"] });
-// had to comment out metadata export for now because of "use client directive"
 
-/* export const metadata = {
+export const metadata = {
 	title: "Maet Web Template",
-	description: "NextJS, Typescript, MUI, Firebase starter",
-}; */
-
-function CustomThemeProvider({ children }: { children: React.ReactNode }) {
-	// for setting color mode
-	const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-	// Update the theme only if the mode changes
-	const theme = React.useMemo(
-		() => createTheme(getDesignTokens(prefersDarkMode ? "dark" : "light")),
-		[prefersDarkMode]
-	);
-	return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
-}
+	description: "NextJS, Typescript, Firebase Auth,",
+};
 
 export default function RootLayout({
 	children,
@@ -35,11 +19,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={nunito.className}>
-				{/* <RecoilRootProvider> */}
-				<MuiProvider>
-					<CustomThemeProvider>{children}</CustomThemeProvider>
-				</MuiProvider>
-				{/* </RecoilRootProvider> */}
+				<ServerAuthProvider>
+					<Header />
+					{children}
+				</ServerAuthProvider>
 			</body>
 		</html>
 	);

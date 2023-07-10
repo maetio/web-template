@@ -1,26 +1,56 @@
-import Link from "next/link";
-import { UserProfile } from "app/components/layout/user-profile";
-import { ServerAuthProvider } from "auth/server-auth-provider";
+import { getUserData, updateUserData } from "server-actions/users";
 
 /**
- * server component that displays the profile screen
+ * Define the submitting form action
+ *
+ * @param {FormData} data
+ */
+const submitFormAction = async (data: FormData) => {
+	"use server";
+
+	// get the data
+	const firstName = data?.get("firstName")?.toString();
+	const lastName = data?.get("lastName")?.toString();
+
+	// update the data with the server action
+	await updateUserData({ firstName, lastName });
+};
+
+/**
+ * Server component that displays the profile screen
  *
  * @export
  * @return {*}
  */
-export default function Profile() {
+export default async function Profile() {
+	// fetch the user data
+	const userData = await getUserData();
 	return (
-		<div>
-			<nav>
-				<Link href="/">
-					<text>Go back to home page</text>
-				</Link>
-			</nav>
-			<h1>Profile page</h1>
-			<p>This page is server-side rendered</p>
-			<ServerAuthProvider>
-				<UserProfile />
-			</ServerAuthProvider>
-		</div>
+		<form action={submitFormAction} className="flex gap-2 items-center">
+			<h1>Edit Profile Data</h1>
+			<p>{userData?.email}</p>
+			<p>{userData?.firstName} {userData?.lastName}</p>
+			<input
+				required
+				type="text"
+				name="firstName"
+				className="text-2xl p-1 rounded-lg flex-grow w-full"
+				placeholder="firstName"
+				autoFocus
+			/>
+			<input
+				type="text"
+				name="lastName"
+				className="text-2xl p-1 rounded-lg flex-grow w-full"
+				placeholder="lastName"
+				autoFocus
+			/>
+			<button
+				type="submit"
+				className="p-2 text-xl rounded-2xl text-black border-solid border-black border-2 max-w-xs bg-green-500 hover:cursor-pointer hover:bg-green-400"
+			>
+				Submit
+			</button>
+		</form>
 	);
 }
