@@ -32,7 +32,7 @@ const getProfile = async (
  * @return {*}  {(Promise<{ id: string } & Partial<Profile>>)}
  */
 export const getOrCreateProfile = async (
-	user: PrivateUserData,
+	user: { id: string } & Partial<PrivateUserData>,
 	sport: Profile["sport"],
 	type: Profile["type"],
 ): Promise<{ id: string; userID: string } & Partial<Profile>> => {

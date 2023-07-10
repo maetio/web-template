@@ -1,7 +1,8 @@
-import { PlayerResponseType } from "../../../../types/next-api";
-import { getServerAuthUser } from "auth/server";
+import { PlayerResponseType } from "types/next-api";
 import { NextResponse } from "next/server";
-import { getProfile } from "server-actions/profiles";
+import { getOrCreateProfile, getProfile } from "server-actions/profiles";
+import { getUserData } from "server-actions/users";
+import { Profile } from "types/profile";
  
 /**
  * API endpont for fetching a given profile for a user
@@ -24,12 +25,15 @@ export async function GET(_request: Request, { params }: { params: { queryParams
 
 			// make a player if they are logged in and are the user
 			if (!profileDoc) {
-				// get auth user
-				const authUser = await getServerAuthUser();
+				// get user's private data
+				const user = await getUserData();
 
 				// create player
-				if (authUser?.id === userID)
-					console.warn("No player in the sport");
+				if (user?.id === userID) {
+					// get or create profile
+					const newPlayerProfile = await getOrCreateProfile(user, sport as Profile["sport"], "player");
+					return NextResponse.json(newPlayerProfile);
+				}
 			}
 
 			return NextResponse.json({ ...profileDoc?.data(), id: profileDoc?.id || userID });

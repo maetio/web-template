@@ -85,7 +85,7 @@ export async function getUserData() {
 
 	// handle if there is no user
 	if (!user) {
-		throw new Error("Cannot get information for unauthenticated user");
+		return undefined;
 	}
 
 	// check if user data
