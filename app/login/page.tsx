@@ -32,7 +32,8 @@ const LoginPage: React.FC<{}> = () => {
 		setSentEmail(true);
 	};
 
-	return (
+	return (<div></div>
+	/*
 		<div className="flex max-h-full max-w-full items-center">
 			<div className="inline-block h-40 bg-lightGray items-center justify-center">
 				<form onSubmit={handleSubmit(submitEmail)} className="flex gap-2 items-center">
@@ -42,7 +43,7 @@ const LoginPage: React.FC<{}> = () => {
 						required
 						type="text"
 						name="email"
-						className="text-2xl p-1 rounded-lg flex-grow w-50"
+						className="text-2xl p-1 rounded-lg flex-grow w-50 border"
 						placeholder="Enter Email"
 						autoFocus
 					/>
@@ -58,6 +59,7 @@ const LoginPage: React.FC<{}> = () => {
 				</form>
 			</div>
 		</div>
+		*/
 	);
 };
 
