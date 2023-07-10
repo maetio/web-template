@@ -22,6 +22,7 @@ export async function GET(_request: Request, { params }: { params: { queryParams
 		if (userID?.length && sport?.length) {
 			// fetch the profile doc
 			const profileDoc = await getProfile(userID, sport, "player");
+			console.log(profileDoc);
 
 			// make a player if they are logged in and are the user
 			if (!profileDoc) {

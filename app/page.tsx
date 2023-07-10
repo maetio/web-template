@@ -1,5 +1,5 @@
 import React from "react";
-import { CompetitionsResponseType } from "../types/next-api";
+import { CompetitionsResponseType } from "types/next-api";
 import Link from "next/link";
 import { BaseURL } from "config/constants";
 

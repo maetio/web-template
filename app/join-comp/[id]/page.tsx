@@ -1,5 +1,5 @@
 import React from "react";
-import { CompetitionsResponseType, PlayerResponseType } from "../../../types/next-api";
+import { CompetitionsResponseType, PlayerResponseType } from "types/next-api";
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
 
@@ -15,13 +15,14 @@ export default async function ViewCompScreen({ params }: { params: { id: string 
 	// get the profile data
 	const playerResponse = await fetch(`${BaseURL}/api/player/${user?.id}/${competitionData?.sport}`);
 	const playerProfile: PlayerResponseType = await playerResponse.json();
-	console.log(user);
+
+	console.log(playerProfile);
 
 	return (
 		<main>
 			<h1>Competition Name: {competitionData?.name}</h1>
 			<br />
-			<h3>Join the competition as {user?.firstName}?</h3>
+			<h3>Join the competition as {playerProfile?.firstName}?</h3>
 		</main>
 	);
 }
