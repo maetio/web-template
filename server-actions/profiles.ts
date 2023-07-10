@@ -1,6 +1,7 @@
 "use server";
 
-import { PrivateUserData, Profile } from "../types";
+import { InitialRating, NullRating } from "constants/rating";
+import { PrivateUserData, Profile } from "types/index";
 import { profileCollection } from "config/server";
 
 export /**
@@ -49,7 +50,7 @@ export const getOrCreateProfile = async (
 			rating: InitialRating,
 			deltaRating: NullRating,
 		};
-		const docRef = await addDoc(profileCollection, newProfile);
+		const docRef = await profileCollection.add(newProfile);
 		return { id: docRef.id, ...newProfile };
 	}
 	return { ...profile, userID: user.id };
