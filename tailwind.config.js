@@ -2,7 +2,14 @@
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}",],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        transparent: "transparent",
+        current: "currentColor",
+        primaryMain: "#818cf8",
+        lightGray: "#e5e5e5",
+      },
+    },
   },
   plugins: [],
 }
