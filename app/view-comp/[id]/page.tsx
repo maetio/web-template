@@ -21,8 +21,6 @@ export default async function ViewCompScreen({ params }: { params: { id: string 
 	const teamsResponse = await fetch(`${BaseURL}/api/teams/${params.id}`);
 	const teams: TeamsResponseType = await teamsResponse.json();
 
-	console.log(user?.id);
-
 	return (
 		<main>
 			<h1>Competition Name: {competitionData?.name}</h1>

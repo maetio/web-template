@@ -2,21 +2,15 @@
 
 import React, { useEffect } from "react";
 import { signInWithLink } from "auth/client";
-import { useRouter } from "next/navigation";
-import { useAuthContext } from "auth/auth-context-provider";
+import { PrivateUserData } from "types/user";
+import Link from "next/link";
 
 export /**
  * Will have the home screen render
  *
  * @return {*}
  */
-const ProfileButton = () => {
-	// get the auth context
-	const user = useAuthContext();
-
-	// get the next router
-	const router = useRouter();
-
+const ProfileButton = ({ user }: { user: Partial<PrivateUserData> | undefined }) => {
 	// will sign in the user if there is an email link referred
 	useEffect(() => {
 		if (window.location.href.includes("apiKey")) {
@@ -26,11 +20,8 @@ const ProfileButton = () => {
 	}, []);
 
 	return (
-		<button onClick={user?.id ? () => router.push("/profile") : () => router.push("/login")} className="mr-2">
-			{user?.id ? <div>
-				<div>{user?.email?.at(0)}</div>
-				<p>{user.email}</p>
-			</div> : "Login"}
-		</button>
+		<div>
+			{user?.id ? <Link href="/profile">{user?.firstName} {user?.lastName}</Link> : <Link href="/login">Login</Link> }
+		</div>
 	);
 };
