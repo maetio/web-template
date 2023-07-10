@@ -1,6 +1,6 @@
 import { getTokens } from "next-firebase-auth-edge/lib/next/tokens";
 import { cookies } from "next/headers";
-import { FirebaseApiKey, FirebaseAuthEdgeOptions, FirebaseServiceAccount } from "config/server-env";
+import { FirebaseApiKey, FirebaseAuthEdgeOptions, FirebaseServiceAccount } from "config/constants";
 import { getFirebaseAuth } from "next-firebase-auth-edge/lib/auth";
 import { AuthUser } from "app/types";
 

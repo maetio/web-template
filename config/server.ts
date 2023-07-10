@@ -11,7 +11,7 @@ import {
 	QueryDocumentSnapshot,
 } from "firebase-admin/firestore";
 import { cert } from "firebase-admin/app";
-import { FirebaseServiceAccount } from "config/server-env";
+import { FirebaseServiceAccount } from "config/constants";
 
 /**
  * Initialize firestore with next

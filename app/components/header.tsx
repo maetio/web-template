@@ -1,6 +1,7 @@
 import React from "react";
 import { MaetIcon } from "app/components/icons";
 import { ProfileButton } from "app/components/profile-button";
+import Link from "next/link";
 
 
 export /**
@@ -14,8 +15,10 @@ export /**
  */ const Header = () => (
 	<div className="bg-gray-50 grid grid-cols-12 gap-3 items-center">
 		<div className="col-span-4 items-center flex ml-2">
-			<MaetIcon/>
-			<text className="text-sm ml-2">Maet</text>
+			<Link href="/">
+				<MaetIcon/>
+				<p className="text-sm ml-2">Maet</p>
+			</Link>
 		</div>
 		<div className="col-span-4 items-center justify-center flex">
 			<input id="search" placeholder="Search..." className="rounded h-6"></input>

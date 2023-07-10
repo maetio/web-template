@@ -11,6 +11,7 @@ API endpoints for our application. Primarily used for reading data.
 * `players/all`: fetch all players, sorted by rating.
 * `players/[compID]`: fetch all players in a certain competition, sorted by rating.
 * `players/[compID]/[num]`: fetch the top few number of players in a competition.
+* `player/[userID]/[sport]`: fetch the player with the user id and the sport
 * `teams/all`: fetch all teams, sorted by rating.
 * `teams/[compID]`: fetch all teams in a certain competition, sorted by rating.
 * `teams/[compID]/[num]`: fetch the top few number of teams in a competition.

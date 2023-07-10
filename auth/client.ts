@@ -10,19 +10,23 @@ import { getAndUpdateUserData } from "server-actions/users";
 
 /**
  * Function will send the passwordless login email to the user's email
+ * Will be referred back to the link within the application
  *
  * @export
  * @param {string} email
+ * @param {string} [referenceLink]
  * @return {*}  {Promise<void>}
  */
 export async function sendPasswordlessLoginEmail(
-	email: string
+	email: string,
+	referenceLink?: string,
 ): Promise<void> {
 	const actionCodeSettings: ActionCodeSettings = {
 		handleCodeInApp: true,
 		// dynamicLinkDomain: process.env.NEXT_PUBLIC_DYNAMIC_LINKS_DOMAIN,
 		// URL must be whitelisted in the Firebase Console.
 		url:
+			referenceLink || 
 			process.env.NEXT_PUBLIC_DYNAMIC_LINK_URL ||
 			"http://localhost:3000/",
 		iOS: {
@@ -35,6 +39,7 @@ export async function sendPasswordlessLoginEmail(
 		},
 	};
 	await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+	console.log("sent link:", referenceLink);
 }
 
 export /**

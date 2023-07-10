@@ -7,6 +7,7 @@ import { emailSchema } from "app/utils/schemas";
 import {
 	sendPasswordlessLoginEmail,
 } from "auth/client";
+import { BaseURL } from "config/constants";
 
 export /**
  * Enter email form
@@ -25,9 +26,12 @@ const LoginPage: React.FC<{}> = () => {
 	// state used to detect if email sent
 	const [sentEmail, setSentEmail] = useState(false);
 
+	// set the url to refer back to
+	const referringURL = document.referrer.startsWith(BaseURL) && !document.referrer.endsWith("login") ? document.referrer : undefined;
+
 	// submit email form
 	const submitEmail = async (data: { email: string }) => {
-		await sendPasswordlessLoginEmail(data.email);
+		await sendPasswordlessLoginEmail(data.email, referringURL);
 		localStorage.setItem("email", data.email);
 		setSentEmail(true);
 	};
