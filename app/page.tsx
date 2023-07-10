@@ -3,7 +3,7 @@ import { CompetitionsResponseType } from "app/types/next-api";
 import Link from "next/link";
 
 /**
- * Home screen of the application
+ * Home screen of the application. Shows all the competitions.
  *
  * @export
  * @return {*} 
