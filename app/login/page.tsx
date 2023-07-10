@@ -48,7 +48,7 @@ const LoginPage: React.FC<{}> = () => {
 				<div>Sent!</div> : 			
 				<button
 					type="submit"
-					className="p-2 text-xl rounded-2xl text-black border-solid border-black border-2 max-w-xs bg-green-500 hover:cursor-pointer hover:bg-green-400"
+					className="p-2 mt-4 text-xl rounded-2xl text-black border-solid border-black border-2 max-w-xs bg-primaryMain hover:cursor-pointer hover:bg-primaryMainLight"
 				>
 					Send Magic Link
 				</button>

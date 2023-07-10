@@ -7,6 +7,7 @@ module.exports = {
         transparent: "transparent",
         current: "currentColor",
         primaryMain: "#818cf8",
+        primaryMainLight: "#a5b4fc",
         lightGray: "#e5e5e5",
         gradientYellow: "#eae68e",
         gradientOrange: "#fbbebe",
