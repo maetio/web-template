@@ -2,7 +2,6 @@ import React from "react";
 import { MaetIcon } from "app/components/icons";
 import { ProfileButton } from "app/components/profile-button";
 import Link from "next/link";
-import Link from "next/link";
 
 
 export /**

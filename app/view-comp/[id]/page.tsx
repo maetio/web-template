@@ -40,7 +40,6 @@ export default async function ViewCompScreen({ params }: { params: { id: string 
 			{players.map((player) => (
 				<h3 key={player.id}>{player.firstName} {player.lastName}</h3>
 			))}
-			<PlayerCard />
 		</main>
 	);
 }
