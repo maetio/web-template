@@ -29,7 +29,7 @@ const ProfileButton = () => {
 		<button onClick={user?.id ? () => router.push("/profile") : () => router.push("/login")} className="mr-2">
 			{user?.id ? <div>
 				<div>{user?.email?.at(0)}</div>
-				<text>{user.email}</text>
+				<p>{user.email}</p>
 			</div> : "Login"}
 		</button>
 	);

@@ -1,7 +1,5 @@
-import { MaetIcon } from "app/components/icons";
-import { SearchBar } from "app/components/user-input";
-import Link from "next/link";
 import React from "react";
+import { MaetIcon } from "app/components/icons";
 import { ProfileButton } from "app/components/profile-button";
 
 
