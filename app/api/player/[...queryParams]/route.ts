@@ -1,6 +1,7 @@
-import { PlayerResponseType } from "app/types/next-api";
-import { profileCollection } from "config/server";
+import { PlayerResponseType } from "../../../../types/next-api";
+import { getServerAuthUser } from "auth/server";
 import { NextResponse } from "next/server";
+import { getProfile } from "server-actions/profiles";
  
 /**
  * API endpont for fetching a given profile for a user
@@ -18,9 +19,20 @@ export async function GET(_request: Request, { params }: { params: { queryParams
 	try {
 		// if the comp id is provided, return all the players by default
 		if (userID?.length && sport?.length) {
-			const querySnapshot = await profileCollection.where("userID", "==", userID).where("sport", "==", sport).where("type", "==", "player").orderBy("rating.numGames", "desc").limit(1).get();
-			const playerDoc = querySnapshot.docs.at(0);
-			return NextResponse.json({ ...playerDoc?.data(), id: playerDoc?.id || userID });
+			// fetch the profile doc
+			const profileDoc = await getProfile(userID, sport, "player");
+
+			// make a player if they are logged in and are the user
+			if (!profileDoc) {
+				// get auth user
+				const authUser = await getServerAuthUser();
+
+				// create player
+				if (authUser?.id === userID)
+					console.warn("No player in the sport");
+			}
+
+			return NextResponse.json({ ...profileDoc?.data(), id: profileDoc?.id || userID });
 		}
 		throw Error("Need both userID and sport for api endpoint.");
 	} catch (error: any) {

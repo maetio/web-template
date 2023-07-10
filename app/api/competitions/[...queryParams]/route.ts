@@ -1,4 +1,4 @@
-import { CompetitionsResponseType } from "app/types/next-api";
+import { CompetitionsResponseType } from "../../../../types/next-api";
 import { competitionsCollection } from "config/server";
 import { Timestamp } from "firebase-admin/firestore";
 import { NextResponse } from "next/server";

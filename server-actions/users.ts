@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { privateUserCollection } from "config/server";
 import { getServerAuthUser } from "auth/server";
-import { PrivateUserData } from "app/types";
+import { PrivateUserData } from "../types";
 
 /**
  * Server action that updates the user's information

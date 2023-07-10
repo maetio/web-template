@@ -7,7 +7,7 @@ import {
 	onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "config/client";
-import { AuthUser } from "app/types";
+import { AuthUser } from "../types";
 import { signInWithLink } from "auth/client";
 
 // create auth context
