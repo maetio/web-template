@@ -1,8 +1,6 @@
 import { PlayerResponseType } from "types/next-api";
 import { NextResponse } from "next/server";
-import { getOrCreateProfile, getProfile } from "server-actions/profiles";
-import { getUserData } from "server-actions/users";
-import { Profile } from "types/profile";
+import { getProfile } from "server-actions/profiles";
  
 /**
  * API endpont for fetching a given profile for a user
@@ -24,17 +22,23 @@ export async function GET(_request: Request, { params }: { params: { queryParams
 			const profileDoc = await getProfile(userID, sport, "player");
 
 			// make a player if they are logged in and are the user
-			if (!profileDoc) {
-				// get user's private data
-				const user = await getUserData();
+			// if (!profileDoc) {
+			// 	// get user's private data
+			// 	const user = await getUserData();
+			// 	const authUser = await getServerAuthUser();
 
-				// create player
-				if (user?.id === userID) {
-					// get or create profile
-					const newPlayerProfile = await getOrCreateProfile(user, sport as Profile["sport"], "player");
-					return NextResponse.json(newPlayerProfile);
-				}
-			}
+			// 	console.log("auth user:", authUser);
+
+			// 	console.log("User data", user);
+
+			// 	// create player
+			// 	if (user?.id === userID) {
+			// 		// get or create profile
+			// 		const newPlayerProfile = await getOrCreateProfile(user, sport as Profile["sport"], "player");
+			// 		console.log("New player profile", newPlayerProfile);
+			// 		return NextResponse.json(newPlayerProfile);
+			// 	}
+			// }
 
 			return NextResponse.json({ ...profileDoc?.data(), id: profileDoc?.id || userID });
 		}

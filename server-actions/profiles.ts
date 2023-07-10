@@ -32,18 +32,22 @@ const getProfile = async (
  * @return {*}  {(Promise<{ id: string } & Partial<Profile>>)}
  */
 export const getOrCreateProfile = async (
-	user: { id: string } & Partial<PrivateUserData>,
+	user: { id: string } & Partial<PrivateUserData> | undefined,
 	sport: Profile["sport"],
 	type: Profile["type"],
 ): Promise<{ id: string; userID: string } & Partial<Profile>> => {
-	const profile = await getProfile(user.id, sport, type);
+	// check if user id exists
+	if (!user?.id) throw Error("Need user id");
+
+	// get initial profile
+	const profile = await getProfile(user?.id, sport, type);
 
 	// make a profile for this if it is not generated
 	if (!profile) {
 		const newProfile: { userID: string } & Omit<Profile, "id"> = {
-			firstName: user.firstName || null,
-			lastName: user.lastName || null,
-			image: user.image || null,
+			firstName: user?.firstName || null,
+			lastName: user?.lastName || null,
+			image: user?.image || null,
 			userID: user.id,
 			type,
 			sport,
