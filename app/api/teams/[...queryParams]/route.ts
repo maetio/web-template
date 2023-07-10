@@ -1,4 +1,4 @@
-import { TeamsResponseType } from "app/types/next-api";
+import { TeamsResponseType } from "../../../../types/next-api";
 import { competitionTeamsSubcollection, teamsCollection } from "config/server";
 import { NextResponse } from "next/server";
  

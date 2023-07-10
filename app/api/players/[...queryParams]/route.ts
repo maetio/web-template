@@ -1,4 +1,4 @@
-import { PlayersResponseType } from "app/types/next-api";
+import { PlayersResponseType } from "../../../../types/next-api";
 import { competitionProfilesSubcollection, profileCollection } from "config/server";
 import { NextResponse } from "next/server";
  

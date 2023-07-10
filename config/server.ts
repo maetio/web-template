@@ -2,7 +2,7 @@ import { initFirestore } from "@next-auth/firebase-adapter";
 import {
 	CollectionDataTypes,
 	SubcollectionDataTypes,
-} from "app/types/firebase";
+} from "../types/firebase";
 import {
 	CollectionReference,
 	DocumentData,

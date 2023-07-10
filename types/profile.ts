@@ -1,6 +1,6 @@
-import { Competition } from "app/types/competition";
-import { Game } from "app/types/game";
-import { Rating } from "app/types/rating";
+import { Competition } from "./competition";
+import { Game } from "./game";
+import { Rating } from "./rating";
 
 /**
  * Will define the profile for a given sport and profile type

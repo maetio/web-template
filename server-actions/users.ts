@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { privateUserCollection } from "config/server";
 import { getServerAuthUser } from "auth/server";
-import { PrivateUserData } from "app/types";
+import { PrivateUserData } from "../types";
 
 /**
  * Server action that updates the user's information
@@ -85,7 +85,7 @@ export async function getUserData() {
 
 	// handle if there is no user
 	if (!user) {
-		throw new Error("Cannot get information for unauthenticated user");
+		return undefined;
 	}
 
 	// check if user data
