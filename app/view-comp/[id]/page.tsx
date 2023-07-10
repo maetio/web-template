@@ -1,5 +1,5 @@
 import React from "react";
-import { CompetitionsResponseType, PlayersResponseType, TeamsResponseType } from "app/types/next-api";
+import { CompetitionsResponseType, PlayersResponseType, TeamsResponseType } from "../../../types/next-api";
 import { BaseURL } from "config/constants";
 import Link from "next/link";
 import { getServerAuthUser } from "auth/server";
@@ -20,6 +20,8 @@ export default async function ViewCompScreen({ params }: { params: { id: string 
 	// get the competition teams
 	const teamsResponse = await fetch(`${BaseURL}/api/teams/${params.id}`);
 	const teams: TeamsResponseType = await teamsResponse.json();
+
+	console.log(user?.id);
 
 	return (
 		<main>

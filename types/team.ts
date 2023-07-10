@@ -1,6 +1,6 @@
-import { Competition } from "app/types/competition";
-import { Rating } from "app/types/rating";
-import { Location } from "app/types/location";
+import { Competition } from "./competition";
+import { Rating } from "./rating";
+import { Location } from "./location";
 import { Timestamp } from "firebase/firestore";
 
 /**
