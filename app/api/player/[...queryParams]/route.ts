@@ -1,31 +1,28 @@
-import { PlayersResponseType } from "app/types/next-api";
-import { competitionProfilesSubcollection, profileCollection } from "config/server";
+import { PlayerResponseType } from "app/types/next-api";
+import { profileCollection } from "config/server";
 import { NextResponse } from "next/server";
  
 /**
- * Get request for the competitions route
- * Endpoint defined as `competitions/[id]/[startTime]/[endTime]`
- * The startTime and endTime are only used if the id === 'all'
+ * API endpont for fetching a given profile for a user
+ * Requires the userID and the sport to be passed
  *
  * @export
- * @param {Request} request
- * @param {{ params: { queryParams: String[] } }} { params }
- * @return {*} 
+ * @param {Request} _request
+ * @param {({ params: { queryParams: Array<string | undefined> } })} { params }
+ * @return {*}  {Promise<NextResponse<PlayerResponseType>>}
  */
-export async function GET(_request: Request, { params }: { params: { queryParams: Array<string | undefined> } }): Promise<NextResponse<PlayersResponseType>> {
+export async function GET(_request: Request, { params }: { params: { queryParams: Array<string | undefined> } }): Promise<NextResponse<PlayerResponseType>> {
 	// get the parameters from the query
-	const [compID, number] = params.queryParams;
+	const [userID, sport] = params.queryParams;
 
 	try {
 		// if the comp id is provided, return all the players by default
-		if (compID && compID !== "all") {
-			const querySnapshot = await competitionProfilesSubcollection(compID).orderBy("rating.displayRating").limit(Number(number) || 5).get();
-			return NextResponse.json(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+		if (userID?.length && sport?.length) {
+			const querySnapshot = await profileCollection.where("userID", "==", userID).where("sport", "==", sport).orderBy("rating.numGames").limit(1).get();
+			const playerDoc = querySnapshot.docs.at(0);
+			return NextResponse.json({ ...playerDoc?.data(), id: playerDoc?.id || userID });
 		}
-
-		// get the whole collection group
-		const querySnapshot = await profileCollection.orderBy("rating.displayRating").limit(Number(number) || 5).get();
-		return NextResponse.json(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+		throw Error("Need both userID and sport for api endpoint.");
 	} catch (error: any) {
 		console.log(error);
 		throw Error(error);
