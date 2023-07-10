@@ -18,11 +18,11 @@ export /**
 			<text className="text-sm ml-4">Maet</text>
 		</div>
 		<div className="col-span-4 items-center justify-center flex">
-			<input id="search" placeholder="Search" className=" px-2 rounded h-8 border placeholder-black"></input>
+			<input id="search" placeholder="Search" className=" px-2 rounded-lg h-8 border text-sm placeholder-black"></input>
 		</div>
 		<div className="justify-end col-span-4 items-center flex mr-6">
 			<ProfileButton/>
-			<div className=" w-12 h-12 rounded-full ml-4  bg-gradient-to-b from-purple-600 to-blue-600"></div>
+			<div className=" w-8 h-8 rounded-full ml-4  bg-gradient-to-b from-orange-300 to-blue-500"></div>
 		</div>
 	</div>
 	//  <Box sx={{ flexGrow: 1, border: 1, borderColor: "#E5E5E5" }}>
