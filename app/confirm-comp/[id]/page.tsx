@@ -22,15 +22,15 @@ export default async function ConfirmCompScreen({ params }: { params: { id: stri
 	const competitionData = competitions?.at(0);
 
 	// get the profile data for the user
-	const profileData = await getOrCreateProfile(user, competitionData?.sport || "basketball", "player");
+	const profileData = user?.id ? await getOrCreateProfile(user, competitionData?.sport || "basketball", "player") : null;
 
 	return (
 		<main>
 			<h1>Competition Name: {competitionData?.name}</h1>
 			<br />
-			<h3>Join the competition as {profileData.firstName} {profileData.lastName}</h3>
-			<h3>Rating: {profileData.rating?.displayRating}</h3>
-			<h3>Sport: {profileData.sport}</h3>
+			<h3>Join the competition as {profileData?.firstName} {profileData?.lastName}</h3>
+			<h3>Rating: {profileData?.rating?.displayRating}</h3>
+			<h3>Sport: {profileData?.sport}</h3>
 			<br />
 			<Link href={`/view-comp/${params.id}`}>
 				Return to Competition.

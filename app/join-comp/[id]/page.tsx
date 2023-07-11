@@ -22,7 +22,7 @@ export default async function JoinCompScreen({ params }: { params: { id: string 
 	const competitionData = competitions?.at(0);
 
 	// get the profile data for the user
-	const profileData = await getOrCreateProfile(user, competitionData?.sport || "basketball", "player");
+	const profileData = user?.id ? await getOrCreateProfile(user, competitionData?.sport || "basketball", "player") : null;
 
 	/**
 	 * Define the submitting form action
@@ -34,7 +34,7 @@ export default async function JoinCompScreen({ params }: { params: { id: string 
 
 		try {
 			// update the data with the server action
-			await addCompetitionProfile(params.id, competitionData?.sport || "basketball", profileData.id);
+			if (profileData?.id) await addCompetitionProfile(params.id, competitionData?.sport || "basketball", profileData?.id);
 		} catch (e: any) {
 			console.warn("error with form action", e);
 		}
@@ -44,9 +44,9 @@ export default async function JoinCompScreen({ params }: { params: { id: string 
 		<main>
 			<h1>Competition Name: {competitionData?.name}</h1>
 			<br />
-			<h3>Join the competition as {profileData.firstName} {profileData.lastName}</h3>
-			<h3>Rating: {profileData.rating?.displayRating}</h3>
-			<h3>Sport: {profileData.sport}</h3>
+			<h3>Join the competition as {profileData?.firstName} {profileData?.lastName}</h3>
+			<h3>Rating: {profileData?.rating?.displayRating}</h3>
+			<h3>Sport: {profileData?.sport}</h3>
 			<br />
 			<form action={submitFormAction}>
 				<Link href={`/confirm-comp/${params.id}`}>

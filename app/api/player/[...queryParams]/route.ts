@@ -21,25 +21,6 @@ export async function GET(_request: Request, { params }: { params: { queryParams
 			// fetch the profile doc
 			const profileDoc = await getProfile(userID, sport, "player");
 
-			// make a player if they are logged in and are the user
-			// if (!profileDoc) {
-			// 	// get user's private data
-			// 	const user = await getUserData();
-			// 	const authUser = await getServerAuthUser();
-
-			// 	console.log("auth user:", authUser);
-
-			// 	console.log("User data", user);
-
-			// 	// create player
-			// 	if (user?.id === userID) {
-			// 		// get or create profile
-			// 		const newPlayerProfile = await getOrCreateProfile(user, sport as Profile["sport"], "player");
-			// 		console.log("New player profile", newPlayerProfile);
-			// 		return NextResponse.json(newPlayerProfile);
-			// 	}
-			// }
-
 			return NextResponse.json({ ...profileDoc?.data(), id: profileDoc?.id || userID });
 		}
 		throw Error("Need both userID and sport for api endpoint.");
