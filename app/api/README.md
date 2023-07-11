@@ -16,6 +16,7 @@ API endpoints for our application. Primarily used for reading data.
 * `teams/[compID]`: fetch all teams in a certain competition, sorted by rating.
 * `teams/[compID]/[num]`: fetch the top few number of teams in a competition.
 * `team-players/[teamID]`: fetch all the players within a certain team, sorted by rating. **UNIMPLEMENTED**
+* `comp-player/[compID]/[userID]`: fetch the competition player with the user id.
 
 ## POST Endpoints
 * Create Team: Have the ability to make teams in retool.
