@@ -7,7 +7,7 @@ import {
 import { BaseURL } from "config/constants";
 import Link from "next/link";
 import { getServerAuthUser } from "auth/server";
-import { CompetitionCard, PlayerCard, TeamCard } from "app/components/cards";
+import { PlayerCard, TeamCard } from "app/components/cards";
 
 export default async function ViewCompScreen({
 	params,

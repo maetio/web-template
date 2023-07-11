@@ -4,7 +4,11 @@ import { FaArrowTrendUp, FaArrowTrendDown } from "react-icons/fa6";
 
 // modular props for all competition cards
 export interface CompetitionCardProps {
-	name?: string;
+	compName?: string;
+	team1Name?: string;
+	team2Name?: string;
+	team1Rating?: number;
+	team2Rating?: number;
 	type?: string;
 	date?: string;
 }
@@ -12,22 +16,22 @@ export interface CompetitionCardProps {
 // eslint-disable-next-line @typescript-eslint/no-shadow
 
 export /**
- * Card that renders the initial competition data
+ * Card that renders game data upon game completion
  *
  * @param {*} {
- *		name, key
+ *		name
  *	}
  *  @return {*}
  *
  */
-const CompetitionCard: React.FC<CompetitionCardProps> = ({ name }) => {
+const GameCard: React.FC<CompetitionCardProps> = ({ compName, team1Name, team2Name, team1Rating, team2Rating }) => {
 	return (
 		<div className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-xl">
 			<div className="col-span-3 flex-col flex items-center justify-center">
 				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
 				<div className="flex flex-wrap justify-center items-center">
 					<text className="p-2 text-sm font-semibold">
-						Team Name
+						{team1Name}
 					</text>
 				</div>
 				<div className="grid grid-cols-3 pl-2">
@@ -43,14 +47,14 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({ name }) => {
 			</div>
 			<div className="col-span-6 flex-col gap-8 items-center flex">
 				<div className="flex-col flex">
-					<text className="font-semibold">Competition Name</text>
+					<text className="font-semibold">{compName}</text>
 					<div className="flex items-center justify-center">
 						<text className="text-xs text-gray-300">Jun 10, 2023</text>
 					</div>
 					<div className="flex-row">
 						<div className="grid-cols-2 grid">
 							<div className="flex col-span-1 items-center">
-								<text className="font-bold">99</text>
+								<text className="font-bold">{team1Rating}</text>
 							</div>
 							<div className="col-span-1 flex justify-end">
 								<text>99</text>
@@ -68,13 +72,13 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({ name }) => {
 				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
 				<div className="flex justify-center">
 					<text className="p-2 text-sm font-semibold">
-						Team Name
+						{team2Name}
 					</text>
 				</div>
 				<div className="grid grid-cols-3 pl-2">
 					<div className="col-span-1 flex items-center">
 						<TinyMaetIcon />
-						<text className="ml-1 text-xs text-gray-300">99</text>
+						<text className="ml-1 text-xs text-gray-300">{team2Rating}</text>
 					</div>
 					<div className="col-span-2 flex items-center justify-end">
 						<FaArrowTrendUp className="mr-1 text-green-800" />
@@ -147,4 +151,5 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({ name }) => {
 	);
 };
 
-export default CompetitionCard;
+export default GameCard;
+

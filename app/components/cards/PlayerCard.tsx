@@ -1,6 +1,6 @@
 import React from "react";
 import { FaMedal, FaArrowTrendUp } from "react-icons/fa6";
-import { MaetIcon, SmallMaetIcon } from "../../icons/maet-icon";
+import { MaetIcon, SmallMaetIcon } from "../icons/maet-icon";
 
 export interface PlayerCardProps {
 	name?: string;
