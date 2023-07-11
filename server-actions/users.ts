@@ -10,7 +10,7 @@ import { PrivateUserData } from "../types";
  * @remarks
  * doing it insdie a formAction or an action like the documentation explains
  * https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions#invocation
- * 
+ *
  * @export
  * @param {Partial<PrivateUserData>} userData
  */
@@ -34,9 +34,11 @@ export async function updateUserData(userData: Partial<PrivateUserData>) {
  *
  * @export
  * @param {(Omit<Partial<PrivateUserData>, "id"> | undefined)} userData
- * @return {*} 
+ * @return {*}
  */
-export async function getAndUpdateUserData(userData: Omit<Partial<PrivateUserData>, "id"> | undefined) {
+export async function getAndUpdateUserData(
+	userData: Omit<Partial<PrivateUserData>, "id"> | undefined
+) {
 	// get the user for the server
 	const user = await getServerAuthUser();
 
@@ -62,10 +64,16 @@ export async function getAndUpdateUserData(userData: Omit<Partial<PrivateUserDat
 	};
 
 	// merge the data to create the updated user data
-	const updatedUserData: PrivateUserData = { ...initialUserData, ...existingUserDoc.data(), ...userData };
+	const updatedUserData: PrivateUserData = {
+		...initialUserData,
+		...existingUserDoc.data(),
+		...userData,
+	};
 
 	// update the user data
-	await privateUserCollection.doc(user.id).set(updatedUserData, { merge: true });
+	await privateUserCollection
+		.doc(user.id)
+		.set(updatedUserData, { merge: true });
 
 	// revalidate the path
 	revalidatePath("/");
@@ -77,7 +85,7 @@ export async function getAndUpdateUserData(userData: Omit<Partial<PrivateUserDat
  * Function will fetch the user data
  *
  * @export
- * @return {*} 
+ * @return {*}
  */
 export async function getUserData() {
 	// get the user for the server

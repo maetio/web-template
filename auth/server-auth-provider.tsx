@@ -34,5 +34,9 @@ export async function ServerAuthProvider({
 		loggedIn: true,
 	};
 
-	return <AuthContextProvider defaultUser={userData?.id ? defaultUser : null}>{children}</AuthContextProvider>;
+	return (
+		<AuthContextProvider defaultUser={userData?.id ? defaultUser : null}>
+			{children}
+		</AuthContextProvider>
+	);
 }

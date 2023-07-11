@@ -4,9 +4,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "utils/schemas";
-import {
-	sendPasswordlessLoginEmail,
-} from "auth/client";
+import { sendPasswordlessLoginEmail } from "auth/client";
 
 export /**
  * Enter email form
@@ -15,10 +13,7 @@ export /**
  */
 const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 	// useForm & useAuth initialization
-	const {
-		register,
-		handleSubmit,
-	} = useForm<{ email: string }>({
+	const { register, handleSubmit } = useForm<{ email: string }>({
 		resolver: yupResolver(emailSchema),
 	});
 
@@ -35,7 +30,10 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 	return (
 		<div className="flex max-h-full max-w-full items-center">
 			<div className="inline-block h-40 bg-lightGray items-center justify-center">
-				<form onSubmit={handleSubmit(submitEmail)} className="flex gap-2 items-center">
+				<form
+					onSubmit={handleSubmit(submitEmail)}
+					className="flex gap-2 items-center"
+				>
 					<input
 						// eslint-disable-next-line react/jsx-props-no-spreading
 						{...register("email")}
@@ -46,15 +44,16 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 						placeholder="Enter Email"
 						autoFocus
 					/>
-					{sentEmail ?
-						<div>Sent!</div> : 			
+					{sentEmail ? (
+						<div>Sent!</div>
+					) : (
 						<button
 							type="submit"
 							className="p-2 mt-4 mr-4 text-xl rounded-2xl text-black border-solid border-black border-2 max-w-xs bg-primaryMain hover:cursor-pointer hover:bg-primaryMainLight"
 						>
-					Send Magic Link
+							Send Magic Link
 						</button>
-					}
+					)}
 				</form>
 			</div>
 		</div>

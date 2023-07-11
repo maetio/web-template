@@ -15,7 +15,13 @@ const ProfileButton = () => {
 
 	return (
 		<div>
-			{userData?.id ? <Link href="/profile">{userData?.firstName} {userData?.lastName}</Link> : <Link href="/login">Login</Link> }
+			{userData?.id ? (
+				<Link href="/profile">
+					{userData?.firstName} {userData?.lastName}
+				</Link>
+			) : (
+				<Link href="/login">Login</Link>
+			)}
 		</div>
 	);
 };

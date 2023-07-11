@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useTransition } from "react";
-import {signOutUser } from "auth/client";
+import { signOutUser } from "auth/client";
 import { useRouter } from "next/navigation";
 import { getUserData } from "server-actions/users";
 
