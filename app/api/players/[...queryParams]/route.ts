@@ -1,7 +1,10 @@
 import { PlayersResponseType } from "types/next-api";
-import { competitionProfilesSubcollection, profileCollection } from "config/server";
+import {
+	competitionProfilesSubcollection,
+	profileCollection,
+} from "config/server";
 import { NextResponse } from "next/server";
- 
+
 /**
  * Get request for the competitions route
  * Endpoint defined as `competitions/[id]/[startTime]/[endTime]`

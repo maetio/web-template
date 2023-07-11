@@ -8,6 +8,7 @@ import {
 import { BaseURL } from "config/constants";
 import Link from "next/link";
 import { getUserData } from "server-actions/users";
+import { PlayerCard, TeamCard } from "app/components/cards";
 
 export default async function ViewCompScreen({
 	params,
