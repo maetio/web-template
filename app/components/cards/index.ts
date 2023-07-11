@@ -1,3 +1,3 @@
-export * from "./GameCard";
-export * from "./PlayerCard";
-export * from "./TeamCard";
+export * from "./game-card";
+export * from "./player-card";
+export * from "./team-card";
