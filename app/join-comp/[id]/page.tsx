@@ -24,5 +24,6 @@ export default async function ViewCompScreen({ params }: { params: { id: string 
 			<br />
 			<h3>Join the competition as {playerProfile?.firstName}?</h3>
 		</main>
+		
 	);
 }

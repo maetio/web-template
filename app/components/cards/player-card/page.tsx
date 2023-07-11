@@ -1,4 +1,5 @@
 import React from "react";
+import { FaMedal } from "react-icons/fa6";
 import { MaetIcon } from "../../icons/maet-icon";
 
 export interface PlayerCardProps {
@@ -19,11 +20,12 @@ export /**
 const PlayerCard: React.FC<PlayerCardProps> = ({ name, image, score }) => {
 	return (
 		<div className="grid gap-4 grid-cols-12 justify-start items-center border-b">
-			<div className="col-span-1">
+			<div className="col-span-2 flex items-center">
+				<FaMedal className="text-yellow-300 ml-3"/>
 				<div className=" w-8 h-8 rounded-full ml-4 bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 			</div>
-			<div className="col-span-2">
-				<text>Player Name</text>
+			<div className="col-span-5">
+				<text className="font-bold">Player Name</text>
 			</div>
 			<div>
 				<MaetIcon/>
