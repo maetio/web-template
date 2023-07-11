@@ -20,9 +20,16 @@ export /**
  */
 const CompetitionCard: React.FC<CompetitionCardProps> = ({ name }) => {
 	return (
-		<div className=" drop mt-4 grid h-36 w-2/5 grid-cols-12 justify-start gap-4 rounded-md border p-4 align-top">
-			<div className="col-span-2">
-				<div className=" h-6 w-6 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+		<div className="mt-4 grid h-48 w-1/2 grid-cols-12 justify-start gap-4 shadow-xl rounded-xl border p-4 align-top">
+			<div className="col-span-3 flex-row">
+				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				<div>
+					<text className="text-sm text-center font-semibold p-2">Team Name</text>
+				</div>
+				<div className="justify-start pl-2 flex-col">
+					<text className="text-xs text-gray-300">99</text>
+					<text className="text-end text-xs">99</text>
+				</div>
 			</div>
 		</div>
 		// <Grid
