@@ -1,5 +1,5 @@
 import React from "react";
-import { MaetIcon } from "app/components/icons";
+import { HeaderMaetIcon } from "app/components/icons";
 import { ProfileButton } from "app/components/profile-button";
 import Link from "next/link";
 
@@ -14,15 +14,15 @@ export /**
  *
  */ const Header = () => (
 	<div className="grid grid-cols-12 gap-3 h-16 items-center border-b">
-		<div className="col-span-5 items-center flex ml-6">
+		<div className="col-span-3 items-center flex ml-2">
 			<Link href="/">
 				<div className="flex items center">
-					<MaetIcon color="primaryMain"/>
-					<text className="text-lg ml-4 text-primaryMain">Maet</text>
+					<HeaderMaetIcon/>
+					<text className="text-lg ml-2 text-primaryMain">Maet</text>
 				</div>
 			</Link>
 		</div>
-		<div className="col-span-2 items-center justify-center flex-1">
+		<div className="col-span-6 items-center justify-center flex">
 			<div className="flex justify-end items-center relative">
 				<input id="search" placeholder="Search" className=" px-2 flex-1 rounded-large h-10 border text-sm placeholder-black"></input>
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-5 h-5 -ml-8 stroke-2">
@@ -30,9 +30,9 @@ export /**
 				</svg>
 			</div>
 		</div>
-		<div className="justify-end col-span-5 items-center flex mr-6">
+		<div className="justify-end col-span-3 items-center flex mr-2">
 			<ProfileButton/>
-			<div className=" w-8 h-8 rounded-full ml-4 bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+			<div className=" w-8 h-8 ml-2 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 		</div>
 	</div>
 	//  <Box sx={{ flexGrow: 1, border: 1, borderColor: "#E5E5E5" }}>
