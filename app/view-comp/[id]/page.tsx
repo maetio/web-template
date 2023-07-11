@@ -8,6 +8,7 @@ import {
 import { BaseURL } from "config/constants";
 import Link from "next/link";
 import { getUserData } from "server-actions/users";
+import { PlayerCard, TeamCard } from "app/components/cards";
 
 export default async function ViewCompScreen({
 	params,
@@ -67,15 +68,19 @@ export default async function ViewCompScreen({
 			<br />
 			<br />
 			{teams.map((team) => (
-				<h3 key={team.id}>
-					{team.firstName} {team.lastName}
-				</h3>
+				<TeamCard
+					key={team.id}
+					name={team.lastName}
+					score={team.averagePlayerRating?.displayRating}
+				/>
 			))}
 			<br />
 			{players.map((player) => (
-				<h3 key={player.id}>
-					{player.firstName} {player.lastName}
-				</h3>
+				<PlayerCard
+					key={player.id}
+					name={`${player.firstName} ${player.lastName}`}
+					score={player.rating?.displayRating}
+				/>
 			))}
 		</main>
 	);

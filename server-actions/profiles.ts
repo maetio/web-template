@@ -22,6 +22,7 @@ export /**
  * @param {Profile["sport"]} sport
  * @param {Profile["type"]} type
  * @return {*}
+ * @return {*}
  */
 const getProfile = async (
 	userID: string,
