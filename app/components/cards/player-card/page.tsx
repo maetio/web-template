@@ -19,7 +19,7 @@ export /**
  */
 const PlayerCard: React.FC<PlayerCardProps> = ({ name, image, score }) => {
 	return (
-		<div className="grid gap-4 grid-cols-12 justify-start items-center border-b h-12 w-1/3">
+		<div className="grid gap-4 grid-cols-12 justify-start items-center border-b h-12 w-2/5">
 			<div className="col-span-7 flex items-center gap-2">
 				<FaMedal className="text-yellow-300 ml-2"/>
 				<div className=" w-6 h-6 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
