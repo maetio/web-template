@@ -23,6 +23,10 @@ export default async function JoinCompScreen({ params }: { params: { id: string 
 			<h3>Join the competition as {profileData.firstName} {profileData.lastName}</h3>
 			<h3>Rating: {profileData.rating?.displayRating}</h3>
 			<h3>Sport: {profileData.sport}</h3>
+			<br />
+			<form action={}>
+				<button type="submit">Join Competition</button>
+			</form>
 		</main>
 	);
 }
