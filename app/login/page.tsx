@@ -4,9 +4,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "utils/schemas";
-import {
-	sendPasswordlessLoginEmail,
-} from "auth/client";
+import { sendPasswordlessLoginEmail } from "auth/client";
 import { BaseURL } from "config/constants";
 
 export /**
@@ -16,10 +14,7 @@ export /**
  */
 const LoginPage: React.FC<{}> = () => {
 	// useForm & useAuth initialization
-	const {
-		register,
-		handleSubmit,
-	} = useForm<{ email: string }>({
+	const { register, handleSubmit } = useForm<{ email: string }>({
 		resolver: yupResolver(emailSchema),
 	});
 
@@ -27,7 +22,11 @@ const LoginPage: React.FC<{}> = () => {
 	const [sentEmail, setSentEmail] = useState(false);
 
 	// set the url to refer back to
-	const referringURL = document.referrer.startsWith(BaseURL) && !document.referrer.endsWith("login") ? document.referrer : undefined;
+	const referringURL =
+		document.referrer.startsWith(BaseURL) &&
+		!document.referrer.endsWith("login")
+			? document.referrer
+			: undefined;
 
 	// submit email form
 	const submitEmail = async (data: { email: string }) => {
@@ -38,27 +37,31 @@ const LoginPage: React.FC<{}> = () => {
 
 	return (
 		<div className="flex max-h-full max-w-full items-center">
-			<div className="inline-block h-40 bg-lightGray items-center justify-center">
-				<form onSubmit={handleSubmit(submitEmail)} className="flex gap-2 items-center">
+			<div className="inline-block h-40 items-center justify-center bg-lightGray">
+				<form
+					onSubmit={handleSubmit(submitEmail)}
+					className="flex items-center gap-2"
+				>
 					<input
 						// eslint-disable-next-line react/jsx-props-no-spreading
 						{...register("email")}
 						required
 						type="text"
 						name="email"
-						className="text-2xl p-1 rounded-lg flex-grow w-50 border"
+						className="w-50 flex-grow rounded-lg border p-1 text-2xl"
 						placeholder="Enter Email"
 						autoFocus
 					/>
-					{sentEmail ?
-						<div>Sent!</div> : 			
+					{sentEmail ? (
+						<div>Sent!</div>
+					) : (
 						<button
 							type="submit"
-							className="p-2 mt-4 mr-4 text-xl rounded-2xl text-black border-solid border-black border-2 max-w-xs bg-primaryMain hover:cursor-pointer hover:bg-primaryMainLight"
+							className="mr-4 mt-4 max-w-xs rounded-2xl border-2 border-solid border-black bg-primaryMain p-2 text-xl text-black hover:cursor-pointer hover:bg-primaryMainLight"
 						>
-					Send Magic Link
+							Send Magic Link
 						</button>
-					}
+					)}
 				</form>
 			</div>
 		</div>

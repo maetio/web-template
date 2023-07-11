@@ -10,15 +10,21 @@ export /**
  * @param {string} userID
  * @param {Profile["sport"]} sport
  * @param {Profile["type"]} type
- * @return {*} 
+ * @return {*}
  */
 const getProfile = async (
 	userID: string,
 	sport: Profile["sport"] | string,
-	type: Profile["type"],
+	type: Profile["type"]
 ) => {
 	// fetch the player
-	const querySnapshot = await profileCollection.where("userID", "==", userID).where("sport", "==", sport).where("type", "==", type).orderBy("rating.numGames", "desc").limit(1).get();
+	const querySnapshot = await profileCollection
+		.where("userID", "==", userID)
+		.where("sport", "==", sport)
+		.where("type", "==", type)
+		.orderBy("rating.numGames", "desc")
+		.limit(1)
+		.get();
 	return querySnapshot.docs.at(0);
 };
 
@@ -34,7 +40,7 @@ const getProfile = async (
 export const getOrCreateProfile = async (
 	user: { id: string } & Partial<PrivateUserData>,
 	sport: Profile["sport"],
-	type: Profile["type"],
+	type: Profile["type"]
 ): Promise<{ id: string; userID: string } & Partial<Profile>> => {
 	const profile = await getProfile(user.id, sport, type);
 

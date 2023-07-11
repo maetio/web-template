@@ -19,20 +19,22 @@ export /**
  */
 const PlayerCard: React.FC<PlayerCardProps> = ({ name, image, score }) => {
 	return (
-		<div className="grid gap-4 grid-cols-12 justify-start items-center border-b h-12 w-2/5">
+		<div className="grid h-12 w-2/5 grid-cols-12 items-center justify-start gap-4 border-b">
 			<div className="col-span-7 flex items-center gap-2">
-				<FaMedal className="text-yellow-300 ml-2"/>
-				<div className=" w-6 h-6 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
-				<text className="font-bold text-sm">{name}</text>
+				<FaMedal className="ml-2 text-yellow-300" />
+				<div className=" h-6 w-6 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				<text className="text-sm font-bold">{name}</text>
 			</div>
 			<div className="col-span-5 flex items-center gap-2">
-				<SmallMaetIcon/>
-				<text className="font-bold text-sm">{score}</text>
+				<SmallMaetIcon />
+				<text className="text-sm font-bold">{score}</text>
 				<div className="flex gap-1">
 					<div>
-						<FaArrowTrendUp className="text-green-800 text-md" />
+						<FaArrowTrendUp className="text-md text-green-800" />
 					</div>
-					<text className="font-bold text-sm text-green-800">+99</text>
+					<text className="text-sm font-bold text-green-800">
+						+99
+					</text>
 				</div>
 			</div>
 		</div>

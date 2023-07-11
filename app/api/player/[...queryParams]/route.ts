@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { getOrCreateProfile, getProfile } from "server-actions/profiles";
 import { getUserData } from "server-actions/users";
 import { Profile } from "types/profile";
- 
+
 /**
  * API endpont for fetching a given profile for a user
  * Requires the userID and the sport to be passed
@@ -13,7 +13,10 @@ import { Profile } from "types/profile";
  * @param {({ params: { queryParams: Array<string | undefined> } })} { params }
  * @return {*}  {Promise<NextResponse<PlayerResponseType>>}
  */
-export async function GET(_request: Request, { params }: { params: { queryParams: Array<string | undefined> } }): Promise<NextResponse<PlayerResponseType>> {
+export async function GET(
+	_request: Request,
+	{ params }: { params: { queryParams: Array<string | undefined> } }
+): Promise<NextResponse<PlayerResponseType>> {
 	// get the parameters from the query
 	const [userID, sport] = params.queryParams;
 
@@ -31,12 +34,19 @@ export async function GET(_request: Request, { params }: { params: { queryParams
 				// create player
 				if (user?.id === userID) {
 					// get or create profile
-					const newPlayerProfile = await getOrCreateProfile(user, sport as Profile["sport"], "player");
+					const newPlayerProfile = await getOrCreateProfile(
+						user,
+						sport as Profile["sport"],
+						"player"
+					);
 					return NextResponse.json(newPlayerProfile);
 				}
 			}
 
-			return NextResponse.json({ ...profileDoc?.data(), id: profileDoc?.id || userID });
+			return NextResponse.json({
+				...profileDoc?.data(),
+				id: profileDoc?.id || userID,
+			});
 		}
 		throw Error("Need both userID and sport for api endpoint.");
 	} catch (error: any) {

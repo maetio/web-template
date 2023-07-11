@@ -22,5 +22,7 @@ export async function ServerAuthProvider({
 	// fetch the server auth user
 	const user = await getServerAuthUser();
 
-	return <AuthContextProvider defaultUser={user}>{children}</AuthContextProvider>;
+	return (
+		<AuthContextProvider defaultUser={user}>{children}</AuthContextProvider>
+	);
 }

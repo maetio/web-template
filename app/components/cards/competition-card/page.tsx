@@ -2,7 +2,6 @@ import React from "react";
 
 // modular props for all competition cards
 export interface CompetitionCardProps {
-	key: string;
 	name?: string;
 	type?: string;
 	date?: string;
@@ -19,9 +18,13 @@ export /**
  *  @return {*}
  *
  */
-const CompetitionCard: React.FC<CompetitionCardProps> = ({ name, key }) => {
+const CompetitionCard: React.FC<CompetitionCardProps> = ({ name }) => {
 	return (
-		<div></div>
+		<div className=" drop mt-4 grid h-36 w-2/5 grid-cols-12 justify-start gap-4 rounded-md border p-4 align-top">
+			<div className="col-span-2">
+				<div className=" h-6 w-6 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+			</div>
+		</div>
 		// <Grid
 		// 	container
 		// 	direction="row"

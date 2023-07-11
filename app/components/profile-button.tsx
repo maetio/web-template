@@ -26,11 +26,22 @@ const ProfileButton = () => {
 	}, []);
 
 	return (
-		<button onClick={user?.id ? () => router.push("/profile") : () => router.push("/login")} className="">
-			{user?.id ? <div>
-				<div>{user?.email?.at(0)}</div>
-				<p>{user.email}</p>
-			</div> : "Login"}
+		<button
+			onClick={
+				user?.id
+					? () => router.push("/profile")
+					: () => router.push("/login")
+			}
+			className=""
+		>
+			{user?.id ? (
+				<div>
+					<div>{user?.email?.at(0)}</div>
+					<p>{user.email}</p>
+				</div>
+			) : (
+				"Login"
+			)}
 		</button>
 	);
 };

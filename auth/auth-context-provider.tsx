@@ -1,11 +1,14 @@
 "use client";
 
 import {
-	ReactNode, createContext, useContext, useState, useEffect, useMemo
+	ReactNode,
+	createContext,
+	useContext,
+	useState,
+	useEffect,
+	useMemo,
 } from "react";
-import {
-	onAuthStateChanged,
-} from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "config/client";
 import { AuthUser } from "../types";
 import { signInWithLink } from "auth/client";
@@ -14,10 +17,10 @@ import { signInWithLink } from "auth/client";
 export const AuthContext = createContext<AuthUser | null>(null);
 export const useAuthContext = () => useContext(AuthContext);
 
-export const AuthContextProvider: React.FC<{ defaultUser: AuthUser | null; children: ReactNode }> = ({
-	defaultUser,
-	children
-}) => {
+export const AuthContextProvider: React.FC<{
+	defaultUser: AuthUser | null;
+	children: ReactNode;
+}> = ({ defaultUser, children }) => {
 	// set user states
 	const [user, setUser] = useState<AuthUser | null>(defaultUser);
 	const [loading, setLoading] = useState(true);
@@ -41,7 +44,7 @@ export const AuthContextProvider: React.FC<{ defaultUser: AuthUser | null; child
 					email: userObserver.email,
 					emailVerified: userObserver.emailVerified,
 					isAnonymous: false,
-					phoneNumber: userObserver.phoneNumber
+					phoneNumber: userObserver.phoneNumber,
 				});
 
 				// get the id token from firebase
@@ -65,7 +68,7 @@ export const AuthContextProvider: React.FC<{ defaultUser: AuthUser | null; child
 	}, []);
 
 	// memoize user context
-	const userContext = useMemo(() => (user), [user]);
+	const userContext = useMemo(() => user, [user]);
 	return (
 		<AuthContext.Provider value={userContext}>
 			{loading ? <div>Loading...</div> : children}
