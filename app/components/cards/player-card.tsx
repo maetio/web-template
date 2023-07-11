@@ -1,6 +1,6 @@
 import React from "react";
 import { FaMedal, FaArrowTrendUp } from "react-icons/fa6";
-import { MaetIcon, SmallMaetIcon } from "../icons/maet-icon";
+import { SmallMaetIcon } from "../icons/maet-icon";
 
 export interface PlayerCardProps {
 	name?: string;
@@ -17,7 +17,7 @@ export /**
  *  @return {*}
  *
  */
-const PlayerCard: React.FC<PlayerCardProps> = ({ name, image, score }) => {
+const PlayerCard: React.FC<PlayerCardProps> = ({ name, score }) => {
 	return (
 		<div className="grid h-12 w-2/5 grid-cols-12 items-center justify-start gap-4 border-b">
 			<div className="col-span-7 flex items-center gap-2">

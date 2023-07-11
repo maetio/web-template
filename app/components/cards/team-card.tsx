@@ -21,7 +21,7 @@ export /**
  *	}
  *  @return {*}
  *
- */ const TeamCard: React.FC<TeamCardProps> = ({ name, image, score }) => {
+ */ const TeamCard: React.FC<TeamCardProps> = ({ name, score }) => {
 	return (
 		<div className="grid h-12 w-2/5 grid-cols-12 items-center justify-start gap-4 border-b">
 			<div className="col-span-7 flex items-center gap-2">

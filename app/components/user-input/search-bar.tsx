@@ -12,7 +12,7 @@ export interface SearchBarProps {
  * @param {SearchBarProps}
  * @returns
  */
-export const SearchBar: React.FC<SearchBarProps> = ({ label }) => {
+export const SearchBar: React.FC<SearchBarProps> = () => {
 	return (
 		<div></div>
 		// <TextField

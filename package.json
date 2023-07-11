@@ -9,7 +9,7 @@
 		"lint": "next lint .",
 		"deploy": "vercel",
 		"storybook": "storybook dev -p 6006",
-		"format": "yarn prettier --write .",
+		"format": "yarn prettier --write . && yarn lint --fix",
 		"build-storybook": "storybook build"
 	},
 	"dependencies": {

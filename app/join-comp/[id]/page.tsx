@@ -34,9 +34,9 @@ export default async function JoinCompScreen({
 	// get the profile data for the user
 	const profileData = user?.id
 		? await getOrCreateProfile(
-				user,
-				competitionData?.sport || "basketball",
-				"player"
+			user,
+			competitionData?.sport || "basketball",
+			"player"
 		  )
 		: null;
 
