@@ -40,10 +40,11 @@ export const getOrCreateProfile = async (
 	if (!user?.id) throw Error("Need user id");
 
 	// get initial profile
-	const profile = await getProfile(user?.id, sport, type);
+	const profileDoc = await getProfile(user?.id, sport, type);
+	const profile = profileDoc?.data();
 
 	// make a profile for this if it is not generated
-	if (!profile) {
+	if (!profileDoc?.id) {
 		const newProfile: { userID: string } & Omit<Profile, "id"> = {
 			firstName: user?.firstName || null,
 			lastName: user?.lastName || null,
@@ -57,5 +58,5 @@ export const getOrCreateProfile = async (
 		const docRef = await profileCollection.add(newProfile);
 		return { id: docRef.id, ...newProfile };
 	}
-	return { ...profile, userID: user.id };
+	return { ...profile, userID: user.id, id: profileDoc.id };
 };

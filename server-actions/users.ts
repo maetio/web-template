@@ -69,7 +69,6 @@ export async function getAndUpdateUserData(userData: Omit<Partial<PrivateUserDat
 
 	// revalidate the path
 	revalidatePath("/");
-	revalidatePath("/components/profile-button");
 
 	return updatedUserData;
 }

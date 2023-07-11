@@ -29,6 +29,7 @@ export default async function ViewCompScreen({ params }: { params: { id: string 
 			<Link href={user?.id ? `/join-comp/${competitionData?.id}` : `/comp-login/${competitionData?.id}`}>
 				<h2>Join Competition</h2>
 			</Link>
+			<p>Player logged in: {user?.firstName} {user?.lastName}</p>
 			<br />
 			<br />
 			{teams.map((team) => (
