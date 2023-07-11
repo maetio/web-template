@@ -1,13 +1,13 @@
 import React from "react";
 import {
+	CompProfilesResponseType,
 	CompetitionsResponseType,
 	PlayersResponseType,
 	TeamsResponseType,
 } from "types/next-api";
 import { BaseURL } from "config/constants";
 import Link from "next/link";
-import { getServerAuthUser } from "auth/server";
-import { PlayerCard, TeamCard } from "app/components/cards";
+import { getUserData } from "server-actions/users";
 
 export default async function ViewCompScreen({
 	params,
@@ -15,7 +15,7 @@ export default async function ViewCompScreen({
 	params: { id: string };
 }) {
 	// get the user data
-	const user = await getServerAuthUser();
+	const user = await getUserData();
 
 	// get competition data
 	const competitionResponse = await fetch(
@@ -33,18 +33,37 @@ export default async function ViewCompScreen({
 	const teamsResponse = await fetch(`${BaseURL}/api/teams/${params.id}`);
 	const teams: TeamsResponseType = await teamsResponse.json();
 
-	console.log(user?.id);
+	// get if the player has joined the competition
+	const compPlayerResponse = await fetch(
+		`${BaseURL}/api/comp-player/${params.id}/${user?.id}`
+	);
+	const compPlayer: CompProfilesResponseType =
+		await compPlayerResponse.json();
 
 	return (
 		<main>
 			<h1>Competition Name: {competitionData?.name}</h1>
 			<br />
 			<br />
-			<Link
-				href={user?.id ? `/join-comp/${competitionData?.id}` : "/login"}
-			>
-				<h2>Join Competition</h2>
-			</Link>
+			{compPlayer.profileID ? (
+				<h2>
+					In competition with rating{" "}
+					{compPlayer.rating?.displayRating}
+				</h2>
+			) : (
+				<Link
+					href={
+						user?.id
+							? `/join-comp/${competitionData?.id}`
+							: `/comp-login/${competitionData?.id}`
+					}
+				>
+					<h2>Join Competition</h2>
+				</Link>
+			)}
+			<p>
+				Player logged in: {user?.firstName} {user?.lastName}
+			</p>
 			<br />
 			<br />
 			{teams.map((team) => (
