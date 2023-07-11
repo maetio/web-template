@@ -80,7 +80,7 @@ export const AuthContextProvider: React.FC<{ defaultUser: PrivateUserData | null
 	// add listener for private user data
 	useEffect(() => {
 		// use the firebase on auth state changed listener
-		const unsubscribe = onSnapshot(doc(privateUserCollection, user?.id || ""), async (userDoc) => {
+		const unsubscribe = onSnapshot(doc(privateUserCollection, user?.id || "1"), async (userDoc) => {
 			if (userDoc.exists()) {
 			// get the data
 				const userData = userDoc.data();
