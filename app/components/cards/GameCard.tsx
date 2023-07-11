@@ -81,8 +81,8 @@ const GameCard: React.FC<CompetitionCardProps> = ({ compName, team1Name, team2Na
 						<text className="ml-1 text-xs text-gray-300">{team2Rating}</text>
 					</div>
 					<div className="col-span-2 flex items-center justify-end">
-						<FaArrowTrendUp className="mr-1 text-green-800" />
-						<text className="text-xs text-green-800">+99</text>
+						<FaArrowTrendDown className="mr-1 text-red-400" />
+						<text className="text-xs text-red-400">-99</text>
 					</div>
 				</div>
 			</div>
