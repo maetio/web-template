@@ -3,7 +3,7 @@ import { CompetitionsResponseType, PlayersResponseType, TeamsResponseType } from
 import { BaseURL } from "config/constants";
 import Link from "next/link";
 import { getServerAuthUser } from "auth/server";
-import { PlayerCard } from "app/components/cards";
+import { PlayerCard, TeamCard } from "app/components/cards";
 
 export default async function ViewCompScreen({ params }: { params: { id: string } }) {
 	// get the user data
@@ -41,7 +41,8 @@ export default async function ViewCompScreen({ params }: { params: { id: string 
 			{players.map((player) => (
 				<h3 key={player.id}>{player.firstName} {player.lastName}</h3>
 			))}
-			<PlayerCard/>
+			<PlayerCard name="Jay Boog" score={99}/>
+			<TeamCard name="Board Men" score={99}/>
 		</main>
 	);
 }

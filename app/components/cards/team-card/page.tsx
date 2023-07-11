@@ -1,4 +1,6 @@
+import { SmallMaetIcon } from "app/components/icons";
 import React from "react";
+import { FaArrowTrendUp, FaMedal } from "react-icons/fa6";
 // import { MaetIcon } from "../../icons/maet-icon";
 
 export interface TeamCardProps {
@@ -22,7 +24,23 @@ export /**
  *
  */ const TeamCard: React.FC<TeamCardProps> = ({ name, image, score }) => {
 	return (
-		<div></div>
+		<div className="grid gap-4 grid-cols-12 justify-start items-center border-b h-12 w-1/3">
+			<div className="col-span-7 flex items-center gap-2">
+				<FaMedal className="text-yellow-300 ml-2"/>
+				<div className=" w-6 h-6 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				<text className="font-bold text-sm">{name}</text>
+			</div>
+			<div className="col-span-5 flex items-center gap-2">
+				<SmallMaetIcon/>
+				<text className="font-bold text-sm">{score}</text>
+				<div className="flex gap-1">
+					<div>
+						<FaArrowTrendUp className="text-green-800 text-md" />
+					</div>
+					<text className="font-bold text-sm text-green-800">+99</text>
+				</div>
+			</div>
+		</div>
 		// <Grid
 		// 	container
 		// 	direction="row"

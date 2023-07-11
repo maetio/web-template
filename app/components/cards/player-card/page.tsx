@@ -1,6 +1,6 @@
 import React from "react";
-import { FaMedal } from "react-icons/fa6";
-import { MaetIcon } from "../../icons/maet-icon";
+import { FaMedal, FaArrowTrendUp } from "react-icons/fa6";
+import { MaetIcon, SmallMaetIcon } from "../../icons/maet-icon";
 
 export interface PlayerCardProps {
 	name?: string;
@@ -19,16 +19,21 @@ export /**
  */
 const PlayerCard: React.FC<PlayerCardProps> = ({ name, image, score }) => {
 	return (
-		<div className="grid gap-4 grid-cols-12 justify-start items-center border-b">
-			<div className="col-span-2 flex items-center">
-				<FaMedal className="text-yellow-300 ml-3"/>
-				<div className=" w-8 h-8 rounded-full ml-4 bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+		<div className="grid gap-4 grid-cols-12 justify-start items-center border-b h-12 w-1/3">
+			<div className="col-span-7 flex items-center gap-2">
+				<FaMedal className="text-yellow-300 ml-2"/>
+				<div className=" w-6 h-6 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				<text className="font-bold text-sm">{name}</text>
 			</div>
-			<div className="col-span-5">
-				<text className="font-bold">Player Name</text>
-			</div>
-			<div>
-				<MaetIcon/>
+			<div className="col-span-5 flex items-center gap-2">
+				<SmallMaetIcon/>
+				<text className="font-bold text-sm">{score}</text>
+				<div className="flex gap-1">
+					<div>
+						<FaArrowTrendUp className="text-green-800 text-md" />
+					</div>
+					<text className="font-bold text-sm text-green-800">+99</text>
+				</div>
 			</div>
 		</div>
 		// <Grid
