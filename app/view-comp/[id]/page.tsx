@@ -1,16 +1,28 @@
 import React from "react";
-import { CompProfilesResponseType, CompetitionsResponseType, PlayersResponseType, TeamsResponseType } from "types/next-api";
+import {
+	CompProfilesResponseType,
+	CompetitionsResponseType,
+	PlayersResponseType,
+	TeamsResponseType,
+} from "types/next-api";
 import { BaseURL } from "config/constants";
 import Link from "next/link";
 import { getUserData } from "server-actions/users";
 
-export default async function ViewCompScreen({ params }: { params: { id: string } }) {
+export default async function ViewCompScreen({
+	params,
+}: {
+	params: { id: string };
+}) {
 	// get the user data
 	const user = await getUserData();
 
 	// get competition data
-	const competitionResponse = await fetch(`${BaseURL}/api/competitions/${params.id}`);
-	const competitions: CompetitionsResponseType = await competitionResponse.json();
+	const competitionResponse = await fetch(
+		`${BaseURL}/api/competitions/${params.id}`
+	);
+	const competitions: CompetitionsResponseType =
+		await competitionResponse.json();
 	const competitionData = competitions.at(0);
 
 	// get the competition players
@@ -22,29 +34,48 @@ export default async function ViewCompScreen({ params }: { params: { id: string 
 	const teams: TeamsResponseType = await teamsResponse.json();
 
 	// get if the player has joined the competition
-	const compPlayerResponse = await fetch(`${BaseURL}/api/comp-player/${params.id}/${user?.id}`);
-	const compPlayer: CompProfilesResponseType = await compPlayerResponse.json();
+	const compPlayerResponse = await fetch(
+		`${BaseURL}/api/comp-player/${params.id}/${user?.id}`
+	);
+	const compPlayer: CompProfilesResponseType =
+		await compPlayerResponse.json();
 
 	return (
 		<main>
 			<h1>Competition Name: {competitionData?.name}</h1>
 			<br />
 			<br />
-			{compPlayer.profileID ?
-				<h2>In competition with rating {compPlayer.rating?.displayRating}</h2> :
-				<Link href={user?.id ? `/join-comp/${competitionData?.id}` : `/comp-login/${competitionData?.id}`}>
+			{compPlayer.profileID ? (
+				<h2>
+					In competition with rating{" "}
+					{compPlayer.rating?.displayRating}
+				</h2>
+			) : (
+				<Link
+					href={
+						user?.id
+							? `/join-comp/${competitionData?.id}`
+							: `/comp-login/${competitionData?.id}`
+					}
+				>
 					<h2>Join Competition</h2>
 				</Link>
-			}
-			<p>Player logged in: {user?.firstName} {user?.lastName}</p>
+			)}
+			<p>
+				Player logged in: {user?.firstName} {user?.lastName}
+			</p>
 			<br />
 			<br />
 			{teams.map((team) => (
-				<h3 key={team.id}>{team.firstName} {team.lastName}</h3>
+				<h3 key={team.id}>
+					{team.firstName} {team.lastName}
+				</h3>
 			))}
 			<br />
 			{players.map((player) => (
-				<h3 key={player.id}>{player.firstName} {player.lastName}</h3>
+				<h3 key={player.id}>
+					{player.firstName} {player.lastName}
+				</h3>
 			))}
 		</main>
 	);

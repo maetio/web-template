@@ -18,9 +18,7 @@ export /**
  */
 const PlayerCard: React.FC<PlayerCardProps> = ({ name, image, score }) => {
 	return (
-		<div className="grid gap-4 grid-cols-12 justify-start items-center border-b">
-			
-		</div>
+		<div className="grid gap-4 grid-cols-12 justify-start items-center border-b"></div>
 		// <Grid
 		// 	container
 		// 	direction="row"

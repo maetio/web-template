@@ -21,14 +21,14 @@ import { PrivateUserData } from "types/user";
  */
 export async function sendPasswordlessLoginEmail(
 	email: string,
-	referenceLink?: string,
+	referenceLink?: string
 ): Promise<void> {
 	const actionCodeSettings: ActionCodeSettings = {
 		handleCodeInApp: true,
 		// dynamicLinkDomain: process.env.NEXT_PUBLIC_DYNAMIC_LINKS_DOMAIN,
 		// URL must be whitelisted in the Firebase Console.
 		url:
-			referenceLink || 
+			referenceLink ||
 			process.env.NEXT_PUBLIC_DYNAMIC_LINK_URL ||
 			"http://localhost:3000/",
 		iOS: {
@@ -54,12 +54,11 @@ const signInWithLink = async (email: string | null, link: string) => {
 	if (!isSignInWithEmailLink(auth, link))
 		throw Error(`Not Email Sign in Link: ${link}`);
 
-	if (!email)
-		throw Error(`Not valid email: ${email}`);
-	
+	if (!email) throw Error(`Not valid email: ${email}`);
+
 	// get user credential and sign in with firebase
 	const userCredential = await signInWithEmailLink(auth, email, link);
-	
+
 	// get the id token from firebase
 	const idTokenResult = await userCredential.user.getIdTokenResult();
 
@@ -73,7 +72,10 @@ const signInWithLink = async (email: string | null, link: string) => {
 	});
 
 	// initialize the user data
-	await getAndUpdateUserData({ email: userCredential.user.email, emailVerified: userCredential.user.emailVerified });
+	await getAndUpdateUserData({
+		email: userCredential.user.email,
+		emailVerified: userCredential.user.emailVerified,
+	});
 
 	// return the user credential
 	return userCredential;
@@ -102,7 +104,9 @@ export async function signOutUser(): Promise<void> {
  * @param {string} userID
  * @return {*}  {(Promise<{ id: string } & Partial<PrivateUserData>>)}
  */
-export async function getPrivateUserData(userID: string): Promise<{ id: string } & Partial<PrivateUserData>> {
+export async function getPrivateUserData(
+	userID: string
+): Promise<{ id: string } & Partial<PrivateUserData>> {
 	const userDoc = await getDoc(doc(privateUserCollection, userID));
 	return { ...userDoc.data(), id: userDoc.id };
 }

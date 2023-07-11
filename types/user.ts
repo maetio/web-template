@@ -1,7 +1,6 @@
 import { UserRecord } from "firebase-admin/lib/auth/user-record";
 import { Competition } from "./competition";
 
-
 /**
  * Auth User to set for the auth context
  *

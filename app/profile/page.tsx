@@ -31,7 +31,9 @@ export default async function Profile() {
 			<form action={submitFormAction} className="flex gap-2 items-center">
 				<h1>Edit Profile Data</h1>
 				<p>{userData?.email}</p>
-				<p>{userData?.firstName} {userData?.lastName}</p>
+				<p>
+					{userData?.firstName} {userData?.lastName}
+				</p>
 				<input
 					required
 					type="text"
@@ -51,7 +53,7 @@ export default async function Profile() {
 					type="submit"
 					className="p-2 text-xl rounded-2xl text-black border-solid border-black border-2 max-w-xs bg-green-500 hover:cursor-pointer hover:bg-green-400"
 				>
-				Submit
+					Submit
 				</button>
 			</form>
 			<SignOutButton />

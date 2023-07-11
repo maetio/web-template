@@ -11,11 +11,13 @@ export /**
  */
 const LoginPage: React.FC<{}> = () => {
 	// set the url to refer back after email sign in
-	const referringURL = document.referrer.startsWith(BaseURL) && !document.referrer.endsWith("login") ? document.referrer : undefined;
+	const referringURL =
+		document.referrer.startsWith(BaseURL) &&
+		!document.referrer.endsWith("login")
+			? document.referrer
+			: undefined;
 
-	return (
-		<AuthEmailForm redirectURL={referringURL} />
-	);
+	return <AuthEmailForm redirectURL={referringURL} />;
 };
 
 export default LoginPage;
