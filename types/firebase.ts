@@ -1,14 +1,14 @@
 import { OrderByDirection, Timestamp, WhereFilterOp } from "firebase/firestore";
-import { Competition } from "app/types/competition";
-import { Game } from "app/types/game";
+import { Competition } from "./competition";
+import { Game } from "./game";
 import {
 	CompetitionProfile,
 	GameProfile,
 	Profile,
 	TeamProfile,
-} from "app/types/profile";
-import { CompetitionTeam, Team, TeamMessagesFireStore } from "app/types/team";
-import { PrivateUserData } from "app/types/user";
+} from "./profile";
+import { CompetitionTeam, Team, TeamMessagesFireStore } from "./team";
+import { PrivateUserData } from "./user";
 
 /**
  * Define timestamp types that will be included in some firestore data.

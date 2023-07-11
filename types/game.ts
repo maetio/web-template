@@ -1,5 +1,5 @@
-import { Competition } from "app/types/competition";
-import { Rating } from "app/types/rating";
+import { Competition } from "./competition";
+import { Rating } from "./rating";
 
 // define the displayed game status
 export type DisplayedGameStatus =

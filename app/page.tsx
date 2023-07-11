@@ -1,21 +1,26 @@
 import React from "react";
-import { CompetitionsResponseType } from "app/types/next-api";
+import { CompetitionsResponseType } from "types/next-api";
+import Link from "next/link";
+import { BaseURL } from "config/constants";
 
 /**
- * Home screen of the application
+ * Home screen of the application. Shows all the competitions.
  *
  * @export
- * @return {*} 
+ * @return {*}
  */
 export default async function Home() {
 	// fetch competition data
-	const competitionResponse = await fetch(`${process.env.NEXT_PUBLIC_PROJECT_DOMAIN}/api/competitions/all`);
-	const competitions: CompetitionsResponseType = await competitionResponse.json();
+	const competitionResponse = await fetch(`${BaseURL}/api/competitions/all`);
+	const competitions: CompetitionsResponseType =
+		await competitionResponse.json();
 
 	return (
 		<main>
 			{competitions.map((item) => (
-				<h1 key={item.id}>{item.name}</h1>
+				<Link key={item.id} href={`view-comp/${item.id}`}>
+					<h1>{item.name}</h1>
+				</Link>
 			))}
 		</main>
 	);

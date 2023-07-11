@@ -5,7 +5,11 @@ import {
 	refreshAuthCookies,
 } from "next-firebase-auth-edge/lib/next/middleware";
 import { getFirebaseAuth } from "next-firebase-auth-edge/lib/auth";
-import { FirebaseApiKey, FirebaseAuthEdgeOptions, FirebaseServiceAccount } from "config/server-env";
+import {
+	FirebaseApiKey,
+	FirebaseAuthEdgeOptions,
+	FirebaseServiceAccount,
+} from "config/constants";
 
 // function that will redirect the user to the login page if they are not logged in.
 function redirectToLogin(request: NextRequest) {
@@ -37,7 +41,7 @@ const { setCustomUserClaims, getUser } = getFirebaseAuth(
  *
  * @export
  * @param {NextRequest} request
- * @return {*} 
+ * @return {*}
  */
 export async function middleware(request: NextRequest) {
 	return authentication(request, {
@@ -51,10 +55,8 @@ export async function middleware(request: NextRequest) {
 
 		// for handling a valid token
 		handleValidToken: async ({ token, decodedToken }) => {
-
 			// for handling a request to update the custom claims of a firebase user
 			if (request.nextUrl.pathname === "/api/custom-claims") {
-
 				// set the custom claims using the auth edge library
 				// see claims on firebase here: https://firebase.google.com/docs/auth/admin/custom-claims
 				await setCustomUserClaims(decodedToken.uid, {
@@ -72,7 +74,11 @@ export async function middleware(request: NextRequest) {
 				);
 
 				// refresh the user's auth cookies
-				await refreshAuthCookies(token, response, FirebaseAuthEdgeOptions);
+				await refreshAuthCookies(
+					token,
+					response,
+					FirebaseAuthEdgeOptions
+				);
 				return response;
 			}
 
@@ -86,10 +92,11 @@ export async function middleware(request: NextRequest) {
 		// },
 
 		// // handle error by redirecting to the login page again
-		handleError: async (error) => {
+		/* handleError: async (error) => {
 			console.error("Unhandled authentication error", { error });
 			return redirectToLogin(request);
 		},
+		*/
 	});
 }
 

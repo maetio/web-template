@@ -1,6 +1,6 @@
-import { Competition } from "app/types/competition";
-import { Game } from "app/types/game";
-import { Rating } from "app/types/rating";
+import { Competition } from "./competition";
+import { Game } from "./game";
+import { Rating } from "./rating";
 
 /**
  * Will define the profile for a given sport and profile type
@@ -72,10 +72,10 @@ export interface TeamProfile extends Profile {
  * @extends {Profile}
  */
 export interface CompetitionProfile extends Profile {
-	teamID: string; // double read to show the team icon
+	teamID: string | null; // double read to show the team icon
 	profileID: string;
 	competitionID: string;
 	competitionEndTimeISO: string | null;
-	teamFirstName: string;
-	teamLastName: string;
+	teamFirstName: string | null;
+	teamLastName: string | null;
 }
