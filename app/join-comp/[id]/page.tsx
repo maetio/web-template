@@ -1,8 +1,7 @@
 import React from "react";
-import { CompetitionsResponseType, PlayerResponseType } from "types/next-api";
+import { CompetitionsResponseType } from "types/next-api";
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
-import { getOrCreateProfile } from "server-actions/profiles";
 
 export default async function JoinCompScreen({ params }: { params: { id: string } }) {
 	// get the user data

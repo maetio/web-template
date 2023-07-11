@@ -41,7 +41,6 @@ export async function sendPasswordlessLoginEmail(
 		},
 	};
 	await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-	console.log("SENT LINK:", referenceLink);
 }
 
 export /**

@@ -10,7 +10,7 @@ import Link from "next/link";
  * @export
  * @return {*} 
  */
-export async function Header() {	
+export async function Header() {
 	return (
 		<div className="grid grid-cols-12 gap-3 h-16 items-center border-b">
 			<div className="col-span-5 items-center flex ml-6">

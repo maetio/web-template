@@ -6,9 +6,10 @@ import {
 import {
 	onAuthStateChanged,
 } from "firebase/auth";
-import { auth } from "config/client";
+import { auth, privateUserCollection } from "config/client";
 import { PrivateUserData } from "types/index";
 import { getPrivateUserData, signInWithLink } from "auth/client";
+import { doc, onSnapshot } from "firebase/firestore";
 
 // create auth context
 export const AuthContext = createContext<PrivateUserData | null>(null);
@@ -72,8 +73,42 @@ export const AuthContextProvider: React.FC<{ defaultUser: PrivateUserData | null
 			setLoading(false);
 		});
 
+		// unsubscribe to detach listener
 		return () => unsubscribe();
 	}, []);
+
+	// add listener for private user data
+	useEffect(() => {
+		// use the firebase on auth state changed listener
+		const unsubscribe = onSnapshot(doc(privateUserCollection, user?.id || ""), async (userDoc) => {
+			if (userDoc.exists()) {
+			// get the data
+				const userData = userDoc.data();
+				// set the user state
+				setUser({
+					...userData,
+					id: userData.id,
+					email: userData.email,
+					emailVerified: userData.emailVerified || false,
+					isAnonymous: false,
+					phoneNumber: userData.phoneNumber,
+					loggedIn: true,
+				});
+
+			} else {
+				setUser(null);
+				// Remove authentication cookies for firebase auth edge
+				// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
+				await fetch("/api/logout", {
+					method: "GET",
+				});
+			}
+			setLoading(false);
+		});
+
+		// unsubscribe to detach listener
+		return () => unsubscribe();
+	}, [user?.id]);
 
 	// memoize user context
 	const userContext = useMemo(() => (user), [user]);
