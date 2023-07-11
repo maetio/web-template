@@ -1,4 +1,5 @@
 import { auth, privateUserCollection } from "config/client";
+import { BaseURL } from "config/constants";
 import {
 	ActionCodeSettings,
 	sendSignInLinkToEmail,
@@ -28,9 +29,7 @@ export async function sendPasswordlessLoginEmail(
 		// dynamicLinkDomain: process.env.NEXT_PUBLIC_DYNAMIC_LINKS_DOMAIN,
 		// URL must be whitelisted in the Firebase Console.
 		url:
-			referenceLink ||
-			process.env.NEXT_PUBLIC_DYNAMIC_LINK_URL ||
-			"http://localhost:3000/",
+			referenceLink || BaseURL,
 		iOS: {
 			bundleId: "io.maet.mobile",
 		},
