@@ -62,7 +62,6 @@ export default async function ViewCompScreen({
 					score={player.rating?.displayRating}
 				/>
 			))}
-			<CompetitionCard />
 		</main>
 	);
 }

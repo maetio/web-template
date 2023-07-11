@@ -22,11 +22,11 @@ export /**
  */
 const CompetitionCard: React.FC<CompetitionCardProps> = ({ name }) => {
 	return (
-		<div className="mt-4 grid h-44 w-1/4 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-xl">
-			<div className="col-span-3 flex-row items-center">
-				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
-				<div>
-					<text className="p-2 text-center text-sm font-semibold">
+		<div className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-xl">
+			<div className="col-span-3 flex-col flex items-center justify-center">
+				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
+				<div className="flex flex-wrap justify-center items-center">
+					<text className="p-2 text-sm font-semibold">
 						Team Name
 					</text>
 				</div>
@@ -41,22 +41,44 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({ name }) => {
 					</div>
 				</div>
 			</div>
-			<div className="col-span-6"></div>
-			<div className="col-span-3 flex-row items-center">
-				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
-				<div>
-					<text className="p-2 text-center text-sm font-semibold">
+			<div className="col-span-6 flex-col gap-8 items-center flex">
+				<div className="flex-col flex">
+					<text className="font-semibold">Competition Name</text>
+					<div className="flex items-center justify-center">
+						<text className="text-xs text-gray-300">Jun 10, 2023</text>
+					</div>
+					<div className="flex-row">
+						<div className="grid-cols-2 grid">
+							<div className="flex col-span-1 items-center">
+								<text className="font-bold">99</text>
+							</div>
+							<div className="col-span-1 flex justify-end">
+								<text>99</text>
+							</div>
+						</div>
+						<div className="bg-green-300 h-6 text-xs rounded-full flex items-center justify-center">
+							<div>
+								<text>Verified</text>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className="col-span-3 flex-col flex items-center justify-center">
+				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
+				<div className="flex justify-center">
+					<text className="p-2 text-sm font-semibold">
 						Team Name
 					</text>
 				</div>
-				<div className="grid grid-cols-3 items-center pl-2 pr-2">
+				<div className="grid grid-cols-3 pl-2">
 					<div className="col-span-1 flex items-center">
 						<TinyMaetIcon />
 						<text className="ml-1 text-xs text-gray-300">99</text>
 					</div>
 					<div className="col-span-2 flex items-center justify-end">
-						<FaArrowTrendDown className="mr-1 text-red-500" />
-						<text className="text-xs text-red-500">-99</text>
+						<FaArrowTrendUp className="mr-1 text-green-800" />
+						<text className="text-xs text-green-800">+99</text>
 					</div>
 				</div>
 			</div>
