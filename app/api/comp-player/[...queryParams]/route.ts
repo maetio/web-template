@@ -3,8 +3,8 @@ import { NextResponse } from "next/server";
 import { competitionProfilesSubcollection } from "config/server";
  
 /**
- * API endpont for fetching a given profile for a user
- * Requires the userID and the sport to be passed
+ * API endpont for fetching a given competition player
+ * Requires the comp id and the user id be passed
  *
  * @export
  * @param {Request} _request
@@ -25,7 +25,6 @@ export async function GET(_request: Request, { params }: { params: { queryParams
 		}
 		throw Error("Need both userID and sport for api endpoint.");
 	} catch (error: any) {
-		console.log(error);
 		throw Error(error);
 	}
 }

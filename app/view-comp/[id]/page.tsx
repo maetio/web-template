@@ -1,5 +1,5 @@
 import React from "react";
-import { CompetitionsResponseType, PlayersResponseType, TeamsResponseType } from "types/next-api";
+import { CompProfilesResponseType, CompetitionsResponseType, PlayersResponseType, TeamsResponseType } from "types/next-api";
 import { BaseURL } from "config/constants";
 import Link from "next/link";
 import { getUserData } from "server-actions/users";
@@ -21,14 +21,21 @@ export default async function ViewCompScreen({ params }: { params: { id: string 
 	const teamsResponse = await fetch(`${BaseURL}/api/teams/${params.id}`);
 	const teams: TeamsResponseType = await teamsResponse.json();
 
+	// get if the player has joined the competition
+	const compPlayerResponse = await fetch(`${BaseURL}/api/comp-player/${params.id}/${user?.id}`);
+	const compPlayer: CompProfilesResponseType = await compPlayerResponse.json();
+
 	return (
 		<main>
 			<h1>Competition Name: {competitionData?.name}</h1>
 			<br />
 			<br />
-			<Link href={user?.id ? `/join-comp/${competitionData?.id}` : `/comp-login/${competitionData?.id}`}>
-				<h2>Join Competition</h2>
-			</Link>
+			{compPlayer.profileID ?
+				<h2>In competition with rating {compPlayer.rating?.displayRating}</h2> :
+				<Link href={user?.id ? `/join-comp/${competitionData?.id}` : `/comp-login/${competitionData?.id}`}>
+					<h2>Join Competition</h2>
+				</Link>
+			}
 			<p>Player logged in: {user?.firstName} {user?.lastName}</p>
 			<br />
 			<br />
