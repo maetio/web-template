@@ -4,7 +4,7 @@ import { InitialRating, NullRating } from "constants/rating";
 import { Competition, CompetitionProfile, PrivateUserData, Profile, Team } from "types/index";
 import { competitionProfilesSubcollection, profileCollection } from "config/server";
 import { BaseURL } from "config/constants";
-import { CompetitionsResponseType, PlayerResponseType } from "types/next-api";
+import { PlayerResponseType } from "types/next-api";
 
 export /**
  * Function will fetch the profile

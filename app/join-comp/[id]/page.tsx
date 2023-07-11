@@ -2,8 +2,15 @@ import React from "react";
 import { CompetitionsResponseType } from "types/next-api";
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
-import { getOrCreateProfile } from "server-actions/profiles";
+import { addCompetitionProfile, getOrCreateProfile } from "server-actions/profiles";
 
+/**
+ * Screen will join the competition for the user
+ *
+ * @export
+ * @param {{ params: { id: string } }} { params }
+ * @return {*} 
+ */
 export default async function JoinCompScreen({ params }: { params: { id: string } }) {
 	// get the user data
 	const user = await getUserData();
@@ -16,6 +23,18 @@ export default async function JoinCompScreen({ params }: { params: { id: string 
 	// get the profile data for the user
 	const profileData = await getOrCreateProfile(user, competitionData?.sport || "basketball", "player");
 
+	/**
+	 * Define the submitting form action
+	 *
+	 * @param {FormData} data
+	 */
+	const submitFormAction = async () => {
+		"use server";
+
+		// update the data with the server action
+		await addCompetitionProfile(params.id, competitionData?.sport || "basketball", profileData.id);
+	};
+
 	return (
 		<main>
 			<h1>Competition Name: {competitionData?.name}</h1>
@@ -24,7 +43,7 @@ export default async function JoinCompScreen({ params }: { params: { id: string 
 			<h3>Rating: {profileData.rating?.displayRating}</h3>
 			<h3>Sport: {profileData.sport}</h3>
 			<br />
-			<form action={}>
+			<form action={submitFormAction}>
 				<button type="submit">Join Competition</button>
 			</form>
 		</main>
