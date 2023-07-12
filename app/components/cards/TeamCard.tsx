@@ -1,4 +1,4 @@
-import { SmallMaetIcon } from "app/components/icons";
+import { SmallMaetIcon, XSMaetIcon } from "app/components/icons";
 import React from "react";
 import { FaArrowTrendUp, FaMedal } from "react-icons/fa6";
 
@@ -24,21 +24,25 @@ export /**
  */ const TeamCard: React.FC<TeamCardProps> = ({ name, score }) => {
 	return (
 		<div className="grid h-12 w-5/6 grid-cols-12 items-center justify-start gap-4 border-b">
-			<div className="col-span-7 flex items-center gap-2">
-				<FaMedal className="ml-2 text-yellow-300" />
-				<div className=" h-6 w-6 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
-				<text className="text-sm font-bold">{name}</text>
+			<div className="col-span-2 flex items-center">
+				<FaMedal className="ml-1 text-yellow-300 text-sm" />
 			</div>
-			<div className="col-span-5 flex items-center gap-2 justify-end">
-				<SmallMaetIcon />
-				<text className="text-sm font-bold">{score}</text>
+			<div className="col-span-2 flex items-center">
+				<div className="h-4 w-4 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+			</div>
+			<div className="col-span-4 flex items-center">
+				<text className="text-xs lg:text-sm font-bold">{name}</text>
+			</div>
+			<div className="col-span-4 flex items-center gap-1 justify-start">
+				<XSMaetIcon />
+				<text className="text-xs lg:text-base font-bold">{score}</text>
 				<div className="flex gap-1">
-					<div>
+					{/* <div>
 						<FaArrowTrendUp className="text-md text-green-800" />
 					</div>
 					<text className="text-sm font-bold text-green-800">
 						+99
-					</text>
+					</text> */}
 				</div>
 			</div>
 		</div>

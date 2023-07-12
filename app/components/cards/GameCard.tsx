@@ -1,6 +1,6 @@
-import { TinyMaetIcon } from "app/components/icons";
 import React from "react";
 import { FaArrowTrendUp, FaArrowTrendDown } from "react-icons/fa6";
+import { XSGrayMaetIcon } from "../icons";
 
 // modular props for all competition cards
 export interface GameCardProps {
@@ -36,8 +36,8 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 				</div>
 				<div className="grid grid-cols-3 pl-2">
 					<div className="col-span-1 flex items-center">
-						<TinyMaetIcon />
-						<text className="ml-1 text-xs text-gray-300">99</text>
+						<XSGrayMaetIcon />
+						<text className="ml-1 text-xs text-gray-300">{team1Rating}</text>
 					</div>
 					<div className="col-span-2 flex items-center justify-end">
 						<FaArrowTrendUp className="mr-1 text-green-800" />
@@ -54,10 +54,10 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 					<div className="flex-row">
 						<div className="grid-cols-2 grid">
 							<div className="flex col-span-1 items-center">
-								<text className="font-bold">{team1Rating}</text>
+								<text className="font-bold"></text>
 							</div>
 							<div className="col-span-1 flex justify-end">
-								<text>99</text>
+								<text> </text>
 							</div>
 						</div>
 						<div className="bg-green-300 h-6 text-xs rounded-full flex items-center justify-center">
@@ -77,7 +77,7 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 				</div>
 				<div className="grid grid-cols-3 pl-2">
 					<div className="col-span-1 flex items-center">
-						<TinyMaetIcon />
+						<XSGrayMaetIcon />
 						<text className="ml-1 text-xs text-gray-300">{team2Rating}</text>
 					</div>
 					<div className="col-span-2 flex items-center justify-end">
