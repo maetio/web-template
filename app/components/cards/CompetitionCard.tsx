@@ -5,20 +5,20 @@ import { PlayerCard } from "./PlayerCard";
 
 export interface CompetitionCardProps {
     competitionName?: string
-	sport: string
-	competitionType: string
-	competitionStart: string
-	location: string
-	price: string
+	sport?: string
+	competitionType?: string
+	competitionStart?: string
+	location?: string
+	price?: string
 }
 
-const CompetitionCard: React.FC<CompetitionCardProps> = ({competitionName, sport, competitionType, competitionStart, location, price}) => {
+const CompetitionCard: React.FC<CompetitionCardProps> = ({competitionName, sport, competitionType, competitionStart, location }) => {
 	return (
-		<div className="border rounded-md shadow-lg bg-lighterGray lg:w-2/3 lg:min-w-0 min-w-full">
+		<div className="border rounded-md shadow-lg lg:w-2/3 lg:min-w-0 min-w-full mt-3">
 			<div className="grid grid-rows-12 pl-3 pt-3 pr-2">
 				<div className="grid row-span-4 grid-cols-12">
 					<div className="col-span-2 flex">
-						<div className="2xl:w-36 2xl:h-36 w-4/5 h-2/3 md:min-h-full rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+						<div className="2xl:w-36 2xl:h-36 w-4/5 h-12 md:min-h-full rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 					</div>
 					<div className="col-span-7 flex-col flex">
 						<h2 className="font-bold lg:text-3xl sm:text-lg">{competitionName}</h2>
@@ -36,7 +36,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({competitionName, sport
 						</div>
 					</div>
 					<div className="col-span-3 flex flex-row items-start justify-end">
-						<text className="lg:text-2xl text-gray-400 text-xs">{price}</text>
+						<text className="lg:text-2xl text-gray-400 text-xs">$99</text>
 						<text className="text-gray-400 ml-1 text-xs lg:text-base">per team</text>
 					</div>
 				</div>
