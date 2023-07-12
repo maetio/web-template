@@ -24,7 +24,13 @@ export /**
  *  @return {*}
  *
  */
-const GameCard: React.FC<CompetitionCardProps> = ({ compName, team1Name, team2Name, team1Rating, team2Rating }) => {
+const GameCard: React.FC<CompetitionCardProps> = ({
+	compName,
+	team1Name,
+	team2Name,
+	team1Rating,
+	team2Rating,
+}) => {
 	return (
 		<div className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-xl">
 			<div className="col-span-3 flex-col flex items-center justify-center">
@@ -49,7 +55,9 @@ const GameCard: React.FC<CompetitionCardProps> = ({ compName, team1Name, team2Na
 				<div className="flex-col flex">
 					<text className="font-semibold">{compName}</text>
 					<div className="flex items-center justify-center">
-						<text className="text-xs text-gray-300">Jun 10, 2023</text>
+						<text className="text-xs text-gray-300">
+							Jun 10, 2023
+						</text>
 					</div>
 					<div className="flex-row">
 						<div className="grid-cols-2 grid">
@@ -78,7 +86,9 @@ const GameCard: React.FC<CompetitionCardProps> = ({ compName, team1Name, team2Na
 				<div className="grid grid-cols-3 pl-2">
 					<div className="col-span-1 flex items-center">
 						<TinyMaetIcon />
-						<text className="ml-1 text-xs text-gray-300">{team2Rating}</text>
+						<text className="ml-1 text-xs text-gray-300">
+							{team2Rating}
+						</text>
 					</div>
 					<div className="col-span-2 flex items-center justify-end">
 						<FaArrowTrendDown className="mr-1 text-red-400" />
@@ -152,4 +162,3 @@ const GameCard: React.FC<CompetitionCardProps> = ({ compName, team1Name, team2Na
 };
 
 export default GameCard;
-

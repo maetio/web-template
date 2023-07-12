@@ -1,4 +1,4 @@
-import { auth } from "config/client";
+import { auth, privateUserCollection } from "config/client";
 import {
 	ActionCodeSettings,
 	sendSignInLinkToEmail,
@@ -6,7 +6,9 @@ import {
 	signInWithEmailLink,
 	signOut,
 } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import { getAndUpdateUserData } from "server-actions/users";
+import { PrivateUserData } from "types/user";
 
 /**
  * Function will send the passwordless login email to the user's email
@@ -39,7 +41,6 @@ export async function sendPasswordlessLoginEmail(
 		},
 	};
 	await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-	console.log("sent link:", referenceLink);
 }
 
 export /**
@@ -94,4 +95,18 @@ export async function signOutUser(): Promise<void> {
 	await fetch("/api/logout", {
 		method: "GET",
 	});
+}
+
+/**
+ * Function will return the private user data
+ *
+ * @export
+ * @param {string} userID
+ * @return {*}  {(Promise<{ id: string } & Partial<PrivateUserData>>)}
+ */
+export async function getPrivateUserData(
+	userID: string
+): Promise<{ id: string } & Partial<PrivateUserData>> {
+	const userDoc = await getDoc(doc(privateUserCollection, userID));
+	return { ...userDoc.data(), id: userDoc.id };
 }
