@@ -13,9 +13,9 @@ const CompetitionCard: React.FC<CompetitionCardProps> = () => {
 			<div className="grid grid-rows-12 pl-3 pt-2 pr-2">
 				<div className="grid row-span-4 grid-cols-12 gap-2">
 					<div className="col-span-2 flex">
-						<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+						<div className="h-36 w-36 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 					</div>
-					<div className="col-span-7 flex-col justify-center flex">
+					<div className="col-span-7 flex-col justify-start flex">
 						<h2 className="font-bold text-3xl">Competition Name</h2>
 						<div className="flex-row flex items-center">
 							<FaBasketball className="text-gray-400" />
