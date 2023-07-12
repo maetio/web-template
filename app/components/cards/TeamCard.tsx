@@ -23,13 +23,13 @@ export /**
  *
  */ const TeamCard: React.FC<TeamCardProps> = ({ name, score }) => {
 	return (
-		<div className="grid h-12 w-2/5 grid-cols-12 items-center justify-start gap-4 border-b">
+		<div className="grid h-12 w-5/6 grid-cols-12 items-center justify-start gap-4 border-b">
 			<div className="col-span-7 flex items-center gap-2">
 				<FaMedal className="ml-2 text-yellow-300" />
 				<div className=" h-6 w-6 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 				<text className="text-sm font-bold">{name}</text>
 			</div>
-			<div className="col-span-5 flex items-center gap-2">
+			<div className="col-span-5 flex items-center gap-2 justify-end">
 				<SmallMaetIcon />
 				<text className="text-sm font-bold">{score}</text>
 				<div className="flex gap-1">
