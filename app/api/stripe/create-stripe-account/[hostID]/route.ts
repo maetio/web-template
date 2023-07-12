@@ -15,7 +15,7 @@ const stripe = process.env.STRIPE_SECRET
  * @export
  * @param {NextRequest} _req
  * @param {{ params: { hostID: string } }} params
- * @return {*} 
+ * @return {*}
  */
 export async function POST(
 	_req: NextRequest,

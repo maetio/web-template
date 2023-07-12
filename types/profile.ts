@@ -72,10 +72,10 @@ export interface TeamProfile extends Profile {
  * @extends {Profile}
  */
 export interface CompetitionProfile extends Profile {
-	teamID: string; // double read to show the team icon
+	teamID: string | null; // double read to show the team icon
 	profileID: string;
 	competitionID: string;
 	competitionEndTimeISO: string | null;
-	teamFirstName: string;
-	teamLastName: string;
+	teamFirstName: string | null;
+	teamLastName: string | null;
 }

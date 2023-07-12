@@ -1,25 +1,29 @@
 "use client";
 
 import {
-	ReactNode, createContext, useContext, useState, useEffect, useMemo
+	ReactNode,
+	createContext,
+	useContext,
+	useState,
+	useEffect,
+	useMemo,
 } from "react";
-import {
-	onAuthStateChanged,
-} from "firebase/auth";
-import { auth } from "config/client";
-import { AuthUser } from "../types";
-import { signInWithLink } from "auth/client";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, privateUserCollection } from "config/client";
+import { PrivateUserData } from "types/index";
+import { getPrivateUserData, signInWithLink } from "auth/client";
+import { doc, onSnapshot } from "firebase/firestore";
 
 // create auth context
-export const AuthContext = createContext<AuthUser | null>(null);
+export const AuthContext = createContext<PrivateUserData | null>(null);
 export const useAuthContext = () => useContext(AuthContext);
 
-export const AuthContextProvider: React.FC<{ defaultUser: AuthUser | null; children: ReactNode }> = ({
-	defaultUser,
-	children
-}) => {
+export const AuthContextProvider: React.FC<{
+	defaultUser: PrivateUserData | null;
+	children: ReactNode;
+}> = ({ defaultUser, children }) => {
 	// set user states
-	const [user, setUser] = useState<AuthUser | null>(defaultUser);
+	const [user, setUser] = useState<PrivateUserData | null>(defaultUser);
 	const [loading, setLoading] = useState(true);
 
 	// will sign in the user if there is an email link referred
@@ -35,13 +39,18 @@ export const AuthContextProvider: React.FC<{ defaultUser: AuthUser | null; child
 		// use the firebase on auth state changed listener
 		const unsubscribe = onAuthStateChanged(auth, async (userObserver) => {
 			if (userObserver) {
+				// fetch the private user data
+				const userData = await getPrivateUserData(userObserver.uid);
+
 				// set the user state
 				setUser({
+					...userData,
 					id: userObserver.uid,
 					email: userObserver.email,
 					emailVerified: userObserver.emailVerified,
 					isAnonymous: false,
-					phoneNumber: userObserver.phoneNumber
+					phoneNumber: userObserver.phoneNumber,
+					loggedIn: true,
 				});
 
 				// get the id token from firebase
@@ -57,15 +66,57 @@ export const AuthContextProvider: React.FC<{ defaultUser: AuthUser | null; child
 				});
 			} else {
 				setUser(null);
+
+				// Remove authentication cookies for firebase auth edge
+				// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
+				await fetch("/api/logout", {
+					method: "GET",
+				});
 			}
 			setLoading(false);
 		});
 
+		// unsubscribe to detach listener
 		return () => unsubscribe();
 	}, []);
 
+	// add listener for private user data
+	useEffect(() => {
+		// use the firebase on auth state changed listener
+		const unsubscribe = onSnapshot(
+			doc(privateUserCollection, user?.id || "1"),
+			async (userDoc) => {
+				if (userDoc.exists()) {
+					// get the data
+					const userData = userDoc.data();
+					// set the user state
+					setUser({
+						...userData,
+						id: userData.id,
+						email: userData.email,
+						emailVerified: userData.emailVerified || false,
+						isAnonymous: false,
+						phoneNumber: userData.phoneNumber,
+						loggedIn: true,
+					});
+				} else {
+					setUser(null);
+					// Remove authentication cookies for firebase auth edge
+					// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
+					await fetch("/api/logout", {
+						method: "GET",
+					});
+				}
+				setLoading(false);
+			}
+		);
+
+		// unsubscribe to detach listener
+		return () => unsubscribe();
+	}, [user?.id]);
+
 	// memoize user context
-	const userContext = useMemo(() => (user), [user]);
+	const userContext = useMemo(() => user, [user]);
 	return (
 		<AuthContext.Provider value={userContext}>
 			{loading ? <div>Loading...</div> : children}

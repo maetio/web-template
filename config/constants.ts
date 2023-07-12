@@ -1,12 +1,19 @@
 import { ServiceAccount } from "next-firebase-auth-edge/lib/auth/credential";
 
-
+// set the initial base
+const initialBaseURL =
+	process.env.NEXT_PUBLIC_VERCEL_URL ??
+	process.env.NEXT_PUBLIC_SITE_URL ??
+	"http://localhost:3000/";
 /**
  * The base url for the server side code
  * https://github.com/vercel/next.js/discussions/16429
+ * https://vercel.com/docs/concepts/projects/environment-variables/system-environment-variables
  * Defaults to vercel url, will fallback to env variable for local host
  */
-export const BaseURL = process.env.NEXT_PUBLIC_VERCEL_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000/";
+export const BaseURL = initialBaseURL.startsWith("http")
+	? initialBaseURL
+	: `https://${initialBaseURL}`;
 
 /**
  * Define the firebase service account credentials for firebase admin
@@ -14,10 +21,7 @@ export const BaseURL = process.env.NEXT_PUBLIC_VERCEL_URL ?? process.env.NEXT_PU
 export const FirebaseServiceAccount: ServiceAccount = {
 	projectId: process.env.FIREBASE_PROJECT_ID || "",
 	clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL || "",
-	privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(
-		/\\n/g,
-		"\n"
-	) || "",
+	privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY || "", // process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, "\n") || "",
 };
 
 /**

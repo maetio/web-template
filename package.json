@@ -9,6 +9,7 @@
 		"lint": "next lint .",
 		"deploy": "vercel",
 		"storybook": "storybook dev -p 6006",
+		"format": "yarn prettier --write . && yarn lint --fix",
 		"build-storybook": "storybook build"
 	},
 	"dependencies": {
@@ -33,6 +34,7 @@
 		"next-firebase-auth-edge": "^0.7.6",
 		"postcss": "^8.4.25",
 		"prettier": "^2.8.8",
+		"prettier-plugin-tailwindcss": "^0.4.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-hook-form": "^7.44.3",

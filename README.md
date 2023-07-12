@@ -1,23 +1,26 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Overview
-Configured with the following:
-* Tailwind
-* Firebase Authentication: Passwordless login.
-* Firebase Next Auth Edge: to link client side authentication with the server
 
+Configured with the following:
+
+-   Tailwind
+-   Firebase Authentication: Passwordless login.
+-   Firebase Next Auth Edge: to link client side authentication with the server
 
 ## Organization
-* Config: contains the files that initialize the database and authentication logic for client and server.
+
+-   Config: contains the files that initialize the database and authentication logic for client and server.
 
 ## Important Principles
-* Authentication: Login and Logout
+
+-   Authentication: Login and Logout
     Talk about how this will store cookies automatically validate and invalidate them.
-    Making use of firebase auth edge. 
-* Fetching Data: API Route Handlers
+    Making use of firebase auth edge.
+-   Fetching Data: API Route Handlers
     Talk about using the api - allowing anyone to read the endpoints defined in the api directory. Use return types for type safety. Employ the use of Next's caching logic.
-* Mutating Data: Server Actions
-    Employ Next's use of cache invalidation. 
+-   Mutating Data: Server Actions
+    Employ Next's use of cache invalidation.
 
 ## Getting Started
 
