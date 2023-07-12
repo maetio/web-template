@@ -7,6 +7,7 @@ import {
 	getOrCreateProfile,
 } from "server-actions/profiles";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 /**
  * Screen will join the competition for the user
@@ -50,15 +51,19 @@ export default async function JoinCompScreen({
 
 		try {
 			// update the data with the server action
-			if (profileData?.id)
+			if (profileData?.id) {
 				await addCompetitionProfile(
 					params.id,
 					competitionData?.sport || "basketball",
-					profileData?.id
+					profileData.id
 				);
+				redirect(`/confirm-comp/${params.id}`);
+			}
+			console.log('after without profiel data');
 		} catch (e: any) {
 			console.warn("error with form action", e);
 		}
+		console.log('joingin competition');
 	};
 
 	return (
@@ -73,9 +78,7 @@ export default async function JoinCompScreen({
 			<h3>Sport: {profileData?.sport}</h3>
 			<br />
 			<form action={submitFormAction}>
-				<Link href={`/confirm-comp/${params.id}`}>
-					<button type="submit">Join Competition</button>
-				</Link>
+				<button type="submit">Join Competition</button>
 			</form>
 		</main>
 	);
