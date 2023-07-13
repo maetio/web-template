@@ -12,7 +12,7 @@ export async function GET(request: Request) {
 	return new Response(JSON.stringify(message), {
 		status: 200,
 		headers: {
-			"Access-Control-Allow-Origin": origin,
+			"Access-Control-Allow-Origin": origin || "",
 			"Content-Type": "application/json",
 		},
 	});

@@ -50,14 +50,16 @@ export async function middleware(request: NextRequest) {
 	const origin = request.headers.get("origin");
 	console.log(origin);
 
-	if ((origin && !allowedOrigins.includes(origin)) || !origin) {
-		return new NextResponse(null, {
-			status: 400,
-			statusText: "Bad Request",
-			headers: {
-				"Content-Type": "text/plain",
-			},
-		});
+	if (request.nextUrl.pathname.startsWith("/api/stripe/test")) {
+		if ((origin && !allowedOrigins.includes(origin)) || !origin) {
+			return new NextResponse(null, {
+				status: 400,
+				statusText: "Bad Request",
+				headers: {
+					"Content-Type": "text/plain",
+				},
+			});
+		}
 	}
 
 	return authentication(request, {
