@@ -7,6 +7,7 @@ export interface TeamCardProps {
 	image?: string;
 	score?: number;
 	position?: number;
+	ranking?: number;
 }
 
 /* export interface ScoreChange {
@@ -22,12 +23,22 @@ export /**
  *	}
  *  @return {*}
  *
- */ const TeamCard: React.FC<TeamCardProps> = ({ name, score }) => {
+ */ const TeamCard: React.FC<TeamCardProps> = ({ name, score, ranking }) => {
+	const medalColor: string[] = ["text-yellow-400", "text-gray-400", "text-amber-700"];
 	return (
 		<div className="grid h-12 w-5/6 grid-cols-12 items-center justify-start gap-4 border-b">
-			<div className="col-span-2 md:col-span-1 flex items-center">
-				<FaMedal className="ml-1 text-yellow-300 text-sm" />
-			</div>
+			{ranking && (
+				<div className="col-span-2 md:col-span-1 flex items-center">
+					{
+						ranking <= 3 && (
+							<FaMedal className={`ml-1 ${medalColor[ranking - 1]} md:text-base`} />
+						)
+					}
+					<text className="ml-1 font-bold">
+						{ranking}
+					</text>
+				</div>
+			)}
 			<div className="col-span-2 flex items-center">
 				<div className="h-4 w-4 md:h-8 md:w-8 rounded-full md:rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 			</div>
