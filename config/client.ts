@@ -9,6 +9,10 @@ import {
 	initializeFirestore,
 } from "firebase/firestore";
 import { CollectionDataTypes } from "types/firebase";
+import Cookies from "universal-cookie";
+
+// define universal cookie header
+export const UniversalCookies = new Cookies();
 
 // define client configuration
 export const clientConfig = {

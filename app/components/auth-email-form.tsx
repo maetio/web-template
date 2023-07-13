@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "utils/schemas";
 import { sendPasswordlessLoginEmail } from "auth/client";
+import { UniversalCookies } from "config/client";
 
 export /**
  * Enter email form
@@ -23,7 +24,8 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 	// submit email form
 	const submitEmail = async (data: { email: string }) => {
 		await sendPasswordlessLoginEmail(data.email, redirectURL);
-		localStorage.setItem("email", data.email);
+		// localStorage.setItem("email", data.email);
+		UniversalCookies.set("email", data.email, { path: "/" });
 		setSentEmail(true);
 	};
 

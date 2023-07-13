@@ -43,7 +43,11 @@ export default async function RedirectComp({
 		<main>
 			<h1>Competition Name: {competitionData?.name}</h1>
 			<br />
-			<h3>Loading...</h3>
+			{user?.email ? (
+				<h3>Loading account for {user?.email}</h3>
+			) : (
+				<h3>Loading...</h3>
+			)}
 		</main>
 	);
 }

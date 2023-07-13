@@ -46,6 +46,7 @@
 		"tls": "^0.0.1",
 		"tss-react": "^4.8.6",
 		"typescript": "5.1.3",
+		"universal-cookie": "^4.0.4",
 		"upgrade": "^1.1.0",
 		"webpack": "^5.88.0",
 		"yup": "^1.2.0"
