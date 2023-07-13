@@ -9,6 +9,7 @@ import {
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { JoinButton } from "./join-button";
+import { SubmitFormActionButton } from "app/components/submit-form-action-button";
 
 /**
  * Screen will join the competition for the user
@@ -78,11 +79,7 @@ export default async function JoinCompScreen({
 			<h3>Rating: {profileData?.rating?.displayRating}</h3>
 			<h3>Sport: {profileData?.sport}</h3>
 			<br />
-			<Link href={`view-comp/${params.id}`}>Return to Competition</Link>
-			<form action={submitFormAction}>
-				{/* <button type="submit">Join Competition</button> */}
-				<JoinButton type="submit" />
-			</form>
+			<SubmitFormActionButton action={submitFormAction} referRoute={`/confirm-comp/${params.id}`} />
 		</main>
 	);
 }
