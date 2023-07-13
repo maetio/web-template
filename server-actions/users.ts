@@ -26,7 +26,7 @@ export async function updateUserData(userData: Partial<PrivateUserData>) {
 	// set user data
 	await privateUserCollection.doc(user.id).set(userData, { merge: true });
 
-	revalidatePath("/profile");
+	revalidatePath("/");
 }
 
 /**
