@@ -80,6 +80,7 @@ export default async function ViewCompScreen({
 					key={player.id}
 					name={`${player.firstName} ${player.lastName}`}
 					score={player.rating?.displayRating}
+					ranking={1}
 				/>
 			))}
 		</main>
