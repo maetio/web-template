@@ -6,9 +6,6 @@ import {
 	addCompetitionProfile,
 	getOrCreateProfile,
 } from "server-actions/profiles";
-import { redirect } from "next/navigation";
-import Link from "next/link";
-import { JoinButton } from "./join-button";
 import { SubmitFormActionButton } from "app/components/submit-form-action-button";
 
 /**
@@ -37,9 +34,9 @@ export default async function JoinCompScreen({
 	// get the profile data for the user
 	const profileData = user?.id
 		? await getOrCreateProfile(
-				user,
-				competitionData?.sport || "basketball",
-				"player"
+			user,
+			competitionData?.sport || "basketball",
+			"player"
 		  )
 		: null;
 

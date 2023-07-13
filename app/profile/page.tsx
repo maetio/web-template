@@ -28,7 +28,7 @@ export default async function Profile() {
 	const userData = await getUserData();
 	return (
 		<div>
-			<form action={submitFormAction} className="flex gap-2 items-center">
+			<form action={submitFormAction} className="flex items-center gap-2">
 				<h1>Edit Profile Data</h1>
 				<p>{userData?.email}</p>
 				<p>
@@ -38,20 +38,20 @@ export default async function Profile() {
 					required
 					type="text"
 					name="firstName"
-					className="text-2xl p-1 rounded-lg flex-grow w-full"
+					className="w-full flex-grow rounded-lg p-1 text-2xl"
 					placeholder="firstName"
 					autoFocus
 				/>
 				<input
 					type="text"
 					name="lastName"
-					className="text-2xl p-1 rounded-lg flex-grow w-full"
+					className="w-full flex-grow rounded-lg p-1 text-2xl"
 					placeholder="lastName"
 					autoFocus
 				/>
 				<button
 					type="submit"
-					className="p-2 text-xl rounded-2xl text-black border-solid border-black border-2 max-w-xs bg-green-500 hover:cursor-pointer hover:bg-green-400"
+					className="max-w-xs rounded-2xl border-2 border-solid border-black bg-green-500 p-2 text-xl text-black hover:cursor-pointer hover:bg-green-400"
 				>
 					Submit
 				</button>

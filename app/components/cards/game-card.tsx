@@ -32,10 +32,10 @@ const GameCard: React.FC<CompetitionCardProps> = ({
 	team2Rating,
 }) => {
 	return (
-		<div className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-xl">
-			<div className="col-span-3 flex-col flex items-center justify-center">
-				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
-				<div className="flex flex-wrap justify-center items-center">
+		<div className="mt-4 grid h-48 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-xl sm:w-1/2 lg:w-1/3">
+			<div className="col-span-3 flex flex-col items-center justify-center">
+				<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				<div className="flex flex-wrap items-center justify-center">
 					<p className="p-2 text-sm font-semibold">{team1Name}</p>
 				</div>
 				<div className="grid grid-cols-3 pl-2">
@@ -49,22 +49,22 @@ const GameCard: React.FC<CompetitionCardProps> = ({
 					</div>
 				</div>
 			</div>
-			<div className="col-span-6 flex-col gap-8 items-center flex">
-				<div className="flex-col flex">
+			<div className="col-span-6 flex flex-col items-center gap-8">
+				<div className="flex flex-col">
 					<p className="font-semibold">{compName}</p>
 					<div className="flex items-center justify-center">
 						<p className="text-xs text-gray-300">Jun 10, 2023</p>
 					</div>
 					<div className="flex-row">
-						<div className="grid-cols-2 grid">
-							<div className="flex col-span-1 items-center">
+						<div className="grid grid-cols-2">
+							<div className="col-span-1 flex items-center">
 								<p className="font-bold">{team1Rating}</p>
 							</div>
 							<div className="col-span-1 flex justify-end">
 								<p>99</p>
 							</div>
 						</div>
-						<div className="bg-green-300 h-6 text-xs rounded-full flex items-center justify-center">
+						<div className="flex h-6 items-center justify-center rounded-full bg-green-300 text-xs">
 							<div>
 								<p>Verified</p>
 							</div>
@@ -72,8 +72,8 @@ const GameCard: React.FC<CompetitionCardProps> = ({
 					</div>
 				</div>
 			</div>
-			<div className="col-span-3 flex-col flex items-center justify-center">
-				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
+			<div className="col-span-3 flex flex-col items-center justify-center">
+				<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 				<div className="flex justify-center">
 					<p className="p-2 text-sm font-semibold">{team2Name}</p>
 				</div>

@@ -35,7 +35,7 @@ const SignOutButton = () => {
 		<button
 			disabled={isPending}
 			onClick={() => handleClick()}
-			className="p-2 text-xl rounded-2xl text-black border-solid border-black border-2 max-w-xs bg-red-500 hover:cursor-pointer hover:bg-red-400"
+			className="max-w-xs rounded-2xl border-2 border-solid border-black bg-red-500 p-2 text-xl text-black hover:cursor-pointer hover:bg-red-400"
 		>
 			{isPending ? "Loading..." : "Sign Out"}
 		</button>
