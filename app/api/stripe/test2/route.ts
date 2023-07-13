@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export async function GET(_req: Request) {
+export async function GET() {
 	const message = {
 		message: "hello from get ",
 	};

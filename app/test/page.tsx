@@ -12,6 +12,7 @@ export default function Profile() {
 			"http://localhost:3000/api/stripe/create-stripe-account/PKSlgS5QTif09Pp2cC6ovqMWPvt1",
 			{ method: "POST" }
 		);
+		console.log("thing", thing);
 		const otherThing = await thing.json();
 		console.log("thingy", otherThing);
 	};
