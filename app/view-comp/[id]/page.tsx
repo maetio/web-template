@@ -73,6 +73,7 @@ export default async function ViewCompScreen({
 					name={team.lastName}
 					score={team.averagePlayerRating?.displayRating}
 					ranking={1}
+					image={team.image}
 				/>
 			))}
 			<br />

@@ -19,7 +19,7 @@ export /**
  *  @return {*}
  *
  */
-const PlayerCard: React.FC<PlayerCardProps> = ({ name, score, ranking }) => {
+const PlayerCard: React.FC<PlayerCardProps> = ({ name, score, ranking, image }) => {
 	// define medal colors
 	const medalColor: string[] = ["text-yellow-400", "text-gray-400", "text-amber-700"];
 	return (
@@ -36,9 +36,10 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ name, score, ranking }) => {
 					</text>
 				</div>
 			)}
-			
 			<div className="col-span-2 flex items-center gap-1">
-				<div className=" h-4 w-4 md:h-8 md:w-8 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				<div  style={{
+					backgroundImage: `url(${image})`
+				}} className="bg-cover h-4 w-4 md:h-8 md:w-8 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 			</div>
 			<div className="col-span-4 flex items-start">
 				<text className="text-xs lg:text-base font-bold">{name}</text>
