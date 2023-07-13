@@ -10,7 +10,7 @@ import { BaseURL } from "config/constants";
  */
 export default function Profile() {
 	const handlePress = async () => {
-		const thing = await fetch(`${BaseURL}/stipe/create-stripe-account/PKSlgS5QTif09Pp2cC6ovqMWPvt1`, {
+		const thing = await fetch(`${BaseURL}/api/stripe/create-stripe-account/PKSlgS5QTif09Pp2cC6ovqMWPvt1`, {
 			method: "POST",
 		});
 		console.log("thing", thing);

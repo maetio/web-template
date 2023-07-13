@@ -6,6 +6,7 @@ import {
 } from "next-firebase-auth-edge/lib/next/middleware";
 import { getFirebaseAuth } from "next-firebase-auth-edge/lib/auth";
 import {
+	BaseURL,
 	FirebaseApiKey,
 	FirebaseAuthEdgeOptions,
 	FirebaseServiceAccount,
@@ -13,7 +14,7 @@ import {
 
 // cors whiteListed Domains
 const allowedOrigins = [
-	"http://localhost:3000",
+	`${BaseURL}`,
 	"https://www.google.com",
 	"https://maetio.retool.com/editor/e9ce7e92-1cd9-11ee-9ea3-9f44bbfdf5bc/Host%20%231/Maet%20Host%20Facing%20App%20-%20Seth%20playground",
 ];
@@ -54,7 +55,7 @@ export async function middleware(request: NextRequest) {
 	const origin = request.headers.get("origin");
 
 	if (
-		request.nextUrl.pathname.startsWith("/api/stripe/test") ||
+		request.nextUrl.pathname.startsWith("/api/stripe/test1") ||
 		request.nextUrl.pathname.startsWith("/api/stripe/create-stripe-account")
 	) {
 		if ((origin && !allowedOrigins.includes(origin)) || !origin) {
