@@ -11,6 +11,9 @@ import {
 	FirebaseServiceAccount,
 } from "config/constants";
 
+// cors whiteListed Domains
+const allowedOrigins = ["http://localhost:3000/*", "https://www.google.com"];
+
 // function that will redirect the user to the login page if they are not logged in.
 function redirectToLogin(request: NextRequest) {
 	// already in login page
@@ -44,6 +47,19 @@ const { setCustomUserClaims, getUser } = getFirebaseAuth(
  * @return {*}
  */
 export async function middleware(request: NextRequest) {
+	const origin = request.headers.get("origin");
+	console.log(origin);
+
+	if ((origin && !allowedOrigins.includes(origin)) || !origin) {
+		return new NextResponse(null, {
+			status: 400,
+			statusText: "Bad Request",
+			headers: {
+				"Content-Type": "text/plain",
+			},
+		});
+	}
+
 	return authentication(request, {
 		// these api routes are automatically created by the middleware
 		// see here: https://github.com/awinogrodzki/next-firebase-auth-edge/issues/34
