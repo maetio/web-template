@@ -30,7 +30,7 @@ module.exports = {
 		"react/jsx-props-no-spreading": [
 			2,
 			{
-				custom: "ignore",
+				html: "ignore",
 			},
 		],
 		// jsx-filename-extension allowed
