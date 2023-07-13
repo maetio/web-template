@@ -1,5 +1,6 @@
 import React from "react";
-import { FaBasketball, FaLocationArrow, FaRegCalendar } from "react-icons/fa6";
+import { FaBasketball, FaFutbol, FaLocationArrow, FaRegCalendar, FaTableTennisPaddleBall, FaVolleyball } from "react-icons/fa6";
+import { Competition } from "types/index";
 import { TeamCard } from "./TeamCard";
 import { PlayerCard } from "./PlayerCard";
 
@@ -13,6 +14,13 @@ export interface CompetitionCardProps {
 }
 
 const CompetitionCard: React.FC<CompetitionCardProps> = ({competitionName, sport, competitionType, competitionStart, location }) => {
+	const SportIcons: Record<Competition["sport"], React.ReactElement> = {
+		basketball: <FaBasketball className="text-gray-400 text-xs lg:text-base" />,
+		soccer: <FaFutbol className="text-gray-400 text-xs lg:text-base" />,
+		volleyball: <FaVolleyball className="text-gray-400 text-xs lg:text-base"/>,
+		pickleball: <FaTableTennisPaddleBall className="text-gray-400 text-xs lg:text-base" />
+	};
+	
 	return (
 		<div className="border rounded-md shadow-lg lg:w-2/3 lg:min-w-0 min-w-full mt-3">
 			<div className="grid grid-rows-12 pl-3 pt-3 pr-2">

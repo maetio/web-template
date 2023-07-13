@@ -4,9 +4,8 @@ import { FaArrowTrendUp, FaMedal } from "react-icons/fa6";
 
 export interface TeamCardProps {
 	name?: string;
-	image?: string;
+	image?: string | null | undefined;
 	score?: number;
-	position?: number;
 	ranking?: number;
 }
 
@@ -41,7 +40,7 @@ export /**
 			)}
 			<div className="col-span-2 flex items-center">
 				<div style={{
-					backgroundImage: `url(${image})`
+					backgroundImage: image ? `url(${image})` : "bg-none"
 				}} className="h-4 w-4 md:h-8 md:w-8 rounded-full md:rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 			</div>
 			<div className="col-span-4 flex items-center">

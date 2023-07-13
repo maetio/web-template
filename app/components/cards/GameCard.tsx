@@ -11,6 +11,7 @@ export interface GameCardProps {
 	team2Rating?: number;
 	type?: string;
 	date?: string;
+	gameStatus?: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -24,7 +25,7 @@ export /**
  *  @return {*}
  *
  */
-const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, team1Rating, team2Rating }) => {
+const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, team1Rating, team2Rating, gameStatus }) => {
 	return (
 		<div className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg">
 			<div className="col-span-3 flex-col flex items-center justify-center">
@@ -60,10 +61,11 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 								<text> </text>
 							</div>
 						</div>
-						<div className="bg-green-300 h-6 text-xs rounded-full flex items-center justify-center">
-							<div>
-								<text>Verified</text>
-							</div>
+						<div className="flex h-6 border">
+							{gameStatus ?
+								(<div className="bg-green-300 h-6 min-w-full text-xs rounded-full flex items-center justify-center">
+									<text>Verified</text>
+								</div>) : (<div></div>)}
 						</div>
 					</div>
 				</div>
