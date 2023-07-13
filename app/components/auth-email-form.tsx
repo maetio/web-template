@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "utils/schemas";
-import { sendPasswordlessLoginEmail } from "auth/client";
+import { sendPasswordlessLoginEmail, signInWithGoogle } from "auth/client";
 import { UniversalCookies } from "config/client";
+import { signInWithPopup } from "firebase/auth";
+import { SubmitFormActionButton } from "app/components/submit-form-action-button";
 
 export /**
  * Enter email form
@@ -32,7 +34,8 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 	return (
 		<div className="flex max-h-full max-w-full items-center">
 			<div className="inline-block h-40 items-center justify-center bg-lightGray">
-				<form
+				<SubmitFormActionButton action={() => signInWithGoogle()} title="Sign in with Google" />
+				{/* <form
 					onSubmit={handleSubmit(submitEmail)}
 					className="flex items-center gap-2"
 				>
@@ -56,7 +59,7 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 							Send Magic Link
 						</button>
 					)}
-				</form>
+				</form> */}
 			</div>
 		</div>
 	);

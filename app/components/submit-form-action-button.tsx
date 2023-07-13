@@ -13,7 +13,7 @@ interface CustomButtonParams {
 		| "green"
 		| "blue"
 		| "slate";
-	action?: () => Promise<void>;
+	action?: () => Promise<any>;
 	referRoute?: string;
 }
 
