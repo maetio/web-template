@@ -31,6 +31,7 @@ module.exports = {
 			2,
 			{
 				custom: "ignore",
+				html: "ignore",
 			},
 		],
 		// jsx-filename-extension allowed

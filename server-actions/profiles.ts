@@ -29,15 +29,22 @@ const getProfile = async (
 	sport: Profile["sport"] | string,
 	type: Profile["type"]
 ) => {
+	try {
 	// fetch the player
-	const querySnapshot = await profileCollection
-		.where("userID", "==", userID)
-		.where("sport", "==", sport)
-		.where("type", "==", type)
-		.orderBy("rating.numGames", "desc")
-		.limit(1)
-		.get();
-	return querySnapshot.docs.at(0);
+		const querySnapshot = await profileCollection
+			.where("userID", "==", userID)
+			.where("sport", "==", sport)
+			.where("type", "==", type)
+			.orderBy("rating.numGames", "desc")
+			.limit(1)
+			.get();
+		const mainProfileDoc = querySnapshot.docs.at(0);
+		
+		return mainProfileDoc?.exists ? { ...mainProfileDoc.data(), id: mainProfileDoc.id } : undefined;
+	} catch (e: any) {
+		console.warn("Error in get profile function", e);
+		throw Error(e);
+	}
 };
 
 /**
@@ -55,11 +62,10 @@ export const getOrCreateProfile = async (
 	type: Profile["type"]
 ): Promise<{ id: string; userID: string } & Partial<Profile>> => {
 	// get initial profile
-	const profileDoc = await getProfile(user?.id, sport, type);
-	const profile = profileDoc?.data();
+	const profileData = await getProfile(user?.id, sport, type);
 
 	// make a profile for this if it is not generated
-	if (!profileDoc?.id) {
+	if (!profileData?.id) {
 		const newProfile: { userID: string } & Omit<Profile, "id"> = {
 			firstName: user?.firstName || null,
 			lastName: user?.lastName || null,
@@ -73,7 +79,7 @@ export const getOrCreateProfile = async (
 		const docRef = await profileCollection.add(newProfile);
 		return { id: docRef.id, ...newProfile };
 	}
-	return { ...profile, userID: user.id, id: profileDoc.id };
+	return { ...profileData, userID: user.id, id: profileData.id };
 };
 
 export /**
@@ -100,13 +106,11 @@ const addCompetitionProfile = async (
 	}
 ) => {
 	try {
-
 		// get initial profile
 		const profileResponse = await fetch(
-			`${BaseURL}/player/${userID}/${sport}`
+			`${BaseURL}/api/player/${userID}/${sport}`
 		);
 		const profileData: PlayerResponseType = await profileResponse.json();
-		console.log("in add comp profile function", profileData);
 
 		// add the profile to the competition
 		const competitionProfile: CompetitionProfile = {
