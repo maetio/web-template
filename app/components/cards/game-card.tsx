@@ -36,9 +36,7 @@ const GameCard: React.FC<CompetitionCardProps> = ({
 			<div className="col-span-3 flex-col flex items-center justify-center">
 				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
 				<div className="flex flex-wrap justify-center items-center">
-					<p className="p-2 text-sm font-semibold">
-						{team1Name}
-					</p>
+					<p className="p-2 text-sm font-semibold">{team1Name}</p>
 				</div>
 				<div className="grid grid-cols-3 pl-2">
 					<div className="col-span-1 flex items-center">
@@ -55,9 +53,7 @@ const GameCard: React.FC<CompetitionCardProps> = ({
 				<div className="flex-col flex">
 					<p className="font-semibold">{compName}</p>
 					<div className="flex items-center justify-center">
-						<p className="text-xs text-gray-300">
-							Jun 10, 2023
-						</p>
+						<p className="text-xs text-gray-300">Jun 10, 2023</p>
 					</div>
 					<div className="flex-row">
 						<div className="grid-cols-2 grid">
@@ -79,9 +75,7 @@ const GameCard: React.FC<CompetitionCardProps> = ({
 			<div className="col-span-3 flex-col flex items-center justify-center">
 				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
 				<div className="flex justify-center">
-					<p className="p-2 text-sm font-semibold">
-						{team2Name}
-					</p>
+					<p className="p-2 text-sm font-semibold">{team2Name}</p>
 				</div>
 				<div className="grid grid-cols-3 pl-2">
 					<div className="col-span-1 flex items-center">

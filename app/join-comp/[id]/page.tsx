@@ -37,9 +37,9 @@ export default async function JoinCompScreen({
 	// get the profile data for the user
 	const profileData = user?.id
 		? await getOrCreateProfile(
-			user,
-			competitionData?.sport || "basketball",
-			"player"
+				user,
+				competitionData?.sport || "basketball",
+				"player"
 		  )
 		: null;
 
@@ -50,7 +50,7 @@ export default async function JoinCompScreen({
 	 */
 	const submitFormAction = async () => {
 		"use server";
-	
+
 		console.log("Submitting add competition profile");
 
 		try {
@@ -79,7 +79,10 @@ export default async function JoinCompScreen({
 			<h3>Rating: {profileData?.rating?.displayRating}</h3>
 			<h3>Sport: {profileData?.sport}</h3>
 			<br />
-			<SubmitFormActionButton action={submitFormAction} referRoute={`/confirm-comp/${params.id}`} />
+			<SubmitFormActionButton
+				action={submitFormAction}
+				referRoute={`/confirm-comp/${params.id}`}
+			/>
 		</main>
 	);
 }

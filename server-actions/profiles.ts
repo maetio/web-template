@@ -30,7 +30,7 @@ const getProfile = async (
 	type: Profile["type"]
 ) => {
 	try {
-	// fetch the player
+		// fetch the player
 		const querySnapshot = await profileCollection
 			.where("userID", "==", userID)
 			.where("sport", "==", sport)
@@ -39,8 +39,10 @@ const getProfile = async (
 			.limit(1)
 			.get();
 		const mainProfileDoc = querySnapshot.docs.at(0);
-		
-		return mainProfileDoc?.exists ? { ...mainProfileDoc.data(), id: mainProfileDoc.id } : undefined;
+
+		return mainProfileDoc?.exists
+			? { ...mainProfileDoc.data(), id: mainProfileDoc.id }
+			: undefined;
 	} catch (e: any) {
 		console.warn("Error in get profile function", e);
 		throw Error(e);

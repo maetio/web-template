@@ -2,9 +2,7 @@ import React from "react";
 import { CompetitionsResponseType } from "types/next-api";
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
-import {
-	getOrCreateProfile,
-} from "server-actions/profiles";
+import { getOrCreateProfile } from "server-actions/profiles";
 import { redirect } from "next/navigation";
 
 /**
@@ -33,9 +31,9 @@ export default async function RedirectComp({
 	// get the profile data for the user
 	const profileData = user?.id
 		? await getOrCreateProfile(
-			user,
-			competitionData?.sport || "basketball",
-			"player"
+				user,
+				competitionData?.sport || "basketball",
+				"player"
 		  )
 		: null;
 

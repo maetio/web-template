@@ -24,7 +24,9 @@ export async function GET(
 			// fetch the profile doc
 			const profileData = await getProfile(userID, sport, "player");
 
-			return NextResponse.json(profileData?.id ? profileData : { id: userID });
+			return NextResponse.json(
+				profileData?.id ? profileData : { id: userID }
+			);
 		}
 		throw Error("API route requires both user id and sport");
 	} catch (error: any) {
