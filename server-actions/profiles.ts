@@ -92,42 +92,49 @@ export /**
 const addCompetitionProfile = async (
 	competitionID: string,
 	sport: Competition["sport"],
-	profileID: string,
+	userID: string,
 	teamInfo?: {
 		id?: Team["id"];
 		firstName?: Team["firstName"];
 		lastName?: Team["lastName"];
 	}
 ) => {
-	// get initial profile
-	const profileResponse = await fetch(
-		`${BaseURL}/player/${profileID}/${sport}`
-	);
-	const profileData: PlayerResponseType = await profileResponse.json();
+	try {
 
-	// add the profile to the competition
-	const competitionProfile: CompetitionProfile = {
-		firstName: profileData.firstName || null,
-		lastName: profileData.lastName || null,
-		image: profileData.image || null,
-		userID: profileData.userID || profileID,
-		type: "player",
-		sport,
-		deltaRating: profileData.deltaRating,
-		// current rating of the profile
-		rating: profileData.rating || InitialRating,
-		...profileData,
-		teamID: teamInfo?.id || null,
-		profileID,
-		competitionID,
-		competitionEndTimeISO: null,
-		teamFirstName: teamInfo?.firstName || null,
-		teamLastName: teamInfo?.lastName || null,
-	};
-	competitionProfilesSubcollection(competitionID)
-		.doc(profileID)
-		.set(competitionProfile, { merge: true });
+		// get initial profile
+		const profileResponse = await fetch(
+			`${BaseURL}/player/${userID}/${sport}`
+		);
+		const profileData: PlayerResponseType = await profileResponse.json();
+		console.log("in add comp profile function", profileData);
 
-	// get the competition
-	return competitionProfile;
+		// add the profile to the competition
+		const competitionProfile: CompetitionProfile = {
+			firstName: profileData.firstName || null,
+			lastName: profileData.lastName || null,
+			image: profileData.image || null,
+			userID: profileData.userID || userID,
+			type: "player",
+			sport,
+			deltaRating: profileData.deltaRating,
+			// current rating of the profile
+			rating: profileData.rating || InitialRating,
+			...profileData,
+			teamID: teamInfo?.id || null,
+			profileID: profileData.id,
+			competitionID,
+			competitionEndTimeISO: null,
+			teamFirstName: teamInfo?.firstName || null,
+			teamLastName: teamInfo?.lastName || null,
+		};
+		await competitionProfilesSubcollection(competitionID)
+			.doc(profileData.id)
+			.set(competitionProfile, { merge: true });
+
+		// get the competition
+		return competitionProfile;
+	} catch (e: any) {
+		console.warn("Error with adding competition profile", e);
+		throw Error(e);
+	}
 };

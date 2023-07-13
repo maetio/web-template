@@ -48,17 +48,19 @@ export default async function JoinCompScreen({
 	const submitFormAction = async () => {
 		"use server";
 
+		console.log("profile data in form action", profileData);
+
 		try {
 			// update the data with the server action
-			if (profileData?.id) {
+			if (user?.id) {
 				await addCompetitionProfile(
 					params.id,
 					competitionData?.sport || "basketball",
-					profileData?.id
+					user?.id
 				);
 				redirect(`/confirm-comp/${params.id}`);
 			}
-			console.log('after without profiel data');
+			console.log("after without profiel data");
 		} catch (e: any) {
 			console.warn("error with form action", e);
 		}

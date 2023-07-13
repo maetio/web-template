@@ -14,7 +14,7 @@ import { redirect } from "next/navigation";
  * @param {{ params: { id: string } }} { params }
  * @return {*}
  */
-export default async function JoinCompScreen({
+export default async function RedirectComp({
 	params,
 }: {
 	params: { id: string };
@@ -39,7 +39,7 @@ export default async function JoinCompScreen({
 		  )
 		: null;
 
-	if (profileData?.id) redirect(`/confirm-comp/${params.id}`);
+	if (profileData?.id) redirect(`/join-comp/${params.id}`);
 
 	return (
 		<main>

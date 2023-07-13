@@ -23,6 +23,7 @@ export async function GET(
 		if (userID?.length && sport?.length) {
 			// fetch the profile doc
 			const profileDoc = await getProfile(userID, sport, "player");
+			console.log("profileDoc", profileDoc);
 
 			return NextResponse.json({
 				...profileDoc?.data(),
