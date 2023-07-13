@@ -21,7 +21,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ name, score }) => {
 	return (
 		<div className="grid h-12 w-5/6 grid-cols-12 items-center justify-start gap-4 border-b">
 			<div className="col-span-2 md:col-span-1 flex items-center">
-				<FaMedal className="ml-1 text-yellow-300" />
+				<FaMedal className="ml-1 text-yellow-300 md:text-base" />
 			</div>
 			<div className="col-span-2 flex items-center gap-1">
 				<div className=" h-4 w-4 md:h-8 md:w-8 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
