@@ -17,7 +17,7 @@ export /**
 			<Link href="/">
 				<div className="items center flex">
 					<HeaderMaetIcon />
-					<text className="ml-2 text-lg text-primaryMain">Maet</text>
+					<p className="ml-2 text-lg text-primaryMain">Maet</p>
 				</div>
 			</Link>
 		</div>

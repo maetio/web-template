@@ -33,9 +33,9 @@ export /**
 							<FaMedal className={`ml-1 ${medalColor[ranking - 1]} md:text-base`} />
 						)
 					}
-					<text className="ml-1 font-bold">
+					<p className="ml-1 font-bold">
 						{ranking}
-					</text>
+					</p>
 				</div>
 			)}
 			<div className="col-span-2 flex items-center">
@@ -44,17 +44,17 @@ export /**
 				}} className="h-4 w-4 md:h-8 md:w-8 rounded-full md:rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 			</div>
 			<div className="col-span-4 flex items-center">
-				<text className="text-xs lg:text-base font-bold">{name}</text>
+				<p className="text-xs lg:text-base font-bold">{name}</p>
 			</div>
 			<div className="col-span-4 flex items-center gap-1 md:gap-2 justify-start md:justify-end">
 				<XSMaetIcon />
-				<text className="text-xs lg:text-base font-bold">{score}</text>
+				<p className="text-xs lg:text-base font-bold">{score}</p>
 				{/* <div>
 						<FaArrowTrendUp className="text-md text-green-800" />
 					</div>
-					<text className="text-sm font-bold text-green-800">
+					<p className="text-sm font-bold text-green-800">
 						+99
-					</text> */}
+					</p> */}
 			</div>
 		</div>
 		// <Grid

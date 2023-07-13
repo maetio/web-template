@@ -31,40 +31,40 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 			<div className="col-span-3 flex-col flex items-center justify-center">
 				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
 				<div className="flex flex-wrap justify-center items-center">
-					<text className="p-2 text-sm font-semibold">
+					<p className="p-2 text-sm font-semibold">
 						{team1Name}
-					</text>
+					</p>
 				</div>
 				<div className="grid grid-cols-3 pl-2">
 					<div className="col-span-1 flex items-center">
 						<XSGrayMaetIcon />
-						<text className="ml-1 text-xs text-gray-300">{team1Rating}</text>
+						<p className="ml-1 text-xs text-gray-300">{team1Rating}</p>
 					</div>
 					<div className="col-span-2 flex items-center justify-end">
 						<FaArrowTrendUp className="mr-1 text-green-800" />
-						<text className="text-xs text-green-800">+99</text>
+						<p className="text-xs text-green-800">+99</p>
 					</div>
 				</div>
 			</div>
 			<div className="col-span-6 flex-col gap-8 items-center flex">
 				<div className="flex-col flex">
-					<text className="font-semibold">{compName}</text>
+					<p className="font-semibold">{compName}</p>
 					<div className="flex items-center justify-center">
-						<text className="text-xs text-gray-300">Jun 10, 2023</text>
+						<p className="text-xs text-gray-300">Jun 10, 2023</p>
 					</div>
 					<div className="flex-row">
 						<div className="grid-cols-2 grid">
 							<div className="flex col-span-1 items-center">
-								<text className="font-bold"></text>
+								<p className="font-bold"></p>
 							</div>
 							<div className="col-span-1 flex justify-end">
-								<text> </text>
+								<p> </p>
 							</div>
 						</div>
 						<div className="flex h-6 border">
 							{gameStatus ?
 								(<div className="bg-green-300 h-6 min-w-full text-xs rounded-full flex items-center justify-center">
-									<text>Verified</text>
+									<p>Verified</p>
 								</div>) : (<div></div>)}
 						</div>
 					</div>
@@ -73,18 +73,18 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 			<div className="col-span-3 flex-col flex items-center justify-center">
 				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
 				<div className="flex justify-center">
-					<text className="p-2 text-sm font-semibold">
+					<p className="p-2 text-sm font-semibold">
 						{team2Name}
-					</text>
+					</p>
 				</div>
 				<div className="grid grid-cols-3 pl-2">
 					<div className="col-span-1 flex items-center">
 						<XSGrayMaetIcon />
-						<text className="ml-1 text-xs text-gray-300">{team2Rating}</text>
+						<p className="ml-1 text-xs text-gray-300">{team2Rating}</p>
 					</div>
 					<div className="col-span-2 flex items-center justify-end">
 						<FaArrowTrendDown className="mr-1 text-red-400" />
-						<text className="text-xs text-red-400">-99</text>
+						<p className="text-xs text-red-400">-99</p>
 					</div>
 				</div>
 			</div>
