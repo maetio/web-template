@@ -11,6 +11,7 @@ export interface GameCardProps {
 	team2Rating?: number;
 	type?: string;
 	date?: string;
+	verified?: boolean;
 	gameStatus?: boolean;
 }
 
@@ -25,7 +26,7 @@ export /**
  *  @return {*}
  *
  */
-const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, team1Rating, team2Rating, gameStatus }) => {
+const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, team1Rating, team2Rating, verified, gameStatus }) => {
 	return (
 		<div className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg">
 			<div className="col-span-3 flex-col flex items-center justify-center">
@@ -46,29 +47,51 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 					</div>
 				</div>
 			</div>
-			<div className="col-span-6 flex-col gap-8 items-center flex">
-				<div className="flex-col flex">
-					<p className="font-semibold">{compName}</p>
-					<div className="flex items-center justify-center">
-						<p className="text-xs text-gray-300">Jun 10, 2023</p>
-					</div>
-					<div className="flex-row">
-						<div className="grid-cols-2 grid">
-							<div className="flex col-span-1 items-center">
-								<p className="font-bold"></p>
-							</div>
-							<div className="col-span-1 flex justify-end">
-								<p> </p>
-							</div>
+			<div className="col-span-6 flex-col gap-8 flex items-start">
+				<div className="items-center justify-center flex min-w-full">
+					<div className="flex-col flex">
+						<p className="font-semibold">{compName}</p>
+						<div className="flex items-center justify-center">
+							<p className="text-xs text-gray-300">Jun 10, 2023</p>
 						</div>
-						<div className="flex h-6 border">
-							{gameStatus ?
-								(<div className="bg-green-300 h-6 min-w-full text-xs rounded-full flex items-center justify-center">
-									<p>Verified</p>
-								</div>) : (<div></div>)}
+						<div className="flex-row lg:w-32">
+							<div className="grid-cols-2 grid">
+								<div className="flex col-span-1 items-center">
+									<p className="font-bold"></p>
+								</div>
+								<div className="col-span-1 flex justify-end">
+									<p></p>
+								</div>
+							</div>
+							<div className="flex h-6 lg:mt-6">
+								{verified ?
+									(<div className="bg-green-300 h-6 min-w-full text-xs rounded-full flex items-center justify-center">
+										<p>Verified</p>
+									</div>) : (<div className="h-6 bg-blue-200 flex rounded-full text-xs min-w-full items-center justify-center">
+										<p>Scheduled</p>
+									</div>)}
+							</div>
 						</div>
 					</div>
 				</div>
+				{gameStatus ?
+					(<div></div>) : (
+						<div className="flex flex-col min-w-full">
+							<div className="flex-row flex items-start min-w-full">
+								<div className="flex w-1/2 flex-col ml-1">
+									<div className="h-3 bg-blue-200 min-w-full flex rounded-full"></div>
+									<p className="text-xs">50%</p>
+								</div>
+								<div className="flex w-1/2 flex-col -ml-1 mr-1 items-end">
+									<div className="h-3 bg-primaryMain min-w-full flex rounded-full"></div>
+									<p className="text-xs">50%</p>
+								</div>
+							</div>
+							<div className="lg:mt-2 mt-1 flex items-center justify-center text-sm font-bold">
+								<p>Win Probability</p>
+							</div>
+						</div>
+					)}
 			</div>
 			<div className="col-span-3 flex-col flex items-center justify-center">
 				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
