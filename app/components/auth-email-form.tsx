@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { emailSchema } from "utils/schemas";
-import { sendPasswordlessLoginEmail } from "auth/client";
+import React from "react";
+import { signInWithGoogle } from "auth/client";
+import { SubmitFormActionButton } from "app/components/submit-form-action-button";
+import { useRouter } from "next/navigation";
 
 export /**
  * Enter email form
@@ -13,24 +12,35 @@ export /**
  */
 const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 	// useForm & useAuth initialization
-	const { register, handleSubmit } = useForm<{ email: string }>({
-		resolver: yupResolver(emailSchema),
-	});
+	// const { register, handleSubmit } = useForm<{ email: string }>({
+	// 	resolver: yupResolver(emailSchema),
+	// });
 
-	// state used to detect if email sent
-	const [sentEmail, setSentEmail] = useState(false);
+	// // state used to detect if email sent
+	// const [sentEmail, setSentEmail] = useState(false);
 
-	// submit email form
-	const submitEmail = async (data: { email: string }) => {
-		await sendPasswordlessLoginEmail(data.email, redirectURL);
-		localStorage.setItem("email", data.email);
-		setSentEmail(true);
+	// // submit email form
+	// const submitEmail = async (data: { email: string }) => {
+	// 	await sendPasswordlessLoginEmail(data.email, redirectURL);
+	// 	// localStorage.setItem("email", data.email);
+	// 	UniversalCookies.set("email", data.email, { path: "/" });
+	// 	setSentEmail(true);
+	// };
+	// get router
+	const router = useRouter();
+
+	const onSubmit = async () => {
+		const userCredential = await signInWithGoogle();
+		// route to new page
+		if (userCredential.user.displayName?.length) router.push(redirectURL || "/");
+		else router.push("/profile");
 	};
 
 	return (
 		<div className="flex max-h-full max-w-full items-center">
 			<div className="inline-block h-40 items-center justify-center bg-lightGray">
-				<form
+				<SubmitFormActionButton action={onSubmit} title="Sign in with Google" />
+				{/* <form
 					onSubmit={handleSubmit(submitEmail)}
 					className="flex items-center gap-2"
 				>
@@ -54,7 +64,7 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 							Send Magic Link
 						</button>
 					)}
-				</form>
+				</form> */}
 			</div>
 		</div>
 	);

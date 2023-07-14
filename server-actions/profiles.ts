@@ -4,6 +4,7 @@ import { InitialRating, NullRating } from "constants/rating";
 import {
 	Competition,
 	CompetitionProfile,
+	EndTimestamp,
 	PrivateUserData,
 	Profile,
 	Team,
@@ -100,6 +101,7 @@ export /**
 const addCompetitionProfile = async (
 	competitionID: string,
 	sport: Competition["sport"],
+	endTimestamp: EndTimestamp["endTimestamp"] | null,
 	userID: string,
 	teamInfo?: {
 		id?: Team["id"];
@@ -115,7 +117,7 @@ const addCompetitionProfile = async (
 		const profileData: PlayerResponseType = await profileResponse.json();
 
 		// add the profile to the competition
-		const competitionProfile: CompetitionProfile = {
+		const competitionProfile: CompetitionProfile & EndTimestamp = {
 			firstName: profileData.firstName || null,
 			lastName: profileData.lastName || null,
 			image: profileData.image || null,
@@ -132,6 +134,7 @@ const addCompetitionProfile = async (
 			competitionEndTimeISO: null,
 			teamFirstName: teamInfo?.firstName || null,
 			teamLastName: teamInfo?.lastName || null,
+			endTimestamp: endTimestamp as any, // need to change to create a new timestamp
 		};
 		await competitionProfilesSubcollection(competitionID)
 			.doc(profileData.id)
