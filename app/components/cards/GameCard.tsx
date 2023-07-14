@@ -32,7 +32,7 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 			<div className="col-span-3 flex-col flex items-center justify-center">
 				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
 				<div className="flex flex-wrap justify-center items-center text-center">
-					<p className="p-2 text-xs font-semibold">
+					<p className="p-2 lg:text-sm text-xs font-semibold">
 						{team1Name}
 					</p>
 				</div>
