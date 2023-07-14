@@ -5,7 +5,7 @@ import Stripe from "stripe";
 // get stripe
 const stripe = process.env.STRIPE_SECRET
 	? new Stripe(process.env.STRIPE_SECRET, {
-		apiVersion: "2022-11-15",
+			apiVersion: "2022-11-15",
 	  })
 	: undefined;
 
@@ -44,7 +44,7 @@ export async function POST(
 			return new NextResponse(
 				JSON.stringify({
 					message: "Created new Stripe account",
-					stripeID: accountRef?.id,
+					stripeID: accountRef?.id ? accountRef.id : "",
 				}),
 				{
 					status: 200,
@@ -59,7 +59,7 @@ export async function POST(
 		return new NextResponse(
 			JSON.stringify({
 				message: "user already has a stripe account",
-				stripeID: userCollection?.stripeID,
+				stripeID: userCollection.stripeID || "",
 			}),
 			{
 				status: 200,
