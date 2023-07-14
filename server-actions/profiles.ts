@@ -4,6 +4,7 @@ import { InitialRating, NullRating } from "constants/rating";
 import {
 	Competition,
 	CompetitionProfile,
+	EndTimestamp,
 	PrivateUserData,
 	Profile,
 	Team,
@@ -14,6 +15,7 @@ import {
 } from "config/server";
 import { BaseURL } from "config/constants";
 import { PlayerResponseType } from "types/next-api";
+import { Timestamp } from "firebase-admin/firestore";
 
 export /**
  * Function will fetch the profile
@@ -100,6 +102,7 @@ export /**
 const addCompetitionProfile = async (
 	competitionID: string,
 	sport: Competition["sport"],
+	endTimestamp: EndTimestamp["endTimestamp"] | null,
 	userID: string,
 	teamInfo?: {
 		id?: Team["id"];
@@ -115,7 +118,7 @@ const addCompetitionProfile = async (
 		const profileData: PlayerResponseType = await profileResponse.json();
 
 		// add the profile to the competition
-		const competitionProfile: CompetitionProfile = {
+		const competitionProfile: CompetitionProfile & EndTimestamp = {
 			firstName: profileData.firstName || null,
 			lastName: profileData.lastName || null,
 			image: profileData.image || null,
@@ -132,6 +135,7 @@ const addCompetitionProfile = async (
 			competitionEndTimeISO: null,
 			teamFirstName: teamInfo?.firstName || null,
 			teamLastName: teamInfo?.lastName || null,
+			endTimestamp: endTimestamp || Timestamp.fromDate(new Date()) as any,
 		};
 		await competitionProfilesSubcollection(competitionID)
 			.doc(profileData.id)
