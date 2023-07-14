@@ -21,7 +21,7 @@ export default async function CompLoginPage({
 			<h1>Get a magic link to join the competition.</h1>
 			<h1>Competition Name: {competitionData?.name}</h1>
 			<AuthEmailForm
-				redirectURL={`${BaseURL}/join-comp/${params.compID}`}
+				redirectURL={`${BaseURL}/redirect-comp/${params.compID}`}
 			/>
 		</main>
 	);
