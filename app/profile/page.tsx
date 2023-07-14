@@ -1,7 +1,5 @@
 import { MaetIcon } from "app/components/icons";
 import { SignOutButton } from "app/components/sign-out-button";
-import { SubmitFormActionButton } from "app/components/submit-form-action-button";
-import Image from "next/image";
 import { getUserData, updateUserData } from "server-actions/users";
 
 /**
@@ -41,7 +39,7 @@ export default async function Profile() {
 				</div>
 
 				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-					<form className="space-y-6" action={submitFormAction} >
+					<form className="space-y-6" action={submitFormAction}>
 						<div>
 							<label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 				First Name
@@ -85,7 +83,6 @@ export default async function Profile() {
                 				Submit
 							</button>
 						</div>
-
 						<SignOutButton />
 					</form>
 				</div>
