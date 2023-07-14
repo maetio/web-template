@@ -41,6 +41,7 @@
 		"react-icons": "^4.10.1",
 		"react-loading-hook": "^1.0.0",
 		"storybook": "^7.0.23",
+		"stripe": "^12.12.0",
 		"tailwindcss": "^3.3.2",
 		"tls": "^0.0.1",
 		"tss-react": "^4.8.6",

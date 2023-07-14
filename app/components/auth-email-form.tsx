@@ -29,10 +29,10 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 
 	return (
 		<div className="flex max-h-full max-w-full items-center">
-			<div className="inline-block h-40 bg-lightGray items-center justify-center">
+			<div className="inline-block h-40 items-center justify-center bg-lightGray">
 				<form
 					onSubmit={handleSubmit(submitEmail)}
-					className="flex gap-2 items-center"
+					className="flex items-center gap-2"
 				>
 					<input
 						// eslint-disable-next-line react/jsx-props-no-spreading
@@ -40,7 +40,7 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 						required
 						type="text"
 						name="email"
-						className="text-2xl p-1 rounded-lg flex-grow w-50 border"
+						className="w-50 flex-grow rounded-lg border p-1 text-2xl"
 						placeholder="Enter Email"
 						autoFocus
 					/>
@@ -49,7 +49,7 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 					) : (
 						<button
 							type="submit"
-							className="p-2 mt-4 mr-4 text-xl rounded-2xl text-black border-solid border-black border-2 max-w-xs bg-primaryMain hover:cursor-pointer hover:bg-primaryMainLight"
+							className="mr-4 mt-4 max-w-xs rounded-2xl border-2 border-solid border-black bg-primaryMain p-2 text-xl text-black hover:cursor-pointer hover:bg-primaryMainLight"
 						>
 							Send Magic Link
 						</button>
