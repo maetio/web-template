@@ -9,9 +9,9 @@ import {
 	useMemo,
 } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { UniversalCookies, auth, privateUserCollection } from "config/client";
+import { auth, privateUserCollection } from "config/client";
 import { PrivateUserData } from "types/index";
-import { getPrivateUserData, signInWithLink } from "auth/client";
+import { getPrivateUserData } from "auth/client";
 import { doc, onSnapshot } from "firebase/firestore";
 
 // create auth context
@@ -27,13 +27,13 @@ export const AuthContextProvider: React.FC<{
 	const [loading, setLoading] = useState(true);
 
 	// will sign in the user if there is an email link referred
-	useEffect(() => {
-		if (window.location.href.includes("apiKey")) {
-			// const email = localStorage.getItem("email");
-			const email = UniversalCookies.get("email");
-			signInWithLink(email, window.location.href);
-		}
-	}, []);
+	// useEffect(() => {
+	// 	if (window.location.href.includes("apiKey")) {
+	// 		// const email = localStorage.getItem("email");
+	// 		const email = UniversalCookies.get("email");
+	// 		signInWithLink(email, window.location.href);
+	// 	}
+	// }, []);
 
 	// detect the auth state change
 	useEffect(() => {
