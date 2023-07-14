@@ -13,6 +13,7 @@ export interface GameCardProps {
 	team2Score?: number;
 	team1Winner?: boolean;
 	team2Winner?: boolean;
+	compDate: string;
 	type?: string;
 	date?: string;
 	verified?: boolean;
@@ -30,7 +31,7 @@ export /**
  *  @return {*}
  *
  */
-const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, team1Rating, team2Rating, team1Score, team2Score, team1Winner, team2Winner, verified, gameStatus }) => {
+const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, team1Rating, team2Rating, team1Score, team2Score, team1Winner, team2Winner, compDate, verified, gameStatus }) => {
 	return (
 		<div className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg">
 			<div className="col-span-3 flex-col flex items-center justify-center">
@@ -52,7 +53,7 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 					<div className="flex-col flex">
 						<p className="font-semibold">{compName}</p>
 						<div className="flex items-center justify-center mt-1">
-							<p className="text-xs text-gray-300">Jun 10, 2023</p>
+							<p className="text-xs text-gray-300">{compDate}</p>
 						</div>
 						<div className="flex-row lg:w-32">
 							<div className="grid grid-cols-2 col-span-2 items-center mt-1">

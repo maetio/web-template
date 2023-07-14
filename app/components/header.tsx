@@ -21,7 +21,7 @@ export /**
 				</div>
 			</Link>
 		</div>
-		<div className="col-span-6 flex items-center justify-center">
+		<div className="col-span-6 flex items-center justify-center mr-1">
 			<div className="relative flex items-center justify-end">
 				<input
 					id="search"
