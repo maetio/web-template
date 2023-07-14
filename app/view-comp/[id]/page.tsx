@@ -106,7 +106,7 @@ export default async function ViewCompScreen({
 							</h1>
 							<img
 								className="h-12 w-12 flex-none rounded-full bg-gray-50"
-								src={player.image}
+								src={player.image || undefined}
 								alt=""
 							/>
 							<div className="min-w-0 flex-auto">

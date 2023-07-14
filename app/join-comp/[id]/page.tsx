@@ -9,10 +9,6 @@ import {
 import { SubmitFormActionButton } from "app/components/submit-form-action-button";
 import { MaetIcon } from "app/components/icons";
 
-function classNames(...classes: string[]) {
-	return classes.filter(Boolean).join(" ");
-}
-
 /**
  * Screen will join the competition for the user
  *
@@ -87,7 +83,7 @@ export default async function JoinCompScreen({
 					<div className="align-center flex flex-1 flex-col justify-center p-8">
 						<img
 							className="mx-auto h-20 w-20 flex-shrink-0 rounded-full"
-							src={profileData?.image}
+							src={profileData?.image || undefined}
 							alt=""
 						/>
 						<h3 className="mt-6 text-lg font-medium text-gray-900">
