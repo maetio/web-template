@@ -1,11 +1,12 @@
-import { SmallMaetIcon } from "app/components/icons";
+import { XSMaetIcon } from "app/components/icons";
 import React from "react";
-import { FaArrowTrendUp, FaMedal } from "react-icons/fa6";
+import { FaMedal } from "react-icons/fa6";
 
 export interface TeamCardProps {
 	name?: string;
-	image?: string;
+	image?: string | null | undefined;
 	score?: number;
+	ranking?: number;
 }
 
 /* export interface ScoreChange {
@@ -21,25 +22,51 @@ export /**
  *	}
  *  @return {*}
  *
- */ const TeamCard: React.FC<TeamCardProps> = ({ name, score }) => {
+ */ const TeamCard: React.FC<TeamCardProps> = ({
+	name,
+	score,
+	ranking,
+	image,
+}) => {
+	const medalColor: string[] = [
+		"text-yellow-400",
+		"text-gray-400",
+		"text-amber-700",
+	];
 	return (
-		<div className="grid h-12 w-2/5 grid-cols-12 items-center justify-start gap-4 border-b">
-			<div className="col-span-7 flex items-center gap-2">
-				<FaMedal className="ml-2 text-yellow-300" />
-				<div className=" h-6 w-6 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
-				<text className="text-sm font-bold">{name}</text>
+		<div className="grid h-12 w-5/6 grid-cols-12 items-center justify-start gap-4 border-b">
+			{ranking && (
+				<div className="col-span-2 flex items-center md:col-span-1">
+					{ranking <= 3 && (
+						<FaMedal
+							className={`ml-1 ${
+								medalColor[ranking - 1]
+							} md:text-base`}
+						/>
+					)}
+					<p className="ml-1 font-bold">{ranking}</p>
+				</div>
+			)}
+			<div className="col-span-2 flex items-center">
+				<div
+					style={{
+						backgroundImage: image ? `url(${image})` : "bg-none",
+					}}
+					className="h-4 w-4 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue md:h-8 md:w-8 md:rounded-md"
+				></div>
 			</div>
-			<div className="col-span-5 flex items-center gap-2">
-				<SmallMaetIcon />
-				<text className="text-sm font-bold">{score}</text>
-				<div className="flex gap-1">
-					<div>
+			<div className="col-span-4 flex items-center">
+				<p className="text-xs font-bold lg:text-base">{name}</p>
+			</div>
+			<div className="col-span-4 flex items-center justify-start gap-1 md:justify-end md:gap-2">
+				<XSMaetIcon />
+				<p className="text-xs font-bold lg:text-base">{score}</p>
+				{/* <div>
 						<FaArrowTrendUp className="text-md text-green-800" />
 					</div>
-					<text className="text-sm font-bold text-green-800">
+					<p className="text-sm font-bold text-green-800">
 						+99
-					</text>
-				</div>
+					</p> */}
 			</div>
 		</div>
 		// <Grid

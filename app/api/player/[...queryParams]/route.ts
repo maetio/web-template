@@ -22,14 +22,13 @@ export async function GET(
 		// if the comp id is provided, return all the players by default
 		if (userID?.length && sport?.length) {
 			// fetch the profile doc
-			const profileDoc = await getProfile(userID, sport, "player");
+			const profileData = await getProfile(userID, sport, "player");
 
-			return NextResponse.json({
-				...profileDoc?.data(),
-				id: profileDoc?.id || userID,
-			});
+			return NextResponse.json(
+				profileData?.id ? profileData : { id: userID }
+			);
 		}
-		throw Error("Need both userID and sport for api endpoint.");
+		throw Error("API route requires both user id and sport");
 	} catch (error: any) {
 		console.log(error);
 		throw Error(error);

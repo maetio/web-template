@@ -1,5 +1,5 @@
 import { getApps, initializeApp } from "firebase/app";
-import { initializeAuth } from "firebase/auth";
+import { GoogleAuthProvider, getAuth } from "firebase/auth";
 import {
 	QueryDocumentSnapshot,
 	DocumentData,
@@ -9,6 +9,10 @@ import {
 	initializeFirestore,
 } from "firebase/firestore";
 import { CollectionDataTypes } from "types/firebase";
+import Cookies from "universal-cookie";
+
+// define universal cookie header
+export const UniversalCookies = new Cookies();
 
 // define client configuration
 export const clientConfig = {
@@ -29,7 +33,10 @@ export const app =
 	allApps.length === 0 ? initializeApp(clientConfig) : allApps[0];
 
 // export client auth
-export const auth = initializeAuth(app);
+export const auth = getAuth(app);
+
+// export google auth provider
+export const googleAuthProvider = new GoogleAuthProvider();
 
 /**
  * Initialize firestore and define typed helping collection function

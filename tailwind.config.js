@@ -9,6 +9,7 @@ module.exports = {
 				primaryMain: "#818cf8",
 				primaryMainLight: "#a5b4fc",
 				lightGray: "#e5e5e5",
+				lighterGray: "#fafafa",
 				gradientYellow: "#eae68e",
 				gradientOrange: "#fbbebe",
 				gradientBlue: "#bee1fb",
@@ -18,5 +19,5 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [require("@tailwindcss/forms")],
 };

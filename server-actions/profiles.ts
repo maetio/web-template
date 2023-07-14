@@ -4,6 +4,7 @@ import { InitialRating, NullRating } from "constants/rating";
 import {
 	Competition,
 	CompetitionProfile,
+	EndTimestamp,
 	PrivateUserData,
 	Profile,
 	Team,
@@ -29,15 +30,24 @@ const getProfile = async (
 	sport: Profile["sport"] | string,
 	type: Profile["type"]
 ) => {
-	// fetch the player
-	const querySnapshot = await profileCollection
-		.where("userID", "==", userID)
-		.where("sport", "==", sport)
-		.where("type", "==", type)
-		.orderBy("rating.numGames", "desc")
-		.limit(1)
-		.get();
-	return querySnapshot.docs.at(0);
+	try {
+		// fetch the player
+		const querySnapshot = await profileCollection
+			.where("userID", "==", userID)
+			.where("sport", "==", sport)
+			.where("type", "==", type)
+			.orderBy("rating.numGames", "desc")
+			.limit(1)
+			.get();
+		const mainProfileDoc = querySnapshot.docs.at(0);
+
+		return mainProfileDoc?.exists
+			? { ...mainProfileDoc.data(), id: mainProfileDoc.id }
+			: undefined;
+	} catch (e: any) {
+		console.warn("Error in get profile function", e);
+		throw Error(e);
+	}
 };
 
 /**
@@ -55,11 +65,10 @@ export const getOrCreateProfile = async (
 	type: Profile["type"]
 ): Promise<{ id: string; userID: string } & Partial<Profile>> => {
 	// get initial profile
-	const profileDoc = await getProfile(user?.id, sport, type);
-	const profile = profileDoc?.data();
+	const profileData = await getProfile(user?.id, sport, type);
 
 	// make a profile for this if it is not generated
-	if (!profileDoc?.id) {
+	if (!profileData?.id) {
 		const newProfile: { userID: string } & Omit<Profile, "id"> = {
 			firstName: user?.firstName || null,
 			lastName: user?.lastName || null,
@@ -73,7 +82,7 @@ export const getOrCreateProfile = async (
 		const docRef = await profileCollection.add(newProfile);
 		return { id: docRef.id, ...newProfile };
 	}
-	return { ...profile, userID: user.id, id: profileDoc.id };
+	return { ...profileData, userID: user.id, id: profileData.id };
 };
 
 export /**
@@ -92,42 +101,49 @@ export /**
 const addCompetitionProfile = async (
 	competitionID: string,
 	sport: Competition["sport"],
-	profileID: string,
+	endTimestamp: EndTimestamp["endTimestamp"] | null,
+	userID: string,
 	teamInfo?: {
 		id?: Team["id"];
 		firstName?: Team["firstName"];
 		lastName?: Team["lastName"];
 	}
 ) => {
-	// get initial profile
-	const profileResponse = await fetch(
-		`${BaseURL}/player/${profileID}/${sport}`
-	);
-	const profileData: PlayerResponseType = await profileResponse.json();
+	try {
+		// get initial profile
+		const profileResponse = await fetch(
+			`${BaseURL}/api/player/${userID}/${sport}`
+		);
+		const profileData: PlayerResponseType = await profileResponse.json();
 
-	// add the profile to the competition
-	const competitionProfile: CompetitionProfile = {
-		firstName: profileData.firstName || null,
-		lastName: profileData.lastName || null,
-		image: profileData.image || null,
-		userID: profileData.userID || profileID,
-		type: "player",
-		sport,
-		deltaRating: profileData.deltaRating,
-		// current rating of the profile
-		rating: profileData.rating || InitialRating,
-		...profileData,
-		teamID: teamInfo?.id || null,
-		profileID,
-		competitionID,
-		competitionEndTimeISO: null,
-		teamFirstName: teamInfo?.firstName || null,
-		teamLastName: teamInfo?.lastName || null,
-	};
-	competitionProfilesSubcollection(competitionID)
-		.doc(profileID)
-		.set(competitionProfile, { merge: true });
+		// add the profile to the competition
+		const competitionProfile: CompetitionProfile & EndTimestamp = {
+			firstName: profileData.firstName || null,
+			lastName: profileData.lastName || null,
+			image: profileData.image || null,
+			userID: profileData.userID || userID,
+			type: "player",
+			sport,
+			deltaRating: profileData.deltaRating,
+			// current rating of the profile
+			rating: profileData.rating || InitialRating,
+			...profileData,
+			teamID: teamInfo?.id || null,
+			profileID: profileData.id,
+			competitionID,
+			competitionEndTimeISO: null,
+			teamFirstName: teamInfo?.firstName || null,
+			teamLastName: teamInfo?.lastName || null,
+			endTimestamp: endTimestamp as any, // need to change to create a new timestamp
+		};
+		await competitionProfilesSubcollection(competitionID)
+			.doc(profileData.id)
+			.set(competitionProfile, { merge: true });
 
-	// get the competition
-	return competitionProfile;
+		// get the competition
+		return competitionProfile;
+	} catch (e: any) {
+		console.warn("Error with adding competition profile", e);
+		throw Error(e);
+	}
 };
