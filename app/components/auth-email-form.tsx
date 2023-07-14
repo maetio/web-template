@@ -50,12 +50,12 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 			<div className="h-full flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
 				<div className="sm:mx-auto sm:w-full sm:max-w-sm justify-center align-center">
 					<LargeMaetIcon className="mx-auto w-20 align-center justify-center" />
-					<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+					<h2 className="mt-7 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             			Welcome to Maet!
 					</h2>
 				</div>
 				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-					<SubmitFormActionButton action={onSubmit} title="Sign in with Google" />
+					<SubmitFormActionButton icon="google" action={onSubmit} title="Continue with Google" />
 				</div>
 			</div>
 		</>
