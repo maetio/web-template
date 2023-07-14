@@ -4,6 +4,7 @@ import React from "react";
 import { signInWithGoogle } from "auth/client";
 import { SubmitFormActionButton } from "app/components/submit-form-action-button";
 import { useRouter } from "next/navigation";
+import { LargeMaetIcon, MaetIcon } from "app/components/icons";
 
 export /**
  * Enter email form
@@ -37,35 +38,57 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 	};
 
 	return (
-		<div className="flex max-h-full max-w-full items-center">
-			<div className="inline-block h-40 items-center justify-center bg-lightGray">
-				<SubmitFormActionButton action={onSubmit} title="Sign in with Google" />
-				{/* <form
-					onSubmit={handleSubmit(submitEmail)}
-					className="flex items-center gap-2"
-				>
-					<input
-						// eslint-disable-next-line react/jsx-props-no-spreading
-						{...register("email")}
-						required
-						type="text"
-						name="email"
-						className="w-50 flex-grow rounded-lg border p-1 text-2xl"
-						placeholder="Enter Email"
-						autoFocus
-					/>
-					{sentEmail ? (
-						<div>Sent!</div>
-					) : (
-						<button
-							type="submit"
-							className="mr-4 mt-4 max-w-xs rounded-2xl border-2 border-solid border-black bg-primaryMain p-2 text-xl text-black hover:cursor-pointer hover:bg-primaryMainLight"
-						>
-							Send Magic Link
-						</button>
-					)}
-				</form> */}
+		<>
+			{/*
+        This example requires updating your template:
+
+        ```
+        <html class="h-full bg-white">
+        <body class="h-full">
+        ```
+      */}
+			<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+				<div className="sm:mx-auto sm:w-full sm:max-w-sm">
+					<LargeMaetIcon />
+					<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            Sign in to your account
+					</h2>
+				</div>
+
+				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+					<SubmitFormActionButton action={onSubmit} title="Sign in with Google" />
+				</div>
 			</div>
-		</div>
+		</>
+		// <div className="flex max-h-full max-w-full items-center">
+		// 	<div className="inline-block h-40 items-center justify-center bg-lightGray">
+		// 		<SubmitFormActionButton action={onSubmit} title="Sign in with Google" />
+		// 		<form
+		// 			onSubmit={handleSubmit(submitEmail)}
+		// 			className="flex items-center gap-2"
+		// 		>
+		// 			<input
+		// 				// eslint-disable-next-line react/jsx-props-no-spreading
+		// 				{...register("email")}
+		// 				required
+		// 				type="text"
+		// 				name="email"
+		// 				className="w-50 flex-grow rounded-lg border p-1 text-2xl"
+		// 				placeholder="Enter Email"
+		// 				autoFocus
+		// 			/>
+		// 			{sentEmail ? (
+		// 				<div>Sent!</div>
+		// 			) : (
+		// 				<button
+		// 					type="submit"
+		// 					className="mr-4 mt-4 max-w-xs rounded-2xl border-2 border-solid border-black bg-primaryMain p-2 text-xl text-black hover:cursor-pointer hover:bg-primaryMainLight"
+		// 				>
+		// 					Send Magic Link
+		// 				</button>
+		// 			)}
+		// 		</form>
+		// 	</div>
+		// </div>
 	);
 };

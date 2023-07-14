@@ -44,8 +44,6 @@ export /**
 				</svg>
 			</div>
 		</div>
-		{/* <div className="col-span-3 mr-2 flex items-center justify-end"> */}
-			<ProfileButton />
-		{/* </div> */}
+		<ProfileButton />
 	</div>
 );
