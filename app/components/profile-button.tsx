@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { useAuthContext } from "auth/auth-context-provider";
+import Image from "next/image";
 
 export /**
  * Will have the home screen render
@@ -14,10 +15,18 @@ const ProfileButton = () => {
 	const userData = useAuthContext();
 
 	return (
-		<div>
+		<div className="col-span-3 mr-2 flex items-center justify-end">
 			{userData?.id ? (
-				<Link href="/profile">
+				<Link href="/profile" className="col-span-3 mr-2 flex items-center justify-end">
 					{userData?.firstName} {userData?.lastName}
+					<Image
+						className="rounded-full ml-2"
+						src={"/constants/vercel.png"}
+						width={40}
+						height={40}
+						alt=""
+						loader={() => userData.image || "https://global.discourse-cdn.com/turtlehead/optimized/2X/c/c830d1dee245de3c851f0f88b6c57c83c69f3ace_2_250x250.png"}
+					/>
 				</Link>
 			) : (
 				<Link href="/login">Login</Link>

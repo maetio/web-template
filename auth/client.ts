@@ -111,6 +111,7 @@ const signInWithGoogle = async () => {
 		emailVerified: userCredential.user.emailVerified,
 		firstName: firstName || null,
 		lastName: lastName || null,
+		image: userCredential.user.photoURL,
 	});
 
 	// return the user credential
