@@ -78,6 +78,7 @@ export default async function JoinCompScreen({
 			<h3>Sport: {profileData?.sport}</h3>
 			<br />
 			<SubmitFormActionButton
+				icon="none"
 				action={submitFormAction}
 				referRoute={`/confirm-comp/${params.id}`}
 			/>

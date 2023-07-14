@@ -47,7 +47,7 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 					</h2>
 				</div>
 				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-					<SubmitFormActionButton icon="google" action={onSubmit} title="Continue with Google" />
+					<SubmitFormActionButton colorVariant="white" icon="google" action={onSubmit} title="Continue with Google" />
 				</div>
 			</div>
 		</>

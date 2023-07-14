@@ -5,10 +5,9 @@ import {
 	PlayersResponseType,
 } from "types/next-api";
 import { BaseURL } from "config/constants";
-import Link from "next/link";
 import { getUserData } from "server-actions/users";
-// import { PlayerCard, TeamCard } from "app/components/cards";
 import { MaetIcon } from "app/components/icons";
+import { SubmitFormActionButton } from "app/components/submit-form-action-button";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -47,28 +46,47 @@ export default async function ViewCompScreen({
 
 	return (
 		<main className="mx-10">
-			<h1>Competition Name: {competitionData?.name}</h1>
-			<br />
-			<br />
-			{compPlayer.profileID ? (
-				<h2>
-					In competition with rating{" "}
-					{compPlayer.rating?.displayRating}
-				</h2>
-			) : (
-				<Link
-					href={
-						user?.id
-							? `/join-comp/${competitionData?.id}`
-							: `/comp-login/${competitionData?.id}`
-					}
-				>
-					<h2>Join Competition</h2>
-				</Link>
-			)}
-			<p>
-				Player logged in: {user?.firstName} {user?.lastName}
-			</p>
+			<div className="bg-white px-6 py-24 sm:py-32 lg:px-8">
+				<div className="mx-auto max-w-2xl text-center">
+					<h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{competitionData?.name}</h2>
+					{compPlayer.profileID ? (
+						<div className="flex gap-x-4 justify-center align-center">
+							<img className="h-12 w-12 flex-none rounded-full bg-gray-50" src={compPlayer?.image} alt="" />
+							<div className="min-w-0 flex-auto">
+								<p className="text-sm font-bold leading-6 text-gray-900">{compPlayer.firstName} {compPlayer.lastName}</p>
+								<div
+									className="relative"
+								>
+									<dt>
+										<div className="absolute rounded-md p-3">
+											<MaetIcon size={10} />
+										</div>
+										<p className="ml-16 truncate text-sm font-medium text-gray-500">Rating</p>
+									</dt>
+									<dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
+										<p className="text-2xl font-semibold text-gray-900">{Math.round(compPlayer.rating?.displayRating || 100)}</p>
+										<p
+											className={classNames(
+												compPlayer?.deltaRating?.displayRating && compPlayer?.deltaRating?.displayRating >= 0 ? "text-green-600" : "text-red-600",
+												"ml-2 flex items-baseline text-sm font-semibold"
+											)}
+										>
+											{compPlayer?.deltaRating?.displayRating && compPlayer?.deltaRating?.displayRating >= 0 ? "+" : ""}{Math.round(compPlayer?.deltaRating?.displayRating || 0)}
+										</p>
+									</dd>
+								</div>
+							</div>
+						</div>
+					) : (
+						<div className="mt-20 w-50 justify-center">
+							<SubmitFormActionButton icon="none" referRoute={user?.id
+								? `/join-comp/${competitionData?.id}`
+								: `/comp-login/${competitionData?.id}`
+							} title="Join Competition" colorVariant="indigo" />
+						</div>
+					)}
+				</div>
+			</div>
 			<ul role="list" className="divide-y divide-gray-100">
 				{players.map((player, rank) => (
 					<li key={player.id} className="flex justify-between gap-x-6 py-5">

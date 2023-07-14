@@ -71,7 +71,7 @@ const SubmitFormActionButton = ({
 					throw Error(e);
 				}
 			});
-		}
+		} else if (!action && referRoute) router.push(referRoute);
 	};
 
 	return (
