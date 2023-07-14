@@ -100,10 +100,17 @@ const signInWithGoogle = async () => {
 		},
 	});
 
+	// access firstname lastname
+	const nameParts = userCredential.user?.displayName?.split(" ");
+	const firstName = nameParts?.at(0);
+	const lastName = nameParts?.length && nameParts?.length > 1 ? nameParts[nameParts.length - 1] : "";
+
 	// initialize the user data
 	await getAndUpdateUserData({
 		email: userCredential.user.email,
 		emailVerified: userCredential.user.emailVerified,
+		firstName: firstName || null,
+		lastName: lastName || null,
 	});
 
 	// return the user credential

@@ -30,9 +30,10 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 	const router = useRouter();
 
 	const onSubmit = async () => {
-		await signInWithGoogle();
+		const userCredential = await signInWithGoogle();
 		// route to new page
-		router.push(redirectURL || "/");
+		if (userCredential.user.displayName?.length) router.push(redirectURL || "/");
+		else router.push("/profile");
 	};
 
 	return (
