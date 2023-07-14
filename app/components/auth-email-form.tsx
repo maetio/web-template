@@ -4,7 +4,7 @@ import React from "react";
 import { signInWithGoogle } from "auth/client";
 import { SubmitFormActionButton } from "app/components/submit-form-action-button";
 import { useRouter } from "next/navigation";
-import { LargeMaetIcon } from "app/components/icons";
+import { MaetIcon } from "app/components/icons";
 
 export /**
  * Enter email form
@@ -41,7 +41,7 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 		<>
 			<div className="h-full flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
 				<div className="sm:mx-auto sm:w-full sm:max-w-sm justify-center align-center">
-					<LargeMaetIcon className="mx-auto w-20 align-center justify-center" />
+					<MaetIcon size={20} className="mx-auto w-20 align-center justify-center" />
 					<h2 className="mt-7 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             			Welcome to Maet!
 					</h2>
