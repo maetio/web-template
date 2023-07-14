@@ -15,7 +15,6 @@ import {
 } from "config/server";
 import { BaseURL } from "config/constants";
 import { PlayerResponseType } from "types/next-api";
-import { Timestamp } from "firebase-admin/firestore";
 
 export /**
  * Function will fetch the profile
@@ -135,7 +134,7 @@ const addCompetitionProfile = async (
 			competitionEndTimeISO: null,
 			teamFirstName: teamInfo?.firstName || null,
 			teamLastName: teamInfo?.lastName || null,
-			endTimestamp: endTimestamp || Timestamp.fromDate(new Date()) as any,
+			endTimestamp: endTimestamp as any, // need to change to create a new timestamp
 		};
 		await competitionProfilesSubcollection(competitionID)
 			.doc(profileData.id)
