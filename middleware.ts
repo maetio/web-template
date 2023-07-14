@@ -62,7 +62,7 @@ export async function middleware(request: NextRequest) {
 		if (origin && !allowedOrigins.includes(origin)) {
 			return new NextResponse(null, {
 				status: 400,
-				statusText: "Bad Request",
+				statusText: "Bad Request, Origin not allowed",
 				headers: {
 					"Content-Type": "text/plain",
 				},
