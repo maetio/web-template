@@ -11,6 +11,12 @@ export /**
  */
 const SignOutButton = () => {
 	return (
-		<SubmitFormActionButton referRoute="/" title="Sign Out" colorVariant="red" icon="none" action={signOutUser} />
+		<SubmitFormActionButton
+			referRoute="/"
+			title="Sign Out"
+			colorVariant="red"
+			icon="none"
+			action={signOutUser}
+		/>
 	);
 };

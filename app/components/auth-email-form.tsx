@@ -33,21 +33,30 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 	const onSubmit = async () => {
 		const userCredential = await signInWithGoogle();
 		// route to new page
-		if (userCredential.user.displayName?.length) router.push(redirectURL || "/");
+		if (userCredential.user.displayName?.length)
+			router.push(redirectURL || "/");
 		else router.push("/profile");
 	};
 
 	return (
 		<>
-			<div className="h-full flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-				<div className="sm:mx-auto sm:w-full sm:max-w-sm justify-center align-center">
-					<MaetIcon size={20} className="mx-auto w-20 align-center justify-center" />
+			<div className="flex h-full min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+				<div className="align-center justify-center sm:mx-auto sm:w-full sm:max-w-sm">
+					<MaetIcon
+						size={20}
+						className="align-center mx-auto w-20 justify-center"
+					/>
 					<h2 className="mt-7 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            			Welcome to Maet!
+						Welcome to Maet!
 					</h2>
 				</div>
 				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-					<SubmitFormActionButton colorVariant="white" icon="google" action={onSubmit} title="Continue with Google" />
+					<SubmitFormActionButton
+						colorVariant="white"
+						icon="google"
+						action={onSubmit}
+						title="Continue with Google"
+					/>
 				</div>
 			</div>
 		</>

@@ -7,6 +7,11 @@ import {
 	getOrCreateProfile,
 } from "server-actions/profiles";
 import { SubmitFormActionButton } from "app/components/submit-form-action-button";
+import { MaetIcon } from "app/components/icons";
+
+function classNames(...classes: string[]) {
+	return classes.filter(Boolean).join(" ");
+}
 
 /**
  * Screen will join the competition for the user
@@ -67,21 +72,49 @@ export default async function JoinCompScreen({
 	};
 
 	return (
-		<main>
-			<h1>Competition Name: {competitionData?.name}</h1>
-			<br />
-			<h3>
-				Join the competition as {profileData?.firstName}{" "}
-				{profileData?.lastName}
-			</h3>
-			<h3>Rating: {profileData?.rating?.displayRating}</h3>
-			<h3>Sport: {profileData?.sport}</h3>
-			<br />
-			<SubmitFormActionButton
-				icon="none"
-				action={submitFormAction}
-				referRoute={`/confirm-comp/${params.id}`}
-			/>
-		</main>
+		<>
+			<div className="flex h-full min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+				<div className="sm:mx-auto sm:w-full sm:max-w-sm">
+					<MaetIcon
+						size={20}
+						className="align-center mx-auto w-20 justify-center"
+					/>
+					<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+						Join {competitionData?.name}
+					</h2>
+				</div>
+				<div className="col-span-1 flex flex-col rounded-lg bg-white text-center">
+					<div className="align-center flex flex-1 flex-col justify-center p-8">
+						<img
+							className="mx-auto h-20 w-20 flex-shrink-0 rounded-full"
+							src={profileData?.image}
+							alt=""
+						/>
+						<h3 className="mt-6 text-lg font-medium text-gray-900">
+							{profileData?.firstName} {profileData?.lastName}
+						</h3>
+						{/* <div className="bg-red-500 justify-center align-center">
+							<div className="flex w-0 flex-1 ">
+								<MaetIcon size={10} className="w-20 flex justify-center align-center" />
+								<p className="text-2xl font-semibold text-gray-900">{Math.round(profileData?.rating?.displayRating || 100)}</p>
+							</div>
+						</div> */}
+					</div>
+				</div>
+				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+					<div className="space-y-6">
+						<div>
+							<SubmitFormActionButton
+								referRoute={`/view-comp/${params.id}`}
+								colorVariant="indigo"
+								title="Join competition"
+								icon="none"
+								action={submitFormAction}
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
 	);
 }

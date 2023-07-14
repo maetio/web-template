@@ -83,7 +83,7 @@ const signInWithLink = async (email: string | null, link: string) => {
 export /**
  * Function that will sign in with google
  *
- * @return {*} 
+ * @return {*}
  */
 const signInWithGoogle = async () => {
 	const userCredential = await signInWithPopup(auth, googleAuthProvider);
@@ -103,7 +103,10 @@ const signInWithGoogle = async () => {
 	// access firstname lastname
 	const nameParts = userCredential.user?.displayName?.split(" ");
 	const firstName = nameParts?.at(0);
-	const lastName = nameParts?.length && nameParts?.length > 1 ? nameParts[nameParts.length - 1] : "";
+	const lastName =
+		nameParts?.length && nameParts?.length > 1
+			? nameParts[nameParts.length - 1]
+			: "";
 
 	// initialize the user data
 	await getAndUpdateUserData({
