@@ -26,7 +26,7 @@ export async function GET(
 		// if the comp id is provided, return all the players by default
 		if (compID && compID !== "all") {
 			const querySnapshot = await competitionProfilesSubcollection(compID)
-				.orderBy("rating.displayRating")
+				.orderBy("rating.displayRating", "desc")
 				.limit(Number(number) || 5)
 				.get();
 			return NextResponse.json(
@@ -36,7 +36,7 @@ export async function GET(
 
 		// get the whole collection group
 		const querySnapshot = await profileCollection
-			.orderBy("rating.displayRating")
+			.orderBy("rating.displayRating", "desc")
 			.limit(Number(number) || 5)
 			.get();
 		return NextResponse.json(
