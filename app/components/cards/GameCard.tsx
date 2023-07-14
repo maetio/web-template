@@ -168,3 +168,4 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 };
 
 export default GameCard;
+

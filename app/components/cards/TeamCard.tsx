@@ -1,25 +1,27 @@
 import React from "react";
 import { FaMedal } from "react-icons/fa6";
 
-export interface PlayerCardProps {
+export interface TeamCardProps {
 	name?: string;
 	image?: string | null | undefined;
 	score?: number;
 	ranking?: number;
 }
 
-
+/* export interface ScoreChange {
+	color: string;
+	magnitude: number;
+}
+*/
 export /**
- * Card that renders the initial player data
+ * Card that renders the initial team data
  *
  * @param {*} {
- *		PlayerCardProps
+ *		TeamCardProps
  *	}
  *  @return {*}
  *
- */
-const PlayerCard: React.FC<PlayerCardProps> = ({ name, score, ranking, image }) => {
-	// define medal colors
+ */ const TeamCard: React.FC<TeamCardProps> = ({ name, score, ranking, image }) => {
 	const medalColor: string[] = ["text-yellow-400", "text-gray-400", "text-amber-700"];
 	return (
 		<div className="grid h-12 w-5/6 grid-cols-12 items-center justify-start gap-4 border-b">
@@ -35,16 +37,16 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ name, score, ranking, image }) 
 					</p>
 				</div>
 			)}
-			<div className="col-span-2 flex items-center gap-1">
+			<div className="col-span-2 flex items-center">
 				<div style={{
 					backgroundImage: image ? `url(${image})` : "bg-none"
-				}} className="h-4 w-4 md:h-8 md:w-8 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				}} className="h-4 w-4 md:h-8 md:w-8 rounded-full md:rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 			</div>
-			<div className="col-span-4 flex items-start">
+			<div className="col-span-4 flex items-center">
 				<p className="text-xs lg:text-base font-bold">{name}</p>
 			</div>
-			<div className="col-span-4 flex items-center justify-start md:justify-end gap-1 md:gap-2">
-				<svg className={"h-4 w-4 lg:h-6 lg:w-6"} viewBox="0 0 1500 1500">
+			<div className="col-span-4 flex items-center gap-1 md:gap-2 justify-start md:justify-end">
+				<svg className={"lg:h-6 lg:w-6 h-4 w-4"} viewBox="0 0 1500 1500">
 					<path
 						d="M7230 14550c-1117-42-2209-353-3180-905-1782-1013-3036-2758-3419-4760-88-456-124-844-124-1330s36-874 124-1330c325-1697 1281-3225 2669-4266C4397 1136 5664 665 7040 570c186-13 742-13 930 0 2264 155 4289 1373 5487 3300 603 970 954 2066 1033 3228 13 198 13 716 0 914-64 933-293 1795-699 2623-769 1569-2100 2797-3726 3438-886 349-1864 513-2835 477zm715-580c691-50 1326-196 1963-451 212-84 642-295 837-410 459-269 860-577 1249-959 382-375 660-714 919-1118 566-882 898-1857 999-2927 20-215 17-943-5-1155-88-845-297-1564-667-2295-330-653-705-1163-1241-1690-416-409-827-721-1317-999-808-459-1674-728-2627-818-220-21-945-17-1160 5-849 89-1562 297-2305 672-1322 668-2397 1812-2989 3181-559 1294-676 2747-331 4124 417 1662 1505 3107 2995 3979 173 102 503 269 691 350 658 284 1363 457 2089 510 162 12 739 12 900 1z"
 						transform="matrix(.1 0 0 -.1 0 1500)"
@@ -56,9 +58,9 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ name, score, ranking, image }) 
 				</svg>
 				<p className="text-xs lg:text-base font-bold">{score}</p>
 				{/* <div>
-						<FaArrowTrendUp className="text-xs text-green-800" />
+						<FaArrowTrendUp className="text-md text-green-800" />
 					</div>
-					<p className="text-xs lg:text-base font-bold text-green-800">
+					<p className="text-sm font-bold text-green-800">
 						+99
 					</p> */}
 			</div>
@@ -70,21 +72,20 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ name, score, ranking, image }) 
 		// 	alignItems="center"
 		// 	sx={{
 		// 		borderBottom: 1,
-		// 		borderColor: "#E5E5E5",
+		// 		borderColor: "#f5f5f4",
 		// 		display: "inline-flex",
 		// 		mt: 1,
 		// 		height: 60,
 		// 		width: 480,
 		// 	}}
 		// >
-		// 	<Grid item container xs={6} alignItems="center">
+		// 	<Grid item container xs={6} alignItems="center" direction="row">
 		// 		<Box
 		// 			sx={{
 		// 				ml: 2,
 		// 				backgroundImage:
-		// 					image ||
 		// 					"linear-gradient(207deg, #EAE68E 13.76%, #FBBEBE 60.61%, #BEE1FB 100%);",
-		// 				borderRadius: "50%",
+		// 				borderRadius: 2,
 		// 				width: 40,
 		// 				height: 41,
 		// 			}}
@@ -106,4 +107,4 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ name, score, ranking, image }) 
 	);
 };
 
-export default PlayerCard;
+export default TeamCard;
