@@ -109,11 +109,9 @@ const SubmitFormActionButton = ({
 	};
 
 	// set default color
-	const mainColor = colorVariant || "indigo";
+	const mainColor = "indigo" || colorVariant || "indigo";
 	const classNameStyles = `inline-flex w-full justify-center items-center gap-x-1.5 rounded-md focus:ring-2 focus:ring-offset-2 shadow-md hover:shadow-lg 
-	bg-${mainColor}-500 px-3 py-2 text-sm font-semibold text-black-500/${
-	mainColor === "white" || !mainColor ? "100" : "10"
-} hover:bg-${mainColor}-400 
+	bg-${mainColor}-500 px-3 py-2 text-sm font-semibold text-black-500 hover:bg-${mainColor}-400 
 	focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
 	focus-visible:outline-${mainColor}-300`;
 
@@ -151,9 +149,9 @@ const SubmitFormActionButton = ({
 				<svg
 					aria-hidden="true"
 					role="status"
-					className={`mr-3 inline h-4 w-4 animate-spin text-${
-						mainColor === "white" || !mainColor ? "black" : "white"
-					}-500`}
+					className={
+						"text-black-500 mr-3 inline h-4 w-4 animate-spin"
+					}
 					viewBox="0 0 100 101"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
