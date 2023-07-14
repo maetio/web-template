@@ -2,6 +2,8 @@ import React from "react";
 import { CompetitionsResponseType } from "types/next-api";
 import Link from "next/link";
 import { BaseURL } from "config/constants";
+import CompetitionCard from "./components/cards/CompetitionCard";
+import { GameCard } from "./components/cards";
 
 /**
  * Home screen of the application. Shows all the competitions.
@@ -19,9 +21,10 @@ export default async function Home() {
 		<main>
 			{competitions.map((item) => (
 				<Link key={item.id} href={`view-comp/${item.id}`}>
-					<h1>{item.name}</h1>
+					<CompetitionCard competitionName={item.name} location={item.location?.address} competitionStart={item.startTimeISO} competitionType={item.type} sport={item.sport}/>
 				</Link>
 			))}
+			<GameCard gameStatus />
 		</main>
 	);
 }
