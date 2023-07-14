@@ -58,7 +58,7 @@ export async function POST(
 			}
 			return new NextResponse(
 				JSON.stringify({
-					message: "Error making stripe account",
+					message: "Error making stripe account ",
 					stripe: stripe || "",
 				}),
 				{
