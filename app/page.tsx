@@ -21,7 +21,13 @@ export default async function Home() {
 		<main>
 			{competitions.map((item) => (
 				<Link key={item.id} href={`view-comp/${item.id}`}>
-					<CompetitionCard competitionName={item.name} location={item.location?.address} competitionStart={item.startTimeISO} competitionType={item.type} sport={item.sport}/>
+					<CompetitionCard
+						competitionName={item.name}
+						location={item.location?.address}
+						competitionStart={item.startTimeISO}
+						competitionType={item.type}
+						sport={item.sport}
+					/>
 				</Link>
 			))}
 			<GameCard gameStatus />

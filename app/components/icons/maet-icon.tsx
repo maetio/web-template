@@ -72,7 +72,6 @@ export const XSMaetIcon: React.FC<MaetIconProps> = () => {
 	);
 };
 
-
 export const XSGrayMaetIcon: React.FC<MaetIconProps> = () => {
 	return (
 		<div>
@@ -89,4 +88,3 @@ export const XSGrayMaetIcon: React.FC<MaetIconProps> = () => {
 		</div>
 	);
 };
-
