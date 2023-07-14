@@ -18,11 +18,12 @@ export default async function CompLoginPage({
 
 	return (
 		<main>
-			<h1>Get a magic link to join the competition.</h1>
-			<h1>Competition Name: {competitionData?.name}</h1>
 			<AuthEmailForm
 				redirectURL={`${BaseURL}/redirect-comp/${params.compID}`}
 			/>
+			<h2 className="mt-3 text-center text-2xl leading-9 tracking-tight text-gray-900">
+				To join {competitionData?.name}.
+			</h2>
 		</main>
 	);
 }
