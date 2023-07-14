@@ -31,19 +31,15 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 		<div className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg">
 			<div className="col-span-3 flex-col flex items-center justify-center">
 				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
-				<div className="flex flex-wrap justify-center items-center">
-					<p className="p-2 text-sm font-semibold">
+				<div className="flex flex-wrap justify-center items-center text-center">
+					<p className="p-2 text-xs font-semibold">
 						{team1Name}
 					</p>
 				</div>
-				<div className="grid grid-cols-3 pl-2">
-					<div className="col-span-1 flex items-center">
+				<div className="grid grid-cols-3 lg:pl-2">
+					<div className="col-span-3 flex items-center">
 						<XSGrayMaetIcon />
-						<p className="ml-1 text-xs text-gray-300">{team1Rating}</p>
-					</div>
-					<div className="col-span-2 flex items-center justify-end">
-						<FaArrowTrendUp className="mr-1 text-green-800" />
-						<p className="text-xs text-green-800">+99</p>
+						<p className="ml-1 text-xs text-gray-500">{team1Rating}</p>
 					</div>
 				</div>
 			</div>
@@ -63,7 +59,7 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 									<p></p>
 								</div>
 							</div>
-							<div className="flex h-6 lg:mt-6">
+							<div className="flex h-6 lg:mt-6 mt-2">
 								{verified ?
 									(<div className="bg-green-300 h-6 min-w-full text-xs rounded-full flex items-center justify-center">
 										<p>Verified</p>
@@ -87,7 +83,7 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 									<p className="text-xs">50%</p>
 								</div>
 							</div>
-							<div className="lg:mt-2 mt-1 flex items-center justify-center text-sm font-bold">
+							<div className="mt-1 mb-1 flex items-center justify-center text-sm font-bold">
 								<p>Win Probability</p>
 							</div>
 						</div>
@@ -96,18 +92,14 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 			<div className="col-span-3 flex-col flex items-center justify-center">
 				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
 				<div className="flex justify-center">
-					<p className="p-2 text-sm font-semibold">
+					<p className="p-2 lg:text-sm text-xs font-semibold text-center">
 						{team2Name}
 					</p>
 				</div>
-				<div className="grid grid-cols-3 pl-2">
-					<div className="col-span-1 flex items-center">
+				<div className="grid grid-cols-3 lg:pl-2">
+					<div className="col-span-3 flex items-center">
 						<XSGrayMaetIcon />
-						<p className="ml-1 text-xs text-gray-300">{team2Rating}</p>
-					</div>
-					<div className="col-span-2 flex items-center justify-end">
-						<FaArrowTrendDown className="mr-1 text-red-400" />
-						<p className="text-xs text-red-400">-99</p>
+						<p className="ml-1 text-xs text-gray-500">{team2Rating}</p>
 					</div>
 				</div>
 			</div>

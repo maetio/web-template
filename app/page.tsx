@@ -24,7 +24,7 @@ export default async function Home() {
 					<CompetitionCard competitionName={item.name} location={item.location?.address} competitionStart={item.startTimeISO} competitionType={item.type} sport={item.sport}/>
 				</Link>
 			))}
-			<GameCard compName="Competition Name" />
+			<GameCard compName="Competition Name" team1Name="Team 1 Name" team2Name="Team 2 Name" team1Rating={99} team2Rating={99} />
 		</main>
 	);
 }
