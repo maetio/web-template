@@ -10,7 +10,7 @@ React.DetailedHTMLProps<
 > {
 	name?: string;
 	image?: string | null | undefined;
-	score?: number;
+	rating?: number;
 	ranking?: number;
 }
 
@@ -24,12 +24,12 @@ export /**
  *  @return {*}
  *
  */
-const PlayerCard: React.FC<PlayerCardProps> = ({ name, score, ranking, image, ...divParams }) => {
+const PlayerCard: React.FC<PlayerCardProps> = ({ name, rating, ranking, image, ...divParams }) => {
 	// define medal colors
 	const medalColor: string[] = ["text-yellow-400", "text-gray-400", "text-amber-700"];
 	return (
 		<div {...divParams} className="grid h-12 min-w-full grid-cols-12 items-center justify-start gap-4 border-b">
-			{ranking && (
+			{ ranking ? (
 				<div className="col-span-2 md:col-span-1 flex items-center">
 					{
 						ranking <= 3 && (
@@ -40,7 +40,8 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ name, score, ranking, image, ..
 						{ranking}
 					</p>
 				</div>
-			)}
+			) :
+				(<div className="col-span-1"></div>)}
 			<div className="col-span-2 flex items-center gap-1">
 				<div style={{
 					backgroundImage: image ? `url(${image})` : "bg-none"
@@ -60,7 +61,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ name, score, ranking, image, ..
 						transform="matrix(.1 0 0 -.1 0 1500)"
 					/>
 				</svg>
-				<p className="text-xs lg:text-lg font-bold">{score}</p>
+				<p className="text-xs lg:text-lg font-bold">{rating}</p>
 				{/* <div>
 						<FaArrowTrendUp className="text-xs text-green-800" />
 					</div>
@@ -106,7 +107,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ name, score, ranking, image, ..
 		// 		justifyContent="flex-end"
 		// 	>
 		// 		<MaetIcon sx={{ mr: 1 }}></MaetIcon>
-		// 		<Typography sx={{ fontWeight: 300, mr: 4 }}>{score}</Typography>
+		// 		<Typography sx={{ fontWeight: 300, mr: 4 }}>{rating}</Typography>
 		// 	</Grid>
 		// </Grid>
 	);

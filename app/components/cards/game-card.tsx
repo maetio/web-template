@@ -15,8 +15,8 @@ React.DetailedHTMLProps<
 	team2Name?: string;
 	team1Rating?: number;
 	team2Rating?: number;
-	team1Score?: number;
-	team2Score?: number;
+	team1rating?: number;
+	team2rating?: number;
 	team1Winner?: boolean;
 	team2Winner?: boolean;
 	compDate: string;
@@ -37,7 +37,7 @@ export /**
  *  @return {*}
  *
  */
-const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, team1Rating, team2Rating, team1Score, team2Score, team1Winner, team2Winner, compDate, verified, gameStatus, ...divParams }) => {
+const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, team1Rating, team2Rating, team1rating, team2rating, team1Winner, team2Winner, compDate, verified, gameStatus, ...divParams }) => {
 	return (
 		<div {...divParams} className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg">
 			<div className="col-span-3 flex-col flex items-center justify-center">
@@ -68,19 +68,19 @@ const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, tea
 										{team1Winner ? (
 											<div className="flex items-center justify-start col-span-1">
 												<FaPlay className="mr-1"/>
-												<p className="font-bold lg:text-xl">{team1Score}</p>
+												<p className="font-bold lg:text-xl">{team1rating}</p>
 											</div>) : (
-											<p className="lg:text-xl">{team1Score}</p>)}
+											<p className="lg:text-xl">{team1rating}</p>)}
 									</div>) : (<div></div>)}
 								{gameStatus ?
 									(<div className="flex col-span-1 items-center mt-1 justify-end">
 										{team2Winner ? (
 											<div className="flex items-center col-span-1">
 												<FaPlay className="mr-1"/>
-												<p className="font-bold lg:text-xl">{team2Score}</p>
+												<p className="font-bold lg:text-xl">{team2rating}</p>
 											</div>) : (
 											<div className="flex items-center col-span-1">
-												<p className="lg:text-xl">{team2Score}</p>
+												<p className="lg:text-xl">{team2rating}</p>
 											</div>
 										)}
 									</div>) : (<div></div>)}

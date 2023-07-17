@@ -50,14 +50,14 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({competitionName, sport
 				</div>
 				<div className="row-span-6 grid grid-cols-12 h-48 items-center mb-4 gap-8">
 					<div className="col-span-6 flex flex-col">
-						<TeamCard name="Team Name" score={99} ranking={1} />
-						<TeamCard name="Team Name" score={99} ranking={2} />
-						<TeamCard name="Team Name" score={99} ranking={3} />
+						<TeamCard name="Team Name" rating={99} ranking={1} />
+						<TeamCard name="Team Name" rating={99} ranking={2} />
+						<TeamCard name="Team Name" rating={99} ranking={3} />
 					</div>
 					<div className="col-span-6 flex flex-col">
-						<PlayerCard name="Player Name" score={99} ranking={1} />
-						<PlayerCard name="Player Name" score={99} ranking={2} />
-						<PlayerCard name="Player Name" score={99} ranking={3} />
+						<PlayerCard name="Player Name" rating={99} ranking={1} />
+						<PlayerCard name="Player Name" rating={99} ranking={2} />
+						<PlayerCard name="Player Name" rating={99} ranking={3} />
 					</div>
 				</div>
 			</div>

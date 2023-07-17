@@ -10,11 +10,11 @@ React.DetailedHTMLProps<
 > {
 	name?: string;
 	image?: string | null | undefined;
-	score?: number;
+	rating?: number;
 	ranking?: number;
 }
 
-/* export interface ScoreChange {
+/* export interface ratingChange {
 	color: string;
 	magnitude: number;
 }
@@ -27,11 +27,11 @@ export /**
  *	}
  *  @return {*}
  *
- */ const TeamCard: React.FC<TeamCardProps> = ({ name, score, ranking, image, ...divParams }) => {
+ */ const TeamCard: React.FC<TeamCardProps> = ({ name, rating, ranking, image, ...divParams }) => {
 	const medalColor: string[] = ["text-yellow-400", "text-gray-400", "text-amber-700"];
 	return (
 		<div {...divParams} className="grid h-12 min-w-full grid-cols-12 items-center justify-start gap-4 border-b">
-			{ranking && (
+			{ ranking ? (
 				<div className="col-span-2 md:col-span-1 flex items-center">
 					{
 						ranking <= 3 && (
@@ -42,7 +42,8 @@ export /**
 						{ranking}
 					</p>
 				</div>
-			)}
+			) :
+				(<div className="col-span-1"></div>)}
 			<div className="col-span-2 flex items-center">
 				<div style={{
 					backgroundImage: image ? `url(${image})` : "bg-none"
@@ -62,7 +63,7 @@ export /**
 						transform="matrix(.1 0 0 -.1 0 1500)"
 					/>
 				</svg>
-				<p className="text-xs lg:text-lg font-bold">{score}</p>
+				<p className="text-xs lg:text-lg font-bold">{rating}</p>
 				{/* <div>
 						<FaArrowTrendUp className="text-md text-green-800" />
 					</div>
@@ -107,7 +108,7 @@ export /**
 		// 		justifyContent="flex-end"
 		// 	>
 		// 		<MaetIcon sx={{ mr: 1 }}></MaetIcon>
-		// 		<Typography sx={{ fontWeight: 300, mr: 4 }}>{score}</Typography>
+		// 		<Typography sx={{ fontWeight: 300, mr: 4 }}>{rating}</Typography>
 		// 	</Grid>
 		// </Grid>
 	);
