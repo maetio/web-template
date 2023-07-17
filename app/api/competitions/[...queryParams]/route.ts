@@ -52,3 +52,9 @@ export async function GET(
 		throw Error(error);
 	}
 }
+
+/**
+ * Revalidate the api route every 60 seconds
+ * https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidation-frequency
+ */
+export const revalidate = 60;
