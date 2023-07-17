@@ -1,93 +1,63 @@
 import React from "react";
-import {
-	FaBasketball,
-	FaFutbol,
-	FaLocationArrow,
-	FaRegCalendar,
-	FaTableTennisPaddleBall,
-	FaVolleyball,
-} from "react-icons/fa6";
-import { Competition } from "types/index";
+import { FaBasketball, FaLocationArrow, FaRegCalendar } from "react-icons/fa6";
 import { TeamCard } from "./team-card";
 import { PlayerCard } from "./player-card";
 
-export interface CompetitionCardProps {
-	competitionName?: string;
-	sport?: string;
-	competitionType?: string;
-	competitionStart?: string;
-	location?: string;
-	price?: string;
+export interface CompetitionCardProps extends Omit<
+React.DetailedHTMLProps<
+	React.HTMLAttributes<HTMLDivElement>,
+	HTMLDivElement
+>,
+"color"
+>{
+    competitionName?: string
+	sport?: string
+	competitionType?: string
+	competitionStart?: string
+	location?: string
+	price?: string
+	width?: number
 }
 
-const CompetitionCard: React.FC<CompetitionCardProps> = ({
-	competitionName,
-	sport,
-	competitionType,
-	competitionStart,
-	location,
-}) => {
-	const SportIcons: Record<Competition["sport"], React.ReactElement> = {
-		basketball: (
-			<FaBasketball className="text-xs text-gray-400 lg:text-base" />
-		),
-		soccer: <FaFutbol className="text-xs text-gray-400 lg:text-base" />,
-		volleyball: (
-			<FaVolleyball className="text-xs text-gray-400 lg:text-base" />
-		),
-		pickleball: (
-			<FaTableTennisPaddleBall className="text-xs text-gray-400 lg:text-base" />
-		),
-	};
-
+const CompetitionCard: React.FC<CompetitionCardProps> = ({competitionName, sport, competitionType, competitionStart, location, price, width, ...divParams }) => {
+	
 	return (
-		<div className="mt-3 min-w-full rounded-md border shadow-lg lg:w-2/3 lg:min-w-0">
-			<div className="grid-rows-12 grid pl-3 pr-2 pt-3">
-				<div className="row-span-4 grid grid-cols-12">
+		<div {...divParams} className={`border w-${String(width) || "auto" } rounded-md shadow-lg lg:w-2/3 mt-3 p-2 min-w-full`}>
+			<div className="grid grid-rows-12 pl-3 pt-3 pr-2">
+				<div className="grid row-span-4 grid-cols-12">
 					<div className="col-span-2 flex">
-						<div className="h-12 w-4/5 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue md:min-h-full lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"></div>
+						<div className="2xl:w-36 2xl:h-36 md:h-24 md:w-24 lg:min-h-0 w-20 h-20 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 					</div>
-					<div className="col-span-7 flex flex-col">
-						<h2 className="font-bold sm:text-lg lg:text-3xl">
-							{competitionName}
-						</h2>
-						{SportIcons.pickleball}
-						<div className="flex flex-row items-center">
-							<FaBasketball className="text-xs text-gray-400 lg:text-base" />
-							<p className="ml-2 text-xs text-gray-400 lg:text-base">
-								{sport} {competitionType}
-							</p>
+					<div className="col-span-7 flex-col flex">
+						<h2 className="font-bold lg:text-3xl sm:text-lg">{competitionName}</h2>
+						<div className="flex-row flex items-center">
+							<FaBasketball className="text-gray-400 text-xs lg:text-base" />
+							<p className="text-gray-400 ml-2 text-xs lg:text-base">{sport} {competitionType}</p>
 						</div>
-						<div className="flex flex-row items-center">
-							<FaRegCalendar className="text-xs text-gray-400 lg:text-base" />
-							<p className="ml-2 text-xs text-gray-400 lg:text-base">
-								{competitionStart}
-							</p>
+						<div className="flex-row flex items-center">
+							<FaRegCalendar className="text-gray-400 text-xs lg:text-base" />
+							<p className="text-gray-400 ml-2 text-xs lg:text-base">{competitionStart}</p>
 						</div>
-						<div className="flex flex-row items-center">
-							<FaLocationArrow className="text-xs text-gray-400 lg:text-base" />
-							<p className="ml-2 text-xs text-gray-400 lg:text-base">
-								{location}
-							</p>
+						<div className="flex-row flex items-center">
+							<FaLocationArrow className="text-gray-400 text-xs lg:text-base" />
+							<p className="text-gray-400 ml-2 text-xs lg:text-base">{location}</p>
 						</div>
 					</div>
 					<div className="col-span-3 flex flex-row items-start justify-end">
-						<p className="text-xs text-gray-400 lg:text-2xl">$99</p>
-						<p className="ml-1 text-xs text-gray-400 lg:text-base">
-							per team
-						</p>
+						<p className="lg:text-2xl text-gray-400 text-xs">$99</p>
+						<p className="text-gray-400 ml-1 text-xs lg:text-base">per team</p>
 					</div>
 				</div>
-				<div className="row-span-6 mb-4 grid h-48 grid-cols-12 items-center">
+				<div className="row-span-6 grid grid-cols-12 h-48 items-center mb-4 gap-8">
 					<div className="col-span-6 flex flex-col">
-						<TeamCard name="Team Name" score={99} />
-						<TeamCard name="Team Name" score={99} />
-						<TeamCard name="Team Name" score={99} />
+						<TeamCard name="Team Name" rating={99} ranking={1} />
+						<TeamCard name="Team Name" rating={99} ranking={2} />
+						<TeamCard name="Team Name" rating={99} ranking={3} />
 					</div>
 					<div className="col-span-6 flex flex-col">
-						<PlayerCard name="Player Name" score={99} />
-						<PlayerCard name="Player Name" score={99} />
-						<PlayerCard name="Player Name" score={99} />
+						<PlayerCard name="Player Name" rating={99} ranking={1} />
+						<PlayerCard name="Player Name" rating={99} ranking={2} />
+						<PlayerCard name="Player Name" rating={99} ranking={3} />
 					</div>
 				</div>
 			</div>
