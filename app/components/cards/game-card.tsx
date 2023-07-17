@@ -1,6 +1,7 @@
 import React from "react";
 import { FaPlay } from "react-icons/fa6";
-import { XSGrayMaetIcon } from "../icons";
+import { Game } from "types/index";
+import { XSGrayMaetIcon } from "app/components/icons";
 
 // modular props for all competition cards
 export interface GameCardProps extends Omit<
@@ -24,6 +25,7 @@ React.DetailedHTMLProps<
 	date?: string;
 	verified?: boolean;
 	gameStatus?: boolean;
+	game?: Partial<Game>;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -37,7 +39,7 @@ export /**
  *  @return {*}
  *
  */
-const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, team1Rating, team2Rating, team1rating, team2rating, team1Winner, team2Winner, compDate, verified, gameStatus, ...divParams }) => {
+const GameCard: React.FC<GameCardProps> = ({ game, compName, team1Name, team2Name, team1Rating, team2Rating, team1rating, team2rating, team1Winner, team2Winner, compDate, verified, gameStatus, ...divParams }) => {
 	return (
 		<div {...divParams} className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg">
 			<div className="col-span-3 flex-col flex items-center justify-center">
