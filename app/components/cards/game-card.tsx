@@ -3,7 +3,13 @@ import { FaPlay } from "react-icons/fa6";
 import { XSGrayMaetIcon } from "../icons";
 
 // modular props for all competition cards
-export interface GameCardProps {
+export interface GameCardProps extends Omit<
+React.DetailedHTMLProps<
+	React.HTMLAttributes<HTMLDivElement>,
+	HTMLDivElement
+>,
+"color"
+> {
 	compName?: string;
 	team1Name?: string;
 	team2Name?: string;
@@ -31,9 +37,9 @@ export /**
  *  @return {*}
  *
  */
-const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, team1Rating, team2Rating, team1Score, team2Score, team1Winner, team2Winner, compDate, verified, gameStatus }) => {
+const GameCard: React.FC<GameCardProps> = ({ compName, team1Name, team2Name, team1Rating, team2Rating, team1Score, team2Score, team1Winner, team2Winner, compDate, verified, gameStatus, ...divParams }) => {
 	return (
-		<div className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg">
+		<div {...divParams} className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg">
 			<div className="col-span-3 flex-col flex items-center justify-center">
 				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
 				<div className="flex flex-wrap justify-center items-center text-center">
