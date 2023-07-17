@@ -18,9 +18,13 @@ const stripe = process.env.STRIPE_SECRET
  * @return {*}
  */
 export async function POST(
-	_req: NextRequest,
+	req: NextRequest,
 	params: { params: { hostID: string } }
 ) {
+	// get origin from headers
+	const origin = req.headers.get("origin");
+
+	console.log("fired", origin);
 	// get the parameters from the query
 	const { hostID } = params.params;
 	try {
@@ -32,18 +36,64 @@ export async function POST(
 			const accountRef = await stripe?.accounts.create({
 				type: "express",
 			});
-			await privateUserCollection
-				// .doc(hostID)
-				.doc(hostID)
-				.update({ stripeID: accountRef?.id });
-			return NextResponse.json({ message: "Created new Stripe account" });
+			if (accountRef?.id) {
+				await privateUserCollection
+					// .doc(hostID)
+					.doc(hostID)
+					.update({ stripeID: accountRef?.id });
+
+				return new NextResponse(
+					JSON.stringify({
+						message: "Created new Stripe account",
+						stripeID: accountRef?.id ? accountRef.id : "",
+					}),
+					{
+						status: 200,
+						headers: {
+							"Access-Control-Allow-Origin": origin || "",
+							"Content-Type": "application/json",
+						},
+					}
+				);
+			}
+			return new NextResponse(
+				JSON.stringify({
+					message: "Error making stripe account ",
+					stripe: stripe || "",
+				}),
+				{
+					status: 200,
+					headers: {
+						"Access-Control-Allow-Origin": origin || "",
+						"Content-Type": "application/json",
+					},
+				}
+			);
 		}
-		return NextResponse.json({
-			message: "user already has a stripe account",
-		});
+
+		return new NextResponse(
+			JSON.stringify({
+				message: "user already has a stripe account",
+				stripeID: userCollection.stripeID || "",
+			}),
+			{
+				status: 200,
+				headers: {
+					"Access-Control-Allow-Origin": origin || "",
+					"Content-Type": "application/json",
+				},
+			}
+		);
 	} catch (e) {
-		return NextResponse.json({
-			message: `Something went wrong error: ${e}`,
-		});
+		return new NextResponse(
+			JSON.stringify({ message: `Something went wrong error: ${e}` }),
+			{
+				status: 200,
+				headers: {
+					"Access-Control-Allow-Origin": origin || "",
+					"Content-Type": "application/json",
+				},
+			}
+		);
 	}
 }
