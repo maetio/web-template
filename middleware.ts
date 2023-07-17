@@ -6,10 +6,19 @@ import {
 } from "next-firebase-auth-edge/lib/next/middleware";
 import { getFirebaseAuth } from "next-firebase-auth-edge/lib/auth";
 import {
+	BaseURL,
 	FirebaseApiKey,
 	FirebaseAuthEdgeOptions,
 	FirebaseServiceAccount,
 } from "config/constants";
+
+// cors whiteListed Domains
+const allowedOrigins = [
+	`${BaseURL}`,
+	"https://www.google.com",
+	"https://maetio.retool.com/editor/e9ce7e92-1cd9-11ee-9ea3-9f44bbfdf5bc/Host%20%231/Maet%20Host%20Facing%20App%20-%20Seth%20playground",
+	"https://maetio.retool.com",
+];
 
 // function that will redirect the user to the login page if they are not logged in.
 function redirectToLogin(request: NextRequest) {
@@ -44,6 +53,23 @@ const { setCustomUserClaims, getUser } = getFirebaseAuth(
  * @return {*}
  */
 export async function middleware(request: NextRequest) {
+	const origin = request.headers.get("origin");
+
+	if (
+		request.nextUrl.pathname.startsWith("/api/stripe/test1") ||
+		request.nextUrl.pathname.startsWith("/api/stripe/create-stripe-account")
+	) {
+		if (origin && !allowedOrigins.includes(origin)) {
+			return new NextResponse(null, {
+				status: 400,
+				statusText: "Bad Request, Origin not allowed",
+				headers: {
+					"Content-Type": "text/plain",
+				},
+			});
+		}
+	}
+
 	return authentication(request, {
 		// these api routes are automatically created by the middleware
 		// see here: https://github.com/awinogrodzki/next-firebase-auth-edge/issues/34

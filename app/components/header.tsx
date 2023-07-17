@@ -21,8 +21,8 @@ export /**
 				</div>
 			</Link>
 		</div>
-		<div className="col-span-6 flex items-center justify-center">
-			<div className="relative flex items-center justify-end">
+		<div className="col-span-6 mr-1 flex items-center justify-center">
+			<div className="relative mr-5 flex items-center justify-center lg:mr-0">
 				<input
 					id="search"
 					placeholder="Search"
@@ -34,7 +34,7 @@ export /**
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
 					stroke="currentColor"
-					className="-ml-8 h-5 w-5 stroke-2"
+					className="-ml-8 h-5 w-5 stroke-2 dark:stroke-black"
 				>
 					<path
 						strokeLinecap="round"

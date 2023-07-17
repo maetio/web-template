@@ -27,8 +27,9 @@ export async function GET(
 		if (compID && compID !== "all") {
 			const querySnapshot = await competitionProfilesSubcollection(compID)
 				.orderBy("rating.displayRating", "desc")
-				.limit(Number(number) || 5)
+				.limit(Number(number) || 100)
 				.get();
+			console.log("query snapshot length", querySnapshot.size);
 			return NextResponse.json(
 				querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
 			);
@@ -37,7 +38,7 @@ export async function GET(
 		// get the whole collection group
 		const querySnapshot = await profileCollection
 			.orderBy("rating.displayRating", "desc")
-			.limit(Number(number) || 5)
+			.limit(Number(number) || 100)
 			.get();
 		return NextResponse.json(
 			querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
@@ -47,3 +48,9 @@ export async function GET(
 		throw Error(error);
 	}
 }
+
+/**
+ * Revalidate the api route every 60 seconds
+ * https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidation-frequency
+ */
+export const revalidate = 60;

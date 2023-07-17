@@ -22,6 +22,7 @@ export default async function Home() {
 			{competitions.map((item) => (
 				<Link key={item.id} href={`view-comp/${item.id}`}>
 					<CompetitionCard
+						competition={item}
 						competitionName={item.name}
 						location={item.location?.address}
 						competitionStart={item.startTimeISO}
@@ -30,7 +31,16 @@ export default async function Home() {
 					/>
 				</Link>
 			))}
-			<GameCard gameStatus />
+			<GameCard
+				compDate="Jun 10, 2023"
+				compName="Competition Name"
+				team1Rating={99}
+				team2Rating={99}
+				team1Name="Team 1 Name"
+				team2Name="Team 2 Name"
+				team1rating={99}
+				team2rating={99}
+			/>
 		</main>
 	);
 }

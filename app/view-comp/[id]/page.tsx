@@ -13,6 +13,17 @@ function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
 }
 
+/**
+ * Function will display the competition to the user
+ *
+ * @export
+ * @param {{
+ * 	params: { id: string };
+ * }} {
+ * 	params,
+ * }
+ * @return {*}
+ */
 export default async function ViewCompScreen({
 	params,
 }: {
@@ -46,9 +57,9 @@ export default async function ViewCompScreen({
 
 	return (
 		<main className="mx-10">
-			<div className="bg-white px-6 py-24 sm:py-32 lg:px-8">
+			<div className="px-6 py-24 sm:py-32 lg:px-8">
 				<div className="mx-auto max-w-2xl text-center">
-					<h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+					<h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
 						{competitionData?.name}
 					</h2>
 					{compPlayer.profileID ? null : (
@@ -110,10 +121,10 @@ export default async function ViewCompScreen({
 								alt=""
 							/>
 							<div className="min-w-0 flex-auto">
-								<p className="text-sm font-bold leading-6 text-gray-900">
+								<p className="text-sm font-bold leading-6 text-gray-900 dark:text-white ">
 									{player.firstName} {player.lastName}
 								</p>
-								<p className="mt-1 truncate text-xs leading-5 text-gray-500">
+								<p className="mt-1 truncate text-xs leading-5 text-gray-500 dark:text-white ">
 									{player.type}
 								</p>
 							</div>
@@ -124,12 +135,12 @@ export default async function ViewCompScreen({
 								<div className="absolute rounded-md p-3">
 									<MaetIcon size={10} />
 								</div>
-								<p className="ml-16 truncate text-sm font-medium text-gray-500">
+								<p className="ml-16 truncate text-sm font-medium text-gray-500 dark:text-white ">
 									Rating
 								</p>
 							</dt>
 							<dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
-								<p className="text-2xl font-semibold text-gray-900">
+								<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
 									{Math.round(
 										player.rating?.displayRating || 100
 									)}
