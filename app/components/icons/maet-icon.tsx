@@ -37,7 +37,7 @@ export const MaetIcon: React.FC<MaetIconProps> = ({
 	return (
 		<div {...divParams}>
 			<svg
-				className={`h-${String(size || 10)} w-${String(size || 10)}`}
+				className={`h-${String(size || 10)} w-${String(size || 10)} dark:fill-white`}
 				viewBox="0 0 1500 1500"
 			>
 				<path
