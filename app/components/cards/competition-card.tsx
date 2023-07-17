@@ -1,5 +1,6 @@
 import React from "react";
 import { FaBasketball, FaLocationArrow, FaRegCalendar } from "react-icons/fa6";
+import { Competition } from "types/competition";
 import { TeamCard } from "./team-card";
 import { PlayerCard } from "./player-card";
 
@@ -13,13 +14,14 @@ React.DetailedHTMLProps<
     competitionName?: string
 	sport?: string
 	competitionType?: string
-	competitionStart?: string
-	location?: string
-	price?: string
-	width?: number
+	competitionStart?: string;
+	location?: string;
+	price?: string;
+	width?: number;
+	competition?: Partial<Competition>;
 }
 
-const CompetitionCard: React.FC<CompetitionCardProps> = ({competitionName, sport, competitionType, competitionStart, location, price, width, ...divParams }) => {
+const CompetitionCard: React.FC<CompetitionCardProps> = ({ competitionName, sport, competitionType, competitionStart, location, price, width, competition, ...divParams }) => {
 	
 	return (
 		<div {...divParams} className={`border w-${String(width) || "auto" } rounded-md shadow-lg lg:w-2/3 mt-3 p-2 min-w-full`}>
@@ -29,7 +31,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({competitionName, sport
 						<div className="2xl:w-36 2xl:h-36 md:h-24 md:w-24 lg:min-h-0 w-20 h-20 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 					</div>
 					<div className="col-span-7 flex-col flex">
-						<h2 className="font-bold lg:text-3xl sm:text-lg">{competitionName}</h2>
+						<h2 className="font-bold lg:text-3xl sm:text-lg">{competition?.name}</h2>
 						<div className="flex-row flex items-center">
 							<FaBasketball className="text-gray-400 text-xs lg:text-base" />
 							<p className="text-gray-400 ml-2 text-xs lg:text-base">{sport} {competitionType}</p>

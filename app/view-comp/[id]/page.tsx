@@ -13,6 +13,17 @@ function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
 }
 
+/**
+ * Function will display the competition to the user
+ *
+ * @export
+ * @param {{
+ * 	params: { id: string };
+ * }} {
+ * 	params,
+ * }
+ * @return {*} 
+ */
 export default async function ViewCompScreen({
 	params,
 }: {
