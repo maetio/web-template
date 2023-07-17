@@ -22,7 +22,7 @@ function classNames(...classes: string[]) {
  * }} {
  * 	params,
  * }
- * @return {*} 
+ * @return {*}
  */
 export default async function ViewCompScreen({
 	params,

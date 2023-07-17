@@ -29,7 +29,7 @@ export async function GET(
 				.orderBy("rating.displayRating", "desc")
 				.limit(Number(number) || 100)
 				.get();
-			console.log("query snapshot length", querySnapshot.size);	
+			console.log("query snapshot length", querySnapshot.size);
 			return NextResponse.json(
 				querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
 			);
