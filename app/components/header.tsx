@@ -34,7 +34,7 @@ export /**
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
 					stroke="currentColor"
-					className="-ml-8 h-5 w-5 stroke-2"
+					className="-ml-8 h-5 w-5 stroke-2 dark:stroke-black"
 				>
 					<path
 						strokeLinecap="round"
