@@ -28,6 +28,7 @@ export default async function ViewProfileScreen({
 	const profileData: PlayerResponseType = await profileResponse.json();
 
 	// fetch the game profiles for the profile
+	
 
 	return (
 		<main className="mx-10">
