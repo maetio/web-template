@@ -38,7 +38,7 @@ export default async function ViewProfileScreen({
 			{gameProfiles.map((gameProf) => (
 				<div key={gameProf.id}>
 					<br/>
-					<h3>{gameProf.competitionID}</h3>
+					<h3>Game id: {gameProf.gameID}</h3>
 					<h3>Rating: {gameProf.rating?.displayRating}</h3>
 					<h3>Change: {gameProf.deltaRating?.displayRating && gameProf.deltaRating?.displayRating > 0 ? "+" : ""}{gameProf.deltaRating?.displayRating}</h3>
 					<br/>
