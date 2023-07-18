@@ -43,11 +43,11 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 				(<div className="col-span-1"></div>)}
 			<div className="col-span-2 flex items-center gap-1">
 				<div style={{
-					backgroundImage: player.image ? `url(${player.image})` : "bg-none"
+					backgroundImage: player?.image ? `url(${player.image})` : "bg-none"
 				}} className="h-4 w-4 md:h-8 md:w-8 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 			</div>
 			<div className="col-span-4 flex items-start">
-				<p className="text-xs lg:text-lg font-bold">{player.firstName} {player.lastName}</p>
+				<p className="text-xs lg:text-lg font-bold">{player?.firstName} {player?.lastName}</p>
 			</div>
 			<div className="col-span-4 md:col-span-5 flex items-center justify-end md:justify-end gap-1 md:gap-2">
 				<svg className={"h-4 w-4 lg:h-6 lg:w-6 dark:fill-white"} viewBox="0 0 1500 1500">
@@ -60,7 +60,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 						transform="matrix(.1 0 0 -.1 0 1500)"
 					/>
 				</svg>
-				<p className="text-xs lg:text-lg font-bold">{player.rating?.displayRating}</p>
+				<p className="text-xs lg:text-lg font-bold">{player?.rating?.displayRating}</p>
 				{/* <div>
 						<FaArrowTrendUp className="text-xs text-green-800" />
 					</div>

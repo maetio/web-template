@@ -26,6 +26,9 @@ export /**
  *
  */
 const GameCard: React.FC<GameCardProps> = ({ game, ...divParams }) => {
+	// get game status
+	// const gameStatus
+
 	return (
 		<div {...divParams} className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg">
 			<div className="col-span-3 flex-col flex items-center justify-center">
