@@ -1,6 +1,5 @@
-import { BaseURL } from "config/constants";
 import React from "react";
-import { Competition } from "types/competition";
+import { BaseURL } from "config/constants";
 import { PlayerResponseType } from "types/next-api";
 
 /**
@@ -17,11 +16,14 @@ import { PlayerResponseType } from "types/next-api";
 export default async function ViewProfileScreen({
 	params,
 }: {
-	params: { userID: string; sport: Competition["sport"] };
+	params: { queryParams: Array<string | undefined> };
 }) {
+	// get the parameters from the query
+	const [userID, sport] = params.queryParams;
+
 	// fetch call to get the user's player profile
 	const profileResponse = await fetch(
-		`${BaseURL}/api/player/${params.userID}/${params.sport}`
+		`${BaseURL}/api/player/${userID}/${sport}`
 	);
 	const profileData: PlayerResponseType = await profileResponse.json();
 
