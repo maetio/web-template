@@ -73,7 +73,7 @@ const getDisplayRating = (
 };
 
 export /**
- * Function will return the updated ratings for a game result that is inputted
+ * Function will return the updated ratings for a game result that is input
  *
  * @param {Rating} player1
  * @param {Rating} player2
@@ -148,6 +148,7 @@ const simulateMatchup = (
 	};
 	return { player1: updatedPlayer1, player2: updatedPlayer2 };
 };
+
 
 export /**
  * Function will return the delta rating object
