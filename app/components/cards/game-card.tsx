@@ -12,29 +12,7 @@ export interface GameCardProps
 		>,
 		"color"
 	> {
-	compName?: string;
-	team1Name?: string;
-	team2Name?: string;
-	team1Rating?: number;
-	team2Rating?: number;
-	team1rating?: number;
-	team2rating?: number;
-	team1Winner?: boolean;
-	team2Winner?: boolean;
-	compDate: string;
-	type?: string;
-	date?: string;
-	verified?: boolean;
-	gameStatus?: boolean;
-	game?: Partial<Game>;
-export interface GameCardProps extends Omit<
-React.DetailedHTMLProps<
-	React.HTMLAttributes<HTMLDivElement>,
-	HTMLDivElement
->,
-"color"
-> {
-	game: Partial<Game>
+	game: Partial<Game>;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -98,9 +76,9 @@ const GameCard: React.FC<GameCardProps> = ({ game, ...divParams }) => {
 											</div>
 										)}
 									</div>
-								) : (
-									<div></div>
-								)}
+									) : (
+										<div></div>
+									)}
 							</div>
 							<div className="mt-2 flex h-6 lg:mt-6">
 								{verified ? (

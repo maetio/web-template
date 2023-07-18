@@ -13,7 +13,7 @@ export /**
  *
  */ const Header = () => (
 	<div className="grid h-16 grid-cols-12 items-center gap-3 border-b">
-		<div className="col-span-3 ml-2 flex items-center">
+		<div className="lg:col-span-3 col-span-2 ml-2 flex items-center">
 			<Link href="/">
 				<div className="items center flex">
 					<HeaderMaetIcon />
@@ -21,12 +21,12 @@ export /**
 				</div>
 			</Link>
 		</div>
-		<div className="col-span-6 mr-1 flex items-center justify-center">
-			<div className="relative mr-5 flex items-center justify-center lg:mr-0">
+		<div className="lg:col-span-3 col-span-5 flex mr-1 items-center justify-end">
+			<div className="relative flex items-center justify-center lg:mr-0">
 				<input
 					id="search"
 					placeholder="Search"
-					className=" h-10 flex-1 rounded-large border px-2 text-sm placeholder-black"
+					className="flex rounded-large px-2 text-sm placeholder-black"
 				></input>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -44,6 +44,8 @@ export /**
 				</svg>
 			</div>
 		</div>
-		<ProfileButton />
+		<div className="lg:col-span-6 col-span-5 flex mr-1 items-center justify-end">
+			<ProfileButton />	
+		</div>
 	</div>
 );
