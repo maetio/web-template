@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { createPlayerFactory, Match } from "glicko-two";
 import { Rating } from "types/index";
 import { InitialRating, PlacementGames } from "./rating-constants";

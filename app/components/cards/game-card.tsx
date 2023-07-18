@@ -1,6 +1,7 @@
 import React from "react";
 import { FaPlay } from "react-icons/fa6";
 import { Game } from "types/index";
+import { inferGameStatus } from "utils/skill-rating";
 import { XSGrayMaetIcon } from "../icons";
 
 // modular props for all competition cards
@@ -13,10 +14,10 @@ export interface GameCardProps
 		"color"
 	> {
 	game: Partial<Game>;
+	verified: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-shadow
-
 export /**
  * Card that renders game data upon game completion
  *
@@ -26,9 +27,9 @@ export /**
  *  @return {*}
  *
  */
-const GameCard: React.FC<GameCardProps> = ({ game, ...divParams }) => {
+const GameCard: React.FC<GameCardProps> = ({ game, verified, ...divParams }) => {
 	// get game status
-	// const gameStatus
+	const gameStatus = inferGameStatus(game.team1?.points, game.team2?.points);
 
 	return (
 		<div {...divParams} className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg">
@@ -55,18 +56,18 @@ const GameCard: React.FC<GameCardProps> = ({ game, ...divParams }) => {
 						</div>
 						<div className="flex-row lg:w-32">
 							<div className="grid grid-cols-2 col-span-2 items-center mt-1">
-								{gameStatus ?
+								{gameStatus !== "unreported" ?
 									(<div className="flex col-span-1 items-center mt-1 justify-start">
-										{game.team1?.points > game.team2?.points ? (
+										{gameStatus === "team1-winner" ? (
 											<div className="flex items-center justify-start col-span-1">
 												<FaPlay className="mr-1"/>
 												<p className="font-bold lg:text-xl">{game.team1?.points}</p>
 											</div>) : (
 											<p className="lg:text-xl">{game.team1?.points}</p>)}
 									</div>) : (<div></div>)}
-								{gameStatus ?
+								{gameStatus !== "unreported" ?
 									(<div className="flex col-span-1 items-center mt-1 justify-end">
-										{team2Winner ? (
+										{gameStatus === "team2-winner" ? (
 											<div className="flex items-center col-span-1">
 												<FaPlay className="mr-1"/>
 												<p className="font-bold lg:text-xl">{game.team2?.points}</p>
