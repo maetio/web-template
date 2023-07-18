@@ -2,8 +2,8 @@ import { ServiceAccount } from "next-firebase-auth-edge/lib/auth/credential";
 
 // set the initial base
 const initialBaseURL =
-	process.env.NEXT_PUBLIC_VERCEL_URL ??
 	process.env.NEXT_PUBLIC_SITE_URL ??
+	process.env.NEXT_PUBLIC_VERCEL_URL ??
 	"http://localhost:3000/";
 /**
  * The base url for the server side code

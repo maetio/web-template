@@ -4,6 +4,29 @@ import { Game } from "types/index";
 import { XSGrayMaetIcon } from "../icons";
 
 // modular props for all competition cards
+export interface GameCardProps
+	extends Omit<
+		React.DetailedHTMLProps<
+			React.HTMLAttributes<HTMLDivElement>,
+			HTMLDivElement
+		>,
+		"color"
+	> {
+	compName?: string;
+	team1Name?: string;
+	team2Name?: string;
+	team1Rating?: number;
+	team2Rating?: number;
+	team1rating?: number;
+	team2rating?: number;
+	team1Winner?: boolean;
+	team2Winner?: boolean;
+	compDate: string;
+	type?: string;
+	date?: string;
+	verified?: boolean;
+	gameStatus?: boolean;
+	game?: Partial<Game>;
 export interface GameCardProps extends Omit<
 React.DetailedHTMLProps<
 	React.HTMLAttributes<HTMLDivElement>,
@@ -74,40 +97,47 @@ const GameCard: React.FC<GameCardProps> = ({ game, ...divParams }) => {
 												<p className="lg:text-xl">{game.team2?.points}</p>
 											</div>
 										)}
-									</div>) : (<div></div>)}
+									</div>
+								) : (
+									<div></div>
+								)}
 							</div>
-							<div className="flex h-6 lg:mt-6 mt-2">
-								{verified ?
-									(<div className="bg-green-300 h-6 min-w-full text-xs rounded-full flex items-center justify-center">
+							<div className="mt-2 flex h-6 lg:mt-6">
+								{verified ? (
+									<div className="flex h-6 min-w-full items-center justify-center rounded-full bg-green-300 text-xs">
 										<p>Verified</p>
-									</div>) : (<div className="h-6 bg-blue-200 flex rounded-full text-xs min-w-full items-center justify-center">
+									</div>
+								) : (
+									<div className="flex h-6 min-w-full items-center justify-center rounded-full bg-blue-200 text-xs">
 										<p>Scheduled</p>
-									</div>)}
+									</div>
+								)}
 							</div>
 						</div>
 					</div>
 				</div>
-				{gameStatus ?
-					(<div></div>) : (
-						<div className="flex flex-col min-w-full">
-							<div className="flex-row flex items-start min-w-full">
-								<div className="flex w-1/2 flex-col ml-1">
-									<div className="h-3 bg-blue-200 min-w-full flex rounded-full"></div>
-									<p className="text-xs">50%</p>
-								</div>
-								<div className="flex w-1/2 flex-col -ml-1 mr-1 items-end">
-									<div className="h-3 bg-primaryMain min-w-full flex rounded-full"></div>
-									<p className="text-xs">50%</p>
-								</div>
+				{gameStatus ? (
+					<div></div>
+				) : (
+					<div className="flex min-w-full flex-col">
+						<div className="flex min-w-full flex-row items-start">
+							<div className="ml-1 flex w-1/2 flex-col">
+								<div className="flex h-3 min-w-full rounded-full bg-blue-200"></div>
+								<p className="text-xs">50%</p>
 							</div>
-							<div className="mt-1 mb-1 flex items-center justify-center text-sm font-bold">
-								<p>Win Probability</p>
+							<div className="-ml-1 mr-1 flex w-1/2 flex-col items-end">
+								<div className="flex h-3 min-w-full rounded-full bg-primaryMain"></div>
+								<p className="text-xs">50%</p>
 							</div>
 						</div>
-					)}
+						<div className="mb-1 mt-1 flex items-center justify-center text-sm font-bold">
+							<p>Win Probability</p>
+						</div>
+					</div>
+				)}
 			</div>
-			<div className="col-span-3 flex-col flex items-center justify-center">
-				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
+			<div className="col-span-3 flex flex-col items-center justify-center">
+				<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 				<div className="flex justify-center">
 					<p className="p-2 lg:text-sm text-xs font-semibold text-center">
 						{game.team2?.lastName}

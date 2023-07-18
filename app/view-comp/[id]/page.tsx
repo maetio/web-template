@@ -8,11 +8,23 @@ import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
 import { MaetIcon } from "app/components/icons";
 import { SubmitFormActionButton } from "app/components/submit-form-action-button";
+import Link from "next/link";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
 }
 
+/**
+ * Function will display the competition to the user
+ *
+ * @export
+ * @param {{
+ * 	params: { id: string };
+ * }} {
+ * 	params,
+ * }
+ * @return {*}
+ */
 export default async function ViewCompScreen({
 	params,
 }: {
@@ -100,25 +112,26 @@ export default async function ViewCompScreen({
 						key={player.id}
 						className="flex justify-between gap-x-6 py-5"
 					>
-						<div className="align-center flex justify-center gap-x-4">
-							<h1 className="flex-none text-xl font-bold">
-								{rank + 1}
-							</h1>
-							<img
-								className="h-12 w-12 flex-none rounded-full bg-gray-50"
-								src={player.image || undefined}
-								alt=""
-							/>
-							<div className="min-w-0 flex-auto">
-								<p className="text-sm font-bold leading-6 text-gray-900 dark:text-white ">
-									{player.firstName} {player.lastName}
-								</p>
-								<p className="mt-1 truncate text-xs leading-5 text-gray-500 dark:text-white ">
-									{player.type}
-								</p>
+						<Link href={`/view-profile/${player.userID}/${player.sport}`}>
+							<div className="align-center flex justify-center gap-x-4">
+								<h1 className="flex-none text-xl font-bold">
+									{rank + 1}
+								</h1>
+								<img
+									className="h-12 w-12 flex-none rounded-full bg-gray-50"
+									src={player.image || undefined}
+									alt=""
+								/>
+								<div className="min-w-0 flex-auto">
+									<p className="text-sm font-bold leading-6 text-gray-900 dark:text-white ">
+										{player.firstName} {player.lastName}
+									</p>
+									<p className="mt-1 truncate text-xs leading-5 text-gray-500 dark:text-white ">
+										{player.type}
+									</p>
+								</div>
 							</div>
-						</div>
-
+						</Link>
 						<div className="relative">
 							<dt>
 								<div className="absolute rounded-md p-3">
