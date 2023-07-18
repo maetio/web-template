@@ -1,5 +1,6 @@
 import React from "react";
 import { FaMedal } from "react-icons/fa6";
+import { Team } from "types/index";
 
 export interface TeamCardProps extends Omit<
 React.DetailedHTMLProps<
@@ -8,6 +9,7 @@ React.DetailedHTMLProps<
 >,
 "color"
 > {
+	team?: Partial<Team>
 	name?: string;
 	image?: string | null | undefined;
 	rating?: number;
@@ -27,7 +29,7 @@ export /**
  *	}
  *  @return {*}
  *
- */ const TeamCard: React.FC<TeamCardProps> = ({ name, rating, ranking, image, ...divParams }) => {
+ */ const TeamCard: React.FC<TeamCardProps> = ({ team, ranking, ...divParams }) => {
 	const medalColor: string[] = ["text-yellow-400", "text-gray-400", "text-amber-700"];
 	return (
 		<div {...divParams} className="grid h-12 min-w-full grid-cols-12 items-center justify-start gap-4 border-b">
@@ -46,11 +48,11 @@ export /**
 				(<div className="col-span-1"></div>)}
 			<div className="col-span-2 flex items-center">
 				<div style={{
-					backgroundImage: image ? `url(${image})` : "bg-none"
+					backgroundImage: team?.image ? `url(${team?.image})` : "bg-none"
 				}} className="h-4 w-4 md:h-8 md:w-8 rounded-full md:rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 			</div>
 			<div className="col-span-4 flex items-center">
-				<p className="text-xs lg:text-lg font-bold">{name}</p>
+				<p className="text-xs lg:text-lg font-bold">{team?.firstName} {team?.lastName}</p>
 			</div>
 			<div className="col-span-4 md:col-span-5 flex items-center justify-end md:justify-end gap-1 md:gap-2">
 				<svg className={"lg:h-6 lg:w-6 h-4 w-4 dark:fill-white"} viewBox="0 0 1500 1500">
@@ -63,7 +65,7 @@ export /**
 						transform="matrix(.1 0 0 -.1 0 1500)"
 					/>
 				</svg>
-				<p className="text-xs lg:text-lg font-bold">{rating}</p>
+				<p className="text-xs lg:text-lg font-bold">{team?.rating?.displayRating}</p>
 				{/* <div>
 						<FaArrowTrendUp className="text-md text-green-800" />
 					</div>

@@ -1,8 +1,6 @@
 import React from "react";
 import { FaBasketball, FaLocationArrow, FaRegCalendar } from "react-icons/fa6";
 import { Competition } from "types/index";
-import { TeamCard } from "./team-card";
-import { PlayerCard } from "./player-card";
 
 export interface CompetitionCardProps extends Omit<
 React.DetailedHTMLProps<
@@ -48,14 +46,10 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({competition, price, wi
 				</div>
 				<div className="row-span-6 grid grid-cols-12 h-48 items-center mb-4 gap-8">
 					<div className="col-span-6 flex flex-col">
-						<TeamCard name="Team Name" rating={99} ranking={1} />
-						<TeamCard name="Team Name" rating={99} ranking={2} />
-						<TeamCard name="Team Name" rating={99} ranking={3} />
+
 					</div>
 					<div className="col-span-6 flex flex-col">
-						<PlayerCard name="Player Name" rating={99} ranking={1} />
-						<PlayerCard name="Player Name" rating={99} ranking={2} />
-						<PlayerCard name="Player Name" rating={99} ranking={3} />
+
 					</div>
 				</div>
 			</div>
