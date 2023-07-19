@@ -8,6 +8,8 @@ import {
 } from "server-actions/profiles";
 import { SubmitFormActionButton } from "app/components/submit-form-action-button";
 import { MaetIcon } from "app/components/icons";
+import { getStripeSession } from "server-actions/stripe";
+import { ServerCheckoutButton } from "app/components/server-checkout-button";
 
 /**
  * Screen will join the competition for the user
@@ -35,9 +37,9 @@ export default async function JoinCompScreen({
 	// get the profile data for the user
 	const profileData = user?.id
 		? await getOrCreateProfile(
-			user,
-			competitionData?.sport || "basketball",
-			"player"
+				user,
+				competitionData?.sport || "basketball",
+				"player"
 		  )
 		: null;
 
@@ -67,19 +69,55 @@ export default async function JoinCompScreen({
 		}
 	};
 
-	const testStripeApi = async () => {
+	// const submitStipeFormAction = async () => {
+	// 	"use server";
+
+	// 	console.log("Submitting add competition profile");
+
+	// 	try {
+	// 		// update the data with the server action
+	// 		if (competitionData?.id) {
+	// 			return await getStripeSession(competitionData.id);
+	// 		}
+	// 		console.log("No user id");
+	// 	} catch (e: any) {
+	// 		console.warn("error with form action", e);
+	// 	}
+	// };
+
+	// const data = await submitStipeFormAction();
+
+	// const testStripeApi = async () => {
+	// 	"use server";
+
+	// 	const data = await fetch(
+	// 		`${BaseURL}/api/stripe/create-payment-session/${competitionData?.id}`,
+	// 		{
+	// 			method: "POST",
+	// 		}
+	// 	);
+
+	// 	const thing = await data.json();
+	// 	console.log("thing", thing);
+	// };
+
+	const submitStipeFormAction = async () => {
 		"use server";
 
-		const data = await fetch(
-			`${BaseURL}/api/stripe/create-payment-session/${competitionData?.id}`,
-			{
-				method: "POST",
-			}
-		);
+		console.log("Submitting add competition profile");
 
-		const thing = await data.json();
-		console.log("thing", thing);
+		try {
+			// update the data with the server action
+			if (competitionData?.id) {
+				return await getStripeSession(competitionData.id);
+			}
+			console.log("No user id");
+		} catch (e: any) {
+			console.warn("error with form action", e);
+		}
 	};
+
+	const data = await submitStipeFormAction();
 
 	return (
 		<>
@@ -121,18 +159,25 @@ export default async function JoinCompScreen({
 									competitionData?.price &&
 									competitionData?.price > 0
 										? `Pay $${
-											competitionData.price / 100
+												competitionData.price / 100
 										  } To Join`
 										: "Join Competition"
 								}
 								icon="none"
 								action={submitFormAction}
 							/>
-							<SubmitFormActionButton
+							{/* <SubmitFormActionButton
 								title="test stripe"
 								icon="none"
-								action={testStripeApi}
-							/>
+								action={submitStipeFormAction}
+							/> */}
+							{data?.paymentIntent ? (
+								<ServerCheckoutButton
+									paymentIntent={data?.paymentIntent}
+								/>
+							) : (
+								<button>loading</button>
+							)}
 						</div>
 					</div>
 				</div>

@@ -1,19 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "@mui/material";
 import {
 	useStripe,
 	useElements,
 	PaymentElement,
 } from "@stripe/react-stripe-js";
 
-export /**
- * Contains the stripe form, as well as checkout button that confirms the order
- *
- * @return {*}
- */
-const StripeForm = () => {
+export interface StripeFormParams {
+	options?: any;
+}
+
+export const StripeForm: React.FC<StripeFormParams> = () => {
 	const stripe = useStripe();
 	const elements = useElements();
 
@@ -51,13 +49,15 @@ const StripeForm = () => {
 	};
 
 	return (
-		<form>
-			<PaymentElement />
-			<Button onClick={handleSubmit} disabled={!stripe}>
-				Submit
-			</Button>
-			{/* Show error message to your customers */}
-			{errorMessage && <div>{errorMessage}</div>}
-		</form>
+		<section>
+			<form>
+				<PaymentElement />
+				<button onClick={handleSubmit} disabled={!stripe}>
+					Submit
+				</button>
+				{/* Show error message to your customers */}
+				{errorMessage && <div>{errorMessage}</div>}
+			</form>
+		</section>
 	);
 };
