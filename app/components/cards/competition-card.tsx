@@ -39,7 +39,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({competition, price, wi
 							style={{
 								backgroundImage: competition?.image ? `url(${competition?.image})` : "bg-none"
 							}}
-							className="2xl:w-36 2xl:h-36 lg:h-24 lg:w-24 lg:min-h-0 w-16 h-16 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+							className="2xl:w-36 2xl:h-36 lg:h-24 lg:w-24 lg:min-h-0 sm:w-16 sm:h-16 w-12 h-12 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 					</div>
 					<div className="col-span-7 flex-col flex">
 						<h2 className="font-bold lg:text-3xl sm:text-lg">{competition.name}</h2>
