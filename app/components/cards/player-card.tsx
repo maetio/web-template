@@ -13,6 +13,10 @@ React.DetailedHTMLProps<
 	ranking?: number;
 }
 
+function classNames(...classes: string[]) {
+	return classes.filter(Boolean).join(" ");
+}
+
 export /**
  * Card that renders the initial player data
  *
@@ -35,23 +39,31 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 			className="grid h-12 min-w-full grid-cols-12 items-center justify-start gap-4 border-b"
 		>
 			{ranking ? (
-				<div className="col-span-2 flex items-center md:col-span-1">
-					{ranking <= 3 && (
-						<FaMedal
-							className={`ml-1 ${
-								medalColor[ranking - 1]
-							} md:text-base`}
-						/>
-					)}
-					<p className="ml-1 font-bold">{ranking}</p>
+				<div className="col-span-2 grid grid-cols-6 items-center md:col-span-1">
+					{ranking <= 3 ? (
+						<div className="flex col-span-3">
+							<FaMedal
+								className={`ml-1 ${
+									medalColor[ranking - 1]
+								} md:text-base`}
+							/>
+						</div>
+					) : (<div className="flex col-span-3"></div>)}
+					<p className="ml-1 font-bold">{ranking + 1}</p>
 				</div>
 			) : (
-				<div className="col-span-1"></div>
+				<div className="col-span-2 flex"></div>
 			)}
 			<div className="col-span-2 flex items-center gap-1">
-				<div style={{
-					backgroundImage: player?.image ? `url(${player.image})` : "bg-none"
-				}} className="h-4 w-4 md:h-8 md:w-8 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				{player.image ? (
+					<img
+						className="h-12 w-12 flex-none rounded-full bg-gray-50"
+						src={player.image || undefined}
+						alt=""
+					/>
+				) : (
+					<div className="h-4 w-4 md:h-8 md:w-8 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				)}
 			</div>
 			<div className="col-span-4 flex items-start">
 				<p className="text-xs lg:text-lg font-bold">{player?.firstName} {player?.lastName}</p>
@@ -70,7 +82,26 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 						transform="matrix(.1 0 0 -.1 0 1500)"
 					/>
 				</svg>
-				<p className="text-xs lg:text-lg font-bold">{player?.rating?.displayRating}</p>
+				<p>
+					{Math.round(
+						player.rating?.displayRating || 100
+					)}
+				</p>
+				<p className={classNames(player?.deltaRating?.displayRating &&
+											player?.deltaRating
+												?.displayRating >= 0
+					? "text-green-600"
+					: "text-red-600",
+				"ml-2 flex items-baseline text-sm font-semibold"
+				)}>
+					{player?.deltaRating?.displayRating &&
+					player?.deltaRating?.displayRating >= 0
+						? "+"
+						: ""}
+					{Math.round(
+						player?.deltaRating?.displayRating || 0
+					)}
+				</p>
 				{/* <div>
 						<FaArrowTrendUp className="text-xs text-green-800" />
 					</div>
