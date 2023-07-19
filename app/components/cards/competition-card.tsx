@@ -2,6 +2,7 @@ import React from "react";
 import { FaBasketball, FaFutbol, FaLocationArrow, FaRegCalendar, FaVolleyball } from "react-icons/fa6";
 import { Competition } from "types/index";
 import { MdSportsTennis } from "react-icons/md";
+import { showTimeOrDate } from "utils/date";
 
 export interface CompetitionCardProps extends Omit<
 React.DetailedHTMLProps<
@@ -44,7 +45,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({competition, price, wi
 						</div>
 						<div className="flex-row flex items-center">
 							<FaRegCalendar className="text-gray-400 text-xs lg:text-base" />
-							<p className="text-gray-400 ml-2 text-xs lg:text-base">{competition.startTimeISO}</p>
+							<p className="text-gray-400 ml-2 text-xs lg:text-base">{showTimeOrDate(new Date(competition.startTimeISO || ""))}</p>
 						</div>
 						{competition.location?.address && 
 						<div className="flex-row flex items-center">
