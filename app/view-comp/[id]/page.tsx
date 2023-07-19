@@ -59,7 +59,7 @@ export default async function ViewCompScreen({
 	return (
 		<div className="container mx-auto sm:px-6 lg:px-8">
 			<div className="py-12 flex flex-row">
-				<div className="w-1/3 flex self-center">
+				<div className="w-1/2 flex self-center">
 					<img
 						className="flex-none rounded-lg bg-gray-50"
 						src={competitionData?.image || "https://images.pexels.com/photos/7135121/pexels-photo-7135121.jpeg?cs=srgb&dl=pexels-codioful-%28formerly-gradienta%29-7135121.jpg&fm=jpg"}
