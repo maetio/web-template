@@ -5,7 +5,7 @@ import { MdSportsTennis } from "react-icons/md";
 import { showTimeOrDate } from "utils/date";
 import { BaseURL } from "config/constants";
 import { TopPlayersResponseType } from "types/next-api";
-import PlayerCard from "./player-card";
+import { PlayerCard } from "./player-card";
 
 export interface CompetitionCardProps extends Omit<
 React.DetailedHTMLProps<
@@ -28,8 +28,8 @@ export
  */
 const CompetitionCard: React.FC<CompetitionCardProps> = async ({competition, price, width, num, ...divParams }) => {
 
+	// get the top [num] players for a competition
 	const topPlayersResponse = await fetch(`${BaseURL}/api/players/${competition.id}/${num || 3}`);
-
 	const topPlayers: TopPlayersResponseType = await topPlayersResponse.json();
 
 	const SportIcons: Record<Competition["sport"], React.ReactElement> = {
