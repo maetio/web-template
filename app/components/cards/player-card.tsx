@@ -9,9 +9,7 @@ React.DetailedHTMLProps<
 >,
 "color"
 > {
-	name?: string;
-	image?: string | null | undefined;
-	rating?: number;
+	player: Partial<Profile>;
 	ranking?: number;
 }
 
