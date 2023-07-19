@@ -12,6 +12,7 @@ import Link from "next/link";
 import { CompetitionType } from "app/components/comp-type";
 import { NextImage } from "app/components/image";
 import { MdFeaturedPlayList, MdOutlinePlaylistAddCheck, MdPeople, MdPeopleOutline } from "react-icons/md";
+import { averageRatingObjects } from "utils/skill-rating";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -91,7 +92,7 @@ export default async function ViewCompScreen({
 						<MaetIcon className="self-center" size={20} />
 						<div className="self-center pl-3">
 							<dt className="truncate text-sm font-medium text-gray-500">Average Rating</dt>
-							<dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{500}</dd>
+							<dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{Math.round(averageRatingObjects(players.map((player) => player.rating)).displayRating)}</dd>
 						</div>
 					</div>
 					<div key="registration" className="flex flex-row align-middle overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">

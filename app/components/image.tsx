@@ -23,10 +23,7 @@ const NextImage = ({ src, alt, size, className, ...imageParams }: NextImageParam
     
 	// check if image is a url
 	useEffect(() => {
-		if (src) {
-			if (src.startsWith("https") && !src.startsWith("https://lh3.googleusercontent.com")) throw Error(`Image src is not a verified domain: ${src}`);
-			setImageSrc(src);
-		}
+		if (src) setImageSrc(src);
 	}, [src]);
 
 	return (
