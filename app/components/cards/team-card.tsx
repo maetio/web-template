@@ -10,6 +10,7 @@ export interface TeamCardProps
 		>,
 		"color"
 	> {
+	team?: Partial<Team>
 	name?: string;
 	image?: string | null | undefined;
 	rating?: number;
