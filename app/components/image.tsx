@@ -16,7 +16,7 @@ export /**
  * @param {NextImageParams} { src, alt, width, height, ...imageParams }
  * @return {*} 
  */
-const NextImage = ({ src, alt, width, height, ...imageParams }: NextImageParams) => {
+const NextImage = ({ src, alt, width, height, className, ...imageParams }: NextImageParams) => {
 	// set initial image state
 	const [imageSrc, setImageSrc] = useState(`https://ui-avatars.com/api/?background=random&name=${alt || "Person"}`);
     
@@ -29,14 +29,18 @@ const NextImage = ({ src, alt, width, height, ...imageParams }: NextImageParams)
 	}, [src]);
 
 	return (
-		<Image
-			loader={src?.startsWith("https") ? ({ src: imageLoaderSrc }) => imageLoaderSrc : undefined}
-			src={imageSrc}
-			alt={alt || "Image not loaded..."}
-			width={width || 15}
-			height={height || 15}
-			{...imageParams}
-		/>
+		<div className={`w-${width} h-${height} flex-none rounded-lg bg-gray-50 justify-center align-middle`.concat(className || "")}>
+			<Image
+				loader={src?.startsWith("https") ? ({ src: imageLoaderSrc }) => imageLoaderSrc : undefined}
+				src={imageSrc}
+				className="flex-none rounded-lg bg-gray-50"
+				alt={alt || "Image not loaded..."}
+				width={width || 15}
+				height={height || 15}
+				{...imageParams}
+			/>
+		</div>
+
 	);
 };
 

@@ -111,7 +111,7 @@ export default async function ViewCompScreen({
 										<h1 className="flex-none text-xl font-bold">
 											{rank + 1}
 										</h1>
-										<NextImage src={player.image} alt={player.firstName} />
+										<NextImage width={50} height={50} src={player.image} alt={player.firstName} />
 										{/* <img
 											className="h-12 w-12 flex-none rounded-full bg-gray-50"
 											src={player.image || undefined}
