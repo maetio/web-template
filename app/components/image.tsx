@@ -6,11 +6,11 @@ import Image, { ImageProps } from "next/image";
 import { useEffect, useState } from "react";
 
 interface NextImageParams extends Omit<ImageProps, "src" | "alt"> {
-    src?: string;
-    alt?: string;
+    src?: string | null;
+    alt?: string | null;
 }
 
-export const NextImage = ({ src, alt, ...imageParams }: NextImageParams) => {
+export const NextImage = ({ src, alt, width, height, ...imageParams }: NextImageParams) => {
 	// set initial image state
 	const [imageSrc, setImageSrc] = useState(`https://ui-avatars.com/api/?background=random&name=${alt || "Person"}`);
     
@@ -27,6 +27,8 @@ export const NextImage = ({ src, alt, ...imageParams }: NextImageParams) => {
 			loader={src?.startsWith("https") ? ({ src: imageLoaderSrc }) => imageLoaderSrc : undefined}
 			src={imageSrc}
 			alt={alt || ""}
+			width={width || 15}
+			height={height || 15}
 			{...imageParams}
 		/>
 	);
