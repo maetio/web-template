@@ -59,31 +59,38 @@ export default async function ViewCompScreen({
 
 	return (
 		<div className="container mx-auto sm:px-6 lg:px-8">
-			<div className="py-12 flex flex-row">
-				<div className="w-1/2 flex self-center">
+			<div className="flex flex-row py-12">
+				<div className="flex w-1/2 self-center">
 					<img
 						className="flex-none rounded-lg bg-gray-50"
-						src={competitionData?.image || "https://images.pexels.com/photos/7135121/pexels-photo-7135121.jpeg?cs=srgb&dl=pexels-codioful-%28formerly-gradienta%29-7135121.jpg&fm=jpg"}
+						src={
+							competitionData?.image ||
+							"https://images.pexels.com/photos/7135121/pexels-photo-7135121.jpeg?cs=srgb&dl=pexels-codioful-%28formerly-gradienta%29-7135121.jpg&fm=jpg"
+						}
 						alt="Competition Image"
 					/>
 				</div>
 				<div className="ml-6 flex flex-col self-center">
-					<h1 className="text-5xl font-bold">{competitionData?.name}</h1>
-					<CompetitionType className="my-3" type={competitionData?.type || "session"} sport={competitionData?.sport || "pickleball"} />
+					<h1 className="text-5xl font-bold">
+						{competitionData?.name}
+					</h1>
+					<CompetitionType
+						className="my-3"
+						type={competitionData?.type || "session"}
+						sport={competitionData?.sport || "pickleball"}
+					/>
 					<p className="mt-1">
-						Repudiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem. Minus
+						Repudiandae sint consequuntur vel. Amet ut nobis
+						explicabo numquam expedita quia omnis voluptatem. Minus
 						quidem ipsam quia iusto.
 					</p>
 				</div>
-			
 			</div>
 			{/* 3 column wrapper */}
 			<div className="mx-auto grid grid-cols-6">
 				{/* Left sidebar & main wrapper */}
-				<main className="flex-1 col-span-6 lg:col-span-4 overflow-y-auto">
-					
-				</main>
-				<aside className="col-span-6 lg:col-span-2 sticky top-8">
+				<main className="col-span-6 flex-1 overflow-y-auto lg:col-span-4"></main>
+				<aside className="sticky top-8 col-span-6 lg:col-span-2">
 					{/* Right column area */}
 					{compPlayer.profileID ? null : (
 						<div className="w-50 mt-20 justify-center">
@@ -99,13 +106,18 @@ export default async function ViewCompScreen({
 							/>
 						</div>
 					)}
-					<ul role="list" className="divide-y divide-gray-100 sticky top-0">
+					<ul
+						role="list"
+						className="sticky top-0 divide-y divide-gray-100"
+					>
 						{players.map((player, rank) => (
 							<li
 								key={player.id}
 								className="flex justify-between gap-x-6 py-5"
 							>
-								<Link href={`/view-profile/${player.userID}/${player.sport}`}>
+								<Link
+									href={`/view-profile/${player.userID}/${player.sport}`}
+								>
 									<div className="align-center flex justify-center gap-x-4">
 										<h1 className="flex-none text-xl font-bold">
 											{rank + 1}
@@ -117,7 +129,8 @@ export default async function ViewCompScreen({
 										/>
 										<div className="min-w-0 flex-auto">
 											<p className="text-sm font-bold leading-6 text-gray-900 dark:text-white ">
-												{player.firstName} {player.lastName}
+												{player.firstName}{" "}
+												{player.lastName}
 											</p>
 											<p className="mt-1 truncate text-xs leading-5 text-gray-500 dark:text-white ">
 												{player.type}
@@ -131,31 +144,36 @@ export default async function ViewCompScreen({
 											<MaetIcon size={10} />
 										</div>
 										<p className="ml-16 truncate text-sm font-medium text-gray-500 dark:text-white ">
-										Rating
+											Rating
 										</p>
 									</dt>
 									<dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
 										<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
 											{Math.round(
-												player.rating?.displayRating || 100
+												player.rating?.displayRating ||
+													100
 											)}
 										</p>
 										<p
 											className={classNames(
-												player?.deltaRating?.displayRating &&
 												player?.deltaRating
-													?.displayRating >= 0
+													?.displayRating &&
+													player?.deltaRating
+														?.displayRating >= 0
 													? "text-green-600"
 													: "text-red-600",
 												"ml-2 flex items-baseline text-sm font-semibold"
 											)}
 										>
-											{player?.deltaRating?.displayRating &&
-										player?.deltaRating?.displayRating >= 0
+											{player?.deltaRating
+												?.displayRating &&
+											player?.deltaRating
+												?.displayRating >= 0
 												? "+"
 												: ""}
 											{Math.round(
-												player?.deltaRating?.displayRating || 0
+												player?.deltaRating
+													?.displayRating || 0
 											)}
 										</p>
 									</dd>

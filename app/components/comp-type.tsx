@@ -2,23 +2,37 @@ import { SportIcons } from "app/components/icons";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Competition } from "types/competition";
 
-interface CompetitionTypeParams extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    type: Competition["type"];
-    sport: Competition["sport"];
+interface CompetitionTypeParams
+	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+	type: Competition["type"];
+	sport: Competition["sport"];
 }
 
-export const CompetitionType = ({ type, sport, className, ...divParams }: CompetitionTypeParams) => {
+export const CompetitionType = ({
+	type,
+	sport,
+	className,
+	...divParams
+}: CompetitionTypeParams) => {
 	// get the icon
 	const SportIcon = SportIcons[sport];
 
 	// define the string
-	const compTypeString = `${sport.charAt(0).toUpperCase() + sport.slice(1)  } ${  type.charAt(0).toUpperCase()  }${type.slice(1)}`;
+	const compTypeString = `${
+		sport.charAt(0).toUpperCase() + sport.slice(1)
+	} ${type.charAt(0).toUpperCase()}${type.slice(1)}`;
 
 	return (
-		<div className={"relative pl-16 ".concat(className || "")} {...divParams}>
+		<div
+			className={"relative pl-16 ".concat(className || "")}
+			{...divParams}
+		>
 			<dt className="flex items-center gap-x-3 text-base font-semibold leading-7">
 				<div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-					<SportIcon className="h-6 w-6 flex-none text-white" aria-hidden="true" />
+					<SportIcon
+						className="h-6 w-6 flex-none text-white"
+						aria-hidden="true"
+					/>
 				</div>
 				{compTypeString}
 			</dt>

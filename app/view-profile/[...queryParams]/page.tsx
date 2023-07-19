@@ -11,7 +11,7 @@ import { GameProfilesResponseType, PlayerResponseType } from "types/next-api";
  * }} {
  * 	params,
  * }
- * @return {*} 
+ * @return {*}
  */
 export default async function ViewProfileScreen({
 	params,
@@ -28,20 +28,32 @@ export default async function ViewProfileScreen({
 	const profileData: PlayerResponseType = await profileResponse.json();
 
 	// fetch the game profiles for the profile
-	const gameProfilesResponse = await fetch(`${BaseURL}/api/game-profiles/${profileData.id}`);
-	const gameProfiles: GameProfilesResponseType = await gameProfilesResponse.json();
+	const gameProfilesResponse = await fetch(
+		`${BaseURL}/api/game-profiles/${profileData.id}`
+	);
+	const gameProfiles: GameProfilesResponseType =
+		await gameProfilesResponse.json();
 
 	return (
 		<main className="mx-10">
-			<h1>{profileData.firstName} {profileData.lastName}</h1>
+			<h1>
+				{profileData.firstName} {profileData.lastName}
+			</h1>
 			<h2>{profileData.rating?.displayRating}</h2>
 			{gameProfiles.map((gameProf) => (
 				<div key={gameProf.id}>
-					<br/>
+					<br />
 					<h3>Game id: {gameProf.gameID}</h3>
 					<h3>Rating: {gameProf.rating?.displayRating}</h3>
-					<h3>Change: {gameProf.deltaRating?.displayRating && gameProf.deltaRating?.displayRating > 0 ? "+" : ""}{gameProf.deltaRating?.displayRating}</h3>
-					<br/>
+					<h3>
+						Change:{" "}
+						{gameProf.deltaRating?.displayRating &&
+						gameProf.deltaRating?.displayRating > 0
+							? "+"
+							: ""}
+						{gameProf.deltaRating?.displayRating}
+					</h3>
+					<br />
 				</div>
 			))}
 		</main>
