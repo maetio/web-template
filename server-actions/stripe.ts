@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { competitionsCollection } from "config/server";
+import { competitionsCollection, privateUserCollection } from "config/server";
 import { getServerAuthUser } from "auth/server";
 import Stripe from "stripe";
 
@@ -12,6 +12,7 @@ const stripe = process.env.STRIPE_SECRET
 	  })
 	: undefined;
 
+// eslint-disable-next-line consistent-return
 export async function getStripeSession(compID: string) {
 	// get the user for the server
 	const user = await getServerAuthUser();
@@ -19,6 +20,23 @@ export async function getStripeSession(compID: string) {
 	// handle if there is no user
 	if (!user) {
 		throw new Error("Cannot checkout for unauthenticated user");
+	}
+
+	console.log("user", user);
+
+	const privateUserDataRef = await privateUserCollection.doc(user.id).get();
+	const privateUserData = privateUserDataRef.data();
+
+	let customerID: string;
+
+	if (privateUserData?.stripeCustomerID) {
+		customerID = privateUserData?.stripeCustomerID;
+	} else {
+		const createdCustomer = await stripe?.customers.create();
+		customerID = createdCustomer?.id || "";
+		await privateUserCollection
+			.doc(user.id)
+			.update({ stripeCustomerID: customerID });
 	}
 
 	// get the parameters from the query
@@ -40,9 +58,9 @@ export async function getStripeSession(compID: string) {
 		// const hostInformation = (await hostInformationRef.get()).data();
 
 		// if (hostInformation?.stripeID) {
-		const customer = await stripe?.customers.create();
+		// const customer = await stripe?.customers.create();
 		const ephemeralKey = await stripe?.ephemeralKeys.create(
-			{ customer: customer?.id },
+			{ customer: customerID },
 			{ apiVersion: "2022-11-15" }
 		);
 		const paymentIntent = await stripe?.paymentIntents.create({
@@ -55,7 +73,7 @@ export async function getStripeSession(compID: string) {
 			amount: competitionCollection.price,
 
 			currency: "usd",
-			customer: customer?.id,
+			customer: customerID,
 			automatic_payment_methods: {
 				enabled: true,
 			},
@@ -70,7 +88,7 @@ export async function getStripeSession(compID: string) {
 		const stripeSession = {
 			paymentIntent: paymentIntent?.client_secret,
 			ephemeralKey: ephemeralKey?.secret,
-			customer: customer?.id,
+			customer: customerID,
 			publishableKey:
 				"pk_test_51MDCdaCE8Qam1cvafPiXvoVUkJ8RUbl09Lq4WNn5Y8Sm8zO7kHDRNs0JKrP3zicoIQjL9TAtCfHSAeFp5oKjrBDD00n8HUiGDL",
 		};

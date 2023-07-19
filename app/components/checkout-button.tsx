@@ -6,6 +6,7 @@ import {
 	useElements,
 	PaymentElement,
 } from "@stripe/react-stripe-js";
+import { BaseURL } from "config/constants";
 
 export interface StripeFormParams {
 	options?: any;
@@ -32,7 +33,7 @@ export const StripeForm: React.FC<StripeFormParams> = () => {
 			// `Elements` instance that was used to create the Payment Element
 			elements,
 			confirmParams: {
-				return_url: "https://example.com/order/123/complete",
+				return_url: `${BaseURL}/profile`,
 			},
 		});
 
