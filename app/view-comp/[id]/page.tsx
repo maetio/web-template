@@ -11,6 +11,7 @@ import { SubmitFormActionButton } from "app/components/submit-form-action-button
 import Link from "next/link";
 import { CompetitionType } from "app/components/comp-type";
 import { NextImage } from "app/components/image";
+import { MdFeaturedPlayList, MdOutlinePlaylistAddCheck, MdPeople, MdPeopleOutline } from "react-icons/md";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -58,25 +59,49 @@ export default async function ViewCompScreen({
 	const compPlayer: CompProfilesResponseType =
 		await compPlayerResponse.json();
 
+	// set parameters for registration
+	const registrationOpen = competitionData?.startTimeISO && new Date() > new Date(competitionData.startTimeISO);
+
 	return (
 		<div className="container mx-auto sm:px-6 lg:px-8">
 			<div className="py-12 flex flex-row">
-				<div className="w-1/2 flex self-center">
-					<img
-						className="flex-none rounded-lg bg-gray-50"
-						src={competitionData?.image || "https://images.pexels.com/photos/7135121/pexels-photo-7135121.jpeg?cs=srgb&dl=pexels-codioful-%28formerly-gradienta%29-7135121.jpg&fm=jpg"}
-						alt="Competition Image"
-					/>
+				<div className="w-1/3 flex self-center">
+					<NextImage size={500} src={competitionData?.image} />
 				</div>
-				<div className="ml-6 flex flex-col self-center">
-					<h1 className="text-5xl font-bold">{competitionData?.name}</h1>
+				<div className="ml-12 flex flex-col self-center">
+					<h1 className="text-7xl font-bold">{competitionData?.name}</h1>
 					<CompetitionType className="my-3" type={competitionData?.type || "session"} sport={competitionData?.sport || "pickleball"} />
-					<p className="mt-1">
+					{/* <p className="mt-1">
 						Repudiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem. Minus
 						quidem ipsam quia iusto.
-					</p>
+					</p> */}
 				</div>
-			
+			</div>
+			<div>
+				<h3 className="text-base font-semibold leading-6 text-gray-900">Competition Info</h3>
+				<dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+					<div key="number" className="flex flex-row align-middle overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+						<MdPeopleOutline className="self-center h-20 w-20" />
+						<div className="self-center pl-3">
+							<dt className="truncate text-sm font-medium text-gray-500">Number of Players</dt>
+							<dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{players.length}</dd>
+						</div>
+					</div>
+					<div key="rating" className="flex flex-row align-middle overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+						<MaetIcon className="self-center" size={20} />
+						<div className="self-center pl-3">
+							<dt className="truncate text-sm font-medium text-gray-500">Average Rating</dt>
+							<dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{500}</dd>
+						</div>
+					</div>
+					<div key="registration" className="flex flex-row align-middle overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+						<MdOutlinePlaylistAddCheck className="self-center h-20 w-20" />
+						<div className="self-center pl-3">
+							<dt className="truncate text-sm font-medium text-gray-500">Registration</dt>
+							<dd className={`mt-1 text-3xl inline-flex items-center rounded-md px-1.5 py-1.5 ${registrationOpen ? "bg-green-200 text-green-700" : "bg-red-200 text-red-700"} font-semibold tracking-tight`}>• {registrationOpen ? "Open" : "Closed"}</dd>
+						</div>
+					</div>
+				</dl>
 			</div>
 			{/* 3 column wrapper */}
 			<div className="mx-auto grid grid-cols-6">
@@ -112,11 +137,6 @@ export default async function ViewCompScreen({
 											{rank + 1}
 										</h1>
 										<NextImage width={50} height={50} src={player.image} alt={player.firstName} />
-										{/* <img
-											className="h-12 w-12 flex-none rounded-full bg-gray-50"
-											src={player.image || undefined}
-											alt=""
-										/> */}
 										<div className="min-w-0 flex-auto">
 											<p className="text-sm font-bold leading-6 text-gray-900 dark:text-white ">
 												{player.firstName} {player.lastName}

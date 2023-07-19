@@ -5,9 +5,10 @@
 import Image, { ImageProps } from "next/image";
 import { useEffect, useState } from "react";
 
-interface NextImageParams extends Omit<ImageProps, "src" | "alt"> {
+interface NextImageParams extends Omit<ImageProps, "src" | "alt" | "width" | "height"> {
     src?: string | null;
     alt?: string | null;
+	size?: number | "full";
 }
 
 export /**
@@ -16,9 +17,9 @@ export /**
  * @param {NextImageParams} { src, alt, width, height, ...imageParams }
  * @return {*} 
  */
-const NextImage = ({ src, alt, width, height, className, ...imageParams }: NextImageParams) => {
+const NextImage = ({ src, alt, size, className, ...imageParams }: NextImageParams) => {
 	// set initial image state
-	const [imageSrc, setImageSrc] = useState(`https://ui-avatars.com/api/?background=random&name=${alt || "Person"}`);
+	const [imageSrc, setImageSrc] = useState(`https://api.dicebear.com/6.x/initials/svg?seed=${alt}&backgroundColor=00acc1,039be5,1e88e5,3949ab,43a047,5e35b1,7cb342,8e24aa,c0ca33,d81b60,e53935,f4511e,fb8c00,fdd835,ffb300,00897b&backgroundType=gradientLinear`);
     
 	// check if image is a url
 	useEffect(() => {
@@ -29,14 +30,15 @@ const NextImage = ({ src, alt, width, height, className, ...imageParams }: NextI
 	}, [src]);
 
 	return (
-		<div className={`w-${width} h-${height} flex-none rounded-lg bg-gray-50 justify-center align-middle`.concat(className || "")}>
+		<div className={`w-${size} h-${size} flex rounded-lg bg-gray-50 justify-center align-middle`.concat(className || "")}>
 			<Image
 				loader={src?.startsWith("https") ? ({ src: imageLoaderSrc }) => imageLoaderSrc : undefined}
 				src={imageSrc}
 				className="flex-none rounded-lg bg-gray-50"
 				alt={alt || "Image not loaded..."}
-				width={width || 15}
-				height={height || 15}
+				width={size === "full" ? undefined : size || 15}
+				height={size === "full" ? undefined : size || 15}
+				fill={size === "full"}
 				{...imageParams}
 			/>
 		</div>
