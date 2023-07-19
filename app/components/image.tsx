@@ -10,7 +10,13 @@ interface NextImageParams extends Omit<ImageProps, "src" | "alt"> {
     alt?: string | null;
 }
 
-export const NextImage = ({ src, alt, width, height, ...imageParams }: NextImageParams) => {
+export /**
+ * Component will render an image
+ *
+ * @param {NextImageParams} { src, alt, width, height, ...imageParams }
+ * @return {*} 
+ */
+const NextImage = ({ src, alt, width, height, ...imageParams }: NextImageParams) => {
 	// set initial image state
 	const [imageSrc, setImageSrc] = useState(`https://ui-avatars.com/api/?background=random&name=${alt || "Person"}`);
     
@@ -26,7 +32,7 @@ export const NextImage = ({ src, alt, width, height, ...imageParams }: NextImage
 		<Image
 			loader={src?.startsWith("https") ? ({ src: imageLoaderSrc }) => imageLoaderSrc : undefined}
 			src={imageSrc}
-			alt={alt || ""}
+			alt={alt || "Image not loaded..."}
 			width={width || 15}
 			height={height || 15}
 			{...imageParams}
