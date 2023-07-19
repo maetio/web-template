@@ -10,6 +10,7 @@ import { MaetIcon } from "app/components/icons";
 import { SubmitFormActionButton } from "app/components/submit-form-action-button";
 import Link from "next/link";
 import { CompetitionType } from "app/components/comp-type";
+import NextImage, { ImageLoader } from "next/image";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -56,6 +57,13 @@ export default async function ViewCompScreen({
 	);
 	const compPlayer: CompProfilesResponseType =
 		await compPlayerResponse.json();
+
+	// set the image loader
+	const imageLoader: ImageLoader = ({ src }) => {
+		"use server";
+
+		return src;
+	};
 
 	return (
 		<div className="container mx-auto sm:px-6 lg:px-8">
@@ -110,11 +118,20 @@ export default async function ViewCompScreen({
 										<h1 className="flex-none text-xl font-bold">
 											{rank + 1}
 										</h1>
-										<img
+										<NextImage
+											// className="flex-none rounded-full bg-gray-50"
+											// fill
+											width={12}
+											height={12}
+											loader={imageLoader}
+											src={player.image || ""}
+											alt=""
+										/>
+										{/* <img
 											className="h-12 w-12 flex-none rounded-full bg-gray-50"
 											src={player.image || undefined}
 											alt=""
-										/>
+										/> */}
 										<div className="min-w-0 flex-auto">
 											<p className="text-sm font-bold leading-6 text-gray-900 dark:text-white ">
 												{player.firstName} {player.lastName}
