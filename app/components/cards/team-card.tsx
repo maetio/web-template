@@ -49,9 +49,15 @@ export /**
 				<div className="col-span-1"></div>
 			)}
 			<div className="col-span-2 flex items-center">
-				<div style={{
-					backgroundImage: team?.image ? `url(${team?.image})` : "bg-none"
-				}} className="h-4 w-4 md:h-8 md:w-8 rounded-full md:rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				{team?.image ? (
+					<img
+						className="h-12 w-12 flex-none rounded-full bg-gray-50"
+						src={team.image || undefined}
+						alt=""
+					/>
+				) : (
+					<div className="h-4 w-4 md:h-8 md:w-8 rounded-full md:rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				)}
 			</div>
 			<div className="col-span-4 flex items-center">
 				<p className="text-xs lg:text-lg font-bold">{team?.firstName} {team?.lastName}</p>

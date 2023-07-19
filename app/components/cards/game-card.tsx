@@ -34,7 +34,14 @@ const GameCard: React.FC<GameCardProps> = ({ game, verified, ...divParams }) => 
 	return (
 		<div {...divParams} className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg">
 			<div className="col-span-3 flex-col flex items-center justify-center">
-				<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
+				{game.team1?.image ? (
+					<img
+						className="2xl:w-36 2xl:h-36 lg:h-24 lg:w-24 lg:min-h-0 sm:w-16 sm:h-16 w-12 h-12 flex-none rounded-md bg-gray-50"
+						src={game.team1.image || undefined}
+						alt=""
+					/>
+				) : (
+					<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>				)}
 				<div className="flex flex-wrap justify-center items-center text-center">
 					<p className="p-2 lg:text-sm text-xs font-semibold">
 						{game.team1?.lastName}
@@ -116,7 +123,15 @@ const GameCard: React.FC<GameCardProps> = ({ game, verified, ...divParams }) => 
 				)}
 			</div>
 			<div className="col-span-3 flex flex-col items-center justify-center">
-				<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				{game.team2?.image ? (
+					<img
+						className="2xl:w-36 2xl:h-36 lg:h-24 lg:w-24 lg:min-h-0 sm:w-16 sm:h-16 w-12 h-12 flex-none rounded-md bg-gray-50"
+						src={game.team2.image || undefined}
+						alt=""
+					/>
+				) : (
+					<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
+				)}
 				<div className="flex justify-center">
 					<p className="p-2 lg:text-sm text-xs font-semibold text-center">
 						{game.team2?.lastName}
