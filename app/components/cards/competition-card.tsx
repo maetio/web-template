@@ -33,7 +33,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({competition, price, wi
 							<FaRegCalendar className="text-gray-400 text-xs lg:text-base" />
 							<p className="text-gray-400 ml-2 text-xs lg:text-base">{competition.startTimeISO}</p>
 						</div>
-						{competition.location && 
+						{competition.location?.address && 
 						<div className="flex-row flex items-center">
 							<FaLocationArrow className="text-gray-400 text-xs lg:text-base" />
 							<p className="text-gray-400 ml-2 text-xs lg:text-base">{competition.location?.address}</p>
