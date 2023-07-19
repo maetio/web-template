@@ -16,12 +16,19 @@ React.DetailedHTMLProps<
 }
 
 const CompetitionCard: React.FC<CompetitionCardProps> = ({competition, price, width, ...divParams }) => {
+
 	const SportIcons: Record<Competition["sport"], React.ReactElement> = {
 		basketball: <FaBasketball className="text-gray-400 text-xs lg:text-base"/>,
 		soccer: <FaFutbol className="text-gray-400 text-xs lg:text-base" />,
 		volleyball: <FaVolleyball className="text-gray-400 text-xs lg:text-base" />,
 		pickleball: <MdSportsTennis className="text-gray-400 text-xs lg:text-base"  />
 	};
+
+	const capitalizeFirstLetter = (str?: String) => {
+		if (str) return str.charAt(0).toUpperCase() + str.slice(1);
+		return "";
+	};
+
 	return (
 		<div {...divParams} className={`border w-${String(width) || "auto" } rounded-md shadow-lg lg:w-2/3 mt-3 p-2 min-w-full`}>
 			<div className="grid grid-rows-12 pl-3 pt-3 pr-2">
@@ -33,7 +40,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({competition, price, wi
 						<h2 className="font-bold lg:text-3xl sm:text-lg">{competition.name}</h2>
 						<div className="flex-row flex items-center">
 							{competition.sport ? SportIcons[competition.sport] : null}
-							<p className="text-gray-400 ml-2 text-xs lg:text-base">{competition.sport} {competition.type}</p>
+							<p className="text-gray-400 ml-2 text-xs lg:text-base">{capitalizeFirstLetter(competition.sport)} {capitalizeFirstLetter(competition.type)}</p>
 						</div>
 						<div className="flex-row flex items-center">
 							<FaRegCalendar className="text-gray-400 text-xs lg:text-base" />
