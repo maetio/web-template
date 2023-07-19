@@ -6,7 +6,7 @@ import Stripe from "stripe";
 // get stripe
 const stripe = process.env.STRIPE_SECRET
 	? new Stripe(process.env.STRIPE_SECRET, {
-			apiVersion: "2022-11-15",
+		apiVersion: "2022-11-15",
 	  })
 	: undefined;
 
@@ -15,6 +15,8 @@ export async function POST(
 	params: { params: { compID: string } }
 ) {
 	const user = await getServerAuthUser();
+
+	console.log("user", user);
 
 	if (!user) {
 		throw new Error("Cannot pay for competition for unauthenticated user");

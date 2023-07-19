@@ -67,6 +67,20 @@ export default async function JoinCompScreen({
 		}
 	};
 
+	const testStripeApi = async () => {
+		"use server";
+
+		const data = await fetch(
+			`${BaseURL}/api/stripe/create-payment-session/${competitionData?.id}`,
+			{
+				method: "POST",
+			}
+		);
+
+		const thing = await data.json();
+		console.log("thing", thing);
+	};
+
 	return (
 		<>
 			<div className="flex h-full min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -113,6 +127,11 @@ export default async function JoinCompScreen({
 								}
 								icon="none"
 								action={submitFormAction}
+							/>
+							<SubmitFormActionButton
+								title="test stripe"
+								icon="none"
+								action={testStripeApi}
 							/>
 						</div>
 					</div>
