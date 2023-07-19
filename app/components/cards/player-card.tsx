@@ -71,7 +71,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 			<div className="col-span-3 md:col-span-5 flex items-center">
 				<p className="text-xs lg:text-lg font-bold">{player?.firstName} {player?.lastName}</p>
 			</div>
-			<div className="col-span-5 md:col-span-4 grid grid-cols-6 items-center justify-end gap-1 md:justify-end md:gap-2 border">
+			<div className="col-span-5 md:col-span-4 grid grid-cols-6 items-center justify-end gap-1 md:justify-end md:gap-2">
 				<div className="flex col-span-2 md:col-span-4 justify-end items-center">
 					<svg
 						className={"h-6 w-6 dark:fill-white md:h-8 md:w-8"}

@@ -3,6 +3,9 @@ import { FaBasketball, FaFutbol, FaLocationArrow, FaRegCalendar, FaVolleyball } 
 import { Competition } from "types/index";
 import { MdSportsTennis } from "react-icons/md";
 import { showTimeOrDate } from "utils/date";
+import { BaseURL } from "config/constants";
+import { TopPlayersResponseType } from "types/next-api";
+import PlayerCard from "./player-card";
 
 export interface CompetitionCardProps extends Omit<
 React.DetailedHTMLProps<
@@ -13,10 +16,21 @@ React.DetailedHTMLProps<
 >{
     competition: Partial<Competition>
 	price?: string
-	width?: number
+	width?: number,
+	num?: number
 }
+export
+/**
+ * Async function that displays competition information as a card
+ * @export
+ * @param {CompetitionCardProps} {competition, price, width, ...divParams } 
+ * @returns 
+ */
+const CompetitionCard: React.FC<CompetitionCardProps> = async ({competition, price, width, num, ...divParams }) => {
 
-const CompetitionCard: React.FC<CompetitionCardProps> = ({competition, price, width, ...divParams }) => {
+	const topPlayersResponse = await fetch(`${BaseURL}/api/players/${competition.id}/${num || 3}`);
+
+	const topPlayers: TopPlayersResponseType = await topPlayersResponse.json();
 
 	const SportIcons: Record<Competition["sport"], React.ReactElement> = {
 		basketball: <FaBasketball className="text-gray-400 text-xs lg:text-base"/>,
@@ -75,7 +89,9 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({competition, price, wi
 				</div>
 				<div className="row-span-6 mb-4 grid h-48 grid-cols-12 items-center gap-8">
 					<div className="col-span-6 flex flex-col">
-
+						{topPlayers.map((player, rank) => (
+							<PlayerCard key={player.id} player={player} ranking={rank} />
+						))}
 					</div>
 					<div className="col-span-6 flex flex-col">
 
