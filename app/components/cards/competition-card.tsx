@@ -53,10 +53,15 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({competition, price, wi
 						</div>}
 					</div>
 					<div className="col-span-3 flex flex-row items-start justify-end">
-						<p className="text-xs text-gray-400 lg:text-2xl">$99</p>
-						<p className="ml-1 text-xs text-gray-400 lg:text-base">
+						{competition.price ? (
+							<div className="flex">
+								<p className="text-xs text-gray-400 lg:text-2xl">${competition.price}</p>
+								<p className="ml-1 text-xs text-gray-400 lg:text-base">
 							per team
-						</p>
+								</p>
+							</div>) : (<div className="flex">
+							<p className="text-xs text-gray-400 lg:text-2xl">Free</p>
+						</div>)}
 					</div>
 				</div>
 				<div className="row-span-6 mb-4 grid h-48 grid-cols-12 items-center gap-8">
