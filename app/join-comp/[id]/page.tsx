@@ -103,7 +103,14 @@ export default async function JoinCompScreen({
 							<SubmitFormActionButton
 								referRoute={`/view-comp/${params.id}`}
 								colorVariant="indigo"
-								title="Join competition"
+								title={
+									competitionData?.price &&
+									competitionData?.price > 0
+										? `Pay $${
+											competitionData.price / 100
+										  } To Join`
+										: "Join Competition"
+								}
 								icon="none"
 								action={submitFormAction}
 							/>
