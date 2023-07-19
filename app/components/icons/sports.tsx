@@ -3,8 +3,6 @@ import { IconBaseProps } from "react-icons/lib";
 import { MdOutlineSportsSoccer, MdSportsBasketball, MdSportsTennis, MdSportsVolleyball } from "react-icons/md";
 import { Competition } from "types/competition";
 
-export * from "./maet-icon";
-
 // define sport icons
 export const PickleballIcon = ({ ...params }: IconBaseProps) => <MdSportsTennis {...params} />;
 export const BasketballIcon = ({ ...params }: IconBaseProps) => <MdSportsBasketball {...params} />;

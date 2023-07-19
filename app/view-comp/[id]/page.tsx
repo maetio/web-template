@@ -9,6 +9,7 @@ import { getUserData } from "server-actions/users";
 import { MaetIcon } from "app/components/icons";
 import { SubmitFormActionButton } from "app/components/submit-form-action-button";
 import Link from "next/link";
+import { CompetitionType } from "app/components/comp-type";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -68,6 +69,7 @@ export default async function ViewCompScreen({
 				</div>
 				<div className="ml-6 flex flex-col self-center">
 					<h1 className="text-5xl font-bold">{competitionData?.name}</h1>
+					<CompetitionType type={competitionData?.type || "session"} sport={competitionData?.sport || "pickleball"} />
 					<p className="mt-1">
 						Repudiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem. Minus
 						quidem ipsam quia iusto.
