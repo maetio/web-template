@@ -39,20 +39,23 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 			className="grid h-12 min-w-full grid-cols-12 items-center justify-start gap-4 border-b"
 		>
 			{ranking ? (
-				<div className="col-span-2 grid grid-cols-6 items-center md:col-span-1">
+				<div className="col-span-2 grid grid-cols-4 items-center md:col-span-1">
 					{ranking <= 3 ? (
-						<div className="flex col-span-3">
+						<div className="flex col-span-1">
 							<FaMedal
 								className={`ml-1 ${
 									medalColor[ranking - 1]
-								} md:text-base`}
+								} md:text-lg`}
 							/>
 						</div>
-					) : (<div className="flex col-span-3"></div>)}
-					<p className="ml-1 font-bold">{ranking + 1}</p>
+					) : (<div className="flex col-span-1"></div>)}
+					<div className="flex col-span-1 justify-end text-right">
+						<p className="ml-1 font-bold lg: text-lg">{ranking + 1}</p>
+					</div>
+					
 				</div>
 			) : (
-				<div className="col-span-2 flex"></div>
+				<div className="col-span-2 md:col-span-1 flex"></div>
 			)}
 			<div className="col-span-2 flex items-center gap-1">
 				{player.image ? (
