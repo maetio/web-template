@@ -1,6 +1,7 @@
 import React from "react";
-import { FaBasketball, FaLocationArrow, FaRegCalendar } from "react-icons/fa6";
+import { FaBasketball, FaFutbol, FaLocationArrow, FaRegCalendar, FaVolleyball } from "react-icons/fa6";
 import { Competition } from "types/index";
+import { MdSportsTennis } from "react-icons/md";
 
 export interface CompetitionCardProps extends Omit<
 React.DetailedHTMLProps<
@@ -15,7 +16,12 @@ React.DetailedHTMLProps<
 }
 
 const CompetitionCard: React.FC<CompetitionCardProps> = ({competition, price, width, ...divParams }) => {
-	
+	const SportIcons: Record<Competition["sport"], React.ReactElement> = {
+		basketball: <FaBasketball className="text-gray-400 text-xs lg:text-base"/>,
+		soccer: <FaFutbol className="text-gray-400 text-xs lg:text-base" />,
+		volleyball: <FaVolleyball className="text-gray-400 text-xs lg:text-base" />,
+		pickleball: <MdSportsTennis className="text-gray-400 text-xs lg:text-base"  />
+	};
 	return (
 		<div {...divParams} className={`border w-${String(width) || "auto" } rounded-md shadow-lg lg:w-2/3 mt-3 p-2 min-w-full`}>
 			<div className="grid grid-rows-12 pl-3 pt-3 pr-2">
@@ -26,7 +32,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({competition, price, wi
 					<div className="col-span-7 flex-col flex">
 						<h2 className="font-bold lg:text-3xl sm:text-lg">{competition.name}</h2>
 						<div className="flex-row flex items-center">
-							<FaBasketball className="text-gray-400 text-xs lg:text-base" />
+							{competition.sport ? SportIcons[competition.sport] : null}
 							<p className="text-gray-400 ml-2 text-xs lg:text-base">{competition.sport} {competition.type}</p>
 						</div>
 						<div className="flex-row flex items-center">
