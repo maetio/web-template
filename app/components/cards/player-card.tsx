@@ -60,7 +60,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 			<div className="col-span-2 flex items-center gap-1">
 				{player.image ? (
 					<img
-						className="h-12 w-12 flex-none rounded-full bg-gray-50"
+						className="h-10 w-10 flex-none rounded-full bg-gray-50"
 						src={player.image || undefined}
 						alt=""
 					/>

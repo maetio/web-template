@@ -88,13 +88,10 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({competition, pri
 					</div>
 				</div>
 				<div className="row-span-6 mb-4 grid h-48 grid-cols-12 items-center gap-8">
-					<div className="col-span-6 flex flex-col">
+					<div className="col-span-12 flex flex-col">
 						{topPlayers.map((player, rank) => (
 							<PlayerCard key={player.id} player={player} ranking={rank} />
 						))}
-					</div>
-					<div className="col-span-6 flex flex-col">
-
 					</div>
 				</div>
 			</div>
