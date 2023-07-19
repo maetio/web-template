@@ -10,9 +10,9 @@ export const PickleballIcon = ({ ...params }: IconBaseProps) => <MdSportsTennis 
 export const BasketballIcon = ({ ...params }: IconBaseProps) => <MdSportsBasketball {...params} />;
 export const VolleyballIcon = ({ ...params }: IconBaseProps) => <MdSportsVolleyball {...params} />;
 export const SoccerIcon = ({ ...params }: IconBaseProps) => <MdOutlineSportsSoccer {...params} />;
-export const SportIcons: Record<Competition["sport"], JSX.Element> = {
-	pickleball: <PickleballIcon />,
-	basketball: <BasketballIcon />,
-	volleyball: <VolleyballIcon />,
-	soccer: <SoccerIcon />
+export const SportIcons: Record<Competition["sport"], ({ ...params }: IconBaseProps) => JSX.Element> = {
+	pickleball: PickleballIcon,
+	basketball: BasketballIcon,
+	volleyball: VolleyballIcon,
+	soccer: SoccerIcon
 };
