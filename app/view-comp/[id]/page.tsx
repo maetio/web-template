@@ -69,7 +69,7 @@ export default async function ViewCompScreen({
 				</div>
 				<div className="ml-6 flex flex-col self-center">
 					<h1 className="text-5xl font-bold">{competitionData?.name}</h1>
-					<CompetitionType type={competitionData?.type || "session"} sport={competitionData?.sport || "pickleball"} />
+					<CompetitionType className="my-3" type={competitionData?.type || "session"} sport={competitionData?.sport || "pickleball"} />
 					<p className="mt-1">
 						Repudiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem. Minus
 						quidem ipsam quia iusto.
