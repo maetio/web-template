@@ -53,8 +53,12 @@ export const StripeForm: React.FC<StripeFormParams> = () => {
 		<section>
 			<form>
 				<PaymentElement />
-				<button onClick={handleSubmit} disabled={!stripe}>
-					Submit
+				<button
+					className="mt-5 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+					onClick={handleSubmit}
+					disabled={!stripe}
+				>
+					Join Competition
 				</button>
 				{/* Show error message to your customers */}
 				{errorMessage && <div>{errorMessage}</div>}

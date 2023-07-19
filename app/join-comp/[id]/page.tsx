@@ -152,31 +152,32 @@ export default async function JoinCompScreen({
 				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 					<div className="space-y-6">
 						<div>
-							<SubmitFormActionButton
-								referRoute={`/view-comp/${params.id}`}
-								colorVariant="indigo"
-								title={
-									competitionData?.price &&
-									competitionData?.price > 0
-										? `Pay $${
-												competitionData.price / 100
-										  } To Join`
-										: "Join Competition"
-								}
-								icon="none"
-								action={submitFormAction}
-							/>
-							{/* <SubmitFormActionButton
-								title="test stripe"
-								icon="none"
-								action={submitStipeFormAction}
-							/> */}
-							{data?.paymentIntent ? (
-								<ServerCheckoutButton
-									paymentIntent={data?.paymentIntent}
-								/>
+							{competitionData?.price &&
+							competitionData.price > 0 ? (
+								<div>
+									{data?.paymentIntent ? (
+										<ServerCheckoutButton
+											paymentIntent={data?.paymentIntent}
+										/>
+									) : (
+										<button>loading</button>
+									)}
+								</div>
 							) : (
-								<button>loading</button>
+								<SubmitFormActionButton
+									referRoute={`/view-comp/${params.id}`}
+									colorVariant="indigo"
+									title={
+										competitionData?.price &&
+										competitionData?.price > 0
+											? `Pay $${
+													competitionData.price / 100
+											  } To Join`
+											: "Join Competition"
+									}
+									icon="none"
+									action={submitFormAction}
+								/>
 							)}
 						</div>
 					</div>
