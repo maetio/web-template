@@ -41,16 +41,16 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 			{ranking ? (
 				<div className="col-span-2 grid grid-cols-4 items-center md:col-span-1">
 					{ranking <= 3 ? (
-						<div className="flex col-span-1">
+						<div className="flex col-span-2 lg:col-span-1">
 							<FaMedal
 								className={`ml-1 ${
 									medalColor[ranking - 1]
-								} md:text-lg`}
+								} text-base md:text-lg`}
 							/>
 						</div>
 					) : (<div className="flex col-span-1"></div>)}
-					<div className="flex col-span-1 justify-end text-right">
-						<p className="ml-1 font-bold lg: text-lg">{ranking + 1}</p>
+					<div className="flex col-span-2 lg:col-span-1 justify-end text-right">
+						<p className="ml-1 font-bold text-sm lg:text-lg">{ranking + 1}</p>
 					</div>
 					
 				</div>
@@ -68,13 +68,13 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 					<div className="h-4 w-4 md:h-8 md:w-8 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 				)}
 			</div>
-			<div className="col-span-7 flex items-center">
+			<div className="col-span-3 md:col-span-5 flex items-center">
 				<p className="text-xs lg:text-lg font-bold">{player?.firstName} {player?.lastName}</p>
 			</div>
-			<div className="col-span-2 grid grid-cols-5 items-center justify-end gap-1 md:justify-end md:gap-2">
-				<div className="flex col-span-3 justify-end">
+			<div className="col-span-5 md:col-span-4 grid grid-cols-6 items-center justify-end gap-1 md:justify-end md:gap-2 border">
+				<div className="flex col-span-2 md:col-span-4 justify-end items-center">
 					<svg
-						className={"h-4 w-4 dark:fill-white lg:h-6 lg:w-6"}
+						className={"h-6 w-6 dark:fill-white md:h-8 md:w-8"}
 						viewBox="0 0 1500 1500"
 					>
 						<path
@@ -87,20 +87,20 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 						/>
 					</svg>
 				</div>
-				<div className="flex justify-end col-span-1">
-					<p>
+				<div className="flex justify-end col-span-2 md:col-span-1 items-center">
+					<p className="text-sm md:text-base">
 						{Math.round(
 							player.rating?.displayRating || 100
 						)}
 					</p>
 				</div>
-				<div className="flex justify-end col-span-1">
+				<div className="flex justify-end col-span-2 md:col-span-1 items-center">
 					<p className={classNames(player?.deltaRating?.displayRating &&
 											player?.deltaRating
 												?.displayRating >= 0
 						? "text-green-600"
 						: "text-red-600",
-					"ml-2 flex items-baseline text-sm font-semibold"
+					"ml-2 flex items-baseline text-xs md:text-sm font-semibold"
 					)}>
 						{player?.deltaRating?.displayRating &&
 					player?.deltaRating?.displayRating >= 0
