@@ -57,16 +57,23 @@ export default async function ViewCompScreen({
 		await compPlayerResponse.json();
 
 	return (
-		<div className="mx-10">
-			<div className="px-6 py-24 sm:py-32 lg:px-8 grid grid-cols-6">
-				<img
-					className="col-span-2 flex-none rounded-lg bg-gray-50"
-					src={competitionData?.image || "https://images.pexels.com/photos/7135121/pexels-photo-7135121.jpeg?cs=srgb&dl=pexels-codioful-%28formerly-gradienta%29-7135121.jpg&fm=jpg"}
-					alt="Competition Image"
-				/>
-				<h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-					{competitionData?.name}
-				</h2>
+		<div className="container mx-auto sm:px-6 lg:px-8">
+			<div className="py-12 flex flex-row">
+				<div className="w-1/3 flex self-center">
+					<img
+						className="flex-none rounded-lg bg-gray-50"
+						src={competitionData?.image || "https://images.pexels.com/photos/7135121/pexels-photo-7135121.jpeg?cs=srgb&dl=pexels-codioful-%28formerly-gradienta%29-7135121.jpg&fm=jpg"}
+						alt="Competition Image"
+					/>
+				</div>
+				<div className="ml-6 flex flex-col self-center">
+					<h1 className="text-5xl font-bold">{competitionData?.name}</h1>
+					<p className="mt-1">
+						Repudiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem. Minus
+						quidem ipsam quia iusto.
+					</p>
+				</div>
+			
 			</div>
 			{/* 3 column wrapper */}
 			<div className="mx-auto grid grid-cols-6">
