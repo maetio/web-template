@@ -113,7 +113,7 @@ export default async function ViewCompScreen({
 						className="flex justify-between gap-x-6 py-5"
 					>
 						<Link href={`/view-profile/${player.userID}/${player.sport}`}>
-							<div className="align-center flex justify-center gap-x-4">
+							<div className="flex justify-center gap-x-4 items-center">
 								<h1 className="flex-none text-xl font-bold">
 									{rank + 1}
 								</h1>
