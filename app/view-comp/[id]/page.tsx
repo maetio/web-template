@@ -74,12 +74,12 @@ export default async function ViewCompScreen({
 		new Date() > new Date(competitionData.startTimeISO);
 
 	return (
-		<div className="container mx-auto sm:px-6 lg:px-8">
-			<div className="flex flex-row py-12">
-				<div className="flex w-1/3 self-center">
+		<div className="container mx-auto px-2 sm:px-6 lg:px-8">
+			<div className="flex flex-row flex-wrap py-12">
+				<div className="flex md:w-1/3 self-center">
 					<NextImage size={500} src={competitionData?.image} />
 				</div>
-				<div className="ml-12 flex flex-col self-center">
+				<div className="md:ml-12 flex flex-col self-center">
 					<h1 className="text-7xl font-bold">
 						{competitionData?.name}
 					</h1>
@@ -103,7 +103,7 @@ export default async function ViewCompScreen({
 						key="number"
 						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
 					>
-						<MdPeopleOutline className="h-20 w-20 self-center" />
+						<MdPeopleOutline className="h-20 w-20 self-center flex-none" />
 						<div className="self-center pl-3">
 							<dt className="truncate text-sm font-medium text-gray-500">
 								Number of Players
@@ -117,7 +117,7 @@ export default async function ViewCompScreen({
 						key="rating"
 						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
 					>
-						<MaetIcon className="self-center" size={20} />
+						<MaetIcon className="self-center flex-none" size={20} />
 						<div className="self-center pl-3">
 							<dt className="truncate text-sm font-medium text-gray-500">
 								Average Rating
@@ -135,7 +135,7 @@ export default async function ViewCompScreen({
 						key="registration"
 						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
 					>
-						<MdOutlinePlaylistAddCheck className="h-20 w-20 self-center" />
+						<MdOutlinePlaylistAddCheck className="h-20 w-20 self-center flex-none" />
 						<div className="self-center pl-3">
 							<dt className="truncate text-sm font-medium text-gray-500">
 								Registration

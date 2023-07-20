@@ -37,7 +37,7 @@ const NextImage = ({
 
 	return (
 		<div
-			className={`w-${size} h-${size} flex justify-center rounded-lg bg-gray-50 align-middle`.concat(
+			className={`w-${size} h-${size} flex-none self-center place-items-center justify-center rounded-lg bg-gray-50 align-middle`.concat(
 				className || ""
 			)}
 		>
