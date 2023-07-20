@@ -2,7 +2,7 @@
 
 import React from "react";
 import { signOutUser } from "auth/client";
-import { SubmitFormActionButton } from "app/components/submit-form-action-button";
+import { ActionButton } from "app/components/action-button";
 
 export /**
  * Will have the home screen render
@@ -11,7 +11,7 @@ export /**
  */
 const SignOutButton = () => {
 	return (
-		<SubmitFormActionButton
+		<ActionButton
 			referRoute="/"
 			title="Sign Out"
 			colorVariant="red"

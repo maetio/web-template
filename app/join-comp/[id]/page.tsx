@@ -6,7 +6,7 @@ import {
 	addCompetitionProfile,
 	getOrCreateProfile,
 } from "server-actions/profiles";
-import { SubmitFormActionButton } from "app/components/submit-form-action-button";
+import { ActionButton } from "app/components/action-button";
 import { MaetIcon } from "app/components/icons";
 
 /**
@@ -100,7 +100,7 @@ export default async function JoinCompScreen({
 				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 					<div className="space-y-6">
 						<div>
-							<SubmitFormActionButton
+							<ActionButton
 								referRoute={`/view-comp/${params.id}`}
 								colorVariant="indigo"
 								title="Join competition"

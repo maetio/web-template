@@ -7,7 +7,7 @@ import {
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
 import { MaetIcon } from "app/components/icons";
-import { SubmitFormActionButton } from "app/components/submit-form-action-button";
+import { ActionButton } from "app/components/action-button";
 import Link from "next/link";
 import { FaMedal } from "react-icons/fa6";
 import { CompDisplayData } from "app/components/comp-data";
@@ -157,7 +157,7 @@ export default async function ViewCompScreen({
 					{/* Right column area */}
 					{compPlayer.profileID ? null : (
 						<div className="w-50 mt-20 justify-center">
-							<SubmitFormActionButton
+							<ActionButton
 								icon="none"
 								referRoute={
 									user?.id

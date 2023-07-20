@@ -24,7 +24,7 @@ export /**
  *
  * @return {*}
  */
-const SubmitFormActionButton = ({
+const ActionButton = ({
 	title,
 	icon,
 	colorVariant,
