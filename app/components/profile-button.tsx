@@ -21,7 +21,9 @@ const ProfileButton = () => {
 					href="/profile"
 					className="col-span-3 mr-2 flex items-center justify-end"
 				>
-					<p className="text-sm lg:text-base text-center">{userData?.firstName} {userData?.lastName}</p>
+					<p className="text-center text-sm lg:text-base">
+						{userData?.firstName} {userData?.lastName}
+					</p>
 					<Image
 						className="ml-2 rounded-full"
 						src={"/constants/vercel.png"}

@@ -34,8 +34,10 @@ const getFullDateString = (date: Date) => {
 	const nineMonthsMilliseconds = 9 * 31 * 24 * 60 * 60 * 1000;
 	const oneMonthMilliseconds = 1 * 31 * 24 * 60 * 60 * 1000;
 	const showYear =
-        date.getUTCMilliseconds() - current.getUTCMilliseconds() > nineMonthsMilliseconds &&
-        current.getUTCMilliseconds() - date.getUTCMilliseconds() > oneMonthMilliseconds;
+		date.getUTCMilliseconds() - current.getUTCMilliseconds() >
+			nineMonthsMilliseconds &&
+		current.getUTCMilliseconds() - date.getUTCMilliseconds() >
+			oneMonthMilliseconds;
 
 	// return the date string, add the full year if its behind in time or a different year
 	return `${monthNames[date.getMonth()]} ${date.getDate()}${
@@ -69,11 +71,15 @@ const getShortDateString = (date: Date) => {
 	const nineMonthsMilliseconds = 9 * 31 * 24 * 60 * 60 * 1000;
 	const oneMonthMilliseconds = 1 * 31 * 24 * 60 * 60 * 1000;
 	const showYear =
-        date.getUTCMilliseconds() - current.getUTCMilliseconds() > nineMonthsMilliseconds &&
-        current.getUTCMilliseconds() - date.getUTCMilliseconds() > oneMonthMilliseconds;
+		date.getUTCMilliseconds() - current.getUTCMilliseconds() >
+			nineMonthsMilliseconds &&
+		current.getUTCMilliseconds() - date.getUTCMilliseconds() >
+			oneMonthMilliseconds;
 
 	// return the date string, add the full year if its behind in time or a different year
-	return `${monthNames[date.getMonth()]} ${showYear ? date.getFullYear() : date.getDate()}`;
+	return `${monthNames[date.getMonth()]} ${
+		showYear ? date.getFullYear() : date.getDate()
+	}`;
 };
 
 export /**
@@ -86,8 +92,8 @@ const isToday = (date: Date) => {
 	const today = new Date();
 	return (
 		date.getDate() === today.getDate() &&
-        date.getMonth() === today.getMonth() &&
-        date.getFullYear() === today.getFullYear()
+		date.getMonth() === today.getMonth() &&
+		date.getFullYear() === today.getFullYear()
 	);
 };
 

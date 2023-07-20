@@ -2,13 +2,14 @@ import React from "react";
 import { FaMedal } from "react-icons/fa6";
 import { Profile } from "types/profile";
 
-export interface PlayerCardProps extends Omit<
-React.DetailedHTMLProps<
-	React.HTMLAttributes<HTMLDivElement>,
-	HTMLDivElement
->,
-"color"
-> {
+export interface PlayerCardProps
+	extends Omit<
+		React.DetailedHTMLProps<
+			React.HTMLAttributes<HTMLDivElement>,
+			HTMLDivElement
+		>,
+		"color"
+	> {
 	player: Partial<Profile>;
 	ranking?: number;
 }
@@ -26,7 +27,11 @@ export /**
  *  @return {*}
  *
  */
-const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }) => {
+const PlayerCard: React.FC<PlayerCardProps> = ({
+	player,
+	ranking,
+	...divParams
+}) => {
 	// define medal colors
 	const medalColor: string[] = [
 		"text-yellow-400",
@@ -41,20 +46,22 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 			{ranking ? (
 				<div className="col-span-2 grid grid-cols-4 items-center md:col-span-1">
 					{ranking <= 3 ? (
-						<div className="flex col-span-2 lg:col-span-1">
+						<div className="col-span-2 flex lg:col-span-1">
 							<FaMedal
-								className={`ml-1 ${
-									medalColor[ranking]
-								} text-base md:text-lg`}
+								className={`ml-1 ${medalColor[ranking]} text-base md:text-lg`}
 							/>
 						</div>
-					) : (<div className="flex col-span-1"></div>)}
-					<div className="flex col-span-2 lg:col-span-1 justify-end text-right">
-						<p className="ml-1 font-bold text-sm lg:text-lg">{ranking + 1}</p>
+					) : (
+						<div className="col-span-1 flex"></div>
+					)}
+					<div className="col-span-2 flex justify-end text-right lg:col-span-1">
+						<p className="ml-1 text-sm font-bold lg:text-lg">
+							{ranking + 1}
+						</p>
 					</div>
 				</div>
 			) : (
-				<div className="col-span-2 md:col-span-1 flex"></div>
+				<div className="col-span-2 flex md:col-span-1"></div>
 			)}
 			<div className="col-span-2 flex items-center gap-1">
 				{player.image ? (
@@ -64,14 +71,16 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 						alt=""
 					/>
 				) : (
-					<div className="h-4 w-4 md:h-8 md:w-8 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+					<div className="h-4 w-4 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue md:h-8 md:w-8"></div>
 				)}
 			</div>
-			<div className="col-span-3 md:col-span-5 flex items-center">
-				<p className="text-xs lg:text-lg font-bold">{player?.firstName} {player?.lastName}</p>
+			<div className="col-span-3 flex items-center md:col-span-5">
+				<p className="text-xs font-bold lg:text-lg">
+					{player?.firstName} {player?.lastName}
+				</p>
 			</div>
-			<div className="col-span-5 md:col-span-4 grid grid-cols-6 items-center justify-end gap-1 md:justify-end md:gap-2">
-				<div className="flex col-span-2 md:col-span-4 justify-end items-center">
+			<div className="col-span-5 grid grid-cols-6 items-center justify-end gap-1 md:col-span-4 md:justify-end md:gap-2">
+				<div className="col-span-2 flex items-center justify-end md:col-span-4">
 					<svg
 						className={"h-6 w-6 dark:fill-white md:h-8 md:w-8"}
 						viewBox="0 0 1500 1500"
@@ -86,28 +95,26 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 						/>
 					</svg>
 				</div>
-				<div className="flex justify-end col-span-2 md:col-span-1 items-center">
+				<div className="col-span-2 flex items-center justify-end md:col-span-1">
 					<p className="text-sm md:text-base">
-						{Math.round(
-							player.rating?.displayRating || 100
-						)}
+						{Math.round(player.rating?.displayRating || 100)}
 					</p>
 				</div>
-				<div className="flex justify-end col-span-2 md:col-span-1 items-center">
-					<p className={classNames(player?.deltaRating?.displayRating &&
-											player?.deltaRating
-												?.displayRating >= 0
-						? "text-green-600"
-						: "text-red-600",
-					"ml-2 flex items-baseline text-xs md:text-sm font-semibold"
-					)}>
+				<div className="col-span-2 flex items-center justify-end md:col-span-1">
+					<p
+						className={classNames(
+							player?.deltaRating?.displayRating &&
+								player?.deltaRating?.displayRating >= 0
+								? "text-green-600"
+								: "text-red-600",
+							"ml-2 flex items-baseline text-xs font-semibold md:text-sm"
+						)}
+					>
 						{player?.deltaRating?.displayRating &&
-					player?.deltaRating?.displayRating >= 0
+						player?.deltaRating?.displayRating >= 0
 							? "+"
 							: ""}
-						{Math.round(
-							player?.deltaRating?.displayRating || 0
-						)}
+						{Math.round(player?.deltaRating?.displayRating || 0)}
 					</p>
 				</div>
 			</div>

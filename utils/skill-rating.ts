@@ -11,12 +11,12 @@ const createPlayer = createPlayerFactory({
 });
 
 export type GameStatus =
-    | "team1-winner"
-    | "team2-winner"
-    | "tie"
-    | "no-contest"
-    | "unreported"
-    | "disputed";
+	| "team1-winner"
+	| "team2-winner"
+	| "tie"
+	| "no-contest"
+	| "unreported"
+	| "disputed";
 
 export /**
  * Function will infer the game status
@@ -27,9 +27,13 @@ export /**
  */
 const inferGameStatus = (
 	team1Points: number | undefined | null,
-	team2Points: number | undefined | null,
+	team2Points: number | undefined | null
 ): GameStatus => {
-	if ((!team1Points || !team2Points) && team1Points !== 0 && team2Points !== 0)
+	if (
+		(!team1Points || !team2Points) &&
+		team1Points !== 0 &&
+		team2Points !== 0
+	)
 		return "unreported";
 	if (Number(team1Points) > Number(team2Points)) return "team1-winner";
 	if (Number(team1Points) < Number(team2Points)) return "team2-winner";
@@ -51,14 +55,17 @@ const getDisplayRating = (
 	oldMean: number | undefined,
 	newMean: number | undefined,
 	oldDisplayRating: number | undefined,
-	numGames: number | undefined,
+	numGames: number | undefined
 ): number => {
 	// return the initial display rating
-	if (!oldMean || !newMean) return oldDisplayRating || InitialRating.displayRating;
+	if (!oldMean || !newMean)
+		return oldDisplayRating || InitialRating.displayRating;
 
 	// set the baseline rating and total games
 	const baselineRating =
-        !numGames || !oldDisplayRating ? InitialRating.displayRating : oldDisplayRating;
+		!numGames || !oldDisplayRating
+			? InitialRating.displayRating
+			: oldDisplayRating;
 	const totalGames = numGames || 1;
 
 	// return the actual rating
@@ -66,7 +73,10 @@ const getDisplayRating = (
 
 	// return the porportion to the actual mean if they gain points
 	if (newMean >= oldMean) {
-		return baselineRating + (newMean - baselineRating) * (totalGames / PlacementGames);
+		return (
+			baselineRating +
+			(newMean - baselineRating) * (totalGames / PlacementGames)
+		);
 	}
 
 	// if they lost points, lose a proportion that is relative to the current display rating
@@ -84,7 +94,10 @@ export /**
 const simulateMatchup = (
 	player1: Rating | undefined,
 	player2: Rating | undefined,
-	score: { player1Points: number | undefined | null; player2Points: number | undefined | null },
+	score: {
+		player1Points: number | undefined | null;
+		player2Points: number | undefined | null;
+	}
 ) => {
 	// declare player objects
 	const player1Obj = createPlayer({
@@ -106,7 +119,10 @@ const simulateMatchup = (
 	}
 
 	// get game status
-	const gameStatus = inferGameStatus(score.player1Points, score.player2Points);
+	const gameStatus = inferGameStatus(
+		score.player1Points,
+		score.player2Points
+	);
 
 	// if the game status changes to unreported
 	let player1Games = player1?.numGames ? player1.numGames + 1 : 1;
@@ -131,7 +147,7 @@ const simulateMatchup = (
 			player1?.mean,
 			player1Obj.rating,
 			player1?.displayRating,
-			player1?.numGames,
+			player1?.numGames
 		),
 		numGames: player1Games,
 	};
@@ -143,13 +159,12 @@ const simulateMatchup = (
 			player2?.mean,
 			player2Obj.rating,
 			player2?.displayRating,
-			player2?.numGames,
+			player2?.numGames
 		),
 		numGames: player2Games,
 	};
 	return { player1: updatedPlayer1, player2: updatedPlayer2 };
 };
-
 
 export /**
  * Function will return the delta rating object
@@ -158,11 +173,16 @@ export /**
  * @param {Rating} after
  * @return {*}  {Rating}
  */
-const getDeltaRating = (before: Rating | undefined, after: Rating | undefined): Rating => ({
+const getDeltaRating = (
+	before: Rating | undefined,
+	after: Rating | undefined
+): Rating => ({
 	mean: after && before ? after.mean - before.mean : 0,
-	ratingDeviation: after && before ? after.ratingDeviation - before.ratingDeviation : 0,
+	ratingDeviation:
+		after && before ? after.ratingDeviation - before.ratingDeviation : 0,
 	volatility: after && before ? after.volatility - before.volatility : 0,
-	displayRating: after && before ? after.displayRating - before.displayRating : 0,
+	displayRating:
+		after && before ? after.displayRating - before.displayRating : 0,
 	numGames: after && before ? after.numGames - before.numGames : 1,
 });
 
@@ -223,12 +243,16 @@ const calculateNewPlayerRating = (
 	averageTeammate: Rating | undefined,
 	oppTeam: Rating | undefined,
 	oppAveragePlayer: Rating | undefined,
-	score: { ownPoints: number | undefined | null; oppPoints: number | undefined | null },
+	score: {
+		ownPoints: number | undefined | null;
+		oppPoints: number | undefined | null;
+	}
 ) => {
 	// change the whole rating object except for the num games and rating deviation (the player's own experience level)
 	const aggregatedRating: Rating = {
 		...averageRatingObjects([playerRating, teamRating, averageTeammate]),
-		ratingDeviation: playerRating?.ratingDeviation || InitialRating.ratingDeviation,
+		ratingDeviation:
+			playerRating?.ratingDeviation || InitialRating.ratingDeviation,
 		numGames: playerRating?.numGames || 1,
 	};
 
@@ -236,13 +260,20 @@ const calculateNewPlayerRating = (
 	const oppRating = averageRatingObjects([oppTeam, oppAveragePlayer]);
 
 	// calculate the new aggregated rating
-	const { player1: newAggregatedRating } = simulateMatchup(aggregatedRating, oppRating, {
-		player1Points: score.ownPoints,
-		player2Points: score.oppPoints,
-	});
+	const { player1: newAggregatedRating } = simulateMatchup(
+		aggregatedRating,
+		oppRating,
+		{
+			player1Points: score.ownPoints,
+			player2Points: score.oppPoints,
+		}
+	);
 
 	// calculate the delta for this aggregated rating
-	const deltaAggregatedRating = getDeltaRating(aggregatedRating, newAggregatedRating);
+	const deltaAggregatedRating = getDeltaRating(
+		aggregatedRating,
+		newAggregatedRating
+	);
 
 	// add the proper fields to the new player rating
 	const newPlayerRating: Rating = {
@@ -259,7 +290,13 @@ export /**
  * @param {Rating} [rating]
  */
 const calculateTier = (rating?: Rating) => {
-	const breakPoints: Array<number> = [500, 800, 1000, 1250, 1500, 1750, 2000, 2250, 2500];
+	const breakPoints: Array<number> = [
+		500, 800, 1000, 1250, 1500, 1750, 2000, 2250, 2500,
+	];
 	if (!rating) return 1;
-	return breakPoints.findIndex((breakPoint) => rating.displayRating < breakPoint) + 1;
+	return (
+		breakPoints.findIndex(
+			(breakPoint) => rating.displayRating < breakPoint
+		) + 1
+	);
 };

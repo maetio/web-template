@@ -1,6 +1,5 @@
 import { Rating } from "types/rating";
 
-
 export const InitialRating: Rating = {
 	mean: 1500,
 	ratingDeviation: 350,

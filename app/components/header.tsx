@@ -19,26 +19,31 @@ export /**
  */ const Header = () => (
 	<Disclosure as="header" className="bg-white shadow">
 		<>
-			<div className="mx-auto max-w-7xl min-w-full px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
+			<div className="mx-auto min-w-full max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
 				<div className="relative flex h-16 justify-between">
 					<div className="relative z-10 flex px-2 lg:px-0">
 						<div className="flex flex-shrink-0 items-center">
 							<Link href="/">
-				    <div className="items center flex">
-					    <HeaderMaetIcon />
-					    <p className="ml-2 text-lg text-primaryMain">Maet</p>
-				    </div>
-			    </Link>
+								<div className="items center flex">
+									<HeaderMaetIcon />
+									<p className="ml-2 text-lg text-primaryMain">
+										Maet
+									</p>
+								</div>
+							</Link>
 						</div>
 					</div>
 					<div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
 						<div className="w-full sm:max-w-xs">
 							<label htmlFor="search" className="sr-only">
-                            	Search
+								Search
 							</label>
 							<div className="relative">
 								<div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-									<HiMagnifyingGlass className="h-5 w-5 text-gray-400" aria-hidden="true" />
+									<HiMagnifyingGlass
+										className="h-5 w-5 text-gray-400"
+										aria-hidden="true"
+									/>
 								</div>
 								<input
 									id="search"
@@ -50,7 +55,7 @@ export /**
 							</div>
 						</div>
 					</div>
-					<div className="relative flex z-10 items-center">
+					<div className="relative z-10 flex items-center">
 						<ProfileButton />
 					</div>
 				</div>

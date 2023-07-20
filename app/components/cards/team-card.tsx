@@ -10,7 +10,7 @@ export interface TeamCardProps
 		>,
 		"color"
 	> {
-	team?: Partial<Team>
+	team?: Partial<Team>;
 	ranking?: number;
 }
 
@@ -27,8 +27,16 @@ export /**
  *	}
  *  @return {*}
  *
- */ const TeamCard: React.FC<TeamCardProps> = ({ team, ranking, ...divParams }) => {
-	const medalColor: string[] = ["text-yellow-400", "text-gray-400", "text-amber-700"];
+ */ const TeamCard: React.FC<TeamCardProps> = ({
+	team,
+	ranking,
+	...divParams
+}) => {
+	const medalColor: string[] = [
+		"text-yellow-400",
+		"text-gray-400",
+		"text-amber-700",
+	];
 	return (
 		<div
 			{...divParams}
@@ -56,11 +64,13 @@ export /**
 						alt=""
 					/>
 				) : (
-					<div className="h-4 w-4 md:h-8 md:w-8 rounded-full md:rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+					<div className="h-4 w-4 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue md:h-8 md:w-8 md:rounded-md"></div>
 				)}
 			</div>
 			<div className="col-span-4 flex items-center">
-				<p className="text-xs lg:text-lg font-bold">{team?.firstName} {team?.lastName}</p>
+				<p className="text-xs font-bold lg:text-lg">
+					{team?.firstName} {team?.lastName}
+				</p>
 			</div>
 			<div className="col-span-4 flex items-center justify-end gap-1 md:col-span-5 md:justify-end md:gap-2">
 				<svg
@@ -76,7 +86,9 @@ export /**
 						transform="matrix(.1 0 0 -.1 0 1500)"
 					/>
 				</svg>
-				<p className="text-xs lg:text-lg font-bold">{team?.rating?.displayRating}</p>
+				<p className="text-xs font-bold lg:text-lg">
+					{team?.rating?.displayRating}
+				</p>
 				{/* <div>
 						<FaArrowTrendUp className="text-md text-green-800" />
 					</div>

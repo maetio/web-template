@@ -186,13 +186,15 @@ export default async function ViewCompScreen({
 									href={`/view-profile/${player.userID}/${player.sport}`}
 								>
 									<div className="align-center flex justify-center gap-x-4">
-										{rank < 3 ? (<div className="flex col-span-2 lg:col-span-1">
-											<FaMedal
-												className={` ${
-													medalColor[rank]
-												} text-base md:text-lg`}
-											/>
-										</div>) : <div className="flex"></div>}
+										{rank < 3 ? (
+											<div className="col-span-2 flex lg:col-span-1">
+												<FaMedal
+													className={` ${medalColor[rank]} text-base md:text-lg`}
+												/>
+											</div>
+										) : (
+											<div className="flex"></div>
+										)}
 										<h1 className="flex-none text-xl font-bold">
 											{rank + 1}
 										</h1>

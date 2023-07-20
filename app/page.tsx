@@ -20,9 +20,7 @@ export default async function Home() {
 		<main>
 			{competitions.map((item) => (
 				<Link key={item.id} href={`view-comp/${item.id}`}>
-					<CompetitionCard
-						competition={item}
-					/>
+					<CompetitionCard competition={item} />
 				</Link>
 			))}
 		</main>
