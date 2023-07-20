@@ -75,23 +75,23 @@ export default async function ViewCompScreen({
 
 	return (
 		<div className="container mx-auto px-2 sm:px-6 lg:px-8">
-			<div className="flex flex-row flex-wrap pb-12 pt-4 lg:pt-12">
+			<div className="flex flex-row flex-wrap lg:flex-nowrap pb-12 pt-4 lg:pt-12">
 				<div>
 					<NextImage size={400} src={competitionData?.image} />
 				</div>
-				<div className="mt-3 lg:mt-0 lg:ml-12 flex flex-col self-center">
-					<h1 className="text-7xl font-bold">
-						{competitionData?.name}
-					</h1>
+				<div className="mt-3 lg:mt-0 lg:ml-12 flex flex-col flex-wrap self-center">
 					<CompetitionType
 						className="my-3"
 						type={competitionData?.type || "session"}
 						sport={competitionData?.sport || "pickleball"}
 					/>
-					{/* <p className="mt-1">
+					<h1 className="text-7xl font-bold flex flex-wrap my-3">
+						{competitionData?.name}
+					</h1>
+					<p className="flex flex-wrap">
 						Repudiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem. Minus
 						quidem ipsam quia iusto.
-					</p> */}
+					</p>
 				</div>
 			</div>
 			<div>
@@ -157,7 +157,7 @@ export default async function ViewCompScreen({
 			<div className="mx-auto grid grid-cols-6">
 				{/* Left sidebar & main wrapper */}
 				<main className="col-span-6 flex-1 overflow-y-auto lg:col-span-4"></main>
-				<aside className="sticky top-8 col-span-6 lg:col-span-2">
+				<aside className="sticky top-8 col-span-6 lg:col-span-2 h-50 overflow-y-auto">
 					{/* Right column area */}
 					{compPlayer.profileID ? null : (
 						<div className="w-50 mt-20 justify-center">
@@ -175,7 +175,7 @@ export default async function ViewCompScreen({
 					)}
 					<ul
 						role="list"
-						className="sticky top-0 divide-y divide-gray-100"
+						className="sticky top-0 divide-y divide-gray-100 overflow-y-auto"
 					>
 						{players.map((player, rank) => (
 							<li

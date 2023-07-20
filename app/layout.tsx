@@ -7,8 +7,8 @@ import { ServerAuthProvider } from "auth/server-auth-provider";
 const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata = {
-	title: "Maet Web Template",
-	description: "NextJS, Typescript, Firebase Auth,",
+	title: "Maet",
+	description: "Play On.",
 };
 
 export default function RootLayout({

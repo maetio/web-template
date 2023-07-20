@@ -24,7 +24,7 @@ export const CompetitionType = ({
 
 	return (
 		<div className={"relative ".concat(className || "")} {...divParams}>
-			<dt className="flex items-center justify-start gap-x-3 text-base font-semibold leading-7">
+			<dt className="flex items-center justify-start gap-x-3 text-base leading-7">
 				<div className="flex h-10 w-10 items-center justify-center self-center rounded-lg bg-indigo-600">
 					<SportIcon
 						className="h-6 w-6 flex-none text-white"
