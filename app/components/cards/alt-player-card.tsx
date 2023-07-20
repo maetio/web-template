@@ -19,7 +19,8 @@ function classNames(...classes: string[]) {
 
 const AltPlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }) => {  
 	return (
-			<div className="align-center flex justify-center gap-x-4">
+		<div className="flex min-w-full">
+			<div className="flex justify-center gap-x-4 items-center">
 				<h1 className="flex-none text-xl font-bold">
 					{ranking + 1}
 				</h1>
@@ -72,6 +73,7 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParam
 					</p>
 				</dd>
 			</div>
+		</div>
 	);
 };
 

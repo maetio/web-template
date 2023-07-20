@@ -44,7 +44,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 						<div className="flex col-span-2 lg:col-span-1">
 							<FaMedal
 								className={`ml-1 ${
-									medalColor[ranking - 1]
+									medalColor[ranking]
 								} text-base md:text-lg`}
 							/>
 						</div>
@@ -52,7 +52,6 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, ranking, ...divParams }
 					<div className="flex col-span-2 lg:col-span-1 justify-end text-right">
 						<p className="ml-1 font-bold text-sm lg:text-lg">{ranking + 1}</p>
 					</div>
-					
 				</div>
 			) : (
 				<div className="col-span-2 md:col-span-1 flex"></div>
