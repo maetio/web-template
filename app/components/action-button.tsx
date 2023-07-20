@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useTransition } from "react";
+import React, { ReactElement, useTransition } from "react";
 import { useRouter } from "next/navigation";
 
 type BrandIcons = "google";
@@ -8,8 +8,8 @@ type ColorVariants = "white" | "black" | "indigo" | "red";
 
 interface CustomButtonParams {
 	title?: string;
-	startIcon?: BrandIcons;
-	endIcon?: BrandIcons;
+	startIcon?: BrandIcons | ReactElement;
+	endIcon?: BrandIcons | ReactElement;
 	action?: () => Promise<any>;
 	referRoute?: string;
 	colorVariant?: ColorVariants;
@@ -39,10 +39,10 @@ const ActionButton = ({
 
 	// define color class params
 	const colorClasses: Record<ColorVariants, string> = {
-		white: "text-black hover:bg-white focus-visible:outline-grey-300 bg-white",
-		black: "text-white hover:bg-gray-900 focus-visible:outline-grey-300 bg-black",
-		indigo: "text-white hover:bg-indigo-500 focus-visible:outline-grey-300 bg-indigo-600",
-		red: "text-white hover:bg-red-500 focus-visible:outline-grey-300 bg-red-600",
+		white: "text-black hover:bg-white focus-visible:outline-grey-300 bg-white ",
+		black: "text-white hover:bg-gray-900 focus-visible:outline-grey-300 bg-black ",
+		indigo: "text-white hover:bg-indigo-500 focus-visible:outline-grey-300 bg-indigo-600 ",
+		red: "text-white hover:bg-red-500 focus-visible:outline-grey-300 bg-red-600 ",
 	};
 
 	// set icons
@@ -137,10 +137,11 @@ const ActionButton = ({
 		<button
 			disabled={isPending}
 			onClick={() => handleClick()}
-			className={"inline-flex w-full justify-center items-center gap-x-1.5 rounded-md focus:ring-2 focus:ring-offset-2 shadow-md hover:shadow-lg  px-3 py-2 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2".concat(colorClasses[colorVariant]).concat(className || "")}
+			className={"inline-flex justify-center items-center gap-x-1.5 rounded-md focus:ring-2 focus:ring-offset-2 shadow-md hover:shadow-lg  px-3 py-2 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ".concat(colorClasses[colorVariant]).concat(className || "")}
 			{...buttonParams}
 		>
 			{typeof startIcon === "string" && !isPending ? icons[startIcon] : null}
+			{startIcon && typeof startIcon !== "string" && !isPending ? startIcon : null}
 			{isPending ? (
 				<svg
 					aria-hidden="true"
@@ -163,7 +164,8 @@ const ActionButton = ({
 				</svg>
 			) : null}
 			<p className={colorVariant === "white" ? "text-black" : "text-white"}>{isPending ? "Loading..." : title || "Submit"}</p>
-			{typeof startIcon === "string" && !isPending ? icons[startIcon] : null}
+			{typeof endIcon === "string" && !isPending ? icons[endIcon] : null}
+			{endIcon && typeof endIcon !== "string" && !isPending ? endIcon : null}
 		</button>
 	);
 };

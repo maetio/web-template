@@ -15,7 +15,6 @@ const SignOutButton = () => {
 			referRoute="/"
 			title="Sign Out"
 			colorVariant="red"
-			icon="none"
 			action={signOutUser}
 		/>
 	);

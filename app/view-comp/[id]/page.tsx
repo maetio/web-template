@@ -12,7 +12,7 @@ import Link from "next/link";
 import { FaMedal } from "react-icons/fa6";
 import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
-import { MdOutlinePlaylistAddCheck, MdPeopleOutline } from "react-icons/md";
+import { MdArrowForwardIos, MdOutlinePlaylistAddCheck, MdPeopleOutline } from "react-icons/md";
 import { averageRatingObjects } from "utils/skill-rating";
 
 function classNames(...classes: string[]) {
@@ -88,6 +88,20 @@ export default async function ViewCompScreen({
 						Repudiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem. Minus
 						quidem ipsam quia iusto.
 					</p>
+					<div className="py-12">
+						<ActionButton
+							className="w-auto px-12"
+							endIcon={<MdArrowForwardIos className="text-white" />}
+							referRoute={
+								user?.id
+									? `/join-comp/${competitionData?.id}`
+									: `/comp-login/${competitionData?.id}`
+							}
+							title="Join Competition"
+							colorVariant="indigo"
+						/>
+					</div>
+					
 				</div>
 			</div>
 			<div>
