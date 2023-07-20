@@ -7,21 +7,22 @@ module.exports = {
 	},
 	images: {
 		remotePatterns: [
-		  {
-			protocol: 'https',
-			hostname: '**.googleusercontent.com',
-			port: '',
-			pathname: '/**',
-		  },
-		  {
-			protocol: 'https',
-			hostname: 'api.dicebear.com',
-			port: '',
-			pathname: '/**',
-		  },
+			{
+				protocol: "https",
+				hostname: "**.googleusercontent.com",
+				port: "",
+				pathname: "/**",
+			},
+			{
+				protocol: "https",
+				hostname: "api.dicebear.com",
+				port: "",
+				pathname: "/**",
+			},
 		],
 		dangerouslyAllowSVG: true,
-    	contentDispositionType: 'attachment',
-    	contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+		contentDispositionType: "attachment",
+		contentSecurityPolicy:
+			"default-src 'self'; script-src 'none'; sandbox;",
 	},
 };
