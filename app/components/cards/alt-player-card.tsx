@@ -33,7 +33,7 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 	...divParams
 }) => {
 	return (
-		<div className="flex justify-between gap-x-6 py-5 h-20 border-b">
+		<div {...divParams} className="flex justify-between gap-x-6 py-5 h-20 border-b">
 			<div className="items-center flex justify-center gap-x-4">
 				{ranking < 3 ? (
 					<div className="grid grid-cols-2 gap-x-2 items-center justify-end">

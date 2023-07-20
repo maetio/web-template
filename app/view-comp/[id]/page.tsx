@@ -9,16 +9,12 @@ import { getUserData } from "server-actions/users";
 import { MaetIcon } from "app/components/icons";
 import { SubmitFormActionButton } from "app/components/submit-form-action-button";
 import Link from "next/link";
-import { FaMedal } from "react-icons/fa6";
 import { CompetitionType } from "app/components/comp-type";
 import { NextImage } from "app/components/image";
 import { MdOutlinePlaylistAddCheck, MdPeopleOutline } from "react-icons/md";
 import { averageRatingObjects } from "utils/skill-rating";
 import AltPlayerCard from "app/components/cards/alt-player-card";
 
-function classNames(...classes: string[]) {
-	return classes.filter(Boolean).join(" ");
-}
 
 /**
  * Function will display the competition to the user
@@ -63,11 +59,6 @@ export default async function ViewCompScreen({
 		await compPlayerResponse.json();
 
 	// define medal colors
-	const medalColor: string[] = [
-		"text-yellow-400",
-		"text-gray-400",
-		"text-amber-700",
-	];
 
 	// set parameters for registration
 	const registrationOpen =
