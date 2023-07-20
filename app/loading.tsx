@@ -1,4 +1,4 @@
-import SkeletonAnimation from "./components/cards/skeleton-card";
+import SkeletonCard from "./components/cards/skeleton-card";
 
 /**
  * Loading UI for rendering
@@ -8,7 +8,11 @@ import SkeletonAnimation from "./components/cards/skeleton-card";
  */
 export const Loading = () => {
 	return (
-		<SkeletonAnimation />
+		<div>
+			<SkeletonCard />
+			<SkeletonCard />
+			<SkeletonCard />
+		</div>
 	);
 };
 
