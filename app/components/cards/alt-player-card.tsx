@@ -33,10 +33,10 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 	...divParams
 }) => {
 	return (
-		<div className="flex justify-between gap-x-6 py-5">
+		<div className="flex justify-between gap-x-6 py-5 h-20 border-b">
 			<div className="items-center flex justify-center gap-x-4">
 				{ranking < 3 ? (
-					<div className="grid grid-cols-2 gap-x-2 items-center justify-end border">
+					<div className="grid grid-cols-2 gap-x-2 items-center justify-end">
 						<div className="flex col-span-1">
 							<FaMedal
 								className={`${medalColor[ranking]} text-base md:text-lg`}
@@ -47,9 +47,8 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 						</h1>
 					</div>
 				) : (
-					<div className="grid grid-cols-2 gap-x-2 items-center justify-end border">
+					<div className="grid grid-cols-2 gap-x-2 items-center justify-end">
 						<div className="flex col-span-1">
-							
 						</div>
 						<div className="flex col-span-1">
 							<h1 className="flex-none text-xl font-bold">

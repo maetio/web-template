@@ -1,3 +1,5 @@
+import SkeletonCard from "./components/cards/skeleton-card";
+
 /**
  * Loading UI for rendering
  * Can embed different loading skeletons depending on the location in the app router
@@ -5,7 +7,9 @@
  * @returns
  */
 export const Loading = () => {
-	return <p>Loading...</p>;
+	return (
+		<SkeletonCard />
+	);
 };
 
 export default Loading;
