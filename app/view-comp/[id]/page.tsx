@@ -99,7 +99,7 @@ export default async function ViewCompScreen({
 					</p>
 					<div className="py-12 flex flex-row">
 						{compPlayer?.rating?.displayRating ?
-							<div>
+							<div className="flex flex-row">
 								<NextImage
 									size={50}
 									src={compPlayer.image}
