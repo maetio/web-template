@@ -36,20 +36,21 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 		<div className="flex justify-between gap-x-6 py-5">
 			<div className="items-center flex justify-center gap-x-4">
 				{ranking < 3 ? (
-					<div className="grid grid-cols-2 gap-x-2 items-center justify-end">
+					<div className="grid grid-cols-2 gap-x-2 items-center justify-end border">
 						<div className="flex col-span-1">
 							<FaMedal
 								className={`${medalColor[ranking]} text-base md:text-lg`}
 							/>
 						</div>
-						
 						<h1 className="flex-none text-xl font-bold">
 							{ranking + 1}
 						</h1>
 					</div>
 				) : (
-					<div className="grid grid-cols-2 gap-x-2 items-center justify-end">
-						<div className="flex col-span-1"></div>
+					<div className="grid grid-cols-2 gap-x-2 items-center justify-end border">
+						<div className="flex col-span-1">
+							
+						</div>
 						<div className="flex col-span-1">
 							<h1 className="flex-none text-xl font-bold">
 								{ranking + 1}
