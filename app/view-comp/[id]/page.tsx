@@ -61,6 +61,15 @@ export default async function ViewCompScreen({
 	const compPlayer: CompProfilesResponseType =
 		await compPlayerResponse.json();
 
+	// set rank string
+	const getRankString = (rank: number) => {
+		if (rank === 0) return "1st";
+		if (rank === 1) return "2nd";
+		if (rank === 2) return "3rd";
+		if (rank > 2) return `${rank + 1}th`;
+		return "Not Ranked";
+	};
+
 	// define medal colors
 	const medalColor: string[] = [
 		"text-yellow-400",
@@ -88,23 +97,34 @@ export default async function ViewCompScreen({
 						Repudiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem. Minus
 						quidem ipsam quia iusto.
 					</p>
-					<div className="py-12">
-						<ActionButton
-							className="w-auto px-12"
-							endIcon={<MdArrowForwardIos className="text-white" />}
-							referRoute={
-								user?.id
-									? `/join-comp/${competitionData?.id}`
-									: `/comp-login/${competitionData?.id}`
-							}
-							title="Join Competition"
-							colorVariant="indigo"
-						/>
+					<div className="py-12 flex flex-row">
+						{compPlayer?.rating?.displayRating ?
+							<div>
+								<NextImage
+									size={50}
+									src={compPlayer.image}
+									alt={compPlayer.firstName}
+								/>
+								<h3 className="self-center ml-3 font-semibold">You are ranked {getRankString(players.findIndex((profile) => profile.id === compPlayer.id))} of {players.length} total players.</h3>
+							</div> :
+							<ActionButton
+								className="w-auto px-12"
+								endIcon={<MdArrowForwardIos className="text-white" />}
+								referRoute={
+									user?.id
+										? `/join-comp/${competitionData?.id}`
+										: `/comp-login/${competitionData?.id}`
+								}
+								title="Join Competition"
+								colorVariant="indigo"
+							/>
+						}
+						
 					</div>
 					
 				</div>
 			</div>
-			<div>
+			<div className="bg-gray-100 rounded-lg px-6 py-6"> 
 				<h3 className="text-base font-semibold leading-6 text-gray-900">
 					Competition Info
 				</h3>
@@ -166,22 +186,14 @@ export default async function ViewCompScreen({
 			{/* 3 column wrapper */}
 			<div className="mx-auto grid grid-cols-6">
 				{/* Left sidebar & main wrapper */}
-				<main className="col-span-6 flex-1 overflow-y-auto lg:col-span-4"></main>
-				<aside className="sticky top-8 col-span-6 lg:col-span-2 h-50 overflow-y-auto">
+				<main className="col-span-6 py-6 flex-1 overflow-y-auto lg:col-span-4">
+
+				</main>
+				<aside className="sticky py-6 top-8 col-span-6 lg:col-span-2 h-50 overflow-y-auto">
 					{/* Right column area */}
-					{compPlayer.profileID ? null : (
-						<div className="w-50 mt-20 justify-center">
-							<ActionButton
-								referRoute={
-									user?.id
-										? `/join-comp/${competitionData?.id}`
-										: `/comp-login/${competitionData?.id}`
-								}
-								title="Join Competition"
-								colorVariant="indigo"
-							/>
-						</div>
-					)}
+					<h3 className="text-base font-semibold leading-6 text-gray-900">
+						Player Rankings
+					</h3>
 					<ul
 						role="list"
 						className="sticky top-0 divide-y divide-gray-100 overflow-y-auto"

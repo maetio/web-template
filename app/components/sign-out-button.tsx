@@ -12,6 +12,7 @@ export /**
 const SignOutButton = () => {
 	return (
 		<ActionButton
+			className="w-full"
 			referRoute="/"
 			title="Sign Out"
 			colorVariant="red"
