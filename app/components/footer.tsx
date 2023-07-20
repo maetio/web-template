@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { FaLinkedinIn, FaSquareGithub, FaSquareInstagram } from "react-icons/fa6";
+import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 export /**
@@ -33,11 +33,11 @@ export /**
 				</Link>
 				<Link href="https://instagram.com/playmaet" className="text-gray-400 hover:text-gray-500">
 					<span className="sr-only">Instagram</span>
-					<FaSquareInstagram className="h-6 w-6" aria-hidden="true" />
+					<FaInstagram className="h-6 w-6" aria-hidden="true" />
 				</Link>
 				<Link href="https://github.com/maetio" className="text-gray-400 hover:text-gray-500">
 					<span className="sr-only">Github</span>
-					<FaSquareGithub className="h-6 w-6" aria-hidden="true" />
+					<FaGithub className="h-6 w-6" aria-hidden="true" />
 				</Link>
 			</div>
 			<p className="mt-10 text-center text-xs leading-5 text-gray-500">
