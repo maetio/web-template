@@ -3,12 +3,13 @@ import { Nunito } from "next/font/google";
 import React from "react";
 import { Header } from "app/components/header";
 import { ServerAuthProvider } from "auth/server-auth-provider";
+import { Footer } from "app/components/footer";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata = {
-	title: "Maet Web Template",
-	description: "NextJS, Typescript, Firebase Auth,",
+	title: "Maet",
+	description: "Play On.",
 };
 
 export default function RootLayout({
@@ -22,6 +23,7 @@ export default function RootLayout({
 				<ServerAuthProvider>
 					<Header />
 					{children}
+					<Footer />
 				</ServerAuthProvider>
 			</body>
 		</html>

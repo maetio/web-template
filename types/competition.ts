@@ -10,6 +10,7 @@ import { Location } from "./location";
  */
 export interface Competition {
 	id: string;
+	description?: string;
 	sport: "basketball" | "soccer" | "volleyball" | "pickleball";
 	type: "session" | "tournament" | "league";
 	name: string;
