@@ -36,17 +36,28 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 		<div className="flex justify-between gap-x-6 py-5">
 			<div className="items-center flex justify-center gap-x-4">
 				{ranking < 3 ? (
-					<div className="col-span-2 flex lg:col-span-1">
-						<FaMedal
-							className={` ${medalColor[ranking]} text-base md:text-lg`}
-						/>
+					<div className="grid grid-cols-2 gap-x-2 items-center justify-end">
+						<div className="flex col-span-1">
+							<FaMedal
+								className={`${medalColor[ranking]} text-base md:text-lg`}
+							/>
+						</div>
+						
+						<h1 className="flex-none text-xl font-bold">
+							{ranking + 1}
+						</h1>
 					</div>
 				) : (
-					<div className="flex"></div>
+					<div className="grid grid-cols-2 gap-x-2 items-center justify-end">
+						<div className="flex col-span-1"></div>
+						<div className="flex col-span-1">
+							<h1 className="flex-none text-xl font-bold">
+								{ranking + 1}
+							</h1>
+						</div>
+						
+					</div>
 				)}
-				<h1 className="flex-none text-xl font-bold">
-					{ranking + 1}
-				</h1>
 				<NextImage
 					size={50}
 					src={player.image}
@@ -67,7 +78,7 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 					<div className="absolute rounded-md p-3">
 						<MaetIcon size={10} />
 					</div>
-					<p className="ml-16 truncate text-sm font-medium text-gray-500 dark:text-white ">
+					<p className="ml-16 truncate text-sm font-medium text-gray-500 dark:text-white justify-center">
                 Rating
 					</p>
 				</dt>
