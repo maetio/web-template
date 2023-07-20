@@ -9,7 +9,7 @@ import { getUserData } from "server-actions/users";
 import { MaetIcon } from "app/components/icons";
 import { SubmitFormActionButton } from "app/components/submit-form-action-button";
 import Link from "next/link";
-import { FaMedal } from "react-icons/fa6";
+import { FaMedal, FaPeopleLine } from "react-icons/fa6";
 import { CompetitionType } from "app/components/comp-type";
 import { NextImage } from "app/components/image";
 import { MdOutlinePlaylistAddCheck, MdPeopleOutline } from "react-icons/md";
@@ -80,11 +80,29 @@ export default async function ViewCompScreen({
 					<NextImage size={400} src={competitionData?.image} />
 				</div>
 				<div className="mt-3 lg:mt-0 lg:ml-12 flex flex-col flex-wrap self-center">
-					<CompetitionType
+					{/* <CompetitionType
 						className="my-3"
 						type={competitionData?.type || "session"}
 						sport={competitionData?.sport || "pickleball"}
-					/>
+					/> */}
+					{/* <div className="my-6 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
+						<div className="mt-2 flex items-center text-sm text-gray-500">
+							<FaPeopleLine className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+							Full-time
+						</div>
+						<div className="mt-2 flex items-center text-sm text-gray-500">
+							<FaPeopleLine className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+							Remote
+						</div>
+						<div className="mt-2 flex items-center text-sm text-gray-500">
+							<FaPeopleLine className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+							$120k &ndash; $140k
+						</div>
+						<div className="mt-2 flex items-center text-sm text-gray-500">
+							<FaPeopleLine className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+							Closing on January 9, 2020
+						</div>
+					</div> */}
 					<h1 className="text-7xl font-bold flex flex-wrap my-3">
 						{competitionData?.name}
 					</h1>
