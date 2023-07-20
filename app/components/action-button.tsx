@@ -137,18 +137,22 @@ const ActionButton = ({
 		<button
 			disabled={isPending}
 			onClick={() => handleClick()}
-			className={"inline-flex justify-center items-center gap-x-1.5 rounded-md focus:ring-2 focus:ring-offset-2 shadow-md hover:shadow-lg  px-3 py-2 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ".concat(colorClasses[colorVariant]).concat(className || "")}
+			className={"inline-flex items-center justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold  shadow-md hover:shadow-lg focus:ring-2 focus:ring-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 "
+				.concat(colorClasses[colorVariant])
+				.concat(className || "")}
 			{...buttonParams}
 		>
-			{typeof startIcon === "string" && !isPending ? icons[startIcon] : null}
-			{startIcon && typeof startIcon !== "string" && !isPending ? startIcon : null}
+			{typeof startIcon === "string" && !isPending
+				? icons[startIcon]
+				: null}
+			{startIcon && typeof startIcon !== "string" && !isPending
+				? startIcon
+				: null}
 			{isPending ? (
 				<svg
 					aria-hidden="true"
 					role="status"
-					className={
-						"text-gray-500 mr-3 inline h-4 w-4 animate-spin"
-					}
+					className={"mr-3 inline h-4 w-4 animate-spin text-gray-500"}
 					viewBox="0 0 100 101"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
@@ -163,9 +167,17 @@ const ActionButton = ({
 					></path>
 				</svg>
 			) : null}
-			<p className={colorVariant === "white" ? "text-black" : "text-white"}>{isPending ? "Loading..." : title || "Submit"}</p>
+			<p
+				className={
+					colorVariant === "white" ? "text-black" : "text-white"
+				}
+			>
+				{isPending ? "Loading..." : title || "Submit"}
+			</p>
 			{typeof endIcon === "string" && !isPending ? icons[endIcon] : null}
-			{endIcon && typeof endIcon !== "string" && !isPending ? endIcon : null}
+			{endIcon && typeof endIcon !== "string" && !isPending
+				? endIcon
+				: null}
 		</button>
 	);
 };

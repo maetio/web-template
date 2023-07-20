@@ -6,7 +6,6 @@ import { ProfileButton } from "app/components/profile-button";
 import Link from "next/link";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Disclosure } from "@headlessui/react";
-import { HiMagnifyingGlass } from "react-icons/hi2";
 
 export /**
  * Reusable page header/toolbar

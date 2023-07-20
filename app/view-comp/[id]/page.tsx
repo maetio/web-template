@@ -12,7 +12,11 @@ import Link from "next/link";
 import { FaMedal } from "react-icons/fa6";
 import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
-import { MdArrowForwardIos, MdOutlinePlaylistAddCheck, MdPeopleOutline } from "react-icons/md";
+import {
+	MdArrowForwardIos,
+	MdOutlinePlaylistAddCheck,
+	MdPeopleOutline,
+} from "react-icons/md";
 import { averageRatingObjects } from "utils/skill-rating";
 
 function classNames(...classes: string[]) {
@@ -84,32 +88,51 @@ export default async function ViewCompScreen({
 
 	return (
 		<div className="container mx-auto px-2 sm:px-6 lg:px-8">
-			<div className="flex flex-row flex-wrap lg:flex-nowrap pb-12 pt-4 lg:pt-12">
+			<div className="flex flex-row flex-wrap pb-12 pt-4 lg:flex-nowrap lg:pt-12">
 				<div>
 					<NextImage size={400} src={competitionData?.image} />
 				</div>
-				<div className="mt-3 lg:mt-0 lg:ml-12 flex flex-col flex-wrap self-center">
-					<CompDisplayData type={competitionData?.type || "session"} sport={competitionData?.sport || "pickleball"} startTimeISO={competitionData?.startTimeISO} endTimeISO={competitionData?.endTimeISO} location={competitionData?.location} />
-					<h1 className="text-7xl font-bold flex flex-wrap my-3">
+				<div className="mt-3 flex flex-col flex-wrap self-center lg:ml-12 lg:mt-0">
+					<CompDisplayData
+						type={competitionData?.type || "session"}
+						sport={competitionData?.sport || "pickleball"}
+						startTimeISO={competitionData?.startTimeISO}
+						endTimeISO={competitionData?.endTimeISO}
+						location={competitionData?.location}
+					/>
+					<h1 className="my-3 flex flex-wrap text-7xl font-bold">
 						{competitionData?.name}
 					</h1>
 					<p className="flex flex-wrap">
-						Repudiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem. Minus
+						Repudiandae sint consequuntur vel. Amet ut nobis
+						explicabo numquam expedita quia omnis voluptatem. Minus
 						quidem ipsam quia iusto.
 					</p>
-					<div className="py-12 flex flex-row">
-						{compPlayer?.rating?.displayRating ?
+					<div className="flex flex-row py-12">
+						{compPlayer?.rating?.displayRating ? (
 							<div className="flex flex-row">
 								<NextImage
 									size={50}
 									src={compPlayer.image}
 									alt={compPlayer.firstName}
 								/>
-								<h3 className="self-center ml-3 font-semibold">You are ranked {getRankString(players.findIndex((profile) => profile.id === compPlayer.id))} of {players.length} total players.</h3>
-							</div> :
+								<h3 className="ml-3 self-center font-semibold">
+									You are ranked{" "}
+									{getRankString(
+										players.findIndex(
+											(profile) =>
+												profile.id === compPlayer.id
+										)
+									)}{" "}
+									of {players.length} total players.
+								</h3>
+							</div>
+						) : (
 							<ActionButton
 								className="w-auto px-12"
-								endIcon={<MdArrowForwardIos className="text-white" />}
+								endIcon={
+									<MdArrowForwardIos className="text-white" />
+								}
 								referRoute={
 									user?.id
 										? `/join-comp/${competitionData?.id}`
@@ -118,13 +141,11 @@ export default async function ViewCompScreen({
 								title="Join Competition"
 								colorVariant="indigo"
 							/>
-						}
-						
+						)}
 					</div>
-					
 				</div>
 			</div>
-			<div className="bg-gray-100 rounded-lg px-6 py-6"> 
+			<div className="rounded-lg bg-gray-100 px-6 py-6">
 				<h3 className="text-base font-semibold leading-6 text-gray-900">
 					Competition Info
 				</h3>
@@ -133,7 +154,7 @@ export default async function ViewCompScreen({
 						key="number"
 						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
 					>
-						<MdPeopleOutline className="h-20 w-20 self-center flex-none" />
+						<MdPeopleOutline className="h-20 w-20 flex-none self-center" />
 						<div className="self-center pl-3">
 							<dt className="truncate text-sm font-medium text-gray-500">
 								Number of Players
@@ -147,7 +168,7 @@ export default async function ViewCompScreen({
 						key="rating"
 						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
 					>
-						<MaetIcon className="self-center flex-none" size={20} />
+						<MaetIcon className="flex-none self-center" size={20} />
 						<div className="self-center pl-3">
 							<dt className="truncate text-sm font-medium text-gray-500">
 								Average Rating
@@ -165,7 +186,7 @@ export default async function ViewCompScreen({
 						key="registration"
 						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
 					>
-						<MdOutlinePlaylistAddCheck className="h-20 w-20 self-center flex-none" />
+						<MdOutlinePlaylistAddCheck className="h-20 w-20 flex-none self-center" />
 						<div className="self-center pl-3">
 							<dt className="truncate text-sm font-medium text-gray-500">
 								Registration
@@ -186,10 +207,8 @@ export default async function ViewCompScreen({
 			{/* 3 column wrapper */}
 			<div className="mx-auto grid grid-cols-6">
 				{/* Left sidebar & main wrapper */}
-				<main className="col-span-6 py-6 flex-1 overflow-y-auto lg:col-span-4">
-
-				</main>
-				<aside className="sticky py-6 top-8 col-span-6 lg:col-span-2 h-50 overflow-y-auto">
+				<main className="col-span-6 flex-1 overflow-y-auto py-6 lg:col-span-4"></main>
+				<aside className="h-50 sticky top-8 col-span-6 overflow-y-auto py-6 lg:col-span-2">
 					{/* Right column area */}
 					<h3 className="text-base font-semibold leading-6 text-gray-900">
 						Player Rankings

@@ -78,7 +78,7 @@ export default async function JoinCompScreen({
 						Join {competitionData?.name}
 					</h2>
 				</div>
-				<div className="my-4 col-span-1 flex flex-col rounded-lg bg-white text-center">
+				<div className="col-span-1 my-4 flex flex-col rounded-lg bg-white text-center">
 					<div className="align-center flex flex-col justify-center p-8">
 						<NextImage
 							size={100}
@@ -88,9 +88,16 @@ export default async function JoinCompScreen({
 						<h3 className="my-3 text-lg font-medium text-gray-900">
 							{profileData?.firstName} {profileData?.lastName}
 						</h3>
-						<div className="flex align-center self-center">
-							<MaetIcon size={10} className="flex justify-center align-center" />
-							<p className="ml-2 text-2xl font-semibold text-gray-900 self-center">{Math.round(profileData?.rating?.displayRating || 100)}</p>
+						<div className="align-center flex self-center">
+							<MaetIcon
+								size={10}
+								className="align-center flex justify-center"
+							/>
+							<p className="ml-2 self-center text-2xl font-semibold text-gray-900">
+								{Math.round(
+									profileData?.rating?.displayRating || 100
+								)}
+							</p>
 						</div>
 					</div>
 				</div>
