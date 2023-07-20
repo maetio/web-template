@@ -67,7 +67,8 @@ export async function getStripeSession(compID: string) {
 			// we will use this meta data to store the user ID, and comp ID. This will allow the paymentIntent webhook to have this information, so we can allow the user access to the competition.
 			// without this, there is not enough inforation to make these changes to the user.
 			metadata: {
-				hostID: "something from metadata",
+				compID,
+				userID: user.id,
 			},
 
 			amount: competitionCollection.price,
