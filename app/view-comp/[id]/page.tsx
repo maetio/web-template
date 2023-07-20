@@ -122,7 +122,7 @@ export default async function ViewCompScreen({
 					>
 						<Link href={`/view-profile/${player.userID}/${player.sport}`}>
 							<div className="flex justify-center gap-x-4 items-center">
-								{rank < 3 ? (<div className="flex col-span-2 lg:col-span-1 border">
+								{rank < 3 ? (<div className="flex col-span-2 lg:col-span-1">
 									<FaMedal
 										className={` ${
 											medalColor[rank]
