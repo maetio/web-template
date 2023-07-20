@@ -1,7 +1,8 @@
 import React from "react";
 import { FaPlay } from "react-icons/fa6";
 import { Game } from "types/index";
-import { XSGrayMaetIcon } from "app/components/icons";
+import { inferGameStatus } from "utils/skill-rating";
+import { XSGrayMaetIcon } from "../icons";
 
 // modular props for all competition cards
 export interface GameCardProps
@@ -12,25 +13,11 @@ export interface GameCardProps
 		>,
 		"color"
 	> {
-	compName?: string;
-	team1Name?: string;
-	team2Name?: string;
-	team1Rating?: number;
-	team2Rating?: number;
-	team1rating?: number;
-	team2rating?: number;
-	team1Winner?: boolean;
-	team2Winner?: boolean;
-	compDate: string;
-	type?: string;
-	date?: string;
-	verified?: boolean;
-	gameStatus?: boolean;
-	game?: Partial<Game>;
+	game: Partial<Game>;
+	verified: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-shadow
-
 export /**
  * Card that renders game data upon game completion
  *
@@ -42,37 +29,37 @@ export /**
  */
 const GameCard: React.FC<GameCardProps> = ({
 	game,
-	compName,
-	team1Name,
-	team2Name,
-	team1Rating,
-	team2Rating,
-	team1rating,
-	team2rating,
-	team1Winner,
-	team2Winner,
-	compDate,
 	verified,
-	gameStatus,
 	...divParams
 }) => {
+	// get game status
+	const gameStatus = inferGameStatus(game.team1?.points, game.team2?.points);
+
 	return (
 		<div
 			{...divParams}
 			className="mt-4 grid h-48 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg sm:w-1/2 lg:w-1/3"
 		>
 			<div className="col-span-3 flex flex-col items-center justify-center">
-				<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				{game.team1?.image ? (
+					<img
+						className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+						src={game.team1.image || undefined}
+						alt=""
+					/>
+				) : (
+					<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				)}
 				<div className="flex flex-wrap items-center justify-center text-center">
 					<p className="p-2 text-xs font-semibold lg:text-sm">
-						{team1Name}
+						{game.team1?.lastName}
 					</p>
 				</div>
 				<div className="grid grid-cols-3 lg:pl-2">
 					<div className="col-span-3 flex items-center">
 						<XSGrayMaetIcon />
 						<p className="ml-1 text-xs text-gray-500">
-							{team1Rating}
+							{game.team1?.rating?.displayRating}
 						</p>
 					</div>
 				</div>
@@ -80,43 +67,45 @@ const GameCard: React.FC<GameCardProps> = ({
 			<div className="col-span-6 flex flex-col items-start gap-8">
 				<div className="flex min-w-full items-center justify-center">
 					<div className="flex flex-col">
-						<p className="font-semibold">{compName}</p>
+						<p className="font-semibold">{game.competitionName}</p>
 						<div className="mt-1 flex items-center justify-center">
-							<p className="text-xs text-gray-300">{compDate}</p>
+							<p className="text-xs text-gray-300">
+								{game.startTimeISO}
+							</p>
 						</div>
 						<div className="flex-row lg:w-32">
 							<div className="col-span-2 mt-1 grid grid-cols-2 items-center">
-								{gameStatus ? (
+								{gameStatus !== "unreported" ? (
 									<div className="col-span-1 mt-1 flex items-center justify-start">
-										{team1Winner ? (
+										{gameStatus === "team1-winner" ? (
 											<div className="col-span-1 flex items-center justify-start">
 												<FaPlay className="mr-1" />
 												<p className="font-bold lg:text-xl">
-													{team1rating}
+													{game.team1?.points}
 												</p>
 											</div>
 										) : (
 											<p className="lg:text-xl">
-												{team1rating}
+												{game.team1?.points}
 											</p>
 										)}
 									</div>
 								) : (
 									<div></div>
 								)}
-								{gameStatus ? (
+								{gameStatus !== "unreported" ? (
 									<div className="col-span-1 mt-1 flex items-center justify-end">
-										{team2Winner ? (
+										{gameStatus === "team2-winner" ? (
 											<div className="col-span-1 flex items-center">
 												<FaPlay className="mr-1" />
 												<p className="font-bold lg:text-xl">
-													{team2rating}
+													{game.team2?.points}
 												</p>
 											</div>
 										) : (
 											<div className="col-span-1 flex items-center">
 												<p className="lg:text-xl">
-													{team2rating}
+													{game.team2?.points}
 												</p>
 											</div>
 										)}
@@ -160,17 +149,25 @@ const GameCard: React.FC<GameCardProps> = ({
 				)}
 			</div>
 			<div className="col-span-3 flex flex-col items-center justify-center">
-				<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				{game.team2?.image ? (
+					<img
+						className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+						src={game.team2.image || undefined}
+						alt=""
+					/>
+				) : (
+					<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				)}
 				<div className="flex justify-center">
 					<p className="p-2 text-center text-xs font-semibold lg:text-sm">
-						{team2Name}
+						{game.team2?.lastName}
 					</p>
 				</div>
 				<div className="grid grid-cols-3 lg:pl-2">
 					<div className="col-span-3 flex items-center">
 						<XSGrayMaetIcon />
 						<p className="ml-1 text-xs text-gray-500">
-							{team2Rating}
+							{game.team2?.rating?.displayRating}
 						</p>
 					</div>
 				</div>

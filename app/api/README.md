@@ -18,6 +18,7 @@ API endpoints for our application. Primarily used for reading data.
 -   `teams/[compID]/[num]`: fetch the top few number of teams in a competition.
 -   `team-players/[teamID]`: fetch all the players within a certain team, sorted by rating. **UNIMPLEMENTED**
 -   `comp-player/[compID]/[userID]`: fetch the competition player with the user id.
+-   `game-profiles/[profileID]/[num]`: fetch the most recent game profiles by timestamp.
 
 ## POST Endpoints
 

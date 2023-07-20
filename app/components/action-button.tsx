@@ -1,22 +1,18 @@
 "use client";
 
-import React, { useTransition } from "react";
+import React, { ReactElement, useTransition } from "react";
 import { useRouter } from "next/navigation";
+
+type BrandIcons = "google";
+type ColorVariants = "white" | "black" | "indigo" | "red";
 
 interface CustomButtonParams {
 	title?: string;
-	icon: "google" | "none";
-	colorVariant?:
-		| "indigo"
-		| "red"
-		| "amber"
-		| "yellow"
-		| "green"
-		| "blue"
-		| "white"
-		| "slate";
+	startIcon?: BrandIcons | ReactElement;
+	endIcon?: BrandIcons | ReactElement;
 	action?: () => Promise<any>;
 	referRoute?: string;
+	colorVariant?: ColorVariants;
 }
 
 export /**
@@ -24,12 +20,14 @@ export /**
  *
  * @return {*}
  */
-const SubmitFormActionButton = ({
+const ActionButton = ({
 	title,
-	icon,
-	colorVariant,
+	startIcon,
+	endIcon,
 	action,
 	referRoute,
+	className,
+	colorVariant = "white",
 	...buttonParams
 }: React.DetailedHTMLProps<
 	React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -39,9 +37,16 @@ const SubmitFormActionButton = ({
 	// get router
 	const router = useRouter();
 
+	// define color class params
+	const colorClasses: Record<ColorVariants, string> = {
+		white: "text-black hover:bg-white focus-visible:outline-grey-300 bg-white ",
+		black: "text-white hover:bg-gray-900 focus-visible:outline-grey-300 bg-black ",
+		indigo: "text-white hover:bg-indigo-500 focus-visible:outline-grey-300 bg-indigo-600 ",
+		red: "text-white hover:bg-red-500 focus-visible:outline-grey-300 bg-red-600 ",
+	};
+
 	// set icons
-	const icons: Record<CustomButtonParams["icon"], React.ReactElement> = {
-		none: <></>,
+	const icons: Record<BrandIcons, React.ReactElement> = {
 		google: (
 			<svg
 				className="mr-2 h-6 w-6"
@@ -108,15 +113,6 @@ const SubmitFormActionButton = ({
 		),
 	};
 
-	// set default color
-	const mainColor = "indigo" || colorVariant || "indigo";
-	const classNameStyles = `inline-flex w-full justify-center items-center gap-x-1.5 rounded-md focus:ring-2 focus:ring-offset-2 shadow-md hover:shadow-lg 
-	bg-white px-3 py-2 text-sm font-semibold text-black hover:bg-white
-	focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
-	focus-visible:outline-${mainColor}-300`;
-
-	console.log("main color", mainColor, colorVariant, classNameStyles);
-
 	// get transition state
 	const [isPending, startTransition] = useTransition();
 
@@ -141,17 +137,22 @@ const SubmitFormActionButton = ({
 		<button
 			disabled={isPending}
 			onClick={() => handleClick()}
-			className={classNameStyles}
+			className={"inline-flex items-center justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold  shadow-md hover:shadow-lg focus:ring-2 focus:ring-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 "
+				.concat(colorClasses[colorVariant])
+				.concat(className || "")}
 			{...buttonParams}
 		>
-			{!isPending ? icons[icon] : null}
+			{typeof startIcon === "string" && !isPending
+				? icons[startIcon]
+				: null}
+			{startIcon && typeof startIcon !== "string" && !isPending
+				? startIcon
+				: null}
 			{isPending ? (
 				<svg
 					aria-hidden="true"
 					role="status"
-					className={
-						"text-black-500 mr-3 inline h-4 w-4 animate-spin"
-					}
+					className={"mr-3 inline h-4 w-4 animate-spin text-gray-500"}
 					viewBox="0 0 100 101"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +167,17 @@ const SubmitFormActionButton = ({
 					></path>
 				</svg>
 			) : null}
-			<p>{isPending ? "Loading..." : title || "Submit"}</p>
+			<p
+				className={
+					colorVariant === "white" ? "text-black" : "text-white"
+				}
+			>
+				{isPending ? "Loading..." : title || "Submit"}
+			</p>
+			{typeof endIcon === "string" && !isPending ? icons[endIcon] : null}
+			{endIcon && typeof endIcon !== "string" && !isPending
+				? endIcon
+				: null}
 		</button>
 	);
 };
