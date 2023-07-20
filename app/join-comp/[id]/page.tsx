@@ -37,9 +37,9 @@ export default async function JoinCompScreen({
 	// get the profile data for the user
 	const profileData = user?.id
 		? await getOrCreateProfile(
-				user,
-				competitionData?.sport || "basketball",
-				"player"
+			user,
+			competitionData?.sport || "basketball",
+			"player"
 		  )
 		: null;
 
@@ -154,31 +154,31 @@ export default async function JoinCompScreen({
 						<div>
 							{competitionData?.price &&
 							competitionData.price > 0 ? (
-								<div>
-									{data?.paymentIntent ? (
-										<ServerCheckoutButton
-											paymentIntent={data?.paymentIntent}
-										/>
-									) : (
-										<button>loading</button>
-									)}
-								</div>
-							) : (
-								<SubmitFormActionButton
-									referRoute={`/view-comp/${params.id}`}
-									colorVariant="indigo"
-									title={
-										competitionData?.price &&
+									<div>
+										{data?.paymentIntent ? (
+											<ServerCheckoutButton
+												paymentIntent={data?.paymentIntent}
+											/>
+										) : (
+											<button>loading</button>
+										)}
+									</div>
+								) : (
+									<SubmitFormActionButton
+										referRoute={`/view-comp/${params.id}`}
+										colorVariant="indigo"
+										title={
+											competitionData?.price &&
 										competitionData?.price > 0
-											? `Pay $${
+												? `Pay $${
 													competitionData.price / 100
 											  } To Join`
-											: "Join Competition"
-									}
-									icon="none"
-									action={submitFormAction}
-								/>
-							)}
+												: "Join Competition"
+										}
+										icon="none"
+										action={submitFormAction}
+									/>
+								)}
 						</div>
 					</div>
 				</div>
