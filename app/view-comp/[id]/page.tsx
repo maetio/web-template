@@ -9,6 +9,7 @@ import { getUserData } from "server-actions/users";
 import { MaetIcon } from "app/components/icons";
 import { SubmitFormActionButton } from "app/components/submit-form-action-button";
 import Link from "next/link";
+import { FaMedal } from "react-icons/fa6";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -55,6 +56,13 @@ export default async function ViewCompScreen({
 	);
 	const compPlayer: CompProfilesResponseType =
 		await compPlayerResponse.json();
+
+	// define medal colors
+	const medalColor: string[] = [
+		"text-yellow-400",
+		"text-gray-400",
+		"text-amber-700",
+	];
 
 	return (
 		<main className="mx-10">
@@ -114,6 +122,13 @@ export default async function ViewCompScreen({
 					>
 						<Link href={`/view-profile/${player.userID}/${player.sport}`}>
 							<div className="flex justify-center gap-x-4 items-center">
+								{rank < 3 ? (<div className="flex col-span-2 lg:col-span-1 border">
+									<FaMedal
+										className={` ${
+											medalColor[rank]
+										} text-base md:text-lg`}
+									/>
+								</div>) : <div className="flex"></div>}
 								<h1 className="flex-none text-xl font-bold">
 									{rank + 1}
 								</h1>
