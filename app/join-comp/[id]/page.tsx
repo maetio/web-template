@@ -104,7 +104,6 @@ export default async function JoinCompScreen({
 								referRoute={`/view-comp/${params.id}`}
 								colorVariant="indigo"
 								title="Join competition"
-								icon="none"
 								action={submitFormAction}
 							/>
 						</div>

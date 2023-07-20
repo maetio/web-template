@@ -158,7 +158,6 @@ export default async function ViewCompScreen({
 					{compPlayer.profileID ? null : (
 						<div className="w-50 mt-20 justify-center">
 							<ActionButton
-								icon="none"
 								referRoute={
 									user?.id
 										? `/join-comp/${competitionData?.id}`
