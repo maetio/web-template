@@ -56,7 +56,21 @@ interface CompDisplayDataParams extends CompetitionTypeParams {
 	endTimeISO?: Competition["endTimeISO"];
 }
 
-export const CompDisplayData = ({ 
+export /**
+ * Will display the full comp display data
+ *
+ * @param {CompDisplayDataParams} { 
+ * 	type,
+ * 	sport,
+ * 	location,
+ * 	startTimeISO,
+ * 	endTimeISO,
+ * 	className,
+ * 	...divParams
+ * }
+ * @return {*} 
+ */
+const CompDisplayData = ({ 
 	type,
 	sport,
 	location,
@@ -74,22 +88,22 @@ export const CompDisplayData = ({
 	} ${type.charAt(0).toUpperCase()}${type.slice(1)}`;
 
 	return (
-		<div className={"my-6 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6".concat(className || "")} {...divParams}>
-			<div className="mt-2 flex items-center text-sm text-gray-500">
+		<div className={"my-3 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6".concat(className || "")} {...divParams}>
+			<div className="mt-2 flex items-center text-md text-gray-500">
 				<SportIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
 				{compTypeString}
 			</div>
-			{location?.name ?? 
-				<div className="mt-2 flex items-center text-sm text-gray-500">
+			{location?.name?.length ? 
+				<div className="mt-2 flex items-center text-md text-gray-500">
 					<MdLocationOn className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
 					{location?.name}
-				</div>
+				</div> : null
 			}
-			{startTimeISO ??
-				<div className="mt-2 flex items-center text-sm text-gray-500">
+			{startTimeISO ?
+				<div className="mt-2 flex items-center text-md text-gray-500">
 					<MdOutlineCalendarMonth className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-					{new Date(startTimeISO || "").toLocaleDateString()}{endTimeISO ?? ` - ${new Date(endTimeISO || "")}`}
-				</div>
+					{new Date(startTimeISO || "").toLocaleDateString()}{endTimeISO ? ` - ${new Date(endTimeISO || "").toLocaleDateString()}` : ""}
+				</div> : null
 			}
 		</div>
 	);
