@@ -19,7 +19,11 @@ export async function GET(
 
 	try {
 		// get the whole collection group
-		const querySnapshot = await gameProfileCollectionGroup.where("profileID", "==", profileID).orderBy("startTimestamp", "desc").limit(Number(number) || 20).get();
+		const querySnapshot = await gameProfileCollectionGroup
+			.where("profileID", "==", profileID)
+			.orderBy("startTimestamp", "desc")
+			.limit(Number(number) || 20)
+			.get();
 		return NextResponse.json(
 			querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
 		);
