@@ -1,7 +1,12 @@
+"use client";
+
 import React from "react";
 import { HeaderMaetIcon } from "app/components/icons";
 import { ProfileButton } from "app/components/profile-button";
 import Link from "next/link";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Disclosure } from "@headlessui/react";
+import { HiMagnifyingGlass } from "react-icons/hi2";
 
 export /**
  * Reusable page header/toolbar
@@ -12,38 +17,44 @@ export /**
  *  @return {*}
  *
  */ const Header = () => (
-	<div className="grid h-16 grid-cols-12 items-center gap-3 border-b">
-		<div className="col-span-3 ml-2 flex items-center">
-			<Link href="/">
-				<div className="items center flex">
-					<HeaderMaetIcon />
-					<p className="ml-2 text-lg text-primaryMain">Maet</p>
+	<Disclosure as="header" className="bg-white shadow">
+		<>
+			<div className="mx-auto max-w-7xl min-w-full px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
+				<div className="relative flex h-16 justify-between">
+					<div className="relative z-10 flex px-2 lg:px-0">
+						<div className="flex flex-shrink-0 items-center">
+							<Link href="/">
+				    <div className="items center flex">
+					    <HeaderMaetIcon />
+					    <p className="ml-2 text-lg text-primaryMain">Maet</p>
+				    </div>
+			    </Link>
+						</div>
+					</div>
+					<div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
+						<div className="w-full sm:max-w-xs">
+							<label htmlFor="search" className="sr-only">
+                            	Search
+							</label>
+							<div className="relative">
+								<div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+									<HiMagnifyingGlass className="h-5 w-5 text-gray-400" aria-hidden="true" />
+								</div>
+								<input
+									id="search"
+									name="search"
+									className="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+									placeholder="Search"
+									type="search"
+								/>
+							</div>
+						</div>
+					</div>
+					<div className="relative flex z-10 items-center">
+						<ProfileButton />
+					</div>
 				</div>
-			</Link>
-		</div>
-		<div className="col-span-6 mr-1 flex items-center justify-center">
-			<div className="relative mr-5 flex items-center justify-center lg:mr-0">
-				<input
-					id="search"
-					placeholder="Search"
-					className=" h-10 flex-1 rounded-large border px-2 text-sm placeholder-black"
-				></input>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke-width="1.5"
-					stroke="currentColor"
-					className="-ml-8 h-5 w-5 stroke-2 dark:stroke-black"
-				>
-					<path
-						strokeLinecap="round"
-						stroke-linejoin="round"
-						d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-					/>
-				</svg>
 			</div>
-		</div>
-		<ProfileButton />
-	</div>
+		</>
+	</Disclosure>
 );

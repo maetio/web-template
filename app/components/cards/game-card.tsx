@@ -1,7 +1,8 @@
 import React from "react";
 import { FaPlay } from "react-icons/fa6";
 import { Game } from "types/index";
-import { XSGrayMaetIcon } from "app/components/icons";
+import { inferGameStatus } from "utils/skill-rating";
+import { XSGrayMaetIcon } from "../icons";
 
 // modular props for all competition cards
 export interface GameCardProps
@@ -12,25 +13,11 @@ export interface GameCardProps
 		>,
 		"color"
 	> {
-	compName?: string;
-	team1Name?: string;
-	team2Name?: string;
-	team1Rating?: number;
-	team2Rating?: number;
-	team1rating?: number;
-	team2rating?: number;
-	team1Winner?: boolean;
-	team2Winner?: boolean;
-	compDate: string;
-	type?: string;
-	date?: string;
-	verified?: boolean;
-	gameStatus?: boolean;
-	game?: Partial<Game>;
+	game: Partial<Game>;
+	verified: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-shadow
-
 export /**
  * Card that renders game data upon game completion
  *
@@ -40,90 +27,66 @@ export /**
  *  @return {*}
  *
  */
-const GameCard: React.FC<GameCardProps> = ({
-	game,
-	compName,
-	team1Name,
-	team2Name,
-	team1Rating,
-	team2Rating,
-	team1rating,
-	team2rating,
-	team1Winner,
-	team2Winner,
-	compDate,
-	verified,
-	gameStatus,
-	...divParams
-}) => {
+const GameCard: React.FC<GameCardProps> = ({ game, verified, ...divParams }) => {
+	// get game status
+	const gameStatus = inferGameStatus(game.team1?.points, game.team2?.points);
+
 	return (
-		<div
-			{...divParams}
-			className="mt-4 grid h-48 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg sm:w-1/2 lg:w-1/3"
-		>
-			<div className="col-span-3 flex flex-col items-center justify-center">
-				<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
-				<div className="flex flex-wrap items-center justify-center text-center">
-					<p className="p-2 text-xs font-semibold lg:text-sm">
-						{team1Name}
+		<div {...divParams} className="mt-4 grid h-48 lg:w-1/3 sm:w-1/2 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg">
+			<div className="col-span-3 flex-col flex items-center justify-center">
+				{game.team1?.image ? (
+					<img
+						className="2xl:w-36 2xl:h-36 lg:h-24 lg:w-24 lg:min-h-0 sm:w-16 sm:h-16 w-12 h-12 flex-none rounded-md bg-gray-50"
+						src={game.team1.image || undefined}
+						alt=""
+					/>
+				) : (
+					<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>				)}
+				<div className="flex flex-wrap justify-center items-center text-center">
+					<p className="p-2 lg:text-sm text-xs font-semibold">
+						{game.team1?.lastName}
 					</p>
 				</div>
 				<div className="grid grid-cols-3 lg:pl-2">
 					<div className="col-span-3 flex items-center">
 						<XSGrayMaetIcon />
-						<p className="ml-1 text-xs text-gray-500">
-							{team1Rating}
-						</p>
+						<p className="ml-1 text-xs text-gray-500">{game.team1?.rating?.displayRating}</p>
 					</div>
 				</div>
 			</div>
-			<div className="col-span-6 flex flex-col items-start gap-8">
-				<div className="flex min-w-full items-center justify-center">
-					<div className="flex flex-col">
-						<p className="font-semibold">{compName}</p>
-						<div className="mt-1 flex items-center justify-center">
-							<p className="text-xs text-gray-300">{compDate}</p>
+			<div className="col-span-6 flex-col gap-8 flex items-start">
+				<div className="items-center justify-center flex min-w-full">
+					<div className="flex-col flex">
+						<p className="font-semibold">{game.competitionName}</p>
+						<div className="flex items-center justify-center mt-1">
+							<p className="text-xs text-gray-300">{game.startTimeISO}</p>
 						</div>
 						<div className="flex-row lg:w-32">
-							<div className="col-span-2 mt-1 grid grid-cols-2 items-center">
-								{gameStatus ? (
-									<div className="col-span-1 mt-1 flex items-center justify-start">
-										{team1Winner ? (
-											<div className="col-span-1 flex items-center justify-start">
-												<FaPlay className="mr-1" />
-												<p className="font-bold lg:text-xl">
-													{team1rating}
-												</p>
-											</div>
-										) : (
-											<p className="lg:text-xl">
-												{team1rating}
-											</p>
-										)}
-									</div>
-								) : (
-									<div></div>
-								)}
-								{gameStatus ? (
-									<div className="col-span-1 mt-1 flex items-center justify-end">
-										{team2Winner ? (
-											<div className="col-span-1 flex items-center">
-												<FaPlay className="mr-1" />
-												<p className="font-bold lg:text-xl">
-													{team2rating}
-												</p>
-											</div>
-										) : (
-											<div className="col-span-1 flex items-center">
-												<p className="lg:text-xl">
-													{team2rating}
-												</p>
+							<div className="grid grid-cols-2 col-span-2 items-center mt-1">
+								{gameStatus !== "unreported" ?
+									(<div className="flex col-span-1 items-center mt-1 justify-start">
+										{gameStatus === "team1-winner" ? (
+											<div className="flex items-center justify-start col-span-1">
+												<FaPlay className="mr-1"/>
+												<p className="font-bold lg:text-xl">{game.team1?.points}</p>
+											</div>) : (
+											<p className="lg:text-xl">{game.team1?.points}</p>)}
+									</div>) : (<div></div>)}
+								{gameStatus !== "unreported" ?
+									(<div className="flex col-span-1 items-center mt-1 justify-end">
+										{gameStatus === "team2-winner" ? (
+											<div className="flex items-center col-span-1">
+												<FaPlay className="mr-1"/>
+												<p className="font-bold lg:text-xl">{game.team2?.points}</p>
+											</div>) : (
+											<div className="flex items-center col-span-1">
+												<p className="lg:text-xl">{game.team2?.points}</p>
 											</div>
 										)}
 									</div>
-								) : (
-									<div></div>
-								)}
+									) : (
+										<div></div>
+									)}
 							</div>
 							<div className="mt-2 flex h-6 lg:mt-6">
 								{verified ? (
@@ -160,18 +123,24 @@ const GameCard: React.FC<GameCardProps> = ({
 				)}
 			</div>
 			<div className="col-span-3 flex flex-col items-center justify-center">
-				<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				{game.team2?.image ? (
+					<img
+						className="2xl:w-36 2xl:h-36 lg:h-24 lg:w-24 lg:min-h-0 sm:w-16 sm:h-16 w-12 h-12 flex-none rounded-md bg-gray-50"
+						src={game.team2.image || undefined}
+						alt=""
+					/>
+				) : (
+					<div className="h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue flex"></div>
+				)}
 				<div className="flex justify-center">
-					<p className="p-2 text-center text-xs font-semibold lg:text-sm">
-						{team2Name}
+					<p className="p-2 lg:text-sm text-xs font-semibold text-center">
+						{game.team2?.lastName}
 					</p>
 				</div>
 				<div className="grid grid-cols-3 lg:pl-2">
 					<div className="col-span-3 flex items-center">
 						<XSGrayMaetIcon />
-						<p className="ml-1 text-xs text-gray-500">
-							{team2Rating}
-						</p>
+						<p className="ml-1 text-xs text-gray-500">{game.team2?.rating?.displayRating}</p>
 					</div>
 				</div>
 			</div>

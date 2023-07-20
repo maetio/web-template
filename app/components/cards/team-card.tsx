@@ -1,5 +1,6 @@
 import React from "react";
 import { FaMedal } from "react-icons/fa6";
+import { Team } from "types/index";
 
 export interface TeamCardProps
 	extends Omit<
@@ -9,9 +10,7 @@ export interface TeamCardProps
 		>,
 		"color"
 	> {
-	name?: string;
-	image?: string | null | undefined;
-	rating?: number;
+	team?: Partial<Team>
 	ranking?: number;
 }
 
@@ -28,18 +27,8 @@ export /**
  *	}
  *  @return {*}
  *
- */ const TeamCard: React.FC<TeamCardProps> = ({
-	name,
-	rating,
-	ranking,
-	image,
-	...divParams
-}) => {
-	const medalColor: string[] = [
-		"text-yellow-400",
-		"text-gray-400",
-		"text-amber-700",
-	];
+ */ const TeamCard: React.FC<TeamCardProps> = ({ team, ranking, ...divParams }) => {
+	const medalColor: string[] = ["text-yellow-400", "text-gray-400", "text-amber-700"];
 	return (
 		<div
 			{...divParams}
@@ -60,15 +49,18 @@ export /**
 				<div className="col-span-1"></div>
 			)}
 			<div className="col-span-2 flex items-center">
-				<div
-					style={{
-						backgroundImage: image ? `url(${image})` : "bg-none",
-					}}
-					className="h-4 w-4 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue md:h-8 md:w-8 md:rounded-md"
-				></div>
+				{team?.image ? (
+					<img
+						className="h-12 w-12 flex-none rounded-full bg-gray-50"
+						src={team.image || undefined}
+						alt=""
+					/>
+				) : (
+					<div className="h-4 w-4 md:h-8 md:w-8 rounded-full md:rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
+				)}
 			</div>
 			<div className="col-span-4 flex items-center">
-				<p className="text-xs font-bold lg:text-lg">{name}</p>
+				<p className="text-xs lg:text-lg font-bold">{team?.firstName} {team?.lastName}</p>
 			</div>
 			<div className="col-span-4 flex items-center justify-end gap-1 md:col-span-5 md:justify-end md:gap-2">
 				<svg
@@ -84,7 +76,7 @@ export /**
 						transform="matrix(.1 0 0 -.1 0 1500)"
 					/>
 				</svg>
-				<p className="text-xs font-bold lg:text-lg">{rating}</p>
+				<p className="text-xs lg:text-lg font-bold">{team?.rating?.displayRating}</p>
 				{/* <div>
 						<FaArrowTrendUp className="text-md text-green-800" />
 					</div>
