@@ -160,7 +160,7 @@ export default async function JoinCompScreen({
 												paymentIntent={data?.paymentIntent}
 											/>
 										) : (
-											<button>loading</button>
+											<button>loadin</button>
 										)}
 									</div>
 								) : (
