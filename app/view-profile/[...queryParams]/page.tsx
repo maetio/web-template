@@ -57,7 +57,6 @@ export default async function ViewProfileScreen({
 		),
 			
 	};
-		
 	return (
 		<main className="mx-10 space-y-12">
 			{/* <h1>

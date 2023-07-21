@@ -116,11 +116,11 @@ const GameCard: React.FC<GameCardProps> = ({
 							</div>
 							<div className="mt-2 flex h-6 lg:mt-6">
 								{verified ? (
-									<div className="flex h-6 min-w-full items-center justify-center rounded-full bg-green-300 text-xs">
+									<div className="p-2 flex h-6 min-w-full items-center justify-center rounded-full bg-green-300 text-xs">
 										<p>Verified</p>
 									</div>
 								) : (
-									<div className="flex h-6 min-w-full items-center justify-center rounded-full bg-blue-200 text-xs">
+									<div className="p-2 flex h-6 min-w-full items-center justify-center rounded-full bg-blue-200 text-xs">
 										<p>Scheduled</p>
 									</div>
 								)}
