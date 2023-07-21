@@ -107,13 +107,13 @@ export default async function JoinCompScreen({
 		console.log("Submitting add competition profile");
 
 		try {
-			// update the data with the server action
+			let data;
 			if (competitionData?.id) {
-				await getStripeSession(competitionData.id);
+				data = await getStripeSession(competitionData.id);
 			}
-			console.log("No user id");
+			return data;
 		} catch (e: any) {
-			console.warn("error with form action", e);
+			return e;
 		}
 	};
 
