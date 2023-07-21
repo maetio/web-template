@@ -1,7 +1,7 @@
 import React from "react";
 import { BaseURL } from "config/constants";
 import { GameProfilesResponseType, PlayerResponseType } from "types/next-api";
-import { FaArrowTrendUp, FaLocationArrow } from "react-icons/fa6";
+import { FaArrowTrendDown, FaArrowTrendUp, FaLocationArrow } from "react-icons/fa6";
 import { MaetIcon } from "app/components/icons";
 import { profile } from "console";
 
@@ -88,17 +88,18 @@ export default async function ViewProfileScreen({
 						</div>
 						<div className="flex items-center">
 							<MaetIcon size={6} className="text-gray-500" />
-							<p className="font-bold ml-2">{Math.round(profileData.rating?.displayRating || 100)}</p>
+							<p className="font-bold ml-2 text-xs md:text-base">{Math.round(profileData.rating?.displayRating || 100)}</p>
 						</div>
 						<div className="flex items-center">
-							{}
-							<FaArrowTrendUp className={classNames(
-								profileData?.deltaRating?.displayRating &&
+							{profileData?.deltaRating?.displayRating &&
 								profileData?.deltaRating?.displayRating >= 0
-									? "text-green-600"
-									: "text-red-600",
-								"flex items-baseline text-xs md:text-base font-bold"
-							)} />
+								? <FaArrowTrendUp className=
+									"text-green-600 flex items-baseline text-xs md:text-base font-bold"
+								/>
+								: <FaArrowTrendDown className=
+									"text-red-600 flex items-baseline text-xs md:text-base font-bold"
+								/>}
+							
 							<p
 								className={classNames(
 									profileData?.deltaRating?.displayRating &&
@@ -111,7 +112,7 @@ export default async function ViewProfileScreen({
 								{profileData?.deltaRating?.displayRating &&
 						profileData?.deltaRating?.displayRating >= 0
 									? "+"
-									: ""}
+									: "-"}
 								{Math.round(profileData?.deltaRating?.displayRating || 0)}
 							</p>
 						</div>		
