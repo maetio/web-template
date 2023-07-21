@@ -11,6 +11,7 @@ import { MdSportsTennis } from "react-icons/md";
 import { showTimeOrDate } from "utils/date";
 import { BaseURL } from "config/constants";
 import { TopPlayersResponseType } from "types/next-api";
+import { capitalizeFirstLetter } from "utils/format";
 import AltPlayerCard from "./alt-player-card";
 
 export interface CompetitionCardProps
@@ -56,12 +57,9 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 		pickleball: (
 			<MdSportsTennis className="text-xs text-gray-400 lg:text-base" />
 		),
+		
 	};
 
-	const capitalizeFirstLetter = (str?: String) => {
-		if (str) return str.charAt(0).toUpperCase() + str.slice(1);
-		return "";
-	};
 
 	return (
 		<div

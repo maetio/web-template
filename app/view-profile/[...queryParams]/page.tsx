@@ -1,9 +1,12 @@
 import React from "react";
 import { BaseURL } from "config/constants";
 import { GameProfilesResponseType, PlayerResponseType } from "types/next-api";
-import { FaArrowTrendDown, FaArrowTrendUp, FaLocationArrow } from "react-icons/fa6";
+import { FaArrowTrendDown, FaArrowTrendUp, FaBasketball, FaFutbol, FaLocationArrow, FaVolleyball } from "react-icons/fa6";
 import { MaetIcon } from "app/components/icons";
 import { profile } from "console";
+import { MdSportsBasketball, MdSportsTennis } from "react-icons/md";
+import { Competition } from "types/competition";
+import { capitalizeFirstLetter } from "utils/format";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -40,6 +43,20 @@ export default async function ViewProfileScreen({
 	const gameProfiles: GameProfilesResponseType =
 		await gameProfilesResponse.json();
 
+	const SportIcons: Record<Competition["sport"], React.ReactElement> = {
+		basketball: (
+			<FaBasketball className="text-xs lg:text-base" />
+		),
+		soccer: <FaFutbol className="text-xslg:text-base" />,
+		volleyball: (
+			<FaVolleyball className="text-xs lg:text-base" />
+		),
+		pickleball: (
+			<MdSportsTennis className="text-xs lg:text-base" />
+		),
+			
+	};
+		
 	return (
 		<main className="mx-10">
 			{/* <h1>
@@ -115,7 +132,17 @@ export default async function ViewProfileScreen({
 									: "-"}
 								{Math.round(profileData?.deltaRating?.displayRating || 0)}
 							</p>
-						</div>		
+						</div>	
+						<div className="ml-4 flex flex-row">
+							<button className="flex rounded-full border items-center gap-x-2 p-2 shadow-sm ring-1 ring-inset ring-white hover:bg-gray-300">
+								{profileData.sport
+									? SportIcons[profileData.sport]
+									: null}
+								<p className="text-xs lg:text-base">
+									{capitalizeFirstLetter(profileData.sport)}{" "}
+								</p>
+							</button>
+						</div>	
 					</div>
 				</div>
 			</div>
