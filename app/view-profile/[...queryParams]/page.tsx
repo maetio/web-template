@@ -1,7 +1,13 @@
 import React from "react";
 import { BaseURL } from "config/constants";
 import { GameProfilesResponseType, PlayerResponseType } from "types/next-api";
+import { FaArrowTrendUp, FaLocationArrow } from "react-icons/fa6";
+import { MaetIcon } from "app/components/icons";
+import { profile } from "console";
 
+function classNames(...classes: string[]) {
+	return classes.filter(Boolean).join(" ");
+}
 /**
  * View profile screen will render the data with the profile
  *
@@ -36,7 +42,7 @@ export default async function ViewProfileScreen({
 
 	return (
 		<main className="mx-10">
-			<h1>
+			{/* <h1>
 				{profileData.firstName} {profileData.lastName}: {profileData.id}
 			</h1>
 			<h1>Number of games: {profileData.rating?.numGames}</h1>
@@ -62,7 +68,56 @@ export default async function ViewProfileScreen({
 					</h3>
 					<br />
 				</div>
-			))}
+			))} */}
+			<div className="flex flex-row pt-8 gap-x-3">
+				{profileData?.image ? (
+					<img
+						className="h-28 w-28 flex-none rounded-full bg-gray-50"
+						src={profileData.image || undefined}
+						alt=""
+					/>
+				) : (
+					<div className="h-4 w-4 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue md:h-8 md:w-8 md:rounded-md"></div>
+				)}
+				<div className="flex-col flex">
+					<h1 className="text-2xl font-bold">{profileData.firstName} {profileData.lastName}</h1>
+					<div className="flex-row flex items-center gap-x-4">
+						<div className="flex items-center">
+							<FaLocationArrow className="text-gray-500" />
+							<p className="text-gray-500 ml-2">South Bend, IN</p>
+						</div>
+						<div className="flex items-center">
+							<MaetIcon size={6} className="text-gray-500" />
+							<p className="font-bold ml-2">{Math.round(profileData.rating?.displayRating || 100)}</p>
+						</div>
+						<div className="flex items-center">
+							{}
+							<FaArrowTrendUp className={classNames(
+								profileData?.deltaRating?.displayRating &&
+								profileData?.deltaRating?.displayRating >= 0
+									? "text-green-600"
+									: "text-red-600",
+								"flex items-baseline text-xs md:text-base font-bold"
+							)} />
+							<p
+								className={classNames(
+									profileData?.deltaRating?.displayRating &&
+								profileData?.deltaRating?.displayRating >= 0
+										? "text-green-600"
+										: "text-red-600",
+									"ml-2 flex font-bold text-xs md:text-base"
+								)}
+							>
+								{profileData?.deltaRating?.displayRating &&
+						profileData?.deltaRating?.displayRating >= 0
+									? "+"
+									: ""}
+								{Math.round(profileData?.deltaRating?.displayRating || 0)}
+							</p>
+						</div>		
+					</div>
+				</div>
+			</div>
 		</main>
 	);
 }

@@ -18,9 +18,10 @@ import {
 	MdPeopleOutline,
 } from "react-icons/md";
 import { averageRatingObjects } from "utils/skill-rating";
-import AltPlayerCard from "app/components/cards/alt-player-card";
 
-
+function classNames(...classes: string[]) {
+	return classes.filter(Boolean).join(" ");
+}
 /**
  * Function will display the competition to the user
  *
@@ -73,6 +74,11 @@ export default async function ViewCompScreen({
 	};
 
 	// define medal colors
+	const medalColor: string[] = [
+		"text-yellow-400",
+		"text-gray-400",
+		"text-amber-700",
+	];
 
 	// set parameters for registration
 	const registrationOpen =
