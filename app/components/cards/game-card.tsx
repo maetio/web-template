@@ -14,7 +14,7 @@ export interface GameCardProps
 		"color"
 	> {
 	game: Partial<Game>;
-	verified: boolean;
+	verified?: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -38,7 +38,7 @@ const GameCard: React.FC<GameCardProps> = ({
 	return (
 		<div
 			{...divParams}
-			className="mt-4 grid h-48 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg sm:w-1/2 lg:w-1/3"
+			className="mt-4 grid h-48 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg"
 		>
 			<div className="col-span-3 flex flex-col items-center justify-center">
 				{game.team1?.image ? (

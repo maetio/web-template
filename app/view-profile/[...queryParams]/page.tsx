@@ -2,11 +2,12 @@ import React from "react";
 import { BaseURL } from "config/constants";
 import { GameProfilesResponseType, PlayerResponseType } from "types/next-api";
 import { FaArrowTrendDown, FaArrowTrendUp, FaBasketball, FaFutbol, FaLocationArrow, FaVolleyball } from "react-icons/fa6";
+import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { MaetIcon } from "app/components/icons";
-import { profile } from "console";
-import { MdSportsBasketball, MdSportsTennis } from "react-icons/md";
+import { MdSportsTennis } from "react-icons/md";
 import { Competition } from "types/competition";
 import { capitalizeFirstLetter } from "utils/format";
+import { GameCard } from "app/components/cards";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -58,7 +59,7 @@ export default async function ViewProfileScreen({
 	};
 		
 	return (
-		<main className="mx-10">
+		<main className="mx-10 space-y-12">
 			{/* <h1>
 				{profileData.firstName} {profileData.lastName}: {profileData.id}
 			</h1>
@@ -143,6 +144,32 @@ export default async function ViewProfileScreen({
 								</p>
 							</button>
 						</div>	
+					</div>
+				</div>
+				
+			</div>
+			<div className="flex flex-row justify-between">
+				<div className="flex-col flex">
+					<h1 className="font-semibold text-lg md:text-xl">Current Teams</h1>
+					<h1 className="font-semibold text-lg md:text-xl">Previous Teams</h1>
+				</div>
+				<div className="flex-col flex items-center">
+					<div className="flex flex-row gap-x-8">
+						<button>
+							<BiSolidLeftArrow />
+						</button>
+						<h1 className="font-semibold text-lg md:text-xl">Games</h1>
+						<button>
+							<BiSolidRightArrow />
+						</button>
+					</div>
+					<div className="flex">
+						<p className="md:text-base text-sm">{gameProfiles.length} scheduled games</p>
+					</div>
+					<div className="flex flex-col items-center">
+						{gameProfiles.map((game) => (
+							<GameCard game={game} key={game.id} />
+						))}
 					</div>
 				</div>
 			</div>
