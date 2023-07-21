@@ -7,11 +7,16 @@ import {
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
 import { MaetIcon } from "app/components/icons";
-import { SubmitFormActionButton } from "app/components/submit-form-action-button";
+import { ActionButton } from "app/components/action-button";
 import Link from "next/link";
-import { CompetitionType } from "app/components/comp-type";
+import { FaMedal } from "react-icons/fa6";
+import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
-import { MdOutlinePlaylistAddCheck, MdPeopleOutline } from "react-icons/md";
+import {
+	MdArrowForwardIos,
+	MdOutlinePlaylistAddCheck,
+	MdPeopleOutline,
+} from "react-icons/md";
 import { averageRatingObjects } from "utils/skill-rating";
 import AltPlayerCard from "app/components/cards/alt-player-card";
 
@@ -58,6 +63,15 @@ export default async function ViewCompScreen({
 	const compPlayer: CompProfilesResponseType =
 		await compPlayerResponse.json();
 
+	// set rank string
+	const getRankString = (rank: number) => {
+		if (rank === 0) return "1st";
+		if (rank === 1) return "2nd";
+		if (rank === 2) return "3rd";
+		if (rank > 2) return `${rank + 1}th`;
+		return "Not Ranked";
+	};
+
 	// define medal colors
 
 	// set parameters for registration
@@ -66,27 +80,65 @@ export default async function ViewCompScreen({
 		new Date() > new Date(competitionData.startTimeISO);
 
 	return (
-		<div className="container mx-auto sm:px-6 lg:px-8">
-			<div className="flex flex-row py-12">
-				<div className="flex w-1/3 self-center">
-					<NextImage size={500} src={competitionData?.image} />
+		<div className="container mx-auto px-2 sm:px-6 lg:px-8">
+			<div className="flex flex-row flex-wrap pb-12 pt-4 lg:flex-nowrap lg:pt-12">
+				<div>
+					<NextImage size={400} src={competitionData?.image} />
 				</div>
-				<div className="ml-12 flex flex-col self-center">
-					<h1 className="text-7xl font-bold">
-						{competitionData?.name}
-					</h1>
-					<CompetitionType
-						className="my-3"
+				<div className="mt-3 flex flex-col flex-wrap self-center lg:ml-12 lg:mt-0">
+					<CompDisplayData
 						type={competitionData?.type || "session"}
 						sport={competitionData?.sport || "pickleball"}
+						startTimeISO={competitionData?.startTimeISO}
+						endTimeISO={competitionData?.endTimeISO}
+						location={competitionData?.location}
 					/>
-					{/* <p className="mt-1">
-						Repudiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem. Minus
+					<h1 className="my-3 flex flex-wrap text-7xl font-bold">
+						{competitionData?.name}
+					</h1>
+					<p className="flex flex-wrap">
+						Repudiandae sint consequuntur vel. Amet ut nobis
+						explicabo numquam expedita quia omnis voluptatem. Minus
 						quidem ipsam quia iusto.
-					</p> */}
+					</p>
+					<div className="flex flex-row py-12">
+						{compPlayer?.rating?.displayRating ? (
+							<div className="flex flex-row">
+								<NextImage
+									size={50}
+									src={compPlayer.image}
+									alt={compPlayer.firstName}
+								/>
+								<h3 className="ml-3 self-center font-semibold">
+									You are ranked{" "}
+									{getRankString(
+										players.findIndex(
+											(profile) =>
+												profile.id === compPlayer.id
+										)
+									)}{" "}
+									of {players.length} total players.
+								</h3>
+							</div>
+						) : (
+							<ActionButton
+								className="w-auto px-12"
+								endIcon={
+									<MdArrowForwardIos className="text-white" />
+								}
+								referRoute={
+									user?.id
+										? `/join-comp/${competitionData?.id}`
+										: `/comp-login/${competitionData?.id}`
+								}
+								title="Join Competition"
+								colorVariant="indigo"
+							/>
+						)}
+					</div>
 				</div>
 			</div>
-			<div>
+			<div className="rounded-lg bg-gray-100 px-6 py-6">
 				<h3 className="text-base font-semibold leading-6 text-gray-900">
 					Competition Info
 				</h3>
@@ -95,7 +147,7 @@ export default async function ViewCompScreen({
 						key="number"
 						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
 					>
-						<MdPeopleOutline className="h-20 w-20 self-center" />
+						<MdPeopleOutline className="h-20 w-20 flex-none self-center" />
 						<div className="self-center pl-3">
 							<dt className="truncate text-sm font-medium text-gray-500">
 								Number of Players
@@ -109,7 +161,7 @@ export default async function ViewCompScreen({
 						key="rating"
 						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
 					>
-						<MaetIcon className="self-center" size={20} />
+						<MaetIcon className="flex-none self-center" size={20} />
 						<div className="self-center pl-3">
 							<dt className="truncate text-sm font-medium text-gray-500">
 								Average Rating
@@ -127,7 +179,7 @@ export default async function ViewCompScreen({
 						key="registration"
 						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
 					>
-						<MdOutlinePlaylistAddCheck className="h-20 w-20 self-center" />
+						<MdOutlinePlaylistAddCheck className="h-20 w-20 flex-none self-center" />
 						<div className="self-center pl-3">
 							<dt className="truncate text-sm font-medium text-gray-500">
 								Registration
@@ -148,29 +200,96 @@ export default async function ViewCompScreen({
 			{/* 3 column wrapper */}
 			<div className="mx-auto grid grid-cols-6">
 				{/* Left sidebar & main wrapper */}
-				<main className="col-span-6 flex-1 overflow-y-auto lg:col-span-4"></main>
-				<aside className="sticky top-8 col-span-6 lg:col-span-2">
+				<main className="col-span-6 flex-1 overflow-y-auto py-6 lg:col-span-4"></main>
+				<aside className="h-50 sticky top-8 col-span-6 overflow-y-auto py-6 lg:col-span-2">
 					{/* Right column area */}
-					{compPlayer.profileID ? null : (
-						<div className="w-50 mt-20 justify-center">
-							<SubmitFormActionButton
-								icon="none"
-								referRoute={
-									user?.id
-										? `/join-comp/${competitionData?.id}`
-										: `/comp-login/${competitionData?.id}`
-								}
-								title="Join Competition"
-								colorVariant="indigo"
-							/>
-						</div>
-					)}
-					
-					{players.map((player, rank) => (
-						<Link key={player.id} href={`/view-profile/${player.userID}/${player.sport}`}>
-							<AltPlayerCard player={player} ranking={rank} />
-						</Link>	
-					))}
+					<h3 className="text-base font-semibold leading-6 text-gray-900">
+						Player Rankings
+					</h3>
+					<ul
+						role="list"
+						className="sticky top-0 divide-y divide-gray-100 overflow-y-auto"
+					>
+						{players.map((player, rank) => (
+							<li
+								key={player.id}
+								className="flex justify-between gap-x-6 py-5"
+							>
+								<Link
+									href={`/view-profile/${player.userID}/${player.sport}`}
+								>
+									<div className="align-center flex justify-center gap-x-4">
+										{rank < 3 ? (
+											<div className="col-span-2 flex lg:col-span-1">
+												<FaMedal
+													className={` ${medalColor[rank]} text-base md:text-lg`}
+												/>
+											</div>
+										) : (
+											<div className="flex"></div>
+										)}
+										<h1 className="flex-none text-xl font-bold">
+											{rank + 1}
+										</h1>
+										<NextImage
+											size={50}
+											src={player.image}
+											alt={player.firstName}
+										/>
+										<div className="min-w-0 flex-auto">
+											<p className="text-sm font-bold leading-6 text-gray-900 dark:text-white ">
+												{player.firstName}{" "}
+												{player.lastName}
+											</p>
+											<p className="mt-1 truncate text-xs leading-5 text-gray-500 dark:text-white ">
+												{player.type}
+											</p>
+										</div>
+									</div>
+								</Link>
+								<div className="relative">
+									<dt>
+										<div className="absolute rounded-md p-3">
+											<MaetIcon size={10} />
+										</div>
+										<p className="ml-16 truncate text-sm font-medium text-gray-500 dark:text-white ">
+											Rating
+										</p>
+									</dt>
+									<dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
+										<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
+											{Math.round(
+												player.rating?.displayRating ||
+													100
+											)}
+										</p>
+										<p
+											className={classNames(
+												player?.deltaRating
+													?.displayRating &&
+													player?.deltaRating
+														?.displayRating >= 0
+													? "text-green-600"
+													: "text-red-600",
+												"ml-2 flex items-baseline text-sm font-semibold"
+											)}
+										>
+											{player?.deltaRating
+												?.displayRating &&
+											player?.deltaRating
+												?.displayRating >= 0
+												? "+"
+												: ""}
+											{Math.round(
+												player?.deltaRating
+													?.displayRating || 0
+											)}
+										</p>
+									</dd>
+								</div>
+							</li>
+						))}
+					</ul>
 				</aside>
 			</div>
 		</div>

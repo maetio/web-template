@@ -6,8 +6,9 @@ import {
 	addCompetitionProfile,
 	getOrCreateProfile,
 } from "server-actions/profiles";
-import { SubmitFormActionButton } from "app/components/submit-form-action-button";
+import { ActionButton } from "app/components/action-button";
 import { MaetIcon } from "app/components/icons";
+import { NextImage } from "app/components/image";
 
 /**
  * Screen will join the competition for the user
@@ -49,8 +50,6 @@ export default async function JoinCompScreen({
 	const submitFormAction = async () => {
 		"use server";
 
-		console.log("Submitting add competition profile");
-
 		try {
 			// update the data with the server action
 			if (user?.id) {
@@ -75,36 +74,41 @@ export default async function JoinCompScreen({
 						size={20}
 						className="align-center mx-auto w-20 justify-center"
 					/>
-					<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+					<h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
 						Join {competitionData?.name}
 					</h2>
 				</div>
-				<div className="col-span-1 flex flex-col rounded-lg bg-white text-center">
-					<div className="align-center flex flex-1 flex-col justify-center p-8">
-						<img
-							className="mx-auto h-20 w-20 flex-shrink-0 rounded-full"
-							src={profileData?.image || undefined}
-							alt=""
+				<div className="col-span-1 my-4 flex flex-col rounded-lg bg-white text-center">
+					<div className="align-center flex flex-col justify-center p-8">
+						<NextImage
+							size={100}
+							src={profileData?.image}
+							alt={profileData?.firstName}
 						/>
-						<h3 className="mt-6 text-lg font-medium text-gray-900">
+						<h3 className="my-3 text-lg font-medium text-gray-900">
 							{profileData?.firstName} {profileData?.lastName}
 						</h3>
-						{/* <div className="bg-red-500 justify-center align-center">
-							<div className="flex w-0 flex-1 ">
-								<MaetIcon size={10} className="w-20 flex justify-center align-center" />
-								<p className="text-2xl font-semibold text-gray-900">{Math.round(profileData?.rating?.displayRating || 100)}</p>
-							</div>
-						</div> */}
+						<div className="align-center flex self-center">
+							<MaetIcon
+								size={10}
+								className="align-center flex justify-center"
+							/>
+							<p className="ml-2 self-center text-2xl font-semibold text-gray-900">
+								{Math.round(
+									profileData?.rating?.displayRating || 100
+								)}
+							</p>
+						</div>
 					</div>
 				</div>
-				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+				<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 					<div className="space-y-6">
 						<div>
-							<SubmitFormActionButton
+							<ActionButton
+								className="w-full"
 								referRoute={`/view-comp/${params.id}`}
 								colorVariant="indigo"
 								title="Join competition"
-								icon="none"
 								action={submitFormAction}
 							/>
 						</div>

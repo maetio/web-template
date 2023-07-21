@@ -6,7 +6,6 @@ import { ProfileButton } from "app/components/profile-button";
 import Link from "next/link";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Disclosure } from "@headlessui/react";
-import { HiMagnifyingGlass } from "react-icons/hi2";
 
 export /**
  * Reusable page header/toolbar
@@ -33,7 +32,7 @@ export /**
 							</Link>
 						</div>
 					</div>
-					<div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
+					{/* <div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
 						<div className="w-full sm:max-w-xs">
 							<label htmlFor="search" className="sr-only">
 								Search
@@ -54,7 +53,7 @@ export /**
 								/>
 							</div>
 						</div>
-					</div>
+					</div> */}
 					<div className="relative z-10 flex items-center">
 						<ProfileButton />
 					</div>
