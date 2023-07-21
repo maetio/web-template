@@ -22,6 +22,8 @@ export async function POST(
 	req: NextRequest
 	// res: NextResponse
 ) {
+	const origin = req.headers.get("origin");
+
 	const sig = req.headers.get("stripe-signature");
 
 	let event;
@@ -82,6 +84,18 @@ export async function POST(
 				}
 			}
 		}
+		return new NextResponse(
+			JSON.stringify({
+				message: "Created new Stripe account",
+			}),
+			{
+				status: 200,
+				headers: {
+					"Access-Control-Allow-Origin": origin || "",
+					"Content-Type": "application/json",
+				},
+			}
+		);
 	} catch (err: any) {
 		NextResponse.json({ received: true });
 	}
