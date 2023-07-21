@@ -109,9 +109,9 @@ export default async function JoinCompScreen({
 		try {
 			// update the data with the server action
 			if (competitionData?.id) {
-				return await getStripeSession(competitionData.id);
+				 await getStripeSession(competitionData.id);
 			}
-			console.log("No user id");
+			 console.log("No user id");
 		} catch (e: any) {
 			console.warn("error with form action", e);
 		}
