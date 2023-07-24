@@ -2,7 +2,7 @@
 
 import React from "react";
 import { signInWithGoogle } from "auth/client";
-import { SubmitFormActionButton } from "app/components/submit-form-action-button";
+import { ActionButton } from "app/components/action-button";
 import { useRouter } from "next/navigation";
 import { MaetIcon } from "app/components/icons";
 
@@ -51,9 +51,9 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 					</h2>
 				</div>
 				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-					<SubmitFormActionButton
-						colorVariant="white"
-						icon="google"
+					<ActionButton
+						className="w-full"
+						startIcon="google"
 						action={onSubmit}
 						title="Continue with Google"
 					/>

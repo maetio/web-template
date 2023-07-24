@@ -7,9 +7,17 @@ import {
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
 import { MaetIcon } from "app/components/icons";
-import { SubmitFormActionButton } from "app/components/submit-form-action-button";
+import { ActionButton } from "app/components/action-button";
 import Link from "next/link";
-import { CompetitionType } from "app/components/comp-type";
+import { FaMedal } from "react-icons/fa6";
+import { CompDisplayData } from "app/components/comp-data";
+import { NextImage } from "app/components/image";
+import {
+	MdArrowForwardIos,
+	MdOutlinePlaylistAddCheck,
+	MdPeopleOutline,
+} from "react-icons/md";
+import { averageRatingObjects } from "utils/skill-rating";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -57,45 +65,74 @@ export default async function ViewCompScreen({
 	const compPlayer: CompProfilesResponseType =
 		await compPlayerResponse.json();
 
+	// set rank string
+	const getRankString = (rank: number) => {
+		if (rank === 0) return "1st";
+		if (rank === 1) return "2nd";
+		if (rank === 2) return "3rd";
+		if (rank > 2) return `${rank + 1}th`;
+		return "Not Ranked";
+	};
+
+	// define medal colors
+	const medalColor: string[] = [
+		"text-yellow-400",
+		"text-gray-400",
+		"text-amber-700",
+	];
+
+	// set parameters for registration
+	const registrationOpen =
+		competitionData?.startTimeISO &&
+		new Date() > new Date(competitionData.startTimeISO);
+
 	return (
-		<div className="container mx-auto sm:px-6 lg:px-8">
-			<div className="flex flex-row py-12">
-				<div className="flex w-1/2 self-center">
-					<img
-						className="flex-none rounded-lg bg-gray-50"
-						src={
-							competitionData?.image ||
-							"https://images.pexels.com/photos/7135121/pexels-photo-7135121.jpeg?cs=srgb&dl=pexels-codioful-%28formerly-gradienta%29-7135121.jpg&fm=jpg"
-						}
-						alt="Competition Image"
-					/>
+		<div className="container mx-auto px-2 sm:px-6 lg:px-8">
+			<div className="flex flex-row flex-wrap pb-12 pt-4 lg:flex-nowrap lg:pt-12">
+				<div>
+					<NextImage size={400} src={competitionData?.image} />
 				</div>
-				<div className="ml-6 flex flex-col self-center">
-					<h1 className="text-5xl font-bold">
-						{competitionData?.name}
-					</h1>
-					<CompetitionType
-						className="my-3"
+				<div className="mt-3 flex flex-col flex-wrap self-center lg:ml-12 lg:mt-0">
+					<CompDisplayData
 						type={competitionData?.type || "session"}
 						sport={competitionData?.sport || "pickleball"}
+						startTimeISO={competitionData?.startTimeISO}
+						endTimeISO={competitionData?.endTimeISO}
+						location={competitionData?.location}
 					/>
-					<p className="mt-1">
+					<h1 className="my-3 flex flex-wrap text-7xl font-bold">
+						{competitionData?.name}
+					</h1>
+					<p className="flex flex-wrap">
 						Repudiandae sint consequuntur vel. Amet ut nobis
 						explicabo numquam expedita quia omnis voluptatem. Minus
 						quidem ipsam quia iusto.
 					</p>
-				</div>
-			</div>
-			{/* 3 column wrapper */}
-			<div className="mx-auto grid grid-cols-6">
-				{/* Left sidebar & main wrapper */}
-				<main className="col-span-6 flex-1 overflow-y-auto lg:col-span-4"></main>
-				<aside className="sticky top-8 col-span-6 lg:col-span-2">
-					{/* Right column area */}
-					{compPlayer.profileID ? null : (
-						<div className="w-50 mt-20 justify-center">
-							<SubmitFormActionButton
-								icon="none"
+					<div className="flex flex-row py-12">
+						{compPlayer?.rating?.displayRating ? (
+							<div className="flex flex-row">
+								<NextImage
+									size={50}
+									src={compPlayer.image}
+									alt={compPlayer.firstName}
+								/>
+								<h3 className="ml-3 self-center font-semibold">
+									You are ranked{" "}
+									{getRankString(
+										players.findIndex(
+											(profile) =>
+												profile.id === compPlayer.id
+										)
+									)}{" "}
+									of {players.length} total players.
+								</h3>
+							</div>
+						) : (
+							<ActionButton
+								className="w-auto px-12"
+								endIcon={
+									<MdArrowForwardIos className="text-white" />
+								}
 								referRoute={
 									user?.id
 										? `/join-comp/${competitionData?.id}`
@@ -104,11 +141,81 @@ export default async function ViewCompScreen({
 								title="Join Competition"
 								colorVariant="indigo"
 							/>
+						)}
+					</div>
+				</div>
+			</div>
+			<div className="rounded-lg bg-gray-100 px-6 py-6">
+				<h3 className="text-base font-semibold leading-6 text-gray-900">
+					Competition Info
+				</h3>
+				<dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+					<div
+						key="number"
+						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
+					>
+						<MdPeopleOutline className="h-20 w-20 flex-none self-center" />
+						<div className="self-center pl-3">
+							<dt className="truncate text-sm font-medium text-gray-500">
+								Number of Players
+							</dt>
+							<dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">
+								{players.length}
+							</dd>
 						</div>
-					)}
+					</div>
+					<div
+						key="rating"
+						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
+					>
+						<MaetIcon className="flex-none self-center" size={20} />
+						<div className="self-center pl-3">
+							<dt className="truncate text-sm font-medium text-gray-500">
+								Average Rating
+							</dt>
+							<dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">
+								{Math.round(
+									averageRatingObjects(
+										players.map((player) => player.rating)
+									).displayRating
+								)}
+							</dd>
+						</div>
+					</div>
+					<div
+						key="registration"
+						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
+					>
+						<MdOutlinePlaylistAddCheck className="h-20 w-20 flex-none self-center" />
+						<div className="self-center pl-3">
+							<dt className="truncate text-sm font-medium text-gray-500">
+								Registration
+							</dt>
+							<dd
+								className={`mt-1 inline-flex items-center rounded-md px-1.5 py-1.5 text-3xl ${
+									registrationOpen
+										? "bg-green-200 text-green-700"
+										: "bg-red-200 text-red-700"
+								} font-semibold tracking-tight`}
+							>
+								• {registrationOpen ? "Open" : "Closed"}
+							</dd>
+						</div>
+					</div>
+				</dl>
+			</div>
+			{/* 3 column wrapper */}
+			<div className="mx-auto grid grid-cols-6">
+				{/* Left sidebar & main wrapper */}
+				<main className="col-span-6 flex-1 overflow-y-auto py-6 lg:col-span-4"></main>
+				<aside className="h-50 sticky top-8 col-span-6 overflow-y-auto py-6 lg:col-span-2">
+					{/* Right column area */}
+					<h3 className="text-base font-semibold leading-6 text-gray-900">
+						Player Rankings
+					</h3>
 					<ul
 						role="list"
-						className="sticky top-0 divide-y divide-gray-100"
+						className="sticky top-0 divide-y divide-gray-100 overflow-y-auto"
 					>
 						{players.map((player, rank) => (
 							<li
@@ -119,13 +226,22 @@ export default async function ViewCompScreen({
 									href={`/view-profile/${player.userID}/${player.sport}`}
 								>
 									<div className="align-center flex justify-center gap-x-4">
+										{rank < 3 ? (
+											<div className="col-span-2 flex lg:col-span-1">
+												<FaMedal
+													className={` ${medalColor[rank]} text-base md:text-lg`}
+												/>
+											</div>
+										) : (
+											<div className="flex"></div>
+										)}
 										<h1 className="flex-none text-xl font-bold">
 											{rank + 1}
 										</h1>
-										<img
-											className="h-12 w-12 flex-none rounded-full bg-gray-50"
-											src={player.image || undefined}
-											alt=""
+										<NextImage
+											size={50}
+											src={player.image}
+											alt={player.firstName}
 										/>
 										<div className="min-w-0 flex-auto">
 											<p className="text-sm font-bold leading-6 text-gray-900 dark:text-white ">

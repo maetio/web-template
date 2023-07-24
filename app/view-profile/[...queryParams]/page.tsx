@@ -37,14 +37,16 @@ export default async function ViewProfileScreen({
 	return (
 		<main className="mx-10">
 			<h1>
-				{profileData.firstName} {profileData.lastName}
+				{profileData.firstName} {profileData.lastName}: {profileData.id}
 			</h1>
+			<h1>Number of games: {profileData.rating?.numGames}</h1>
 			<h2>{profileData.rating?.displayRating}</h2>
 			{gameProfiles.map((gameProf) => (
 				<div key={gameProf.id}>
 					<br />
 					<h3>Game id: {gameProf.gameID}</h3>
 					<h3>Rating: {gameProf.rating?.displayRating}</h3>
+					<h3>Num Games: {gameProf.rating?.numGames}</h3>
 					<h3>
 						Change:{" "}
 						{gameProf.deltaRating?.displayRating &&
@@ -52,6 +54,11 @@ export default async function ViewProfileScreen({
 							? "+"
 							: ""}
 						{gameProf.deltaRating?.displayRating}
+					</h3>
+					<h3>
+						Next Game Rating:{" "}
+						{Number(gameProf.rating?.displayRating) +
+							Number(gameProf.deltaRating?.displayRating)}
 					</h3>
 					<br />
 				</div>
