@@ -19,7 +19,9 @@ export /**
  *
  * @return {*}
  */
-const StripePaymentElement: React.FC<StripePaymentElementParams> = ({ redirectURL }) => {
+const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
+	redirectURL,
+}) => {
 	// setting up the client comment docs
 	// https://stripe.com/docs/connect/collect-then-transfer-guide?platform=web&payment-ui=elements&client=react#set-up-stripe.js
 
@@ -77,16 +79,20 @@ const StripePaymentElement: React.FC<StripePaymentElementParams> = ({ redirectUR
 					<ActionButton
 						isLoading={isLoading}
 						// className="mt-5 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-						className="w-full mt-6"
+						className="mt-6 w-full"
 						colorVariant="indigo"
 						disabled={!stripe}
 						type="submit"
 					>
-					Join Competition
+						Join Competition
 					</ActionButton>
 				</div>
 				{/* Show error message to your customers */}
-				{errorMessage && <div className="w-full text-center text-red-600">{errorMessage}</div>}
+				{errorMessage && (
+					<div className="w-full text-center text-red-600">
+						{errorMessage}
+					</div>
+				)}
 			</form>
 		</section>
 	);

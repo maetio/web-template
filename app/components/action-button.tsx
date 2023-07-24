@@ -148,7 +148,10 @@ const ActionButton = ({
 			{typeof startIcon === "string" && !isPending && !isLoading
 				? icons[startIcon]
 				: null}
-			{startIcon && typeof startIcon !== "string" && !isPending && !isLoading
+			{startIcon &&
+			typeof startIcon !== "string" &&
+			!isPending &&
+			!isLoading
 				? startIcon
 				: null}
 			{isPending || isLoading ? (
@@ -177,7 +180,9 @@ const ActionButton = ({
 			>
 				{isPending || isLoading ? "Loading..." : title || "Submit"}
 			</p>
-			{typeof endIcon === "string" && !isPending && !isLoading ? icons[endIcon] : null}
+			{typeof endIcon === "string" && !isPending && !isLoading
+				? icons[endIcon]
+				: null}
 			{endIcon && typeof endIcon !== "string" && !isPending && !isLoading
 				? endIcon
 				: null}
