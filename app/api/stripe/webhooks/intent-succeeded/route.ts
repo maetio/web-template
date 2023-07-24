@@ -7,7 +7,6 @@ import { InitialRating } from "constants/rating";
 import { Timestamp } from "firebase-admin/firestore";
 import { NextResponse, NextRequest } from "next/server";
 import Stripe from "stripe";
-import { EndTimestamp } from "types/firebase";
 import { PlayerResponseType } from "types/next-api";
 import { CompetitionProfile } from "types/profile";
 
@@ -89,8 +88,7 @@ export async function POST(req: NextRequest) {
 						teamFirstName: null,
 						teamLastName: null,
 						stripeChargeID: paymentIntentSucceeded.latest_charge,
-						endTimeStamp:
-							(compInfo.endTimestamp as Timestamp), // need to change to create a new timestamp
+						endTimeStamp: compInfo.endTimestamp as Timestamp, // need to change to create a new timestamp
 					};
 					await competitionProfilesSubcollection(compID)
 						.doc(profileData.id)

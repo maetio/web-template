@@ -68,24 +68,7 @@ export default async function JoinCompScreen({
 		}
 	};
 
-	// grabs stripe session
-	const submitStipeFormAction = async () => {
-		"use server";
-
-		console.log("Submitting add competition profile");
-
-		try {
-			let data;
-			if (competitionData?.id) {
-				data = await getStripeSession(competitionData.id);
-			}
-			return data;
-		} catch (e: any) {
-			return e;
-		}
-	};
-
-	const stripeSession = await submitStipeFormAction();
+	const stripeSession = await getStripeSession(competitionData?.id);
 
 	return (
 		<>

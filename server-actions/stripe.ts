@@ -13,7 +13,7 @@ const stripe = process.env.STRIPE_SECRET
 	: undefined;
 
 // eslint-disable-next-line consistent-return
-export async function getStripeSession(compID: string) {
+export async function getStripeSession(compID: string | undefined) {
 	// get the user for the server
 	const user = await getServerAuthUser();
 
@@ -22,75 +22,87 @@ export async function getStripeSession(compID: string) {
 		throw new Error("Cannot checkout for unauthenticated user");
 	}
 
-	const privateUserDataRef = await privateUserCollection.doc(user.id).get();
-	const privateUserData = privateUserDataRef.data();
-
-	let customerID: string;
-
-	// create or use existing customer ID
-	if (privateUserData?.stripeCustomerID) {
-		customerID = privateUserData?.stripeCustomerID;
-	} else {
-		const createdCustomer = await stripe?.customers.create();
-		customerID = createdCustomer?.id || "";
-		await privateUserCollection
-			.doc(user.id)
-			.update({ stripeCustomerID: customerID });
+	if (!compID) {
+		throw new Error("No ccompetion ID provided");
 	}
 
-	// get the competition information from firestore. Although convenient, we DO NOT send this information in the body of the response.
-	// This is becuase it could be manipulated from the frontend to change the price of a competition
-	const competitionCollectionRef = competitionsCollection.doc(compID);
-	const competitionCollection = (await competitionCollectionRef.get()).data();
+	try {
+		const privateUserDataRef = await privateUserCollection
+			.doc(user.id)
+			.get();
+		const privateUserData = privateUserDataRef.data();
 
-	console.log("competition", competitionCollection);
+		let customerID: string;
 
-	if (competitionCollection?.price && competitionCollection.hostID) {
-		// all the commented out code below is 100% needed. Currently the destination(where the payment is going to) is hard coded.
-		// This is because, the fake data gnerators, don't include hostIDs for the private-user-data.
-		// down below I have the needed code to get the host stripeID from firestore and we check to make sure we have it before running the 'stripe?.ephemeralKeys.create'
+		// create or use existing customer ID
+		if (privateUserData?.stripeCustomerID) {
+			customerID = privateUserData?.stripeCustomerID;
+		} else {
+			const createdCustomer = await stripe?.customers.create();
+			customerID = createdCustomer?.id || "";
+			await privateUserCollection
+				.doc(user.id)
+				.update({ stripeCustomerID: customerID });
+		}
 
-		// const hostInformationRef = privateUserCollection.doc(competitionCollection.hostID);
-		// const hostInformation = (await hostInformationRef.get()).data();
+		// get the competition information from firestore. Although convenient, we DO NOT send this information in the body of the response.
+		// This is becuase it could be manipulated from the frontend to change the price of a competition
+		const competitionCollectionRef = competitionsCollection.doc(compID);
+		const competitionCollection = (
+			await competitionCollectionRef.get()
+		).data();
 
-		// if (hostInformation?.stripeID) {
-		// const customer = await stripe?.customers.create();
-		const ephemeralKey = await stripe?.ephemeralKeys.create(
-			{ customer: customerID },
-			{ apiVersion: "2022-11-15" }
-		);
-		const paymentIntent = await stripe?.paymentIntents.create({
-			// we will use this meta data to store the user ID, and comp ID. This will allow the paymentIntent webhook to have this information, so we can allow the user access to the competition.
-			// without this, there is not enough inforation to make these changes to the user.
-			metadata: {
-				compID,
-				userID: user.id,
-			},
+		console.log("competition", competitionCollection);
 
-			amount: competitionCollection.price,
+		if (competitionCollection?.price && competitionCollection.hostID) {
+			// all the commented out code below is 100% needed. Currently the destination(where the payment is going to) is hard coded.
+			// This is because, the fake data gnerators, don't include hostIDs for the private-user-data.
+			// down below I have the needed code to get the host stripeID from firestore and we check to make sure we have it before running the 'stripe?.ephemeralKeys.create'
 
-			currency: "usd",
-			customer: customerID,
-			automatic_payment_methods: {
-				enabled: true,
-			},
-			// currently Maet is taking 1% of the transaction
-			application_fee_amount: competitionCollection.price * 100 * 0.1,
-			transfer_data: {
-				destination: "acct_1NUtUkCSsxIqErmb",
-				// destination: hostInformation.stripeID,
-			},
-		});
+			// const hostInformationRef = privateUserCollection.doc(competitionCollection.hostID);
+			// const hostInformation = (await hostInformationRef.get()).data();
 
-		const stripeSession = {
-			paymentIntent: paymentIntent?.client_secret,
-			ephemeralKey: ephemeralKey?.secret,
-			customer: customerID,
-			publishableKey:
-				"pk_test_51MDCdaCE8Qam1cvafPiXvoVUkJ8RUbl09Lq4WNn5Y8Sm8zO7kHDRNs0JKrP3zicoIQjL9TAtCfHSAeFp5oKjrBDD00n8HUiGDL",
-		};
+			// if (hostInformation?.stripeID) {
+			// const customer = await stripe?.customers.create();
+			const ephemeralKey = await stripe?.ephemeralKeys.create(
+				{ customer: customerID },
+				{ apiVersion: "2022-11-15" }
+			);
+			const paymentIntent = await stripe?.paymentIntents.create({
+				// we will use this meta data to store the user ID, and comp ID. This will allow the paymentIntent webhook to have this information, so we can allow the user access to the competition.
+				// without this, there is not enough inforation to make these changes to the user.
+				metadata: {
+					compID,
+					userID: user.id,
+				},
 
-		return stripeSession;
+				amount: competitionCollection.price,
+
+				currency: "usd",
+				customer: customerID,
+				automatic_payment_methods: {
+					enabled: true,
+				},
+				// currently Maet is taking 1% of the transaction
+				application_fee_amount: competitionCollection.price * 100 * 0.1,
+				transfer_data: {
+					destination: "acct_1NUtUkCSsxIqErmb",
+					// destination: hostInformation.stripeID,
+				},
+			});
+
+			const stripeSession = {
+				paymentIntent: paymentIntent?.client_secret,
+				ephemeralKey: ephemeralKey?.secret,
+				customer: customerID,
+				publishableKey:
+					"pk_test_51MDCdaCE8Qam1cvafPiXvoVUkJ8RUbl09Lq4WNn5Y8Sm8zO7kHDRNs0JKrP3zicoIQjL9TAtCfHSAeFp5oKjrBDD00n8HUiGDL",
+			};
+
+			return stripeSession;
+		}
+	} catch (e) {
+		throw new Error(`error has occured: ${e}`);
 	}
 
 	revalidatePath("/");
