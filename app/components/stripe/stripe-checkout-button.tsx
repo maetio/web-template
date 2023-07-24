@@ -8,7 +8,13 @@ import {
 } from "@stripe/react-stripe-js";
 import { BaseURL } from "config/constants";
 
-export const StripeCheckoutButtonComp = () => {
+export /**
+ * displays the stripe checkout component, and also processes the payment
+ * on succes, but navigate the user to the /profile screen
+ *
+ * @return {*}
+ */
+const StripeCheckoutButtonComp: React.FC<{}> = () => {
 	const stripe = useStripe();
 	const elements = useElements();
 
