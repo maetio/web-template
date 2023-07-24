@@ -14,7 +14,7 @@ export /**
  *
  * @return {*}
  */
-const StripeCheckoutButtonComp: React.FC<{}> = () => {
+const StripePaymentElement: React.FC<{}> = () => {
 	// setting up the client comment docs
 	// https://stripe.com/docs/connect/collect-then-transfer-guide?platform=web&payment-ui=elements&client=react#set-up-stripe.js
 

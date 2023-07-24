@@ -2,7 +2,7 @@
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { StripeCheckoutButtonComp } from "./stripe-checkout-button";
+import { StripePaymentElement } from "./stripe-payment-element";
 
 export interface StripeCheckoutParams {
 	paymentIntent: string;
@@ -22,7 +22,7 @@ export /**
  * }
  * @return {*}
  */
-const StripeProvider: React.FC<StripeCheckoutParams> = ({ paymentIntent }) => {
+const StripeCheckoutForm: React.FC<StripeCheckoutParams> = ({ paymentIntent }) => {
 	// check if the env variable exists
 	if (!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) throw Error("No Stripe Publishable key in the env.");
 
@@ -40,7 +40,7 @@ const StripeProvider: React.FC<StripeCheckoutParams> = ({ paymentIntent }) => {
 					appearance: {},
 				}}
 			>
-				<StripeCheckoutButtonComp />
+				<StripePaymentElement />
 			</Elements>
 		</section>
 	);
