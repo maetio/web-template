@@ -18,10 +18,10 @@ export const StripeForm: React.FC<StripeFormParams> = () => {
 
 	const [errorMessage, setErrorMessage] = useState<string>();
 
-	const handleSubmit = async () => {
+	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		// We don't want to let default form submission happen here,
 		// which would refresh the page.
-		// event.preventDefault();
+		event.preventDefault();
 
 		if (!stripe || !elements) {
 			// Stripe.js hasn't yet loaded.
@@ -51,12 +51,12 @@ export const StripeForm: React.FC<StripeFormParams> = () => {
 
 	return (
 		<section>
-			<form>
+			<form onSubmit={handleSubmit}>
 				<PaymentElement />
 				<button
 					className="mt-5 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-					onClick={handleSubmit}
 					disabled={!stripe}
+					type="submit"
 				>
 					Join Competition
 				</button>
