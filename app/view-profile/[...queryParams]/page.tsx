@@ -155,11 +155,11 @@ export default async function ViewProfileScreen({
 				<div className="flex-col flex items-center">
 					<div className="flex flex-row gap-x-8">
 						<button>
-							<BiSolidLeftArrow />
+							<BiSolidLeftArrow className="hover:fill-gray-700" />
 						</button>
 						<h1 className="font-semibold text-lg md:text-xl">Games</h1>
 						<button>
-							<BiSolidRightArrow />
+							<BiSolidRightArrow className="hover:fill-gray-700" />
 						</button>
 					</div>
 					<div className="flex">
@@ -167,7 +167,7 @@ export default async function ViewProfileScreen({
 					</div>
 					<div className="flex flex-col items-center">
 						{gameProfiles.map((game) => (
-							<GameCard game={game} key={game.id} />
+							<GameCard key={game.id} id={game.id} />
 						))}
 					</div>
 				</div>

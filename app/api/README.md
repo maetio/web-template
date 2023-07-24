@@ -7,6 +7,7 @@ API endpoints for our application. Primarily used for reading data.
 -   `competitions/[id]`: fetch the competition with the specific id.
 -   `games/all`: fetch all the games, sorted by timestamp. **UNIMPLEMENTED**
 -   `games/all/[startTime]/[endTime]`: fetch all the games, sorted by timestamp within a certain date. **UNIMPLEMENTED**
+-   `games/[id]`: fetch the game with the specific id. **UNIMPLEMENTED**
 -   `games/[compID]`: fetch all the games for a certain competition. **UNIMPLEMENTED**
 -   `games/[compID]/[startTime]/[endTime]`: fetch all the games for a certain competition, for a certain date. **UNIMPLEMENTED**
 -   `players/all`: fetch all players, sorted by rating.

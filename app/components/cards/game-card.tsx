@@ -2,6 +2,8 @@ import React from "react";
 import { FaPlay } from "react-icons/fa6";
 import { Game } from "types/index";
 import { inferGameStatus } from "utils/skill-rating";
+import { BaseURL } from "config/constants";
+import { GameResponseType } from "types/next-api";
 import { XSGrayMaetIcon } from "../icons";
 
 // modular props for all competition cards
@@ -13,7 +15,8 @@ export interface GameCardProps
 		>,
 		"color"
 	> {
-	game: Partial<Game>;
+	game?: Partial<Game>;
+	id: string;
 	verified?: boolean;
 }
 
@@ -27,11 +30,16 @@ export /**
  *  @return {*}
  *
  */
-const GameCard: React.FC<GameCardProps> = ({
-	game,
+const GameCard: React.FC<GameCardProps> = async ({
+	id,
 	verified,
 	...divParams
 }) => {
+
+	// get game data
+	const gameResponse = await fetch(`${BaseURL}/api/games/${id}`);
+	const game: GameResponseType = await gameResponse.json();
+
 	// get game status
 	const gameStatus = inferGameStatus(game.team1?.points, game.team2?.points);
 

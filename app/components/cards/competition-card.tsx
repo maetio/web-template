@@ -10,7 +10,7 @@ import { Competition } from "types/index";
 import { MdSportsTennis } from "react-icons/md";
 import { showTimeOrDate } from "utils/date";
 import { BaseURL } from "config/constants";
-import { TopPlayersResponseType } from "types/next-api";
+import { ProfilesResponseType } from "types/next-api";
 import { capitalizeFirstLetter } from "utils/format";
 import AltPlayerCard from "./alt-player-card";
 
@@ -44,7 +44,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 	const topPlayersResponse = await fetch(
 		`${BaseURL}/api/players/${competition.id}/${num || 2}`
 	);
-	const topPlayers: TopPlayersResponseType = await topPlayersResponse.json();
+	const topPlayers: ProfilesResponseType = await topPlayersResponse.json();
 
 	const SportIcons: Record<Competition["sport"], React.ReactElement> = {
 		basketball: (
