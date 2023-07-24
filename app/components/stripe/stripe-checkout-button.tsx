@@ -15,6 +15,9 @@ export /**
  * @return {*}
  */
 const StripeCheckoutButtonComp: React.FC<{}> = () => {
+	// setting up the client comment docs
+	// https://stripe.com/docs/connect/collect-then-transfer-guide?platform=web&payment-ui=elements&client=react#set-up-stripe.js
+
 	// get stripe config variables
 	const stripe = useStripe();
 	const elements = useElements();

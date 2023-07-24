@@ -25,6 +25,9 @@ const stripe = new Stripe(STRIPE_SECRET, {
  * Stripe webhook that adds profile to the competition after payment
  * stripe handles all the listeners, and just calls this api when the "payment_intent.succeeded" event fires
  *
+ * @Docs
+ * https://dashboard.stripe.com/test/webhooks/create
+ *
  * @export
  * @param {NextRequest} req
  * @return {*}
@@ -34,21 +37,23 @@ export async function POST(req: NextRequest) {
 
 	const sig = req.headers.get("stripe-signature");
 
-	let event;
-
 	try {
 		const body = await req.text();
 		console.log("body", body);
 		if (sig) {
-			event = stripe.webhooks.constructEvent(
+			// get the event
+			const event = stripe.webhooks.constructEvent(
 				body,
 				sig,
 				STRIPE_ENDPOINT_SECRET_INTENT_BALANCE
 			);
 
+			// check what type of event it is
 			if (event && event.type === "payment_intent.succeeded") {
+				// grab the important information about this event
 				const paymentIntentSucceeded = event.data
 					.object as Stripe.Response<Stripe.PaymentIntent>;
+				// grab the metaData that is added when the payment intend is created in the client(/server-actions/stripe.ts)
 				const { userID, compID } = paymentIntentSucceeded.metadata;
 				const compInfoRef = await competitionsCollection
 					.doc(compID)
@@ -62,6 +67,7 @@ export async function POST(req: NextRequest) {
 				const profileData: PlayerResponseType =
 					await profileResponse.json();
 
+				// create the competition profile
 				if (
 					profileData &&
 					profileData.userID &&
