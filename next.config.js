@@ -5,9 +5,6 @@ module.exports = {
 	experimental: {
 		serverActions: true,
 	},
-	api: {
-		bodyParser: false,
-	},
 	images: {
 		remotePatterns: [
 			{
