@@ -18,10 +18,15 @@ const stripe = new Stripe(STRIPE_SECRET, {
 const STRIPE_ENDPOINT_SECRET_INTENT_BALANCE = process.env
 	.STRIPE_ENDPOINT_SECRET_INTENT_BALANCE as string;
 
-export async function POST(
-	req: NextRequest
-	// res: NextResponse
-) {
+/**
+ * Stripe webhook that adds profile to the competition after payment
+ * stripe handles all the listeners, and just calls this api when the "payment_intent.succeeded" event fires
+ *
+ * @export
+ * @param {NextRequest} req
+ * @return {*}
+ */
+export async function POST(req: NextRequest) {
 	const origin = req.headers.get("origin");
 
 	const sig = req.headers.get("stripe-signature");

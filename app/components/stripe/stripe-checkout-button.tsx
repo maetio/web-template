@@ -8,7 +8,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { BaseURL } from "config/constants";
 
-export const StripeForm = () => {
+export const StripeCheckoutButtonComp = () => {
 	const stripe = useStripe();
 	const elements = useElements();
 

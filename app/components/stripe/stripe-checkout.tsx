@@ -2,9 +2,9 @@
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { StripeForm } from "./checkout-button";
+import { StripeCheckoutButtonComp } from "./stripe-checkout-button";
 
-export const ServerCheckoutButton = ({
+export const StripeCheckout = ({
 	paymentIntent,
 }: {
 	paymentIntent: string;
@@ -24,7 +24,7 @@ export const ServerCheckoutButton = ({
 					appearance: {},
 				}}
 			>
-				<StripeForm />
+				<StripeCheckoutButtonComp />
 			</Elements>
 		</section>
 	);
