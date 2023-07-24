@@ -8,6 +8,8 @@ import {
 } from "server-actions/profiles";
 import { ActionButton } from "app/components/action-button";
 import { MaetIcon } from "app/components/icons";
+import { getStripeSession } from "server-actions/stripe";
+import { StripeCheckoutForm } from "app/components/stripe/stripe-checkout-form";
 import { NextImage } from "app/components/image";
 
 /**
@@ -66,6 +68,8 @@ export default async function JoinCompScreen({
 		}
 	};
 
+	const stripeSession = await getStripeSession(competitionData?.id);
+
 	return (
 		<>
 			<div className="flex h-full min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -104,13 +108,28 @@ export default async function JoinCompScreen({
 				<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 					<div className="space-y-6">
 						<div>
-							<ActionButton
-								className="w-full"
-								referRoute={`/view-comp/${params.id}`}
-								colorVariant="indigo"
-								title="Join competition"
-								action={submitFormAction}
-							/>
+							{competitionData?.price &&
+							competitionData.price > 0 ? (
+									<div>
+										{stripeSession?.paymentIntent ? (
+											<StripeCheckoutForm
+												paymentIntent={
+													stripeSession?.paymentIntent
+												}
+											/>
+										) : (
+											<button>loading</button>
+										)}
+									</div>
+								) : (
+									<ActionButton
+										className="w-full"
+										referRoute={`/view-comp/${params.id}`}
+										colorVariant="indigo"
+										title="Join competition"
+										action={submitFormAction}
+									/>
+								)}
 						</div>
 					</div>
 				</div>
