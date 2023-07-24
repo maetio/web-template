@@ -9,7 +9,7 @@ import {
 import { ActionButton } from "app/components/action-button";
 import { MaetIcon } from "app/components/icons";
 import { getStripeSession } from "server-actions/stripe";
-import { StripeCheckout } from "app/components/stripe/stripe-checkout";
+import { StripeCheckoutForm } from "app/components/stripe/stripe-checkout-form";
 import { NextImage } from "app/components/image";
 
 /**
@@ -112,7 +112,7 @@ export default async function JoinCompScreen({
 							competitionData.price > 0 ? (
 									<div>
 										{stripeSession?.paymentIntent ? (
-											<StripeCheckout
+											<StripeCheckoutForm
 												paymentIntent={
 													stripeSession?.paymentIntent
 												}

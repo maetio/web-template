@@ -7,6 +7,7 @@ type BrandIcons = "google";
 type ColorVariants = "white" | "black" | "indigo" | "red";
 
 interface CustomButtonParams {
+	isLoading?: boolean;
 	title?: string;
 	startIcon?: BrandIcons | ReactElement;
 	endIcon?: BrandIcons | ReactElement;
@@ -21,6 +22,7 @@ export /**
  * @return {*}
  */
 const ActionButton = ({
+	isLoading,
 	title,
 	startIcon,
 	endIcon,
@@ -135,20 +137,20 @@ const ActionButton = ({
 
 	return (
 		<button
-			disabled={isPending}
+			disabled={isPending || isLoading}
 			onClick={() => handleClick()}
 			className={"inline-flex items-center justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold  shadow-md hover:shadow-lg focus:ring-2 focus:ring-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 "
 				.concat(colorClasses[colorVariant])
 				.concat(className || "")}
 			{...buttonParams}
 		>
-			{typeof startIcon === "string" && !isPending
+			{typeof startIcon === "string" && !isPending && !isLoading
 				? icons[startIcon]
 				: null}
-			{startIcon && typeof startIcon !== "string" && !isPending
+			{startIcon && typeof startIcon !== "string" && !isPending && !isLoading
 				? startIcon
 				: null}
-			{isPending ? (
+			{isPending || isLoading ? (
 				<svg
 					aria-hidden="true"
 					role="status"
@@ -172,10 +174,10 @@ const ActionButton = ({
 					colorVariant === "white" ? "text-black" : "text-white"
 				}
 			>
-				{isPending ? "Loading..." : title || "Submit"}
+				{isPending || isLoading ? "Loading..." : title || "Submit"}
 			</p>
-			{typeof endIcon === "string" && !isPending ? icons[endIcon] : null}
-			{endIcon && typeof endIcon !== "string" && !isPending
+			{typeof endIcon === "string" && !isPending && !isLoading ? icons[endIcon] : null}
+			{endIcon && typeof endIcon !== "string" && !isPending && !isLoading
 				? endIcon
 				: null}
 		</button>

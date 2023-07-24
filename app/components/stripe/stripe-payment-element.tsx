@@ -8,13 +8,17 @@ import {
 } from "@stripe/react-stripe-js";
 import { BaseURL } from "config/constants";
 
+interface StripePaymentElementParams {
+	redirectURL?: string;
+}
+
 export /**
  * Displays the stripe checkout component, and also processes the payment
  * on succes, but navigate the user to the /profile screen
  *
  * @return {*}
  */
-const StripePaymentElement: React.FC<{}> = () => {
+const StripePaymentElement: React.FC<StripePaymentElementParams> = ({ redirectURL }) => {
 	// setting up the client comment docs
 	// https://stripe.com/docs/connect/collect-then-transfer-guide?platform=web&payment-ui=elements&client=react#set-up-stripe.js
 
@@ -41,7 +45,7 @@ const StripePaymentElement: React.FC<{}> = () => {
 			// `Elements` instance that was used to create the Payment Element
 			elements,
 			confirmParams: {
-				return_url: `${BaseURL}/profile`,
+				return_url: redirectURL || `${BaseURL}/`,
 			},
 		});
 
