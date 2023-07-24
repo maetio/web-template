@@ -78,4 +78,5 @@ export interface CompetitionProfile extends Profile {
 	competitionEndTimeISO: string | null;
 	teamFirstName: string | null;
 	teamLastName: string | null;
+	stripeChargeID?: string | null;
 }

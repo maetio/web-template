@@ -32,7 +32,7 @@ export async function POST(
 		const userCollections = await privateUserCollection.doc(hostID).get();
 		const userCollection = userCollections.data();
 		// checks to see if the user has the stripeID field in firestore, if not, generate a new one and add it to firestore. Or use the prexisting stripe ID
-		if (!userCollection?.stripeID) {
+		if (!userCollection?.stripeHostID) {
 			const accountRef = await stripe?.accounts.create({
 				type: "express",
 			});
@@ -40,7 +40,7 @@ export async function POST(
 				await privateUserCollection
 					// .doc(hostID)
 					.doc(hostID)
-					.update({ stripeID: accountRef?.id });
+					.update({ stripeHostID: accountRef?.id });
 
 				return new NextResponse(
 					JSON.stringify({
@@ -74,7 +74,7 @@ export async function POST(
 		return new NextResponse(
 			JSON.stringify({
 				message: "user already has a stripe account",
-				stripeID: userCollection.stripeID || "",
+				stripeID: userCollection.stripeHostID || "",
 			}),
 			{
 				status: 200,

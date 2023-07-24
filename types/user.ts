@@ -28,7 +28,8 @@ export interface PrivateUserData extends AuthUser {
 	lastName?: string | null;
 	image?: string | null;
 	loggedIn: boolean;
-	stripeID?: string;
+	stripeCustomerID?: string;
+	stripeHostID?: string;
 	charges_enabled?: boolean;
 	stripeSeller?: any;
 	activeSport?: Competition["sport"];
