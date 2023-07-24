@@ -12,6 +12,13 @@ const stripe = process.env.STRIPE_SECRET
 	  })
 	: undefined;
 
+/**
+ * generates the stripe session that is used for the checkout form
+ *
+ * @export
+ * @param {(string | undefined)} compID
+ * @return {*}
+ */
 // eslint-disable-next-line consistent-return
 export async function getStripeSession(compID: string | undefined) {
 	// get the user for the server
@@ -51,8 +58,6 @@ export async function getStripeSession(compID: string | undefined) {
 		const competitionCollection = (
 			await competitionCollectionRef.get()
 		).data();
-
-		console.log("competition", competitionCollection);
 
 		if (competitionCollection?.price && competitionCollection.hostID) {
 			// all the commented out code below is 100% needed. Currently the destination(where the payment is going to) is hard coded.
