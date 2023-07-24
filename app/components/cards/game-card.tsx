@@ -1,7 +1,10 @@
 import React from "react";
 import { FaPlay } from "react-icons/fa6";
-import { Game } from "types/index";
 import { inferGameStatus } from "utils/skill-rating";
+import { BaseURL } from "config/constants";
+// import { GameResponseType } from "types/next-api";
+import { GameResponseType } from "types/next-api";
+import { showTimeOrDate } from "utils/date";
 import { XSGrayMaetIcon } from "../icons";
 
 // modular props for all competition cards
@@ -13,8 +16,8 @@ export interface GameCardProps
 		>,
 		"color"
 	> {
-	game: Partial<Game>;
-	verified: boolean;
+	id?: string;
+	verified?: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -27,18 +30,23 @@ export /**
  *  @return {*}
  *
  */
-const GameCard: React.FC<GameCardProps> = ({
-	game,
+const GameCard: React.FC<GameCardProps> = async ({
+	id,
 	verified,
 	...divParams
 }) => {
+
+	// get game data
+	const gameResponse = await fetch(`${BaseURL}/api/game/${id}`);
+	const game: GameResponseType = await gameResponse.json();
+
 	// get game status
 	const gameStatus = inferGameStatus(game.team1?.points, game.team2?.points);
 
 	return (
 		<div
 			{...divParams}
-			className="mt-4 grid h-48 grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg sm:w-1/2 lg:w-1/3"
+			className="mt-4 grid h-48 grid-cols-12 justify-start min-w-full gap-4 rounded-xl border p-4 align-top shadow-lg"
 		>
 			<div className="col-span-3 flex flex-col items-center justify-center">
 				{game.team1?.image ? (
@@ -50,16 +58,14 @@ const GameCard: React.FC<GameCardProps> = ({
 				) : (
 					<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 				)}
-				<div className="flex flex-wrap items-center justify-center text-center">
-					<p className="p-2 text-xs font-semibold lg:text-sm">
+				<div className="flex-col flex justify-center">
+					<p className="p-2 text-center text-xs font-semibold lg:text-sm">
 						{game.team1?.lastName}
 					</p>
-				</div>
-				<div className="grid grid-cols-3 lg:pl-2">
-					<div className="col-span-3 flex items-center">
+					<div className="flex items-center justify-center">
 						<XSGrayMaetIcon />
 						<p className="ml-1 text-xs text-gray-500">
-							{game.team1?.rating?.displayRating}
+							{Math.round(game.team1?.rating?.displayRating || 100)}
 						</p>
 					</div>
 				</div>
@@ -70,10 +76,10 @@ const GameCard: React.FC<GameCardProps> = ({
 						<p className="font-semibold">{game.competitionName}</p>
 						<div className="mt-1 flex items-center justify-center">
 							<p className="text-xs text-gray-300">
-								{game.startTimeISO}
+								{showTimeOrDate( new Date(game.startTimeISO || ""))}
 							</p>
 						</div>
-						<div className="flex-row lg:w-32">
+						<div className="flex-row lg:w-32 min-w-full">
 							<div className="col-span-2 mt-1 grid grid-cols-2 items-center">
 								{gameStatus !== "unreported" ? (
 									<div className="col-span-1 mt-1 flex items-center justify-start">
@@ -114,13 +120,13 @@ const GameCard: React.FC<GameCardProps> = ({
 									<div></div>
 								)}
 							</div>
-							<div className="mt-2 flex h-6 lg:mt-6">
-								{verified ? (
-									<div className="flex h-6 min-w-full items-center justify-center rounded-full bg-green-300 text-xs">
+							<div className="mt-2 flex h-6 lg:mt-6 items-center justify-center">
+								{gameStatus ? (
+									<div className="p-2 flex h-6 min-w-full items-center justify-center rounded-full bg-green-300 text-xs">
 										<p>Verified</p>
 									</div>
 								) : (
-									<div className="flex h-6 min-w-full items-center justify-center rounded-full bg-blue-200 text-xs">
+									<div className="p-2 flex h-6 min-w-full items-center justify-center rounded-full bg-blue-200 text-xs">
 										<p>Scheduled</p>
 									</div>
 								)}
@@ -158,16 +164,14 @@ const GameCard: React.FC<GameCardProps> = ({
 				) : (
 					<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 				)}
-				<div className="flex justify-center">
+				<div className="flex-col flex justify-center">
 					<p className="p-2 text-center text-xs font-semibold lg:text-sm">
 						{game.team2?.lastName}
 					</p>
-				</div>
-				<div className="grid grid-cols-3 lg:pl-2">
-					<div className="col-span-3 flex items-center">
+					<div className="flex items-center justify-center">
 						<XSGrayMaetIcon />
 						<p className="ml-1 text-xs text-gray-500">
-							{game.team2?.rating?.displayRating}
+							{Math.round(game.team2?.rating?.displayRating || 100)}
 						</p>
 					</div>
 				</div>
