@@ -30,6 +30,7 @@ const ActionButton = ({
 	referRoute,
 	className,
 	colorVariant = "white",
+	disabled,
 	...buttonParams
 }: React.DetailedHTMLProps<
 	React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -137,7 +138,7 @@ const ActionButton = ({
 
 	return (
 		<button
-			disabled={isPending || isLoading}
+			disabled={isPending || isLoading || disabled}
 			onClick={() => handleClick()}
 			className={"inline-flex items-center justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold  shadow-md hover:shadow-lg focus:ring-2 focus:ring-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 "
 				.concat(colorClasses[colorVariant])
