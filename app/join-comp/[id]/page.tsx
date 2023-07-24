@@ -135,7 +135,7 @@ export default async function JoinCompScreen({
 												}
 											/>
 										) : (
-											<button>loadin</button>
+											<button>loading</button>
 										)}
 									</div>
 								) : (
