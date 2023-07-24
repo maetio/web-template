@@ -166,8 +166,8 @@ export default async function ViewProfileScreen({
 						<p className="md:text-base text-sm">{gameProfiles.length} scheduled games</p>
 					</div>
 					<div className="flex flex-col items-center">
-						{gameProfiles.map((game) => (
-							<GameCard key={game.id} id={game.id} />
+						{gameProfiles.map((gameProf) => (
+							<GameCard id={gameProf.gameID} key={gameProf.gameID} />
 						))}
 					</div>
 				</div>

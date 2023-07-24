@@ -3,6 +3,7 @@ import { FaPlay } from "react-icons/fa6";
 import { Game } from "types/index";
 import { inferGameStatus } from "utils/skill-rating";
 import { BaseURL } from "config/constants";
+// import { GameResponseType } from "types/next-api";
 import { GameResponseType } from "types/next-api";
 import { XSGrayMaetIcon } from "../icons";
 
@@ -15,8 +16,7 @@ export interface GameCardProps
 		>,
 		"color"
 	> {
-	game?: Partial<Game>;
-	id: string;
+	id?: string;
 	verified?: boolean;
 }
 
@@ -37,7 +37,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 }) => {
 
 	// get game data
-	const gameResponse = await fetch(`${BaseURL}/api/games/${id}`);
+	const gameResponse = await fetch(`${BaseURL}/api/game/${id}`);
 	const game: GameResponseType = await gameResponse.json();
 
 	// get game status
