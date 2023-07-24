@@ -15,11 +15,14 @@ export /**
  * @return {*}
  */
 const StripeCheckoutButtonComp: React.FC<{}> = () => {
+	// get stripe config variables
 	const stripe = useStripe();
 	const elements = useElements();
 
+	// error state
 	const [errorMessage, setErrorMessage] = useState<string>();
 
+	// handle the payment(straight from stripes docs)
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		// We don't want to let default form submission happen here,
 		// which would refresh the page.

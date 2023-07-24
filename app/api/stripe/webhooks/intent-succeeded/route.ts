@@ -9,14 +9,16 @@ import Stripe from "stripe";
 import { PlayerResponseType } from "types/next-api";
 import { CompetitionProfile } from "types/profile";
 
+// grab envs as string
 const STRIPE_SECRET = process.env.STRIPE_SECRET as string;
-
-const stripe = new Stripe(STRIPE_SECRET, {
-	apiVersion: "2022-11-15",
-});
 
 const STRIPE_ENDPOINT_SECRET_INTENT_BALANCE = process.env
 	.STRIPE_ENDPOINT_SECRET_INTENT_BALANCE as string;
+
+// initialize stripe
+const stripe = new Stripe(STRIPE_SECRET, {
+	apiVersion: "2022-11-15",
+});
 
 /**
  * Stripe webhook that adds profile to the competition after payment
@@ -92,7 +94,7 @@ export async function POST(req: NextRequest) {
 		}
 		return new NextResponse(
 			JSON.stringify({
-				message: "Created new Stripe account",
+				message: "webhook completed",
 			}),
 			{
 				status: 200,
@@ -103,6 +105,6 @@ export async function POST(req: NextRequest) {
 			}
 		);
 	} catch (err: any) {
-		NextResponse.json({ received: true });
+		NextResponse.json({ received: false, message: err });
 	}
 }

@@ -22,13 +22,12 @@ export async function getStripeSession(compID: string) {
 		throw new Error("Cannot checkout for unauthenticated user");
 	}
 
-	console.log("user", user);
-
 	const privateUserDataRef = await privateUserCollection.doc(user.id).get();
 	const privateUserData = privateUserDataRef.data();
 
 	let customerID: string;
 
+	// create or use existing customer ID
 	if (privateUserData?.stripeCustomerID) {
 		customerID = privateUserData?.stripeCustomerID;
 	} else {
@@ -38,9 +37,6 @@ export async function getStripeSession(compID: string) {
 			.doc(user.id)
 			.update({ stripeCustomerID: customerID });
 	}
-
-	// get the parameters from the query
-	// const { compID } = params.params;
 
 	// get the competition information from firestore. Although convenient, we DO NOT send this information in the body of the response.
 	// This is becuase it could be manipulated from the frontend to change the price of a competition
@@ -93,8 +89,6 @@ export async function getStripeSession(compID: string) {
 			publishableKey:
 				"pk_test_51MDCdaCE8Qam1cvafPiXvoVUkJ8RUbl09Lq4WNn5Y8Sm8zO7kHDRNs0JKrP3zicoIQjL9TAtCfHSAeFp5oKjrBDD00n8HUiGDL",
 		};
-
-		console.log("backend thing", stripeSession);
 
 		return stripeSession;
 	}

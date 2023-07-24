@@ -68,38 +68,7 @@ export default async function JoinCompScreen({
 		}
 	};
 
-	// const submitStipeFormAction = async () => {
-	// 	"use server";
-
-	// 	console.log("Submitting add competition profile");
-
-	// 	try {
-	// 		// update the data with the server action
-	// 		if (competitionData?.id) {
-	// 			return await getStripeSession(competitionData.id);
-	// 		}
-	// 		console.log("No user id");
-	// 	} catch (e: any) {
-	// 		console.warn("error with form action", e);
-	// 	}
-	// };
-
-	// const data = await submitStipeFormAction();
-
-	// const testStripeApi = async () => {
-	// 	"use server";
-
-	// 	const data = await fetch(
-	// 		`${BaseURL}/api/stripe/create-payment-session/${competitionData?.id}`,
-	// 		{
-	// 			method: "POST",
-	// 		}
-	// 	);
-
-	// 	const thing = await data.json();
-	// 	console.log("thing", thing);
-	// };
-
+	// grabs stripe session
 	const submitStipeFormAction = async () => {
 		"use server";
 
@@ -116,7 +85,7 @@ export default async function JoinCompScreen({
 		}
 	};
 
-	const data = await submitStipeFormAction();
+	const stripeSession = await submitStipeFormAction();
 
 	return (
 		<>
@@ -159,30 +128,17 @@ export default async function JoinCompScreen({
 							{competitionData?.price &&
 							competitionData.price > 0 ? (
 									<div>
-										{data?.paymentIntent ? (
+										{stripeSession?.paymentIntent ? (
 											<StripeCheckout
-												paymentIntent={data?.paymentIntent}
+												paymentIntent={
+													stripeSession?.paymentIntent
+												}
 											/>
 										) : (
 											<button>loadin</button>
 										)}
 									</div>
 								) : (
-								// <SubmitFormActionButton
-								// 	referRoute={`/view-comp/${params.id}`}
-								// 	colorVariant="indigo"
-								// 	title={
-								// 		competitionData?.price &&
-								// 		competitionData?.price > 0
-								// 			? `Pay $${
-								// 					competitionData.price / 100
-								// 			  } To Join`
-								// 			: "Join Competition"
-								// 	}
-								// 	icon="none"
-								// 	action={submitFormAction}
-								// />
-
 									<ActionButton
 										className="w-full"
 										referRoute={`/view-comp/${params.id}`}
