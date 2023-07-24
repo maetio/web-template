@@ -10,7 +10,7 @@ export const ServerCheckoutButton = ({
 	paymentIntent: string;
 }) => {
 	const stripePromise = loadStripe(
-		"pk_test_51MDCdaCE8Qam1cvafPiXvoVUkJ8RUbl09Lq4WNn5Y8Sm8zO7kHDRNs0JKrP3zicoIQjL9TAtCfHSAeFp5oKjrBDD00n8HUiGDL"
+		process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
 	);
 
 	return (
@@ -20,6 +20,7 @@ export const ServerCheckoutButton = ({
 				options={{
 					clientSecret: paymentIntent,
 					// Fully customizable with appearance API.
+					// https://stripe.com/docs/elements/appearance-api
 					appearance: {},
 				}}
 			>

@@ -8,11 +8,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { BaseURL } from "config/constants";
 
-export interface StripeFormParams {
-	options?: any;
-}
-
-export const StripeForm: React.FC<StripeFormParams> = () => {
+export const StripeForm = () => {
 	const stripe = useStripe();
 	const elements = useElements();
 
