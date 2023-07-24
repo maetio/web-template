@@ -37,7 +37,7 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 			<div className="items-center flex justify-center gap-x-4">
 				{ranking < 3 ? (
 					<div className="grid grid-cols-2 gap-x-2 items-center justify-end">
-						<div className="flex col-span-1">
+						<div className="flex col-span-1 items-center">
 							<FaMedal
 								className={`${medalColor[ranking]} text-base md:text-lg`}
 							/>
