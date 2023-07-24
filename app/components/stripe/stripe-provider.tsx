@@ -9,7 +9,7 @@ export interface StripeCheckoutParams {
 }
 
 export /**
- * all in one stripe component that displays the stripe form and checkout button.
+ * All in one stripe component that displays the stripe form and checkout button.
  * the client side 'Element' element is used as a provider for the useStripe hook in the
  * child componetents
  *
@@ -22,11 +22,12 @@ export /**
  * }
  * @return {*}
  */
-const StripeCheckout: React.FC<StripeCheckoutParams> = ({ paymentIntent }) => {
+const StripeProvider: React.FC<StripeCheckoutParams> = ({ paymentIntent }) => {
+	// check if the env variable exists
+	if (!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) throw Error("No Stripe Publishable key in the env.");
+
 	// load stripe
-	const stripePromise = loadStripe(
-		process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
-	);
+	const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 	return (
 		<section>

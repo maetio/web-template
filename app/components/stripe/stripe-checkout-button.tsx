@@ -9,7 +9,7 @@ import {
 import { BaseURL } from "config/constants";
 
 export /**
- * displays the stripe checkout component, and also processes the payment
+ * Displays the stripe checkout component, and also processes the payment
  * on succes, but navigate the user to the /profile screen
  *
  * @return {*}
