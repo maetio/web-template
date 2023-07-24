@@ -18,16 +18,18 @@ export async function GET(
 	// get the parameters from the query
 	const gameID = params.id;
 
-
 	try {
 		// get the game from collection group
 		if (gameID?.length) {
 			const game = await gamesCollection.doc(gameID).get();
 			const gameData = { ...game.data(), id: game.id };
-			console.log("here is the game", game, "here is the game data", game.data());
-			return NextResponse.json(
-				gameData || { id: gameID }
+			console.log(
+				"here is the game",
+				game,
+				"here is the game data",
+				game.data()
 			);
+			return NextResponse.json(gameData || { id: gameID });
 		}
 		throw Error("API route requires a game id");
 	} catch (error: any) {

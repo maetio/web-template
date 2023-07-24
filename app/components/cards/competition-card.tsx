@@ -57,18 +57,16 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 		pickleball: (
 			<MdSportsTennis className="text-xs text-gray-400 lg:text-base" />
 		),
-		
 	};
-
 
 	return (
 		<div
 			{...divParams}
 			className={`border w-${
 				String(width) || "auto"
-			} mt-3 min-w-full rounded-md p-2 shadow-lg lg:w-2/3 h-auto`}
+			} mt-3 h-auto min-w-full rounded-md p-2 shadow-lg lg:w-2/3`}
 		>
-			<div className="grid-rows-12 grid pl-3 pr-2 pt-3 h-auto">
+			<div className="grid-rows-12 grid h-auto pl-3 pr-2 pt-3">
 				<div className="row-span-4 grid grid-cols-12">
 					<div className="col-span-2 flex">
 						{competition.image ? (
@@ -131,7 +129,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 					</div>
 				</div>
 				<div className="row-span-6 mb-4 grid h-48 grid-cols-12 items-center gap-8">
-					<div className="col-span-12 flex flex-col h-auto">
+					<div className="col-span-12 flex h-auto flex-col">
 						<ul>
 							{topPlayers.map((player, rank) => (
 								<li key={player.id}>

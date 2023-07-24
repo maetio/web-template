@@ -33,11 +33,14 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 	...divParams
 }) => {
 	return (
-		<div {...divParams} className="flex justify-between gap-x-6 py-5 h-20 border-b">
-			<div className="items-center flex justify-center gap-x-4">
+		<div
+			{...divParams}
+			className="flex h-20 justify-between gap-x-6 border-b py-5"
+		>
+			<div className="flex items-center justify-center gap-x-4">
 				{ranking < 3 ? (
-					<div className="grid grid-cols-2 gap-x-2 items-center justify-end">
-						<div className="flex col-span-1 items-center">
+					<div className="grid grid-cols-2 items-center justify-end gap-x-2">
+						<div className="col-span-1 flex items-center">
 							<FaMedal
 								className={`${medalColor[ranking]} text-base md:text-lg`}
 							/>
@@ -47,15 +50,13 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 						</h1>
 					</div>
 				) : (
-					<div className="grid grid-cols-2 gap-x-2 items-center justify-end">
-						<div className="flex col-span-1">
-						</div>
-						<div className="flex col-span-1">
+					<div className="grid grid-cols-2 items-center justify-end gap-x-2">
+						<div className="col-span-1 flex"></div>
+						<div className="col-span-1 flex">
 							<h1 className="flex-none text-xl font-bold">
 								{ranking + 1}
 							</h1>
 						</div>
-						
 					</div>
 				)}
 				<NextImage
@@ -65,8 +66,7 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 				/>
 				<div className="min-w-0 flex-auto">
 					<p className="text-sm font-bold leading-6 text-gray-900 dark:text-white ">
-						{player.firstName}{" "}
-						{player.lastName}
+						{player.firstName} {player.lastName}
 					</p>
 					<p className="mt-1 truncate text-xs leading-5 text-gray-500 dark:text-white ">
 						{player.type}
@@ -78,38 +78,28 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 					<div className="absolute rounded-md p-3">
 						<MaetIcon size={10} />
 					</div>
-					<p className="ml-16 truncate text-sm font-medium text-gray-500 dark:text-white justify-center">
-                Rating
+					<p className="ml-16 justify-center truncate text-sm font-medium text-gray-500 dark:text-white">
+						Rating
 					</p>
 				</dt>
 				<dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
 					<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
-						{Math.round(
-							player.rating?.displayRating ||
-                        100
-						)}
+						{Math.round(player.rating?.displayRating || 100)}
 					</p>
 					<p
 						className={classNames(
-							player?.deltaRating
-								?.displayRating &&
-                        player?.deltaRating
-                        	?.displayRating >= 0
+							player?.deltaRating?.displayRating &&
+								player?.deltaRating?.displayRating >= 0
 								? "text-green-600"
 								: "text-red-600",
 							"ml-2 flex items-baseline text-sm font-semibold"
 						)}
 					>
-						{player?.deltaRating
-							?.displayRating &&
-                player?.deltaRating
-                	?.displayRating >= 0
+						{player?.deltaRating?.displayRating &&
+						player?.deltaRating?.displayRating >= 0
 							? "+"
 							: ""}
-						{Math.round(
-							player?.deltaRating
-								?.displayRating || 0
-						)}
+						{Math.round(player?.deltaRating?.displayRating || 0)}
 					</p>
 				</dd>
 			</div>

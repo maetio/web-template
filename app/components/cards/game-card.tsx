@@ -35,7 +35,6 @@ const GameCard: React.FC<GameCardProps> = async ({
 	verified,
 	...divParams
 }) => {
-
 	// get game data
 	const gameResponse = await fetch(`${BaseURL}/api/game/${id}`);
 	const game: GameResponseType = await gameResponse.json();
@@ -46,7 +45,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 	return (
 		<div
 			{...divParams}
-			className="mt-4 grid h-48 grid-cols-12 justify-start min-w-full gap-4 rounded-xl border p-4 align-top shadow-lg"
+			className="mt-4 grid h-48 min-w-full grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg"
 		>
 			<div className="col-span-3 flex flex-col items-center justify-center">
 				{game.team1?.image ? (
@@ -58,14 +57,16 @@ const GameCard: React.FC<GameCardProps> = async ({
 				) : (
 					<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 				)}
-				<div className="flex-col flex justify-center">
+				<div className="flex flex-col justify-center">
 					<p className="p-2 text-center text-xs font-semibold lg:text-sm">
 						{game.team1?.lastName}
 					</p>
 					<div className="flex items-center justify-center">
 						<XSGrayMaetIcon />
 						<p className="ml-1 text-xs text-gray-500">
-							{Math.round(game.team1?.rating?.displayRating || 100)}
+							{Math.round(
+								game.team1?.rating?.displayRating || 100
+							)}
 						</p>
 					</div>
 				</div>
@@ -76,10 +77,12 @@ const GameCard: React.FC<GameCardProps> = async ({
 						<p className="font-semibold">{game.competitionName}</p>
 						<div className="mt-1 flex items-center justify-center">
 							<p className="text-xs text-gray-300">
-								{showTimeOrDate( new Date(game.startTimeISO || ""))}
+								{showTimeOrDate(
+									new Date(game.startTimeISO || "")
+								)}
 							</p>
 						</div>
-						<div className="flex-row lg:w-32 min-w-full">
+						<div className="min-w-full flex-row lg:w-32">
 							<div className="col-span-2 mt-1 grid grid-cols-2 items-center">
 								{gameStatus !== "unreported" ? (
 									<div className="col-span-1 mt-1 flex items-center justify-start">
@@ -120,13 +123,13 @@ const GameCard: React.FC<GameCardProps> = async ({
 									<div></div>
 								)}
 							</div>
-							<div className="mt-2 flex h-6 lg:mt-6 items-center justify-center">
+							<div className="mt-2 flex h-6 items-center justify-center lg:mt-6">
 								{gameStatus ? (
-									<div className="p-2 flex h-6 min-w-full items-center justify-center rounded-full bg-green-300 text-xs">
+									<div className="flex h-6 min-w-full items-center justify-center rounded-full bg-green-300 p-2 text-xs">
 										<p>Verified</p>
 									</div>
 								) : (
-									<div className="p-2 flex h-6 min-w-full items-center justify-center rounded-full bg-blue-200 text-xs">
+									<div className="flex h-6 min-w-full items-center justify-center rounded-full bg-blue-200 p-2 text-xs">
 										<p>Scheduled</p>
 									</div>
 								)}
@@ -164,14 +167,16 @@ const GameCard: React.FC<GameCardProps> = async ({
 				) : (
 					<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
 				)}
-				<div className="flex-col flex justify-center">
+				<div className="flex flex-col justify-center">
 					<p className="p-2 text-center text-xs font-semibold lg:text-sm">
 						{game.team2?.lastName}
 					</p>
 					<div className="flex items-center justify-center">
 						<XSGrayMaetIcon />
 						<p className="ml-1 text-xs text-gray-500">
-							{Math.round(game.team2?.rating?.displayRating || 100)}
+							{Math.round(
+								game.team2?.rating?.displayRating || 100
+							)}
 						</p>
 					</div>
 				</div>

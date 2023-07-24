@@ -31,7 +31,6 @@ export type GameProfilesResponseType = ({ id: string } & Partial<
 	SubcollectionDataTypes["game-profiles"]
 >)[];
 
-
 export type ProfilesResponseType = ({ id: string } & Partial<
 	CollectionDataTypes["profiles"]
 >)[];
