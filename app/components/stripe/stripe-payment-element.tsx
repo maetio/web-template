@@ -73,16 +73,20 @@ const StripePaymentElement: React.FC<StripePaymentElementParams> = ({ redirectUR
 		<section>
 			<form onSubmit={handleSubmit}>
 				<PaymentElement />
-				<ActionButton
-					isLoading={isLoading}
-					className="mt-5 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-					disabled={!stripe}
-					type="submit"
-				>
+				<div className="py-6">
+					<ActionButton
+						isLoading={isLoading}
+						// className="mt-5 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+						className="w-full mt-6"
+						colorVariant="indigo"
+						disabled={!stripe}
+						type="submit"
+					>
 					Join Competition
-				</ActionButton>
+					</ActionButton>
+				</div>
 				{/* Show error message to your customers */}
-				{errorMessage && <div>{errorMessage}</div>}
+				{errorMessage && <div className="w-full text-center text-red-600">{errorMessage}</div>}
 			</form>
 		</section>
 	);
