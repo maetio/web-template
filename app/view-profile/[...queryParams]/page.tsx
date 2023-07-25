@@ -9,6 +9,7 @@ import {
 	FaLocationArrow,
 	FaVolleyball,
 } from "react-icons/fa6";
+import { HiArrowUp, HiArrowDown } from "react-icons/hi2";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { MaetIcon } from "app/components/icons";
 import { MdSportsTennis } from "react-icons/md";
@@ -57,6 +58,8 @@ export default async function ViewProfileScreen({
 		volleyball: <FaVolleyball className="text-xs lg:text-base" />,
 		pickleball: <MdSportsTennis className="text-xs lg:text-base" />,
 	};
+
+	
 	return (
 		<main className="mx-10 space-y-12">
 			{/* <h1>
@@ -154,6 +157,44 @@ export default async function ViewProfileScreen({
 				</div>
 			</div>
 			<div className="flex flex-col justify-center">
+				<div>
+					<h3 className="text-base font-semibold leading-6 text-gray-900">Average Rating</h3>
+					<dl className="mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow md:grid-cols-3 md:divide-x md:divide-y-0">
+						<div key={profileData.id} className="px-4 py-5 sm:p-6">
+							<dt className="text-base font-normal text-gray-900">{profileData.firstName}</dt>
+							<dd className="mt-1 flex items-baseline justify-between md:block lg:flex">
+								<div className="flex items-baseline text-2xl font-semibold text-indigo-600">
+									<p className="ml-2 text-xs font-bold md:text-base">{Math.round(
+										profileData.rating?.displayRating || 100
+									)}</p>
+								</div>
+
+								<div
+									className={classNames(
+										profileData?.deltaRating?.displayRating &&
+											profileData?.deltaRating
+												?.displayRating >= 0
+											? "text-green-600"
+											: "text-red-600",
+										"ml-2 flex text-xs font-bold md:text-base"
+									)}
+								>
+									{profileData?.deltaRating?.displayRating &&
+							profileData?.deltaRating?.displayRating >= 0 ? (
+											<HiArrowUp className="flex items-baseline text-xs font-bold text-green-600 md:text-base" />
+										) : (
+											<HiArrowDown className="flex items-baseline text-xs font-bold text-red-600 md:text-base" />
+										)}
+
+									<span className="sr-only"> by </span>
+									{Math.round(
+										profileData?.deltaRating?.displayRating || 0
+									)}
+								</div>
+							</dd>
+						</div>
+					</dl>
+				</div>
 				<div className="flex flex-col items-center">
 					<div className="flex flex-row gap-x-8">
 						<button>
