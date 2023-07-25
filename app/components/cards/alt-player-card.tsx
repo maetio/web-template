@@ -8,6 +8,7 @@ import { NextImage } from "app/components/image";
 export interface PlayerCardProps extends Omit<LinkProps, "href"> {
 	player: Partial<Profile>;
 	ranking?: number;
+	animate?: boolean;
 }
 
 function classNames(...classes: string[]) {
@@ -24,6 +25,7 @@ const medalColor: string[] = [
 const AltPlayerCard: React.FC<PlayerCardProps> = ({
 	player,
 	ranking,
+	animate,
 	...divParams
 }) => {
 	return (
@@ -31,7 +33,7 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 			href={`view-profile/${player.userID}/${player.sport}`}
 			// eslint-disable-next-line react/jsx-props-no-spreading
 			{...divParams}
-			className="flex h-20 justify-between gap-x-6 border-b"
+			className="flex h-20 justify-between gap-x-6"
 		>
 			<div className="flex items-center justify-center gap-x-4">
 				{typeof ranking === "number" ?

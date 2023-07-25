@@ -198,9 +198,9 @@ export default async function ViewCompScreen({
 						Games
 					</h3>
 				</main>
-				<aside className="top-8 col-span-6 overflow-y-auto py-6 lg:col-span-2">
+				<aside className="mt-12 top-8 col-span-6 lg:col-span-2 border border-gray-900/7 rounded-lg">
 					{/* Right column area */}
-					<h3 className="text-base font-semibold leading-6 text-gray-900">
+					<h3 className="text-base font-semibold leading-6 text-gray-900 px-4 border-b pb-3 pt-6 bg-gray-100">
 						Player Rankings
 					</h3>
 					<ul
@@ -208,7 +208,7 @@ export default async function ViewCompScreen({
 						className="h-96 divide-y divide-gray-100 overflow-y-auto"
 					>
 						{players.map((player, rank) => (
-							<li key={player.id}>
+							<li key={player.id} className="px-5 border-b">
 								<AltPlayerCard key={player.id} player={player} ranking={rank} />
 							</li>
 						))}
