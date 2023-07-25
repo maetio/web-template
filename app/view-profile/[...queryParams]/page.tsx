@@ -2,8 +2,6 @@ import React from "react";
 import { BaseURL } from "config/constants";
 import { GameProfilesResponseType, PlayerResponseType } from "types/next-api";
 import {
-	FaArrowTrendDown,
-	FaArrowTrendUp,
 	FaBasketball,
 	FaFutbol,
 	FaLocationArrow,
@@ -11,10 +9,9 @@ import {
 } from "react-icons/fa6";
 import { HiArrowUp, HiArrowDown } from "react-icons/hi2";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
-import { HeaderMaetIcon, MaetIcon } from "app/components/icons";
+import { HeaderMaetIcon } from "app/components/icons";
 import { MdSportsTennis } from "react-icons/md";
 import { Competition } from "types/competition";
-import { capitalizeFirstLetter } from "utils/format";
 import { GameCard } from "app/components/cards";
 
 function classNames(...classes: string[]) {
