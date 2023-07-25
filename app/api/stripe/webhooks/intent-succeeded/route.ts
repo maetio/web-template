@@ -39,7 +39,6 @@ export async function POST(req: NextRequest) {
 
 	try {
 		const body = await req.text();
-		console.log("body", body);
 		if (sig) {
 			// get the event
 			const event = stripe.webhooks.constructEvent(

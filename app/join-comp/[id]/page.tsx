@@ -62,7 +62,6 @@ export default async function JoinCompScreen({
 					user?.id
 				);
 			}
-			console.log("No user id");
 		} catch (e: any) {
 			console.warn("error with form action", e);
 		}

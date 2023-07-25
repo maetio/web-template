@@ -103,9 +103,7 @@ export default async function ViewCompScreen({
 						{competitionData?.name}
 					</h1>
 					<p className="flex flex-wrap">
-						Repudiandae sint consequuntur vel. Amet ut nobis
-						explicabo numquam expedita quia omnis voluptatem. Minus
-						quidem ipsam quia iusto.
+						{competitionData?.description}
 					</p>
 					<div className="flex flex-row py-12">
 						{compPlayer?.rating?.displayRating ? (
@@ -206,7 +204,11 @@ export default async function ViewCompScreen({
 			{/* 3 column wrapper */}
 			<div className="mx-auto grid grid-cols-6">
 				{/* Left sidebar & main wrapper */}
-				<main className="col-span-6 flex-1 overflow-y-auto py-6 lg:col-span-4"></main>
+				<main className="col-span-6 flex-1 overflow-y-auto py-6 lg:col-span-4">
+					<h3 className="text-base font-semibold leading-6 text-gray-900">
+						Player Rankings
+					</h3>
+				</main>
 				<aside className="h-50 sticky top-8 col-span-6 overflow-y-auto py-6 lg:col-span-2">
 					{/* Right column area */}
 					<h3 className="text-base font-semibold leading-6 text-gray-900">
