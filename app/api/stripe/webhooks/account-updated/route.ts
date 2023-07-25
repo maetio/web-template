@@ -5,24 +5,21 @@ import { handleAccountUpdate } from "app/api/stripe/webhooks/webhook-utils";
 // grab envs as string
 const STRIPE_SECRET = process.env.STRIPE_SECRET as string;
 
-const STRIPE_ENDPOINT_SECRET_INTENT_BALANCE = process.env
-	.STRIPE_ENDPOINT_SECRET_INTENT_BALANCE as string;
+const STRIPE_ENDPOINT_SECRET_ACCOUNT = process.env
+	.STRIPE_ENDPOINT_SECRET_ACCOUNT as string;
 
 // initialize stripe
 const stripe = new Stripe(STRIPE_SECRET, {
 	apiVersion: "2022-11-15",
 });
 
+
 /**
- * Stripe webhook that adds profile to the competition after payment
- * stripe handles all the listeners, and just calls this api when the "payment_intent.succeeded" event fires
- *
- * @Docs
- * https://dashboard.stripe.com/test/webhooks/create
+ * A stripe webhook that will update the private-user-data of hosts after completing the stripe signup process
  *
  * @export
  * @param {NextRequest} req
- * @return {*}
+ * @return {*} 
  */
 export async function POST(req: NextRequest) {
 	const origin = req.headers.get("origin");
@@ -36,7 +33,7 @@ export async function POST(req: NextRequest) {
 			const event = stripe.webhooks.constructEvent(
 				body,
 				sig,
-				STRIPE_ENDPOINT_SECRET_INTENT_BALANCE
+				STRIPE_ENDPOINT_SECRET_ACCOUNT
 			);
 
 			if (event && event.type === "account.updated") {
