@@ -3,7 +3,6 @@ import { CompetitionsResponseType } from "types/next-api";
 import Link from "next/link";
 import { BaseURL } from "config/constants";
 import { CompetitionCard } from "./components/cards/competition-card";
-
 /**
  * Home screen of the application. Shows all the competitions.
  *

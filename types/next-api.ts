@@ -15,6 +15,10 @@ export type PlayerResponseType = { id: string } & Partial<
 	CollectionDataTypes["profiles"]
 >;
 
+export type GameResponseType = { id: string } & Partial<
+	CollectionDataTypes["games"]
+>;
+
 export type TeamsResponseType = ({ id: string } & Partial<
 	SubcollectionDataTypes["competition-teams"]
 >)[];
@@ -27,6 +31,6 @@ export type GameProfilesResponseType = ({ id: string } & Partial<
 	SubcollectionDataTypes["game-profiles"]
 >)[];
 
-export type TopPlayersResponseType = ({ id: string } & Partial<
+export type ProfilesResponseType = ({ id: string } & Partial<
 	CollectionDataTypes["profiles"]
 >)[];

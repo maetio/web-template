@@ -18,7 +18,7 @@ export /**
 				className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12"
 				aria-label="Footer"
 			>
-				<div className="pb-6">
+				<div className="pb-6 text-center sm:px-3">
 					<Link
 						href="https://www.maet.io/"
 						className="text-sm leading-6 text-gray-600 hover:text-gray-900"
@@ -26,7 +26,7 @@ export /**
 						About
 					</Link>
 				</div>
-				<div className="pb-6">
+				<div className="pb-6 text-center sm:px-3">
 					<Link
 						href="https://blog.maet.io/"
 						className="text-sm leading-6 text-gray-600 hover:text-gray-900"

@@ -10,8 +10,9 @@ import { Competition } from "types/index";
 import { MdSportsTennis } from "react-icons/md";
 import { showTimeOrDate } from "utils/date";
 import { BaseURL } from "config/constants";
-import { TopPlayersResponseType } from "types/next-api";
-import { PlayerCard } from "./player-card";
+import { ProfilesResponseType } from "types/next-api";
+import { capitalizeFirstLetter } from "utils/format";
+import AltPlayerCard from "./alt-player-card";
 
 export interface CompetitionCardProps
 	extends Omit<
@@ -41,9 +42,9 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 }) => {
 	// get the top [num] players for a competition
 	const topPlayersResponse = await fetch(
-		`${BaseURL}/api/players/${competition.id}/${num || 3}`
+		`${BaseURL}/api/players/${competition.id}/${num || 2}`
 	);
-	const topPlayers: TopPlayersResponseType = await topPlayersResponse.json();
+	const topPlayers: ProfilesResponseType = await topPlayersResponse.json();
 
 	const SportIcons: Record<Competition["sport"], React.ReactElement> = {
 		basketball: (
@@ -58,19 +59,14 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 		),
 	};
 
-	const capitalizeFirstLetter = (str?: String) => {
-		if (str) return str.charAt(0).toUpperCase() + str.slice(1);
-		return "";
-	};
-
 	return (
 		<div
 			{...divParams}
 			className={`border w-${
 				String(width) || "auto"
-			} mt-3 min-w-full rounded-md p-2 shadow-lg lg:w-2/3`}
+			} mt-3 h-auto min-w-full rounded-md p-2 shadow-lg lg:w-2/3`}
 		>
-			<div className="grid-rows-12 grid pl-3 pr-2 pt-3">
+			<div className="grid-rows-12 grid h-auto pl-3 pr-2 pt-3">
 				<div className="row-span-4 grid grid-cols-12">
 					<div className="col-span-2 flex">
 						{competition.image ? (
@@ -133,14 +129,17 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 					</div>
 				</div>
 				<div className="row-span-6 mb-4 grid h-48 grid-cols-12 items-center gap-8">
-					<div className="col-span-12 flex flex-col">
-						{topPlayers.map((player, rank) => (
-							<PlayerCard
-								key={player.id}
-								player={player}
-								ranking={rank}
-							/>
-						))}
+					<div className="col-span-12 flex h-auto flex-col">
+						<ul>
+							{topPlayers.map((player, rank) => (
+								<li key={player.id}>
+									<AltPlayerCard
+										player={player}
+										ranking={rank}
+									/>
+								</li>
+							))}
+						</ul>
 					</div>
 				</div>
 			</div>

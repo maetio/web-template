@@ -1,15 +1,18 @@
 "use client";
 
+import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { StripeCheckoutButtonComp } from "./stripe-checkout-button";
+import { StripePaymentElement } from "./stripe-payment-element";
 
-export interface StripeCheckoutParams {
+export interface StripeCheckoutParams
+	extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
 	paymentIntent: string;
+	redirectURL?: string;
 }
 
 export /**
- * all in one stripe component that displays the stripe form and checkout button.
+ * All in one stripe component that displays the stripe form and checkout button.
  * the client side 'Element' element is used as a provider for the useStripe hook in the
  * child componetents
  *
@@ -22,14 +25,22 @@ export /**
  * }
  * @return {*}
  */
-const StripeCheckout: React.FC<StripeCheckoutParams> = ({ paymentIntent }) => {
+const StripeCheckoutForm: React.FC<StripeCheckoutParams> = ({
+	paymentIntent,
+	redirectURL,
+	...sectionParams
+}) => {
+	// check if the env variable exists
+	if (!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+		throw Error("No Stripe Publishable key in the env.");
+
 	// load stripe
 	const stripePromise = loadStripe(
-		process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
+		process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 	);
 
 	return (
-		<section>
+		<section {...sectionParams}>
 			<Elements
 				stripe={stripePromise}
 				options={{
@@ -39,7 +50,7 @@ const StripeCheckout: React.FC<StripeCheckoutParams> = ({ paymentIntent }) => {
 					appearance: {},
 				}}
 			>
-				<StripeCheckoutButtonComp />
+				<StripePaymentElement />
 			</Elements>
 		</section>
 	);

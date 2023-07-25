@@ -7,14 +7,21 @@ import {
 	PaymentElement,
 } from "@stripe/react-stripe-js";
 import { BaseURL } from "config/constants";
+import { ActionButton } from "app/components/action-button";
+
+interface StripePaymentElementParams {
+	redirectURL?: string;
+}
 
 export /**
- * displays the stripe checkout component, and also processes the payment
+ * Displays the stripe checkout component, and also processes the payment
  * on succes, but navigate the user to the /profile screen
  *
  * @return {*}
  */
-const StripeCheckoutButtonComp: React.FC<{}> = () => {
+const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
+	redirectURL,
+}) => {
 	// setting up the client comment docs
 	// https://stripe.com/docs/connect/collect-then-transfer-guide?platform=web&payment-ui=elements&client=react#set-up-stripe.js
 
@@ -24,9 +31,13 @@ const StripeCheckoutButtonComp: React.FC<{}> = () => {
 
 	// error state
 	const [errorMessage, setErrorMessage] = useState<string>();
+	const [isLoading, setIsLoading] = useState(false);
 
 	// handle the payment(straight from stripes docs)
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+		// set loading state
+		setIsLoading(true);
+
 		// We don't want to let default form submission happen here,
 		// which would refresh the page.
 		event.preventDefault();
@@ -41,7 +52,7 @@ const StripeCheckoutButtonComp: React.FC<{}> = () => {
 			// `Elements` instance that was used to create the Payment Element
 			elements,
 			confirmParams: {
-				return_url: `${BaseURL}/profile`,
+				return_url: redirectURL || `${BaseURL}/`,
 			},
 		});
 
@@ -55,21 +66,33 @@ const StripeCheckoutButtonComp: React.FC<{}> = () => {
 			// methods like iDEAL, your customer will be redirected to an intermediate
 			// site first to authorize the payment, then redirected to the `return_url`.
 		}
+
+		// reset loading state
+		setIsLoading(false);
 	};
 
 	return (
 		<section>
 			<form onSubmit={handleSubmit}>
 				<PaymentElement />
-				<button
-					className="mt-5 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-					disabled={!stripe}
-					type="submit"
-				>
-					Join Competition
-				</button>
+				<div className="py-6">
+					<ActionButton
+						isLoading={isLoading}
+						// className="mt-5 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+						className="mt-6 w-full"
+						colorVariant="indigo"
+						disabled={!stripe}
+						type="submit"
+					>
+						Join Competition
+					</ActionButton>
+				</div>
 				{/* Show error message to your customers */}
-				{errorMessage && <div>{errorMessage}</div>}
+				{errorMessage && (
+					<div className="w-full text-center text-red-600">
+						{errorMessage}
+					</div>
+				)}
 			</form>
 		</section>
 	);

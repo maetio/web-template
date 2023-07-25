@@ -8,7 +8,7 @@ import {
 	useEffect,
 	useMemo,
 } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import { onIdTokenChanged } from "firebase/auth";
 import { auth, privateUserCollection } from "config/client";
 import { PrivateUserData } from "types/index";
 import { getPrivateUserData } from "auth/client";
@@ -38,7 +38,7 @@ export const AuthContextProvider: React.FC<{
 	// detect the auth state change
 	useEffect(() => {
 		// use the firebase on auth state changed listener
-		const unsubscribe = onAuthStateChanged(auth, async (userObserver) => {
+		const unsubscribe = onIdTokenChanged(auth, async (userObserver) => {
 			if (userObserver) {
 				// fetch the private user data
 				const userData = await getPrivateUserData(userObserver.uid);
@@ -54,17 +54,19 @@ export const AuthContextProvider: React.FC<{
 					loggedIn: true,
 				});
 
+				// DO NOT SET THE COOKIE SINCE THE FUNCTIONS ALREADY DO THIS
+
 				// get the id token from firebase
-				const idTokenResult = await userObserver.getIdTokenResult();
+				// const idTokenResult = await userObserver.getIdTokenResult();
 
 				// set the cookie with firebase auth edge middleware
 				// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
-				await fetch("/api/login", {
-					method: "GET",
-					headers: {
-						Authorization: `Bearer ${idTokenResult}`,
-					},
-				});
+				// await fetch("/api/login", {
+				// 	method: "GET",
+				// 	headers: {
+				// 		Authorization: `Bearer ${idTokenResult}`,
+				// 	},
+				// });
 			} else {
 				setUser(null);
 

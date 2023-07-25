@@ -22,7 +22,6 @@ import { averageRatingObjects } from "utils/skill-rating";
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
 }
-
 /**
  * Function will display the competition to the user
  *
