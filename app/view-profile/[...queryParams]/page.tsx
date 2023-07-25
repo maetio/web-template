@@ -134,7 +134,7 @@ export default async function ViewProfileScreen({
 								{profileData?.deltaRating?.displayRating &&
 								profileData?.deltaRating?.displayRating >= 0
 									? "+"
-									: "-"}
+									: ""}
 								{Math.round(
 									profileData?.deltaRating?.displayRating || 0
 								)}
@@ -153,15 +153,7 @@ export default async function ViewProfileScreen({
 					</div>
 				</div>
 			</div>
-			<div className="flex flex-row justify-between">
-				<div className="flex flex-col">
-					<h1 className="text-lg font-semibold md:text-xl">
-						Current Teams
-					</h1>
-					<h1 className="text-lg font-semibold md:text-xl">
-						Previous Teams
-					</h1>
-				</div>
+			<div className="flex flex-col justify-center">
 				<div className="flex flex-col items-center">
 					<div className="flex flex-row gap-x-8">
 						<button>
