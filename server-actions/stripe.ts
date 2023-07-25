@@ -91,7 +91,7 @@ export async function getStripeSession(compID: string | undefined) {
 				// currently Maet is taking 1% of the transaction
 				application_fee_amount: competitionCollection.price * 100 * 0.1,
 				transfer_data: {
-					destination: "acct_1NUtUkCSsxIqErmb",
+					destination: "acct_1NXpu8C14LZbHezA",
 					// destination: hostInformation.stripeID,
 				},
 			});
