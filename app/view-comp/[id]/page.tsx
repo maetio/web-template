@@ -197,6 +197,16 @@ export default async function ViewCompScreen({
 					<h3 className="text-base font-semibold leading-6 text-gray-900">
 						Games
 					</h3>
+					<ul
+						role="list"
+						className="h-96 divide-y divide-gray-100 overflow-y-auto"
+					>
+						{players.map((player, rank) => (
+							<li key={player.id} className="px-5 border-b">
+								<AltPlayerCard key={player.id} player={player} ranking={rank} />
+							</li>
+						))}
+					</ul>
 				</main>
 				<aside className="border-gray-900/7 top-8 col-span-6 mt-12 rounded-lg border lg:col-span-2">
 					{/* Right column area */}

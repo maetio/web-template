@@ -1,4 +1,4 @@
-import { CollectionDataTypes, SubcollectionDataTypes } from ".";
+import { CollectionDataTypes, StartTimestamp, SubcollectionDataTypes } from ".";
 
 /**
  * Reponse type defined here important for importing into the components that hit this api
@@ -18,6 +18,10 @@ export type PlayerResponseType = { id: string } & Partial<
 export type GameResponseType = { id: string } & Partial<
 	CollectionDataTypes["games"]
 >;
+
+export type GamesResponseType = ({ id: string } & Partial<
+	CollectionDataTypes["games"]
+>)[];
 
 export type TeamsResponseType = ({ id: string } & Partial<
 	SubcollectionDataTypes["competition-teams"]
