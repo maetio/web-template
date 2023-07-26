@@ -9,6 +9,7 @@ export interface StripeCheckoutParams
 	extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
 	paymentIntent: string;
 	redirectURL?: string;
+	price: number;
 }
 
 export /**
@@ -28,6 +29,7 @@ export /**
 const StripeCheckoutForm: React.FC<StripeCheckoutParams> = ({
 	paymentIntent,
 	redirectURL,
+	price,
 	...sectionParams
 }) => {
 	// check if the env variable exists
@@ -50,7 +52,7 @@ const StripeCheckoutForm: React.FC<StripeCheckoutParams> = ({
 					appearance: {},
 				}}
 			>
-				<StripePaymentElement />
+				<StripePaymentElement redirectURL={redirectURL} price={price} />
 			</Elements>
 		</section>
 	);

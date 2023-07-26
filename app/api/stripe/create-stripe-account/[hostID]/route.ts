@@ -24,7 +24,6 @@ export async function POST(
 	// get origin from headers
 	const origin = req.headers.get("origin");
 
-	console.log("fired", origin);
 	// get the parameters from the query
 	const { hostID } = params.params;
 	try {
