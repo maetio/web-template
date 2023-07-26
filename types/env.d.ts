@@ -14,6 +14,7 @@ declare module "@env" {
 	export const ALGOLIA_APP_ID: string;
 	export const ALGOLIA_SEARCH: string;
 	export const STRIPE_PUBLISHABLE_KEY: string;
+	export const NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: string;
 	export const STRIPE_HTTP_LINK: string;
 	export const STRIPE_MERCHANT_ID: string;
 	export const DYNAMIC_LINKS_DOMAIN: string;

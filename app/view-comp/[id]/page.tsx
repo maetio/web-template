@@ -8,8 +8,6 @@ import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
 import { MaetIcon } from "app/components/icons";
 import { ActionButton } from "app/components/action-button";
-import Link from "next/link";
-import { FaMedal } from "react-icons/fa6";
 import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
 import {
@@ -18,10 +16,8 @@ import {
 	MdPeopleOutline,
 } from "react-icons/md";
 import { averageRatingObjects } from "utils/skill-rating";
+import AltPlayerCard from "app/components/cards/alt-player-card";
 
-function classNames(...classes: string[]) {
-	return classes.filter(Boolean).join(" ");
-}
 /**
  * Function will display the competition to the user
  *
@@ -73,13 +69,6 @@ export default async function ViewCompScreen({
 		return "Not Ranked";
 	};
 
-	// define medal colors
-	const medalColor: string[] = [
-		"text-yellow-400",
-		"text-gray-400",
-		"text-amber-700",
-	];
-
 	// set parameters for registration
 	const registrationOpen =
 		competitionData?.startTimeISO &&
@@ -103,9 +92,7 @@ export default async function ViewCompScreen({
 						{competitionData?.name}
 					</h1>
 					<p className="flex flex-wrap">
-						Repudiandae sint consequuntur vel. Amet ut nobis
-						explicabo numquam expedita quia omnis voluptatem. Minus
-						quidem ipsam quia iusto.
+						{competitionData?.description}
 					</p>
 					<div className="flex flex-row py-12">
 						{compPlayer?.rating?.displayRating ? (
@@ -206,93 +193,23 @@ export default async function ViewCompScreen({
 			{/* 3 column wrapper */}
 			<div className="mx-auto grid grid-cols-6">
 				{/* Left sidebar & main wrapper */}
-				<main className="col-span-6 flex-1 overflow-y-auto py-6 lg:col-span-4"></main>
-				<aside className="h-50 sticky top-8 col-span-6 overflow-y-auto py-6 lg:col-span-2">
-					{/* Right column area */}
+				<main className="col-span-6 flex-1 overflow-y-auto py-6 lg:col-span-4 border-gray-900/5">
 					<h3 className="text-base font-semibold leading-6 text-gray-900">
+						Games
+					</h3>
+				</main>
+				<aside className="mt-12 top-8 col-span-6 lg:col-span-2 border border-gray-900/7 rounded-lg">
+					{/* Right column area */}
+					<h3 className="text-base font-semibold leading-6 text-gray-900 px-4 border-b pb-3 pt-6 bg-gray-100">
 						Player Rankings
 					</h3>
 					<ul
 						role="list"
-						className="sticky top-0 divide-y divide-gray-100 overflow-y-auto"
+						className="h-96 divide-y divide-gray-100 overflow-y-auto"
 					>
 						{players.map((player, rank) => (
-							<li
-								key={player.id}
-								className="flex justify-between gap-x-6 py-5"
-							>
-								<Link
-									href={`/view-profile/${player.userID}/${player.sport}`}
-								>
-									<div className="align-center flex justify-center gap-x-4">
-										{rank < 3 ? (
-											<div className="col-span-2 flex lg:col-span-1">
-												<FaMedal
-													className={` ${medalColor[rank]} text-base md:text-lg`}
-												/>
-											</div>
-										) : (
-											<div className="flex"></div>
-										)}
-										<h1 className="flex-none text-xl font-bold">
-											{rank + 1}
-										</h1>
-										<NextImage
-											size={50}
-											src={player.image}
-											alt={player.firstName}
-										/>
-										<div className="min-w-0 flex-auto">
-											<p className="text-sm font-bold leading-6 text-gray-900 dark:text-white ">
-												{player.firstName}{" "}
-												{player.lastName}
-											</p>
-											<p className="mt-1 truncate text-xs leading-5 text-gray-500 dark:text-white ">
-												{player.type}
-											</p>
-										</div>
-									</div>
-								</Link>
-								<div className="relative">
-									<dt>
-										<div className="absolute rounded-md p-3">
-											<MaetIcon size={10} />
-										</div>
-										<p className="ml-16 truncate text-sm font-medium text-gray-500 dark:text-white ">
-											Rating
-										</p>
-									</dt>
-									<dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
-										<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
-											{Math.round(
-												player.rating?.displayRating ||
-													100
-											)}
-										</p>
-										<p
-											className={classNames(
-												player?.deltaRating
-													?.displayRating &&
-													player?.deltaRating
-														?.displayRating >= 0
-													? "text-green-600"
-													: "text-red-600",
-												"ml-2 flex items-baseline text-sm font-semibold"
-											)}
-										>
-											{player?.deltaRating
-												?.displayRating &&
-											player?.deltaRating
-												?.displayRating >= 0
-												? "+"
-												: ""}
-											{Math.round(
-												player?.deltaRating
-													?.displayRating || 0
-											)}
-										</p>
-									</dd>
-								</div>
+							<li key={player.id} className="px-5 border-b">
+								<AltPlayerCard key={player.id} player={player} ranking={rank} />
 							</li>
 						))}
 					</ul>

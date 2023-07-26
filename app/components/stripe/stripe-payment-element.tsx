@@ -11,6 +11,7 @@ import { ActionButton } from "app/components/action-button";
 
 interface StripePaymentElementParams {
 	redirectURL?: string;
+	price: number;
 }
 
 export /**
@@ -21,6 +22,7 @@ export /**
  */
 const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
 	redirectURL,
+	price,
 }) => {
 	// setting up the client comment docs
 	// https://stripe.com/docs/connect/collect-then-transfer-guide?platform=web&payment-ui=elements&client=react#set-up-stripe.js
@@ -79,17 +81,16 @@ const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
 					<ActionButton
 						isLoading={isLoading}
 						// className="mt-5 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-						className="mt-6 w-full"
+						className="mt-6 w-full text-lg"
 						colorVariant="indigo"
 						disabled={!stripe}
 						type="submit"
-					>
-						Join Competition
-					</ActionButton>
+						title={`Pay $${price}`}
+					/>
 				</div>
 				{/* Show error message to your customers */}
 				{errorMessage && (
-					<div className="w-full text-center text-red-600">
+					<div className="w-full h-50 text-center text-red-600">
 						{errorMessage}
 					</div>
 				)}

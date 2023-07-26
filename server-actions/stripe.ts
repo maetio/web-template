@@ -55,11 +55,11 @@ export async function getStripeSession(compID: string | undefined) {
 		// get the competition information from firestore. Although convenient, we DO NOT send this information in the body of the response.
 		// This is becuase it could be manipulated from the frontend to change the price of a competition
 		const competitionCollectionRef = competitionsCollection.doc(compID);
-		const competitionCollection = (
+		const competitionData = (
 			await competitionCollectionRef.get()
 		).data();
 
-		if (competitionCollection?.price && competitionCollection.hostID) {
+		if (competitionData?.price && competitionData.hostID) {
 			// all the commented out code below is 100% needed. Currently the destination(where the payment is going to) is hard coded.
 			// This is because, the fake data gnerators, don't include hostIDs for the private-user-data.
 			// down below I have the needed code to get the host stripeID from firestore and we check to make sure we have it before running the 'stripe?.ephemeralKeys.create'
@@ -81,7 +81,7 @@ export async function getStripeSession(compID: string | undefined) {
 					userID: user.id,
 				},
 
-				amount: competitionCollection.price,
+				amount: competitionData.price,
 
 				currency: "usd",
 				customer: customerID,
@@ -89,7 +89,7 @@ export async function getStripeSession(compID: string | undefined) {
 					enabled: true,
 				},
 				// currently Maet is taking 1% of the transaction
-				application_fee_amount: competitionCollection.price * 100 * 0.1,
+				application_fee_amount: competitionData.price * 100 * 0.1,
 				transfer_data: {
 					destination: "acct_1NUtUkCSsxIqErmb",
 					// destination: hostInformation.stripeID,
