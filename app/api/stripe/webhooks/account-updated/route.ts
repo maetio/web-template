@@ -13,13 +13,12 @@ const stripe = new Stripe(STRIPE_SECRET, {
 	apiVersion: "2022-11-15",
 });
 
-
 /**
  * A stripe webhook that will update the private-user-data of hosts after completing the stripe signup process
  *
  * @export
  * @param {NextRequest} req
- * @return {*} 
+ * @return {*}
  */
 export async function POST(req: NextRequest) {
 	const origin = req.headers.get("origin");
