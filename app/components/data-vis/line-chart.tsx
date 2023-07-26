@@ -13,7 +13,7 @@ export interface LineChartProps {
   
 const LineChart: React.FC<LineChartProps> = ({title, dataset, labels, variable}) => {
 	const data = {
-		labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+		labels,
 		// datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
 		datasets: [
 			{
