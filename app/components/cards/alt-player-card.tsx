@@ -1,19 +1,14 @@
 import React from "react";
 import { Profile } from "types/index";
 import { FaMedal } from "react-icons/fa6";
-import { MaetIcon } from "../icons";
-import { NextImage } from "../image";
+import Link, { LinkProps } from "next/link";
+import { MaetIcon } from "app/components/icons";
+import { NextImage } from "app/components/image";
 
-export interface PlayerCardProps
-	extends Omit<
-		React.DetailedHTMLProps<
-			React.HTMLAttributes<HTMLDivElement>,
-			HTMLDivElement
-		>,
-		"color"
-	> {
+export interface PlayerCardProps extends Omit<LinkProps, "href"> {
 	player: Partial<Profile>;
-	ranking: number;
+	ranking?: number;
+	animate?: boolean;
 }
 
 function classNames(...classes: string[]) {
@@ -30,50 +25,46 @@ const medalColor: string[] = [
 const AltPlayerCard: React.FC<PlayerCardProps> = ({
 	player,
 	ranking,
+	animate,
 	...divParams
 }) => {
 	return (
-		<div
+		<Link
+			href={`/view-profile/${player.userID}/${player.sport}`}
+			// eslint-disable-next-line react/jsx-props-no-spreading
 			{...divParams}
-			className="flex h-20 justify-between gap-x-6 border-b py-5"
+			className="flex h-20 justify-between gap-x-6"
 		>
 			<div className="flex items-center justify-center gap-x-4">
-				{ranking < 3 ? (
-					<div className="grid grid-cols-2 items-center justify-end gap-x-2">
-						<div className="col-span-1 flex items-center">
-							<FaMedal
-								className={`${medalColor[ranking]} text-base md:text-lg`}
-							/>
-						</div>
+				{typeof ranking === "number" ? (
+					<div className="flex w-10 flex-col place-items-center">
 						<h1 className="flex-none text-xl font-bold">
 							{ranking + 1}
 						</h1>
+						{ranking < 3 ? (
+							<div className="flex items-center">
+								<FaMedal
+									className={`${medalColor[ranking]} text-base md:text-lg`}
+								/>
+							</div>
+						) : null}
 					</div>
-				) : (
-					<div className="grid grid-cols-2 items-center justify-end gap-x-2">
-						<div className="col-span-1 flex"></div>
-						<div className="col-span-1 flex">
-							<h1 className="flex-none text-xl font-bold">
-								{ranking + 1}
-							</h1>
-						</div>
-					</div>
-				)}
+				) : null}
 				<NextImage
 					size={50}
 					src={player.image}
 					alt={player.firstName}
 				/>
 				<div className="min-w-0 flex-auto">
-					<p className="text-sm font-bold leading-6 text-gray-900 dark:text-white ">
-						{player.firstName} {player.lastName}
+					<p className="truncate text-sm font-bold leading-6 text-gray-900 dark:text-white">
+						{player.firstName}
 					</p>
-					<p className="mt-1 truncate text-xs leading-5 text-gray-500 dark:text-white ">
-						{player.type}
+					<p className="truncate text-sm font-bold leading-6 text-gray-900 dark:text-white">
+						{player.lastName}
 					</p>
 				</div>
 			</div>
-			<div className="relative">
+			<div className="relative self-center">
 				<dt>
 					<div className="absolute rounded-md p-3">
 						<MaetIcon size={10} />
@@ -82,7 +73,7 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 						Rating
 					</p>
 				</dt>
-				<dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
+				<dd className="ml-16 flex items-baseline">
 					<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
 						{Math.round(player.rating?.displayRating || 100)}
 					</p>
@@ -103,7 +94,7 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 					</p>
 				</dd>
 			</div>
-		</div>
+		</Link>
 	);
 };
 

@@ -1,7 +1,7 @@
+import { Timestamp } from "firebase/firestore";
 import { Competition } from "./competition";
 import { Rating } from "./rating";
 import { Location } from "./location";
-import { Timestamp } from "firebase/firestore";
 
 /**
  * Team interface, will have a list of users on it

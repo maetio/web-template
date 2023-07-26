@@ -23,12 +23,6 @@ export async function GET(
 		if (gameID?.length) {
 			const game = await gamesCollection.doc(gameID).get();
 			const gameData = { ...game.data(), id: game.id };
-			console.log(
-				"here is the game",
-				game,
-				"here is the game data",
-				game.data()
-			);
 			return NextResponse.json(gameData || { id: gameID });
 		}
 		throw Error("API route requires a game id");

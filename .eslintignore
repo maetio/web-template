@@ -5,3 +5,4 @@ metro.config.js
 index.js
 app.config.js
 functions/
+node_modules/
