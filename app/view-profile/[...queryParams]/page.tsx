@@ -137,7 +137,7 @@ export default async function ViewProfileScreen({
 						<div className="px-4 py-5 sm:p-6">
 							<dt className="text-xl font-semibold text-gray-900">Data Visualization</dt>
 							<dd className="mt-3 flex items-baseline justify-between md:block lg:flex">
-								<LineChart variable={`${profileData.firstName} ${profileData.lastName}`} dataset={gameProfiles.map((data) => data.rating?.displayRating)} title="Rating Change Over Time" labels={gameProfiles.map((data) => (String(data.id)))} />
+								<LineChart variable={`${profileData.firstName} ${profileData.lastName}`} dataset={gameProfiles.map((data) => Math.round(data.rating?.displayRating || 100))} title="Rating Change Over Time" labels={gameProfiles.map((data) => (String(data.id)))} />
 							</dd>
 						</div>
 					</dl>
