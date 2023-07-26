@@ -30,7 +30,7 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 }) => {
 	return (
 		<Link
-			href={`view-profile/${player.userID}/${player.sport}`}
+			href={`/view-profile/${player.userID}/${player.sport}`}
 			// eslint-disable-next-line react/jsx-props-no-spreading
 			{...divParams}
 			className="flex h-20 justify-between gap-x-6"
