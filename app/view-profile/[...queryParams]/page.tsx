@@ -119,7 +119,6 @@ export default async function ViewProfileScreen({
 											<HiArrowDown className="flex items-baseline text-xs font-bold text-red-600 md:text-base" />
 										)}
 
-									<span className="sr-only"> by </span>
 									{Math.round(
 										profileData?.deltaRating?.displayRating || 0
 									)}
@@ -152,11 +151,6 @@ export default async function ViewProfileScreen({
 						<button>
 							<BiSolidRightArrow className="hover:fill-gray-700" />
 						</button>
-					</div>
-					<div className="flex">
-						<p className="text-sm md:text-base">
-							{gameProfiles.length} scheduled games
-						</p>
 					</div>
 					<div className="flex flex-col items-center">
 						{gameProfiles.map((gameProf) => (
