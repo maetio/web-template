@@ -1,4 +1,4 @@
-import { CollectionDataTypes, StartTimestamp, SubcollectionDataTypes } from ".";
+import { CollectionDataTypes, SubcollectionDataTypes } from ".";
 
 /**
  * Reponse type defined here important for importing into the components that hit this api

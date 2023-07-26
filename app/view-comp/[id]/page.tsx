@@ -2,6 +2,7 @@ import React from "react";
 import {
 	CompProfilesResponseType,
 	CompetitionsResponseType,
+	GamesResponseType,
 	PlayersResponseType,
 } from "types/next-api";
 import { BaseURL } from "config/constants";
@@ -17,6 +18,7 @@ import {
 } from "react-icons/md";
 import { averageRatingObjects } from "utils/skill-rating";
 import AltPlayerCard from "app/components/cards/alt-player-card";
+import GameCard from "app/components/cards/alt-game-card";
 
 /**
  * Function will display the competition to the user
@@ -49,9 +51,9 @@ export default async function ViewCompScreen({
 	const playersResponse = await fetch(`${BaseURL}/api/players/${params.id}`);
 	const players: PlayersResponseType = await playersResponse.json();
 
-	// get the competition teams
-	// const teamsResponse = await fetch(`${BaseURL}/api/teams/${params.id}`);
-	// const teams: TeamsResponseType = await teamsResponse.json();
+	// get the competition games
+	const gamesResponse = await fetch(`${BaseURL}/api/games/${params.id}`);
+	const games: GamesResponseType = await gamesResponse.json();
 
 	// get if the player has joined the competition
 	const compPlayerResponse = await fetch(
@@ -201,9 +203,9 @@ export default async function ViewCompScreen({
 						role="list"
 						className="h-96 divide-y divide-gray-100 overflow-y-auto"
 					>
-						{players.map((player, rank) => (
-							<li key={player.id} className="px-5 border-b">
-								<AltPlayerCard key={player.id} player={player} ranking={rank} />
+						{games.map((game) => (
+							<li key={game.id} className="px-5 border-b">
+								<GameCard id={game.id} />
 							</li>
 						))}
 					</ul>
