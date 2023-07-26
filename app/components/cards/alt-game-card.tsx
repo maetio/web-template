@@ -83,7 +83,11 @@ const GameCard: React.FC<GameCardProps> = async ({
 							<p className="text-xs text-gray-300">
 								{getShortDateString(
 									new Date(game.startTimeISO || "")
-								)} at {getTimeString(new Date(game.startTimeISO || ""))}
+								)}{" "}
+								at{" "}
+								{getTimeString(
+									new Date(game.startTimeISO || "")
+								)}
 							</p>
 						</div>
 						<div className="min-w-full flex-row lg:w-32">

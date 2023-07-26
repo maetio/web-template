@@ -193,9 +193,9 @@ export default async function ViewCompScreen({
 				</dl>
 			</div>
 			{/* 3 column wrapper */}
-			<div className="mx-auto grid grid-cols-6 pt-12 gap-x-6">
+			<div className="mx-auto grid grid-cols-6 gap-x-6 pt-12">
 				{/* Left sidebar & main wrapper */}
-				<main className="border border-gray-900/7 rounded-lg top-8 col-span-6 lg:col-span-4">
+				<main className="border-gray-900/7 top-8 col-span-6 rounded-lg border lg:col-span-4">
 					<h3 className="border-b bg-gray-100 px-4 pb-3 pt-3 text-base font-semibold leading-6 text-gray-900">
 						Games
 					</h3>
