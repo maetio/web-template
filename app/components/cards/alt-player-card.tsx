@@ -36,8 +36,8 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 			className="flex h-20 justify-between gap-x-6"
 		>
 			<div className="flex items-center justify-center gap-x-4">
-				{typeof ranking === "number" ?
-					<div className="flex flex-col place-items-center w-10">
+				{typeof ranking === "number" ? (
+					<div className="flex w-10 flex-col place-items-center">
 						<h1 className="flex-none text-xl font-bold">
 							{ranking + 1}
 						</h1>
@@ -47,19 +47,19 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 									className={`${medalColor[ranking]} text-base md:text-lg`}
 								/>
 							</div>
-						) : null }
-					</div> : null
-				}
+						) : null}
+					</div>
+				) : null}
 				<NextImage
 					size={50}
 					src={player.image}
 					alt={player.firstName}
 				/>
 				<div className="min-w-0 flex-auto">
-					<p className="text-sm font-bold leading-6 text-gray-900 dark:text-white truncate">
+					<p className="truncate text-sm font-bold leading-6 text-gray-900 dark:text-white">
 						{player.firstName}
 					</p>
-					<p className="text-sm font-bold leading-6 text-gray-900 dark:text-white truncate">
+					<p className="truncate text-sm font-bold leading-6 text-gray-900 dark:text-white">
 						{player.lastName}
 					</p>
 				</div>

@@ -90,7 +90,7 @@ const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
 				</div>
 				{/* Show error message to your customers */}
 				{errorMessage && (
-					<div className="w-full h-50 text-center text-red-600">
+					<div className="h-50 w-full text-center text-red-600">
 						{errorMessage}
 					</div>
 				)}

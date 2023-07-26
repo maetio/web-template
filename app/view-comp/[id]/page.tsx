@@ -193,14 +193,14 @@ export default async function ViewCompScreen({
 			{/* 3 column wrapper */}
 			<div className="mx-auto grid grid-cols-6">
 				{/* Left sidebar & main wrapper */}
-				<main className="col-span-6 flex-1 overflow-y-auto py-6 lg:col-span-4 border-gray-900/5">
+				<main className="col-span-6 flex-1 overflow-y-auto border-gray-900/5 py-6 lg:col-span-4">
 					<h3 className="text-base font-semibold leading-6 text-gray-900">
 						Games
 					</h3>
 				</main>
-				<aside className="mt-12 top-8 col-span-6 lg:col-span-2 border border-gray-900/7 rounded-lg">
+				<aside className="border-gray-900/7 top-8 col-span-6 mt-12 rounded-lg border lg:col-span-2">
 					{/* Right column area */}
-					<h3 className="text-base font-semibold leading-6 text-gray-900 px-4 border-b pb-3 pt-6 bg-gray-100">
+					<h3 className="border-b bg-gray-100 px-4 pb-3 pt-6 text-base font-semibold leading-6 text-gray-900">
 						Player Rankings
 					</h3>
 					<ul
@@ -208,8 +208,12 @@ export default async function ViewCompScreen({
 						className="h-96 divide-y divide-gray-100 overflow-y-auto"
 					>
 						{players.map((player, rank) => (
-							<li key={player.id} className="px-5 border-b">
-								<AltPlayerCard key={player.id} player={player} ranking={rank} />
+							<li key={player.id} className="border-b px-5">
+								<AltPlayerCard
+									key={player.id}
+									player={player}
+									ranking={rank}
+								/>
 							</li>
 						))}
 					</ul>
