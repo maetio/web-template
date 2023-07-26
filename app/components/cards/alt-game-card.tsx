@@ -51,7 +51,11 @@ const GameCard: React.FC<GameCardProps> = async ({
 				{game.team1?.image ? (
 					<img
 						className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-						src={game.team1.image || undefined}
+						src={
+							typeof game.team1.image === "string"
+								? game.team1.image
+								: undefined
+						}
 						alt=""
 					/>
 				) : (
@@ -161,7 +165,11 @@ const GameCard: React.FC<GameCardProps> = async ({
 				{game.team2?.image ? (
 					<img
 						className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-						src={game.team2.image || undefined}
+						src={
+							typeof game.team2.image === "string"
+								? game.team2.image
+								: undefined
+						}
 						alt=""
 					/>
 				) : (

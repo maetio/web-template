@@ -1,5 +1,5 @@
 import { GamesResponseType } from "types/next-api";
-import {  gamesCollection } from "config/server";
+import { gamesCollection } from "config/server";
 import { Timestamp } from "firebase-admin/firestore";
 import { NextResponse } from "next/server";
 
@@ -34,7 +34,12 @@ export async function GET(
 
 		// if the comp id is provided, return that competition
 		if (compID && compID !== "all") {
-			const querySnapshot = await gamesCollection.where("competitionID", "==", compID).where("startTimestamp", ">=", startTimestamp).where("startTimestamp", "<", endTimestamp).orderBy("startTimestamp", "asc").get();
+			const querySnapshot = await gamesCollection
+				.where("competitionID", "==", compID)
+				.where("startTimestamp", ">=", startTimestamp)
+				.where("startTimestamp", "<", endTimestamp)
+				.orderBy("startTimestamp", "asc")
+				.get();
 			return NextResponse.json(
 				querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
 			);

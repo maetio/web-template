@@ -18,7 +18,7 @@ import {
 } from "react-icons/md";
 import { averageRatingObjects } from "utils/skill-rating";
 import AltPlayerCard from "app/components/cards/alt-player-card";
-import GameCard from "app/components/cards/alt-game-card";
+import { GameCard } from "app/components/cards/alt-game-card";
 
 /**
  * Function will display the competition to the user
@@ -195,7 +195,7 @@ export default async function ViewCompScreen({
 			{/* 3 column wrapper */}
 			<div className="mx-auto grid grid-cols-6">
 				{/* Left sidebar & main wrapper */}
-				<main className="col-span-6 flex-1 overflow-y-auto border-gray-900/5 py-6 lg:col-span-4 border-gray-900/7 top-8 rounded-lg border">
+				<main className="border-gray-900/7 top-8 col-span-6 flex-1 overflow-y-auto rounded-lg border border-gray-900/5 py-6 lg:col-span-4">
 					<h3 className="border-b bg-gray-100 px-4 pb-3 pt-6 text-base font-semibold leading-6 text-gray-900">
 						Games
 					</h3>
@@ -204,7 +204,7 @@ export default async function ViewCompScreen({
 						className="h-96 divide-y divide-gray-100 overflow-y-auto"
 					>
 						{games.map((game) => (
-							<li key={game.id} className="px-5 border-b">
+							<li key={game.id} className="border-b px-5">
 								<GameCard id={game.id} />
 							</li>
 						))}
