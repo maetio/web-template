@@ -13,6 +13,7 @@ import { HeaderMaetIcon } from "app/components/icons";
 import { MdSportsTennis } from "react-icons/md";
 import { Competition } from "types/competition";
 import { GameCard } from "app/components/cards";
+import LineChart from "app/components/data-vis/line-chart";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -136,6 +137,7 @@ export default async function ViewProfileScreen({
 						<div className="px-4 py-5 sm:p-6">
 							<dt className="text-xl font-semibold text-gray-900">Data Visualization</dt>
 							<dd className="mt-3 flex items-baseline justify-between md:block lg:flex">
+								<LineChart />
 							</dd>
 						</div>
 					</dl>
