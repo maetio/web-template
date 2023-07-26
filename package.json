@@ -8,7 +8,7 @@
 		"start": "next start",
 		"lint": "next lint .",
 		"deploy": "vercel",
-		"format": "yarn prettier --write . && yarn lint --fix",
+		"format": "yarn prettier --write . && yarn lint --fix"
 	},
 	"dependencies": {
 		"@headlessui/react": "^1.7.15",
