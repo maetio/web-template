@@ -4,7 +4,7 @@ import { inferGameStatus } from "utils/skill-rating";
 import { BaseURL } from "config/constants";
 // import { GameResponseType } from "types/next-api";
 import { GameResponseType } from "types/next-api";
-import { showTimeOrDate } from "utils/date";
+import { getShortDateString, getTimeString } from "utils/date";
 import { XSGrayMaetIcon } from "../icons";
 
 // modular props for all competition cards
@@ -81,7 +81,11 @@ const GameCard: React.FC<GameCardProps> = async ({
 						<p className="font-semibold">{game.competitionName}</p>
 						<div className="mt-1 flex items-center justify-center">
 							<p className="text-xs text-gray-300">
-								{showTimeOrDate(
+								{getShortDateString(
+									new Date(game.startTimeISO || "")
+								)}{" "}
+								at{" "}
+								{getTimeString(
 									new Date(game.startTimeISO || "")
 								)}
 							</p>

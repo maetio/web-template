@@ -193,10 +193,10 @@ export default async function ViewCompScreen({
 				</dl>
 			</div>
 			{/* 3 column wrapper */}
-			<div className="mx-auto grid grid-cols-6">
+			<div className="mx-auto grid grid-cols-6 gap-x-6 pt-12">
 				{/* Left sidebar & main wrapper */}
-				<main className="border-gray-900/7 top-8 col-span-6 flex-1 overflow-y-auto rounded-lg border border-gray-900/5 py-6 lg:col-span-4">
-					<h3 className="border-b bg-gray-100 px-4 pb-3 pt-6 text-base font-semibold leading-6 text-gray-900">
+				<main className="border-gray-900/7 top-8 col-span-6 rounded-lg border lg:col-span-4">
+					<h3 className="border-b bg-gray-100 px-4 pb-3 pt-3 text-base font-semibold leading-6 text-gray-900">
 						Games
 					</h3>
 					<ul
@@ -210,9 +210,9 @@ export default async function ViewCompScreen({
 						))}
 					</ul>
 				</main>
-				<aside className="border-gray-900/7 top-8 col-span-6 mt-12 rounded-lg border lg:col-span-2">
+				<aside className="border-gray-900/7 top-8 col-span-6 rounded-lg border lg:col-span-2">
 					{/* Right column area */}
-					<h3 className="border-b bg-gray-100 px-4 pb-3 pt-6 text-base font-semibold leading-6 text-gray-900">
+					<h3 className="border-b bg-gray-100 px-4 pb-3 pt-3 text-base font-semibold leading-6 text-gray-900">
 						Player Rankings
 					</h3>
 					<ul
