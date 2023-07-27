@@ -42,10 +42,14 @@ const LineChart: React.FC<LineChartProps> = ({dataset, labels, variable}) => {
 		},
 		scales: {
 			x: {
-				display: false
+				grid: {
+					display: false
+				},
 			},
 			y: {
-				display: false
+				grid: {
+					display: false
+				},
 			}
 		}
 	};
