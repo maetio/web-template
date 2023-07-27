@@ -3,6 +3,8 @@ import { Competition } from "types/index";
 import { getFullDateString } from "utils/date";
 import { NextImage } from "app/components/image";
 import { CompetitionType } from "app/components/comp-data";
+import { BaseURL } from "config/constants";
+import { PlayerResponseType } from "types/next-api";
 
 export interface CompetitionCardProps
 	extends Omit<
@@ -30,6 +32,10 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 	num,
 	...divParams
 }) => {
+	// get host profile data
+	const profileResponse = await fetch(`${BaseURL}/api/profile/${competition.hostID}`);
+	const hostData: PlayerResponseType = await profileResponse.json();
+
 	return (
 		<div
 			{...divParams}
@@ -58,12 +64,12 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 				</div>
 				<div className="flex mt-8 w-full justify-between items-end">
 					<div className="relative flex items-center gap-x-4">
-						<NextImage src={competition.image} alt={competition.name?.at(0)} className="h-10 w-10 rounded-full bg-gray-100" />
+						<NextImage src={hostData.image} alt={hostData.firstName?.at(0)} className="h-10 w-10 rounded-lg bg-gray-100" />
 						<div className="text-sm leading-6">
 							<p className="font-semibold text-gray-900 text-sm truncate">
-								Host Name
+								{hostData.firstName} {hostData.lastName}
 							</p>
-							<p className="text-gray-600 text-sm truncate">13 games</p>
+							<p className="text-gray-600 text-sm truncate">{hostData.rating?.numGames}</p>
 						</div>
 					</div>
 					<div className="flex">
