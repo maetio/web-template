@@ -67,7 +67,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 						</div>
 					</div>
 					<div className="flex">
-						<p className="text-gray-600 inline text-sm"><p className="text-gray-800 font-semibold inline text-sm">${competition.price}</p> player</p>
+						<p className="text-gray-600 inline text-sm"><p className="text-gray-800 font-semibold inline text-sm">${Number(competition.price)/100}</p> player</p>
 					</div>
 				</div>
 			</div>
