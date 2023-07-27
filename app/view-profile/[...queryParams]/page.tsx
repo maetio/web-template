@@ -14,6 +14,7 @@ import { MdSportsTennis } from "react-icons/md";
 import { Competition } from "types/competition";
 import { GameCard } from "app/components/cards";
 import LineChart from "app/components/data-vis/line-chart";
+import Link from "next/link";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -157,10 +158,11 @@ export default async function ViewProfileScreen({
 					</div>
 					<div className="flex flex-col items-center">
 						{gameProfiles.map((gameProf) => (
-							<GameCard
-								id={gameProf.gameID}
-								key={gameProf.gameID}
-							/>
+							<Link key={gameProf.gameID} href={`/view-game/${gameProf.gameID}/`}>
+								<GameCard
+									id={gameProf.gameID}
+								/>
+							</Link>
 						))}
 					</div>
 				</div>
