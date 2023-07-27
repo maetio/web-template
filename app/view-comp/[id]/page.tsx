@@ -210,7 +210,7 @@ export default async function ViewCompScreen({
 						))}
 					</ul>
 				</main>
-				<aside className="h-96 border-gray-900/7 col-span-6 rounded-lg border lg:col-span-2 sticky top-8">
+				<aside className="h-96 border-gray-900/7 col-span-6 rounded-lg border lg:col-span-2 top-8 lg:sticky lg:top-4">
 					{/* Right column area */}
 					<h3 className="border-b bg-gray-100 px-4 pb-3 pt-3 text-base font-semibold leading-6 text-gray-900">
 						Player Rankings
