@@ -135,7 +135,7 @@ export default async function ViewProfileScreen({
 							</dd>
 						</div>
 						<div className="px-4 py-5 sm:p-6">
-							<dt className="text-xl font-semibold text-gray-900">Data Visualization</dt>
+							<dt className="text-xl font-semibold text-gray-900">Rating Change Over Time</dt>
 							<dd className="mt-3 flex items-baseline justify-between md:block lg:flex">
 								<LineChart variable={`${profileData.firstName} ${profileData.lastName}`} dataset={gameProfiles.map((data) => Math.round(data.rating?.displayRating || 100))} title="Rating Change Over Time" labels={gameProfiles.map((data) => (String(data.id)))} />
 							</dd>
