@@ -19,6 +19,7 @@ import {
 import { averageRatingObjects } from "utils/skill-rating";
 import AltPlayerCard from "app/components/cards/alt-player-card";
 import { GameCard } from "app/components/cards/alt-game-card";
+import Link from "next/link";
 
 /**
  * Function will display the competition to the user

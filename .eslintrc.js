@@ -59,7 +59,6 @@ module.exports = {
 				allowTernary: true,
 			},
 		],
-		// discuss below w/ Kekoa
 		"@typescript-eslint/no-unused-vars": "off",
 		"@typescript-eslint/no-explicit-any": "off",
 		// allow warning and errors

@@ -11,10 +11,12 @@ export default async function ViewGameScreen({
     
 	const gameResponse = await fetch(`${BaseURL}/api/game/${id}`);
 	const game: GameResponseType = await gameResponse.json();
- 
 	return (
 		<main className="mx-10">
-            
+			<div className="flex">
+				<h1>{game.competitionName}</h1>
+				<p>{game.sport}</p>
+			</div>
 		</main>
 	);
 }
