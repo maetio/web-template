@@ -22,7 +22,7 @@ const LineChart: React.FC<LineChartProps> = ({dataset, labels, variable}) => {
 				lineTension: 0.6,
 				// you can set individual colors for each bar
 				backgroundColor:
-					"rgb(129, 140, 248, 0.3)"
+					"rgb(129, 140, 248, 0.6)"
 				,
 				borderWidth: 1,
 				borderColor: "rgb(129, 140, 248)",
