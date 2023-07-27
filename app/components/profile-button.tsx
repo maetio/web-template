@@ -15,7 +15,7 @@ const ProfileButton = () => {
 	const userData = useAuthContext();
 
 	return (
-		<div className="col-span-3 mr-2 flex items-center justify-end">
+		<div className="col-span-3 mr-2 flex items-center">
 			{userData?.id ? (
 				<Link
 					href="/profile"

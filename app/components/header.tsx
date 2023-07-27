@@ -1,11 +1,11 @@
 "use client";
 
-import React from "react";
-import { HeaderMaetIcon } from "app/components/icons";
+import React, { useState } from "react";
+import { MaetIcon } from "app/components/icons";
 import { ProfileButton } from "app/components/profile-button";
 import Link from "next/link";
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { Disclosure } from "@headlessui/react";
+import { Dialog } from "@headlessui/react";
+import { MdClose, MdMenu } from "react-icons/md";
 
 export /**
  * Reusable page header/toolbar
@@ -15,50 +15,74 @@ export /**
  *	}
  *  @return {*}
  *
- */ const Header = () => (
-	<Disclosure as="header" className="bg-white shadow">
-		<>
-			<div className="mx-auto min-w-full max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
-				<div className="relative flex h-16 justify-between">
-					<div className="relative z-10 flex px-2 lg:px-0">
-						<div className="flex flex-shrink-0 items-center">
-							<Link href="/">
-								<div className="items center flex">
-									<HeaderMaetIcon />
-									<p className="ml-2 text-lg text-primaryMain">
-										Maet
-									</p>
-								</div>
-							</Link>
-						</div>
-					</div>
-					{/* <div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
-						<div className="w-full sm:max-w-xs">
-							<label htmlFor="search" className="sr-only">
-								Search
-							</label>
-							<div className="relative">
-								<div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-									<HiMagnifyingGlass
-										className="h-5 w-5 text-gray-400"
-										aria-hidden="true"
-									/>
-								</div>
-								<input
-									id="search"
-									name="search"
-									className="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-									placeholder="Search"
-									type="search"
-								/>
-							</div>
-						</div>
-					</div> */}
-					<div className="relative z-10 flex items-center">
-						<ProfileButton />
+ */ const Header = () => {
+	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+	return (
+		<header className="bg-white border-b border-gray-900/10">
+			<nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+				<div className="flex items-center gap-x-12">
+					<Link href={"/"} className="-m-1.5 p-1.5 flex flex-row place-items-center">
+						<MaetIcon size={10} />
+						<h2 className="font-semibold text-lg ml-1">Maet</h2>
+					</Link>
+					<div className="hidden lg:flex lg:gap-x-12">
+						<Link href={"https://www.maet.io/"} className="text-md leading-6 text-gray-900">
+							About
+						</Link>
+						<Link href={"https://blog.maet.io/"} className="text-md leading-6 text-gray-900">
+							Blog
+						</Link>
 					</div>
 				</div>
-			</div>
-		</>
-	</Disclosure>
-);
+				<div className="flex lg:hidden">
+					<button
+						type="button"
+						className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+						onClick={() => setMobileMenuOpen(true)}
+					>
+						<span className="sr-only">Open main menu</span>
+						<MdMenu className="h-6 w-6" aria-hidden="true" />
+					</button>
+				</div>
+				<div className="hidden lg:flex">
+					<ProfileButton />
+				</div>
+			</nav>
+			<Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+				<div className="fixed inset-0 z-10" />
+				<Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+					<div className="flex items-center justify-between">
+						<Link href={"/"} className="-m-1.5 p-1.5 flex flex-row place-items-center">
+							<MaetIcon size={10} />
+							<h2 className="font-semibold text-lg ml-1">Maet</h2>
+						</Link>
+						<button
+							type="button"
+							className="-m-2.5 rounded-md p-2.5 text-gray-700"
+							onClick={() => setMobileMenuOpen(false)}
+						>
+							<span className="sr-only">Close menu</span>
+							<MdClose className="h-6 w-6" aria-hidden="true" />
+						</button>
+					</div>
+					<div className="mt-6 flow-root">
+						<div className="-my-6 divide-y divide-gray-500/10">
+							<div className="space-y-2 py-6">
+								<Link href={"https://www.maet.io/"} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+									About
+								</Link>
+								<Link href={"https://blog.maet.io/"} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+									Blog
+								</Link>
+							</div>
+							<div className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+			  					<ProfileButton />
+							</div>
+						</div>
+					</div>
+				</Dialog.Panel>
+			</Dialog>
+		</header>
+	);
+};
