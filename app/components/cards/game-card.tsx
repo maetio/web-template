@@ -16,7 +16,7 @@ export interface GameCardProps
 		>,
 		"color"
 	> {
-	id?: string;
+	gameID?: string;
 	verified?: boolean;
 }
 
@@ -24,19 +24,19 @@ export interface GameCardProps
 export /**
  * Card that renders game data upon game completion
  *
- * @param {*} {
- *		name
- *	}
+ * @param {*} GameCardProps
+ *		
+ *
  *  @return {*}
  *
  */
 const GameCard: React.FC<GameCardProps> = async ({
-	id,
+	gameID,
 	verified,
 	...divParams
 }) => {
 	// get game data
-	const gameResponse = await fetch(`${BaseURL}/api/game/${id}`);
+	const gameResponse = await fetch(`${BaseURL}/api/game/${gameID}`);
 	const game: GameResponseType = await gameResponse.json();
 
 	// get game status

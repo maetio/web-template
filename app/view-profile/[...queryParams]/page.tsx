@@ -37,7 +37,7 @@ export default async function ViewProfileScreen({
 }) {
 	// get the parameters from the query
 	const [userID, sport] = params.queryParams;
-
+	
 	// fetch call to get the user's player profile
 	const profileResponse = await fetch(
 		`${BaseURL}/api/player/${userID}/${sport}`
