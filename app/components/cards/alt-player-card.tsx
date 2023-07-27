@@ -35,27 +35,33 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 			{...divParams}
 			className="flex h-20 justify-between gap-x-6"
 		>
-			<div className="flex items-center justify-center gap-x-4">
+			<div className="flex flex-row items-center justify-start gap-x-4">
 				{typeof ranking === "number" ? (
-					<div className="flex w-10 flex-col place-items-center">
-						<h1 className="flex-none text-xl font-bold">
-							{ranking + 1}
-						</h1>
+					<div className="grid grid-cols-1 flex-col place-items-center justify-center">
 						{ranking < 3 ? (
-							<div className="flex items-center">
+							<div className="flex flex-col items-center justify-start w-8">
+								<h1 className="flex-none text-xl font-bold">
+									{ranking + 1}
+								</h1>
 								<FaMedal
 									className={`${medalColor[ranking]} text-base md:text-lg`}
 								/>
 							</div>
-						) : null}
+						) : <div className="flex flex-col items-center justify-start w-8">
+							<h1 className="flex-none text-xl font-bold">
+								{ranking + 1}
+							</h1>
+						</div>}
 					</div>
 				) : null}
-				<NextImage
-					size={50}
-					src={player.image}
-					alt={player.firstName}
-				/>
-				<div className="min-w-0 flex-auto">
+				<div className="flex justify-center items-center">
+					<NextImage
+						size={50}
+						src={player.image}
+						alt={player.firstName}
+					/>
+				</div>
+				<div className="min-w-0 lg:w-24 flex-auto">
 					<p className="truncate text-sm font-bold leading-6 text-gray-900 dark:text-white">
 						{player.firstName}
 					</p>
@@ -64,35 +70,39 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 					</p>
 				</div>
 			</div>
-			<div className="relative self-center">
-				<dt>
-					<div className="absolute rounded-md p-3">
-						<MaetIcon size={10} />
-					</div>
-					<p className="ml-16 justify-center truncate text-sm font-medium text-gray-500 dark:text-white">
+			<div className="relative self-end w-32 flex flex-row items-center">
+				<div className="flex rounded-md p-3">
+					<MaetIcon size={10} />
+				</div>
+				<div className="flex flex-row justify-center">
+					<div className="flex flex-col justify-center">
+						<p className="truncate text-sm font-medium text-gray-500 dark:text-white">
 						Rating
-					</p>
-				</dt>
-				<dd className="ml-16 flex items-baseline">
-					<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
-						{Math.round(player.rating?.displayRating || 100)}
-					</p>
-					<p
-						className={classNames(
-							player?.deltaRating?.displayRating &&
+						</p>
+						<div className="flex flex-row justify-start self-start">
+							<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
+								{Math.round(player.rating?.displayRating || 100)}
+							</p>
+						</div>
+						<div className="flex self-start justify-start">
+							<p
+								className={classNames(
+									player?.deltaRating?.displayRating &&
 								player?.deltaRating?.displayRating >= 0
-								? "text-green-600"
-								: "text-red-600",
-							"ml-2 flex items-baseline text-sm font-semibold"
-						)}
-					>
-						{player?.deltaRating?.displayRating &&
+										? "text-green-600"
+										: "text-red-600",
+									"items-baseline text-sm font-semibold"
+								)}
+							>
+								{player?.deltaRating?.displayRating &&
 						player?.deltaRating?.displayRating >= 0
-							? "+"
-							: ""}
-						{Math.round(player?.deltaRating?.displayRating || 0)}
-					</p>
-				</dd>
+									? "+"
+									: ""}
+								{Math.round(player?.deltaRating?.displayRating || 0)}
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</Link>
 	);

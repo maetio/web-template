@@ -8,7 +8,7 @@ import {
 	FaVolleyball,
 } from "react-icons/fa6";
 import { HiArrowUp, HiArrowDown } from "react-icons/hi2";
-import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
+// import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { HeaderMaetIcon } from "app/components/icons";
 import { MdSportsTennis } from "react-icons/md";
 import { Competition } from "types/competition";
@@ -139,22 +139,22 @@ export default async function ViewProfileScreen({
 						<div className="px-4 py-5 sm:p-6">
 							<dt className="text-xl font-semibold text-gray-900">Rating Change Over Time</dt>
 							<dd className="mt-3 flex items-baseline justify-between md:block lg:flex">
-								<LineChart variable={`${profileData.firstName} ${profileData.lastName}`} dataset={reversedGameProfiles.map((data) => Math.round(data.rating?.displayRating || 100))} title="Rating Change Over Time" labels={reversedGameProfiles.map((data) => (String(data.startTimestamp?.toDate)))} />
+								<LineChart variable={`${profileData.firstName} ${profileData.lastName}`} dataset={reversedGameProfiles.map((data) => Math.round(data.deltaRating?.displayRating && data.rating?.displayRating ? (data.rating.displayRating + data.deltaRating.displayRating) : 100))} title="Rating Change Over Time" labels={reversedGameProfiles.map((data) => (String(Math.round(data.deltaRating?.displayRating || 0))))} />
 							</dd>
 						</div>
 					</dl>
 				</div>
 				<div className="flex flex-col items-center">
 					<div className="flex flex-row gap-x-8">
-						<button>
+						{/* <button>
 							<BiSolidLeftArrow className="hover:fill-gray-700" />
-						</button>
+						</button> */}
 						<h1 className="text-lg font-semibold md:text-xl">
 							Games
 						</h1>
-						<button>
+						{/* <button>
 							<BiSolidRightArrow className="hover:fill-gray-700" />
-						</button>
+						</button> */}
 					</div>
 					<div className="flex flex-col items-center">
 						{gameProfiles.map((gameProf) => (
