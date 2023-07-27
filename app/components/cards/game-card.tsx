@@ -78,7 +78,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 			<div className="col-span-6 flex flex-col items-start gap-8">
 				<div className="flex min-w-full items-center justify-center">
 					<div className="flex flex-col">
-						<p className="font-semibold">{game.competitionName || "Pending"}</p>
+						<p className="font-semibold text-center">{game.competitionName || "Pending"}</p>
 						<div className="mt-1 flex items-center justify-center">
 							<p className="text-xs text-gray-300">
 								{showTimeOrDate(
