@@ -13,6 +13,7 @@ import { auth, privateUserCollection } from "config/client";
 import { PrivateUserData } from "types/index";
 import { getPrivateUserData } from "auth/client";
 import { doc, onSnapshot } from "firebase/firestore";
+import SkeletonCard from "app/components/cards/skeleton-card";
 
 // create auth context
 export const AuthContext = createContext<PrivateUserData | null>(null);
@@ -122,7 +123,12 @@ export const AuthContextProvider: React.FC<{
 	const userContext = useMemo(() => user, [user]);
 	return (
 		<AuthContext.Provider value={userContext}>
-			{loading ? <div>Loading...</div> : children}
+			{loading ? 
+				<div>
+					<SkeletonCard />
+					<SkeletonCard />
+					<SkeletonCard />
+				</div> : children}
 		</AuthContext.Provider>
 	);
 };

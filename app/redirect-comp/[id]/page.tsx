@@ -4,6 +4,7 @@ import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
 import { getOrCreateProfile } from "server-actions/profiles";
 import { redirect } from "next/navigation";
+import SkeletonCard from "app/components/cards/skeleton-card";
 
 /**
  * Screen will join the competition for the user
@@ -46,7 +47,11 @@ export default async function RedirectComp({
 			{user?.email ? (
 				<h3>Loading account for {user?.email}</h3>
 			) : (
-				<h3>Loading...</h3>
+				<div>
+					<SkeletonCard />
+					<SkeletonCard />
+					<SkeletonCard />
+				</div>
 			)}
 		</main>
 	);
