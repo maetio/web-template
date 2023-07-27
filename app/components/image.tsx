@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 interface NextImageParams
 	extends Omit<ImageProps, "src" | "alt" | "width" | "height"> {
-	src?: string | null;
+	src?: string | string[] | null;
 	alt?: string | null;
 	size?: number | "full";
 }
@@ -26,7 +26,7 @@ const NextImage = ({
 	...imageParams
 }: NextImageParams) => {
 	// set initial image state
-	const [imageSrc, setImageSrc] = useState(
+	const [imageSrc, setImageSrc] = useState<string | string[]>(
 		`https://api.dicebear.com/6.x/initials/svg?seed=${alt}&backgroundColor=00acc1,039be5,1e88e5,3949ab,43a047,5e35b1,7cb342,8e24aa,c0ca33,d81b60,e53935,f4511e,fb8c00,fdd835,ffb300,00897b&backgroundType=gradientLinear`
 	);
 
@@ -41,20 +41,43 @@ const NextImage = ({
 				className || ""
 			)}
 		>
-			<Image
-				loader={
-					src?.startsWith("https")
-						? ({ src: imageLoaderSrc }) => imageLoaderSrc
-						: undefined
-				}
-				src={imageSrc}
-				className="flex-none rounded-lg bg-gray-50"
-				alt={alt || "Image not loaded..."}
-				width={size === "full" ? undefined : size || 15}
-				height={size === "full" ? undefined : size || 15}
-				fill={size === "full"}
-				{...imageParams}
-			/>
+			{typeof imageSrc === "string" ? (
+				<Image
+					loader={
+						imageSrc?.startsWith("https")
+							? ({ src: imageLoaderSrc }) => imageLoaderSrc
+							: undefined
+					}
+					src={imageSrc}
+					className="flex-none rounded-lg bg-gray-50"
+					alt={alt || "Image not loaded..."}
+					width={size === "full" ? undefined : size || 15}
+					height={size === "full" ? undefined : size || 15}
+					fill={size === "full"}
+					{...imageParams}
+				/>
+			) : (
+				<div>
+					{imageSrc?.map((image) => (
+						<Image
+							key={image}
+							loader={
+								image?.startsWith("https")
+									? ({ src: imageLoaderSrc }) =>
+										imageLoaderSrc
+									: undefined
+							}
+							src={image}
+							className="flex-none rounded-lg bg-gray-50"
+							alt={alt || "Image not loaded..."}
+							width={size === "full" ? undefined : size || 15}
+							height={size === "full" ? undefined : size || 15}
+							fill={size === "full"}
+							{...imageParams}
+						/>
+					))}
+				</div>
+			)}
 		</div>
 	);
 };

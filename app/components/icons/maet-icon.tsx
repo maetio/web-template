@@ -36,7 +36,12 @@ export const MaetIcon: React.FC<MaetIconProps> = ({
 	...divParams
 }) => {
 	return (
-		<div className={`flex h-${String(size || 10)} w-${String(size || 10)} ${className}`} {...divParams}>
+		<div
+			className={`flex h-${String(size || 10)} w-${String(
+				size || 10
+			)} ${className}`}
+			{...divParams}
+		>
 			<svg
 				className={`h-${String(size || 10)} w-${String(
 					size || 10

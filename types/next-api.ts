@@ -19,6 +19,10 @@ export type GameResponseType = { id: string } & Partial<
 	CollectionDataTypes["games"]
 >;
 
+export type GamesResponseType = ({ id: string } & Partial<
+	CollectionDataTypes["games"]
+>)[];
+
 export type TeamsResponseType = ({ id: string } & Partial<
 	SubcollectionDataTypes["competition-teams"]
 >)[];

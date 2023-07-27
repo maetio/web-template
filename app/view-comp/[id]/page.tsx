@@ -2,6 +2,7 @@ import React from "react";
 import {
 	CompProfilesResponseType,
 	CompetitionsResponseType,
+	GamesResponseType,
 	PlayersResponseType,
 } from "types/next-api";
 import { BaseURL } from "config/constants";
@@ -17,6 +18,7 @@ import {
 } from "react-icons/md";
 import { averageRatingObjects } from "utils/skill-rating";
 import AltPlayerCard from "app/components/cards/alt-player-card";
+import { GameCard } from "app/components/cards/alt-game-card";
 
 /**
  * Function will display the competition to the user
@@ -49,9 +51,9 @@ export default async function ViewCompScreen({
 	const playersResponse = await fetch(`${BaseURL}/api/players/${params.id}`);
 	const players: PlayersResponseType = await playersResponse.json();
 
-	// get the competition teams
-	// const teamsResponse = await fetch(`${BaseURL}/api/teams/${params.id}`);
-	// const teams: TeamsResponseType = await teamsResponse.json();
+	// get the competition games
+	const gamesResponse = await fetch(`${BaseURL}/api/games/${params.id}`);
+	const games: GamesResponseType = await gamesResponse.json();
 
 	// get if the player has joined the competition
 	const compPlayerResponse = await fetch(
@@ -191,16 +193,26 @@ export default async function ViewCompScreen({
 				</dl>
 			</div>
 			{/* 3 column wrapper */}
-			<div className="mx-auto grid grid-cols-6">
+			<div className="mx-auto grid grid-cols-6 gap-x-6 pt-12">
 				{/* Left sidebar & main wrapper */}
-				<main className="col-span-6 flex-1 overflow-y-auto py-6 lg:col-span-4 border-gray-900/5">
-					<h3 className="text-base font-semibold leading-6 text-gray-900">
+				<main className="border-gray-900/7 top-8 col-span-6 rounded-lg border lg:col-span-4">
+					<h3 className="border-b bg-gray-100 px-4 pb-3 pt-3 text-base font-semibold leading-6 text-gray-900">
 						Games
 					</h3>
+					<ul
+						role="list"
+						className="h-96 divide-y divide-gray-100 overflow-y-auto"
+					>
+						{games.map((game) => (
+							<li key={game.id} className="border-b px-5">
+								<GameCard id={game.id} />
+							</li>
+						))}
+					</ul>
 				</main>
-				<aside className="mt-12 top-8 col-span-6 lg:col-span-2 border border-gray-900/7 rounded-lg">
+				<aside className="border-gray-900/7 top-8 col-span-6 rounded-lg border lg:col-span-2">
 					{/* Right column area */}
-					<h3 className="text-base font-semibold leading-6 text-gray-900 px-4 border-b pb-3 pt-6 bg-gray-100">
+					<h3 className="border-b bg-gray-100 px-4 pb-3 pt-3 text-base font-semibold leading-6 text-gray-900">
 						Player Rankings
 					</h3>
 					<ul
@@ -208,8 +220,12 @@ export default async function ViewCompScreen({
 						className="h-96 divide-y divide-gray-100 overflow-y-auto"
 					>
 						{players.map((player, rank) => (
-							<li key={player.id} className="px-5 border-b">
-								<AltPlayerCard key={player.id} player={player} ranking={rank} />
+							<li key={player.id} className="border-b px-5">
+								<AltPlayerCard
+									key={player.id}
+									player={player}
+									ranking={rank}
+								/>
 							</li>
 						))}
 					</ul>

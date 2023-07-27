@@ -12,6 +12,8 @@ const stripe = process.env.STRIPE_SECRET
 	  })
 	: undefined;
 
+const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY as string;
+
 /**
  * generates the stripe session that is used for the checkout form
  *
@@ -55,56 +57,57 @@ export async function getStripeSession(compID: string | undefined) {
 		// get the competition information from firestore. Although convenient, we DO NOT send this information in the body of the response.
 		// This is becuase it could be manipulated from the frontend to change the price of a competition
 		const competitionCollectionRef = competitionsCollection.doc(compID);
-		const competitionData = (
-			await competitionCollectionRef.get()
-		).data();
+		const competitionData = (await competitionCollectionRef.get()).data();
 
 		if (competitionData?.price && competitionData.hostID) {
 			// all the commented out code below is 100% needed. Currently the destination(where the payment is going to) is hard coded.
 			// This is because, the fake data gnerators, don't include hostIDs for the private-user-data.
 			// down below I have the needed code to get the host stripeID from firestore and we check to make sure we have it before running the 'stripe?.ephemeralKeys.create'
 
-			// const hostInformationRef = privateUserCollection.doc(competitionCollection.hostID);
-			// const hostInformation = (await hostInformationRef.get()).data();
-
-			// if (hostInformation?.stripeID) {
-			// const customer = await stripe?.customers.create();
-			const ephemeralKey = await stripe?.ephemeralKeys.create(
-				{ customer: customerID },
-				{ apiVersion: "2022-11-15" }
+			// get the host private-user-data
+			const hostInformationRef = privateUserCollection.doc(
+				competitionData.hostID
 			);
-			const paymentIntent = await stripe?.paymentIntents.create({
-				// we will use this meta data to store the user ID, and comp ID. This will allow the paymentIntent webhook to have this information, so we can allow the user access to the competition.
-				// without this, there is not enough inforation to make these changes to the user.
-				metadata: {
-					compID,
-					userID: user.id,
-				},
+			const hostInformation = (await hostInformationRef.get()).data();
 
-				amount: competitionData.price,
+			if (hostInformation?.stripeHostID) {
+				// const customer = await stripe?.customers.create();
+				const ephemeralKey = await stripe?.ephemeralKeys.create(
+					{ customer: customerID },
+					{ apiVersion: "2022-11-15" }
+				);
+				const paymentIntent = await stripe?.paymentIntents.create({
+					// we will use this meta data to store the user ID, and comp ID. This will allow the paymentIntent webhook to have this information, so we can allow the user access to the competition.
+					// without this, there is not enough inforation to make these changes to the user.
+					metadata: {
+						compID,
+						userID: user.id,
+					},
 
-				currency: "usd",
-				customer: customerID,
-				automatic_payment_methods: {
-					enabled: true,
-				},
-				// currently Maet is taking 1% of the transaction
-				application_fee_amount: competitionData.price * 100 * 0.1,
-				transfer_data: {
-					destination: "acct_1NUtUkCSsxIqErmb",
-					// destination: hostInformation.stripeID,
-				},
-			});
+					amount: competitionData.price,
 
-			const stripeSession = {
-				paymentIntent: paymentIntent?.client_secret,
-				ephemeralKey: ephemeralKey?.secret,
-				customer: customerID,
-				publishableKey:
-					"pk_test_51MDCdaCE8Qam1cvafPiXvoVUkJ8RUbl09Lq4WNn5Y8Sm8zO7kHDRNs0JKrP3zicoIQjL9TAtCfHSAeFp5oKjrBDD00n8HUiGDL",
-			};
+					currency: "usd",
+					customer: customerID,
+					automatic_payment_methods: {
+						enabled: true,
+					},
+					// currently Maet is taking 1% of the transaction
+					application_fee_amount: competitionData.price * 0.1,
+					transfer_data: {
+						// destination: "acct_1NXrkNCHexTeDnP1",
+						destination: hostInformation.stripeHostID,
+					},
+				});
 
-			return stripeSession;
+				const stripeSession = {
+					paymentIntent: paymentIntent?.client_secret,
+					ephemeralKey: ephemeralKey?.secret,
+					customer: customerID,
+					publishableKey,
+				};
+
+				return stripeSession;
+			}
 		}
 	} catch (e) {
 		throw new Error(`error has occured: ${e}`);
