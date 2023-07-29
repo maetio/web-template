@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { signInWithFacebook, signInWithGoogle } from "auth/client";
+import { signInAsGuest, signInWithFacebook, signInWithGoogle } from "auth/client";
 import { ActionButton } from "app/components/action-button";
 import { useRouter } from "next/navigation";
 import { MaetIcon } from "app/components/icons";
@@ -46,7 +46,13 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 		else router.push("/profile");
 	};
 
-	
+	const signInGuest = async () => {
+		const userCredential = await signInAsGuest();
+		// route to new page
+		if (userCredential.user.displayName?.length)
+			router.push(redirectURL || "/");
+		else router.push("/profile");
+	};
 
 	return (
 		<>
@@ -72,6 +78,11 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 						startIcon="facebook"
 						action={facebookSignIn}
 						title="Continue with Facebook"
+					/>
+					<ActionButton
+						className="my-4 w-full"
+						action={signInGuest}
+						title="Continue as Guest"
 					/>
 					{/* <ActionButton
 						className="w-full my-4"
