@@ -1,3 +1,4 @@
+import { ActionButton } from "app/components/action-button";
 import { MaetIcon } from "app/components/icons";
 import { createEmailPassword } from "auth/client";
 import { getUserData, updateUserData } from "server-actions/users";
@@ -31,7 +32,7 @@ const submitFormAction = async (data: FormData) => {
  * @export
  * @return {*}
  */
-export default async function Profile() {
+export default async function CreateAccount() {
 	// fetch the user data
 	const userData = await getUserData();
 
@@ -134,12 +135,14 @@ export default async function Profile() {
 						</div>
 
 						<div>
-							<button
+							<ActionButton
 								type="submit"
-								className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-							>
-								Submit
-							</button>
+								// action={submitFormAction}
+								className="w-full my-4"
+								colorVariant="indigo"
+								title="Sign Up"
+								// referRoute="/"
+							/>
 						</div>
 					</form>
 				</div>
