@@ -1,7 +1,11 @@
 "use client";
 
 import React from "react";
-import { signInAsGuest, signInWithFacebook, signInWithGoogle } from "auth/client";
+import {
+	signInAsGuest,
+	signInWithFacebook,
+	signInWithGoogle,
+} from "auth/client";
 import { ActionButton } from "app/components/action-button";
 import { useRouter } from "next/navigation";
 import { MaetIcon } from "app/components/icons";
