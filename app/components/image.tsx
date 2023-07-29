@@ -35,49 +35,48 @@ const NextImage = ({
 		if (src) setImageSrc(src);
 	}, [src]);
 
+	if (typeof imageSrc === "string") {
+		return (
+			<Image
+				loader={
+					imageSrc?.startsWith("https")
+						? ({ src: imageLoaderSrc }) => imageLoaderSrc
+						: undefined
+				}
+				src={imageSrc}
+				className={className || "flex-none rounded-lg bg-gray-50"}
+				alt={alt || ""}
+				width={size === "full" ? undefined : size || 15}
+				height={size === "full" ? undefined : size || 15}
+				fill={size === "full"}
+				{...imageParams}
+			/>
+		);
+	}
+
 	return (
 		<div
 			className={`w-${size} h-${size} flex-none place-items-center justify-center self-center rounded-lg bg-gray-50 align-middle`.concat(
 				className || ""
 			)}
 		>
-			{typeof imageSrc === "string" ? (
+			{imageSrc?.map((image) => (
 				<Image
+					key={image}
 					loader={
-						imageSrc?.startsWith("https")
+						image?.startsWith("https")
 							? ({ src: imageLoaderSrc }) => imageLoaderSrc
 							: undefined
 					}
-					src={imageSrc}
-					className="flex-none rounded-lg bg-gray-50"
+					src={image}
+					className={className || "flex-none rounded-lg bg-gray-50"}
 					alt={alt || "Image not loaded..."}
 					width={size === "full" ? undefined : size || 15}
 					height={size === "full" ? undefined : size || 15}
 					fill={size === "full"}
 					{...imageParams}
 				/>
-			) : (
-				<div>
-					{imageSrc?.map((image) => (
-						<Image
-							key={image}
-							loader={
-								image?.startsWith("https")
-									? ({ src: imageLoaderSrc }) =>
-										imageLoaderSrc
-									: undefined
-							}
-							src={image}
-							className="flex-none rounded-lg bg-gray-50"
-							alt={alt || "Image not loaded..."}
-							width={size === "full" ? undefined : size || 15}
-							height={size === "full" ? undefined : size || 15}
-							fill={size === "full"}
-							{...imageParams}
-						/>
-					))}
-				</div>
-			)}
+			))}
 		</div>
 	);
 };

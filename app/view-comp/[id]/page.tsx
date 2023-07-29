@@ -199,10 +199,7 @@ export default async function ViewCompScreen({
 					<h3 className="border-b bg-gray-100 px-4 pb-3 pt-3 text-base font-semibold leading-6 text-gray-900">
 						Games
 					</h3>
-					<ul
-						role="list"
-						className="h-96 divide-y divide-gray-100 overflow-y-auto"
-					>
+					<ul role="list" className="divide-y divide-gray-100">
 						{games.map((game) => (
 							<li key={game.id} className="border-b px-5">
 								<GameCard id={game.id} />
@@ -210,14 +207,14 @@ export default async function ViewCompScreen({
 						))}
 					</ul>
 				</main>
-				<aside className="border-gray-900/7 top-8 col-span-6 rounded-lg border lg:col-span-2">
+				<aside className="border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border lg:sticky lg:top-4 lg:col-span-2">
 					{/* Right column area */}
 					<h3 className="border-b bg-gray-100 px-4 pb-3 pt-3 text-base font-semibold leading-6 text-gray-900">
 						Player Rankings
 					</h3>
 					<ul
 						role="list"
-						className="h-96 divide-y divide-gray-100 overflow-y-auto"
+						className="sticky top-0 h-96 divide-y divide-gray-100 overflow-y-auto"
 					>
 						{players.map((player, rank) => (
 							<li key={player.id} className="border-b px-5">

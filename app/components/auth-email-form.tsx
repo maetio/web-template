@@ -1,7 +1,11 @@
 "use client";
 
 import React from "react";
-import { signInWithGoogle } from "auth/client";
+import {
+	signInAsGuest,
+	signInWithFacebook,
+	signInWithGoogle,
+} from "auth/client";
 import { ActionButton } from "app/components/action-button";
 import { useRouter } from "next/navigation";
 import { MaetIcon } from "app/components/icons";
@@ -30,8 +34,24 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 	// get router
 	const router = useRouter();
 
-	const onSubmit = async () => {
+	const googleSignIn = async () => {
 		const userCredential = await signInWithGoogle();
+		// route to new page
+		if (userCredential.user.displayName?.length)
+			router.push(redirectURL || "/");
+		else router.push("/profile");
+	};
+
+	const facebookSignIn = async () => {
+		const userCredential = await signInWithFacebook();
+		// route to new page
+		if (userCredential.user.displayName?.length)
+			router.push(redirectURL || "/");
+		else router.push("/profile");
+	};
+
+	const signInGuest = async () => {
+		const userCredential = await signInAsGuest();
 		// route to new page
 		if (userCredential.user.displayName?.length)
 			router.push(redirectURL || "/");
@@ -52,11 +72,27 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 				</div>
 				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 					<ActionButton
-						className="w-full"
+						className="my-4 w-full"
 						startIcon="google"
-						action={onSubmit}
+						action={googleSignIn}
 						title="Continue with Google"
 					/>
+					<ActionButton
+						className="my-4 w-full"
+						startIcon="facebook"
+						action={facebookSignIn}
+						title="Continue with Facebook"
+					/>
+					<ActionButton
+						className="my-4 w-full"
+						action={signInGuest}
+						title="Continue as Guest"
+					/>
+					{/* <ActionButton
+						className="w-full my-4"
+						title="Use Email and Password"
+						referRoute="/create-account"
+					/> */}
 				</div>
 			</div>
 		</>

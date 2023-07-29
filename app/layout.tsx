@@ -22,7 +22,9 @@ export default function RootLayout({
 			<body className={nunito.className}>
 				<ServerAuthProvider>
 					<Header />
-					{children}
+					<div className="mx-auto max-w-7xl px-6 pt-20 lg:px-8">
+						{children}
+					</div>
 					<Footer />
 				</ServerAuthProvider>
 			</body>

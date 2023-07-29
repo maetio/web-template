@@ -80,16 +80,16 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 					<p
 						className={classNames(
 							player?.deltaRating?.displayRating &&
-								player?.deltaRating?.displayRating >= 0
-								? "text-green-600"
-								: "text-red-600",
+								player?.deltaRating?.displayRating < 0
+								? "text-red-600"
+								: "text-green-600",
 							"ml-2 flex items-baseline text-sm font-semibold"
 						)}
 					>
 						{player?.deltaRating?.displayRating &&
-						player?.deltaRating?.displayRating >= 0
-							? "+"
-							: ""}
+						player?.deltaRating?.displayRating < 0
+							? ""
+							: "+"}
 						{Math.round(player?.deltaRating?.displayRating || 0)}
 					</p>
 				</dd>
