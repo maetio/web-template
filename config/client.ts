@@ -1,5 +1,9 @@
 import { getApps, initializeApp } from "firebase/app";
-import { FacebookAuthProvider, GoogleAuthProvider, getAuth } from "firebase/auth";
+import {
+	FacebookAuthProvider,
+	GoogleAuthProvider,
+	getAuth,
+} from "firebase/auth";
 import {
 	QueryDocumentSnapshot,
 	DocumentData,

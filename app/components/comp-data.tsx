@@ -35,7 +35,12 @@ const CompetitionType = ({
 	} ${type.charAt(0).toUpperCase()}${type.slice(1)}`;
 
 	return (
-		<div className={"flex items-center justify-start gap-x-1 text-xs ".concat(className || "")} {...divParams}>
+		<div
+			className={"flex items-center justify-start gap-x-1 text-xs ".concat(
+				className || ""
+			)}
+			{...divParams}
+		>
 			<div className="flex h-5 w-5 items-center justify-center self-center rounded-lg ">
 				<SportIcon
 					className="h-5 w-5 flex-none text-gray-600"

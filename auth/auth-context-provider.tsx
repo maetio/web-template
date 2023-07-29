@@ -123,12 +123,15 @@ export const AuthContextProvider: React.FC<{
 	const userContext = useMemo(() => user, [user]);
 	return (
 		<AuthContext.Provider value={userContext}>
-			{loading ? 
+			{loading ? (
 				<div>
 					<SkeletonCard />
 					<SkeletonCard />
 					<SkeletonCard />
-				</div> : children}
+				</div>
+			) : (
+				children
+			)}
 		</AuthContext.Provider>
 	);
 };

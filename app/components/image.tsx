@@ -65,8 +65,7 @@ const NextImage = ({
 					key={image}
 					loader={
 						image?.startsWith("https")
-							? ({ src: imageLoaderSrc }) =>
-								imageLoaderSrc
+							? ({ src: imageLoaderSrc }) => imageLoaderSrc
 							: undefined
 					}
 					src={image}

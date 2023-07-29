@@ -33,13 +33,15 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 	...divParams
 }) => {
 	// get host profile data
-	const profileResponse = await fetch(`${BaseURL}/api/profile/${competition.hostID}`);
+	const profileResponse = await fetch(
+		`${BaseURL}/api/profile/${competition.hostID}`
+	);
 	const hostData: PlayerResponseType = await profileResponse.json();
 
 	return (
 		<div
 			{...divParams}
-			className="flex flex-col items-start justify-between p-4 transition ease-in-out hover:-translate-y-1 hover:shadow-md duration-300 rounded-lg col-span-1"
+			className="col-span-1 flex flex-col items-start justify-between rounded-lg p-4 transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-md"
 		>
 			<div className="relative w-full">
 				<NextImage
@@ -51,29 +53,55 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 			</div>
 			<div className="w-full">
 				<div className="mt-8 flex items-center gap-x-4 text-xs">
-					<time dateTime={competition.startTimeISO} className="text-gray-500">
-						{getFullDateString(new Date(competition.startTimeISO || ""))} - {getFullDateString(new Date(competition.endTimeISO || ""))}
+					<time
+						dateTime={competition.startTimeISO}
+						className="text-gray-500"
+					>
+						{getFullDateString(
+							new Date(competition.startTimeISO || "")
+						)}{" "}
+						-{" "}
+						{getFullDateString(
+							new Date(competition.endTimeISO || "")
+						)}
 					</time>
-					<CompetitionType className="z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600" type={competition.type || "session"} sport={competition.sport || "basketball"} />
+					<CompetitionType
+						className="z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600"
+						type={competition.type || "session"}
+						sport={competition.sport || "basketball"}
+					/>
 				</div>
 				<div className="group relative">
 					<h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
 						{competition.name}
 					</h3>
-					<p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{competition.description}</p>
+					<p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+						{competition.description}
+					</p>
 				</div>
-				<div className="flex mt-8 w-full justify-between items-end">
+				<div className="mt-8 flex w-full items-end justify-between">
 					<div className="relative flex items-center gap-x-4">
-						<NextImage src={hostData.image} alt={hostData.firstName?.at(0)} className="h-10 w-10 rounded-lg bg-gray-100" />
+						<NextImage
+							src={hostData.image}
+							alt={hostData.firstName?.at(0)}
+							className="h-10 w-10 rounded-lg bg-gray-100"
+						/>
 						<div className="text-sm leading-6">
-							<p className="font-semibold text-gray-900 text-sm truncate">
+							<p className="truncate text-sm font-semibold text-gray-900">
 								{hostData.firstName} {hostData.lastName}
 							</p>
-							<p className="text-gray-600 text-sm truncate">{hostData.rating?.numGames}</p>
+							<p className="truncate text-sm text-gray-600">
+								{hostData.rating?.numGames}
+							</p>
 						</div>
 					</div>
 					<div className="flex">
-						<p className="text-gray-600 inline text-sm"><p className="text-gray-800 font-semibold inline text-sm">${Number(competition.price)/100}</p> player</p>
+						<p className="inline text-sm text-gray-600">
+							<p className="inline text-sm font-semibold text-gray-800">
+								${Number(competition.price) / 100}
+							</p>{" "}
+							player
+						</p>
 					</div>
 				</div>
 			</div>

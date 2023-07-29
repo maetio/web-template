@@ -46,6 +46,8 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 		else router.push("/profile");
 	};
 
+	
+
 	return (
 		<>
 			<div className="flex h-full min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -60,13 +62,13 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 				</div>
 				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 					<ActionButton
-						className="w-full my-4"
+						className="my-4 w-full"
 						startIcon="google"
 						action={googleSignIn}
 						title="Continue with Google"
 					/>
 					<ActionButton
-						className="w-full my-4"
+						className="my-4 w-full"
 						startIcon="facebook"
 						action={facebookSignIn}
 						title="Continue with Facebook"

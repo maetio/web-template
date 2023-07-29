@@ -21,7 +21,10 @@ export async function GET(
 		if (params.id) {
 			const profileDoc = await profileCollection.doc(params.id).get();
 
-			return NextResponse.json({ ...profileDoc.data(), id: profileDoc.id });
+			return NextResponse.json({
+				...profileDoc.data(),
+				id: profileDoc.id,
+			});
 		}
 		throw Error("API route requires a profile id");
 	} catch (error: any) {

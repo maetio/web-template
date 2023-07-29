@@ -1,4 +1,9 @@
-import { auth, facebookAuthProvider, googleAuthProvider, privateUserCollection } from "config/client";
+import {
+	auth,
+	facebookAuthProvider,
+	googleAuthProvider,
+	privateUserCollection,
+} from "config/client";
 import { BaseURL } from "config/constants";
 import {
 	ActionCodeSettings,
@@ -88,7 +93,11 @@ export /**
  */
 const createEmailPassword = async (email?: string, password?: string) => {
 	if (!email || !password) throw Error("Need both email and password");
-	const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+	const userCredential = await createUserWithEmailAndPassword(
+		auth,
+		email,
+		password
+	);
 
 	// get the id token from firebase
 	const idTokenResult = await userCredential.user.getIdTokenResult();
@@ -163,7 +172,6 @@ const signInWithGoogle = async () => {
 	// return the user credential
 	return userCredential;
 };
-
 
 export /**
  * Function that will sign in with google

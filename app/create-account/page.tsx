@@ -138,7 +138,7 @@ export default async function CreateAccount() {
 							<ActionButton
 								type="submit"
 								// action={submitFormAction}
-								className="w-full my-4"
+								className="my-4 w-full"
 								colorVariant="indigo"
 								title="Sign Up"
 								// referRoute="/"
