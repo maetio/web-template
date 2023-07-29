@@ -7,6 +7,7 @@ import {
 	signInWithEmailLink,
 	signOut,
 	signInWithPopup,
+	createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { getAndUpdateUserData } from "server-actions/users";
@@ -74,6 +75,48 @@ const signInWithLink = async (email: string | null, link: string) => {
 	await getAndUpdateUserData({
 		email: userCredential.user.email,
 		emailVerified: userCredential.user.emailVerified,
+	});
+
+	// return the user credential
+	return userCredential;
+};
+
+export /**
+ * Function that will sign in with email and password
+ *
+ * @return {*}
+ */
+const createEmailPassword = async (email?: string, password?: string) => {
+	if (!email || !password) throw Error("Need both email and password");
+	const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+	// get the id token from firebase
+	const idTokenResult = await userCredential.user.getIdTokenResult();
+
+	// set the cookie with firebase auth edge middleware
+	// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
+	await fetch("/api/login", {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${idTokenResult.token}`,
+		},
+	});
+
+	// access firstname lastname
+	const nameParts = userCredential.user?.displayName?.split(" ");
+	const firstName = nameParts?.at(0);
+	const lastName =
+		nameParts?.length && nameParts?.length > 1
+			? nameParts[nameParts.length - 1]
+			: "";
+
+	// initialize the user data
+	await getAndUpdateUserData({
+		email: userCredential.user.email,
+		emailVerified: userCredential.user.emailVerified,
+		firstName: firstName || null,
+		lastName: lastName || null,
+		image: userCredential.user.photoURL,
 	});
 
 	// return the user credential
