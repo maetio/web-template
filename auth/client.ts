@@ -189,7 +189,7 @@ const signInWithGoogle = async () => {
 
 	// set the cookie with firebase auth edge middleware
 	// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
-	await fetch("/api/login", {
+	 await fetch("/api/login", {
 		method: "GET",
 		headers: {
 			Authorization: `Bearer ${idTokenResult.token}`,

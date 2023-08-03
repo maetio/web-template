@@ -73,9 +73,9 @@ export const AuthContextProvider: React.FC<{
 
 				// Remove authentication cookies for firebase auth edge
 				// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
-				await fetch("/api/logout", {
-					method: "GET",
-				});
+				// await fetch("/api/logout", {
+				// 	method: "GET",
+				// });
 			}
 			setLoading(false);
 		});
@@ -88,7 +88,7 @@ export const AuthContextProvider: React.FC<{
 	useEffect(() => {
 		// use the firebase on auth state changed listener
 		const unsubscribe = onSnapshot(
-			doc(privateUserCollection, user?.id || "1"),
+			doc(privateUserCollection, user?.id),
 			async (userDoc) => {
 				if (userDoc.exists()) {
 					// get the data
@@ -107,9 +107,9 @@ export const AuthContextProvider: React.FC<{
 					setUser(null);
 					// Remove authentication cookies for firebase auth edge
 					// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
-					await fetch("/api/logout", {
-						method: "GET",
-					});
+					// await fetch("/api/logout", {
+					// 	method: "GET",
+					// });
 				}
 				setLoading(false);
 			}

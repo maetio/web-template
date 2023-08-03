@@ -100,7 +100,7 @@ export async function middleware(request: NextRequest) {
 				);
 
 				// refresh the user's auth cookies
-				await refreshAuthCookies(
+				 await refreshAuthCookies(
 					token,
 					response,
 					FirebaseAuthEdgeOptions
@@ -127,5 +127,10 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-	matcher: ["/", "/((?!_next/static|favicon.ico|logo.svg).*)"],
+	matcher: [
+		"/",
+		"/((?!_next|favicon.ico|api).*)",
+		"/api/login",
+		"/api/logout",
+	],
 };
