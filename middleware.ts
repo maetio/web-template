@@ -100,7 +100,7 @@ export async function middleware(request: NextRequest) {
 				);
 
 				// refresh the user's auth cookies
-				 await refreshAuthCookies(
+				await refreshAuthCookies(
 					token,
 					response,
 					FirebaseAuthEdgeOptions

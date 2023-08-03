@@ -116,10 +116,10 @@ export default async function ViewProfileScreen({
 						<div className="flex items-center">
 							{profileData?.deltaRating?.displayRating &&
 							profileData?.deltaRating?.displayRating >= 0 ? (
-								<FaArrowTrendUp className="flex items-baseline text-xs font-bold text-green-600 md:text-base" />
-							) : (
-								<FaArrowTrendDown className="flex items-baseline text-xs font-bold text-red-600 md:text-base" />
-							)}
+									<FaArrowTrendUp className="flex items-baseline text-xs font-bold text-green-600 md:text-base" />
+								) : (
+									<FaArrowTrendDown className="flex items-baseline text-xs font-bold text-red-600 md:text-base" />
+								)}
 
 							<p
 								className={classNames(
