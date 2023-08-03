@@ -11,9 +11,9 @@ import { CompetitionCard } from "app/components/cards/alt-comp-card";
  */
 export default async function Home() {
 	// fetch competition data
-	// const competitionResponse = await fetch(`${BaseURL}/api/competitions/all`);
-	// const competitions: CompetitionsResponseType =
-	// 	await competitionResponse.json();
+	const competitionResponse = await fetch(`${BaseURL}/api/competitions/all`);
+	const competitions: CompetitionsResponseType =
+		await competitionResponse.json();
 
 	return (
 		<main className="mx-auto mt-2 grid max-w-2xl grid-cols-1 gap-y-12 lg:mx-0 lg:max-w-none lg:grid-cols-3">
