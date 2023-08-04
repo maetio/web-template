@@ -125,6 +125,7 @@ const ActionButton = ({
 				</g>{" "}
 			</svg>
 		),
+		// guest: "guest",
 	};
 
 	// get transition state

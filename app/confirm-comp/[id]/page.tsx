@@ -31,9 +31,9 @@ export default async function ConfirmCompScreen({
 	// get the profile data for the user
 	const profileData = user?.id
 		? await getOrCreateProfile(
-				user,
-				competitionData?.sport || "basketball",
-				"player"
+			user,
+			competitionData?.sport || "basketball",
+			"player"
 		  )
 		: null;
 

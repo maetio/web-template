@@ -73,14 +73,14 @@ const AuthEmailForm: React.FC<AuthEmailFormParams> = ({
 
 	const signInMethod = async (provider: Providers) => {
 		switch (provider) {
-			case "facebook":
-				await facebookSignIn();
-				break;
-			case "google":
-				await googleSignIn();
-				break;
-			default:
-				await signInGuest();
+		case "facebook":
+			await facebookSignIn();
+			break;
+		case "google":
+			await googleSignIn();
+			break;
+		default:
+			await signInGuest();
 		}
 	};
 

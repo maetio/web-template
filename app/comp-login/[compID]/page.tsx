@@ -1,7 +1,7 @@
 import React from "react";
 import { BaseURL } from "config/constants";
 import { CompetitionsResponseType } from "types/next-api";
-import { AuthEmailForm } from "app/components/user-input/auth-email-form";
+import { AuthEmailForm } from "app/components/authentication/auth-email-form";
 
 export default async function CompLoginPage({
 	params,
@@ -18,7 +18,11 @@ export default async function CompLoginPage({
 
 	return (
 		<main>
-			<AuthEmailForm redirectURL={`/join-comp/${params.compID}`} />
+			<AuthEmailForm
+				containerParams="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
+				providers={["google", "facebook", "guest"]}
+				redirectURL={`/join-comp/${params.compID}`}
+			/>
 			<h2 className="mt-3 text-center text-2xl leading-9 tracking-tight text-gray-900">
 				To join {competitionData?.name}.
 			</h2>

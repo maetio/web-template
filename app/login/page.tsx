@@ -2,7 +2,11 @@
 
 import React, { useState } from "react";
 import { BaseURL } from "config/constants";
-import { AuthEmailForm, AuthPasswordForm } from "app/components/user-input";
+import {
+	AuthEmailForm,
+	AuthPasswordForm,
+	AuthPasswordForm2,
+} from "app/components/authentication";
 import { MaetIcon } from "app/components/icons";
 import { ActionButton } from "app/components/action-button";
 
@@ -20,8 +24,6 @@ const LoginPage: React.FC<{}> = () => {
 		!document.referrer.endsWith("login")
 			? document.referrer
 			: undefined;
-
-	
 
 	return (
 		<div className="flex min-h-[75vh]">
@@ -43,7 +45,10 @@ const LoginPage: React.FC<{}> = () => {
 						Welcome to Maet!
 					</h2>
 				</div>
-				{passwordLogin ? <AuthPasswordForm /> : null}
+				{passwordLogin ? (
+					// <AuthPasswordForm /> :
+					<AuthPasswordForm />
+				) : null}
 				<div className=" sm:mx-auto sm:w-full sm:max-w-sm">
 					<div className="relative mt-10">
 						<div
@@ -65,16 +70,15 @@ const LoginPage: React.FC<{}> = () => {
 					/>
 
 					{passwordLogin ? null : (
-						<div className="sm:mx-auto sm:w-full sm:max-w-sm">
-							<ActionButton
-								onClick={() => {
-									setPasswordLogin(!passwordLogin);
-								}}
-								className="my-4 w-full"
-								title="Use Email and Password"
-								referRoute="/create-account"
-							/>
-						</div>
+						// <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+						<button
+							onClick={() => {
+								setPasswordLogin(!passwordLogin);
+							}}
+						>
+							Use Email and Password
+						</button>
+						// </div>
 					)}
 				</div>
 			</div>
