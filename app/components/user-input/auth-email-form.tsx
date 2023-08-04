@@ -8,14 +8,27 @@ import {
 } from "auth/client";
 import { ActionButton } from "app/components/action-button";
 import { useRouter } from "next/navigation";
-import { MaetIcon } from "app/components/icons";
+
+type Providers = "facebook" | "google" | "guest";
+
+export interface AuthEmailFormParams {
+	redirectURL?: string;
+	containerParams: string;
+	buttonParams?: string;
+	providers: Providers[];
+}
 
 export /**
  * Enter email form
  *
  * @return {*}
  */
-const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
+const AuthEmailForm: React.FC<AuthEmailFormParams> = ({
+	redirectURL,
+	containerParams,
+	buttonParams,
+	providers,
+}) => {
 	// useForm & useAuth initialization
 	// const { register, handleSubmit } = useForm<{ email: string }>({
 	// 	resolver: yupResolver(emailSchema),
@@ -42,13 +55,13 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 		else router.push("/profile");
 	};
 
-	// const facebookSignIn = async () => {
-	// 	const userCredential = await signInWithFacebook();
-	// 	// route to new page
-	// 	if (userCredential.user.displayName?.length)
-	// 		router.push(redirectURL || "/");
-	// 	else router.push("/profile");
-	// };
+	const facebookSignIn = async () => {
+		const userCredential = await signInWithFacebook();
+		// route to new page
+		if (userCredential.user.displayName?.length)
+			router.push(redirectURL || "/");
+		else router.push("/profile");
+	};
 
 	const signInGuest = async () => {
 		const userCredential = await signInAsGuest();
@@ -58,22 +71,38 @@ const AuthEmailForm: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 		else router.push("/profile");
 	};
 
+	const signInMethod = async (provider: Providers) => {
+		switch (provider) {
+		case "facebook":
+			await facebookSignIn();
+			break;
+		case "google":
+			await googleSignIn();
+			break;
+		default:
+			await signInGuest();
+		}
+	};
+
 	return (
 		<>
-			<div className="mt-6 grid grid-cols-2 gap-4">
-				<ActionButton
-					className="my-4 w-full"
-					startIcon="google"
-					action={googleSignIn}
-					title="Google"
-				/>
-				<ActionButton
-					className="my-4 w-full"
-					// startIcon="person"
-					action={signInGuest}
-					title="Guest"
-				/>
+			<div className={containerParams}>
+				{providers.map((provider) => (
+					<ActionButton
+						key={provider}
+						className={buttonParams}
+						startIcon={provider}
+						action={() => signInMethod(provider)}
+						title={
+							provider.charAt(0).toUpperCase() + provider.slice(1)
+						}
+					/>
+				))}
 			</div>
 		</>
 	);
+};
+
+AuthEmailForm.defaultProps = {
+	buttonParams: "my-4 w-full",
 };

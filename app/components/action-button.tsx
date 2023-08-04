@@ -3,7 +3,7 @@
 import React, { ReactElement, useTransition } from "react";
 import { useRouter } from "next/navigation";
 
-type BrandIcons = "google" | "facebook";
+type BrandIcons = "google" | "facebook" | "guest";
 type ColorVariants = "white" | "black" | "indigo" | "red";
 
 interface CustomButtonParams {
