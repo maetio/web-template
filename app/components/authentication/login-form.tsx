@@ -3,10 +3,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { signInSchema } from "utils/schemas";
+import { signInSchema, SignInSchemaType } from "utils/schemas";
 import { FormInput } from "app/components/forms/form-input";
+import { useRouter } from "next/navigation";
+import { signInWithEmailPassword } from "auth/client";
+import { SignupFormParams } from "./signup-form";
 
-export const LoginForm = () => {
+export const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 	const {
 		handleSubmit,
 		register,
@@ -16,10 +19,22 @@ export const LoginForm = () => {
 		resolver: yupResolver(signInSchema),
 	});
 
-	const handleSignIn = (data: any) => {
+	const router = useRouter();
+
+	const handleSignIn = async (data: SignInSchemaType) => {
+		const userCredential = await signInWithEmailPassword(
+			data.email,
+			data.password,
+			false
+		);
+		// route to new page
+		if (userCredential.user.displayName?.length)
+			router.push(redirectURL || "/");
+		else router.push("/profile");
 		console.log("sign in", data);
 		reset();
 	};
+	console.log("rengered");
 
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -31,9 +46,7 @@ export const LoginForm = () => {
 						name="email"
 						register={register}
 						placeholder="example@domain.com"
-						errorMessage={
-							errors.email?.message
-						}
+						errorMessage={errors.email?.message}
 					/>
 
 					<FormInput

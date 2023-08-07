@@ -13,6 +13,7 @@ import {
 	signOut,
 	signInWithPopup,
 	createUserWithEmailAndPassword,
+	signInWithEmailAndPassword,
 	signInAnonymously,
 } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
@@ -92,13 +93,15 @@ export /**
  *
  * @return {*}
  */
-const createEmailPassword = async (email?: string, password?: string) => {
+const signInWithEmailPassword = async (
+	email: string,
+	password: string,
+	newUser: boolean
+) => {
 	if (!email || !password) throw Error("Need both email and password");
-	const userCredential = await createUserWithEmailAndPassword(
-		auth,
-		email,
-		password
-	);
+	const userCredential = newUser
+		? await createUserWithEmailAndPassword(auth, email, password)
+		: await signInWithEmailAndPassword(auth, email, password);
 
 	// get the id token from firebase
 	const idTokenResult = await userCredential.user.getIdTokenResult();

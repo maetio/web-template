@@ -50,7 +50,7 @@ export const signupSchema = yup.object().shape({
 			}
 			return true;
 		},
-	}),
+	}).required(),
 });
 export type SignupSchemaType = yup.InferType<typeof signupSchema>;
 

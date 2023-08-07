@@ -49,7 +49,11 @@ const LoginPage: React.FC<{}> = () => {
 				</div>
 				{passwordLogin ? (
 					<>
-						{signUp ? <SignupForm /> : <LoginForm />}
+						{signUp ? (
+							<SignupForm redirectURL={referringURL} />
+						) : (
+							<LoginForm redirectURL={referringURL} />
+						)}
 
 						<p className="mt-10 text-center text-sm text-gray-500">
 							{signUp ? "Already a user" : "Not a member?"}{" "}
