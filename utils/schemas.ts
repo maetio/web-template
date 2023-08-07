@@ -22,9 +22,12 @@ export type PasswordSchemaType = yup.InferType<typeof passwordSchema>;
  */
 export const signInSchema = yup.object().shape({
 	email: yup.string().email("Invalid email").required("Email is required"),
-	password: yup.string().required("Password is required"),
+	password: yup
+		.string()
+		.required("Password is required")
+		.min(8, "Minimum 8 characters"),
 });
-export type AuthenticateSchemaType = yup.InferType<typeof signInSchema>;
+export type SignInSchemaType = yup.InferType<typeof signInSchema>;
 
 /**
  * Password and confirm password schema
@@ -49,7 +52,7 @@ export const signupSchema = yup.object().shape({
 		},
 	}),
 });
-// export interface SignupSchemaType extends yup.InferType<typeof signupSchema> {}
+export type SignupSchemaType = yup.InferType<typeof signupSchema>;
 
 export const CompetitionFormSchema = yup.object().shape({
 	competitionName: yup.string().required("Session name is required.").min(4),

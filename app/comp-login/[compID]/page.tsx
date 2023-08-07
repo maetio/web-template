@@ -1,7 +1,7 @@
 import React from "react";
 import { BaseURL } from "config/constants";
 import { CompetitionsResponseType } from "types/next-api";
-import { AuthEmailForm } from "app/components/authentication/auth-email-form";
+import { AuthEmailForm } from "app/components/authentication/login-providers-form";
 
 export default async function CompLoginPage({
 	params,

@@ -14,7 +14,6 @@ import { ProfilesResponseType } from "types/next-api";
 import { capitalizeFirstLetter } from "utils/format";
 import AltPlayerCard from "./alt-player-card";
 
-
 export interface CompetitionCardProps
 	extends Omit<
 		React.DetailedHTMLProps<

@@ -1,3 +1,3 @@
-export * from "./auth-email-form";
-export * from "./auth-password-form";
-export * from "./auth-pass-2";
+export * from "./login-providers-form";
+export * from "./login-form";
+export * from "./signup-form";

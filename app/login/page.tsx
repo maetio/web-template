@@ -3,12 +3,13 @@
 import React, { useState } from "react";
 import { BaseURL } from "config/constants";
 import {
-	AuthEmailForm,
-	AuthPasswordForm,
-	AuthPasswordForm2,
+	LoginProvidersForm,
+	LoginForm,
+	SignupForm,
 } from "app/components/authentication";
 import { MaetIcon } from "app/components/icons";
 import { ActionButton } from "app/components/action-button";
+// import { ActionButton } from "app/components/action-button";
 
 export /**
  * Enter email form
@@ -17,6 +18,7 @@ export /**
  */
 const LoginPage: React.FC<{}> = () => {
 	const [passwordLogin, setPasswordLogin] = useState(false);
+	const [signUp, setSignUp] = useState(false);
 
 	// set the url to refer back after email sign in
 	const referringURL =
@@ -46,11 +48,23 @@ const LoginPage: React.FC<{}> = () => {
 					</h2>
 				</div>
 				{passwordLogin ? (
-					// <AuthPasswordForm /> :
-					<AuthPasswordForm />
+					<>
+						{signUp ? <SignupForm /> : <LoginForm />}
+
+						<p className="mt-10 text-center text-sm text-gray-500">
+							{signUp ? "Already a user" : "Not a member?"}{" "}
+							<button
+								onClick={() => setSignUp(!signUp)}
+								className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+							>
+								{signUp ? "Login here" : "Sign up here!"}
+							</button>
+						</p>
+					</>
 				) : null}
+				{/* continue with section */}
 				<div className=" sm:mx-auto sm:w-full sm:max-w-sm">
-					<div className="relative mt-10">
+					<section className="relative mt-10">
 						<div
 							className="absolute inset-0 flex items-center"
 							aria-hidden="true"
@@ -62,23 +76,23 @@ const LoginPage: React.FC<{}> = () => {
 								continue with
 							</span>
 						</div>
-					</div>
-					<AuthEmailForm
+					</section>
+					<LoginProvidersForm
 						containerParams="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
 						redirectURL={referringURL}
 						providers={["facebook", "google", "guest"]}
 					/>
 
 					{passwordLogin ? null : (
-						// <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-						<button
-							onClick={() => {
-								setPasswordLogin(!passwordLogin);
-							}}
-						>
-							Use Email and Password
-						</button>
-						// </div>
+						<div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
+							<ActionButton
+								className="sm:mx-auto sm:w-full sm:max-w-sm"
+								title="Use Email and Password"
+								action={async () => {
+									setPasswordLogin(!passwordLogin);
+								}}
+							/>
+						</div>
 					)}
 				</div>
 			</div>

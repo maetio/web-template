@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 
 type Providers = "facebook" | "google" | "guest";
 
-export interface AuthEmailFormParams {
+export interface LoginProvidersFormParams {
 	redirectURL?: string;
 	containerParams: string;
 	buttonParams?: string;
@@ -23,7 +23,7 @@ export /**
  *
  * @return {*}
  */
-const AuthEmailForm: React.FC<AuthEmailFormParams> = ({
+const LoginProvidersForm: React.FC<LoginProvidersFormParams> = ({
 	redirectURL,
 	containerParams,
 	buttonParams,
@@ -103,6 +103,6 @@ const AuthEmailForm: React.FC<AuthEmailFormParams> = ({
 	);
 };
 
-AuthEmailForm.defaultProps = {
+LoginProvidersForm.defaultProps = {
 	buttonParams: "my-4 w-full",
 };
