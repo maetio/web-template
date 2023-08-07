@@ -9,7 +9,14 @@ import { useRouter } from "next/navigation";
 import { signInWithEmailPassword } from "auth/client";
 import { SignupFormParams } from "./signup-form";
 
-export const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
+export /**
+ * Form for login screen
+ *
+ * @param {*} { redirectURL }
+ * @return {*}
+ */
+const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
+	// react hook form
 	const {
 		handleSubmit,
 		register,
@@ -19,23 +26,22 @@ export const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 		resolver: yupResolver(signInSchema),
 	});
 
+	// get router
 	const router = useRouter();
 
+	// handle the signIn
 	const handleSignIn = async (data: SignInSchemaType) => {
 		const userCredential = await signInWithEmailPassword(
 			data.email,
 			data.password,
 			false
 		);
-		console.log("user cred", userCredential.user);
 
 		// route to new page
 		if (userCredential.user) router.push(redirectURL || "/");
-		// else router.push("/profile");
-		// console.log("sign in", data);
+		else router.push("/profile");
 		reset();
 	};
-	console.log(errors);
 
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -63,7 +69,6 @@ export const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 				<div>
 					<button
 						type="submit"
-						onClick={() => console.log("somethibng")}
 						className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					>
 						Sign in

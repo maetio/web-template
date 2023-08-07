@@ -88,7 +88,6 @@ export const AuthContextProvider: React.FC<{
 
 	// add listener for private user data
 	useEffect(() => {
-		console.log("fired thing");
 		// use the firebase on auth state changed listener
 		const unsubscribe = onSnapshot(
 			doc(privateUserCollection, user?.id || "1"),

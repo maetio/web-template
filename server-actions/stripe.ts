@@ -113,5 +113,5 @@ export async function getStripeSession(compID: string | undefined) {
 		throw new Error(`error has occured: ${e}`);
 	}
 
-	revalidatePath("/");
+	// revalidatePath("/");
 }

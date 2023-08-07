@@ -10,10 +10,19 @@ import {
 import { MaetIcon } from "app/components/icons";
 import { ActionButton } from "app/components/action-button";
 
-export const AuthPageComp: React.FC<{ redirectURL?: string }> = ({
-	redirectURL,
-}) => {
+export /**
+ * the entire auth page in a client side component.
+ * has redirect url that can be passed in to allow for users to login and navigate back to a certain screen
+ *
+ * @param {*} {
+ * 	redirectURL,
+ * }
+ * @return {*}
+ */
+const AuthPageComp: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
+	// state the dicates if we show the password login section
 	const [passwordLogin, setPasswordLogin] = useState(false);
+	// switch between the login and signup password component
 	const [signUp, setSignUp] = useState(false);
 
 	// set the url to refer back after email sign in

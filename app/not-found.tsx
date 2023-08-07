@@ -1,3 +1,9 @@
+/**
+ * Not found screen for when the user navigates to a screen/page that does not exist in our app
+ *
+ * @export
+ * @return {*}
+ */
 export default async function NotFound() {
 	return (
 		<main className="mx-auto flex w-full max-w-7xl flex-auto flex-col justify-center px-6 py-24 sm:py-64 lg:px-8">

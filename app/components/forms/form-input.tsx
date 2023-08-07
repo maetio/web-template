@@ -11,7 +11,21 @@ interface FormInputParams {
 	placeholder?: string;
 }
 
-export const FormInput: React.FC<FormInputParams> = ({
+export /**
+ * prebuild form input component that handles the error message and form validation from react-hook form
+ *
+ * @param {*} {
+ * 	register,
+ * 	label,
+ * 	name,
+ * 	type,
+ * 	errorMessage,
+ * 	defaultValue,
+ * 	placeholder,
+ * }
+ * @return {*} 
+ */
+const FormInput: React.FC<FormInputParams> = ({
 	register,
 	label,
 	name,
