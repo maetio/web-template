@@ -19,7 +19,7 @@ export interface LoginProvidersFormParams {
 }
 
 export /**
- * Contains auth providers in a customizable format 
+ * Contains auth providers in a customizable format
  *
  * @return {*}
  */

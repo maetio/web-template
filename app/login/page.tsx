@@ -2,9 +2,9 @@ import { AuthPageComp } from "app/components/authentication/auth-page";
 import React from "react";
 
 /**
- * login or signup page 
+ * login or signup page
  *
- * @return {*} 
+ * @return {*}
  */
 function LoginPage() {
 	return (

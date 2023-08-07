@@ -10,7 +10,7 @@ import { AuthPageComp } from "app/components/authentication/auth-page";
  * }} {
  * 	params,
  * }
- * @return {*} 
+ * @return {*}
  */
 export default async function CompLoginPage({
 	params,

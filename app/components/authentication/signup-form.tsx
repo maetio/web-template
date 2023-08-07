@@ -16,7 +16,7 @@ export /**
  * form for signup screen
  *
  * @param {*} { redirectURL }
- * @return {*} 
+ * @return {*}
  */
 const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 	// react hook form

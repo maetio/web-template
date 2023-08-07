@@ -30,6 +30,22 @@ export const signInSchema = yup.object().shape({
 export type SignInSchemaType = yup.InferType<typeof signInSchema>;
 
 /**
+ * File defines varies yup schemas to be used for form validation
+ */
+export const updateUserPasswordSchema = yup.object().shape({
+	email: yup.string().email("Invalid email").required("Email is required"),
+	password: yup
+		.string()
+		.required("Password is required")
+		.min(8, "Minimum 8 characters"),
+	newPassword: yup
+		.string()
+		.required("Password is required")
+		.min(8, "Minimum 8 characters"),
+});
+export type UpdateUserPasswordSchemaType = yup.InferType<typeof updateUserPasswordSchema>;
+
+/**
  * Password and confirm password schema
  */
 export const signupSchema = yup.object().shape({

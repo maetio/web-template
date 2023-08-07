@@ -15,6 +15,7 @@ import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	signInAnonymously,
+	updatePassword,
 } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { getAndUpdateUserData } from "server-actions/users";
@@ -130,6 +131,19 @@ const signInWithEmailPassword = async (
 
 	// return the user credential
 	return userCredential;
+};
+
+export /**
+ * function will update the users password if they provide their old and new password
+ *
+ */
+const updateUserPassword = async (
+	email: string,
+	password: string,
+	newPassword: string
+) => {
+	const userCredential = await signInWithEmailAndPassword(auth, email, password);
+	await updatePassword(userCredential.user, newPassword);
 };
 
 export /**

@@ -9,6 +9,7 @@ interface FormInputParams {
 	errorMessage?: string | undefined;
 	defaultValue?: string;
 	placeholder?: string;
+	disabled?: boolean;
 }
 
 export /**
@@ -22,8 +23,9 @@ export /**
  * 	errorMessage,
  * 	defaultValue,
  * 	placeholder,
+ *  disabled
  * }
- * @return {*} 
+ * @return {*}
  */
 const FormInput: React.FC<FormInputParams> = ({
 	register,
@@ -33,6 +35,7 @@ const FormInput: React.FC<FormInputParams> = ({
 	errorMessage,
 	defaultValue,
 	placeholder,
+	disabled,
 }) => {
 	return (
 		<div>
@@ -45,6 +48,7 @@ const FormInput: React.FC<FormInputParams> = ({
 			<div className="relative mt-2 rounded-md shadow-sm">
 				<input
 					{...register(name)}
+					disabled={disabled}
 					type={type}
 					name={name}
 					id={name}
@@ -79,4 +83,5 @@ FormInput.defaultProps = {
 	errorMessage: undefined,
 	defaultValue: undefined,
 	placeholder: undefined,
+	disabled: false,
 };
