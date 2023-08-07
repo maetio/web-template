@@ -1,4 +1,4 @@
-import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { UseFormRegister } from "react-hook-form";
 import { PiWarningCircleFill } from "react-icons/pi";
 
 interface FormInputParams {
@@ -52,7 +52,7 @@ export const FormInput: React.FC<FormInputParams> = ({
 			</div>
 			{errorMessage && (
 				<p className="mt-2 text-sm text-red-600" id="email-error">
-					Not a valid email address.
+					{errorMessage}
 				</p>
 			)}
 		</div>
@@ -64,5 +64,5 @@ FormInput.defaultProps = {
 	type: "text",
 	errorMessage: undefined,
 	defaultValue: undefined,
-	placeholder: "seth8656@gmail.com",
+	placeholder: undefined,
 };

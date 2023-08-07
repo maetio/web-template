@@ -27,14 +27,15 @@ export const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 			data.password,
 			false
 		);
+		console.log("user cred", userCredential.user);
+
 		// route to new page
-		if (userCredential.user.displayName?.length)
-			router.push(redirectURL || "/");
-		else router.push("/profile");
-		console.log("sign in", data);
+		if (userCredential.user) router.push(redirectURL || "/");
+		// else router.push("/profile");
+		// console.log("sign in", data);
 		reset();
 	};
-	console.log("rengered");
+	console.log(errors);
 
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

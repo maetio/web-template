@@ -49,6 +49,9 @@ const LoginProvidersForm: React.FC<LoginProvidersFormParams> = ({
 
 	const googleSignIn = async () => {
 		const userCredential = await signInWithGoogle();
+
+		console.log("user cred", userCredential.user);
+
 		// route to new page
 		if (userCredential.user.displayName?.length)
 			router.push(redirectURL || "/");

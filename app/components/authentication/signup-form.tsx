@@ -28,13 +28,16 @@ export const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 		const userCredential = await signInWithEmailPassword(
 			data.email,
 			data.password,
-			true
+			true,
+			data.firstName,
+			data.lastName
 		);
+
+		console.log("user cred", userCredential.user);
 		// route to new page
-		if (userCredential.user.displayName?.length)
-			router.push(redirectURL || "/");
-		else router.push("/profile");
-		console.log("sign in", data);
+		if (userCredential.user) router.push(redirectURL || "/");
+		// else router.push("/profile");
+		// console.log("sign in", data);
 		reset();
 	};
 	console.log("rengered");

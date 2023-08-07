@@ -40,17 +40,20 @@ export const signupSchema = yup.object().shape({
 		.string()
 		.required("Password is required")
 		.min(8, "Minimum 8 characters"),
-	confirmPassword: yup.string().test({
-		name: "confirmPassword",
-		message: "Passwords must match",
-		test() {
-			const { password, confirmPassword } = this.parent;
-			if (password && confirmPassword !== password) {
-				return false;
-			}
-			return true;
-		},
-	}).required(),
+	confirmPassword: yup
+		.string()
+		.test({
+			name: "confirmPassword",
+			message: "Passwords must match",
+			test() {
+				const { password, confirmPassword } = this.parent;
+				if (password && confirmPassword !== password) {
+					return false;
+				}
+				return true;
+			},
+		})
+		.required(),
 });
 export type SignupSchemaType = yup.InferType<typeof signupSchema>;
 

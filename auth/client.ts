@@ -96,7 +96,9 @@ export /**
 const signInWithEmailPassword = async (
 	email: string,
 	password: string,
-	newUser: boolean
+	newUser: boolean,
+	firstName?: string,
+	lastName?: string
 ) => {
 	if (!email || !password) throw Error("Need both email and password");
 	const userCredential = newUser
@@ -115,22 +117,16 @@ const signInWithEmailPassword = async (
 		},
 	});
 
-	// access firstname lastname
-	const nameParts = userCredential.user?.displayName?.split(" ");
-	const firstName = nameParts?.at(0);
-	const lastName =
-		nameParts?.length && nameParts?.length > 1
-			? nameParts[nameParts.length - 1]
-			: "";
-
-	// initialize the user data
-	await getAndUpdateUserData({
-		email: userCredential.user.email,
-		emailVerified: userCredential.user.emailVerified,
-		firstName: firstName || null,
-		lastName: lastName || null,
-		image: userCredential.user.photoURL,
-	});
+	if (newUser) {
+		// initialize the user data
+		await getAndUpdateUserData({
+			email: userCredential.user.email,
+			emailVerified: userCredential.user.emailVerified,
+			firstName: firstName || null,
+			lastName: lastName || null,
+			image: userCredential.user.photoURL,
+		});
+	}
 
 	// return the user credential
 	return userCredential;
