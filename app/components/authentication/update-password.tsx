@@ -10,6 +10,7 @@ import {
 import { FormInput } from "app/components/forms/form-input";
 import { updateUserPassword } from "auth/client";
 import { useAuthContext } from "auth/auth-context-provider";
+import { useCreateFirestoreHook } from "utils/hook-template";
 
 export /**
  * form that allows users to update thier password
@@ -34,14 +35,17 @@ const UpdatePasswordForm: React.FC<{}> = () => {
 		},
 	});
 
-	const handleSignIn = async (data: UpdateUserPasswordSchemaType) => {
+	const handleUpdatePassword = async (data: UpdateUserPasswordSchemaType) => {
 		await updateUserPassword(data.email, data.password, data.newPassword);
 		reset();
 	};
 
+	const [{ isLoading, error }, updateData] =
+		useCreateFirestoreHook(handleUpdatePassword);
+
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-			<form onSubmit={handleSubmit(handleSignIn)} className="space-y-6">
+			<form onSubmit={handleSubmit(updateData)} className="space-y-6">
 				<FormInput
 					disabled
 					label="Email Address"
@@ -72,12 +76,18 @@ const UpdatePasswordForm: React.FC<{}> = () => {
 
 				<div>
 					<button
+					disabled={isLoading}
 						type="submit"
 						className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					>
 						Change password
 					</button>
 				</div>
+				{error ? (
+					<div className="mt-10">
+						<text className="font-bold text-red-600">{error}</text>
+					</div>
+				) : null}
 			</form>
 		</div>
 	);

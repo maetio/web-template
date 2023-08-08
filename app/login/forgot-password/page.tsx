@@ -6,7 +6,7 @@ import { useState } from "react";
 /**
  * forget password screen, basic screen to send email to user to recover their password
  *
- * @return {*} 
+ * @return {*}
  */
 function ForgotPassword() {
 	const [email, setEmail] = useState<string>();

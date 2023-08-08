@@ -103,35 +103,40 @@ const signInWithEmailPassword = async (
 	lastName?: string
 ) => {
 	if (!email || !password) throw Error("Need both email and password");
-	const userCredential = newUser
-		? await createUserWithEmailAndPassword(auth, email, password)
-		: await signInWithEmailAndPassword(auth, email, password);
 
-	// get the id token from firebase
-	const idTokenResult = await userCredential.user.getIdTokenResult();
+	try {
+		const userCredential = newUser
+			? await createUserWithEmailAndPassword(auth, email, password)
+			: await signInWithEmailAndPassword(auth, email, password);
 
-	// set the cookie with firebase auth edge middleware
-	// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
-	await fetch("/api/login", {
-		method: "GET",
-		headers: {
-			Authorization: `Bearer ${idTokenResult.token}`,
-		},
-	});
+		// get the id token from firebase
+		const idTokenResult = await userCredential.user.getIdTokenResult();
 
-	if (newUser) {
-		// initialize the user data
-		await getAndUpdateUserData({
-			email: userCredential.user.email,
-			emailVerified: userCredential.user.emailVerified,
-			firstName: firstName || null,
-			lastName: lastName || null,
-			image: userCredential.user.photoURL,
+		// set the cookie with firebase auth edge middleware
+		// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
+		await fetch("/api/login", {
+			method: "GET",
+			headers: {
+				Authorization: `Bearer ${idTokenResult.token}`,
+			},
 		});
-	}
 
-	// return the user credential
-	return userCredential;
+		if (newUser) {
+			// initialize the user data
+			await getAndUpdateUserData({
+				email: userCredential.user.email,
+				emailVerified: userCredential.user.emailVerified,
+				firstName: firstName || null,
+				lastName: lastName || null,
+				image: userCredential.user.photoURL,
+			});
+		}
+
+		// return the user credential
+		return userCredential;
+	} catch (e: any) {
+		throw Error(e);
+	}
 };
 
 export /**

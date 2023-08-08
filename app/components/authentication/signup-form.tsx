@@ -7,6 +7,7 @@ import { signupSchema, SignupSchemaType } from "utils/schemas";
 import { FormInput } from "app/components/forms/form-input";
 import { signInWithEmailPassword } from "auth/client";
 import { useRouter } from "next/navigation";
+import { useCreateFirestoreHook } from "utils/hook-template";
 
 export interface SignupFormParams {
 	redirectURL?: string;
@@ -48,9 +49,12 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 		reset();
 	};
 
+	const [{ isLoading, error }, updateData] =
+		useCreateFirestoreHook(handleSignup);
+
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-			<form onSubmit={handleSubmit(handleSignup)} className="space-y-6">
+			<form onSubmit={handleSubmit(updateData)} className="space-y-6">
 				<FormInput
 					label="First Name"
 					type="text"
@@ -95,12 +99,18 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 
 				<div>
 					<button
+						disabled={isLoading}
 						type="submit"
 						className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					>
 						Sign in
 					</button>
 				</div>
+				{error ? (
+					<div className="mt-10">
+						<text className="font-bold text-red-600">{error}</text>
+					</div>
+				) : null}
 			</form>
 		</div>
 	);
