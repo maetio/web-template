@@ -2,6 +2,19 @@
 
 import { useState, useCallback } from "react";
 
+export const filterErrorCode = (error: string) => {
+	switch (true) {
+		case error.includes("email-already-in-use"):
+			return "Email is already in use";
+
+		case error.includes("wrong-password"):
+			return "Incorrect Password";
+
+		default:
+			return error;
+	}
+};
+
 interface HookReturnParameters<T> {
 	data: T | undefined;
 	isLoading: boolean;
@@ -53,7 +66,8 @@ const useCreateFirestoreHook = <InputData = never, ReturnDataType = null>(
 				// set the error states
 				setisLoading(false);
 				setisSuccess(false);
-				setError(error.message);
+				console.log(error.message);
+				setError(filterErrorCode(error.message));
 			}
 
 			return returnData;

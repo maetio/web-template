@@ -11,6 +11,7 @@ import { FormInput } from "app/components/forms/form-input";
 import { updateUserPassword } from "auth/client";
 import { useAuthContext } from "auth/auth-context-provider";
 import { useCreateFirestoreHook } from "utils/hook-template";
+import { ActionButton } from "app/components/action-button";
 
 export /**
  * form that allows users to update thier password
@@ -40,7 +41,7 @@ const UpdatePasswordForm: React.FC<{}> = () => {
 		reset();
 	};
 
-	const [{ isLoading, error }, updateData] =
+	const [{ error }, updateData] =
 		useCreateFirestoreHook(handleUpdatePassword);
 
 	return (
@@ -75,13 +76,12 @@ const UpdatePasswordForm: React.FC<{}> = () => {
 				/>
 
 				<div>
-					<button
-					disabled={isLoading}
-						type="submit"
+					<ActionButton
 						className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-					>
-						Change password
-					</button>
+						title="Change Password"
+						colorVariant="indigo"
+						action={handleSubmit(updateData)}
+					/>
 				</div>
 				{error ? (
 					<div className="mt-10">

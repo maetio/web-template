@@ -8,7 +8,8 @@ import { FormInput } from "app/components/forms/form-input";
 import { useRouter } from "next/navigation";
 import { signInWithEmailPassword } from "auth/client";
 import { useCreateFirestoreHook } from "utils/hook-template";
-import { SignupFormParams } from "./signup-form";
+import { SignupFormParams } from "app/components/authentication/signup-form";
+import { ActionButton } from "app/components/action-button";
 
 export /**
  * Form for login screen
@@ -47,8 +48,7 @@ const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 		}
 	};
 
-	const [{ isLoading, error }, updateData] =
-		useCreateFirestoreHook(handleSignIn);
+	const [{ error }, updateData] = useCreateFirestoreHook(handleSignIn);
 
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -73,13 +73,12 @@ const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 				/>
 
 				<div>
-					<button
-						disabled={isLoading}
-						type="submit"
+					<ActionButton
 						className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-					>
-						Sign in
-					</button>
+						title="Sign in"
+						colorVariant="indigo"
+						action={handleSubmit(updateData)}
+					/>
 				</div>
 				{error ? (
 					<div className="mt-10">

@@ -51,9 +51,9 @@ export type UpdateUserPasswordSchemaType = yup.InferType<
  * Password and confirm password schema
  */
 export const signupSchema = yup.object().shape({
-	email: yup.string().email("Invalid email").required("Email is required"),
 	firstName: yup.string(),
 	lastName: yup.string(),
+	email: yup.string().email("Invalid email").required("Email is required"),
 	password: yup
 		.string()
 		.required("Password is required")
@@ -71,7 +71,7 @@ export const signupSchema = yup.object().shape({
 				return true;
 			},
 		})
-		.required(),
+		.required("Confirm Password is required"),
 });
 export type SignupSchemaType = yup.InferType<typeof signupSchema>;
 

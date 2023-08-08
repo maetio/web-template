@@ -8,6 +8,7 @@ import { FormInput } from "app/components/forms/form-input";
 import { signInWithEmailPassword } from "auth/client";
 import { useRouter } from "next/navigation";
 import { useCreateFirestoreHook } from "utils/hook-template";
+import { ActionButton } from "app/components/action-button";
 
 export interface SignupFormParams {
 	redirectURL?: string;
@@ -35,6 +36,7 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 
 	// handle signup
 	const handleSignup = async (data: SignupSchemaType) => {
+		console.log("fired");
 		const userCredential = await signInWithEmailPassword(
 			data.email,
 			data.password,
@@ -49,12 +51,11 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 		reset();
 	};
 
-	const [{ isLoading, error }, updateData] =
-		useCreateFirestoreHook(handleSignup);
+	const [{ error }, updateData] = useCreateFirestoreHook(handleSignup);
 
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-			<form onSubmit={handleSubmit(updateData)} className="space-y-6">
+			<form className="space-y-6">
 				<FormInput
 					label="First Name"
 					type="text"
@@ -79,6 +80,7 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 					name="email"
 					register={register}
 					placeholder="example@domain.com"
+					errorMessage={errors.email?.message}
 				/>
 
 				<FormInput
@@ -87,6 +89,7 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 					name="password"
 					register={register}
 					placeholder="password"
+					errorMessage={errors.password?.message}
 				/>
 
 				<FormInput
@@ -95,16 +98,16 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 					name="confirmPassword"
 					register={register}
 					placeholder="re-enter password"
+					errorMessage={errors.confirmPassword?.message}
 				/>
 
 				<div>
-					<button
-						disabled={isLoading}
-						type="submit"
+					<ActionButton
 						className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-					>
-						Sign in
-					</button>
+						title="Sign Up"
+						colorVariant="indigo"
+						action={handleSubmit(updateData)}
+					/>
 				</div>
 				{error ? (
 					<div className="mt-10">
