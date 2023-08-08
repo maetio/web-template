@@ -43,7 +43,9 @@ export const updateUserPasswordSchema = yup.object().shape({
 		.required("Password is required")
 		.min(8, "Minimum 8 characters"),
 });
-export type UpdateUserPasswordSchemaType = yup.InferType<typeof updateUserPasswordSchema>;
+export type UpdateUserPasswordSchemaType = yup.InferType<
+	typeof updateUserPasswordSchema
+>;
 
 /**
  * Password and confirm password schema

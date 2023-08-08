@@ -16,6 +16,7 @@ import {
 	signInWithEmailAndPassword,
 	signInAnonymously,
 	updatePassword,
+	sendPasswordResetEmail,
 } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { getAndUpdateUserData } from "server-actions/users";
@@ -134,6 +135,15 @@ const signInWithEmailPassword = async (
 };
 
 export /**
+ * function that sends an email to reset user's password
+ *
+ * @param {string} email
+ */
+const sendForgotPasswordEmail = async (email: string) => {
+	await sendPasswordResetEmail(auth, email);
+};
+
+export /**
  * function will update the users password if they provide their old and new password
  *
  */
@@ -142,7 +152,11 @@ const updateUserPassword = async (
 	password: string,
 	newPassword: string
 ) => {
-	const userCredential = await signInWithEmailAndPassword(auth, email, password);
+	const userCredential = await signInWithEmailAndPassword(
+		auth,
+		email,
+		password
+	);
 	await updatePassword(userCredential.user, newPassword);
 };
 

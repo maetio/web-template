@@ -10,6 +10,7 @@ interface FormInputParams {
 	defaultValue?: string;
 	placeholder?: string;
 	disabled?: boolean;
+	forgotPasswordLink?: string;
 }
 
 export /**
@@ -23,7 +24,8 @@ export /**
  * 	errorMessage,
  * 	defaultValue,
  * 	placeholder,
- *  disabled
+ *  disabled,
+ * forgotPasswordLink
  * }
  * @return {*}
  */
@@ -36,15 +38,29 @@ const FormInput: React.FC<FormInputParams> = ({
 	defaultValue,
 	placeholder,
 	disabled,
+	forgotPasswordLink,
 }) => {
 	return (
 		<div>
-			<label
-				htmlFor="email"
-				className="block text-sm font-medium leading-6 text-gray-900"
-			>
-				{label}
-			</label>
+			<div className=" flex items-center justify-between">
+				<label
+					htmlFor="email"
+					className="block text-sm font-medium leading-6 text-gray-900"
+				>
+					{label}
+				</label>
+
+				{forgotPasswordLink ? (
+					<div className="text-sm">
+						<a
+							href={forgotPasswordLink}
+							className="font-semibold text-indigo-600 hover:text-indigo-500"
+						>
+							Forgot Password
+						</a>
+					</div>
+				) : null}
+			</div>
 			<div className="relative mt-2 rounded-md shadow-sm">
 				<input
 					{...register(name)}
@@ -89,4 +105,5 @@ FormInput.defaultProps = {
 	defaultValue: undefined,
 	placeholder: undefined,
 	disabled: false,
+	forgotPasswordLink: undefined,
 };

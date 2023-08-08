@@ -42,42 +42,40 @@ const UpdatePasswordForm: React.FC<{}> = () => {
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 			<form onSubmit={handleSubmit(handleSignIn)} className="space-y-6">
-				<>
-					<FormInput
-						disabled
-						label="Email Address"
-						type="email"
-						name="email"
-						register={register}
-						placeholder="example@domain.com"
-						errorMessage={errors.email?.message}
-					/>
+				<FormInput
+					disabled
+					label="Email Address"
+					type="email"
+					name="email"
+					register={register}
+					placeholder="example@domain.com"
+					errorMessage={errors.email?.message}
+				/>
 
-					<FormInput
-						label="Old Password"
-						type="password"
-						name="password"
-						register={register}
-						placeholder="Password"
-						errorMessage={errors.password?.message}
-					/>
+				<FormInput
+					label="Old Password"
+					type="password"
+					name="password"
+					register={register}
+					placeholder="Password"
+					errorMessage={errors.password?.message}
+				/>
 
-					<FormInput
-						label="New Password"
-						type="password"
-						name="newPassword"
-						register={register}
-						placeholder="New Password"
-						errorMessage={errors.newPassword?.message}
-					/>
-				</>
+				<FormInput
+					label="New Password"
+					type="password"
+					name="newPassword"
+					register={register}
+					placeholder="New Password"
+					errorMessage={errors.newPassword?.message}
+				/>
 
 				<div>
 					<button
 						type="submit"
 						className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					>
-						Sign in
+						Change password
 					</button>
 				</div>
 			</form>
