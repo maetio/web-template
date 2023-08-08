@@ -35,16 +35,7 @@ const UpdatePasswordForm: React.FC<{}> = () => {
 	});
 
 	const handleSignIn = async (data: UpdateUserPasswordSchemaType) => {
-		// const userCredential = await signInWithEmailPassword(
-		// 	data.email,
-		// 	data.password,
-		// 	false
-		// );
-
-		console.log("data from from", data);
-		// route to new page
-		// if (userCredential.user) router.push(redirectURL || "/");
-		// else router.push("/profile");
+		await updateUserPassword(data.email, data.password, data.newPassword);
 		reset();
 	};
 
@@ -53,6 +44,7 @@ const UpdatePasswordForm: React.FC<{}> = () => {
 			<form onSubmit={handleSubmit(handleSignIn)} className="space-y-6">
 				<>
 					<FormInput
+						disabled
 						label="Email Address"
 						type="email"
 						name="email"
@@ -62,20 +54,20 @@ const UpdatePasswordForm: React.FC<{}> = () => {
 					/>
 
 					<FormInput
-						label="Password"
+						label="Old Password"
 						type="password"
 						name="password"
 						register={register}
-						placeholder="password"
+						placeholder="Password"
 						errorMessage={errors.password?.message}
 					/>
 
 					<FormInput
-						label="Password"
+						label="New Password"
 						type="password"
 						name="newPassword"
 						register={register}
-						placeholder="password"
+						placeholder="New Password"
 						errorMessage={errors.newPassword?.message}
 					/>
 				</>
