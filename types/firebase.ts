@@ -9,6 +9,7 @@ import {
 } from "./profile";
 import { CompetitionTeam, Team, TeamMessagesFireStore } from "./team";
 import { PrivateUserData } from "./user";
+import { TransactionEvents } from "./stripe";
 
 /**
  * Define timestamp types that will be included in some firestore data.
@@ -32,6 +33,7 @@ export interface CollectionDataTypes {
 	teams: Partial<Omit<Team, "id">>;
 	games: StartTimestamp & Partial<Omit<Game, "id">>;
 	reports: { userID: string };
+	"transaction-events": { id: string } & Partial<TransactionEvents>;
 }
 /**
  * Subcollectin data types for firestore

@@ -82,6 +82,10 @@ export const gamesCollection =
 	createCollection<CollectionDataTypes["games"]>("games");
 export const reportsCollection =
 	createCollection<CollectionDataTypes["reports"]>("reports");
+export const transactionEvents =
+	createCollection<CollectionDataTypes["transaction-events"]>(
+		"transaction-events"
+	);
 
 /**
  * Define Subcollections as functions
