@@ -1,5 +1,4 @@
 import { initFirestore } from "@next-auth/firebase-adapter";
-import { CollectionDataTypes, SubcollectionDataTypes } from "../types/firebase";
 import {
 	CollectionReference,
 	DocumentData,
@@ -9,6 +8,7 @@ import {
 } from "firebase-admin/firestore";
 import { cert } from "firebase-admin/app";
 import { FirebaseServiceAccount } from "config/constants";
+import { CollectionDataTypes, SubcollectionDataTypes } from "../types/firebase";
 
 /**
  * Initialize firestore with next
