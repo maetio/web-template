@@ -4,17 +4,17 @@ import { useState, useCallback } from "react";
 
 export const filterErrorCode = (error: string) => {
 	switch (true) {
-		case error.includes("email-already-in-use"):
-			return "Email is already in use";
+	case error.includes("email-already-in-use"):
+		return "Email is already in use";
 
-		case error.includes("wrong-password"):
-			return "Incorrect Password";
+	case error.includes("wrong-password"):
+		return "Incorrect Password";
 
-		case error.includes("user-not-found"):
-			return "This user does not exist, please check password and email";
+	case error.includes("user-not-found"):
+		return "This user does not exist, please check password and email";
 
-		default:
-			return error;
+	default:
+		return error;
 	}
 };
 
