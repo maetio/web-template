@@ -5,6 +5,8 @@ import { BaseURL } from "config/constants";
 import { PlayerResponseType } from "types/next-api";
 import { number } from "yup";
 import { Timestamp } from "firebase-admin/firestore";
+import { TransactionEvents } from "types/stripe";
+import { CollectionDataTypes } from "types/firebase";
 
 // grab envs as string
 const STRIPE_SECRET = process.env.STRIPE_SECRET as string;
@@ -79,20 +81,22 @@ export async function POST(req: NextRequest) {
 					break;
 				}
 				case "payment_intent.payment_failed": {
-					const data = {
-						userID: profileData.userID,
-						eventType: 603,
-						timeStamp: Timestamp.now(),
-						actionID: event.id,
-						customerID: paymentIntentSucceeded.customer,
-						destinationAccount:
-								paymentIntentSucceeded.transfer_data
-									?.destination,
-						latest_charge: paymentIntentSucceeded.latest_charge,
-						amount: paymentIntentSucceeded.amount,
-						amountFee:
-								paymentIntentSucceeded.application_fee_amount,
-					};
+					const data =
+							{
+								userID: profileData.userID,
+								eventType: 603,
+								timeStamp: Timestamp.now(),
+								actionID: event.id,
+								customerID: paymentIntentSucceeded.customer,
+								destinationAccount:
+									paymentIntentSucceeded.transfer_data
+										?.destination,
+								latest_charge:
+									paymentIntentSucceeded.latest_charge,
+								amount: paymentIntentSucceeded.amount,
+								amountFee:
+									paymentIntentSucceeded.application_fee_amount,
+							};
 
 					await transactionEvents.add(data);
 
