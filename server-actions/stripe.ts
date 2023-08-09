@@ -1,9 +1,14 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { competitionsCollection, privateUserCollection } from "config/server";
+import {
+	competitionsCollection,
+	privateUserCollection,
+	transactionEvents,
+} from "config/server";
 import { getServerAuthUser } from "auth/server";
 import Stripe from "stripe";
+import { Timestamp } from "firebase-admin/firestore";
 
 // get stripe
 const stripe = process.env.STRIPE_SECRET
@@ -98,6 +103,21 @@ export async function getStripeSession(compID: string | undefined) {
 						destination: hostInformation.stripeHostID,
 					},
 				});
+
+				const transactionEventData = {
+					userID: user.id,
+					eventType: 604,
+					timeStamp: Timestamp.now(),
+					actionID: paymentIntent?.id,
+					customerID: paymentIntent?.customer,
+					destinationAccount:
+						paymentIntent?.transfer_data?.destination,
+					latest_charge: paymentIntent?.latest_charge,
+					amount: paymentIntent?.amount,
+					amountFee: paymentIntent?.application_fee_amount,
+				};
+
+				await transactionEvents.add(transactionEventData);
 
 				const stripeSession = {
 					paymentIntent: paymentIntent?.client_secret,
