@@ -10,6 +10,9 @@ export const filterErrorCode = (error: string) => {
 		case error.includes("wrong-password"):
 			return "Incorrect Password";
 
+		case error.includes("user-not-found"):
+			return "This user does not exist, please check password and email";
+
 		default:
 			return error;
 	}
