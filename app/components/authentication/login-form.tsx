@@ -48,7 +48,8 @@ const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 		}
 	};
 
-	const [{ error }, updateData] = useCreateFirestoreHook(handleSignIn);
+	const [{ error, isLoading }, updateData] =
+		useCreateFirestoreHook(handleSignIn);
 
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -77,7 +78,7 @@ const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 						className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 						title="Sign in"
 						colorVariant="indigo"
-						action={handleSubmit(updateData)}
+						isLoading={isLoading}
 					/>
 				</div>
 				{error ? (
