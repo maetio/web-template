@@ -10,7 +10,6 @@ import { BaseURL } from "config/constants";
 import { ActionButton } from "app/components/action-button";
 import { addTransactionEvent } from "server-actions/stripe";
 import Stripe from "stripe";
-import { useAuthContext } from "auth/auth-context-provider";
 
 interface StripePaymentElementParams {
 	redirectURL?: string;
@@ -35,9 +34,6 @@ const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
 	// get stripe config variables
 	const stripe = useStripe();
 	const elements = useElements();
-
-	// get user
-	const userData = useAuthContext();
 
 	// error state
 	const [errorMessage, setErrorMessage] = useState<string>();
