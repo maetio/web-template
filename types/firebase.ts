@@ -33,7 +33,7 @@ export interface CollectionDataTypes {
 	teams: Partial<Omit<Team, "id">>;
 	games: StartTimestamp & Partial<Omit<Game, "id">>;
 	reports: { userID: string };
-	"transaction-events": { id: string } & Partial<TransactionEvents>;
+	"transaction-events": Partial<TransactionEvents>;
 }
 /**
  * Subcollectin data types for firestore

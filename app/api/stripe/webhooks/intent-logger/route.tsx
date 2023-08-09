@@ -3,6 +3,8 @@ import Stripe from "stripe";
 import { competitionsCollection, transactionEvents } from "config/server";
 import { BaseURL } from "config/constants";
 import { PlayerResponseType } from "types/next-api";
+import { number } from "yup";
+import { Timestamp } from "firebase-admin/firestore";
 
 // grab envs as string
 const STRIPE_SECRET = process.env.STRIPE_SECRET as string;
@@ -58,9 +60,18 @@ export async function POST(req: NextRequest) {
 				switch (event?.type) {
 				case "payment_intent.canceled": {
 					const data = {
-						id: event.id,
 						userID: profileData.userID,
-						event: event.type,
+						eventType: 603,
+						timeStamp: Timestamp.now(),
+						actionID: event.id,
+						customerID: paymentIntentSucceeded.customer,
+						destinationAccount:
+								paymentIntentSucceeded.transfer_data
+									?.destination,
+						latest_charge: paymentIntentSucceeded.latest_charge,
+						amount: paymentIntentSucceeded.amount,
+						amountFee:
+								paymentIntentSucceeded.application_fee_amount,
 					};
 
 					await transactionEvents.add(data);
@@ -69,9 +80,18 @@ export async function POST(req: NextRequest) {
 				}
 				case "payment_intent.payment_failed": {
 					const data = {
-						id: event.id,
 						userID: profileData.userID,
-						event: event.type,
+						eventType: 603,
+						timeStamp: Timestamp.now(),
+						actionID: event.id,
+						customerID: paymentIntentSucceeded.customer,
+						destinationAccount:
+								paymentIntentSucceeded.transfer_data
+									?.destination,
+						latest_charge: paymentIntentSucceeded.latest_charge,
+						amount: paymentIntentSucceeded.amount,
+						amountFee:
+								paymentIntentSucceeded.application_fee_amount,
 					};
 
 					await transactionEvents.add(data);
@@ -80,9 +100,18 @@ export async function POST(req: NextRequest) {
 				}
 				case "payment_intent.succeeded": {
 					const data = {
-						id: event.id,
 						userID: profileData.userID,
-						event: event.type,
+						eventType: 603,
+						timeStamp: Timestamp.now(),
+						actionID: event.id,
+						customerID: paymentIntentSucceeded.customer,
+						destinationAccount:
+								paymentIntentSucceeded.transfer_data
+									?.destination,
+						latest_charge: paymentIntentSucceeded.latest_charge,
+						amount: paymentIntentSucceeded.amount,
+						amountFee:
+								paymentIntentSucceeded.application_fee_amount,
 					};
 
 					await transactionEvents.add(data);
@@ -91,9 +120,18 @@ export async function POST(req: NextRequest) {
 				}
 				case "payment_intent.processing": {
 					const data = {
-						id: event.id,
 						userID: profileData.userID,
-						event: event.type,
+						eventType: 603,
+						timeStamp: Timestamp.now(),
+						actionID: event.id,
+						customerID: paymentIntentSucceeded.customer,
+						destinationAccount:
+								paymentIntentSucceeded.transfer_data
+									?.destination,
+						latest_charge: paymentIntentSucceeded.latest_charge,
+						amount: paymentIntentSucceeded.amount,
+						amountFee:
+								paymentIntentSucceeded.application_fee_amount,
 					};
 
 					await transactionEvents.add(data);

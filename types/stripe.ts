@@ -10,5 +10,5 @@ export interface TransactionEvents {
 	destinationAccount: string;
 	latest_charge: string;
 	amount: number;
-	type: string;
+	amountFee: number;
 }
