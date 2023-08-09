@@ -8,10 +8,14 @@ import {
 } from "@stripe/react-stripe-js";
 import { BaseURL } from "config/constants";
 import { ActionButton } from "app/components/action-button";
+import { addTransactionEvent } from "server-actions/stripe";
+import Stripe from "stripe";
+import { useAuthContext } from "auth/auth-context-provider";
 
 interface StripePaymentElementParams {
 	redirectURL?: string;
 	price: number;
+	paymentIntent: Stripe.Response<Stripe.PaymentIntent> | undefined;
 }
 
 export /**
@@ -23,6 +27,7 @@ export /**
 const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
 	redirectURL,
 	price,
+	paymentIntent,
 }) => {
 	// setting up the client comment docs
 	// https://stripe.com/docs/connect/collect-then-transfer-guide?platform=web&payment-ui=elements&client=react#set-up-stripe.js
@@ -30,6 +35,9 @@ const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
 	// get stripe config variables
 	const stripe = useStripe();
 	const elements = useElements();
+
+	// get user
+	const userData = useAuthContext();
 
 	// error state
 	const [errorMessage, setErrorMessage] = useState<string>();
@@ -44,7 +52,20 @@ const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
 		// which would refresh the page.
 		event.preventDefault();
 
-		if (!stripe || !elements) {
+		const data = {
+			eventType: 605,
+			actionID: paymentIntent?.id,
+			customerID: paymentIntent?.customer,
+			destinationAccount: paymentIntent?.transfer_data?.destination,
+			latest_charge: paymentIntent?.latest_charge,
+			amount: paymentIntent?.amount,
+			amountFee: paymentIntent?.application_fee_amount,
+		};
+
+		// add the transaction event to the db
+		const success = await addTransactionEvent(data);
+
+		if (!stripe || !elements || success !== "success") {
 			// Stripe.js hasn't yet loaded.
 			// Make sure to disable form submission until Stripe.js has loaded.
 			return;

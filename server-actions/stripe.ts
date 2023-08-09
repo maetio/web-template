@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 import {
 	competitionsCollection,
 	privateUserCollection,
@@ -9,6 +9,7 @@ import {
 import { getServerAuthUser } from "auth/server";
 import Stripe from "stripe";
 import { Timestamp } from "firebase-admin/firestore";
+import { TransactionEvents } from "types/stripe";
 
 // get stripe
 const stripe = process.env.STRIPE_SECRET
@@ -97,7 +98,9 @@ export async function getStripeSession(compID: string | undefined) {
 						enabled: true,
 					},
 					// currently Maet is taking 1% of the transaction
-					application_fee_amount: competitionData.price * 0.1,
+					application_fee_amount: Math.ceil(
+						competitionData.price * 0.1
+					),
 					transfer_data: {
 						// destination: "acct_1NXrkNCHexTeDnP1",
 						destination: hostInformation.stripeHostID,
@@ -120,7 +123,8 @@ export async function getStripeSession(compID: string | undefined) {
 				await transactionEvents.add(transactionEventData);
 
 				const stripeSession = {
-					paymentIntent: paymentIntent?.client_secret,
+					paymentIntentSecret: paymentIntent?.client_secret,
+					paymentIntent,
 					ephemeralKey: ephemeralKey?.secret,
 					customer: customerID,
 					publishableKey,
@@ -129,6 +133,46 @@ export async function getStripeSession(compID: string | undefined) {
 				return stripeSession;
 			}
 		}
+	} catch (e) {
+		throw new Error(`error has occured: ${e}`);
+	}
+
+	// revalidatePath("/");
+}
+
+/**
+ * server action that takes in a transaction event and adds it to the transactionEvents collection
+ *
+ * @export
+ * @param {(string | undefined)} compID
+ * @return {*}
+ */
+// eslint-disable-next-line consistent-return
+export async function addTransactionEvent(
+	transactionEvent: Partial<TransactionEvents>
+) {
+	// get the user for the server
+	const user = await getServerAuthUser();
+
+	// handle if there is no user
+	if (!user) {
+		throw new Error("Cannot checkout for unauthenticated user");
+	}
+
+	if (!transactionEvent) {
+		throw new Error("No trnsaction event provided");
+	}
+
+	try {
+		const transaction = {
+			...transactionEvent,
+			Timestamp: Timestamp.now(),
+			userID: user.id,
+		};
+
+		await transactionEvents.add(transaction);
+
+		return "success";
 	} catch (e) {
 		throw new Error(`error has occured: ${e}`);
 	}
