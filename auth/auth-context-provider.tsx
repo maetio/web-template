@@ -38,6 +38,8 @@ export const AuthContextProvider: React.FC<{
 
 	// detect the auth state change
 	useEffect(() => {
+		console.log("fired thing 1");
+
 		// use the firebase on auth state changed listener
 		const unsubscribe = onIdTokenChanged(auth, async (userObserver) => {
 			if (userObserver) {
@@ -102,13 +104,6 @@ export const AuthContextProvider: React.FC<{
 						isAnonymous: false,
 						phoneNumber: userData.phoneNumber,
 						loggedIn: true,
-					});
-				} else {
-					setUser(null);
-					// Remove authentication cookies for firebase auth edge
-					// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
-					await fetch("/api/logout", {
-						method: "GET",
 					});
 				}
 				setLoading(false);

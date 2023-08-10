@@ -110,9 +110,12 @@ export default async function JoinCompScreen({
 							{competitionData?.price &&
 							competitionData.price > 0 ? (
 									<div>
-										{stripeSession?.paymentIntent ? (
+										{stripeSession?.paymentIntentSecret ? (
 											<StripeCheckoutForm
 												price={competitionData.price}
+												paymentIntentSecret={
+													stripeSession?.paymentIntentSecret
+												}
 												paymentIntent={
 													stripeSession?.paymentIntent
 												}

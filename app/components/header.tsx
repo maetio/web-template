@@ -62,7 +62,7 @@ export /**
 				</div>
 			</nav>
 			<Dialog
-				as="div"
+				as="nav"
 				className="lg:hidden"
 				open={mobileMenuOpen}
 				onClose={setMobileMenuOpen}

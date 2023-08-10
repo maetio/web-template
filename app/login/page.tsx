@@ -1,23 +1,17 @@
-"use client";
-
+import { AuthPageComp } from "app/components/authentication/auth-page";
 import React from "react";
-import { BaseURL } from "config/constants";
-import { AuthEmailForm } from "app/components/auth-email-form";
 
-export /**
- * Enter email form
+/**
+ * login or signup page
  *
  * @return {*}
  */
-const LoginPage: React.FC<{}> = () => {
-	// set the url to refer back after email sign in
-	const referringURL =
-		document.referrer.startsWith(BaseURL) &&
-		!document.referrer.endsWith("login")
-			? document.referrer
-			: undefined;
-
-	return <AuthEmailForm redirectURL={referringURL} />;
-};
+function LoginPage() {
+	return (
+		<main>
+			<AuthPageComp />
+		</main>
+	);
+}
 
 export default LoginPage;
