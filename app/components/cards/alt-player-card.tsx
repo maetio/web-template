@@ -41,13 +41,13 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 						<h1 className="flex-none text-xl font-bold">
 							{ranking + 1}
 						</h1>
-						{ranking < 3 ? (
+						{/* {ranking < 3 ? (
 							<div className="flex items-center">
 								<FaMedal
 									className={`${medalColor[ranking]} text-base md:text-lg`}
 								/>
 							</div>
-						) : null}
+						) : null} */}
 					</div>
 				) : null}
 				<NextImage
