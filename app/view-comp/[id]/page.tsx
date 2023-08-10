@@ -149,21 +149,14 @@ export default async function ViewCompScreen({
 				</ul>
 			</aside>
 
-			{/* 3 column wrapper */}
-			{/* <div className="mx-auto grid grid-cols-6 gap-x-6 pt-12"> */}
-			{/* Left sidebar & main wrapper */}
-			{/* <main className="border-gray-900/7 top-8 col-span-6 rounded-lg border lg:col-span-4"> */}
-
+			<h3 className="text-3xl font-bold">Games</h3>
 			<ul role="list" className="divide-y divide-gray-100">
 				{games.map((game) => (
-					<li key={game.id} className="border-b px-5">
+					<li key={game.id} className="px-5 py-5">
 						<GameCard id={game.id} />
 					</li>
 				))}
 			</ul>
-			{/* </main> */}
-
-			{/* </div> */}
 		</div>
 	);
 }

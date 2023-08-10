@@ -5,6 +5,7 @@ import { BaseURL } from "config/constants";
 // import { GameResponseType } from "types/next-api";
 import { GameResponseType } from "types/next-api";
 import { showTimeOrDate } from "utils/date";
+import { NextImage } from "app/components/image";
 import { XSGrayMaetIcon } from "../icons";
 
 // modular props for all competition cards
@@ -45,11 +46,11 @@ const GameCard: React.FC<GameCardProps> = async ({
 	return (
 		<div
 			{...divParams}
-			className="mt-4 grid h-48 min-w-full grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg"
+			className="mt-4 grid min-w-full grid-cols-12 justify-start gap-4 rounded-xl border p-4 align-top shadow-lg"
 		>
 			<div className="col-span-3 flex flex-col items-center justify-center">
 				{game.team1?.image ? (
-					<img
+					<NextImage
 						className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
 						src={
 							typeof game.team1.image === "string"
