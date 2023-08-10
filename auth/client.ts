@@ -14,7 +14,6 @@ import {
 	signInWithPopup,
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
-	signInAnonymously,
 	updatePassword,
 	sendPasswordResetEmail,
 } from "firebase/auth";
