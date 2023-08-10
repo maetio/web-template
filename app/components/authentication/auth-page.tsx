@@ -85,7 +85,7 @@ const AuthPageComp: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 					<LoginProvidersForm
 						containerParams="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
 						redirectURL={redirectURL || referringURL}
-						providers={["facebook", "google", "guest"]}
+						providers={["facebook", "google"]}
 					/>
 
 					{passwordLogin ? null : (

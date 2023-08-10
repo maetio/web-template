@@ -170,49 +170,6 @@ export /**
  *
  * @return {*}
  */
-const signInAsGuest = async () => {
-	const userCredential = await signInAnonymously(auth);
-
-	console.log(userCredential);
-
-	// get the id token from firebase
-	const idTokenResult = await userCredential.user.getIdTokenResult();
-
-	// set the cookie with firebase auth edge middleware
-	// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
-	await fetch("/api/login", {
-		method: "GET",
-		headers: {
-			Authorization: `Bearer ${idTokenResult.token}`,
-		},
-	});
-
-	// access firstname lastname
-	const nameParts = userCredential.user?.displayName?.split(" ");
-	const firstName = nameParts?.at(0);
-	const lastName =
-		nameParts?.length && nameParts?.length > 1
-			? nameParts[nameParts.length - 1]
-			: "";
-
-	// initialize the user data
-	await getAndUpdateUserData({
-		email: userCredential.user.email,
-		emailVerified: userCredential.user.emailVerified,
-		firstName: firstName || "Anonymous",
-		lastName: lastName || "User",
-		image: userCredential.user.photoURL,
-	});
-
-	// return the user credential
-	return userCredential;
-};
-
-export /**
- * Function that will sign in with google
- *
- * @return {*}
- */
 const signInWithGoogle = async () => {
 	const userCredential = await signInWithPopup(auth, googleAuthProvider);
 

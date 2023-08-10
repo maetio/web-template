@@ -1,15 +1,11 @@
 "use client";
 
 import React from "react";
-import {
-	signInAsGuest,
-	signInWithFacebook,
-	signInWithGoogle,
-} from "auth/client";
+import { signInWithFacebook, signInWithGoogle } from "auth/client";
 import { ActionButton } from "app/components/action-button";
 import { useRouter } from "next/navigation";
 
-type Providers = "facebook" | "google" | "guest";
+type Providers = "facebook" | "google";
 
 export interface LoginProvidersFormParams {
 	redirectURL?: string;
@@ -29,28 +25,11 @@ const LoginProvidersForm: React.FC<LoginProvidersFormParams> = ({
 	buttonParams,
 	providers,
 }) => {
-	// useForm & useAuth initialization
-	// const { register, handleSubmit } = useForm<{ email: string }>({
-	// 	resolver: yupResolver(emailSchema),
-	// });
-
-	// // state used to detect if email sent
-	// const [sentEmail, setSentEmail] = useState(false);
-
-	// // submit email form
-	// const submitEmail = async (data: { email: string }) => {
-	// 	await sendPasswordlessLoginEmail(data.email, redirectURL);
-	// 	// localStorage.setItem("email", data.email);
-	// 	UniversalCookies.set("email", data.email, { path: "/" });
-	// 	setSentEmail(true);
-	// };
 	// get router
 	const router = useRouter();
 
 	const googleSignIn = async () => {
 		const userCredential = await signInWithGoogle();
-
-		console.log("user cred", userCredential.user);
 
 		// route to new page
 		if (userCredential.user.displayName?.length)
@@ -66,14 +45,6 @@ const LoginProvidersForm: React.FC<LoginProvidersFormParams> = ({
 		else router.push("/profile");
 	};
 
-	const signInGuest = async () => {
-		const userCredential = await signInAsGuest();
-		// route to new page
-		if (userCredential.user.displayName?.length)
-			router.push(redirectURL || "/");
-		else router.push("/profile");
-	};
-
 	const signInMethod = async (provider: Providers) => {
 		switch (provider) {
 		case "facebook":
@@ -83,7 +54,6 @@ const LoginProvidersForm: React.FC<LoginProvidersFormParams> = ({
 			await googleSignIn();
 			break;
 		default:
-			await signInGuest();
 		}
 	};
 
