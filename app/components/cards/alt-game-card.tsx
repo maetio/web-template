@@ -68,31 +68,33 @@ const GameCard: React.FC<GameCardProps> = async ({
 						{game &&
 						game.team1?.image &&
 						typeof game.team1?.image !== "string" ? (
-								game.team1.image.slice(0, 2).map((img, index) => (
-									<NextImage
-										key={index}
-										// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-										className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
-										src={img}
-										alt="player image"
-									/>
-								))
-							) : (
+							game.team1.image.slice(0, 2).map((img, index) => (
 								<NextImage
-									className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-									src={
-										typeof game.team2?.image === "string"
-											? game.team2.image
-											: undefined
-									}
-									alt=""
+									key={index}
+									// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+									className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
+									src={img}
+									alt="player image"
 								/>
-							)}
-						{game.team1.image?.length - 2 > 0 && (
-							<div className="relative z-0 inline-block flex h-[35px] w-[35px] items-center justify-center rounded-full bg-slate-50 ring-2 ring-white">
-								+{game.team1.image?.length - 2}
-							</div>
+							))
+						) : (
+							<NextImage
+								className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+								src={
+									typeof game.team2?.image === "string"
+										? game.team2.image
+										: undefined
+								}
+								alt=""
+							/>
 						)}
+						{game.team1?.image &&
+							typeof game.team1.image !== "string" &&
+							game.team1.image?.length - 2 > 0 && (
+								<div className="relative z-0 inline-block flex h-[35px] w-[35px] items-center justify-center rounded-full bg-slate-50 ring-2 ring-white">
+									+{game.team1.image?.length - 2}
+								</div>
+							)}
 					</div>
 					<div className="flex flex-col justify-center">
 						<p className="p-2 text-center text-xs font-semibold lg:text-sm">
@@ -112,53 +114,41 @@ const GameCard: React.FC<GameCardProps> = async ({
 					<div className="flex min-w-full items-center justify-center">
 						<div className="flex flex-col">
 							<div className="min-w-full flex-row lg:w-32">
-								<div className="col-span-2 mt-1 grid grid-cols-1 items-center">
-									{gameStatus !== "unreported" ? (
-										<div className="col-span-1 mt-1 flex items-center justify-start">
-											{gameStatus === "team1-winner" ? (
-												<div className="col-span-1 flex items-center justify-start">
-													<FaPlay className="mr-1" />
-													<p className="font-bold lg:text-xl">
-														{game.team1?.points}
-													</p>
-												</div>
-											) : (
-												<p className="lg:text-xl">
-													{game.team1?.points}
-												</p>
-											)}
+								{gameStatus !== "unreported" ? (
+									// <div className="col-span-1 mt-1 flex items-center justify-start">
+									// 	{gameStatus === "team1-winner" ? (
+									// 		<div className="col-span-1 flex items-center justify-start">
+									// 			<FaPlay className="mr-1" />
+									// 			<p className="font-bold lg:text-xl">
+									// 				{game.team1?.points}
+									// 			</p>
+									// 		</div>
+									// 	) : (
+									// 		<p className="lg:text-xl">
+									// 			{game.team1?.points}
+									// 		</p>
+									// 	)}
+									// </div>
+
+									<div className="flex h-14 w-36 items-center justify-center rounded-2xl bg-zinc-100 px-3 py-3.5">
+										<div className="flex h-7 w-28 items-center justify-center text-center">
+											<p className="text-3xl font-bold leading-tight tracking-tight text-gray-500">
+												<span>12</span> :{" "}
+												<span>10</span>
+											</p>
 										</div>
-									) : (
-										<div className="inline-flex h-14 w-24 items-center justify-center self-center rounded-2xl bg-zinc-100 py-3">
-											<text
-												aria-label="Versus"
-												className="h-7 w-28 text-center text-3xl font-bold leading-tight tracking-tight text-black"
-											>
-												VS
-											</text>
-										</div>
-									)}
-									{gameStatus !== "unreported" ? (
-										<div className="col-span-1 mt-1 flex items-center justify-end">
-											{gameStatus === "team2-winner" ? (
-												<div className="col-span-1 flex items-center">
-													<FaPlay className="mr-1" />
-													<p className="font-bold lg:text-xl">
-														{game.team2?.points}
-													</p>
-												</div>
-											) : (
-												<div className="col-span-1 flex items-center">
-													<p className="lg:text-xl">
-														{game.team2?.points}
-													</p>
-												</div>
-											)}
-										</div>
-									) : (
-										<div></div>
-									)}
-								</div>
+									</div>
+								) : (
+									<div className="inline-flex h-14 w-24 items-center justify-center self-center rounded-2xl bg-zinc-100 py-3">
+										<text
+											aria-label="Versus"
+											className="h-7 w-28 text-center text-3xl font-bold leading-tight tracking-tight text-black"
+										>
+											VS
+										</text>
+									</div>
+								)}
+
 								<div className="mt-2 flex h-6 items-center justify-center lg:mt-6">
 									{gameStatus ? (
 										<div className="flex h-6 min-w-full items-center justify-center rounded-full bg-green-300 p-2 text-xs">
