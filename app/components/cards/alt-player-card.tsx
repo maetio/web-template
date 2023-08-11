@@ -67,7 +67,7 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 			<div className="relative self-center">
 				<dt>
 					<div className="absolute rounded-md p-3">
-						<MaetIcon size={10} />
+						<MaetIcon />
 					</div>
 					<p className="ml-16 justify-center truncate text-sm font-medium text-gray-500 dark:text-white">
 						Rating

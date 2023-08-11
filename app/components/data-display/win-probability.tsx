@@ -25,7 +25,7 @@ const WinProb: React.FC<WinProbParams> = ({ team1Rating, team2Rating }) => {
 	const probTeam2 = probTeam1 !== undefined ? 100 - probTeam1 : 0;
 
 	return (
-		<section className="flex-col">
+		<section className="w-full flex-col">
 			<div
 				className={`h-2.5 w-full rounded-full ${
 					probTeam2 >= probTeam1 ? "bg-indigo-600" : "bg-indigo-300"
@@ -33,17 +33,21 @@ const WinProb: React.FC<WinProbParams> = ({ team1Rating, team2Rating }) => {
 			>
 				<div
 					style={{ width: `${probTeam1}%` }}
-					className={`h-2.5 rounded-full  ${probTeam2 < probTeam1 ? "bg-indigo-600" : "bg-indigo-300"}`}
+					className={`h-2.5 rounded-full  ${
+						probTeam2 < probTeam1
+							? "bg-indigo-600"
+							: "bg-indigo-300"
+					}`}
 				></div>
 			</div>
 			<div className="mt-1 flex flex-row justify-between">
-				<p className="h-6 w-11 text-sm font-bold leading-tight tracking-tight text-black">
+				<p className="  text-sm font-bold leading-tight tracking-tight text-black">
 					{probTeam1}%
 				</p>
-				<p className="h-6 w-56 text-center text-sm font-normal leading-tight tracking-tight text-gray-500">
+				<p className=" text-center text-sm font-normal leading-tight tracking-tight text-gray-500">
 					Win Probability
 				</p>
-				<p className="h-6 w-11 text-right text-sm font-bold leading-tight tracking-tight text-black">
+				<p className="  text-right text-sm font-bold leading-tight tracking-tight text-black">
 					{probTeam2}%
 				</p>
 			</div>

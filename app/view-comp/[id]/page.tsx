@@ -72,14 +72,14 @@ export default async function ViewCompScreen({
 	};
 
 	return (
-		<div className="container mx-auto px-1 sm:px-6 lg:px-8 xl:px-2">
+		<div className="container mx-auto px-0 sm:px-6 lg:px-8 xl:px-2">
 			<div className="flex">
 				{/* main content */}
 				<div>
 					<div className="flex flex-col flex-wrap pb-12 pt-4 md:flex-row lg:flex-nowrap lg:pt-12">
 						<div className="self-center">
 							<NextImage
-								className="min-w-[200px] flex-none rounded-lg bg-gray-50"
+								className="w-full flex-none rounded-lg bg-gray-50"
 								// size={400}
 								src={competitionData?.image}
 							/>
@@ -97,12 +97,12 @@ export default async function ViewCompScreen({
 								{competitionData?.name}
 							</h1>
 
-							<p className="xl:hidden">
+							<p className="flex flex-wrap xl:hidden">
 								{competitionData?.description ||
 									"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
 							</p>
 
-							<div className="flex flex-row py-4">
+							<div className="flex flex-row flex-wrap py-4">
 								{compPlayer?.rating?.displayRating ? (
 									<div className="flex flex-row">
 										<NextImage
@@ -140,7 +140,7 @@ export default async function ViewCompScreen({
 					{/* description */}
 					<section className="hidden xl:inline">
 						<h3 className="text-3xl font-bold">Description</h3>
-						<p className="flex flex-wrap">
+						<p className="wrap flex flex-wrap">
 							{competitionData?.description ||
 								"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
 						</p>
@@ -151,7 +151,9 @@ export default async function ViewCompScreen({
 					<div className="xl:hidden">
 						<section>
 							<h3 className="text-3xl font-bold">Players</h3>
-							<div className="h-[300px] bg-red-600">chart</div>
+							<div className="w-100 h-[300px] bg-red-600">
+								chart
+							</div>
 						</section>
 
 						<aside className="border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border lg:sticky lg:top-4 lg:col-span-2">

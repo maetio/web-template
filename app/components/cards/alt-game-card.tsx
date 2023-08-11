@@ -44,7 +44,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 	// get game status
 	const gameStatus = inferGameStatus(game.team1?.points, game.team2?.points);
 
-	console.log("game status", gameStatus);
+	console.log("game uud", game.id);
 
 	return (
 		<div
@@ -63,39 +63,39 @@ const GameCard: React.FC<GameCardProps> = async ({
 				</div>
 			</section>
 			{/* main game content section */}
-			<section className="flex flex-row justify-evenly">
+			<section className=" mb-1 flex flex-row justify-evenly py-2">
 				<div className="flex flex-col items-center justify-center">
 					<div className=" isolate flex flex overflow-hidden">
 						{game &&
 						game.team1?.image &&
 						typeof game.team1?.image !== "string" ? (
-							game.team1.image.slice(0, 2).map((img, index) => (
+								game.team1.image.slice(0, 1).map((img, index) => (
+									<NextImage
+										key={index}
+										// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+										className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
+										src={img}
+										alt="player image"
+									/>
+								))
+							) : (
 								<NextImage
-									key={index}
-									// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-									className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
-									src={img}
-									alt="player image"
+									className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+									src={
+										typeof game.team1?.image === "string"
+											? game.team1.image
+											: undefined
+									}
+									alt=""
 								/>
-							))
-						) : (
-							<NextImage
-								className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-								src={
-									typeof game.team2?.image === "string"
-										? game.team2.image
-										: undefined
-								}
-								alt=""
-							/>
-						)}
+							)}
 						{game.team1?.image &&
 							typeof game.team1.image !== "string" &&
 							game.team1.image?.length - 2 > 0 && (
-								<div className="relative z-0 inline-block flex h-[35px] w-[35px] items-center justify-center rounded-full bg-slate-50 ring-2 ring-white">
+							<div className="relative z-0 inline-block flex h-[35px] w-[35px] items-center justify-center rounded-full bg-slate-50 ring-2 ring-white">
 									+{game.team1.image?.length - 2}
-								</div>
-							)}
+							</div>
+						)}
 					</div>
 					<div className="flex flex-col justify-center">
 						<p className="p-2 text-center text-xs font-semibold lg:text-sm">
@@ -116,7 +116,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 						{gameStatus !== "unreported" ? (
 							<div className="flex  items-center justify-center rounded-2xl bg-zinc-100 p-3.5">
 								<div className="flex  items-center justify-center text-center">
-									<p className="text-1xl font-bold leading-tight tracking-tight text-gray-500 lg:text-3xl">
+									<p className="text-1xl md:text-3xl font-bold leading-tight tracking-tight text-gray-500 ">
 										<span
 											className={
 												gameStatus === "team1-winner"
@@ -140,50 +140,51 @@ const GameCard: React.FC<GameCardProps> = async ({
 								</div>
 							</div>
 						) : (
-							<div className="inline-flex h-14 w-24 items-center justify-center self-center rounded-2xl bg-zinc-100 py-3">
+							<div className="inline-flex items-center justify-center self-center rounded-2xl bg-zinc-100 px-6 p-3.5">
 								<text
 									aria-label="Versus"
-									className="h-7 w-28 text-center text-3xl font-bold leading-tight tracking-tight text-black"
+									className="text-1xl md:text-3xl text-center font-bold leading-tight tracking-tight text-black"
 								>
 									VS
 								</text>
 							</div>
 						)}
 					</div>
-					{gameStatus ? (
-						<div></div>
-					) : (
-						<div className="flex min-w-full flex-col">
-							<div className="flex min-w-full flex-row items-start">
-								<div className="ml-1 flex w-1/2 flex-col">
-									<div className="flex h-3 min-w-full rounded-full bg-blue-200"></div>
-									<p className="text-xs">50%</p>
-								</div>
-								<div className="-ml-1 mr-1 flex w-1/2 flex-col items-end">
-									<div className="flex h-3 min-w-full rounded-full bg-primaryMain"></div>
-									<p className="text-xs">50%</p>
-								</div>
-							</div>
-							<div className="mb-1 mt-1 flex items-center justify-center text-sm font-bold">
-								<p>Win Probability</p>
-							</div>
-						</div>
-					)}
 				</div>
 				<div className="flex flex-col items-center justify-center">
-					{game.team2?.image ? (
-						<NextImage
-							className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-							src={
-								typeof game.team2.image === "string"
-									? game.team2.image
-									: undefined
-							}
-							alt=""
-						/>
-					) : (
-						<div className="flex h-24 w-24 rounded-md bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue"></div>
-					)}
+					<div className=" isolate flex flex overflow-hidden">
+						{game &&
+						game.team2?.image &&
+						typeof game.team2?.image !== "string" ? (
+								game.team2.image.slice(0, 1).map((img, index) => (
+									<NextImage
+										key={index}
+										// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+										className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
+										src={img}
+										alt="player image"
+									/>
+								))
+							) : (
+								<NextImage
+									className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+									src={
+										typeof game.team2?.image === "string"
+											? game.team2.image
+											: undefined
+									}
+									alt=""
+								/>
+							)}
+						{game.team2?.image &&
+							typeof game.team2.image !== "string" &&
+							game.team2.image?.length - 2 > 0 && (
+							<div className="relative z-0 inline-block flex h-[35px] w-[35px] items-center justify-center rounded-full bg-slate-50 ring-2 ring-white">
+									+{game.team2.image?.length - 2}
+							</div>
+						)}
+					</div>
+
 					<div className="flex flex-col justify-center">
 						<p className="p-2 text-center text-xs font-semibold lg:text-sm">
 							{game.team2?.lastName}
