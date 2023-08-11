@@ -36,6 +36,7 @@
 		"init": "^0.1.2",
 		"next": "13.4.6",
 		"next-firebase-auth-edge": "^0.7.6",
+		"normal-distribution": "^1.1.1",
 		"postcss": "^8.4.25",
 		"prettier": "^2.8.8",
 		"prettier-plugin-tailwindcss": "^0.4.0",

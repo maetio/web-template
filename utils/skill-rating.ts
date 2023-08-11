@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createPlayerFactory, Match } from "glicko-two";
+import NormalDistribution from "normal-distribution";
 import { Rating } from "types/index";
 import { InitialRating, PlacementGames } from "./rating-constants";
 
@@ -299,4 +300,38 @@ const calculateTier = (rating?: Rating) => {
 			(breakPoint) => rating.displayRating < breakPoint
 		) + 1
 	);
+};
+
+export /**
+ * Function will calculate the probability that the player will win the game, using display ratings
+ * Will be the same as the expected result as the ratings converge
+ * @param {Rating} [player]
+ * @param {Rating} [opponent]
+ * @return {*}
+ */
+const expectedDisplayResult = (player?: Rating, opponent?: Rating) => {
+	// const q = Math.log(10) / 400;
+	// const gdif = (rd: number) => 1 / Math.sqrt(1 + (3 * q ** 2 * rd ** 2) / Math.PI ** 2);
+	if (player && opponent) {
+		const playerRD = Math.sqrt(
+			(player.ratingDeviation ** 2 +
+				(player.displayRating - player.mean) ** 2) /
+				2
+		);
+		const oppRD = Math.sqrt(
+			(opponent.ratingDeviation ** 2 +
+				(opponent.displayRating - opponent.mean) ** 2) /
+				2
+		);
+		const cdfMean = player.displayRating - opponent.displayRating;
+		const cdfDev = Math.sqrt(playerRD ** 2 + oppRD ** 2);
+		const cdfDistribution = new NormalDistribution(cdfMean, cdfDev);
+		const probVal =
+			cdfDistribution.cdf(0) === 0 ? 0.001 : cdfDistribution.cdf(0);
+		// return (
+		//     1 / (1 + 10 ** ((-gdif(oppRD) * (player.displayRating - opponent.displayRating)) / 400))
+		// );
+		return 1 - probVal;
+	}
+	return 0;
 };

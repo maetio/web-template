@@ -6,6 +6,7 @@ import { BaseURL } from "config/constants";
 import { GameResponseType } from "types/next-api";
 import { getShortDateString, getTimeString } from "utils/date";
 import { NextImage } from "app/components/image";
+import { WinProb } from "app/components/data-display/win-probability";
 import { XSGrayMaetIcon } from "../icons";
 
 // modular props for all competition cards
@@ -113,13 +114,13 @@ const GameCard: React.FC<GameCardProps> = async ({
 				<div className="flex flex-col items-start gap-8">
 					<div className="flex min-w-full items-center justify-center">
 						{gameStatus !== "unreported" ? (
-							<div className="flex h-14 w-36 items-center justify-center rounded-2xl bg-zinc-100 px-3 py-3.5">
-								<div className="flex h-7 w-28 items-center justify-center text-center">
-									<p className="text-3xl font-bold leading-tight tracking-tight text-gray-500">
+							<div className="flex  items-center justify-center rounded-2xl bg-zinc-100 p-3.5">
+								<div className="flex  items-center justify-center text-center">
+									<p className="text-1xl font-bold leading-tight tracking-tight text-gray-500 lg:text-3xl">
 										<span
 											className={
 												gameStatus === "team1-winner"
-													? "font-bold text-black lg:text-xl"
+													? "font-bold text-black"
 													: ""
 											}
 										>
@@ -129,7 +130,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 										<span
 											className={
 												gameStatus === "team2-winner"
-													? "font-bold text-black lg:text-xl"
+													? "font-bold text-black"
 													: ""
 											}
 										>
@@ -148,8 +149,6 @@ const GameCard: React.FC<GameCardProps> = async ({
 								</text>
 							</div>
 						)}
-
-						
 					</div>
 					{gameStatus ? (
 						<div></div>
@@ -200,26 +199,16 @@ const GameCard: React.FC<GameCardProps> = async ({
 					</div>
 				</div>
 			</section>
-			{/* win prob / points won/lost section */}
-			<section className="flex-col">
-				<div className="h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
-					<div
-						style={{ width: "45%" }}
-						className="h-2.5 rounded-full bg-red-300"
-					></div>
-				</div>
-				<div className="flex flex-row justify-between">
-					<p className="h-6 w-11 text-sm font-bold leading-tight tracking-tight text-black">
-						32%
-					</p>
-					<p className="h-6 w-56 text-center text-sm font-normal leading-tight tracking-tight text-gray-500">
-						Win Prob
-					</p>
-					<p className="h-6 w-11 text-right text-sm font-bold leading-tight tracking-tight text-black">
-						68%
-					</p>
-				</div>
-			</section>
+
+			{/* win prob */}
+			{game.team1?.rating && game.team2?.rating && (
+				<WinProb
+					team1Rating={game.team1?.rating}
+					team2Rating={game.team2?.rating}
+				/>
+			)}
+
+			{/* win prob end */}
 		</div>
 	);
 };

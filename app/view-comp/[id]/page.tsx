@@ -96,10 +96,12 @@ export default async function ViewCompScreen({
 							<h1 className="my-3 flex flex-wrap text-5xl font-bold md:text-6xl">
 								{competitionData?.name}
 							</h1>
-							<p className="flex flex-wrap">
+
+							<p className="xl:hidden">
 								{competitionData?.description ||
 									"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
 							</p>
+
 							<div className="flex flex-row py-4">
 								{compPlayer?.rating?.displayRating ? (
 									<div className="flex flex-row">
@@ -135,6 +137,16 @@ export default async function ViewCompScreen({
 							</div>
 						</div>
 					</div>
+					{/* description */}
+					<section className="hidden xl:inline">
+						<h3 className="text-3xl font-bold">Description</h3>
+						<p className="flex flex-wrap">
+							{competitionData?.description ||
+								"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
+						</p>
+					</section>
+
+					{/* description end */}
 					{/* players and graph */}
 					<div className="xl:hidden">
 						<section>
@@ -172,7 +184,7 @@ export default async function ViewCompScreen({
 				</div>
 
 				{/* side bar */}
-				<div className="ml-2 hidden flex-shrink xl:inline">
+				<div className="ml-2 mt-20 hidden flex-shrink xl:inline">
 					<section>
 						<h3 className="text-3xl font-bold">Players</h3>
 						<div className="h-[300px] bg-red-600">chart</div>
