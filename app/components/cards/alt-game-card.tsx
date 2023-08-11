@@ -40,10 +40,10 @@ const GameCard: React.FC<GameCardProps> = async ({
 	const gameResponse = await fetch(`${BaseURL}/api/game/${id}`);
 	const game: GameResponseType = await gameResponse.json();
 
-	console.log("game iD", game.id);
-
 	// get game status
 	const gameStatus = inferGameStatus(game.team1?.points, game.team2?.points);
+
+	console.log("game status", gameStatus);
 
 	return (
 		<div
@@ -112,56 +112,44 @@ const GameCard: React.FC<GameCardProps> = async ({
 				</div>
 				<div className="flex flex-col items-start gap-8">
 					<div className="flex min-w-full items-center justify-center">
-						<div className="flex flex-col">
-							<div className="min-w-full flex-row lg:w-32">
-								{gameStatus !== "unreported" ? (
-									// <div className="col-span-1 mt-1 flex items-center justify-start">
-									// 	{gameStatus === "team1-winner" ? (
-									// 		<div className="col-span-1 flex items-center justify-start">
-									// 			<FaPlay className="mr-1" />
-									// 			<p className="font-bold lg:text-xl">
-									// 				{game.team1?.points}
-									// 			</p>
-									// 		</div>
-									// 	) : (
-									// 		<p className="lg:text-xl">
-									// 			{game.team1?.points}
-									// 		</p>
-									// 	)}
-									// </div>
-
-									<div className="flex h-14 w-36 items-center justify-center rounded-2xl bg-zinc-100 px-3 py-3.5">
-										<div className="flex h-7 w-28 items-center justify-center text-center">
-											<p className="text-3xl font-bold leading-tight tracking-tight text-gray-500">
-												<span>12</span> :{" "}
-												<span>10</span>
-											</p>
-										</div>
-									</div>
-								) : (
-									<div className="inline-flex h-14 w-24 items-center justify-center self-center rounded-2xl bg-zinc-100 py-3">
-										<text
-											aria-label="Versus"
-											className="h-7 w-28 text-center text-3xl font-bold leading-tight tracking-tight text-black"
+						{gameStatus !== "unreported" ? (
+							<div className="flex h-14 w-36 items-center justify-center rounded-2xl bg-zinc-100 px-3 py-3.5">
+								<div className="flex h-7 w-28 items-center justify-center text-center">
+									<p className="text-3xl font-bold leading-tight tracking-tight text-gray-500">
+										<span
+											className={
+												gameStatus === "team1-winner"
+													? "font-bold text-black lg:text-xl"
+													: ""
+											}
 										>
-											VS
-										</text>
-									</div>
-								)}
-
-								<div className="mt-2 flex h-6 items-center justify-center lg:mt-6">
-									{gameStatus ? (
-										<div className="flex h-6 min-w-full items-center justify-center rounded-full bg-green-300 p-2 text-xs">
-											<p>Verified</p>
-										</div>
-									) : (
-										<div className="flex h-6 min-w-full items-center justify-center rounded-full bg-blue-200 p-2 text-xs">
-											<p>Scheduled</p>
-										</div>
-									)}
+											12
+										</span>{" "}
+										:{" "}
+										<span
+											className={
+												gameStatus === "team2-winner"
+													? "font-bold text-black lg:text-xl"
+													: ""
+											}
+										>
+											10
+										</span>
+									</p>
 								</div>
 							</div>
-						</div>
+						) : (
+							<div className="inline-flex h-14 w-24 items-center justify-center self-center rounded-2xl bg-zinc-100 py-3">
+								<text
+									aria-label="Versus"
+									className="h-7 w-28 text-center text-3xl font-bold leading-tight tracking-tight text-black"
+								>
+									VS
+								</text>
+							</div>
+						)}
+
+						
 					</div>
 					{gameStatus ? (
 						<div></div>
