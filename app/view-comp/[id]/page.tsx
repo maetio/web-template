@@ -72,91 +72,131 @@ export default async function ViewCompScreen({
 	};
 
 	return (
-		<div className="container mx-auto px-2 sm:px-6 lg:px-8">
-			<div className="flex flex-col flex-wrap pb-12 pt-4 md:flex-row lg:flex-nowrap lg:pt-12">
-				<div className="self-center">
-					<NextImage size={400} src={competitionData?.image} />
-				</div>
-				<div className="mt-10 flex flex-col flex-wrap self-center lg:ml-12 lg:mt-0">
-					<CompDisplayData
-						type={competitionData?.type || "session"}
-						sport={competitionData?.sport || "pickleball"}
-						startTimeISO={competitionData?.startTimeISO}
-						endTimeISO={competitionData?.endTimeISO}
-						location={competitionData?.location}
-					/>
+		<div className="container mx-auto px-1 sm:px-6 lg:px-8 xl:px-2">
+			<div className="flex">
+				{/* main content */}
+				<div>
+					<div className="flex flex-col flex-wrap pb-12 pt-4 md:flex-row lg:flex-nowrap lg:pt-12">
+						<div className="self-center">
+							<NextImage
+								className="min-w-[200px] flex-none rounded-lg bg-gray-50"
+								// size={400}
+								src={competitionData?.image}
+							/>
+						</div>
+						<div className=" mt-10 flex flex-col flex-wrap self-center lg:mx-5 lg:mt-0">
+							<CompDisplayData
+								type={competitionData?.type || "session"}
+								sport={competitionData?.sport || "pickleball"}
+								startTimeISO={competitionData?.startTimeISO}
+								endTimeISO={competitionData?.endTimeISO}
+								location={competitionData?.location}
+							/>
 
-					<h1 className="my-3 flex flex-wrap text-5xl font-bold md:text-7xl">
-						{competitionData?.name}
-					</h1>
-					<p className="flex flex-wrap">
-						{competitionData?.description ||
-							"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
-					</p>
-					<div className="flex flex-row py-4">
-						{compPlayer?.rating?.displayRating ? (
-							<div className="flex flex-row">
-								<NextImage
-									size={50}
-									src={compPlayer.image}
-									alt={compPlayer.firstName}
-								/>
-								<h3 className="ml-3 self-center font-semibold">
-									You are ranked{" "}
-									{getRankString(
-										players.findIndex(
-											(profile) =>
-												profile.id === compPlayer.id
-										)
-									)}{" "}
-									of {players.length} total players.
-								</h3>
+							<h1 className="my-3 flex flex-wrap text-5xl font-bold md:text-6xl">
+								{competitionData?.name}
+							</h1>
+							<p className="flex flex-wrap">
+								{competitionData?.description ||
+									"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
+							</p>
+							<div className="flex flex-row py-4">
+								{compPlayer?.rating?.displayRating ? (
+									<div className="flex flex-row">
+										<NextImage
+											size={50}
+											src={compPlayer.image}
+											alt={compPlayer.firstName}
+										/>
+										<h3 className="ml-3 self-center font-semibold">
+											You are ranked{" "}
+											{getRankString(
+												players.findIndex(
+													(profile) =>
+														profile.id ===
+														compPlayer.id
+												)
+											)}{" "}
+											of {players.length} total players.
+										</h3>
+									</div>
+								) : (
+									<ActionButton
+										className="w-auto px-12"
+										referRoute={
+											user?.id
+												? `/join-comp/${competitionData?.id}`
+												: `/comp-login/${competitionData?.id}`
+										}
+										title="Join Competition"
+										colorVariant="indigo"
+									/>
+								)}
 							</div>
-						) : (
-							<ActionButton
-								className="w-auto px-12"
-								referRoute={
-									user?.id
-										? `/join-comp/${competitionData?.id}`
-										: `/comp-login/${competitionData?.id}`
-								}
-								title="Join Competition"
-								colorVariant="indigo"
-							/>
-						)}
+						</div>
 					</div>
+					{/* players and graph */}
+					<div className="xl:hidden">
+						<section>
+							<h3 className="text-3xl font-bold">Players</h3>
+							<div className="h-[300px] bg-red-600">chart</div>
+						</section>
+
+						<aside className="border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border lg:sticky lg:top-4 lg:col-span-2">
+							<ul
+								role="list"
+								className="sticky top-0 h-96 divide-y divide-gray-100 overflow-y-auto"
+							>
+								{players.map((player, rank) => (
+									<li key={player.id} className="px-5">
+										<AltPlayerCard
+											key={player.id}
+											player={player}
+											ranking={rank}
+										/>
+									</li>
+								))}
+							</ul>
+						</aside>
+					</div>
+					{/* end of players and graph */}
+
+					<h3 className="text-3xl font-bold">Games</h3>
+					<ul role="list" className="divide-y divide-gray-100">
+						{games.map((game) => (
+							<li key={game.id} className="px-5 py-5">
+								<GameCard id={game.id} />
+							</li>
+						))}
+					</ul>
 				</div>
+
+				{/* side bar */}
+				<div className="ml-2 hidden flex-shrink xl:inline">
+					<section>
+						<h3 className="text-3xl font-bold">Players</h3>
+						<div className="h-[300px] bg-red-600">chart</div>
+					</section>
+
+					<aside className="border-gray-900/7 h-96 rounded-lg border lg:sticky lg:top-4">
+						<ul
+							role="list"
+							className=" h-96 divide-y divide-gray-100 overflow-y-auto"
+						>
+							{players.map((player, rank) => (
+								<li key={player.id} className="px-4">
+									<AltPlayerCard
+										key={player.id}
+										player={player}
+										ranking={rank}
+									/>
+								</li>
+							))}
+						</ul>
+					</aside>
+				</div>
+				{/* side bar end */}
 			</div>
-			<section>
-				<h3 className="text-3xl font-bold">Players</h3>
-				<div className="h-[300px] bg-red-600">chart</div>
-			</section>
-
-			<aside className="border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border lg:sticky lg:top-4 lg:col-span-2">
-				<ul
-					role="list"
-					className="sticky top-0 h-96 divide-y divide-gray-100 overflow-y-auto"
-				>
-					{players.map((player, rank) => (
-						<li key={player.id} className="px-5">
-							<AltPlayerCard
-								key={player.id}
-								player={player}
-								ranking={rank}
-							/>
-						</li>
-					))}
-				</ul>
-			</aside>
-
-			<h3 className="text-3xl font-bold">Games</h3>
-			<ul role="list" className="divide-y divide-gray-100">
-				{games.map((game) => (
-					<li key={game.id} className="px-5 py-5">
-						<GameCard id={game.id} />
-					</li>
-				))}
-			</ul>
 		</div>
 	);
 }

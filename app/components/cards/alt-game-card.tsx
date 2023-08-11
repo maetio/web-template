@@ -68,26 +68,26 @@ const GameCard: React.FC<GameCardProps> = async ({
 						{game &&
 						game.team1?.image &&
 						typeof game.team1?.image !== "string" ? (
-							game.team1.image.slice(0, 2).map((img, index) => (
+								game.team1.image.slice(0, 2).map((img, index) => (
+									<NextImage
+										key={index}
+										// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+										className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
+										src={img}
+										alt="player image"
+									/>
+								))
+							) : (
 								<NextImage
-									key={index}
-									// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-									className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
-									src={img}
-									alt="player image"
+									className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+									src={
+										typeof game.team2?.image === "string"
+											? game.team2.image
+											: undefined
+									}
+									alt=""
 								/>
-							))
-						) : (
-							<NextImage
-								className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-								src={
-									typeof game.team2?.image === "string"
-										? game.team2.image
-										: undefined
-								}
-								alt=""
-							/>
-						)}
+							)}
 						{game.team1.image?.length - 2 > 0 && (
 							<div className="relative z-0 inline-block flex h-[35px] w-[35px] items-center justify-center rounded-full bg-slate-50 ring-2 ring-white">
 								+{game.team1.image?.length - 2}
@@ -231,11 +231,15 @@ const GameCard: React.FC<GameCardProps> = async ({
 					></div>
 				</div>
 				<div className="flex flex-row justify-between">
-					<p className="w-11 h-6 text-black text-sm font-bold leading-tight tracking-tight">32%</p>
-					<p className="w-56 h-6 text-center text-gray-500 text-sm font-normal leading-tight tracking-tight">
+					<p className="h-6 w-11 text-sm font-bold leading-tight tracking-tight text-black">
+						32%
+					</p>
+					<p className="h-6 w-56 text-center text-sm font-normal leading-tight tracking-tight text-gray-500">
 						Win Prob
 					</p>
-					<p className="w-11 h-6 text-right text-black text-sm font-bold leading-tight tracking-tight">68%</p>
+					<p className="h-6 w-11 text-right text-sm font-bold leading-tight tracking-tight text-black">
+						68%
+					</p>
 				</div>
 			</section>
 		</div>
