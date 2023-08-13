@@ -94,7 +94,7 @@ export default async function ViewCompScreen({
 						{competitionData?.name}
 					</h1>
 
-					<p className="flex flex-wrap lg:hidden">
+					<p className="flex flex-wrap xl:hidden">
 						{competitionData?.description ||
 							"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
 					</p>
@@ -148,8 +148,8 @@ export default async function ViewCompScreen({
 
 					{/* description end */}
 					{/* players and graph */}
-					{/* <div
-					//  className="xl:hidden"
+					<div
+					 className="lg:hidden"
 					>
 						<section>
 							<h3 className="text-3xl font-bold">Players</h3>
@@ -174,7 +174,7 @@ export default async function ViewCompScreen({
 								))}
 							</ul>
 						</aside>
-					</div> */}
+					</div>
 					{/* end of players and graph */}
 
 					<h3 className="text-3xl font-bold">Games</h3>
@@ -188,7 +188,7 @@ export default async function ViewCompScreen({
 				</main>
 
 				<div
-				//  className="xl:hidden"
+				 className="hiddem xl:inline"
 				>
 					<section>
 						<h3 className="text-3xl font-bold">Players</h3>
