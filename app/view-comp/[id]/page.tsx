@@ -73,70 +73,70 @@ export default async function ViewCompScreen({
 
 	return (
 		<div className="container mx-auto px-0 sm:px-6 lg:px-8 xl:px-2">
-			<div className="flex">
-				{/* main content */}
-				<div>
-					<div className="flex flex-col flex-wrap pb-12 pt-4 md:flex-row lg:flex-nowrap lg:pt-12">
-						<div className="self-center">
-							<NextImage
-								className="w-full flex-none rounded-lg bg-gray-50"
-								// size={400}
-								src={competitionData?.image}
-							/>
-						</div>
-						<div className=" mt-10 flex flex-col flex-wrap self-center lg:mx-5 lg:mt-0">
-							<CompDisplayData
-								type={competitionData?.type || "session"}
-								sport={competitionData?.sport || "pickleball"}
-								startTimeISO={competitionData?.startTimeISO}
-								endTimeISO={competitionData?.endTimeISO}
-								location={competitionData?.location}
-							/>
+			<div className="flex flex-col flex-wrap pb-12 pt-4 md:flex-row lg:flex-nowrap lg:pt-12">
+				<div className="self-center">
+					<NextImage
+						className="w-full flex-none self-center rounded-lg bg-gray-50"
+						// size={400}
+						src={competitionData?.image}
+					/>
+				</div>
+				<div className=" mt-10 flex flex-col flex-wrap self-center lg:mx-5 lg:mt-0">
+					<CompDisplayData
+						type={competitionData?.type || "session"}
+						sport={competitionData?.sport || "pickleball"}
+						startTimeISO={competitionData?.startTimeISO}
+						endTimeISO={competitionData?.endTimeISO}
+						location={competitionData?.location}
+					/>
 
-							<h1 className="my-3 flex flex-wrap text-5xl font-bold md:text-6xl">
-								{competitionData?.name}
-							</h1>
+					<h1 className="my-3 flex flex-wrap text-5xl font-bold md:text-6xl">
+						{competitionData?.name}
+					</h1>
 
-							<p className="flex flex-wrap xl:hidden">
-								{competitionData?.description ||
-									"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
-							</p>
+					<p className="flex flex-wrap lg:hidden">
+						{competitionData?.description ||
+							"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
+					</p>
 
-							<div className="flex flex-row flex-wrap py-4">
-								{compPlayer?.rating?.displayRating ? (
-									<div className="flex flex-row">
-										<NextImage
-											size={50}
-											src={compPlayer.image}
-											alt={compPlayer.firstName}
-										/>
-										<h3 className="ml-3 self-center font-semibold">
-											You are ranked{" "}
-											{getRankString(
-												players.findIndex(
-													(profile) =>
-														profile.id ===
-														compPlayer.id
-												)
-											)}{" "}
-											of {players.length} total players.
-										</h3>
-									</div>
-								) : (
-									<ActionButton
-										className="w-auto px-12"
-										referRoute={
-											user?.id
-												? `/join-comp/${competitionData?.id}`
-												: `/comp-login/${competitionData?.id}`
-										}
-										title="Join Competition"
-										colorVariant="indigo"
-									/>
-								)}
+					<div className="flex flex-row flex-wrap py-4">
+						{compPlayer?.rating?.displayRating ? (
+							<div className="flex flex-row">
+								<NextImage
+									size={50}
+									src={compPlayer.image}
+									alt={compPlayer.firstName}
+								/>
+								<h3 className="ml-3 self-center font-semibold">
+									You are ranked{" "}
+									{getRankString(
+										players.findIndex(
+											(profile) =>
+												profile.id === compPlayer.id
+										)
+									)}{" "}
+									of {players.length} total players.
+								</h3>
 							</div>
-						</div>
+						) : (
+							<ActionButton
+								className="w-auto px-12"
+								referRoute={
+									user?.id
+										? `/join-comp/${competitionData?.id}`
+										: `/comp-login/${competitionData?.id}`
+								}
+								title="Join Competition"
+								colorVariant="indigo"
+							/>
+						)}
 					</div>
+				</div>
+			</div>
+
+			{/* main */}
+			<section className="lg:flex">
+				<main>
 					{/* description */}
 					<section className="hidden xl:inline">
 						<h3 className="text-3xl font-bold">Description</h3>
@@ -148,7 +148,9 @@ export default async function ViewCompScreen({
 
 					{/* description end */}
 					{/* players and graph */}
-					<div className="xl:hidden">
+					{/* <div
+					//  className="xl:hidden"
+					>
 						<section>
 							<h3 className="text-3xl font-bold">Players</h3>
 							<div className="w-100 h-[300px] bg-red-600">
@@ -156,7 +158,7 @@ export default async function ViewCompScreen({
 							</div>
 						</section>
 
-						<aside className="border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border lg:sticky lg:top-4 lg:col-span-2">
+						<aside className=" border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border lg:sticky lg:top-4 lg:col-span-2">
 							<ul
 								role="list"
 								className="sticky top-0 h-96 divide-y divide-gray-100 overflow-y-auto"
@@ -172,7 +174,7 @@ export default async function ViewCompScreen({
 								))}
 							</ul>
 						</aside>
-					</div>
+					</div> */}
 					{/* end of players and graph */}
 
 					<h3 className="text-3xl font-bold">Games</h3>
@@ -183,10 +185,39 @@ export default async function ViewCompScreen({
 							</li>
 						))}
 					</ul>
-				</div>
+				</main>
 
-				{/* side bar */}
-				<div className="ml-2 mt-20 hidden flex-shrink xl:inline">
+				<div
+				//  className="xl:hidden"
+				>
+					<section>
+						<h3 className="text-3xl font-bold">Players</h3>
+						<div className="w-100 h-[300px] bg-red-600">chart</div>
+					</section>
+
+					<aside className=" border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border lg:sticky lg:top-4 lg:col-span-2">
+						<ul
+							role="list"
+							className="sticky top-0 h-96 divide-y divide-gray-100 overflow-y-auto"
+						>
+							{players.map((player, rank) => (
+								<li key={player.id} className="px-5">
+									<AltPlayerCard
+										key={player.id}
+										player={player}
+										ranking={rank}
+									/>
+								</li>
+							))}
+						</ul>
+					</aside>
+				</div>
+			</section>
+
+			{/* </div> */}
+
+			{/* side bar */}
+			{/* <div className="ml-2 mt-20 hidden flex-shrink xl:inline">
 					<section>
 						<h3 className="text-3xl font-bold">Players</h3>
 						<div className="h-[300px] bg-red-600">chart</div>
@@ -208,9 +239,8 @@ export default async function ViewCompScreen({
 							))}
 						</ul>
 					</aside>
-				</div>
-				{/* side bar end */}
-			</div>
+				</div> */}
+			{/* side bar end */}
 		</div>
 	);
 }
