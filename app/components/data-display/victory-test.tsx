@@ -1,15 +1,34 @@
 "use client";
 
 import React from "react";
-import { VictoryBar } from "victory";
+import { VictoryAxis, VictoryBar, VictoryChart } from "victory";
 
 const data = [
-	{ quarter: 1, earnings: 13000 },
-	{ quarter: 2, earnings: 16500 },
-	{ quarter: 3, earnings: 14250 },
-	{ quarter: 4, earnings: 19000 },
+	{ quarter: 1, earnings: 13000, label: 1 },
+	{ quarter: 2, earnings: 16500, label: 2 },
+	{ quarter: 3, earnings: 14250, label: 3 },
+	{ quarter: 4, earnings: 19000, label: 4 },
 ];
 
-export const VictoryTest: React.FC<{}> = ({}) => {
-	return <VictoryBar />;
+interface VictoryTestParams {
+	className: string;
+}
+
+export const VictoryTest: React.FC<VictoryTestParams> = ({ className }) => {
+	return (
+		<div className={className}>
+			<VictoryChart>
+				<VictoryBar data={data} x="quarter" y="earnings" />
+				<VictoryAxis
+					tickValues={[
+						"< 1700",
+						"1751-1850",
+						"1851-1950",
+						"1951-2050",
+						"2050 <",
+					]}
+				/>
+			</VictoryChart>
+		</div>
+	);
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import { VictoryBar } from "victory";
 import {
 	CompProfilesResponseType,
 	CompetitionsResponseType,
@@ -69,8 +68,6 @@ export default async function ViewCompScreen({
 
 	return (
 		<main className="container mx-auto px-0 sm:px-6 lg:px-8 xl:px-2">
-			<VictoryTest />
-			<VictoryBar />
 			<div className="flex flex-col flex-wrap pb-12 pt-4 md:flex-row lg:flex-nowrap lg:pt-12">
 				<div className="self-center">
 					<NextImage
@@ -149,9 +146,10 @@ export default async function ViewCompScreen({
 					<div className="lg:hidden">
 						<section>
 							<h3 className="text-3xl font-bold">Players</h3>
-							<div className="w-100 h-[300px] bg-red-600">
+							{/* <div className="w-100 h-[300px] bg-red-600">
 								chart
-							</div>
+							</div> */}
+							<VictoryTest className="w-full" />
 						</section>
 
 						<div className=" border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border lg:sticky lg:top-4 lg:col-span-2">
@@ -187,7 +185,8 @@ export default async function ViewCompScreen({
 				<aside className="top-28 hidden self-start lg:sticky lg:inline">
 					<div>
 						<h3 className="text-3xl font-bold">Players</h3>
-						<div className="w-100 h-[300px] bg-red-600">chart</div>
+						{/* <div className="w-100 h-[300px] bg-red-600">chart</div> */}
+						<VictoryTest className="w-[400px]" />
 					</div>
 
 					<div className=" border-gray-900/7 top-8 h-96 rounded-lg border lg:sticky lg:top-4">
