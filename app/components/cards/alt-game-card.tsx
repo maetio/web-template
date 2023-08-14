@@ -116,7 +116,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 						{gameStatus !== "unreported" ? (
 							<div className="flex  items-center justify-center rounded-2xl bg-zinc-100 p-3.5">
 								<div className="flex  items-center justify-center text-center">
-									<p className="text-1xl md:text-3xl font-bold leading-tight tracking-tight text-gray-500 ">
+									<p className="text-1xl font-bold leading-tight tracking-tight text-gray-500 md:text-3xl ">
 										<span
 											className={
 												gameStatus === "team1-winner"
@@ -140,10 +140,10 @@ const GameCard: React.FC<GameCardProps> = async ({
 								</div>
 							</div>
 						) : (
-							<div className="inline-flex items-center justify-center self-center rounded-2xl bg-zinc-100 px-6 p-3.5">
+							<div className="inline-flex items-center justify-center self-center rounded-2xl bg-zinc-100 p-3.5 px-6">
 								<text
 									aria-label="Versus"
-									className="text-1xl md:text-3xl text-center font-bold leading-tight tracking-tight text-black"
+									className="text-1xl text-center font-bold leading-tight tracking-tight text-black md:text-3xl"
 								>
 									VS
 								</text>
