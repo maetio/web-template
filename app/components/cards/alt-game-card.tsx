@@ -68,33 +68,33 @@ const GameCard: React.FC<GameCardProps> = async ({
 						{game &&
 						game.team1?.image &&
 						typeof game.team1?.image !== "string" ? (
-								game.team1.image.slice(0, 1).map((img, index) => (
-									<NextImage
-										key={index}
-										// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-										className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
-										src={img}
-										alt="player image"
-									/>
-								))
-							) : (
+							game.team1.image.slice(0, 1).map((img, index) => (
 								<NextImage
-									className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-									src={
-										typeof game.team1?.image === "string"
-											? game.team1.image
-											: undefined
-									}
-									alt=""
+									key={index}
+									// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+									className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
+									src={img}
+									alt="player image"
 								/>
-							)}
+							))
+						) : (
+							<NextImage
+								className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+								src={
+									typeof game.team1?.image === "string"
+										? game.team1.image
+										: undefined
+								}
+								alt=""
+							/>
+						)}
 						{game.team1?.image &&
 							typeof game.team1.image !== "string" &&
 							game.team1.image?.length - 2 > 0 && (
-							<div className="relative z-0 inline-block flex h-[35px] w-[35px] items-center justify-center rounded-full bg-slate-50 ring-2 ring-white">
+								<div className="relative z-0 inline-block flex h-[35px] w-[35px] items-center justify-center rounded-full bg-slate-50 ring-2 ring-white">
 									+{game.team1.image?.length - 2}
-							</div>
-						)}
+								</div>
+							)}
 					</div>
 					<div className="flex flex-col justify-center">
 						<p className="p-2 text-center text-xs font-semibold lg:text-sm">
@@ -113,33 +113,31 @@ const GameCard: React.FC<GameCardProps> = async ({
 				<div className="flex flex-col items-start gap-8">
 					<div className="flex min-w-full items-center justify-center">
 						{gameStatus !== "unreported" ? (
-							<div className="flex  items-center justify-center rounded-2xl bg-zinc-100 p-3.5">
-								<div className="flex  items-center justify-center text-center">
-									<p className="text-1xl font-bold leading-tight tracking-tight text-gray-500 md:text-3xl ">
-										<span
-											className={
-												gameStatus === "team1-winner"
-													? "font-bold text-black"
-													: ""
-											}
-										>
-											12
-										</span>{" "}
-										:{" "}
-										<span
-											className={
-												gameStatus === "team2-winner"
-													? "font-bold text-black"
-													: ""
-											}
-										>
-											10
-										</span>
-									</p>
-								</div>
+							<div className="flex items-center justify-center rounded-2xl bg-zinc-100 p-2 sm:px-6 sm:py-3.5">
+								<p className="text-1xl font-bold leading-tight tracking-tight text-gray-500 md:text-3xl ">
+									<span
+										className={
+											gameStatus === "team1-winner"
+												? "font-bold text-black"
+												: ""
+										}
+									>
+										12
+									</span>{" "}
+									:{" "}
+									<span
+										className={
+											gameStatus === "team2-winner"
+												? "font-bold text-black"
+												: ""
+										}
+									>
+										10
+									</span>
+								</p>
 							</div>
 						) : (
-							<div className="inline-flex items-center justify-center self-center rounded-2xl bg-zinc-100 p-3.5 px-6">
+							<div className="inline-flex items-center justify-center self-center rounded-2xl bg-zinc-100 px-3.5 py-2.5 sm:px-6 sm:py-3.5">
 								<text
 									aria-label="Versus"
 									className="text-1xl text-center font-bold leading-tight tracking-tight text-black md:text-3xl"
@@ -155,33 +153,33 @@ const GameCard: React.FC<GameCardProps> = async ({
 						{game &&
 						game.team2?.image &&
 						typeof game.team2?.image !== "string" ? (
-								game.team2.image.slice(0, 1).map((img, index) => (
-									<NextImage
-										key={index}
-										// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-										className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
-										src={img}
-										alt="player image"
-									/>
-								))
-							) : (
+							game.team2.image.slice(0, 1).map((img, index) => (
 								<NextImage
-									className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-									src={
-										typeof game.team2?.image === "string"
-											? game.team2.image
-											: undefined
-									}
-									alt=""
+									key={index}
+									// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+									className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
+									src={img}
+									alt="player image"
 								/>
-							)}
+							))
+						) : (
+							<NextImage
+								className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+								src={
+									typeof game.team2?.image === "string"
+										? game.team2.image
+										: undefined
+								}
+								alt=""
+							/>
+						)}
 						{game.team2?.image &&
 							typeof game.team2.image !== "string" &&
 							game.team2.image?.length - 2 > 0 && (
-							<div className="relative z-0 inline-block flex h-[35px] w-[35px] items-center justify-center rounded-full bg-slate-50 ring-2 ring-white">
+								<div className="relative z-0 inline-block flex h-[35px] w-[35px] items-center justify-center rounded-full bg-slate-50 ring-2 ring-white">
 									+{game.team2.image?.length - 2}
-							</div>
-						)}
+								</div>
+							)}
 					</div>
 
 					<div className="flex flex-col justify-center">

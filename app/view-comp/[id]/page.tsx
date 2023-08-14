@@ -174,7 +174,7 @@ export default async function ViewCompScreen({
 					<h3 className="text-3xl font-bold">Games</h3>
 					<ul role="list" className="divide-y divide-gray-100">
 						{games.map((game) => (
-							<li key={game.id} className="px-5 py-5">
+							<li key={game.id} className="py-5">
 								<GameCard id={game.id} />
 							</li>
 						))}
