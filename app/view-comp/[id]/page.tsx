@@ -1,4 +1,5 @@
 import React from "react";
+import { VictoryBar } from "victory";
 import {
 	CompProfilesResponseType,
 	CompetitionsResponseType,
@@ -13,6 +14,7 @@ import { NextImage } from "app/components/image";
 
 import AltPlayerCard from "app/components/cards/alt-player-card";
 import { GameCard } from "app/components/cards/alt-game-card";
+import { VictoryTest } from "app/components/data-display/victory-test";
 
 /**
  * Function will display the competition to the user
@@ -67,6 +69,8 @@ export default async function ViewCompScreen({
 
 	return (
 		<main className="container mx-auto px-0 sm:px-6 lg:px-8 xl:px-2">
+			<VictoryTest />
+			<VictoryBar />
 			<div className="flex flex-col flex-wrap pb-12 pt-4 md:flex-row lg:flex-nowrap lg:pt-12">
 				<div className="self-center">
 					<NextImage
