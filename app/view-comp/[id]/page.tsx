@@ -135,7 +135,7 @@ export default async function ViewCompScreen({
 					{/* description */}
 					<section className="hidden xl:inline">
 						<h3 className="text-3xl font-bold">Description</h3>
-						<p className="wrap flex flex-wrap">
+						<p className="wrap mr-14 flex flex-wrap">
 							{competitionData?.description ||
 								"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
 						</p>
@@ -146,9 +146,6 @@ export default async function ViewCompScreen({
 					<div className="lg:hidden">
 						<section>
 							<h3 className="text-3xl font-bold">Players</h3>
-							{/* <div className="w-100 h-[300px] bg-red-600">
-								chart
-							</div> */}
 							<VictoryTest className="w-full" />
 						</section>
 
@@ -171,7 +168,7 @@ export default async function ViewCompScreen({
 					</div>
 					{/* end of players and graph */}
 
-					<h3 className="text-3xl font-bold">Games</h3>
+					<h3 className="text-3xl font-bold lg:mt-5">Games</h3>
 					<ul role="list" className="divide-y divide-gray-100">
 						{games.map((game) => (
 							<li key={game.id} className="py-5 sm:px-5">
