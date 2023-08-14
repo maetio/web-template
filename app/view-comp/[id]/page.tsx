@@ -7,16 +7,10 @@ import {
 } from "types/next-api";
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
-import { MaetIcon } from "app/components/icons";
 import { ActionButton } from "app/components/action-button";
 import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
-import {
-	MdArrowForwardIos,
-	MdOutlinePlaylistAddCheck,
-	MdPeopleOutline,
-} from "react-icons/md";
-import { averageRatingObjects } from "utils/skill-rating";
+
 import AltPlayerCard from "app/components/cards/alt-player-card";
 import { GameCard } from "app/components/cards/alt-game-card";
 
@@ -72,12 +66,12 @@ export default async function ViewCompScreen({
 	};
 
 	return (
-		<div className="container mx-auto px-0 sm:px-6 lg:px-8 xl:px-2">
+		<main className="container mx-auto px-0 sm:px-6 lg:px-8 xl:px-2">
 			<div className="flex flex-col flex-wrap pb-12 pt-4 md:flex-row lg:flex-nowrap lg:pt-12">
 				<div className="self-center">
 					<NextImage
-						className="w-full flex-none self-center rounded-lg bg-gray-50"
-						// size={400}
+						// className="w-full flex-none self-center rounded-lg bg-gray-50"
+						size={400}
 						src={competitionData?.image}
 					/>
 				</div>
@@ -136,7 +130,7 @@ export default async function ViewCompScreen({
 
 			{/* main */}
 			<section className="lg:flex">
-				<main>
+				<div>
 					{/* description */}
 					<section className="hidden xl:inline">
 						<h3 className="text-3xl font-bold">Description</h3>
@@ -156,7 +150,7 @@ export default async function ViewCompScreen({
 							</div>
 						</section>
 
-						<aside className=" border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border lg:sticky lg:top-4 lg:col-span-2">
+						<div className=" border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border lg:sticky lg:top-4 lg:col-span-2">
 							<ul
 								role="list"
 								className="sticky top-0 h-96 divide-y divide-gray-100 overflow-y-auto"
@@ -171,7 +165,7 @@ export default async function ViewCompScreen({
 									</li>
 								))}
 							</ul>
-						</aside>
+						</div>
 					</div>
 					{/* end of players and graph */}
 
@@ -183,19 +177,16 @@ export default async function ViewCompScreen({
 							</li>
 						))}
 					</ul>
-				</main>
+				</div>
 
-				<div
-					//  className="hiddem xl:inline"
-					className="hidden lg:inline top-28 self-start lg:sticky"
-				>
-					{/* <div className="xl:sticky top-[100px]"> */}
-					<section>
+				{/* sidebar on large screens */}
+				<aside className="top-28 hidden self-start lg:sticky lg:inline">
+					<div>
 						<h3 className="text-3xl font-bold">Players</h3>
 						<div className="w-100 h-[300px] bg-red-600">chart</div>
-					</section>
+					</div>
 
-					<aside className=" border-gray-900/7 top-8 h-96 rounded-lg border lg:sticky lg:top-4">
+					<div className=" border-gray-900/7 top-8 h-96 rounded-lg border lg:sticky lg:top-4">
 						<ul
 							role="list"
 							className="sticky top-0 h-96 divide-y divide-gray-100 overflow-y-auto"
@@ -210,10 +201,9 @@ export default async function ViewCompScreen({
 								</li>
 							))}
 						</ul>
-					</aside>
-					{/* </div> */}
-				</div>
+					</div>
+				</aside>
 			</section>
-		</div>
+		</main>
 	);
 }

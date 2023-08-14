@@ -1,5 +1,4 @@
 import React from "react";
-import { FaPlay } from "react-icons/fa6";
 import { inferGameStatus } from "utils/skill-rating";
 import { BaseURL } from "config/constants";
 // import { GameResponseType } from "types/next-api";
