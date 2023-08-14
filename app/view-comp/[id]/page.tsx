@@ -130,8 +130,8 @@ export default async function ViewCompScreen({
 			</div>
 
 			{/* main */}
-			<section className="lg:flex">
-				<div>
+			<section className="min-w-full lg:flex lg:justify-between">
+				<div className="w-full">
 					{/* description */}
 					<section className="hidden xl:inline">
 						<h3 className="text-3xl font-bold">Description</h3>
@@ -174,7 +174,7 @@ export default async function ViewCompScreen({
 					<h3 className="text-3xl font-bold">Games</h3>
 					<ul role="list" className="divide-y divide-gray-100">
 						{games.map((game) => (
-							<li key={game.id} className="py-5">
+							<li key={game.id} className="py-5 sm:px-5">
 								<GameCard id={game.id} />
 							</li>
 						))}

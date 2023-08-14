@@ -20,17 +20,15 @@ export const VictoryTest: React.FC<VictoryTestParams> = ({ className }) => {
 			<VictoryChart>
 				<VictoryBar
 					cornerRadius={{
-						bottomLeft: 4,
-						bottomRight: 4,
-						topLeft: 4,
-						topRight: 4,
+						bottomLeft: 6,
+						bottomRight: 6,
+						topLeft: 6,
+						topRight: 6,
 					}}
 					style={{
 						data: {
 							fill: "#A5B4FC",
 							width: 50,
-							// strokeLinejoin: "round",
-							// strokeWidth: 6,
 						},
 					}}
 					data={data}
