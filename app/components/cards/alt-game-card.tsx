@@ -1,5 +1,5 @@
 import React from "react";
-import { inferGameStatus } from "utils/skill-rating";
+import { inferGameStatus, simulateMatchup } from "utils/skill-rating";
 import { BaseURL } from "config/constants";
 // import { GameResponseType } from "types/next-api";
 import { GameResponseType } from "types/next-api";
@@ -42,6 +42,24 @@ const GameCard: React.FC<GameCardProps> = async ({
 
 	// get game status
 	const gameStatus = inferGameStatus(game.team1?.points, game.team2?.points);
+
+	// simulate payoffs
+	const { player1: team1Rating, player2: team2Rating } = simulateMatchup(
+		game.team1?.rating,
+		game.team2?.rating,
+		{
+			player1Points: game.team1?.points,
+			player2Points: game.team2?.points,
+		}
+	);
+
+	const team1PointsAwarded = game.team1?.rating?.displayRating
+		? team1Rating.displayRating - game.team1.rating.displayRating
+		: null;
+
+	const team2PointsAwarded = game.team2?.rating?.displayRating
+		? team2Rating.displayRating - game.team2.rating.displayRating
+		: null;
 
 	console.log("game uud", game.id);
 
@@ -96,14 +114,14 @@ const GameCard: React.FC<GameCardProps> = async ({
 								</div>
 							)} */}
 					</div>
-					<div className="flex flex-col justify-center">
-						<p
-							className={`p-2 text-center text-xs font-semibold lg:text-sm ${
-								gameStatus === "team1-winner"
-									? "text-black"
-									: "text-gray-500"
-							}`}
-						>
+					<div
+						className={`flex flex-col justify-center ${
+							gameStatus === "team1-winner"
+								? "text-black"
+								: "text-gray-500"
+						}`}
+					>
+						<p className="p-2 text-center text-xs font-semibold lg:text-sm">
 							{game.team1?.lastName}
 						</p>
 						<div className="flex items-center justify-center">
@@ -112,18 +130,31 @@ const GameCard: React.FC<GameCardProps> = async ({
 							) : (
 								<XSGrayMaetIcon />
 							)}
-							<p
-								className={`ml-1 text-xs ${
-									gameStatus === "team1-winner"
-										? "text-black"
-										: "text-gray-500"
-								}`}
-							>
+							<p className="ml-1 text-xs">
 								{Math.round(
 									game.team1?.rating?.displayRating || 100
 								)}
 							</p>
 						</div>
+						{/* points awarded */}
+						{gameStatus !== "unreported" && team1PointsAwarded ? (
+							<div className="mt-1 items-center">
+								<p
+									className={`px-auto rounded-3xl text-center text-sm font-bold ${
+										team1PointsAwarded > 0
+											? "bg-green-200 text-green-800"
+											: "bg-red-200 text-red-800"
+									}`}
+								>
+									{Math.round(team1PointsAwarded)}
+								</p>
+								<p>
+									{team1PointsAwarded > 0
+										? "Points Won"
+										: "Points Lost"}
+								</p>
+							</div>
+						) : null}
 					</div>
 				</div>
 				<div className="flex flex-col items-start gap-8">
@@ -198,14 +229,14 @@ const GameCard: React.FC<GameCardProps> = async ({
 							)} */}
 					</div>
 
-					<div className="flex flex-col justify-center">
-						<p
-							className={`p-2 text-center text-xs font-semibold lg:text-sm ${
-								gameStatus === "team2-winner"
-									? "text-black"
-									: "text-gray-500"
-							}`}
-						>
+					<div
+						className={`flex flex-col justify-center ${
+							gameStatus === "team2-winner"
+								? "text-black"
+								: "text-gray-500"
+						}`}
+					>
+						<p className="p-2 text-center text-xs font-semibold lg:text-sm">
 							{game.team2?.lastName}
 						</p>
 						<div className="flex items-center justify-center">
@@ -214,29 +245,44 @@ const GameCard: React.FC<GameCardProps> = async ({
 							) : (
 								<XSGrayMaetIcon />
 							)}
-							<p
-								className={`ml-1 text-xs ${
-									gameStatus === "team2-winner"
-										? "text-black"
-										: "text-gray-500"
-								}`}
-							>
+							<p className="ml-1 text-xs">
 								{Math.round(
 									game.team2?.rating?.displayRating || 100
 								)}
 							</p>
 						</div>
+						{/* points awarded */}
+						{gameStatus !== "unreported" && team2PointsAwarded ? (
+							<div className="mt-1 items-center">
+								<p
+									className={`px-auto rounded-3xl text-center text-sm font-bold ${
+										team2PointsAwarded > 0
+											? "bg-green-200 text-green-800"
+											: "bg-red-200 text-red-800"
+									}`}
+								>
+									{Math.round(team2PointsAwarded)}
+								</p>
+								<p>
+									{team2PointsAwarded > 0
+										? "Points Won"
+										: "Points Lost"}
+								</p>
+							</div>
+						) : null}
 					</div>
 				</div>
 			</section>
 
 			{/* win prob */}
-			{game.team1?.rating && game.team2?.rating && (
-				<WinProb
-					team1Rating={game.team1?.rating}
-					team2Rating={game.team2?.rating}
-				/>
-			)}
+			{game.team1?.rating &&
+				game.team2?.rating &&
+				gameStatus === "unreported" && (
+					<WinProb
+						team1Rating={game.team1?.rating}
+						team2Rating={game.team2?.rating}
+					/>
+				)}
 
 			{/* win prob end */}
 		</div>
