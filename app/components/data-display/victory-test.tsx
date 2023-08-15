@@ -6,16 +6,23 @@ import { VictoryAxis, VictoryBar, VictoryChart } from "victory";
 interface VictoryTestParams {
 	className: string;
 	data: {
-		x: string;
+		x: number | string;
 		y: number;
-		label: string;
+		// label?: string;
 	}[];
+	tickLabels: string[];
 }
 
 export const VictoryTest: React.FC<VictoryTestParams> = ({
 	className,
 	data,
+	tickLabels,
 }) => {
+	const largestValue = Math.max(...data.map((dataPoint) => dataPoint.y));
+	const largestValueIndex = data.findIndex(
+		(dataPoint) => dataPoint.y === largestValue
+	);
+
 	return (
 		<div className={className}>
 			<VictoryChart>
@@ -26,24 +33,27 @@ export const VictoryTest: React.FC<VictoryTestParams> = ({
 						topLeft: 6,
 						topRight: 6,
 					}}
+					// style={{
+					// 	data: {
+					// 		fill: (d) =>
+					// 			d.x === largestValueIndex ? "red" : "blue",
+					// 	},
+					// }}
+
 					style={{
 						data: {
-							fill: "#A5B4FC",
-							width: 50,
+							fill: (d) =>
+								d.x === largestValueIndex ? "red" : "blue",
 						},
 					}}
 					data={data}
 					x="x"
 					y="y"
 				/>
+
 				<VictoryAxis
-					tickValues={[
-						"< 1700",
-						"1751-1850",
-						"1851-1950",
-						"1951-2050",
-						"2050 <",
-					]}
+					tickValues={data.map((dataPoint) => dataPoint.x)}
+					tickFormat={(tickIndex) => tickLabels[tickIndex]}
 					style={{ axis: { stroke: "none" } }}
 				/>
 			</VictoryChart>

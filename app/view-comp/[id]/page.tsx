@@ -66,44 +66,31 @@ export default async function ViewCompScreen({
 		return "Not Ranked";
 	};
 
-	const data = [
-		{ x: "< 1700", y: 3, label: "1" },
-		{ x: "1751-1850", y: 6, label: "2" },
-		{ x: "1851-1950", y: 7, label: "3" },
-		{ x: "1951-2050", y: 4, label: "4" },
-		{ x: "2050 <", y: 20, label: "5" },
-	];
-
 	const filterPlayerData = () => {
-		const victoryData = [];
+		const victoryData: number[] = [];
 
 		players.forEach((player) => {
-			if (!player.rating?.displayRating) {
-				continue;
-			} else if (player.rating.displayRating < 1700) {
-				victoryData.push([{ x: "< 1700" }]);
-			} else if (
-				player.rating.displayRating > 1751 &&
-					player.rating.displayRating < 1850
-			) {
-				victoryData.push([{ x: "1751-1850" }]);
-			} else if (
-				player.rating.displayRating > 1851 &&
-					player.rating.displayRating < 1950
-			) {
-				victoryData.push([{ x: "1851-1950" }]);
-			} else if (
-				player.rating.displayRating > 1951 &&
-					player.rating.displayRating < 2050
-			) {
-				victoryData.push([{ x: "1951-2050" }]);
-			} else {
-				victoryData.push([{ x: "2050 <" }]);
-			}
+			if (player.rating?.displayRating)
+				victoryData.push(player.rating?.displayRating);
 		});
 
-		return victoryData;
+		console.log("victory data", victoryData);
+
+		const binEdges = [0, 1750, 1850, 1950, 2050, 3500];
+
+		const histogramData = binEdges.map((edge, index) => ({
+			x: index,
+			y: victoryData.filter(
+				(rating) => rating >= edge && rating < binEdges[index + 1]
+			).length,
+		}));
+
+		console.log("histogram data", histogramData);
+
+		return histogramData;
 	};
+
+	const filterDatathing = filterPlayerData();
 
 	return (
 		<main className="container mx-auto px-0 sm:px-6 lg:px-8 xl:px-2">
@@ -185,7 +172,17 @@ export default async function ViewCompScreen({
 					<div className="lg:hidden">
 						<section>
 							<h3 className="text-3xl font-bold">Players</h3>
-							<VictoryTest className="w-full" data={data} />
+							<VictoryTest
+								className="w-full"
+								data={filterDatathing}
+								tickLabels={[
+									"<1750",
+									"1751-1850",
+									"1851-1950",
+									"1951-2050",
+									">2050",
+								]}
+							/>
 						</section>
 
 						<div className=" border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border lg:sticky lg:top-4 lg:col-span-2">
@@ -222,7 +219,17 @@ export default async function ViewCompScreen({
 					<div>
 						<h3 className="text-3xl font-bold">Players</h3>
 						{/* <div className="w-100 h-[300px] bg-red-600">chart</div> */}
-						<VictoryTest className="w-[400px]" data={data} />
+						<VictoryTest
+							className="w-[400px]"
+							data={filterDatathing}
+							tickLabels={[
+								"<1750",
+								"1751-1850",
+								"1851-1950",
+								"1951-2050",
+								">2050",
+							]}
+						/>
 					</div>
 
 					<div className=" border-gray-900/7 top-8 h-96 rounded-lg border lg:sticky lg:top-4">
