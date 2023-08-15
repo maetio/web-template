@@ -1,12 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-	VictoryAxis,
-	VictoryBar,
-	VictoryChart,
-	VictoryHistogram,
-} from "victory";
+import { VictoryAxis, VictoryBar, VictoryChart } from "victory";
 // const data= {[
 //     { x: 1 },
 //     { x: 2 },
