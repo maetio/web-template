@@ -1,6 +1,6 @@
 import React from "react";
 import { Profile } from "types/index";
-import { FaMedal } from "react-icons/fa6";
+// import { FaMedal } from "react-icons/fa6";
 import Link, { LinkProps } from "next/link";
 import { MaetIcon } from "app/components/icons";
 import { NextImage } from "app/components/image";
@@ -16,11 +16,11 @@ function classNames(...classes: string[]) {
 }
 
 // define medal colors
-const medalColor: string[] = [
-	"text-yellow-400",
-	"text-gray-400",
-	"text-amber-700",
-];
+// const medalColor: string[] = [
+// 	"text-yellow-400",
+// 	"text-gray-400",
+// 	"text-amber-700",
+// ];
 
 const AltPlayerCard: React.FC<PlayerCardProps> = ({
 	player,
