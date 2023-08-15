@@ -26,7 +26,8 @@ const binEdges = [0, 1700, 1850, 1950, 2050, Infinity];
 
 const histogramData = binEdges.map((edge, index) => ({
 	x: index,
-	y: data.filter((rating) => rating >= edge && rating < binEdges[index + 1]).length,
+	y: data.filter((rating) => rating >= edge && rating < binEdges[index + 1])
+		.length,
 }));
 
 export const VictoryTest2: React.FC<VictoryTestParams> = ({ className }) => {

@@ -60,89 +60,89 @@ export async function POST(req: NextRequest) {
 					await profileResponse.json();
 
 				switch (event?.type) {
-					case "payment_intent.canceled": {
-						const data = {
-							userID: profileData.userID,
-							eventType: 603,
-							timeStamp: Timestamp.now(),
-							actionID: event.id,
-							customerID: paymentIntentSucceeded.customer,
-							destinationAccount:
+				case "payment_intent.canceled": {
+					const data = {
+						userID: profileData.userID,
+						eventType: 603,
+						timeStamp: Timestamp.now(),
+						actionID: event.id,
+						customerID: paymentIntentSucceeded.customer,
+						destinationAccount:
 								paymentIntentSucceeded.transfer_data
 									?.destination,
-							latest_charge: paymentIntentSucceeded.latest_charge,
-							amount: paymentIntentSucceeded.amount,
-							amountFee:
+						latest_charge: paymentIntentSucceeded.latest_charge,
+						amount: paymentIntentSucceeded.amount,
+						amountFee:
 								paymentIntentSucceeded.application_fee_amount,
-						};
+					};
 
-						await transactionEvents.add(data);
+					await transactionEvents.add(data);
 
-						break;
-					}
-					case "payment_intent.payment_failed": {
-						const data = {
-							userID: profileData.userID,
-							eventType: 602,
-							timeStamp: Timestamp.now(),
-							actionID: event.id,
-							customerID: paymentIntentSucceeded.customer,
-							destinationAccount:
+					break;
+				}
+				case "payment_intent.payment_failed": {
+					const data = {
+						userID: profileData.userID,
+						eventType: 602,
+						timeStamp: Timestamp.now(),
+						actionID: event.id,
+						customerID: paymentIntentSucceeded.customer,
+						destinationAccount:
 								paymentIntentSucceeded.transfer_data
 									?.destination,
-							latest_charge: paymentIntentSucceeded.latest_charge,
-							amount: paymentIntentSucceeded.amount,
-							amountFee:
+						latest_charge: paymentIntentSucceeded.latest_charge,
+						amount: paymentIntentSucceeded.amount,
+						amountFee:
 								paymentIntentSucceeded.application_fee_amount,
-						};
+					};
 
-						await transactionEvents.add(data);
+					await transactionEvents.add(data);
 
-						break;
-					}
-					case "payment_intent.succeeded": {
-						const data = {
-							userID: profileData.userID,
-							eventType: 600,
-							timeStamp: Timestamp.now(),
-							actionID: event.id,
-							customerID: paymentIntentSucceeded.customer,
-							destinationAccount:
+					break;
+				}
+				case "payment_intent.succeeded": {
+					const data = {
+						userID: profileData.userID,
+						eventType: 600,
+						timeStamp: Timestamp.now(),
+						actionID: event.id,
+						customerID: paymentIntentSucceeded.customer,
+						destinationAccount:
 								paymentIntentSucceeded.transfer_data
 									?.destination,
-							latest_charge: paymentIntentSucceeded.latest_charge,
-							amount: paymentIntentSucceeded.amount,
-							amountFee:
+						latest_charge: paymentIntentSucceeded.latest_charge,
+						amount: paymentIntentSucceeded.amount,
+						amountFee:
 								paymentIntentSucceeded.application_fee_amount,
-						};
+					};
 
-						await transactionEvents.add(data);
+					await transactionEvents.add(data);
 
-						break;
-					}
-					case "payment_intent.processing": {
-						const data = {
-							userID: profileData.userID,
-							eventType: 601,
-							timeStamp: Timestamp.now(),
-							actionID: event.id,
-							customerID: paymentIntentSucceeded.customer,
-							destinationAccount:
+					break;
+				}
+				case "payment_intent.processing": {
+					const data = {
+						userID: profileData.userID,
+						eventType: 601,
+						timeStamp: Timestamp.now(),
+						actionID: event.id,
+						customerID: paymentIntentSucceeded.customer,
+						destinationAccount:
 								paymentIntentSucceeded.transfer_data
 									?.destination,
-							latest_charge: paymentIntentSucceeded.latest_charge,
-							amount: paymentIntentSucceeded.amount,
-							amountFee:
+						latest_charge: paymentIntentSucceeded.latest_charge,
+						amount: paymentIntentSucceeded.amount,
+						amountFee:
 								paymentIntentSucceeded.application_fee_amount,
-						};
+					};
 
-						await transactionEvents.add(data);
+					await transactionEvents.add(data);
 
-						break;
-					}
-					default: {
-						console.log("something");
-					}
+					break;
+				}
+				default: {
+					console.log("something");
+				}
 				}
 			}
 		}
