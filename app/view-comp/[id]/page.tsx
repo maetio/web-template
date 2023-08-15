@@ -185,7 +185,7 @@ export default async function ViewCompScreen({
 							/>
 						</section>
 
-						<div className=" border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border lg:sticky lg:top-4 lg:col-span-2">
+						<div className="bg-white border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border lg:sticky lg:top-4 lg:col-span-2">
 							<ul
 								role="list"
 								className="sticky top-0 h-96 divide-y divide-gray-100 overflow-y-auto"
@@ -205,9 +205,9 @@ export default async function ViewCompScreen({
 					{/* end of players and graph */}
 
 					<h3 className="text-3xl font-bold lg:mt-5">Games</h3>
-					<ul role="list" className="divide-y divide-gray-100">
+					<ul role="list" className="">
 						{games.map((game) => (
-							<li key={game.id} className="py-5 sm:px-5">
+							<li key={game.id} className="py-5 pr-3">
 								<GameCard id={game.id} />
 							</li>
 						))}
@@ -215,7 +215,7 @@ export default async function ViewCompScreen({
 				</div>
 
 				{/* sidebar on large screens */}
-				<aside className="top-28 hidden self-start lg:sticky lg:inline">
+				<aside className="ml-3 top-28 hidden self-start lg:sticky lg:inline">
 					<div>
 						<h3 className="text-3xl font-bold">Players</h3>
 						{/* <div className="w-100 h-[300px] bg-red-600">chart</div> */}
@@ -232,7 +232,7 @@ export default async function ViewCompScreen({
 						/>
 					</div>
 
-					<div className=" border-gray-900/7 top-8 h-96 rounded-lg border lg:sticky lg:top-4">
+					<div className="bg-white border-gray-900/7 top-8 h-96 rounded-lg border lg:sticky lg:top-4">
 						<ul
 							role="list"
 							className="sticky top-0 h-96 divide-y divide-gray-100 overflow-y-auto"
