@@ -18,14 +18,9 @@ export const VictoryTest: React.FC<VictoryTestParams> = ({
 	data,
 	tickLabels,
 }) => {
-	const largestValue = Math.max(...data.map((dataPoint) => dataPoint.y));
-	const largestValueIndex = data.findIndex(
-		(dataPoint) => dataPoint.y === largestValue
-	);
-
 	return (
 		<div className={className}>
-			<VictoryChart>
+			<VictoryChart padding={{ left: 60, top: 25, bottom: 35 }}>
 				<VictoryBar
 					cornerRadius={{
 						bottomLeft: 6,
@@ -33,17 +28,9 @@ export const VictoryTest: React.FC<VictoryTestParams> = ({
 						topLeft: 6,
 						topRight: 6,
 					}}
-					// style={{
-					// 	data: {
-					// 		fill: (d) =>
-					// 			d.x === largestValueIndex ? "red" : "blue",
-					// 	},
-					// }}
-
 					style={{
 						data: {
-							fill: (d) =>
-								d.x === largestValueIndex ? "red" : "blue",
+							fill: "#4F46E5",
 						},
 					}}
 					data={data}
