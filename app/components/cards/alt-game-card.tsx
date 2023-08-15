@@ -86,26 +86,26 @@ const GameCard: React.FC<GameCardProps> = async ({
 						{game &&
 						game.team1?.image &&
 						typeof game.team1?.image !== "string" ? (
-							game.team1.image.slice(0, 2).map((img, index) => (
+								game.team1.image.slice(0, 2).map((img, index) => (
+									<NextImage
+										key={index}
+										// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+										className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
+										src={img}
+										alt="player image"
+									/>
+								))
+							) : (
 								<NextImage
-									key={index}
-									// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-									className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
-									src={img}
-									alt="player image"
+									className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+									src={
+										typeof game.team1?.image === "string"
+											? game.team1.image
+											: undefined
+									}
+									alt=""
 								/>
-							))
-						) : (
-							<NextImage
-								className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-								src={
-									typeof game.team1?.image === "string"
-										? game.team1.image
-										: undefined
-								}
-								alt=""
-							/>
-						)}
+							)}
 						{/* {game.team1?.image &&
 							typeof game.team1.image !== "string" &&
 							game.team1.image?.length - 2 > 0 && (
@@ -146,6 +146,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 											: "bg-red-200 text-red-800"
 									}`}
 								>
+									{team1PointsAwarded > 0 && "+"}
 									{Math.round(team1PointsAwarded)}
 								</p>
 								<p>
@@ -200,26 +201,26 @@ const GameCard: React.FC<GameCardProps> = async ({
 						{game &&
 						game.team2?.image &&
 						typeof game.team2?.image !== "string" ? (
-							game.team2.image.slice(0, 2).map((img, index) => (
+								game.team2.image.slice(0, 2).map((img, index) => (
+									<NextImage
+										key={index}
+										// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+										className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
+										src={img}
+										alt="player image"
+									/>
+								))
+							) : (
 								<NextImage
-									key={index}
-									// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-									className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
-									src={img}
-									alt="player image"
+									className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+									src={
+										typeof game.team2?.image === "string"
+											? game.team2.image
+											: undefined
+									}
+									alt=""
 								/>
-							))
-						) : (
-							<NextImage
-								className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-								src={
-									typeof game.team2?.image === "string"
-										? game.team2.image
-										: undefined
-								}
-								alt=""
-							/>
-						)}
+							)}
 						{/* {game.team2?.image &&
 							typeof game.team2.image !== "string" &&
 							game.team2.image?.length - 2 > 0 && (
@@ -261,6 +262,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 											: "bg-red-200 text-red-800"
 									}`}
 								>
+									{team2PointsAwarded > 0 && "+"}
 									{Math.round(team2PointsAwarded)}
 								</p>
 								<p>
@@ -278,11 +280,11 @@ const GameCard: React.FC<GameCardProps> = async ({
 			{game.team1?.rating &&
 				game.team2?.rating &&
 				gameStatus === "unreported" && (
-					<WinProb
-						team1Rating={game.team1?.rating}
-						team2Rating={game.team2?.rating}
-					/>
-				)}
+				<WinProb
+					team1Rating={game.team1?.rating}
+					team2Rating={game.team2?.rating}
+				/>
+			)}
 
 			{/* win prob end */}
 		</div>

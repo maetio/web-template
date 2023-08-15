@@ -3,18 +3,19 @@
 import React from "react";
 import { VictoryAxis, VictoryBar, VictoryChart } from "victory";
 
-const data = [
-	{ quarter: 1, earnings: 3, label: 1 },
-	{ quarter: 2, earnings: 6, label: 2 },
-	{ quarter: 3, earnings: 7, label: 3 },
-	{ quarter: 4, earnings: 4, label: 4 },
-];
-
 interface VictoryTestParams {
 	className: string;
+	data: {
+		x: string;
+		y: number;
+		label: string;
+	}[];
 }
 
-export const VictoryTest: React.FC<VictoryTestParams> = ({ className }) => {
+export const VictoryTest: React.FC<VictoryTestParams> = ({
+	className,
+	data,
+}) => {
 	return (
 		<div className={className}>
 			<VictoryChart>
@@ -32,11 +33,10 @@ export const VictoryTest: React.FC<VictoryTestParams> = ({ className }) => {
 						},
 					}}
 					data={data}
-					x="quarter"
-					y="earnings"
+					x="x"
+					y="y"
 				/>
 				<VictoryAxis
-					style={{ axis: { stroke: "none" } }}
 					tickValues={[
 						"< 1700",
 						"1751-1850",
@@ -44,6 +44,7 @@ export const VictoryTest: React.FC<VictoryTestParams> = ({ className }) => {
 						"1951-2050",
 						"2050 <",
 					]}
+					style={{ axis: { stroke: "none" } }}
 				/>
 			</VictoryChart>
 		</div>
