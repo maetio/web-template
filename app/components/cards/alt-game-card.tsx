@@ -66,7 +66,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 	return (
 		<div
 			{...divParams}
-			className="bg-white mt-4 min-w-full flex-col  justify-start justify-evenly  rounded-xl border p-4 align-top shadow-lg"
+			className="mt-4 min-w-full flex-col justify-start  justify-evenly rounded-xl  border bg-white p-4 align-top shadow-lg"
 		>
 			{/* time section */}
 			<section className="self-start">
