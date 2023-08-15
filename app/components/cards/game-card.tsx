@@ -164,7 +164,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 			</div>
 			<div className="col-span-3 flex flex-col items-center justify-center">
 				{game.team2?.image ? (
-					<img
+					<NextImage
 						className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
 						src={
 							typeof game.team2.image === "string"
