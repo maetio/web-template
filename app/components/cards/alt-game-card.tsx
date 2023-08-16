@@ -63,7 +63,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 	return (
 		<div
 			{...divParams}
-			className="mt-4 flex min-w-full flex-wrap rounded-xl border bg-white p-4 shadow-lg"
+			className="mt-4 flex min-w-full flex-wrap rounded-xl bg-white p-4"
 		>
 			{/* time section */}
 			<section className="mr-3 self-center whitespace-nowrap">
