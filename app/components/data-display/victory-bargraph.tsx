@@ -44,6 +44,7 @@ const VictoryBarGraph: React.FC<VictoryBarGraphParams> = ({
 					style={{
 						data: {
 							fill: "#4F46E5",
+							width: 60,
 						},
 					}}
 					data={data}
