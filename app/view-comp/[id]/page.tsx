@@ -214,7 +214,7 @@ export default async function ViewCompScreen({
 					</div>
 
 					{/* sidebar on large screens */}
-					<aside className="top-28 ml-3 hidden self-start lg:sticky lg:inline">
+					<aside className="top-28 ml-3 p-4 hidden bg-white rounded-lg self-start lg:sticky lg:inline">
 						<div>
 							<h3 className="text-3xl font-bold">Players</h3>
 							{/* <div className="w-100 h-[300px] bg-red-600">chart</div> */}
