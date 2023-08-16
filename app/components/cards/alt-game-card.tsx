@@ -1,7 +1,6 @@
 import React from "react";
 import { inferGameStatus, simulateMatchup } from "utils/skill-rating";
 import { BaseURL } from "config/constants";
-// import { GameResponseType } from "types/next-api";
 import { GameResponseType } from "types/next-api";
 import { getShortDateString, getTimeString } from "utils/date";
 import { NextImage } from "app/components/image";
@@ -61,8 +60,6 @@ const GameCard: React.FC<GameCardProps> = async ({
 		? team2Rating.displayRating - game.team2.rating.displayRating
 		: null;
 
-	console.log("game uud", game.id);
-
 	return (
 		<div
 			{...divParams}
@@ -109,7 +106,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 													? game.team1.image
 													: undefined
 											}
-											alt=""
+											alt="player image"
 										/>
 									)}
 								{/* {game.team1?.image &&
@@ -230,7 +227,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 													? game.team2.image
 													: undefined
 											}
-											alt=""
+											alt="player image"
 										/>
 									)}
 								{/* {game.team2?.image &&
@@ -299,8 +296,6 @@ const GameCard: React.FC<GameCardProps> = async ({
 						team2Rating={game.team2?.rating}
 					/>
 				)}
-
-				{/* win prob end */}
 			</div>
 		</div>
 	);
