@@ -66,7 +66,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 	return (
 		<div
 			{...divParams}
-			className="mt-4 flex flex-wrap min-w-full rounded-xl border bg-white p-4 shadow-lg"
+			className="mt-4 flex min-w-full flex-wrap rounded-xl border bg-white p-4 shadow-lg"
 		>
 			{/* time section */}
 			<section className="mr-3 self-center whitespace-nowrap">
@@ -80,9 +80,9 @@ const GameCard: React.FC<GameCardProps> = async ({
 				</div>
 			</section>
 
-			<div className=" flex-col flex-grow">
+			<div className=" flex-grow flex-col">
 				{/* main game content section */}
-				<section className=" mb-1 flex flex-row justify-between py-2">
+				<section className="flex flex-row justify-between py-2">
 					<div className="flex flex-row flex-wrap items-center justify-center">
 						<div className="isolate flex overflow-hidden">
 							{game &&
@@ -141,7 +141,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 								</p>
 							</div>
 							{/* points awarded */}
-							{gameStatus !== "unreported" &&
+							{/* {gameStatus !== "unreported" &&
 							team1PointsAwarded ? (
 								<div className="mt-1 items-center">
 									<p
@@ -160,7 +160,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 											: "Points Lost"}
 									</p>
 								</div>
-							) : null}
+							) : null} */}
 						</div>
 					</div>
 					<div className="flex flex-col items-start gap-8">
@@ -260,7 +260,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 								</p>
 							</div>
 							{/* points awarded */}
-							{gameStatus !== "unreported" &&
+							{/* {gameStatus !== "unreported" &&
 							team2PointsAwarded ? (
 								<div className="mt-1 items-center">
 									<p
@@ -279,10 +279,52 @@ const GameCard: React.FC<GameCardProps> = async ({
 											: "Points Lost"}
 									</p>
 								</div>
-							) : null}
+							) : null} */}
 						</div>
 					</div>
 				</section>
+
+				<div className="flex justify-between">
+					{gameStatus !== "unreported" && team1PointsAwarded ? (
+						<div className="mt-1 flex flex-wrap items-center">
+							<p
+								className={`px-4 mr-2 rounded-3xl text-center text-sm font-bold ${
+									team1PointsAwarded > 0
+										? "bg-green-200 text-green-800"
+										: "bg-red-200 text-red-800"
+								}`}
+							>
+								{team1PointsAwarded > 0 && "+"}
+								{Math.round(team1PointsAwarded)}
+							</p>
+							<p>
+								{team1PointsAwarded > 0
+									? "Points Won"
+									: "Points Lost"}
+							</p>
+						</div>
+					) : null}
+					{gameStatus !== "unreported" && team2PointsAwarded ? (
+						<div className="mt-1 flex flex-row-reverse flex-wrap items-center">
+							<p
+								className={`px-4 ml-2 rounded-3xl text-center text-sm font-bold ${
+									team2PointsAwarded > 0
+										? "bg-green-200 text-green-800"
+										: "bg-red-200 text-red-800"
+								}`}
+							>
+								{team2PointsAwarded > 0 && "+"}
+								{Math.round(team2PointsAwarded)}
+							</p>
+							<p>
+								{team2PointsAwarded > 0
+									? "Points Won"
+									: "Points Lost"}
+							</p>
+						</div>
+					) : null}{" "}
+				</div>
+
 				{/* win prob */}
 				{game.team1?.rating &&
 					game.team2?.rating &&
