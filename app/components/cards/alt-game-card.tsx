@@ -71,7 +71,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 					<p className="text-3xl font-semibold text-black">
 						{getShortDateString(new Date(game.startTimeISO || ""))}
 					</p>
-					<p className="text-sm font-semibold text-gray-500">
+					<p className="text-xs font-semibold text-gray-500">
 						at {getTimeString(new Date(game.startTimeISO || ""))}
 					</p>
 				</div>
@@ -144,9 +144,9 @@ const GameCard: React.FC<GameCardProps> = async ({
 						</div>
 						{/* points awarded */}
 						{gameStatus !== "unreported" && team1PointsAwarded ? (
-							<div className="mt-1 flex flex-wrap items-center justify-center">
+							<div className="mt-1 flex flex-wrap items-center justify-center text-xs">
 								<p
-									className={`mr-2 rounded-3xl px-4 text-center text-sm font-bold ${
+									className={`mr-2 rounded-3xl px-4 text-center font-bold ${
 										team1PointsAwarded > 0
 											? "bg-green-200 text-green-800"
 											: "bg-red-200 text-red-800"
@@ -266,9 +266,9 @@ const GameCard: React.FC<GameCardProps> = async ({
 						</div>
 						{/* points awarded */}
 						{gameStatus !== "unreported" && team2PointsAwarded ? (
-							<div className="mt-1 flex flex-row-reverse flex-wrap items-center justify-center">
+							<div className="mt-1 flex flex-row-reverse flex-wrap items-center justify-center text-xs">
 								<p
-									className={`ml-2 rounded-3xl px-4 text-center text-sm font-bold ${
+									className={`ml-2 rounded-3xl px-4 text-center font-bold ${
 										team2PointsAwarded > 0
 											? "bg-green-200 text-green-800"
 											: "bg-red-200 text-red-800"
