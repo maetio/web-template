@@ -83,8 +83,8 @@ const GameCard: React.FC<GameCardProps> = async ({
 			<div className=" flex-col flex-grow">
 				{/* main game content section */}
 				<section className=" mb-1 flex flex-row justify-between py-2">
-					<div className="flex flex-row items-center justify-center">
-						<div className=" isolate flex overflow-hidden">
+					<div className="flex flex-row flex-wrap items-center justify-center">
+						<div className="isolate flex overflow-hidden">
 							{game &&
 							game.team1?.image &&
 							typeof game.team1?.image !== "string" ? (
@@ -201,7 +201,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 							)}
 						</div>
 					</div>
-					<div className="flex flex-row-reverse items-center justify-center">
+					<div className="flex flex-row-reverse flex-wrap items-center justify-center">
 						<div className=" isolate flex overflow-hidden">
 							{game &&
 							game.team2?.image &&
