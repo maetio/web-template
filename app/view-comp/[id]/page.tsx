@@ -206,13 +206,13 @@ export default async function ViewCompScreen({
 						/>
 					</div>
 
-					<div className="border-gray-900/7 top-8 h-[50vh] rounded-lg border bg-white lg:sticky lg:top-4">
+					<div className="top-8 h-[50vh] rounded-lg bg-white lg:sticky lg:top-4">
 						<ul
 							role="list"
-							className="sticky top-0 h-[50vh] divide-y divide-gray-100 overflow-y-auto"
+							className="sticky top-0 h-[50vh] overflow-y-auto"
 						>
 							{players.map((player, rank) => (
-								<li key={player.id} className="px-5">
+								<li key={player.id} className="px-3">
 									<AltPlayerCard
 										key={player.id}
 										player={player}
