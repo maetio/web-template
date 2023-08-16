@@ -286,9 +286,9 @@ const GameCard: React.FC<GameCardProps> = async ({
 
 				<div className="flex justify-between">
 					{gameStatus !== "unreported" && team1PointsAwarded ? (
-						<div className="mt-1 flex flex-wrap items-center">
+						<div className="mt-1 flex flex-wrap items-center justify-center">
 							<p
-								className={`px-4 mr-2 rounded-3xl text-center text-sm font-bold ${
+								className={`mr-2 rounded-3xl px-6 text-center text-sm font-bold ${
 									team1PointsAwarded > 0
 										? "bg-green-200 text-green-800"
 										: "bg-red-200 text-red-800"
@@ -305,9 +305,9 @@ const GameCard: React.FC<GameCardProps> = async ({
 						</div>
 					) : null}
 					{gameStatus !== "unreported" && team2PointsAwarded ? (
-						<div className="mt-1 flex flex-row-reverse flex-wrap items-center">
+						<div className="mt-1 flex flex-row-reverse flex-wrap items-center justify-center">
 							<p
-								className={`px-4 ml-2 rounded-3xl text-center text-sm font-bold ${
+								className={`ml-2 rounded-3xl px-6 text-center text-sm font-bold ${
 									team2PointsAwarded > 0
 										? "bg-green-200 text-green-800"
 										: "bg-red-200 text-red-800"
