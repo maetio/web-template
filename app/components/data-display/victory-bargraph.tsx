@@ -13,7 +13,20 @@ interface VictoryBarGraphParams {
 	tickLabels: string[];
 }
 
-export const VictoryBarGraph: React.FC<VictoryBarGraphParams> = ({
+export /**
+ * takes in x and y data and tickLabels to display a bar graph
+ *
+@remarks
+ * can be upgraded later, depending on future graph needs
+ *
+ * @param {*} {
+ * 	className,
+ * 	data,
+ * 	tickLabels,
+ * }
+ * @return {*}
+ */
+const VictoryBarGraph: React.FC<VictoryBarGraphParams> = ({
 	className,
 	data,
 	tickLabels,
