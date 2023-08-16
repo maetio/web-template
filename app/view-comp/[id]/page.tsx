@@ -93,7 +93,7 @@ export default async function ViewCompScreen({
 	const filterDatathing = filterPlayerData();
 
 	return (
-		<main className="container 2xl:mx-auto min-w-full px-0 sm:px-2">
+		<main className="container min-w-full px-0 sm:px-2 2xl:mx-auto">
 			<div>
 				<div className="flex flex-col flex-wrap pb-12 pt-4 md:flex-row lg:flex-nowrap lg:pt-12">
 					<div className="self-center">
