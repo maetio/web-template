@@ -3,17 +3,17 @@
 import React from "react";
 import { VictoryAxis, VictoryBar, VictoryChart } from "victory";
 
-interface VictoryTestParams {
+interface VictoryBarGraphParams {
 	className: string;
 	data: {
 		x: number | string;
 		y: number;
-		// label?: string;
+		label?: string;
 	}[];
 	tickLabels: string[];
 }
 
-export const VictoryTest: React.FC<VictoryTestParams> = ({
+export const VictoryBarGraph: React.FC<VictoryBarGraphParams> = ({
 	className,
 	data,
 	tickLabels,

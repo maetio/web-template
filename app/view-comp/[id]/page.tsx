@@ -13,7 +13,7 @@ import { NextImage } from "app/components/image";
 
 import AltPlayerCard from "app/components/cards/alt-player-card";
 import { GameCard } from "app/components/cards/alt-game-card";
-import { VictoryTest } from "app/components/data-display/victory-test";
+import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
 
 /**
  * Function will display the competition to the user
@@ -169,7 +169,7 @@ export default async function ViewCompScreen({
 						<div className="lg:hidden">
 							<section>
 								<h3 className="text-3xl font-bold">Players</h3>
-								<VictoryTest
+								<VictoryBarGraph
 									className="w-full"
 									data={filterDatathing}
 									tickLabels={[
@@ -217,8 +217,7 @@ export default async function ViewCompScreen({
 					<aside className="top-28 ml-3 p-4 hidden bg-white rounded-lg self-start lg:sticky lg:inline">
 						<div>
 							<h3 className="text-3xl font-bold">Players</h3>
-							{/* <div className="w-100 h-[300px] bg-red-600">chart</div> */}
-							<VictoryTest
+							<VictoryBarGraph
 								className="w-[400px]"
 								data={filterDatathing}
 								tickLabels={[
