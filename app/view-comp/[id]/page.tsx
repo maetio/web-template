@@ -14,6 +14,7 @@ import { NextImage } from "app/components/image";
 import AltPlayerCard from "app/components/cards/alt-player-card";
 import { GameCard } from "app/components/cards/alt-game-card";
 import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
+import { filterPlayerData } from "utils/format";
 
 /**
  * Function will display the competition to the user
@@ -66,31 +67,8 @@ export default async function ViewCompScreen({
 		return "Not Ranked";
 	};
 
-	const filterPlayerData = () => {
-		const victoryData: number[] = [];
-
-		players.forEach((player) => {
-			if (player.rating?.displayRating)
-				victoryData.push(player.rating?.displayRating);
-		});
-
-		console.log("victory data", victoryData);
-
-		const binEdges = [0, 1750, 1850, 1950, 2050, 3500];
-
-		const histogramData = binEdges.map((edge, index) => ({
-			x: index,
-			y: victoryData.filter(
-				(rating) => rating >= edge && rating < binEdges[index + 1]
-			).length,
-		}));
-
-		console.log("histogram data", histogramData);
-
-		return histogramData;
-	};
-
-	const filterDatathing = filterPlayerData();
+	// filter the player data for victory to use
+	const filteredPlayerData = filterPlayerData(players);
 
 	return (
 		<main className="container min-w-full px-0 sm:px-2 2xl:mx-auto">
@@ -171,7 +149,7 @@ export default async function ViewCompScreen({
 								<h3 className="text-3xl font-bold">Players</h3>
 								<VictoryBarGraph
 									className="w-full"
-									data={filterDatathing}
+									data={filteredPlayerData}
 									tickLabels={[
 										"<1750",
 										"1751-1850",
@@ -214,12 +192,12 @@ export default async function ViewCompScreen({
 					</div>
 
 					{/* sidebar on large screens */}
-					<aside className="top-28 ml-3 p-4 hidden bg-white rounded-lg self-start lg:sticky lg:inline">
+					<aside className="top-28 ml-3 hidden self-start rounded-lg bg-white p-4 lg:sticky lg:inline">
 						<div>
 							<h3 className="text-3xl font-bold">Players</h3>
 							<VictoryBarGraph
 								className="w-[400px]"
-								data={filterDatathing}
+								data={filteredPlayerData}
 								tickLabels={[
 									"<1750",
 									"1751-1850",
