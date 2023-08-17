@@ -13,6 +13,7 @@ import { FormInput } from "app/components/forms";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "utils/schemas";
+import { ActionButton } from "../action-button";
 
 export /**
  * the entire auth page in a client side component.
@@ -125,6 +126,15 @@ const AuthPageComp: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 						type="email"
 						errorMessage={errors.email?.message}
 					/>
+
+					<div>
+						<ActionButton
+							className="mt-5 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							title="Continue"
+							colorVariant="indigo"
+							// isLoading={isLoading}
+						/>
+					</div>
 				</div>
 			</div>
 		</div>
