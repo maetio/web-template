@@ -60,6 +60,8 @@ const GameCard: React.FC<GameCardProps> = async ({
 		? team2Rating.displayRating - game.team2.rating.displayRating
 		: null;
 
+	console.log(game.id);
+
 	return (
 		<div
 			{...divParams}
@@ -86,29 +88,29 @@ const GameCard: React.FC<GameCardProps> = async ({
 								{game &&
 								game.team1?.image &&
 								typeof game.team1?.image !== "string" ? (
-										game.team1.image
-											.slice(0, 2)
-											.map((img, index) => (
-												<NextImage
-													key={index}
-													// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-													className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
-													src={img}
-													alt="player image"
-												/>
-											))
-									) : (
-										<NextImage
-											className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-											src={
-												typeof game.team1?.image ===
+									game.team1.image
+										.slice(0, 2)
+										.map((img, index) => (
+											<NextImage
+												key={index}
+												// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+												className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white sm:h-[45px] sm:w-[45px]"
+												src={img}
+												alt="player image"
+											/>
+										))
+								) : (
+									<NextImage
+										className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+										src={
+											typeof game.team1?.image ===
 											"string"
-													? game.team1.image
-													: undefined
-											}
-											alt="player image"
-										/>
-									)}
+												? game.team1.image
+												: undefined
+										}
+										alt="player image"
+									/>
+								)}
 								{/* {game.team1?.image &&
 							typeof game.team1.image !== "string" &&
 							game.team1.image?.length - 2 > 0 && (
@@ -127,7 +129,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 								<p className="p-2 text-center text-xs font-semibold lg:text-sm">
 									{game.team1?.lastName}
 								</p>
-								<div className="flex items-center justify-center">
+								<div className="flex items-center justify-center md:justify-start">
 									{gameStatus === "team1-winner" ? (
 										<XSMaetIcon />
 									) : (
@@ -144,7 +146,7 @@ const GameCard: React.FC<GameCardProps> = async ({
 						</div>
 						{/* points awarded */}
 						{gameStatus !== "unreported" && team1PointsAwarded ? (
-							<div className="mt-1 flex flex-wrap items-center justify-center text-xs">
+							<div className="mt-1.5 flex flex-wrap items-center justify-center md:justify-start text-xs">
 								<p
 									className={`mr-2 rounded-3xl px-4 text-center font-bold ${
 										team1PointsAwarded > 0
@@ -207,29 +209,29 @@ const GameCard: React.FC<GameCardProps> = async ({
 								{game &&
 								game.team2?.image &&
 								typeof game.team2?.image !== "string" ? (
-										game.team2.image
-											.slice(0, 2)
-											.map((img, index) => (
-												<NextImage
-													key={index}
-													// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-													className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white"
-													src={img}
-													alt="player image"
-												/>
-											))
-									) : (
-										<NextImage
-											className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-											src={
-												typeof game.team2?.image ===
+									game.team2.image
+										.slice(0, 2)
+										.map((img, index) => (
+											<NextImage
+												key={index}
+												// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+												className="relative z-0 inline-block h-[35px] h-[35px] w-[35px] w-[35px] rounded-full ring-2 ring-white sm:h-[45px] sm:w-[45px]"
+												src={img}
+												alt="player image"
+											/>
+										))
+								) : (
+									<NextImage
+										className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+										src={
+											typeof game.team2?.image ===
 											"string"
-													? game.team2.image
-													: undefined
-											}
-											alt="player image"
-										/>
-									)}
+												? game.team2.image
+												: undefined
+										}
+										alt="player image"
+									/>
+								)}
 								{/* {game.team2?.image &&
 							typeof game.team2.image !== "string" &&
 							game.team2.image?.length - 2 > 0 && (
@@ -249,24 +251,24 @@ const GameCard: React.FC<GameCardProps> = async ({
 								<p className="p-2 text-center text-xs font-semibold lg:text-sm">
 									{game.team2?.lastName}
 								</p>
-								<div className="flex items-center justify-center">
-									{gameStatus === "team2-winner" ? (
-										<XSMaetIcon />
-									) : (
-										<XSGrayMaetIcon />
-									)}
+								<div className="flex items-center justify-center md:items-end md:justify-end">
 									<p className="ml-1 text-xs">
 										{Math.round(
 											game.team2?.rating?.displayRating ||
 												100
 										)}
 									</p>
+									{gameStatus === "team2-winner" ? (
+										<XSMaetIcon />
+									) : (
+										<XSGrayMaetIcon />
+									)}
 								</div>
 							</div>
 						</div>
 						{/* points awarded */}
 						{gameStatus !== "unreported" && team2PointsAwarded ? (
-							<div className="mt-1 flex flex-row-reverse flex-wrap items-center justify-center text-xs">
+							<div className="mt-1.5 flex flex-row-reverse flex-wrap items-center justify-center md:justify-start text-xs">
 								<p
 									className={`ml-2 rounded-3xl px-4 text-center font-bold ${
 										team2PointsAwarded > 0
@@ -291,11 +293,11 @@ const GameCard: React.FC<GameCardProps> = async ({
 				{game.team1?.rating &&
 					game.team2?.rating &&
 					gameStatus === "unreported" && (
-					<WinProb
-						team1Rating={game.team1?.rating}
-						team2Rating={game.team2?.rating}
-					/>
-				)}
+						<WinProb
+							team1Rating={game.team1?.rating}
+							team2Rating={game.team2?.rating}
+						/>
+					)}
 			</div>
 		</div>
 	);

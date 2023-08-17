@@ -182,7 +182,7 @@ export default async function ViewCompScreen({
 					</h3>
 					<ul role="list" className="">
 						{games.map((game) => (
-							<li key={game.id} className="py-1 lg:pr-3">
+							<li key={game.id} className="lg:pr-3">
 								<GameCard id={game.id} />
 							</li>
 						))}
@@ -206,7 +206,7 @@ export default async function ViewCompScreen({
 								]}
 							/>
 						</div>
-						<div className="mt-5 flex-grow overflow-y-auto">
+						<div className="mt-4 flex-grow overflow-y-auto">
 							<ul role="list">
 								{players.map((player, rank) => (
 									<li key={player.id} className="px-3">
