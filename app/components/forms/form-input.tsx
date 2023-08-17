@@ -5,6 +5,7 @@ import { PiWarningCircleFill, PiEyeBold, PiEyeSlashBold } from "react-icons/pi";
 interface FormInputParams {
 	register: UseFormRegister<any>; // tried using FieldVales instead of any, and was still getting a TS error
 	label?: string;
+	labelClassName?: string;
 	name: string; // register name
 	type: "email" | "text" | "password";
 	errorMessage?: string | undefined;
@@ -33,6 +34,7 @@ export /**
 const FormInput: React.FC<FormInputParams> = ({
 	register,
 	label,
+	labelClassName,
 	name,
 	type,
 	errorMessage,
@@ -48,7 +50,9 @@ const FormInput: React.FC<FormInputParams> = ({
 			<div className=" flex items-center justify-between">
 				<label
 					htmlFor="email"
-					className="block text-sm font-medium leading-6 text-gray-900"
+					className={
+						labelClassName || "block text-sm font-medium leading-6 text-gray-900"
+					}
 				>
 					{label}
 				</label>
@@ -64,7 +68,7 @@ const FormInput: React.FC<FormInputParams> = ({
 					</div>
 				) : null}
 			</div>
-			<div className="relative mt-2 rounded-md shadow-sm">
+			<div className="relative mt-1.5 rounded-md shadow-sm">
 				<input
 					{...register(name)}
 					disabled={disabled}

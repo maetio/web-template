@@ -9,7 +9,10 @@ import {
 } from "app/components/authentication";
 import { MaetIcon } from "app/components/icons";
 // import { ActionButton } from "app/components/action-button";
-// import { FormInput } from "app/components/forms";
+import { FormInput } from "app/components/forms";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { emailSchema } from "utils/schemas";
 
 export /**
  * the entire auth page in a client side component.
@@ -25,6 +28,16 @@ const AuthPageComp: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 	// const [passwordLogin, setPasswordLogin] = useState(false);
 	// switch between the login and signup password component
 	// const [signUp, setSignUp] = useState(false);
+
+	// react hook form
+	const {
+		handleSubmit,
+		register,
+		formState: { errors },
+		reset,
+	} = useForm({
+		resolver: yupResolver(emailSchema),
+	});
 
 	// set the url to refer back after email sign in
 	const referringURL =
@@ -77,7 +90,7 @@ const AuthPageComp: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 						providers={["google", "facebook"]}
 					/>
 					{/* or section */}
-					<section className="relative">
+					<section className="relative mb-6">
 						<div
 							className="absolute inset-0 flex items-center"
 							aria-hidden="true"
@@ -103,7 +116,15 @@ const AuthPageComp: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 						</div>
 					)} */}
 
-					{/* <FormInput /> */}
+					<FormInput
+						register={register}
+						name="email"
+						label="Enter Email"
+						labelClassName="block text-sm font-bold leading-6 text-gray-900"
+						placeholder="name@example.com"
+						type="email"
+						errorMessage={errors.email?.message}
+					/>
 				</div>
 			</div>
 		</div>
