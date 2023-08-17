@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 interface NextImageParams
 	extends Omit<ImageProps, "src" | "alt" | "width" | "height"> {
 	src?: string | string[] | null;
-	alt?: string | null;
+	alt: string | null;
 	size?: number | "full";
 }
 

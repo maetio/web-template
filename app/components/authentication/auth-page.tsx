@@ -14,6 +14,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "utils/schemas";
 import { ActionButton } from "../action-button";
+import { NextImage } from "../image";
+
+interface AuthPageCompParams {
+	redirectURL?: string;
+	image?: string;
+	header?: string;
+}
 
 export /**
  * the entire auth page in a client side component.
@@ -24,7 +31,11 @@ export /**
  * }
  * @return {*}
  */
-const AuthPageComp: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
+const AuthPageComp: React.FC<AuthPageCompParams> = ({
+	redirectURL,
+	image,
+	header,
+}) => {
 	// state that dicates if we show the password login section
 	// const [passwordLogin, setPasswordLogin] = useState(false);
 	// switch between the login and signup password component
@@ -51,14 +62,28 @@ const AuthPageComp: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 		<div className="flex">
 			<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
 				<div className="sm:mx-auto sm:w-full sm:max-w-sm">
-					<MaetIcon
-						size={20}
-						className="align-center mx-auto w-20 justify-center"
-					/>
+					{image ? (
+						<NextImage
+							className="align-center mx-auto justify-center rounded-xl"
+							size={100}
+							src={image}
+							alt="competition banner"
+						/>
+					) : (
+						<MaetIcon
+							size={20}
+							className="align-center mx-auto w-20 justify-center"
+						/>
+					)}
+
 					<h2 className="mt-7 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-						Welcome to Maet!
+						{header || "Welcome to Maet!"}
 					</h2>
-					<p className="mt-5 text-center text-sm">Login or Signup</p>
+					<p className="mt-5 text-center text-sm">
+						{image
+							? "Register with you Maet profile"
+							: "Login or Signup"}
+					</p>
 				</div>
 				{/* {passwordLogin ? (
 					<>
@@ -132,7 +157,6 @@ const AuthPageComp: React.FC<{ redirectURL?: string }> = ({ redirectURL }) => {
 							className="mt-5 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 							title="Continue"
 							colorVariant="indigo"
-							// isLoading={isLoading}
 						/>
 					</div>
 				</div>
