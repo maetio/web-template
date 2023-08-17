@@ -121,7 +121,7 @@ const CompDisplayData = ({
 					{new Date(startTimeISO || "").toLocaleDateString()}
 					{endTimeISO
 						? ` - ${new Date(
-							endTimeISO || ""
+								endTimeISO || ""
 						  ).toLocaleDateString()}`
 						: ""}
 				</div>

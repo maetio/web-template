@@ -190,37 +190,35 @@ export default async function ViewCompScreen({
 				</section>
 
 				{/* sidebar on LARGE screens */}
-				<aside className="top-28 ml-3 hidden self-start rounded-lg bg-white p-4 lg:sticky lg:inline">
-					<div>
-						<h3 className="text-3xl font-bold">Players</h3>
-						<VictoryBarGraph
-							className="w-[400px]"
-							data={filteredPlayerData}
-							tickLabels={[
-								"<1750",
-								"1751-1850",
-								"1851-1950",
-								"1951-2050",
-								">2050",
-							]}
-						/>
-					</div>
-
-					<div className="top-8 h-[50vh] rounded-lg bg-white lg:sticky lg:top-4">
-						<ul
-							role="list"
-							className="sticky top-0 h-[50vh] overflow-y-auto"
-						>
-							{players.map((player, rank) => (
-								<li key={player.id} className="px-3">
-									<AltPlayerCard
-										key={player.id}
-										player={player}
-										ranking={rank}
-									/>
-								</li>
-							))}
-						</ul>
+				<aside className="top-28 ml-3 hidden h-[90vh] self-start rounded-lg bg-white p-4 lg:sticky lg:inline">
+					<div className="flex h-full flex-col">
+						<div>
+							<h3 className="text-3xl font-bold">Players</h3>
+							<VictoryBarGraph
+								className="w-[400px]"
+								data={filteredPlayerData}
+								tickLabels={[
+									"<1750",
+									"1751-1850",
+									"1851-1950",
+									"1951-2050",
+									">2050",
+								]}
+							/>
+						</div>
+						<div className="mt-5 flex-grow overflow-y-auto">
+							<ul role="list">
+								{players.map((player, rank) => (
+									<li key={player.id} className="px-3">
+										<AltPlayerCard
+											key={player.id}
+											player={player}
+											ranking={rank}
+										/>
+									</li>
+								))}
+							</ul>
+						</div>
 					</div>
 				</aside>
 			</section>
