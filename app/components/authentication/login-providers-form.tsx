@@ -47,13 +47,13 @@ const LoginProvidersForm: React.FC<LoginProvidersFormParams> = ({
 
 	const signInMethod = async (provider: Providers) => {
 		switch (provider) {
-			case "facebook":
-				await facebookSignIn();
-				break;
-			case "google":
-				await googleSignIn();
-				break;
-			default:
+		case "facebook":
+			await facebookSignIn();
+			break;
+		case "google":
+			await googleSignIn();
+			break;
+		default:
 		}
 	};
 
