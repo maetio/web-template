@@ -19,7 +19,9 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className={`${nunito.className} bg-gray-100`}>
+			<body
+				className={`${nunito.className} flex flex-col justify-between bg-gray-100`}
+			>
 				<ServerAuthProvider>
 					<Header />
 					<div className="mx-auto max-w-[1600px] px-6 pt-20">
