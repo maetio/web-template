@@ -4,7 +4,7 @@
  * @export
  * @return {*}
  */
-export default async function NotFound() {
+export default function NotFound() {
 	return (
 		<main className="flex w-full max-w-7xl flex-auto flex-col justify-center px-6 py-24 sm:py-64 lg:px-8">
 			<p className="text-base font-semibold leading-8 text-indigo-600">
