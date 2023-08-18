@@ -17,7 +17,10 @@ export /**
  * @param {*} { redirectURL }
  * @return {*}
  */
-const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
+const LoginForm: React.FC<SignupFormParams> = ({
+	redirectURL,
+	defaultEmail,
+}) => {
 	// react hook form
 	const {
 		handleSubmit,
@@ -26,6 +29,9 @@ const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 		reset,
 	} = useForm({
 		resolver: yupResolver(signInSchema),
+		defaultValues: {
+			email: defaultEmail,
+		},
 	});
 
 	// get router
@@ -56,6 +62,7 @@ const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 			<form onSubmit={handleSubmit(updateData)} className="space-y-6">
 				<FormInput
 					label="Email Address"
+					disabled
 					type="email"
 					name="email"
 					register={register}

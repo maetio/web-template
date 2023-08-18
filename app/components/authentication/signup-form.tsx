@@ -12,6 +12,7 @@ import { ActionButton } from "app/components/action-button";
 
 export interface SignupFormParams {
 	redirectURL?: string;
+	defaultEmail?: string;
 }
 
 export /**
@@ -20,7 +21,10 @@ export /**
  * @param {*} { redirectURL }
  * @return {*}
  */
-const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
+const SignupForm: React.FC<SignupFormParams> = ({
+	redirectURL,
+	defaultEmail,
+}) => {
 	// react hook form
 	const {
 		handleSubmit,
@@ -29,6 +33,9 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 		reset,
 	} = useForm({
 		resolver: yupResolver(signupSchema),
+		defaultValues: {
+			email: defaultEmail,
+		},
 	});
 
 	// get router
@@ -58,6 +65,16 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 			<form onSubmit={handleSubmit(updateData)} className="space-y-6">
 				<FormInput
+					label="Email Address"
+					type="email"
+					name="email"
+					disabled
+					register={register}
+					placeholder="example@domain.com"
+					errorMessage={errors.email?.message}
+				/>
+
+				<FormInput
 					label="First Name"
 					type="text"
 					name="firstName"
@@ -73,15 +90,6 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 					register={register}
 					placeholder="Doe"
 					errorMessage={errors.lastName?.message}
-				/>
-
-				<FormInput
-					label="Email Address"
-					type="email"
-					name="email"
-					register={register}
-					placeholder="example@domain.com"
-					errorMessage={errors.email?.message}
 				/>
 
 				<FormInput

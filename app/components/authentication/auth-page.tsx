@@ -42,6 +42,8 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 		"passwordAccont" | "noAccount" | undefined
 	>();
 
+	const [defaultEmail, setDefaultEmail] = useState<string>();
+
 	// react hook form
 	const {
 		handleSubmit,
@@ -69,8 +71,10 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 				);
 			} else if (methods.includes("password")) {
 				setUserStatus("passwordAccont");
+				setDefaultEmail(data.email);
 			} else {
 				setUserStatus("noAccount");
+				setDefaultEmail(data.email);
 			}
 			console.log("sign in methods", methods);
 			reset();
@@ -132,33 +136,47 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 					</section>
 
 					<form onSubmit={handleSubmit(updateData)}>
-						<FormInput
-							register={register}
-							inputClassName="bg-gray-100"
-							name="email"
-							label="Enter Email"
-							labelClassName="block text-sm font-bold leading-6 text-gray-900"
-							placeholder="name@example.com"
-							type="email"
-							errorMessage={errors.email?.message}
-						/>
-
 						{!userStatus && (
-							<ActionButton
-								className="mt-5 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-								title="Continue"
-								colorVariant="indigo"
-								isLoading={isLoading}
-							/>
+							<>
+								<FormInput
+									register={register}
+									inputClassName="bg-gray-100"
+									name="email"
+									label="Enter Email"
+									labelClassName="block text-sm font-bold leading-6 text-gray-900"
+									placeholder="name@example.com"
+									type="email"
+									errorMessage={errors.email?.message}
+								/>
+
+								<ActionButton
+									className="mt-5 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+									title="Continue"
+									colorVariant="indigo"
+									isLoading={isLoading}
+								/>
+							</>
 						)}
 					</form>
 
 					<form>
-						{userStatus === "passwordAccont" && <LoginForm />}
-						{userStatus === "noAccount" && <SignupForm />}
+						{userStatus === "passwordAccont" && (
+							<LoginForm defaultEmail={defaultEmail} />
+						)}
+						{userStatus === "noAccount" && (
+							<SignupForm defaultEmail={defaultEmail} />
+						)}
 					</form>
 
-					<button>change email</button>
+					<button
+						className="font-sm indigo-600"
+						onClick={() => {
+							setUserStatus(undefined);
+							setDefaultEmail(undefined);
+						}}
+					>
+						change email
+					</button>
 
 					{error && (
 						<p className="mt-4 font-bold text-red-500">{error}</p>
