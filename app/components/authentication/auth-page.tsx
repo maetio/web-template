@@ -1,11 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { BaseURL } from "config/constants";
 import {
 	LoginProvidersForm,
-	// LoginForm,
-	// SignupForm,
+	LoginForm,
+	SignupForm,
 } from "app/components/authentication";
 import { MaetIcon } from "app/components/icons";
 // import { ActionButton } from "app/components/action-button";
@@ -38,10 +38,9 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 	image,
 	header,
 }) => {
-	// state that dicates if we show the password login section
-	// const [passwordLogin, setPasswordLogin] = useState(false);
-	// switch between the login and signup password component
-	// const [signUp, setSignUp] = useState(false);
+	const [userStatus, setUserStatus] = useState<
+		"passwordAccont" | "noAccount" | undefined
+	>();
 
 	// react hook form
 	const {
@@ -64,6 +63,15 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 	const handleSignIn = async (data: EmailSchemaType) => {
 		try {
 			const methods = await fetchSignInMethods(data.email);
+			if (methods.length && !methods.includes("password")) {
+				throw Error(
+					"Looks like you have logged in with one of our authentication providers(google, facebook)in the past. Please sign in with the appropriate provider"
+				);
+			} else if (methods.includes("password")) {
+				setUserStatus("passwordAccont");
+			} else {
+				setUserStatus("noAccount");
+			}
 			console.log("sign in methods", methods);
 			reset();
 		} catch (e: any) {
@@ -135,14 +143,26 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 							errorMessage={errors.email?.message}
 						/>
 
-						<ActionButton
-							className="mt-5 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-							title="Continue"
-							colorVariant="indigo"
-							isLoading={isLoading}
-						/>
+						{!userStatus && (
+							<ActionButton
+								className="mt-5 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+								title="Continue"
+								colorVariant="indigo"
+								isLoading={isLoading}
+							/>
+						)}
 					</form>
-					{error && <p>{error}</p>}
+
+					<form>
+						{userStatus === "passwordAccont" && <LoginForm />}
+						{userStatus === "noAccount" && <SignupForm />}
+					</form>
+
+					<button>change email</button>
+
+					{error && (
+						<p className="mt-4 font-bold text-red-500">{error}</p>
+					)}
 				</div>
 			</div>
 		</div>
