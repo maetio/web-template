@@ -126,10 +126,10 @@ const GameCard: React.FC<GameCardProps> = async ({
 										: "text-gray-500"
 								}`}
 							>
-								<p className="p-2 text-center text-xs font-semibold lg:text-sm">
+								<p className="md:ml-1 p-1 md:p-0 text-center text-xs font-semibold lg:text-sm">
 									{game.team1?.lastName}
 								</p>
-								<div className="flex items-center justify-center md:justify-start">
+								<div className="md:ml-1 flex items-center justify-center md:justify-start">
 									{gameStatus === "team1-winner" ? (
 										<XSMaetIcon />
 									) : (
@@ -248,10 +248,10 @@ const GameCard: React.FC<GameCardProps> = async ({
 										: "text-gray-500"
 								}`}
 							>
-								<p className="p-2 text-center text-xs font-semibold lg:text-sm">
+								<p className="md:ml-1 p-1 md:p-0 p-2 text-center text-xs font-semibold lg:text-sm">
 									{game.team2?.lastName}
 								</p>
-								<div className="flex items-center justify-center md:items-end md:justify-end">
+								<div className="md:mr-1 flex items-center justify-center md:items-end md:justify-end">
 									<p className="ml-1 text-xs">
 										{Math.round(
 											game.team2?.rating?.displayRating ||

@@ -1,7 +1,7 @@
 import React from "react";
 import { FaMedal } from "react-icons/fa6";
 import { Team } from "types/index";
-import { NextImage } from "../image";
+import { NextImage } from "app/components/image";
 
 export interface TeamCardProps
 	extends Omit<

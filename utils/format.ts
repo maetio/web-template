@@ -13,13 +13,16 @@ export /**
 const filterPlayerData = (players: PlayersResponseType) => {
 	const victoryData: number[] = [];
 
+	// grab each player rating
 	players.forEach((player) => {
 		if (player.rating?.displayRating)
 			victoryData.push(player.rating?.displayRating);
 	});
 
+	// get each bin(sections of histogram)
 	const binEdges = [0, 1750, 1850, 1950, 2050, 3500];
 
+	// filter the data into each section of the histogram
 	const histogramData = binEdges.map((edge, index) => ({
 		x: index,
 		y: victoryData.filter(
@@ -27,5 +30,6 @@ const filterPlayerData = (players: PlayersResponseType) => {
 		).length,
 	}));
 
+	// return the filtered data, so that victory can display the data
 	return histogramData;
 };

@@ -190,7 +190,7 @@ export default async function ViewCompScreen({
 				</section>
 
 				{/* sidebar on LARGE screens */}
-				<aside className="top-20 ml-3 hidden h-[85vh] self-start rounded-lg bg-white p-4 lg:sticky lg:inline">
+				<aside className="top-24 ml-3 hidden h-[82vh] self-start rounded-lg bg-white p-4 lg:sticky lg:inline">
 					<div className="flex h-full flex-col">
 						<div>
 							<h3 className="text-3xl font-bold">Players</h3>

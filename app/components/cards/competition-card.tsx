@@ -12,8 +12,8 @@ import { showTimeOrDate } from "utils/date";
 import { BaseURL } from "config/constants";
 import { ProfilesResponseType } from "types/next-api";
 import { capitalizeFirstLetter } from "utils/format";
+import { NextImage } from "app/components/image";
 import AltPlayerCard from "./alt-player-card";
-import { NextImage } from "../image";
 
 export interface CompetitionCardProps
 	extends Omit<
