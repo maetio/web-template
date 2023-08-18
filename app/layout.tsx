@@ -19,10 +19,12 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className={nunito.className}>
+			<body
+				className={`${nunito.className} flex flex-col items-center justify-between bg-gray-100`}
+			>
 				<ServerAuthProvider>
 					<Header />
-					<div className="mx-auto max-w-7xl px-6 pt-20 lg:px-8">
+					<div className="w-full max-w-[1600px] px-6 pt-20">
 						{children}
 					</div>
 					<Footer />

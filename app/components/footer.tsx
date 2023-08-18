@@ -12,8 +12,8 @@ export /**
  *  @return {*}
  *
  */ const Footer = () => (
-	<footer className="bg-white">
-		<div className="mx-auto my-20 max-w-7xl overflow-hidden px-6 sm:mt-24 lg:px-8">
+	<footer className="w-full bg-gray-100">
+		<div className="my-20 overflow-hidden px-6 sm:mt-24 lg:px-8">
 			<nav
 				className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12"
 				aria-label="Footer"
