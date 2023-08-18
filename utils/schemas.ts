@@ -17,6 +17,64 @@ export const passwordSchema = yup.object().shape({
 
 export type PasswordSchemaType = yup.InferType<typeof passwordSchema>;
 
+/**
+ * File defines varies yup schemas to be used for form validation
+ */
+export const signInSchema = yup.object().shape({
+	email: yup.string().email("Invalid email").required("Email is required"),
+	password: yup
+		.string()
+		.required("Password is required")
+		.min(8, "Minimum 8 characters"),
+});
+export type SignInSchemaType = yup.InferType<typeof signInSchema>;
+
+/**
+ * File defines varies yup schemas to be used for form validation
+ */
+export const updateUserPasswordSchema = yup.object().shape({
+	email: yup.string().email("Invalid email").required("Email is required"),
+	password: yup
+		.string()
+		.required("Password is required")
+		.min(8, "Minimum 8 characters"),
+	newPassword: yup
+		.string()
+		.required("Password is required")
+		.min(8, "Minimum 8 characters"),
+});
+export type UpdateUserPasswordSchemaType = yup.InferType<
+	typeof updateUserPasswordSchema
+>;
+
+/**
+ * Password and confirm password schema
+ */
+export const signupSchema = yup.object().shape({
+	firstName: yup.string(),
+	lastName: yup.string(),
+	email: yup.string().email("Invalid email").required("Email is required"),
+	password: yup
+		.string()
+		.required("Password is required")
+		.min(8, "Minimum 8 characters"),
+	confirmPassword: yup
+		.string()
+		.test({
+			name: "confirmPassword",
+			message: "Passwords must match",
+			test() {
+				const { password, confirmPassword } = this.parent;
+				if (password && confirmPassword !== password) {
+					return false;
+				}
+				return true;
+			},
+		})
+		.required("Confirm Password is required"),
+});
+export type SignupSchemaType = yup.InferType<typeof signupSchema>;
+
 export const CompetitionFormSchema = yup.object().shape({
 	competitionName: yup.string().required("Session name is required.").min(4),
 	sport: yup.string().required("Sport selection is required"),

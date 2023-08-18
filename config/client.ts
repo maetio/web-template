@@ -1,5 +1,9 @@
 import { getApps, initializeApp } from "firebase/app";
-import { GoogleAuthProvider, getAuth } from "firebase/auth";
+import {
+	FacebookAuthProvider,
+	GoogleAuthProvider,
+	getAuth,
+} from "firebase/auth";
 import {
 	QueryDocumentSnapshot,
 	DocumentData,
@@ -37,6 +41,9 @@ export const auth = getAuth(app);
 
 // export google auth provider
 export const googleAuthProvider = new GoogleAuthProvider();
+
+// facebook auth provider
+export const facebookAuthProvider = new FacebookAuthProvider();
 
 /**
  * Initialize firestore and define typed helping collection function

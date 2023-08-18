@@ -13,6 +13,7 @@ import { auth, privateUserCollection } from "config/client";
 import { PrivateUserData } from "types/index";
 import { getPrivateUserData } from "auth/client";
 import { doc, onSnapshot } from "firebase/firestore";
+import SkeletonCard from "app/components/cards/skeleton-card";
 
 // create auth context
 export const AuthContext = createContext<PrivateUserData | null>(null);
@@ -37,6 +38,8 @@ export const AuthContextProvider: React.FC<{
 
 	// detect the auth state change
 	useEffect(() => {
+		console.log("fired thing 1");
+
 		// use the firebase on auth state changed listener
 		const unsubscribe = onIdTokenChanged(auth, async (userObserver) => {
 			if (userObserver) {
@@ -102,13 +105,6 @@ export const AuthContextProvider: React.FC<{
 						phoneNumber: userData.phoneNumber,
 						loggedIn: true,
 					});
-				} else {
-					setUser(null);
-					// Remove authentication cookies for firebase auth edge
-					// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
-					await fetch("/api/logout", {
-						method: "GET",
-					});
 				}
 				setLoading(false);
 			}
@@ -122,7 +118,15 @@ export const AuthContextProvider: React.FC<{
 	const userContext = useMemo(() => user, [user]);
 	return (
 		<AuthContext.Provider value={userContext}>
-			{loading ? <div>Loading...</div> : children}
+			{loading ? (
+				<div>
+					<SkeletonCard />
+					<SkeletonCard />
+					<SkeletonCard />
+				</div>
+			) : (
+				children
+			)}
 		</AuthContext.Provider>
 	);
 };

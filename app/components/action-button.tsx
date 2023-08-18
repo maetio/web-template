@@ -3,7 +3,7 @@
 import React, { ReactElement, useTransition } from "react";
 import { useRouter } from "next/navigation";
 
-type BrandIcons = "google";
+type BrandIcons = "google" | "facebook";
 type ColorVariants = "white" | "black" | "indigo" | "red";
 
 interface CustomButtonParams {
@@ -50,6 +50,17 @@ const ActionButton = ({
 
 	// set icons
 	const icons: Record<BrandIcons, React.ReactElement> = {
+		facebook: (
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				className="mr-2 h-6 w-6"
+				width="800px"
+				height="800px"
+				viewBox="-0.5 0 48 48"
+			>
+				<path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+			</svg>
+		),
 		google: (
 			<svg
 				className="mr-2 h-6 w-6"

@@ -1,6 +1,7 @@
 import React from "react";
 import { FaMedal } from "react-icons/fa6";
 import { Team } from "types/index";
+import { NextImage } from "app/components/image";
 
 export interface TeamCardProps
 	extends Omit<
@@ -58,7 +59,7 @@ export /**
 			)}
 			<div className="col-span-2 flex items-center">
 				{team?.image ? (
-					<img
+					<NextImage
 						className="h-12 w-12 flex-none rounded-full bg-gray-50"
 						src={team.image || undefined}
 						alt=""

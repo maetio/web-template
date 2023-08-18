@@ -35,17 +35,19 @@ const CompetitionType = ({
 	} ${type.charAt(0).toUpperCase()}${type.slice(1)}`;
 
 	return (
-		<div className={"relative ".concat(className || "")} {...divParams}>
-			<dt className="flex items-center justify-start gap-x-3 text-base leading-7">
-				<div className="flex h-10 w-10 items-center justify-center self-center rounded-lg bg-indigo-600">
-					<SportIcon
-						className="h-6 w-6 flex-none text-white"
-						aria-hidden="true"
-					/>
-				</div>
-				{compTypeString}
-			</dt>
-			{/* <dd className="mt-2 text-base leading-7 text-gray-600">{feature.description}</dd> */}
+		<div
+			className={"flex items-center justify-start gap-x-1 text-xs ".concat(
+				className || ""
+			)}
+			{...divParams}
+		>
+			<div className="flex h-5 w-5 items-center justify-center self-center rounded-lg ">
+				<SportIcon
+					className="h-5 w-5 flex-none text-gray-600"
+					aria-hidden="true"
+				/>
+			</div>
+			{compTypeString}
 		</div>
 	);
 };

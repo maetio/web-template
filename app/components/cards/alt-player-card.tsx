@@ -1,6 +1,6 @@
 import React from "react";
 import { Profile } from "types/index";
-import { FaMedal } from "react-icons/fa6";
+// import { FaMedal } from "react-icons/fa6";
 import Link, { LinkProps } from "next/link";
 import { MaetIcon } from "app/components/icons";
 import { NextImage } from "app/components/image";
@@ -16,11 +16,11 @@ function classNames(...classes: string[]) {
 }
 
 // define medal colors
-const medalColor: string[] = [
-	"text-yellow-400",
-	"text-gray-400",
-	"text-amber-700",
-];
+// const medalColor: string[] = [
+// 	"text-yellow-400",
+// 	"text-gray-400",
+// 	"text-amber-700",
+// ];
 
 const AltPlayerCard: React.FC<PlayerCardProps> = ({
 	player,
@@ -37,21 +37,17 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 		>
 			<div className="flex flex-row items-center justify-start gap-x-4">
 				{typeof ranking === "number" ? (
-					<div className="grid grid-cols-1 flex-col place-items-center justify-center">
-						{ranking < 3 ? (
-							<div className="flex flex-col items-center justify-start w-8">
-								<h1 className="flex-none text-xl font-bold">
-									{ranking + 1}
-								</h1>
+					<div className="flex w-10 flex-col place-items-center">
+						<h1 className="flex-none text-xl font-bold">
+							{ranking + 1}
+						</h1>
+						{/* {ranking < 3 ? (
+							<div className="flex items-center">
 								<FaMedal
 									className={`${medalColor[ranking]} text-base md:text-lg`}
 								/>
 							</div>
-						) : <div className="flex flex-col items-center justify-start w-8">
-							<h1 className="flex-none text-xl font-bold">
-								{ranking + 1}
-							</h1>
-						</div>}
+						) : null} */}
 					</div>
 				) : null}
 				<div className="flex justify-center items-center">
@@ -70,39 +66,35 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 					</p>
 				</div>
 			</div>
-			<div className="relative self-end w-32 flex flex-row items-center">
-				<div className="flex rounded-md p-3">
-					<MaetIcon size={10} />
-				</div>
-				<div className="flex flex-row justify-center">
-					<div className="flex flex-col justify-center">
-						<p className="truncate text-sm font-medium text-gray-500 dark:text-white">
-						Rating
-						</p>
-						<div className="flex flex-row justify-start self-start">
-							<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
-								{Math.round(player.rating?.displayRating || 100)}
-							</p>
-						</div>
-						<div className="flex self-start justify-start">
-							<p
-								className={classNames(
-									player?.deltaRating?.displayRating &&
-								player?.deltaRating?.displayRating >= 0
-										? "text-green-600"
-										: "text-red-600",
-									"items-baseline text-sm font-semibold"
-								)}
-							>
-								{player?.deltaRating?.displayRating &&
-						player?.deltaRating?.displayRating >= 0
-									? "+"
-									: ""}
-								{Math.round(player?.deltaRating?.displayRating || 0)}
-							</p>
-						</div>
+			<div className="relative self-center">
+				<dt>
+					<div className="absolute rounded-md p-3">
+						<MaetIcon />
 					</div>
-				</div>
+					<p className="ml-16 justify-center truncate text-sm font-medium text-gray-500 dark:text-white">
+						Rating
+					</p>
+				</dt>
+				<dd className="ml-16 flex items-baseline">
+					<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
+						{Math.round(player.rating?.displayRating || 100)}
+					</p>
+					<p
+						className={classNames(
+							player?.deltaRating?.displayRating &&
+								player?.deltaRating?.displayRating < 0
+								? "text-red-600"
+								: "text-green-600",
+							"ml-2 flex items-baseline text-sm font-semibold"
+						)}
+					>
+						{player?.deltaRating?.displayRating &&
+						player?.deltaRating?.displayRating < 0
+							? ""
+							: "+"}
+						{Math.round(player?.deltaRating?.displayRating || 0)}
+					</p>
+				</dd>
 			</div>
 		</Link>
 	);

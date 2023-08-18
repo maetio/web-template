@@ -1,4 +1,9 @@
-import { auth, googleAuthProvider, privateUserCollection } from "config/client";
+import {
+	auth,
+	facebookAuthProvider,
+	googleAuthProvider,
+	privateUserCollection,
+} from "config/client";
 import { BaseURL } from "config/constants";
 import {
 	ActionCodeSettings,
@@ -7,6 +12,10 @@ import {
 	signInWithEmailLink,
 	signOut,
 	signInWithPopup,
+	createUserWithEmailAndPassword,
+	signInWithEmailAndPassword,
+	updatePassword,
+	sendPasswordResetEmail,
 } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { getAndUpdateUserData } from "server-actions/users";
@@ -81,12 +90,128 @@ const signInWithLink = async (email: string | null, link: string) => {
 };
 
 export /**
+ * Function that will sign in with email and password
+ *
+ * @return {*}
+ */
+const signInWithEmailPassword = async (
+	email: string,
+	password: string,
+	newUser: boolean,
+	firstName?: string,
+	lastName?: string
+) => {
+	if (!email || !password) throw Error("Need both email and password");
+
+	try {
+		const userCredential = newUser
+			? await createUserWithEmailAndPassword(auth, email, password)
+			: await signInWithEmailAndPassword(auth, email, password);
+
+		// get the id token from firebase
+		const idTokenResult = await userCredential.user.getIdTokenResult();
+
+		// set the cookie with firebase auth edge middleware
+		// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
+		await fetch("/api/login", {
+			method: "GET",
+			headers: {
+				Authorization: `Bearer ${idTokenResult.token}`,
+			},
+		});
+
+		if (newUser) {
+			// initialize the user data
+			await getAndUpdateUserData({
+				email: userCredential.user.email,
+				emailVerified: userCredential.user.emailVerified,
+				firstName: firstName || null,
+				lastName: lastName || null,
+				image: userCredential.user.photoURL,
+			});
+		}
+
+		// return the user credential
+		return userCredential;
+	} catch (e: any) {
+		throw Error(e);
+	}
+};
+
+export /**
+ * function that sends an email to reset user's password
+ *
+ * @param {string} email
+ */
+const sendForgotPasswordEmail = async (email: string) => {
+	await sendPasswordResetEmail(auth, email);
+};
+
+export /**
+ * function will update the users password if they provide their old and new password
+ *
+ */
+const updateUserPassword = async (
+	email: string,
+	password: string,
+	newPassword: string
+) => {
+	const userCredential = await signInWithEmailAndPassword(
+		auth,
+		email,
+		password
+	);
+	await updatePassword(userCredential.user, newPassword);
+};
+
+export /**
  * Function that will sign in with google
  *
  * @return {*}
  */
 const signInWithGoogle = async () => {
 	const userCredential = await signInWithPopup(auth, googleAuthProvider);
+
+	// get the id token from firebase
+	const idTokenResult = await userCredential.user.getIdTokenResult();
+
+	// set the cookie with firebase auth edge middleware
+	// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
+	await fetch("/api/login", {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${idTokenResult.token}`,
+		},
+	});
+
+	// access firstname lastname
+	const nameParts = userCredential.user?.displayName?.split(" ");
+	const firstName = nameParts?.at(0);
+	const lastName =
+		nameParts?.length && nameParts?.length > 1
+			? nameParts[nameParts.length - 1]
+			: "";
+
+	// initialize the user data
+	await getAndUpdateUserData({
+		email: userCredential.user.email,
+		emailVerified: userCredential.user.emailVerified,
+		firstName: firstName || null,
+		lastName: lastName || null,
+		image: userCredential.user.photoURL,
+	});
+
+	// return the user credential
+	return userCredential;
+};
+
+export /**
+ * Function that will sign in with google
+ *
+ * @return {*}
+ */
+const signInWithFacebook = async () => {
+	const userCredential = await signInWithPopup(auth, facebookAuthProvider);
 
 	// get the id token from firebase
 	const idTokenResult = await userCredential.user.getIdTokenResult();

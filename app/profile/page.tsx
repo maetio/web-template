@@ -1,3 +1,4 @@
+import { UpdatePasswordForm } from "app/components/authentication";
 import { MaetIcon } from "app/components/icons";
 import { SignOutButton } from "app/components/sign-out-button";
 import { getUserData, updateUserData } from "server-actions/users";
@@ -100,6 +101,7 @@ export default async function Profile() {
 						</div>
 						<SignOutButton />
 					</form>
+					<UpdatePasswordForm />
 				</div>
 			</div>
 		</>

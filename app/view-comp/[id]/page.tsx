@@ -7,19 +7,14 @@ import {
 } from "types/next-api";
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
-import { MaetIcon } from "app/components/icons";
 import { ActionButton } from "app/components/action-button";
 import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
-import {
-	MdArrowForwardIos,
-	MdOutlinePlaylistAddCheck,
-	MdPeopleOutline,
-} from "react-icons/md";
-import { averageRatingObjects } from "utils/skill-rating";
+
 import AltPlayerCard from "app/components/cards/alt-player-card";
-import { GameCard } from "app/components/cards/alt-game-card";
-import Link from "next/link";
+import { GameCard } from "app/components/cards/game-card";
+import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
+import { filterPlayerData } from "utils/format";
 
 /**
  * Function will display the competition to the user
@@ -72,18 +67,17 @@ export default async function ViewCompScreen({
 		return "Not Ranked";
 	};
 
-	// set parameters for registration
-	const registrationOpen =
-		competitionData?.startTimeISO &&
-		new Date() > new Date(competitionData.startTimeISO);
+	// filter the player data for victory to use
+	const filteredPlayerData = filterPlayerData(players);
 
 	return (
-		<div className="container mx-auto px-2 sm:px-6 lg:px-8">
-			<div className="flex flex-row flex-wrap pb-12 pt-4 lg:flex-nowrap lg:pt-12">
-				<div>
+		<main className="container min-w-full px-0 sm:px-2">
+			{/* Competition image and name banner */}
+			<section className="flex flex-col flex-wrap pb-12 pt-4 md:flex-row lg:flex-nowrap lg:pt-12">
+				<div className="self-center">
 					<NextImage size={400} src={competitionData?.image} />
 				</div>
-				<div className="mt-3 flex flex-col flex-wrap self-center lg:ml-12 lg:mt-0">
+				<div className=" mt-10 flex flex-col flex-wrap self-center lg:mx-5 lg:mt-0">
 					<CompDisplayData
 						type={competitionData?.type || "session"}
 						sport={competitionData?.sport || "pickleball"}
@@ -91,13 +85,17 @@ export default async function ViewCompScreen({
 						endTimeISO={competitionData?.endTimeISO}
 						location={competitionData?.location}
 					/>
-					<h1 className="my-3 flex flex-wrap text-7xl font-bold">
+
+					<h1 className="my-3 flex flex-wrap text-5xl font-bold md:text-6xl">
 						{competitionData?.name}
 					</h1>
-					<p className="flex flex-wrap">
-						{competitionData?.description}
+
+					<p className="flex flex-wrap xl:hidden">
+						{competitionData?.description ||
+							"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
 					</p>
-					<div className="flex flex-row py-12">
+
+					<div className="flex flex-row flex-wrap py-4">
 						{compPlayer?.rating?.displayRating ? (
 							<div className="flex flex-row">
 								<NextImage
@@ -119,9 +117,6 @@ export default async function ViewCompScreen({
 						) : (
 							<ActionButton
 								className="w-auto px-12"
-								endIcon={
-									<MdArrowForwardIos className="text-white" />
-								}
 								referRoute={
 									user?.id
 										? `/join-comp/${competitionData?.id}`
@@ -133,105 +128,100 @@ export default async function ViewCompScreen({
 						)}
 					</div>
 				</div>
-			</div>
-			<div className="rounded-lg bg-gray-100 px-6 py-6">
-				<h3 className="text-base font-semibold leading-6 text-gray-900">
-					Competition Info
-				</h3>
-				<dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
-					<div
-						key="number"
-						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
-					>
-						<MdPeopleOutline className="h-20 w-20 flex-none self-center" />
-						<div className="self-center pl-3">
-							<dt className="truncate text-sm font-medium text-gray-500">
-								Number of Players
-							</dt>
-							<dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">
-								{players.length}
-							</dd>
-						</div>
+			</section>
+
+			{/* main content of the page */}
+			<section className="min-w-full lg:flex lg:justify-between">
+				{/* games data */}
+				<section className="w-full">
+					<div className="hidden xl:inline">
+						<h3 className="text-3xl font-bold">Description</h3>
+						<p className="wrap mr-14 flex flex-wrap">
+							{competitionData?.description ||
+								"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
+						</p>
 					</div>
-					<div
-						key="rating"
-						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
-					>
-						<MaetIcon className="flex-none self-center" size={20} />
-						<div className="self-center pl-3">
-							<dt className="truncate text-sm font-medium text-gray-500">
-								Average Rating
-							</dt>
-							<dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">
-								{Math.round(
-									averageRatingObjects(
-										players.map((player) => player.rating)
-									).displayRating
-								)}
-							</dd>
+
+					{/* players and graph on SMALL screens  */}
+					<section className="lg:hidden">
+						<div>
+							<h3 className="text-3xl font-bold">Players</h3>
+							<VictoryBarGraph
+								className="w-full"
+								data={filteredPlayerData}
+								tickLabels={[
+									"<1750",
+									"1751-1850",
+									"1851-1950",
+									"1951-2050",
+									">2050",
+								]}
+							/>
 						</div>
-					</div>
-					<div
-						key="registration"
-						className="flex flex-row overflow-hidden rounded-lg bg-white px-4 py-5 align-middle shadow sm:p-6"
-					>
-						<MdOutlinePlaylistAddCheck className="h-20 w-20 flex-none self-center" />
-						<div className="self-center pl-3">
-							<dt className="truncate text-sm font-medium text-gray-500">
-								Registration
-							</dt>
-							<dd
-								className={`mt-1 inline-flex items-center rounded-md px-1.5 py-1.5 text-3xl ${
-									registrationOpen
-										? "bg-green-200 text-green-700"
-										: "bg-red-200 text-red-700"
-								} font-semibold tracking-tight`}
+
+						<div className="border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border bg-white lg:sticky lg:top-4 lg:col-span-2">
+							<ul
+								role="list"
+								className="sticky top-0 h-96 divide-y divide-gray-100 overflow-y-auto"
 							>
-								• {registrationOpen ? "Open" : "Closed"}
-							</dd>
+								{players.map((player, rank) => (
+									<li key={player.id} className="px-5">
+										<AltPlayerCard
+											key={player.id}
+											player={player}
+											ranking={rank}
+										/>
+									</li>
+								))}
+							</ul>
 						</div>
-					</div>
-				</dl>
-			</div>
-			{/* 3 column wrapper */}
-			<div className="mx-auto grid grid-cols-6 gap-x-6 pt-12">
-				{/* Left sidebar & main wrapper */}
-				<main className="border-gray-900/7 top-8 col-span-6 rounded-lg border lg:col-span-4">
-					<h3 className="border-b bg-gray-100 px-4 pb-3 pt-3 text-base font-semibold leading-6 text-gray-900">
+					</section>
+
+					<h3 className="mt-10 text-3xl font-bold lg:mt-0 xl:mt-5">
 						Games
 					</h3>
-					<ul
-						role="list"
-						className="h-96 divide-y divide-gray-100 overflow-y-auto"
-					>
+					<ul role="list" className="">
 						{games.map((game) => (
-							<li key={game.id} className="border-b px-5">
+							<li key={game.id} className="lg:pr-3">
 								<GameCard id={game.id} />
 							</li>
 						))}
 					</ul>
-				</main>
-				<aside className="border-gray-900/7 top-8 col-span-6 rounded-lg border lg:col-span-2">
-					{/* Right column area */}
-					<h3 className="border-b bg-gray-100 px-4 pb-3 pt-3 text-base font-semibold leading-6 text-gray-900">
-						Player Rankings
-					</h3>
-					<ul
-						role="list"
-						className="h-96 divide-y divide-gray-100 overflow-y-auto"
-					>
-						{players.map((player, rank) => (
-							<li key={player.id} className="border-b px-5">
-								<AltPlayerCard
-									key={player.id}
-									player={player}
-									ranking={rank}
-								/>
-							</li>
-						))}
-					</ul>
+				</section>
+
+				{/* sidebar on LARGE screens */}
+				<aside className="top-24 ml-3 hidden h-[82vh] self-start rounded-lg bg-white p-4 lg:sticky lg:inline">
+					<div className="flex h-full flex-col">
+						<div>
+							<h3 className="text-3xl font-bold">Players</h3>
+							<VictoryBarGraph
+								className="w-[400px]"
+								data={filteredPlayerData}
+								tickLabels={[
+									"<1750",
+									"1751-1850",
+									"1851-1950",
+									"1951-2050",
+									">2050",
+								]}
+							/>
+						</div>
+						<div className="mt-4 flex-grow overflow-y-auto">
+							<ul role="list">
+								{players.map((player, rank) => (
+									<li key={player.id} className="px-3">
+										<AltPlayerCard
+											key={player.id}
+											player={player}
+											ranking={rank}
+										/>
+									</li>
+								))}
+							</ul>
+						</div>
+					</div>
 				</aside>
-			</div>
-		</div>
+			</section>
+		</main>
 	);
 }
