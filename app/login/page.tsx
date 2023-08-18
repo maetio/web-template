@@ -1,5 +1,5 @@
-import { AuthPageComp } from "app/components/authentication/auth-page";
 import React from "react";
+import { AuthPageComp } from "app/components/authentication/auth-page";
 
 /**
  * login or signup page

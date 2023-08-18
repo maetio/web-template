@@ -3,10 +3,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/navigation";
 import { signupSchema, SignupSchemaType } from "utils/schemas";
 import { FormInput } from "app/components/forms/form-input";
 import { signInWithEmailPassword } from "auth/client";
-import { useRouter } from "next/navigation";
 import { useCreateFirestoreHook } from "utils/hook-template";
 import { ActionButton } from "app/components/action-button";
 

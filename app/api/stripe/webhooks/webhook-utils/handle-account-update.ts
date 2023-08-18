@@ -1,5 +1,5 @@
-import { privateUserCollection } from "config/server";
 import Stripe from "stripe";
+import { privateUserCollection } from "config/server";
 
 export /**
  * handleAccountUpdate, this functions takes in the account information returned from the stripe webhook and does the propper mutations needed to the private-user-data to keep everything up to date

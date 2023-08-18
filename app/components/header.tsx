@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { MaetIcon } from "app/components/icons";
-import { ProfileButton } from "app/components/profile-button";
 import Link from "next/link";
 import { Dialog } from "@headlessui/react";
 import { MdClose, MdMenu } from "react-icons/md";
+import { ProfileButton } from "app/components/profile-button";
+import { MaetIcon } from "app/components/icons";
 
 export /**
  * Reusable page header/toolbar

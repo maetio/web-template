@@ -1,12 +1,12 @@
+import { Timestamp } from "firebase-admin/firestore";
+import { NextResponse, NextRequest } from "next/server";
+import Stripe from "stripe";
 import { BaseURL } from "config/constants";
 import {
 	competitionProfilesSubcollection,
 	competitionsCollection,
 } from "config/server";
 import { InitialRating } from "constants/rating";
-import { Timestamp } from "firebase-admin/firestore";
-import { NextResponse, NextRequest } from "next/server";
-import Stripe from "stripe";
 import { PlayerResponseType } from "types/next-api";
 import { CompetitionProfile } from "types/profile";
 

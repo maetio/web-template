@@ -1,9 +1,9 @@
 import { NextResponse, NextRequest } from "next/server";
 import Stripe from "stripe";
+import { Timestamp } from "firebase-admin/firestore";
 import { competitionsCollection, transactionEvents } from "config/server";
 import { BaseURL } from "config/constants";
 import { PlayerResponseType } from "types/next-api";
-import { Timestamp } from "firebase-admin/firestore";
 
 // grab envs as string
 const STRIPE_SECRET = process.env.STRIPE_SECRET as string;

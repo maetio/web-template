@@ -1,6 +1,6 @@
 import React from "react";
-import { CompetitionsResponseType } from "types/next-api";
 import Link from "next/link";
+import { CompetitionsResponseType } from "types/next-api";
 import { BaseURL } from "config/constants";
 import { CompetitionCard } from "app/components/cards/alt-comp-card";
 /**

@@ -1,5 +1,5 @@
-import { PlayerResponseType } from "types/next-api";
 import { NextResponse } from "next/server";
+import { PlayerResponseType } from "types/next-api";
 import { profileCollection } from "config/server";
 
 /**

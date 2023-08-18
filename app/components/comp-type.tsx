@@ -1,5 +1,5 @@
-import { SportIcons } from "app/components/icons";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
+import { SportIcons } from "app/components/icons";
 import { Competition } from "types/competition";
 
 interface CompetitionTypeParams

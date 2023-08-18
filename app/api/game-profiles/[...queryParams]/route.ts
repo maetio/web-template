@@ -1,6 +1,6 @@
+import { NextResponse } from "next/server";
 import { GameProfilesResponseType } from "types/next-api";
 import { gameProfileCollectionGroup } from "config/server";
-import { NextResponse } from "next/server";
 
 /**
  * API call will fetch the game-profiles, sorting by timestamp

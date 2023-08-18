@@ -1,5 +1,5 @@
-import { GameResponseType } from "types/next-api";
 import { NextResponse } from "next/server";
+import { GameResponseType } from "types/next-api";
 import { gamesCollection } from "config/server";
 
 /**

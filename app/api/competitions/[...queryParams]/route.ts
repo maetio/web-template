@@ -1,7 +1,7 @@
-import { CompetitionsResponseType } from "types/next-api";
-import { competitionsCollection } from "config/server";
 import { Timestamp } from "firebase-admin/firestore";
 import { NextResponse } from "next/server";
+import { CompetitionsResponseType } from "types/next-api";
+import { competitionsCollection } from "config/server";
 
 /**
  * Get request for the competitions route

@@ -2,8 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { useAuthContext } from "auth/auth-context-provider";
 import Image from "next/image";
+import { useAuthContext } from "auth/auth-context-provider";
 
 export /**
  * Will have the home screen render

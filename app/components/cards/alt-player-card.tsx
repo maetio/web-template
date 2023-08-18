@@ -1,7 +1,7 @@
 import React from "react";
+import Link, { LinkProps } from "next/link";
 import { Profile } from "types/index";
 // import { FaMedal } from "react-icons/fa6";
-import Link, { LinkProps } from "next/link";
 import { MaetIcon } from "app/components/icons";
 import { NextImage } from "app/components/image";
 
@@ -50,14 +50,14 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 						) : null} */}
 					</div>
 				) : null}
-				<div className="flex justify-center items-center">
+				<div className="flex items-center justify-center">
 					<NextImage
 						size={50}
 						src={player.image}
 						alt={player.firstName}
 					/>
 				</div>
-				<div className="min-w-0 lg:w-24 flex-auto">
+				<div className="min-w-0 flex-auto lg:w-24">
 					<p className="truncate text-sm font-bold leading-6 text-gray-900 dark:text-white">
 						{player.firstName}
 					</p>

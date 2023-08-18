@@ -6,8 +6,8 @@ import {
 	FaRegCalendar,
 	FaVolleyball,
 } from "react-icons/fa6";
-import { Competition } from "types/index";
 import { MdSportsTennis } from "react-icons/md";
+import { Competition } from "types/index";
 import { showTimeOrDate } from "utils/date";
 import { BaseURL } from "config/constants";
 import { ProfilesResponseType } from "types/next-api";

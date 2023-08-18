@@ -1,7 +1,7 @@
 "use client";
 
-import { sendForgotPasswordEmail } from "auth/client";
 import { useState } from "react";
+import { sendForgotPasswordEmail } from "auth/client";
 
 /**
  * forget password screen, basic screen to send email to user to recover their password

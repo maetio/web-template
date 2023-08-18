@@ -1,6 +1,6 @@
-import { privateUserCollection } from "config/server";
 import { NextResponse, NextRequest } from "next/server";
 import Stripe from "stripe";
+import { privateUserCollection } from "config/server";
 
 // get stripe
 const stripe = process.env.STRIPE_SECRET

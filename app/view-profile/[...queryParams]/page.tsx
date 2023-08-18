@@ -1,6 +1,4 @@
 import React from "react";
-import { BaseURL } from "config/constants";
-import { GameProfilesResponseType, PlayerResponseType } from "types/next-api";
 import {
 	FaBasketball,
 	FaFutbol,
@@ -8,13 +6,16 @@ import {
 	FaVolleyball,
 } from "react-icons/fa6";
 import { HiArrowUp, HiArrowDown } from "react-icons/hi2";
+import { MdSportsTennis } from "react-icons/md";
+import Link from "next/link";
+import { BaseURL } from "config/constants";
+import { GameProfilesResponseType, PlayerResponseType } from "types/next-api";
 // import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { HeaderMaetIcon } from "app/components/icons";
-import { MdSportsTennis } from "react-icons/md";
 import { Competition } from "types/competition";
 import { GameCard } from "app/components/cards";
 import LineChart from "app/components/data-vis/line-chart";
-import Link from "next/link";
+import { NextImage } from "app/components/image";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -37,7 +38,7 @@ export default async function ViewProfileScreen({
 }) {
 	// get the parameters from the query
 	const [userID, sport] = params.queryParams;
-	
+
 	// fetch call to get the user's player profile
 	const profileResponse = await fetch(
 		`${BaseURL}/api/player/${userID}/${sport}`
@@ -59,14 +60,14 @@ export default async function ViewProfileScreen({
 	};
 
 	const reversedGameProfiles = gameProfiles.reverse();
-	
+
 	return (
 		<main className="mx-10 space-y-12">
 			<div className="flex flex-col justify-center pt-8">
 				<div className="mb-6">
 					<div className="flex flex-row items-center space-x-3">
 						{profileData?.image ? (
-							<img
+							<NextImage
 								className="h-28 w-28 flex-none rounded-full bg-gray-50"
 								src={profileData.image || undefined}
 								alt=""
@@ -74,8 +75,10 @@ export default async function ViewProfileScreen({
 						) : (
 							<div className="h-4 w-4 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue md:h-8 md:w-8 md:rounded-md"></div>
 						)}
-						<h3 className="font-bold leading-6 text-gray-900 text-2xl">{profileData.firstName} {profileData.lastName}</h3>
-						<div className="flex items-center flex-row">
+						<h3 className="text-2xl font-bold leading-6 text-gray-900">
+							{profileData.firstName} {profileData.lastName}
+						</h3>
+						<div className="flex flex-row items-center">
 							<FaLocationArrow className="text-gray-500" />
 							<p className="ml-2 text-gray-500">South Bend, IN</p>
 						</div>
@@ -83,31 +86,37 @@ export default async function ViewProfileScreen({
 							<button className="flex items-center gap-x-2 rounded-full border p-2 shadow-sm ring-1 ring-inset ring-white hover:bg-gray-300">
 								{SportIcons.pickleball}
 								<p className="text-xs lg:text-base">
-											Pickleball
+									Pickleball
 								</p>
 							</button>
 							<button className="flex items-center gap-x-2 rounded-full border p-2 shadow-sm ring-1 ring-inset ring-white hover:bg-gray-300">
 								{SportIcons.basketball}
 								<p className="text-xs lg:text-base">
-											Basketball
+									Basketball
 								</p>
 							</button>
 						</div>
 					</div>
 					<dl className="mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow md:grid-cols-3 md:divide-x md:divide-y-0">
 						<div className="px-4 py-5 sm:p-6">
-							<dt className="text-xl font-semibold text-gray-900">Average Rating</dt>
+							<dt className="text-xl font-semibold text-gray-900">
+								Average Rating
+							</dt>
 							<dd className="mt-3 flex items-baseline justify-between md:block lg:flex">
 								<div className="flex items-center text-2xl font-semibold">
-									<HeaderMaetIcon/>
-									<p className="ml-2 text-2xl font-bold md:text-2xl text-primaryMain">{Math.round(
-										profileData.rating?.displayRating || 100
-									)}</p>
+									<HeaderMaetIcon />
+									<p className="ml-2 text-2xl font-bold text-primaryMain md:text-2xl">
+										{Math.round(
+											profileData.rating?.displayRating ||
+												100
+										)}
+									</p>
 								</div>
 
 								<div
 									className={classNames(
-										profileData?.deltaRating?.displayRating &&
+										profileData?.deltaRating
+											?.displayRating &&
 											profileData?.deltaRating
 												?.displayRating >= 0
 											? "text-green-600"
@@ -116,30 +125,59 @@ export default async function ViewProfileScreen({
 									)}
 								>
 									{profileData?.deltaRating?.displayRating &&
-							profileData?.deltaRating?.displayRating >= 0 ? (
+									profileData?.deltaRating?.displayRating >=
+										0 ? (
 											<HiArrowUp className="flex items-baseline text-xs font-bold text-green-600 md:text-base" />
 										) : (
 											<HiArrowDown className="flex items-baseline text-xs font-bold text-red-600 md:text-base" />
 										)}
 
 									{Math.round(
-										profileData?.deltaRating?.displayRating || 0
+										profileData?.deltaRating
+											?.displayRating || 0
 									)}
 								</div>
 							</dd>
 						</div>
 						<div className="px-4 py-5 sm:p-6">
-							<dt className="text-xl font-semibold text-gray-900">Games Played</dt>
+							<dt className="text-xl font-semibold text-gray-900">
+								Games Played
+							</dt>
 							<dd className="mt-3 flex items-baseline justify-between md:block lg:flex">
 								<div className="flex items-center text-2xl font-semibold">
-									<p className="ml-2 text-2xl font-bold md:text-2xl text-primaryMain">{gameProfiles.length}</p>
+									<p className="ml-2 text-2xl font-bold text-primaryMain md:text-2xl">
+										{gameProfiles.length}
+									</p>
 								</div>
 							</dd>
 						</div>
 						<div className="px-4 py-5 sm:p-6">
-							<dt className="text-xl font-semibold text-gray-900">Rating Change Over Time</dt>
+							<dt className="text-xl font-semibold text-gray-900">
+								Rating Change Over Time
+							</dt>
 							<dd className="mt-3 flex items-baseline justify-between md:block lg:flex">
-								<LineChart variable={`${profileData.firstName} ${profileData.lastName}`} dataset={reversedGameProfiles.map((data) => Math.round(data.deltaRating?.displayRating && data.rating?.displayRating ? (data.rating.displayRating + data.deltaRating.displayRating) : 100))} title="Rating Change Over Time" labels={reversedGameProfiles.map((data) => (String(Math.round(data.deltaRating?.displayRating || 0))))} />
+								<LineChart
+									variable={`${profileData.firstName} ${profileData.lastName}`}
+									dataset={reversedGameProfiles.map((data) =>
+										Math.round(
+											data.deltaRating?.displayRating &&
+												data.rating?.displayRating
+												? data.rating.displayRating +
+														data.deltaRating
+															.displayRating
+												: 100
+										)
+									)}
+									title="Rating Change Over Time"
+									labels={reversedGameProfiles.map((data) =>
+										String(
+											Math.round(
+												data.deltaRating
+													?.displayRating || 0
+											)
+										)
+									)}
+								/>
 							</dd>
 						</div>
 					</dl>
@@ -158,10 +196,11 @@ export default async function ViewProfileScreen({
 					</div>
 					<div className="flex flex-col items-center">
 						{gameProfiles.map((gameProf) => (
-							<Link key={gameProf.gameID} href={`/view-game/${gameProf.gameID}/`}>
-								<GameCard
-									id={gameProf.gameID}
-								/>
+							<Link
+								key={gameProf.gameID}
+								href={`/view-game/${gameProf.gameID}/`}
+							>
+								<GameCard id={gameProf.gameID} />
 							</Link>
 						))}
 					</div>

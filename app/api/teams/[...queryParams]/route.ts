@@ -1,6 +1,6 @@
+import { NextResponse } from "next/server";
 import { TeamsResponseType } from "types/next-api";
 import { competitionTeamsSubcollection, teamsCollection } from "config/server";
-import { NextResponse } from "next/server";
 
 /**
  * Get request for the competitions route

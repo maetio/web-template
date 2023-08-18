@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { signInWithFacebook, signInWithGoogle } from "auth/client";
 import { ActionButton } from "app/components/action-button";
-import { useRouter } from "next/navigation";
 
 type Providers = "facebook" | "google";
 

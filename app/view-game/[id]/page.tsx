@@ -6,9 +6,8 @@ export default async function ViewGameScreen({
 }: {
 	params: { id: string };
 }) {
-
 	const id = params;
-    
+
 	const gameResponse = await fetch(`${BaseURL}/api/game/${id}`);
 	const game: GameResponseType = await gameResponse.json();
 	return (

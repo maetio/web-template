@@ -6,10 +6,10 @@ import {
 	useElements,
 	PaymentElement,
 } from "@stripe/react-stripe-js";
+import Stripe from "stripe";
 import { BaseURL } from "config/constants";
 import { ActionButton } from "app/components/action-button";
 import { addTransactionEvent } from "server-actions/stripe";
-import Stripe from "stripe";
 
 interface StripePaymentElementParams {
 	redirectURL?: string;

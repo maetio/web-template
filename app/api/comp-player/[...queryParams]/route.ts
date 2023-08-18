@@ -1,5 +1,5 @@
-import { CompProfilesResponseType } from "types/next-api";
 import { NextResponse } from "next/server";
+import { CompProfilesResponseType } from "types/next-api";
 import { competitionProfilesSubcollection } from "config/server";
 
 /**

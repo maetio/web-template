@@ -1,6 +1,6 @@
-import { SportIcons } from "app/components/icons";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { MdLocationOn, MdOutlineCalendarMonth } from "react-icons/md";
+import { SportIcons } from "app/components/icons";
 import { Competition } from "types/competition";
 
 interface CompetitionTypeParams

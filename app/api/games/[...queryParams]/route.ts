@@ -1,7 +1,7 @@
-import { GamesResponseType } from "types/next-api";
-import { gamesCollection } from "config/server";
 import { Timestamp } from "firebase-admin/firestore";
 import { NextResponse } from "next/server";
+import { GamesResponseType } from "types/next-api";
+import { gamesCollection } from "config/server";
 
 /**
  * Get request for the games route

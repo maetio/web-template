@@ -1,9 +1,9 @@
 import React from "react";
+import Link from "next/link";
 import { CompetitionsResponseType } from "types/next-api";
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
 import { getOrCreateProfile } from "server-actions/profiles";
-import Link from "next/link";
 
 /**
  * Screen will join the competition for the user
