@@ -12,9 +12,11 @@ import { MaetIcon } from "app/components/icons";
 import { FormInput } from "app/components/forms";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { emailSchema } from "utils/schemas";
-import { ActionButton } from "../action-button";
-import { NextImage } from "../image";
+import { EmailSchemaType, emailSchema } from "utils/schemas";
+import { fetchSignInMethods } from "auth/client";
+import { ActionButton } from "app/components/action-button";
+import { NextImage } from "app/components/image";
+import { useCreateFirestoreHook } from "utils/hook-template";
 
 interface AuthPageCompParams {
 	redirectURL?: string;
@@ -58,6 +60,20 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 			? document.referrer
 			: undefined;
 
+	// handle the signIn
+	const handleSignIn = async (data: EmailSchemaType) => {
+		try {
+			const methods = await fetchSignInMethods(data.email);
+			console.log("sign in methods", methods);
+			reset();
+		} catch (e: any) {
+			throw Error(e);
+		}
+	};
+
+	const [{ error, isLoading }, updateData] =
+		useCreateFirestoreHook(handleSignIn);
+
 	return (
 		<div className="flex">
 			<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -85,29 +101,6 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 							: "Login or Signup"}
 					</p>
 				</div>
-				{/* {passwordLogin ? (
-					<>
-						{signUp ? (
-							<SignupForm
-								redirectURL={redirectURL || referringURL}
-							/>
-						) : (
-							<LoginForm
-								redirectURL={redirectURL || referringURL}
-							/>
-						)}
-
-						<p className="mt-10 text-center text-sm text-gray-500">
-							{signUp ? "Already a user" : "Not a member?"}{" "}
-							<button
-								onClick={() => setSignUp(!signUp)}
-								className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-							>
-								{signUp ? "Login here" : "Sign up here!"}
-							</button>
-						</p>
-					</>
-				) : null} */}
 				<div className=" sm:mx-auto sm:w-full sm:max-w-sm">
 					<LoginProvidersForm
 						containerParams="mt-4 mb-6 sm:mx-auto sm:w-full sm:max-w-sm"
@@ -129,36 +122,26 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 							</span>
 						</div>
 					</section>
-					{/* old password login */}
-					{/* {passwordLogin ? null : (
-						<div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-							<ActionButton
-								className="sm:mx-auto sm:w-full sm:max-w-sm"
-								title="Use Email and Password"
-								action={async () => {
-									setPasswordLogin(!passwordLogin);
-								}}
-							/>
-						</div>
-					)} */}
 
-					<FormInput
-						register={register}
-						name="email"
-						label="Enter Email"
-						labelClassName="block text-sm font-bold leading-6 text-gray-900"
-						placeholder="name@example.com"
-						type="email"
-						errorMessage={errors.email?.message}
-					/>
+					<form onSubmit={handleSubmit(updateData)}>
+						<FormInput
+							register={register}
+							name="email"
+							label="Enter Email"
+							labelClassName="block text-sm font-bold leading-6 text-gray-900"
+							placeholder="name@example.com"
+							type="email"
+							errorMessage={errors.email?.message}
+						/>
 
-					<div>
 						<ActionButton
 							className="mt-5 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 							title="Continue"
 							colorVariant="indigo"
+							isLoading={isLoading}
 						/>
-					</div>
+					</form>
+					{error && <p>{error}</p>}
 				</div>
 			</div>
 		</div>
