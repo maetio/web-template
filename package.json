@@ -36,6 +36,7 @@
 		"init": "^0.1.2",
 		"next": "13.4.6",
 		"next-firebase-auth-edge": "^0.7.6",
+		"normal-distribution": "^1.1.1",
 		"postcss": "^8.4.25",
 		"prettier": "^2.8.8",
 		"prettier-plugin-tailwindcss": "^0.4.0",
@@ -53,6 +54,7 @@
 		"ui": "^0.2.4",
 		"universal-cookie": "^4.0.4",
 		"upgrade": "^1.1.0",
+		"victory": "^36.6.11",
 		"webpack": "^5.88.0",
 		"yup": "^1.2.0"
 	},

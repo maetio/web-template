@@ -8,7 +8,7 @@ import SkeletonCard from "./components/cards/skeleton-card";
  */
 export const Loading = () => {
 	return (
-		<div>
+		<div className="min-h-[100vh] min-w-[100vh]">
 			<SkeletonCard />
 			<SkeletonCard />
 			<SkeletonCard />

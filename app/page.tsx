@@ -16,7 +16,7 @@ export default async function Home() {
 		await competitionResponse.json();
 
 	return (
-		<main className="mx-auto mt-2 grid max-w-2xl grid-cols-1 gap-y-12 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+		<main className="mt-2 grid grid-cols-1 gap-y-12 lg:grid-cols-3">
 			{competitions.map((item) => (
 				<Link key={item.id} href={`view-comp/${item.id}`}>
 					<CompetitionCard competition={item} />

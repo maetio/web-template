@@ -1,6 +1,6 @@
 import React from "react";
 import { Profile } from "types/index";
-import { FaMedal } from "react-icons/fa6";
+// import { FaMedal } from "react-icons/fa6";
 import Link, { LinkProps } from "next/link";
 import { MaetIcon } from "app/components/icons";
 import { NextImage } from "app/components/image";
@@ -16,11 +16,11 @@ function classNames(...classes: string[]) {
 }
 
 // define medal colors
-const medalColor: string[] = [
-	"text-yellow-400",
-	"text-gray-400",
-	"text-amber-700",
-];
+// const medalColor: string[] = [
+// 	"text-yellow-400",
+// 	"text-gray-400",
+// 	"text-amber-700",
+// ];
 
 const AltPlayerCard: React.FC<PlayerCardProps> = ({
 	player,
@@ -41,13 +41,13 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 						<h1 className="flex-none text-xl font-bold">
 							{ranking + 1}
 						</h1>
-						{ranking < 3 ? (
+						{/* {ranking < 3 ? (
 							<div className="flex items-center">
 								<FaMedal
 									className={`${medalColor[ranking]} text-base md:text-lg`}
 								/>
 							</div>
-						) : null}
+						) : null} */}
 					</div>
 				) : null}
 				<NextImage
@@ -67,7 +67,7 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 			<div className="relative self-center">
 				<dt>
 					<div className="absolute rounded-md p-3">
-						<MaetIcon size={10} />
+						<MaetIcon />
 					</div>
 					<p className="ml-16 justify-center truncate text-sm font-medium text-gray-500 dark:text-white">
 						Rating
