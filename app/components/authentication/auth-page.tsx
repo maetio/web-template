@@ -103,8 +103,8 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 				</div>
 				<div className=" sm:mx-auto sm:w-full sm:max-w-sm">
 					<LoginProvidersForm
-						containerParams="mt-4 mb-6 sm:mx-auto sm:w-full sm:max-w-sm"
-						buttonParams="p-2.5 mt-3 w-full shadow-none hover:shadow-md bg-white rounded-xl border border-neutral-400"
+						containerParams="bg-gray-100 mt-4 mb-6 sm:mx-auto sm:w-full sm:max-w-sm"
+						buttonParams="bg-transparent p-2.5 mt-3 w-full shadow-none hover:shadow-md hover:bg-gray-200 rounded-xl border border-neutral-400"
 						redirectURL={redirectURL || referringURL}
 						providers={["google", "facebook"]}
 					/>
@@ -117,7 +117,7 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 							<div className="w-full border-t border-gray-200" />
 						</div>
 						<div className="relative flex justify-center text-sm font-medium leading-6">
-							<span className="bg-white px-6 text-gray-900">
+							<span className="bg-gray-100 px-6 text-gray-900">
 								Or
 							</span>
 						</div>
@@ -126,6 +126,7 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 					<form onSubmit={handleSubmit(updateData)}>
 						<FormInput
 							register={register}
+							inputClassName="bg-gray-100"
 							name="email"
 							label="Enter Email"
 							labelClassName="block text-sm font-bold leading-6 text-gray-900"

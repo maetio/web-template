@@ -4,6 +4,7 @@ import { PiWarningCircleFill, PiEyeBold, PiEyeSlashBold } from "react-icons/pi";
 
 interface FormInputParams {
 	register: UseFormRegister<any>; // tried using FieldVales instead of any, and was still getting a TS error
+	inputClassName?: string;
 	label?: string;
 	labelClassName?: string;
 	name: string; // register name
@@ -20,6 +21,7 @@ export /**
  *
  * @param {*} {
  * 	register,
+ *  inputClassName,
  * 	label,
  * 	name,
  * 	type,
@@ -33,6 +35,7 @@ export /**
  */
 const FormInput: React.FC<FormInputParams> = ({
 	register,
+	inputClassName,
 	label,
 	labelClassName,
 	name,
@@ -82,7 +85,7 @@ const FormInput: React.FC<FormInputParams> = ({
 					} ${
 						errorMessage &&
 						"text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500"
-					} `}
+					} ${inputClassName}`}
 					placeholder={placeholder}
 					defaultValue={defaultValue}
 					aria-invalid="true"
