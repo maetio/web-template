@@ -22,7 +22,7 @@ function classNames(...classes: string[]) {
 // 	"text-amber-700",
 // ];
 
-const AltPlayerCard: React.FC<PlayerCardProps> = ({
+export const AltPlayerCard: React.FC<PlayerCardProps> = ({
 	player,
 	ranking,
 	animate,
@@ -97,5 +97,3 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 		</Link>
 	);
 };
-
-export default AltPlayerCard;

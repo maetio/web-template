@@ -30,7 +30,28 @@ export default async function CompLoginPage({
 
 	return (
 		<main>
-			<Steps />
+			<Steps
+				steps={[
+					{
+						id: "01",
+						name: "Selected Competition",
+						href: "#",
+						status: "complete",
+					},
+					{
+						id: "02",
+						name: "Link Maet Account",
+						href: "#",
+						status: "current",
+					},
+					{
+						id: "03",
+						name: "Register",
+						href: "#",
+						status: "upcoming",
+					},
+				]}
+			/>
 			<AuthPageComp
 				redirectURL={`/join-comp/${params.compID}`}
 				image={competitionData?.image}

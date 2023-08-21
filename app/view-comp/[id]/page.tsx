@@ -11,7 +11,7 @@ import { ActionButton } from "app/components/action-button";
 import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
 
-import AltPlayerCard from "app/components/cards/alt-player-card";
+import { AltPlayerCard } from "app/components/cards/alt-player-card";
 import { GameCard } from "app/components/cards/game-card";
 import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
 import { filterPlayerData } from "utils/format";

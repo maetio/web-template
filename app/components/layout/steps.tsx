@@ -2,13 +2,16 @@
 import React from "react";
 import { IoMdCheckmark } from "react-icons/io";
 
-export const Steps = () => {
-	const steps = [
-		{ id: "01", name: "Job details", href: "#", status: "complete" },
-		{ id: "02", name: "Application form", href: "#", status: "current" },
-		{ id: "03", name: "Preview", href: "#", status: "upcoming" },
-	];
+interface StepsParams {
+	steps: {
+		id: string;
+		name: string;
+		href: string;
+		status: "complete" | "current" | "upcoming";
+	}[];
+}
 
+export const Steps: React.FC<StepsParams> = ({ steps }) => {
 	return (
 		<nav className="mt-20" aria-label="Progress">
 			<ol
