@@ -178,16 +178,6 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 						/>
 					)}
 
-					<button
-						className="font-sm indigo-600"
-						onClick={() => {
-							setUserStatus(undefined);
-							setDefaultEmail(undefined);
-						}}
-					>
-						change email
-					</button>
-
 					{error && (
 						<p className="mt-4 font-bold text-red-500">{error}</p>
 					)}
