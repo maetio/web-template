@@ -72,6 +72,8 @@ const SignupForm: React.FC<SignupFormParams> = ({
 					register={register}
 					placeholder="example@domain.com"
 					errorMessage={errors.email?.message}
+					labelButtonText="Change Email"
+					// labelButtonAction={}
 				/>
 
 				<FormInput

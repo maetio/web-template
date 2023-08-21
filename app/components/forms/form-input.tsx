@@ -13,23 +13,27 @@ interface FormInputParams {
 	defaultValue?: string;
 	placeholder?: string;
 	disabled?: boolean;
-	forgotPasswordLink?: string;
+	labelButtonText?: string;
+	labelButtonAction?: (() => Promise<void>) | (() => void);
 }
 
 export /**
  * prebuild form input component that handles the error message and form validation from react-hook form
  *
+ *
  * @param {*} {
  * 	register,
- *  inputClassName,
+ * 	inputClassName,
  * 	label,
+ * 	labelClassName,
  * 	name,
  * 	type,
  * 	errorMessage,
  * 	defaultValue,
  * 	placeholder,
- *  disabled,
- * forgotPasswordLink
+ * 	disabled,
+ * 	labelButtonText,
+ * 	labelButtonAction,
  * }
  * @return {*}
  */
@@ -44,7 +48,8 @@ const FormInput: React.FC<FormInputParams> = ({
 	defaultValue,
 	placeholder,
 	disabled,
-	forgotPasswordLink,
+	labelButtonText,
+	labelButtonAction,
 }) => {
 	const [showPassword, setShowPassword] = useState(false);
 
@@ -61,14 +66,15 @@ const FormInput: React.FC<FormInputParams> = ({
 					{label}
 				</label>
 
-				{forgotPasswordLink ? (
+				{labelButtonText ? (
 					<div className="text-sm">
-						<a
-							href={forgotPasswordLink}
+						<button
+							type="button"
+							onClick={labelButtonAction}
 							className="font-semibold text-indigo-600 hover:text-indigo-500"
 						>
-							Forgot Password
-						</a>
+							{labelButtonText}
+						</button>
 					</div>
 				) : null}
 			</div>

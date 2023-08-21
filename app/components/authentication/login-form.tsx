@@ -37,6 +37,10 @@ const LoginForm: React.FC<SignupFormParams> = ({
 	// get router
 	const router = useRouter();
 
+	const handleForgetPassword = () => {
+		router.push("/login/forgot-password");
+	};
+
 	// handle the signIn
 	const handleSignIn = async (data: SignInSchemaType) => {
 		try {
@@ -68,6 +72,8 @@ const LoginForm: React.FC<SignupFormParams> = ({
 					register={register}
 					placeholder="example@domain.com"
 					errorMessage={errors.email?.message}
+					labelButtonText="Change Email"
+					// labelButtonAction={}
 				/>
 
 				<FormInput
@@ -77,7 +83,8 @@ const LoginForm: React.FC<SignupFormParams> = ({
 					register={register}
 					placeholder="password"
 					errorMessage={errors.password?.message}
-					forgotPasswordLink={"/login/forgot-password"}
+					labelButtonText="Forgot Password"
+					labelButtonAction={handleForgetPassword}
 				/>
 
 				<div>

@@ -159,14 +159,13 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 						)}
 					</form>
 
-					<form>
-						{userStatus === "passwordAccont" && (
-							<LoginForm defaultEmail={defaultEmail} />
-						)}
-						{userStatus === "noAccount" && (
-							<SignupForm defaultEmail={defaultEmail} />
-						)}
-					</form>
+
+					{userStatus === "passwordAccont" && (
+						<LoginForm defaultEmail={defaultEmail} />
+					)}
+					{userStatus === "noAccount" && (
+						<SignupForm defaultEmail={defaultEmail} />
+					)}
 
 					<button
 						className="font-sm indigo-600"
