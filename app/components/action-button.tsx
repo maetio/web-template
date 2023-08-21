@@ -42,7 +42,7 @@ const ActionButton = ({
 
 	// define color class params
 	const colorClasses: Record<ColorVariants, string> = {
-		white: "text-black hover:bg-white focus-visible:outline-grey-300 bg-white ",
+		white: "text-black hover:bg-white focus-visible:outline-grey-300",
 		black: "text-white hover:bg-gray-900 focus-visible:outline-grey-300 bg-black ",
 		indigo: "text-white hover:bg-indigo-500 focus-visible:outline-grey-300 bg-indigo-600 ",
 		red: "text-white hover:bg-red-500 focus-visible:outline-grey-300 bg-red-600 ",
