@@ -11,6 +11,7 @@ import { getStripeSession } from "server-actions/stripe";
 import { StripeCheckoutForm } from "app/components/stripe/stripe-checkout-form";
 import { NextImage } from "app/components/image";
 import { AltPlayerCard } from "app/components/cards/alt-player-card";
+import { Steps } from "app/components/layout/steps";
 
 /**
  * Screen will join the competition for the user
@@ -38,9 +39,9 @@ export default async function JoinCompScreen({
 	// get the profile data for the user
 	const profileData = user?.id
 		? await getOrCreateProfile(
-			user,
-			competitionData?.sport || "basketball",
-			"player"
+				user,
+				competitionData?.sport || "basketball",
+				"player"
 		  )
 		: null;
 
@@ -71,8 +72,30 @@ export default async function JoinCompScreen({
 
 	return (
 		<main>
+			<Steps
+				steps={[
+					{
+						id: "01",
+						name: "Selected Competition",
+						href: "#",
+						status: "complete",
+					},
+					{
+						id: "02",
+						name: "Link Maet Account",
+						href: "#",
+						status: "complete",
+					},
+					{
+						id: "03",
+						name: "Register",
+						href: "#",
+						status: "current",
+					},
+				]}
+			/>
 			<div className="flex w-full flex-1 flex-col items-center justify-center px-6 py-12 lg:px-8">
-				<div className="sm:w-full ">
+				<div className="sm:w-full sm:max-w-md">
 					<NextImage
 						className="align-center mx-auto justify-center rounded-xl"
 						size={100}
@@ -85,37 +108,37 @@ export default async function JoinCompScreen({
 					</h2>
 				</div>
 
-				<div className="sm:w-full ">
+				<div className="sm:w-full sm:max-w-md">
 					{profileData && <AltPlayerCard player={profileData} />}
 
 					<div className="space-y-6">
 						<div>
 							{competitionData?.price &&
 							competitionData.price > 0 ? (
-									<div>
-										{stripeSession?.paymentIntentSecret ? (
-											<StripeCheckoutForm
-												price={competitionData.price}
-												paymentIntentSecret={
-													stripeSession?.paymentIntentSecret
-												}
-												paymentIntent={
-													stripeSession?.paymentIntent
-												}
-											/>
-										) : (
-											<button>loading</button>
-										)}
-									</div>
-								) : (
-									<ActionButton
-										className="w-full"
-										referRoute={`/view-comp/${params.id}`}
-										colorVariant="indigo"
-										title="Join competition"
-										action={submitFormAction}
-									/>
-								)}
+								<div>
+									{stripeSession?.paymentIntentSecret ? (
+										<StripeCheckoutForm
+											price={competitionData.price}
+											paymentIntentSecret={
+												stripeSession?.paymentIntentSecret
+											}
+											paymentIntent={
+												stripeSession?.paymentIntent
+											}
+										/>
+									) : (
+										<button>loading</button>
+									)}
+								</div>
+							) : (
+								<ActionButton
+									className="w-full"
+									referRoute={`/view-comp/${params.id}`}
+									colorVariant="indigo"
+									title="Join competition"
+									action={submitFormAction}
+								/>
+							)}
 						</div>
 					</div>
 				</div>
