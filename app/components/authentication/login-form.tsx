@@ -64,9 +64,10 @@ const LoginForm: React.FC<SignupFormParams> = ({
 
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-			<form onSubmit={handleSubmit(updateData)} className="space-y-6">
+			<form onSubmit={handleSubmit(updateData)} className="space-y-3">
 				<FormInput
 					label="Email Address"
+					labelClassName="block text-sm font-bold leading-6 text-gray-900"
 					disabled
 					type="email"
 					name="email"
@@ -79,6 +80,7 @@ const LoginForm: React.FC<SignupFormParams> = ({
 
 				<FormInput
 					label="Password"
+					labelClassName="block text-sm font-bold leading-6 text-gray-900"
 					type="password"
 					name="password"
 					register={register}
@@ -90,7 +92,7 @@ const LoginForm: React.FC<SignupFormParams> = ({
 
 				<div>
 					<ActionButton
-						className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+						className="flex w-full mt-4 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 						title="Sign in"
 						colorVariant="indigo"
 						isLoading={isLoading}

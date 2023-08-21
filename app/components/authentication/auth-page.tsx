@@ -121,8 +121,8 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 				</div>
 				<div className=" sm:mx-auto sm:w-full sm:max-w-sm">
 					<LoginProvidersForm
-						containerParams="bg-gray-100 mt-4 mb-6 sm:mx-auto sm:w-full sm:max-w-sm"
-						buttonParams="bg-transparent p-2.5 mt-3 w-full shadow-none hover:shadow-md hover:bg-gray-200 rounded-xl border border-neutral-400"
+						containerParams="mt-4 mb-6 sm:mx-auto sm:w-full sm:max-w-sm"
+						buttonParams="bg-red-200 p-2.5 mt-3 w-full shadow-none hover:shadow-md hover:bg-gray-200 rounded-xl border border-neutral-400"
 						redirectURL={redirectURL || referringURL}
 						providers={["google", "facebook"]}
 					/>
