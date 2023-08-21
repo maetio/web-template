@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { BaseURL } from "config/constants";
+// import { BaseURL } from "config/constants";
 import {
 	LoginProvidersForm,
 	LoginForm,
