@@ -167,12 +167,14 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 
 					{userStatus === "passwordAccont" && (
 						<LoginForm
+							redirectURL={redirectURL || referringURL}
 							changeEmail={changeEmail}
 							defaultEmail={defaultEmail}
 						/>
 					)}
 					{userStatus === "noAccount" && (
 						<SignupForm
+							redirectURL={redirectURL || referringURL}
 							changeEmail={changeEmail}
 							defaultEmail={defaultEmail}
 						/>
