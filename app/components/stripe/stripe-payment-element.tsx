@@ -102,7 +102,11 @@ const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
 						colorVariant="indigo"
 						disabled={!stripe}
 						type="submit"
-						title={`Pay $${price}`}
+						title={`Pay $${
+							paymentIntent?.amount
+								? paymentIntent.amount / 100
+								: price / 100
+						}`}
 					/>
 				</div>
 				{/* Show error message to your customers */}
