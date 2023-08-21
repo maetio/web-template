@@ -42,6 +42,8 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 		"passwordAccont" | "noAccount" | undefined
 	>();
 
+	console.log(redirectURL);
+
 	const [defaultEmail, setDefaultEmail] = useState<string>();
 
 	// react hook form
@@ -123,7 +125,8 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 					<LoginProvidersForm
 						containerParams="mt-4 mb-6 sm:mx-auto sm:w-full sm:max-w-sm"
 						buttonParams="bg-red-200 p-2.5 mt-3 w-full shadow-none hover:shadow-md hover:bg-gray-200 rounded-xl border border-neutral-400"
-						redirectURL={redirectURL || referringURL}
+						// redirectURL={redirectURL || referringURL}
+						redirectURL={redirectURL}
 						providers={["google"]}
 					/>
 					{/* or section */}
@@ -167,14 +170,17 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 
 					{userStatus === "passwordAccont" && (
 						<LoginForm
-							redirectURL={redirectURL || referringURL}
+							// redirectURL={redirectURL || referringURL}
+							redirectURL={redirectURL}
 							changeEmail={changeEmail}
 							defaultEmail={defaultEmail}
 						/>
 					)}
 					{userStatus === "noAccount" && (
 						<SignupForm
-							redirectURL={redirectURL || referringURL}
+							redirectURL={redirectURL}
+							// redirectURL={redirectURL || referringURL}
+
 							changeEmail={changeEmail}
 							defaultEmail={defaultEmail}
 						/>
