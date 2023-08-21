@@ -148,5 +148,6 @@ FormInput.defaultProps = {
 	defaultValue: undefined,
 	placeholder: undefined,
 	disabled: false,
-	forgotPasswordLink: undefined,
+	labelButtonAction: undefined,
+	labelButtonText: undefined,
 };

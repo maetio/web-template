@@ -86,7 +86,7 @@ export default async function JoinCompScreen({
 						<NextImage
 							size={100}
 							src={profileData?.image}
-							alt={profileData?.firstName}
+							alt="player profile picture"
 						/>
 						<h3 className="my-3 text-lg font-medium text-gray-900">
 							{profileData?.firstName} {profileData?.lastName}

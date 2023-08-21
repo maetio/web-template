@@ -53,7 +53,7 @@ const AltPlayerCard: React.FC<PlayerCardProps> = ({
 				<NextImage
 					size={50}
 					src={player.image}
-					alt={player.firstName}
+					alt="player profile picture"
 				/>
 				<div className="min-w-0 flex-auto">
 					<p className="truncate text-sm font-bold leading-6 text-gray-900 dark:text-white">
