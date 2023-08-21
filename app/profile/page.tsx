@@ -1,6 +1,7 @@
 import { UpdatePasswordForm } from "app/components/authentication";
 import { MaetIcon } from "app/components/icons";
 import { SignOutButton } from "app/components/sign-out-button";
+import { fetchSignInMethods } from "auth/client";
 import { getUserData, updateUserData } from "server-actions/users";
 
 /**
@@ -28,6 +29,9 @@ const submitFormAction = async (data: FormData) => {
 export default async function Profile() {
 	// fetch the user data
 	const userData = await getUserData();
+
+	// get signin methods
+	const methods = await fetchSignInMethods(userData?.email);
 
 	return (
 		<>
@@ -101,7 +105,10 @@ export default async function Profile() {
 						</div>
 						<SignOutButton />
 					</form>
-					<UpdatePasswordForm />
+
+					{methods.includes("password") ? (
+						<UpdatePasswordForm />
+					) : null}
 				</div>
 			</div>
 		</>

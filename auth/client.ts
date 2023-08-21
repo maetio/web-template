@@ -284,7 +284,8 @@ export /**
  * @param {string} email
  * @return {*}
  */
-const fetchSignInMethods = async (email: string) => {
+const fetchSignInMethods = async (email?: string | null) => {
+	if (!email) throw new Error("no user email provided");
 	const signInMethods = await fetchSignInMethodsForEmail(auth, email);
 	return signInMethods;
 };
