@@ -20,6 +20,7 @@ export /**
 const LoginForm: React.FC<SignupFormParams> = ({
 	redirectURL,
 	defaultEmail,
+	changeEmail,
 }) => {
 	// react hook form
 	const {
@@ -73,7 +74,9 @@ const LoginForm: React.FC<SignupFormParams> = ({
 					placeholder="example@domain.com"
 					errorMessage={errors.email?.message}
 					labelButtonText="Change Email"
-					// labelButtonAction={}
+					labelButtonAction={
+						changeEmail && (() => changeEmail())
+					}
 				/>
 
 				<FormInput

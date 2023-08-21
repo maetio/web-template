@@ -61,6 +61,12 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 			? document.referrer
 			: undefined;
 
+	// change email function
+	const changeEmail = () => {
+		setUserStatus(undefined);
+		setDefaultEmail(undefined);
+	};
+
 	// handle the signIn
 	const handleSignIn = async (data: EmailSchemaType) => {
 		try {
@@ -159,12 +165,17 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 						)}
 					</form>
 
-
 					{userStatus === "passwordAccont" && (
-						<LoginForm defaultEmail={defaultEmail} />
+						<LoginForm
+							changeEmail={changeEmail}
+							defaultEmail={defaultEmail}
+						/>
 					)}
 					{userStatus === "noAccount" && (
-						<SignupForm defaultEmail={defaultEmail} />
+						<SignupForm
+							changeEmail={changeEmail}
+							defaultEmail={defaultEmail}
+						/>
 					)}
 
 					<button

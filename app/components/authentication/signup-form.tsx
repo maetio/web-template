@@ -13,6 +13,7 @@ import { ActionButton } from "app/components/action-button";
 export interface SignupFormParams {
 	redirectURL?: string;
 	defaultEmail?: string;
+	changeEmail?: () => void;
 }
 
 export /**
@@ -24,6 +25,7 @@ export /**
 const SignupForm: React.FC<SignupFormParams> = ({
 	redirectURL,
 	defaultEmail,
+	changeEmail,
 }) => {
 	// react hook form
 	const {
@@ -73,7 +75,9 @@ const SignupForm: React.FC<SignupFormParams> = ({
 					placeholder="example@domain.com"
 					errorMessage={errors.email?.message}
 					labelButtonText="Change Email"
-					// labelButtonAction={}
+					labelButtonAction={
+						changeEmail && (() => changeEmail())
+					}
 				/>
 
 				<FormInput
