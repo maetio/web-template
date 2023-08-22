@@ -79,9 +79,11 @@ export default async function JoinCompSuccessScreen({
 					</h2>
 				</div>
 
-				<div className="flex-col items-center self-center sm:w-full sm:max-w-md">
-					{profileData && <AltPlayerCard player={profileData} />}
-					<p className="mt-5 flex items-center justify-center text-xl font-normal leading-tight tracking-tight text-black">
+				<div className="flex flex-col items-center self-center sm:w-full sm:max-w-md">
+					<div className="w-full">
+						{profileData && <AltPlayerCard player={profileData} />}
+					</div>
+					<p className="my-5 flex w-full items-center justify-center text-xl font-normal leading-tight tracking-tight text-black">
 						<IoIosCheckmarkCircle className="mr-2 h-7 w-7 text-green-600" />{" "}
 						You have successfully joined the competition!
 					</p>
