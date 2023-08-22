@@ -12,6 +12,7 @@ import { StripeCheckoutForm } from "app/components/stripe/stripe-checkout-form";
 import { NextImage } from "app/components/image";
 import { AltPlayerCard } from "app/components/cards/alt-player-card";
 import { Steps } from "app/components/layout/steps";
+import { RatedCompetitionCard } from "app/components/cards";
 
 /**
  * Screen will join the competition for the user
@@ -94,7 +95,7 @@ export default async function JoinCompScreen({
 					},
 				]}
 			/>
-			<div className="flex w-full flex-1 flex-col items-center justify-center px-6 py-12 lg:px-8">
+			<div className="flex w-full flex-1 flex-col items-center justify-center gap-8 px-6 py-12 lg:px-8">
 				<div className="sm:w-full sm:max-w-md">
 					<NextImage
 						className="align-center mx-auto justify-center rounded-xl"
@@ -103,15 +104,16 @@ export default async function JoinCompScreen({
 						alt="competition banner"
 					/>
 
-					<h2 className="mt-7 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+					<h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
 						{competitionData?.name || "Welcome to Maet!"}
 					</h2>
 				</div>
 
-				<div className="sm:w-full sm:max-w-md">
+				<div className="gap-8 flex flex-col sm:w-full sm:max-w-md">
+					<RatedCompetitionCard />
 					{profileData && <AltPlayerCard player={profileData} />}
 
-					<div className="space-y-6">
+					<div>
 						<div>
 							{competitionData?.price &&
 							competitionData.price > 0 ? (

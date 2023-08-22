@@ -94,11 +94,11 @@ const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
 		<section>
 			<form onSubmit={handleSubmit}>
 				<PaymentElement />
-				<div className="py-6">
+				<div className="py-8">
 					<ActionButton
 						isLoading={isLoading}
 						// className="mt-5 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-						className="mt-6 w-full text-lg"
+						className="w-full text-lg"
 						colorVariant="indigo"
 						disabled={!stripe}
 						type="submit"

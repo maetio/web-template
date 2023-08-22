@@ -13,7 +13,7 @@ interface StepsParams {
 
 export const Steps: React.FC<StepsParams> = ({ steps }) => {
 	return (
-		<nav className="mt-20" aria-label="Progress">
+		<nav className="mt-8" aria-label="Progress">
 			<ol
 				role="list"
 				className="divide-y divide-gray-300 rounded-md border border-gray-300 md:flex md:divide-y-0"

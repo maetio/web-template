@@ -36,9 +36,9 @@ export default async function JoinCompSuccessScreen({
 	// get the profile data for the user
 	const profileData = user?.id
 		? await getOrCreateProfile(
-				user,
-				competitionData?.sport || "basketball",
-				"player"
+			user,
+			competitionData?.sport || "basketball",
+			"player"
 		  )
 		: null;
 
@@ -66,7 +66,7 @@ export default async function JoinCompSuccessScreen({
 					},
 				]}
 			/>
-			<div className="gap-8 flex w-full flex-1 flex-col items-center justify-center px-6 py-12 lg:px-8">
+			<div className="flex w-full flex-1 flex-col items-center justify-center gap-8 px-6 py-12 lg:px-8">
 				<div className="sm:w-full sm:max-w-md">
 					<NextImage
 						className="align-center mx-auto justify-center rounded-xl"
@@ -75,12 +75,12 @@ export default async function JoinCompSuccessScreen({
 						alt="competition banner"
 					/>
 
-					<h2 className="mt-7 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+					<h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
 						{competitionData?.name || "Welcome to Maet!"}
 					</h2>
 				</div>
 
-				<div className="gap-8 flex flex-col items-center self-center sm:w-full sm:max-w-md">
+				<div className="flex flex-col items-center gap-8 self-center sm:w-full sm:max-w-md">
 					<RatedCompetitionCard />
 					<div className="w-full">
 						{profileData && <AltPlayerCard player={profileData} />}
