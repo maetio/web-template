@@ -127,6 +127,7 @@ export default async function JoinCompScreen({
 												paymentIntent={
 													stripeSession?.paymentIntent
 												}
+												redirectURL="/success"
 											/>
 										) : (
 											<button>loading</button>
@@ -135,7 +136,7 @@ export default async function JoinCompScreen({
 								) : (
 									<ActionButton
 										className="w-full"
-										referRoute={`/view-comp/${params.id}`}
+										referRoute={`/join-comp/${params.id}/success`}
 										colorVariant="indigo"
 										title="Join competition"
 										action={submitFormAction}
