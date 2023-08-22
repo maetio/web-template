@@ -6,6 +6,7 @@ import { getUserData } from "server-actions/users";
 import { getOrCreateProfile } from "server-actions/profiles";
 import { NextImage } from "app/components/image";
 import { AltPlayerCard } from "app/components/cards/alt-player-card";
+import { RatedCompetitionCard } from "app/components/cards";
 import { Steps } from "app/components/layout/steps";
 import Link from "next/link";
 
@@ -80,6 +81,7 @@ export default async function JoinCompSuccessScreen({
 				</div>
 
 				<div className="flex flex-col items-center self-center sm:w-full sm:max-w-md">
+					<RatedCompetitionCard />
 					<div className="w-full">
 						{profileData && <AltPlayerCard player={profileData} />}
 					</div>
