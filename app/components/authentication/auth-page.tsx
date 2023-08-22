@@ -1,14 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-// import { BaseURL } from "config/constants";
 import {
 	LoginProvidersForm,
 	LoginForm,
 	SignupForm,
 } from "app/components/authentication";
 import { MaetIcon } from "app/components/icons";
-// import { ActionButton } from "app/components/action-button";
 import { FormInput } from "app/components/forms";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -42,8 +40,6 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 		"passwordAccont" | "noAccount" | undefined
 	>();
 
-	console.log(redirectURL);
-
 	const [defaultEmail, setDefaultEmail] = useState<string>();
 
 	// react hook form
@@ -55,13 +51,6 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 	} = useForm({
 		resolver: yupResolver(emailSchema),
 	});
-
-	// set the url to refer back after email sign in
-	// const referringURL =
-	// 	document.referrer.startsWith(BaseURL) &&
-	// 	!document.referrer.endsWith("login")
-	// 		? document.referrer
-	// 		: undefined;
 
 	// change email function
 	const changeEmail = () => {
