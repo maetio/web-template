@@ -44,11 +44,7 @@ const ActionButton = ({
 	const colorClasses: Record<ColorVariants, string> = {
 		white: "text-black hover:bg-white focus-visible:outline-grey-300",
 		black: "text-white hover:bg-gray-900 focus-visible:outline-grey-300 bg-black ",
-		indigo: `text-white focus-visible:outline-grey-300  ${
-			disabled
-				? "bg-gray-400 hover:bg-gray-800"
-				: "hover:bg-indigo-500 bg-indigo-600"
-		}`,
+		indigo: "text-white hover:bg-indigo-500 focus-visible:outline-grey-300 bg-indigo-600 ",
 		red: "text-white hover:bg-red-500 focus-visible:outline-grey-300 bg-red-600 ",
 	};
 
@@ -155,9 +151,7 @@ const ActionButton = ({
 		<button
 			disabled={isPending || isLoading || disabled}
 			onClick={() => handleClick()}
-			className={`inline-flex items-center justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold focus:ring-2 focus:ring-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
-				!disabled && "shadow-md hover:shadow-lg"
-			}`
+			className={"inline-flex items-center justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold  shadow-md hover:shadow-lg focus:ring-2 focus:ring-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 "
 				.concat(colorClasses[colorVariant])
 				.concat(className || "")}
 			{...buttonParams}
