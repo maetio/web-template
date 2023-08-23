@@ -105,8 +105,8 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 						{header || "Welcome to Maet!"}
 					</h2>
 					<p className="mt-5 text-center text-sm">
-						{image
-							? "Register with you Maet profile"
+						{image || header
+							? "Register with you Maet account"
 							: "Login or Signup"}
 					</p>
 				</div>
