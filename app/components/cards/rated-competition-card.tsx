@@ -1,7 +1,12 @@
 import React from "react";
 import { MaetIcon } from "../icons";
 
-export const RatedCompetitionCard = () => {
+export /**
+ * card that display a message about the rating system
+ *
+ * @return {*}
+ */
+const RatedCompetitionCard = () => {
 	return (
 		<div className="inline-flex flex-col items-start justify-center gap-4 rounded-2xl bg-indigo-600 p-4">
 			<p className="self-stretch text-xs font-bold leading-tight tracking-tight text-indigo-300">
