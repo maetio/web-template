@@ -5,10 +5,9 @@
 import Image, { ImageProps } from "next/image";
 import { useEffect, useState } from "react";
 
-interface NextImageParams
-	extends Omit<ImageProps, "src" | "alt" | "width" | "height"> {
+interface NextImageParams extends Omit<ImageProps, "src" | "width" | "height"> {
 	src?: string | string[] | null;
-	alt?: string | null;
+	// alt: string;
 	size?: number | "full";
 }
 

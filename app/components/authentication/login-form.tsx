@@ -17,7 +17,11 @@ export /**
  * @param {*} { redirectURL }
  * @return {*}
  */
-const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
+const LoginForm: React.FC<SignupFormParams> = ({
+	redirectURL,
+	defaultEmail,
+	changeEmail,
+}) => {
 	// react hook form
 	const {
 		handleSubmit,
@@ -26,10 +30,17 @@ const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 		reset,
 	} = useForm({
 		resolver: yupResolver(signInSchema),
+		defaultValues: {
+			email: defaultEmail,
+		},
 	});
 
 	// get router
 	const router = useRouter();
+
+	const handleForgetPassword = () => {
+		router.push("/login/forgot-password");
+	};
 
 	// handle the signIn
 	const handleSignIn = async (data: SignInSchemaType) => {
@@ -53,29 +64,35 @@ const LoginForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-			<form onSubmit={handleSubmit(updateData)} className="space-y-6">
+			<form onSubmit={handleSubmit(updateData)} className="space-y-3">
 				<FormInput
 					label="Email Address"
+					labelClassName="block text-sm font-bold leading-6 text-gray-900"
+					disabled
 					type="email"
 					name="email"
 					register={register}
 					placeholder="example@domain.com"
 					errorMessage={errors.email?.message}
+					labelButtonText="Change Email"
+					labelButtonAction={changeEmail && (() => changeEmail())}
 				/>
 
 				<FormInput
 					label="Password"
+					labelClassName="block text-sm font-bold leading-6 text-gray-900"
 					type="password"
 					name="password"
 					register={register}
 					placeholder="password"
 					errorMessage={errors.password?.message}
-					forgotPasswordLink={"/login/forgot-password"}
+					labelButtonText="Forgot Password"
+					labelButtonAction={handleForgetPassword}
 				/>
 
 				<div>
 					<ActionButton
-						className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+						className="mt-4 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 						title="Sign in"
 						colorVariant="indigo"
 						isLoading={isLoading}

@@ -16,6 +16,7 @@ import {
 	signInWithEmailAndPassword,
 	updatePassword,
 	sendPasswordResetEmail,
+	fetchSignInMethodsForEmail,
 } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { getAndUpdateUserData } from "server-actions/users";
@@ -276,3 +277,15 @@ export async function getPrivateUserData(
 	const userDoc = await getDoc(doc(privateUserCollection, userID));
 	return { ...userDoc.data(), id: userDoc.id };
 }
+
+export /**
+ * takes in an email and returns an array of the user's sign in methods
+ *
+ * @param {string} email
+ * @return {*}
+ */
+const fetchSignInMethods = async (email?: string | null) => {
+	if (!email) throw new Error("no user email provided");
+	const signInMethods = await fetchSignInMethodsForEmail(auth, email);
+	return signInMethods;
+};

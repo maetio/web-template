@@ -11,7 +11,7 @@ import { ActionButton } from "app/components/action-button";
 import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
 
-import AltPlayerCard from "app/components/cards/alt-player-card";
+import { AltPlayerCard } from "app/components/cards/alt-player-card";
 import { GameCard } from "app/components/cards/game-card";
 import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
 import { filterPlayerData } from "utils/format";
@@ -75,7 +75,11 @@ export default async function ViewCompScreen({
 			{/* Competition image and name banner */}
 			<section className="flex flex-col flex-wrap pb-12 pt-4 md:flex-row lg:flex-nowrap lg:pt-12">
 				<div className="self-center">
-					<NextImage size={400} src={competitionData?.image} />
+					<NextImage
+						size={400}
+						src={competitionData?.image}
+						alt="competition profile"
+					/>
 				</div>
 				<div className=" mt-10 flex flex-col flex-wrap self-center lg:mx-5 lg:mt-0">
 					<CompDisplayData
@@ -101,7 +105,7 @@ export default async function ViewCompScreen({
 								<NextImage
 									size={50}
 									src={compPlayer.image}
-									alt={compPlayer.firstName}
+									alt="Player profile"
 								/>
 								<h3 className="ml-3 self-center font-semibold">
 									You are ranked{" "}

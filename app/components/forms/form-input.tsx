@@ -4,42 +4,52 @@ import { PiWarningCircleFill, PiEyeBold, PiEyeSlashBold } from "react-icons/pi";
 
 interface FormInputParams {
 	register: UseFormRegister<any>; // tried using FieldVales instead of any, and was still getting a TS error
+	inputClassName?: string;
 	label?: string;
+	labelClassName?: string;
 	name: string; // register name
 	type: "email" | "text" | "password";
 	errorMessage?: string | undefined;
 	defaultValue?: string;
 	placeholder?: string;
 	disabled?: boolean;
-	forgotPasswordLink?: string;
+	labelButtonText?: string;
+	labelButtonAction?: (() => Promise<void>) | (() => void);
 }
 
 export /**
  * prebuild form input component that handles the error message and form validation from react-hook form
  *
+ *
  * @param {*} {
  * 	register,
+ * 	inputClassName,
  * 	label,
+ * 	labelClassName,
  * 	name,
  * 	type,
  * 	errorMessage,
  * 	defaultValue,
  * 	placeholder,
- *  disabled,
- * forgotPasswordLink
+ * 	disabled,
+ * 	labelButtonText,
+ * 	labelButtonAction,
  * }
  * @return {*}
  */
 const FormInput: React.FC<FormInputParams> = ({
 	register,
+	inputClassName,
 	label,
+	labelClassName,
 	name,
 	type,
 	errorMessage,
 	defaultValue,
 	placeholder,
 	disabled,
-	forgotPasswordLink,
+	labelButtonText,
+	labelButtonAction,
 }) => {
 	const [showPassword, setShowPassword] = useState(false);
 
@@ -48,23 +58,27 @@ const FormInput: React.FC<FormInputParams> = ({
 			<div className=" flex items-center justify-between">
 				<label
 					htmlFor="email"
-					className="block text-sm font-medium leading-6 text-gray-900"
+					className={
+						labelClassName ||
+						"block text-sm font-medium leading-6 text-gray-900"
+					}
 				>
 					{label}
 				</label>
 
-				{forgotPasswordLink ? (
+				{labelButtonText ? (
 					<div className="text-sm">
-						<a
-							href={forgotPasswordLink}
+						<button
+							type="button"
+							onClick={labelButtonAction}
 							className="font-semibold text-indigo-600 hover:text-indigo-500"
 						>
-							Forgot Password
-						</a>
+							{labelButtonText}
+						</button>
 					</div>
 				) : null}
 			</div>
-			<div className="relative mt-2 rounded-md shadow-sm">
+			<div className="relative mt-1.5 rounded-md shadow-sm">
 				<input
 					{...register(name)}
 					disabled={disabled}
@@ -77,7 +91,7 @@ const FormInput: React.FC<FormInputParams> = ({
 					} ${
 						errorMessage &&
 						"text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500"
-					} `}
+					} ${inputClassName}`}
 					placeholder={placeholder}
 					defaultValue={defaultValue}
 					aria-invalid="true"
@@ -134,5 +148,6 @@ FormInput.defaultProps = {
 	defaultValue: undefined,
 	placeholder: undefined,
 	disabled: false,
-	forgotPasswordLink: undefined,
+	labelButtonAction: undefined,
+	labelButtonText: undefined,
 };

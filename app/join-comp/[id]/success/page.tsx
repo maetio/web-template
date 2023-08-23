@@ -1,28 +1,24 @@
 import React from "react";
+import { IoIosCheckmarkCircle } from "react-icons/io";
 import { CompetitionsResponseType } from "types/next-api";
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
-import {
-	addCompetitionProfile,
-	getOrCreateProfile,
-} from "server-actions/profiles";
-import { ActionButton } from "app/components/action-button";
-import { getStripeSession } from "server-actions/stripe";
-import { StripeCheckoutForm } from "app/components/stripe/stripe-checkout-form";
+import { getOrCreateProfile } from "server-actions/profiles";
 import { NextImage } from "app/components/image";
 import { AltPlayerCard } from "app/components/cards/alt-player-card";
-import { Steps } from "app/components/layout/steps";
 import { RatedCompetitionCard } from "app/components/cards";
+import { Steps } from "app/components/layout/steps";
+import Link from "next/link";
 import { MaetIcon } from "app/components/icons";
 
 /**
- * Screen will join the competition for the user
+ * Screen that shows that the player has joined the competition
  *
  * @export
  * @param {{ params: { id: string } }} { params }
  * @return {*}
  */
-export default async function JoinCompScreen({
+export default async function JoinCompSuccessScreen({
 	params,
 }: {
 	params: { id: string };
@@ -47,31 +43,6 @@ export default async function JoinCompScreen({
 		  )
 		: null;
 
-	/**
-	 * Define the submitting form action
-	 *
-	 * @param {FormData} data
-	 */
-	const submitFormAction = async () => {
-		"use server";
-
-		try {
-			// update the data with the server action
-			if (user?.id) {
-				await addCompetitionProfile(
-					params.id,
-					competitionData?.sport || "basketball",
-					competitionData?.endTimestamp || null,
-					user?.id
-				);
-			}
-		} catch (e: any) {
-			console.warn("error with form action", e);
-		}
-	};
-
-	const stripeSession = await getStripeSession(competitionData?.id);
-
 	return (
 		<main>
 			<Steps
@@ -92,7 +63,7 @@ export default async function JoinCompScreen({
 						id: "03",
 						name: "Register",
 						href: "#",
-						status: "current",
+						status: "complete",
 					},
 				]}
 			/>
@@ -117,41 +88,22 @@ export default async function JoinCompScreen({
 					</h2>
 				</div>
 
-				<div className="flex flex-col gap-8 sm:w-full sm:max-w-md">
+				<div className="flex flex-col items-center gap-8 self-center sm:w-full sm:max-w-md">
 					<RatedCompetitionCard />
-					{profileData && <AltPlayerCard player={profileData} />}
-
-					<div>
-						<div>
-							{competitionData?.price &&
-							competitionData.price > 0 ? (
-									<div>
-										{stripeSession?.paymentIntentSecret ? (
-											<StripeCheckoutForm
-												price={competitionData.price}
-												paymentIntentSecret={
-													stripeSession?.paymentIntentSecret
-												}
-												paymentIntent={
-													stripeSession?.paymentIntent
-												}
-												redirectURL="/success"
-											/>
-										) : (
-											<button>loading</button>
-										)}
-									</div>
-								) : (
-									<ActionButton
-										className="w-full"
-										referRoute={`/join-comp/${params.id}/success`}
-										colorVariant="indigo"
-										title="Join competition"
-										action={submitFormAction}
-									/>
-								)}
-						</div>
+					<div className="w-full">
+						{profileData && <AltPlayerCard player={profileData} />}
 					</div>
+					<p className="flex w-full items-center justify-center text-xl font-normal leading-tight tracking-tight text-black">
+						<IoIosCheckmarkCircle className="mr-2 h-7 w-7 text-green-600" />{" "}
+						You have successfully joined the competition!
+					</p>
+
+					<Link
+						href={`/view-comp/${params.id}`}
+						className="text-sm font-normal leading-tight tracking-tight text-indigo-600"
+					>
+						Return to competition
+					</Link>
 				</div>
 			</div>
 		</main>

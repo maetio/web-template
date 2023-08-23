@@ -12,6 +12,8 @@ import { ActionButton } from "app/components/action-button";
 
 export interface SignupFormParams {
 	redirectURL?: string;
+	defaultEmail?: string;
+	changeEmail?: () => void;
 }
 
 export /**
@@ -20,7 +22,11 @@ export /**
  * @param {*} { redirectURL }
  * @return {*}
  */
-const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
+const SignupForm: React.FC<SignupFormParams> = ({
+	redirectURL,
+	defaultEmail,
+	changeEmail,
+}) => {
 	// react hook form
 	const {
 		handleSubmit,
@@ -29,6 +35,9 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 		reset,
 	} = useForm({
 		resolver: yupResolver(signupSchema),
+		defaultValues: {
+			email: defaultEmail,
+		},
 	});
 
 	// get router
@@ -56,9 +65,23 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-			<form onSubmit={handleSubmit(updateData)} className="space-y-6">
+			<form onSubmit={handleSubmit(updateData)} className="space-y-3">
+				<FormInput
+					label="Email Address"
+					labelClassName="block text-sm font-bold leading-6 text-gray-900"
+					type="email"
+					name="email"
+					disabled
+					register={register}
+					placeholder="example@domain.com"
+					errorMessage={errors.email?.message}
+					labelButtonText="Change Email"
+					labelButtonAction={changeEmail && (() => changeEmail())}
+				/>
+
 				<FormInput
 					label="First Name"
+					labelClassName="block text-sm font-bold leading-6 text-gray-900"
 					type="text"
 					name="firstName"
 					register={register}
@@ -68,6 +91,7 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 
 				<FormInput
 					label="Last Name"
+					labelClassName="block text-sm font-bold leading-6 text-gray-900"
 					type="text"
 					name="lastName"
 					register={register}
@@ -76,16 +100,8 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 				/>
 
 				<FormInput
-					label="Email Address"
-					type="email"
-					name="email"
-					register={register}
-					placeholder="example@domain.com"
-					errorMessage={errors.email?.message}
-				/>
-
-				<FormInput
 					label="Password"
+					labelClassName="block text-sm font-bold leading-6 text-gray-900"
 					type="password"
 					name="password"
 					register={register}
@@ -95,6 +111,7 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 
 				<FormInput
 					label="Confirm Password"
+					labelClassName="block text-sm font-bold leading-6 text-gray-900"
 					type="password"
 					name="confirmPassword"
 					register={register}
@@ -104,7 +121,7 @@ const SignupForm: React.FC<SignupFormParams> = ({ redirectURL }) => {
 
 				<div>
 					<ActionButton
-						className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+						className="mt-4 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 						title="Sign Up"
 						colorVariant="indigo"
 						isLoading={isLoading}
