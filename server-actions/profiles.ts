@@ -15,6 +15,7 @@ import {
 } from "config/server";
 import { BaseURL } from "config/constants";
 import { PlayerResponseType } from "types/next-api";
+import { getServerAuthUser } from "auth/server";
 
 export /**
  * Function will fetch the profile
@@ -110,6 +111,16 @@ const addCompetitionProfile = async (
 	}
 ) => {
 	try {
+		// get the user for the server
+		const user = await getServerAuthUser();
+
+		// console.log("user from server action", user);
+
+		// handle if there is no user
+		if (!user) {
+			throw new Error("Cannot join competition for unauthenticated user");
+		}
+
 		// get initial profile
 		const profileResponse = await fetch(
 			`${BaseURL}/api/player/${userID}/${sport}`
