@@ -102,7 +102,7 @@ const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
 						colorVariant="indigo"
 						disabled={!stripe}
 						type="submit"
-						title={`Register - $${
+						title={`Register $${
 							paymentIntent?.amount
 								? paymentIntent.amount / 100
 								: price / 100
