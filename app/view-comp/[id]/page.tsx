@@ -70,13 +70,6 @@ export default async function ViewCompScreen({
 	// filter the player data for victory to use
 	const filteredPlayerData = filterPlayerData(players);
 
-	console.log(
-		"thingy",
-		(competitionData?.maxPlayers &&
-			competitionData?.maxPlayers <= players.length) ||
-			!competitionData?.registrationOpen
-	);
-
 	return (
 		<main className="container min-w-full px-0 sm:px-2">
 			{/* Competition image and name banner */}
