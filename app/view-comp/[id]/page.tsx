@@ -144,7 +144,7 @@ export default async function ViewCompScreen({
 										competitionData?.maxPlayers <=
 											players.length) ||
 									!competitionData?.registrationOpen
-										? "Compeition Full"
+										? "Compeition is Full"
 										: "Join Competition"
 								}
 								colorVariant="indigo"
