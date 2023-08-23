@@ -195,7 +195,7 @@ const addCompetitionProfile = async (
 				.doc(competitionID)
 				.update({ registrationOpen: false });
 		}
-		
+
 		// get the competition
 		return competitionProfile;
 	} catch (e: any) {

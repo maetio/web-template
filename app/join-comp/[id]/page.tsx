@@ -66,7 +66,7 @@ export default async function JoinCompScreen({
 				);
 			}
 		} catch (e: any) {
-			console.warn("error with form action", e);
+			throw Error(e);
 		}
 	};
 
