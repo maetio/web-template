@@ -13,7 +13,7 @@ const RatedCompetitionCard = () => {
 				RATED COMPETITION
 			</p>
 			<div className="inline-flex flex-wrap items-center justify-start gap-2.5 self-stretch">
-				<MaetIcon size={14} color="fill-white" className="text-white" />
+				<MaetIcon size={14} color="fill-white" className="text-white w-14" />
 				<h6 className="shrink grow basis-0 text-xl font-bold leading-normal tracking-tight text-white">
 					You will be able to earn rating points at this competition.
 				</h6>
