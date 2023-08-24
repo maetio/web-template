@@ -137,7 +137,7 @@ export default async function ViewCompScreen({
 										competitionData?.maxPlayers <=
 											players.length) ||
 									!competitionData?.registrationOpen
-										? "Compeition is Full"
+										? "Competition is Full"
 										: "Join Competition"
 								}
 								colorVariant="indigo"
@@ -198,11 +198,15 @@ export default async function ViewCompScreen({
 						Games
 					</h3>
 					<ul role="list" className="">
-						{games.map((game) => (
-							<li key={game.id} className="lg:pr-3">
-								<GameCard id={game.id} />
-							</li>
-						))}
+						{games.length ? (
+							games.map((game) => (
+								<li key={game.id} className="lg:pr-3">
+									<GameCard id={game.id} />
+								</li>
+							))
+						) : (
+							<p className=" ml-2 mt-3 text-gray-600">No Games</p>
+						)}
 					</ul>
 				</section>
 
