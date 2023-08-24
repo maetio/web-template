@@ -135,7 +135,7 @@ export default async function JoinCompScreen({
 												paymentIntent={
 													stripeSession?.paymentIntent
 												}
-												redirectURL="/success"
+												redirectURL={`${BaseURL}/join-comp/${params.id}/success`}
 											/>
 										) : (
 											<button>loading</button>
