@@ -11,10 +11,16 @@ import {
 } from "types/index";
 import {
 	competitionProfilesSubcollection,
+	competitionsCollection,
 	profileCollection,
 } from "config/server";
 import { BaseURL } from "config/constants";
-import { PlayerResponseType } from "types/next-api";
+import {
+	CompetitionsResponseType,
+	PlayerResponseType,
+	PlayersResponseType,
+} from "types/next-api";
+import { getServerAuthUser } from "auth/server";
 
 export /**
  * Function will fetch the profile
@@ -110,6 +116,46 @@ const addCompetitionProfile = async (
 	}
 ) => {
 	try {
+		// get the user for the server
+		const user = await getServerAuthUser();
+
+		// handle if there is no user
+		if (!user) {
+			throw new Error("Cannot join competition for unauthenticated user");
+		}
+
+		// get competition data
+		const competitionResponse = await fetch(
+			`${BaseURL}/api/competitions/${competitionID}`
+		);
+		const competitions: CompetitionsResponseType =
+			await competitionResponse.json();
+		const competitionData = competitions.at(0);
+
+		if (
+			competitionData?.registrationOpen &&
+			!competitionData.registrationOpen
+		) {
+			throw new Error(
+				"Competition is closed. If there is an issue please contact the host"
+			);
+		}
+
+		// get the competition players
+		const playersResponse = await fetch(
+			`${BaseURL}/api/players/${competitionID}`
+		);
+		const players: PlayersResponseType = await playersResponse.json();
+
+		if (
+			competitionData?.maxPlayers &&
+			competitionData.maxPlayers <= players.length
+		) {
+			throw new Error(
+				"Competition is Full. If there is an issue please contact the host"
+			);
+		}
+
 		// get initial profile
 		const profileResponse = await fetch(
 			`${BaseURL}/api/player/${userID}/${sport}`
@@ -139,6 +185,16 @@ const addCompetitionProfile = async (
 		await competitionProfilesSubcollection(competitionID)
 			.doc(profileData.id)
 			.set(competitionProfile, { merge: true });
+
+		// if max player limit is reached after adding the new player
+		if (
+			competitionData?.maxPlayers &&
+			competitionData.maxPlayers <= players.length + 1
+		) {
+			await competitionsCollection
+				.doc(competitionID)
+				.update({ registrationOpen: false });
+		}
 
 		// get the competition
 		return competitionProfile;

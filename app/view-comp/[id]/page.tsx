@@ -121,12 +121,25 @@ export default async function ViewCompScreen({
 						) : (
 							<ActionButton
 								className="w-auto px-12"
+								disabled={
+									(competitionData?.maxPlayers &&
+										competitionData?.maxPlayers <=
+											players.length) ||
+									!competitionData?.registrationOpen
+								}
 								referRoute={
 									user?.id
 										? `/join-comp/${competitionData?.id}`
 										: `/comp-login/${competitionData?.id}`
 								}
-								title="Join Competition"
+								title={
+									(competitionData?.maxPlayers &&
+										competitionData?.maxPlayers <=
+											players.length) ||
+									!competitionData?.registrationOpen
+										? "Compeition is Full"
+										: "Join Competition"
+								}
 								colorVariant="indigo"
 							/>
 						)}

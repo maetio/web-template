@@ -23,6 +23,9 @@ export interface Competition {
 	rating?: Rating;
 	totalPlayers?: number;
 	totalTeams?: number;
+	maxPlayers?: number;
+	minutesPerGame?: number;
+	registrationOpen: boolean;
 }
 
 /**
