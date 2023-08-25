@@ -15,7 +15,7 @@ import {
 // cors whiteListed Domains
 const allowedOrigins = [
 	`${BaseURL}`,
-	"https://www.google.com",
+	// "https://www.google.com",
 	"https://maetio.retool.com/editor/e9ce7e92-1cd9-11ee-9ea3-9f44bbfdf5bc/Host%20%231/Maet%20Host%20Facing%20App%20-%20Seth%20playground",
 	"https://maetio.retool.com",
 ];

@@ -38,8 +38,6 @@ export const AuthContextProvider: React.FC<{
 
 	// detect the auth state change
 	useEffect(() => {
-		console.log("fired thing 1");
-
 		// use the firebase on auth state changed listener
 		const unsubscribe = onIdTokenChanged(auth, async (userObserver) => {
 			if (userObserver) {
