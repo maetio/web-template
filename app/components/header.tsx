@@ -21,7 +21,7 @@ export /**
 	return (
 		<header className="fixed top-0 z-50 h-20 w-full border-b border-gray-900/10 bg-white">
 			<nav
-				className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+				className="lg:px-98 mx-auto flex max-w-[1600px] items-center justify-between p-6"
 				aria-label="Global"
 			>
 				<div className="flex items-center gap-x-12">
@@ -62,7 +62,7 @@ export /**
 				</div>
 			</nav>
 			<Dialog
-				as="div"
+				as="nav"
 				className="lg:hidden"
 				open={mobileMenuOpen}
 				onClose={setMobileMenuOpen}

@@ -3,11 +3,13 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import Stripe from "stripe";
 import { StripePaymentElement } from "./stripe-payment-element";
 
 export interface StripeCheckoutParams
 	extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
-	paymentIntent: string;
+	paymentIntentSecret: string;
+	paymentIntent: Stripe.Response<Stripe.PaymentIntent> | undefined;
 	redirectURL?: string;
 	price: number;
 }
@@ -27,6 +29,7 @@ export /**
  * @return {*}
  */
 const StripeCheckoutForm: React.FC<StripeCheckoutParams> = ({
+	paymentIntentSecret,
 	paymentIntent,
 	redirectURL,
 	price,
@@ -46,13 +49,17 @@ const StripeCheckoutForm: React.FC<StripeCheckoutParams> = ({
 			<Elements
 				stripe={stripePromise}
 				options={{
-					clientSecret: paymentIntent,
+					clientSecret: paymentIntentSecret,
 					// Fully customizable with appearance API.
 					// https://stripe.com/docs/elements/appearance-api
 					appearance: {},
 				}}
 			>
-				<StripePaymentElement redirectURL={redirectURL} price={price} />
+				<StripePaymentElement
+					paymentIntent={paymentIntent}
+					redirectURL={redirectURL}
+					price={price}
+				/>
 			</Elements>
 		</section>
 	);

@@ -1,6 +1,6 @@
 import { ActionButton } from "app/components/action-button";
 import { MaetIcon } from "app/components/icons";
-import { createEmailPassword } from "auth/client";
+import { signInWithEmailPassword } from "auth/client";
 import { getUserData, updateUserData } from "server-actions/users";
 
 /**
@@ -16,7 +16,7 @@ const submitFormAction = async (data: FormData) => {
 	const password = data?.get("password")?.toString();
 
 	// create account
-	await createEmailPassword(email, password);
+	if (email && password) await signInWithEmailPassword(email, password, true);
 
 	// get the data
 	const firstName = data?.get("firstName")?.toString();

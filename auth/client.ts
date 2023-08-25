@@ -13,7 +13,10 @@ import {
 	signOut,
 	signInWithPopup,
 	createUserWithEmailAndPassword,
-	signInAnonymously,
+	signInWithEmailAndPassword,
+	updatePassword,
+	sendPasswordResetEmail,
+	fetchSignInMethodsForEmail,
 } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { getAndUpdateUserData } from "server-actions/users";
@@ -92,88 +95,74 @@ export /**
  *
  * @return {*}
  */
-const createEmailPassword = async (email?: string, password?: string) => {
+const signInWithEmailPassword = async (
+	email: string,
+	password: string,
+	newUser: boolean,
+	firstName?: string,
+	lastName?: string
+) => {
 	if (!email || !password) throw Error("Need both email and password");
-	const userCredential = await createUserWithEmailAndPassword(
+
+	try {
+		const userCredential = newUser
+			? await createUserWithEmailAndPassword(auth, email, password)
+			: await signInWithEmailAndPassword(auth, email, password);
+
+		// get the id token from firebase
+		const idTokenResult = await userCredential.user.getIdTokenResult();
+
+		// set the cookie with firebase auth edge middleware
+		// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
+		await fetch("/api/login", {
+			method: "GET",
+			headers: {
+				Authorization: `Bearer ${idTokenResult.token}`,
+			},
+		});
+
+		if (newUser) {
+			// initialize the user data
+			await getAndUpdateUserData({
+				email: userCredential.user.email,
+				emailVerified: userCredential.user.emailVerified,
+				firstName: firstName || null,
+				lastName: lastName || null,
+				image: userCredential.user.photoURL,
+			});
+		}
+
+		// return the user credential
+		return userCredential;
+	} catch (e: any) {
+		throw Error(e);
+	}
+};
+
+export /**
+ * function that sends an email to reset user's password
+ *
+ * @param {string} email
+ */
+const sendForgotPasswordEmail = async (email: string) => {
+	await sendPasswordResetEmail(auth, email);
+};
+
+export /**
+ * function will update the users password if they provide their old and new password
+ *
+ */
+const updateUserPassword = async (
+	email: string,
+	password: string,
+	newPassword: string
+) => {
+	const userCredential = await signInWithEmailAndPassword(
 		auth,
 		email,
 		password
 	);
-
-	// get the id token from firebase
-	const idTokenResult = await userCredential.user.getIdTokenResult();
-
-	// set the cookie with firebase auth edge middleware
-	// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
-	await fetch("/api/login", {
-		method: "GET",
-		headers: {
-			Authorization: `Bearer ${idTokenResult.token}`,
-		},
-	});
-
-	// access firstname lastname
-	const nameParts = userCredential.user?.displayName?.split(" ");
-	const firstName = nameParts?.at(0);
-	const lastName =
-		nameParts?.length && nameParts?.length > 1
-			? nameParts[nameParts.length - 1]
-			: "";
-
-	// initialize the user data
-	await getAndUpdateUserData({
-		email: userCredential.user.email,
-		emailVerified: userCredential.user.emailVerified,
-		firstName: firstName || null,
-		lastName: lastName || null,
-		image: userCredential.user.photoURL,
-	});
-
-	// return the user credential
-	return userCredential;
-};
-
-export /**
- * Function that will sign in with google
- *
- * @return {*}
- */
-const signInAsGuest = async () => {
-	const userCredential = await signInAnonymously(auth);
-
-	console.log(userCredential);
-
-	// get the id token from firebase
-	const idTokenResult = await userCredential.user.getIdTokenResult();
-
-	// set the cookie with firebase auth edge middleware
-	// https://github.com/awinogrodzki/next-firebase-auth-edge#example-authprovider
-	await fetch("/api/login", {
-		method: "GET",
-		headers: {
-			Authorization: `Bearer ${idTokenResult.token}`,
-		},
-	});
-
-	// access firstname lastname
-	const nameParts = userCredential.user?.displayName?.split(" ");
-	const firstName = nameParts?.at(0);
-	const lastName =
-		nameParts?.length && nameParts?.length > 1
-			? nameParts[nameParts.length - 1]
-			: "";
-
-	// initialize the user data
-	await getAndUpdateUserData({
-		email: userCredential.user.email,
-		emailVerified: userCredential.user.emailVerified,
-		firstName: firstName || "Anonymous",
-		lastName: lastName || "User",
-		image: userCredential.user.photoURL,
-	});
-
-	// return the user credential
-	return userCredential;
+	await updatePassword(userCredential.user, newPassword);
 };
 
 export /**
@@ -288,3 +277,15 @@ export async function getPrivateUserData(
 	const userDoc = await getDoc(doc(privateUserCollection, userID));
 	return { ...userDoc.data(), id: userDoc.id };
 }
+
+export /**
+ * takes in an email and returns an array of the user's sign in methods
+ *
+ * @param {string} email
+ * @return {*}
+ */
+const fetchSignInMethods = async (email?: string | null) => {
+	if (!email) throw new Error("no user email provided");
+	const signInMethods = await fetchSignInMethodsForEmail(auth, email);
+	return signInMethods;
+};

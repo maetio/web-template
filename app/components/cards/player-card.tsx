@@ -1,6 +1,7 @@
 import React from "react";
 import { FaMedal } from "react-icons/fa6";
 import { Profile } from "types/profile";
+import { NextImage } from "app/components/image";
 
 export interface PlayerCardProps
 	extends Omit<
@@ -65,10 +66,10 @@ const PlayerCard: React.FC<PlayerCardProps> = ({
 			)}
 			<div className="col-span-2 flex items-center gap-1">
 				{player.image ? (
-					<img
-						className="h-10 w-10 flex-none rounded-full bg-gray-50"
+					<NextImage
+						className="h-10 w-10 flex-none  bg-gray-50"
 						src={player.image || undefined}
-						alt=""
+						alt="player image"
 					/>
 				) : (
 					<div className="h-4 w-4 rounded-full bg-gradient-to-b from-gradientYellow via-gradientOrange to-gradientBlue md:h-8 md:w-8"></div>

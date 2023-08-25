@@ -8,10 +8,13 @@ import {
 } from "@stripe/react-stripe-js";
 import { BaseURL } from "config/constants";
 import { ActionButton } from "app/components/action-button";
+import { addTransactionEvent } from "server-actions/stripe";
+import Stripe from "stripe";
 
 interface StripePaymentElementParams {
 	redirectURL?: string;
 	price: number;
+	paymentIntent: Stripe.Response<Stripe.PaymentIntent> | undefined;
 }
 
 export /**
@@ -23,6 +26,7 @@ export /**
 const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
 	redirectURL,
 	price,
+	paymentIntent,
 }) => {
 	// setting up the client comment docs
 	// https://stripe.com/docs/connect/collect-then-transfer-guide?platform=web&payment-ui=elements&client=react#set-up-stripe.js
@@ -44,7 +48,20 @@ const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
 		// which would refresh the page.
 		event.preventDefault();
 
-		if (!stripe || !elements) {
+		const data = {
+			eventType: 605,
+			actionID: paymentIntent?.id,
+			customerID: paymentIntent?.customer,
+			destinationAccount: paymentIntent?.transfer_data?.destination,
+			latest_charge: paymentIntent?.latest_charge,
+			amount: paymentIntent?.amount,
+			amountFee: paymentIntent?.application_fee_amount,
+		};
+
+		// add the transaction event to the db
+		const success = await addTransactionEvent(data);
+
+		if (!stripe || !elements || success !== "success") {
 			// Stripe.js hasn't yet loaded.
 			// Make sure to disable form submission until Stripe.js has loaded.
 			return;
@@ -77,15 +94,19 @@ const StripePaymentElement: React.FC<StripePaymentElementParams> = ({
 		<section>
 			<form onSubmit={handleSubmit}>
 				<PaymentElement />
-				<div className="py-6">
+				<div className="py-8">
 					<ActionButton
 						isLoading={isLoading}
 						// className="mt-5 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-						className="mt-6 w-full text-lg"
+						className="w-full text-lg"
 						colorVariant="indigo"
 						disabled={!stripe}
 						type="submit"
-						title={`Pay $${price}`}
+						title={`Register $${
+							paymentIntent?.amount
+								? paymentIntent.amount / 100
+								: price / 100
+						}`}
 					/>
 				</div>
 				{/* Show error message to your customers */}

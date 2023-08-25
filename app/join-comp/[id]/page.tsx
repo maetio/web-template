@@ -7,10 +7,13 @@ import {
 	getOrCreateProfile,
 } from "server-actions/profiles";
 import { ActionButton } from "app/components/action-button";
-import { MaetIcon } from "app/components/icons";
 import { getStripeSession } from "server-actions/stripe";
 import { StripeCheckoutForm } from "app/components/stripe/stripe-checkout-form";
 import { NextImage } from "app/components/image";
+import { AltPlayerCard } from "app/components/cards/alt-player-card";
+import { Steps } from "app/components/layout/steps";
+import { RatedCompetitionCard } from "app/components/cards";
+import { MaetIcon } from "app/components/icons";
 
 /**
  * Screen will join the competition for the user
@@ -63,59 +66,76 @@ export default async function JoinCompScreen({
 				);
 			}
 		} catch (e: any) {
-			console.warn("error with form action", e);
+			throw Error(e);
 		}
 	};
 
 	const stripeSession = await getStripeSession(competitionData?.id);
 
 	return (
-		<>
-			<div className="flex h-full min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-				<div className="sm:mx-auto sm:w-full sm:max-w-sm">
-					<MaetIcon
-						size={20}
-						className="align-center mx-auto w-20 justify-center"
-					/>
-					<h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-						Join {competitionData?.name}
+		<main>
+			<Steps
+				steps={[
+					{
+						id: "01",
+						name: "Selected Competition",
+						href: "#",
+						status: "complete",
+					},
+					{
+						id: "02",
+						name: "Link Maet Account",
+						href: "#",
+						status: "complete",
+					},
+					{
+						id: "03",
+						name: "Register",
+						href: "#",
+						status: "current",
+					},
+				]}
+			/>
+			<div className="flex w-full flex-1 flex-col items-center justify-center gap-8 px-6 py-12 lg:px-8">
+				<div className="sm:w-full sm:max-w-md">
+					{competitionData?.image ? (
+						<NextImage
+							className="align-center mx-auto justify-center rounded-xl"
+							size={100}
+							src={competitionData?.image}
+							alt="competition banner"
+						/>
+					) : (
+						<MaetIcon
+							size={20}
+							className="align-center mx-auto w-20 justify-center"
+						/>
+					)}
+
+					<h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+						{competitionData?.name || "Welcome to Maet!"}
 					</h2>
 				</div>
-				<div className="col-span-1 my-4 flex flex-col rounded-lg bg-white text-center">
-					<div className="align-center flex flex-col justify-center p-8">
-						<NextImage
-							size={100}
-							src={profileData?.image}
-							alt={profileData?.firstName}
-						/>
-						<h3 className="my-3 text-lg font-medium text-gray-900">
-							{profileData?.firstName} {profileData?.lastName}
-						</h3>
-						<div className="align-center flex self-center">
-							<MaetIcon
-								size={10}
-								className="align-center flex justify-center"
-							/>
-							<p className="ml-2 self-center text-2xl font-semibold text-gray-900">
-								{Math.round(
-									profileData?.rating?.displayRating || 100
-								)}
-							</p>
-						</div>
-					</div>
-				</div>
-				<div className="sm:mx-auto sm:w-full sm:max-w-sm">
-					<div className="space-y-6">
+
+				<div className="flex flex-col gap-8 sm:w-full sm:max-w-md">
+					<RatedCompetitionCard />
+					{profileData && <AltPlayerCard player={profileData} />}
+
+					<div>
 						<div>
 							{competitionData?.price &&
 							competitionData.price > 0 ? (
 									<div>
-										{stripeSession?.paymentIntent ? (
+										{stripeSession?.paymentIntentSecret ? (
 											<StripeCheckoutForm
 												price={competitionData.price}
+												paymentIntentSecret={
+													stripeSession?.paymentIntentSecret
+												}
 												paymentIntent={
 													stripeSession?.paymentIntent
 												}
+												redirectURL={`${BaseURL}/join-comp/${params.id}/success`}
 											/>
 										) : (
 											<button>loading</button>
@@ -124,7 +144,7 @@ export default async function JoinCompScreen({
 								) : (
 									<ActionButton
 										className="w-full"
-										referRoute={`/view-comp/${params.id}`}
+										referRoute={`/join-comp/${params.id}/success`}
 										colorVariant="indigo"
 										title="Join competition"
 										action={submitFormAction}
@@ -134,6 +154,6 @@ export default async function JoinCompScreen({
 					</div>
 				</div>
 			</div>
-		</>
+		</main>
 	);
 }

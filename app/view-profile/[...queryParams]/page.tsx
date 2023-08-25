@@ -15,6 +15,7 @@ import { MdSportsTennis } from "react-icons/md";
 import { Competition } from "types/competition";
 import { capitalizeFirstLetter } from "utils/format";
 import { GameCard } from "app/components/cards";
+import { NextImage } from "app/components/image";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -88,7 +89,7 @@ export default async function ViewProfileScreen({
 			))} */}
 			<div className="flex flex-row gap-x-3 pt-8">
 				{profileData?.image ? (
-					<img
+					<NextImage
 						className="h-28 w-28 flex-none rounded-full bg-gray-50"
 						src={profileData.image || undefined}
 						alt=""

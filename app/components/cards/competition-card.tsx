@@ -12,7 +12,8 @@ import { showTimeOrDate } from "utils/date";
 import { BaseURL } from "config/constants";
 import { ProfilesResponseType } from "types/next-api";
 import { capitalizeFirstLetter } from "utils/format";
-import AltPlayerCard from "./alt-player-card";
+import { NextImage } from "app/components/image";
+import { AltPlayerCard } from "./alt-player-card";
 
 export interface CompetitionCardProps
 	extends Omit<
@@ -70,7 +71,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 				<div className="row-span-4 grid grid-cols-12">
 					<div className="col-span-2 flex">
 						{competition.image ? (
-							<img
+							<NextImage
 								className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
 								src={competition.image || undefined}
 								alt=""

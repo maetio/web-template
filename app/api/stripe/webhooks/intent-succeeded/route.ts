@@ -13,8 +13,8 @@ import { CompetitionProfile } from "types/profile";
 // grab envs as string
 const STRIPE_SECRET = process.env.STRIPE_SECRET as string;
 
-const STRIPE_ENDPOINT_SECRET_INTENT_BALANCE = process.env
-	.STRIPE_ENDPOINT_SECRET_INTENT_BALANCE as string;
+const STRIPE_ENDPOINT_SECRET_INTENT_SUCCEEDED = process.env
+	.STRIPE_ENDPOINT_SECRET_INTENT_SUCCEEDED as string;
 
 // initialize stripe
 const stripe = new Stripe(STRIPE_SECRET, {
@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
 			const event = stripe.webhooks.constructEvent(
 				body,
 				sig,
-				STRIPE_ENDPOINT_SECRET_INTENT_BALANCE
+				STRIPE_ENDPOINT_SECRET_INTENT_SUCCEEDED
 			);
 
 			// check what type of event it is
