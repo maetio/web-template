@@ -9,9 +9,9 @@ export type ViewCompetitionsResponseType = {
 	games: GamesResponseType;
 };
 
-export type CompetitionsTestResponseType = ({ id: string } & Partial<
+export type CompetitionsTestResponseType = { id: string } & Partial<
 	CollectionDataTypes["competitions"]
->);
+>;
 
 export type CompetitionsResponseType = ({ id: string } & Partial<
 	CollectionDataTypes["competitions"]

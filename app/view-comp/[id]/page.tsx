@@ -33,7 +33,7 @@ export default async function ViewCompScreenTest({
 	// get the user data
 	const user = await getUserData();
 
-	// get competition data
+	// get competition data from new api
 	const viewCompetitionResponse = await fetch(
 		`${BaseURL}/api/view-comp-data/${params.id}`
 	);
@@ -43,28 +43,6 @@ export default async function ViewCompScreenTest({
 	const { competitionDoc, games, players } = viewCompetitionData;
 
 	const competitionData = competitionDoc.at(0);
-
-	console.log("competition data", competitionData);
-
-	// test start
-
-	// // get competition data
-	// const competitionResponse = await fetch(
-	// 	`${BaseURL}/api/competitions/${params.id}`
-	// );
-	// const competitions: CompetitionsResponseType =
-	// 	await competitionResponse.json();
-	// const competitionData = competitions.at(0);
-
-	// // get the competition players
-	// const playersResponse = await fetch(`${BaseURL}/api/players/${params.id}`);
-	// const players: PlayersResponseType = await playersResponse.json();
-
-	// // get the competition games
-	// const gamesResponse = await fetch(`${BaseURL}/api/games/${params.id}`);
-	// const games: GamesResponseType = await gamesResponse.json();
-
-	// test end
 
 	// get if the player has joined the competition
 	const compPlayerResponse = await fetch(
