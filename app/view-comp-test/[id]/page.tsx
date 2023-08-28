@@ -3,7 +3,7 @@ import {
 	// CompProfilesResponseType,
 	CompetitionsResponseType,
 	// GamesResponseType,
-	// PlayersResponseType,
+	PlayersResponseType,
 } from "types/next-api";
 import { BaseURL } from "config/constants";
 // import { getUserData } from "server-actions/users";
@@ -13,10 +13,11 @@ import { NextImage } from "app/components/image";
 
 // import { AltPlayerCard } from "app/components/cards/alt-player-card";
 // import { GameCard } from "app/components/cards/game-card";
-// import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
-// import { filterPlayerData } from "utils/format";
+import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
+import { filterPlayerData } from "utils/format";
 import { GamesCardList } from "app/components/data-display/games-card-list";
-import { PlayerCardList } from "app/components/data-display/player-card-list";
+import { AltPlayerCard } from "app/components/cards/alt-player-card";
+// import { PlayerCardList } from "app/components/data-display/player-card-list";
 
 /**
  * Function will display the competition to the user
@@ -46,8 +47,8 @@ export default async function ViewCompScreen({
 	const competitionData = competitions.at(0);
 
 	// // get the competition players
-	// const playersResponse = await fetch(`${BaseURL}/api/players/${params.id}`);
-	// const players: PlayersResponseType = await playersResponse.json();
+	const playersResponse = await fetch(`${BaseURL}/api/players/${params.id}`);
+	const players: PlayersResponseType = await playersResponse.json();
 
 	// get the competition games
 	// const gamesResponse = await fetch(`${BaseURL}/api/games/${params.id}`);
@@ -69,8 +70,8 @@ export default async function ViewCompScreen({
 	// 	return "Not Ranked";
 	// };
 
-	// // filter the player data for victory to use
-	// const filteredPlayerData = filterPlayerData(players);
+	// filter the player data for victory to use
+	const filteredPlayerData = filterPlayerData(players);
 
 	return (
 		<main className="container min-w-full px-0 sm:px-2">
@@ -162,8 +163,8 @@ export default async function ViewCompScreen({
 					</div>
 
 					{/* players and graph on SMALL screens  */}
-					<PlayerCardList compID={params.id} aside={false} />
-					{/* <section className="lg:hidden">
+					{/* <PlayerCardList compID={params.id} aside={false} /> */}
+					<section className="lg:hidden">
 						<div>
 							<h3 className="text-3xl font-bold">Players</h3>
 							<VictoryBarGraph
@@ -195,7 +196,7 @@ export default async function ViewCompScreen({
 								))}
 							</ul>
 						</div>
-					</section> */}
+					</section>
 
 					<h3 className="mt-10 text-3xl font-bold lg:mt-0 xl:mt-5">
 						Games
@@ -215,8 +216,8 @@ export default async function ViewCompScreen({
 				</section>
 
 				{/* sidebar on LARGE screens */}
-				<PlayerCardList compID={params.id} aside />
-				{/* <aside className="top-24 ml-3 hidden h-[82vh] self-start rounded-lg bg-white p-4 lg:sticky lg:inline">
+				{/* <PlayerCardList compID={params.id} aside /> */}
+				<aside className="top-24 ml-3 hidden h-[82vh] self-start rounded-lg bg-white p-4 lg:sticky lg:inline">
 					<div className="flex h-full flex-col">
 						<div>
 							<h3 className="text-3xl font-bold">Players</h3>
@@ -246,7 +247,7 @@ export default async function ViewCompScreen({
 							</ul>
 						</div>
 					</div>
-				</aside> */}
+				</aside>
 			</section>
 		</main>
 	);
