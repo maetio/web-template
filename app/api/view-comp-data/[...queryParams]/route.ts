@@ -21,6 +21,28 @@ export async function GET(
 	const [compID, startTime, endTime] = params.queryParams;
 
 	try {
+		// start
+
+		// get competition data
+		const competitionResponse = await fetch(
+			`${BaseURL}/api/competitions/${params.id}`
+		);
+		const competitions: CompetitionsResponseType =
+			await competitionResponse.json();
+		const competitionData = competitions.at(0);
+
+		// get the competition players
+		const playersResponse = await fetch(
+			`${BaseURL}/api/players/${params.id}`
+		);
+		const players: PlayersResponseType = await playersResponse.json();
+
+		// get the competition games
+		const gamesResponse = await fetch(`${BaseURL}/api/games/${params.id}`);
+		const games: GamesResponseType = await gamesResponse.json();
+
+		// end
+
 		// if the comp id is provided, return that competition
 		if (compID && compID !== "all") {
 			const compDoc = await competitionsCollection.doc(compID).get();
