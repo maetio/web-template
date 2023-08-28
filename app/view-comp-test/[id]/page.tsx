@@ -1,20 +1,20 @@
 import React from "react";
 import {
-	CompProfilesResponseType,
+	// CompProfilesResponseType,
 	CompetitionsResponseType,
-	GamesResponseType,
-	PlayersResponseType,
+	// GamesResponseType,
+	// PlayersResponseType,
 } from "types/next-api";
 import { BaseURL } from "config/constants";
-import { getUserData } from "server-actions/users";
-import { ActionButton } from "app/components/action-button";
+// import { getUserData } from "server-actions/users";
+// import { ActionButton } from "app/components/action-button";
 import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
 
-import { AltPlayerCard } from "app/components/cards/alt-player-card";
-import { GameCard } from "app/components/cards/game-card";
-import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
-import { filterPlayerData } from "utils/format";
+// import { AltPlayerCard } from "app/components/cards/alt-player-card";
+// import { GameCard } from "app/components/cards/game-card";
+// import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
+// import { filterPlayerData } from "utils/format";
 import { GamesCardList } from "app/components/data-display/games-card-list";
 import { PlayerCardList } from "app/components/data-display/player-card-list";
 
@@ -35,7 +35,7 @@ export default async function ViewCompScreen({
 	params: { id: string };
 }) {
 	// get the user data
-	const user = await getUserData();
+	// const user = await getUserData();
 
 	// get competition data
 	const competitionResponse = await fetch(
@@ -54,20 +54,20 @@ export default async function ViewCompScreen({
 	// const games: GamesResponseType = await gamesResponse.json();
 
 	// get if the player has joined the competition
-	const compPlayerResponse = await fetch(
-		`${BaseURL}/api/comp-player/${params.id}/${user?.id}`
-	);
-	const compPlayer: CompProfilesResponseType =
-		await compPlayerResponse.json();
+	// const compPlayerResponse = await fetch(
+	// 	`${BaseURL}/api/comp-player/${params.id}/${user?.id}`
+	// );
+	// const compPlayer: CompProfilesResponseType =
+	// 	await compPlayerResponse.json();
 
-	// set rank string
-	const getRankString = (rank: number) => {
-		if (rank === 0) return "1st";
-		if (rank === 1) return "2nd";
-		if (rank === 2) return "3rd";
-		if (rank > 2) return `${rank + 1}th`;
-		return "Not Ranked";
-	};
+	// // set rank string
+	// const getRankString = (rank: number) => {
+	// 	if (rank === 0) return "1st";
+	// 	if (rank === 1) return "2nd";
+	// 	if (rank === 2) return "3rd";
+	// 	if (rank > 2) return `${rank + 1}th`;
+	// 	return "Not Ranked";
+	// };
 
 	// // filter the player data for victory to use
 	// const filteredPlayerData = filterPlayerData(players);
