@@ -1,5 +1,9 @@
-import { CompetitionsResponseType } from "types/next-api";
-import { competitionsCollection } from "config/server";
+import { ViewCompetitionsResponseType } from "types/next-api";
+import {
+	competitionProfilesSubcollection,
+	competitionsCollection,
+	gamesCollection,
+} from "config/server";
 import { Timestamp } from "firebase-admin/firestore";
 import { NextResponse } from "next/server";
 
@@ -16,59 +20,51 @@ import { NextResponse } from "next/server";
 export async function GET(
 	_request: Request,
 	{ params }: { params: { queryParams: Array<string | undefined> } }
-): Promise<NextResponse<CompetitionsResponseType>> {
+): Promise<NextResponse<ViewCompetitionsResponseType>> {
 	// get the parameters from the query
-	const [compID, startTime, endTime] = params.queryParams;
+	const [compID] = params.queryParams;
 
+	if (!compID) throw Error("No competition ID provided");
 	try {
-		// start
-
-		// get competition data
-		const competitionResponse = await fetch(
-			`${BaseURL}/api/competitions/${params.id}`
-		);
-		const competitions: CompetitionsResponseType =
-			await competitionResponse.json();
-		const competitionData = competitions.at(0);
-
-		// get the competition players
-		const playersResponse = await fetch(
-			`${BaseURL}/api/players/${params.id}`
-		);
-		const players: PlayersResponseType = await playersResponse.json();
-
-		// get the competition games
-		const gamesResponse = await fetch(`${BaseURL}/api/games/${params.id}`);
-		const games: GamesResponseType = await gamesResponse.json();
-
-		// end
-
-		// if the comp id is provided, return that competition
-		if (compID && compID !== "all") {
-			const compDoc = await competitionsCollection.doc(compID).get();
-			return NextResponse.json([{ ...compDoc.data(), id: compDoc.id }]);
-		}
-
-		// set the start timestamp
-		const startDate = new Date(startTime || 0);
+		const startDate = new Date(0);
 		const startTimestamp = Timestamp.fromDate(startDate);
 
 		// set the end timestamp to 100 years in the future from today
 		const futureDate = new Date();
 		futureDate.setFullYear(futureDate.getFullYear() + 100);
-		const endTimestamp = Timestamp.fromDate(
-			endTime ? new Date(endTime) : futureDate
-		);
+		const endTimestamp = Timestamp.fromDate(futureDate);
 
-		// set the use cases for the query
-		const querySnapshot = await competitionsCollection
+		const compDoc = await competitionsCollection.doc(compID).get();
+
+		const gamesSnapshot = await gamesCollection
+			.where("competitionID", "==", compID)
 			.where("startTimestamp", ">=", startTimestamp)
-			.where("startTimestamp", "<=", endTimestamp)
-			.orderBy("startTimestamp")
+			.where("startTimestamp", "<", endTimestamp)
+			.orderBy("startTimestamp", "asc")
 			.get();
-		return NextResponse.json(
-			querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-		);
+
+		const gamesDoc = gamesSnapshot.docs.map((doc) => ({
+			...doc.data(),
+			id: doc.id,
+		}));
+
+		const playerSnapshot = await competitionProfilesSubcollection(compID)
+			.orderBy("rating.displayRating", "desc")
+			.limit(100)
+			.get();
+
+		const players = playerSnapshot.docs.map((doc) => ({
+			...doc.data(),
+			id: doc.id,
+		}));
+
+		const returnData: ViewCompetitionsResponseType = {
+			competitionDoc: [{ ...compDoc.data(), id: compDoc.id }],
+			games: gamesDoc,
+			players,
+		};
+
+		return NextResponse.json(returnData);
 	} catch (error: any) {
 		console.log(error);
 		throw Error(error);

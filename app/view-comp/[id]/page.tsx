@@ -40,7 +40,11 @@ export default async function ViewCompScreenTest({
 	const viewCompetitionData: ViewCompetitionsResponseType =
 		await viewCompetitionResponse.json();
 
-	const { competitionData, games, players } = viewCompetitionData;
+	const { competitionDoc, games, players } = viewCompetitionData;
+
+	const competitionData = competitionDoc.at(0);
+
+	console.log("competition data", competitionData);
 
 	// test start
 
@@ -126,8 +130,7 @@ export default async function ViewCompScreenTest({
 												profile.id === compPlayer.id
 										)
 									)}{" "}
-									of {players.length} total
-									players.
+									of {players.length} total players.
 								</h3>
 							</div>
 						) : (
