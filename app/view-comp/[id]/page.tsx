@@ -78,7 +78,7 @@ export default async function ViewCompScreen({
 					<NextImage
 						size={400}
 						src={competitionData?.image}
-						alt="competition profile"
+						alt={`${competitionData?.name} profile`}
 					/>
 				</div>
 				<div className=" mt-10 flex flex-col flex-wrap self-center lg:mx-5 lg:mt-0">
