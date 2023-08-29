@@ -1,7 +1,9 @@
 import React from "react";
 import {
 	CompProfilesResponseType,
-	ViewCompetitionsResponseType,
+	CompetitionsResponseType,
+	GamesResponseType,
+	PlayersResponseType,
 } from "types/next-api";
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
@@ -25,7 +27,7 @@ import { filterPlayerData } from "utils/format";
  * }
  * @return {*}
  */
-export default async function ViewCompScreenTest({
+export default async function ViewCompScreen({
 	params,
 }: {
 	params: { id: string };
@@ -33,16 +35,21 @@ export default async function ViewCompScreenTest({
 	// get the user data
 	const user = await getUserData();
 
-	// get competition data from new api
-	const viewCompetitionResponse = await fetch(
-		`${BaseURL}/api/view-comp-data/${params.id}`
+	// get competition data
+	const competitionResponse = await fetch(
+		`${BaseURL}/api/competitions/${params.id}`
 	);
-	const viewCompetitionData: ViewCompetitionsResponseType =
-		await viewCompetitionResponse.json();
+	const competitions: CompetitionsResponseType =
+		await competitionResponse.json();
+	const competitionData = competitions.at(0);
 
-	const { competitionDoc, games, players } = viewCompetitionData;
+	// get the competition players
+	const playersResponse = await fetch(`${BaseURL}/api/players/${params.id}`);
+	const players: PlayersResponseType = await playersResponse.json();
 
-	const competitionData = competitionDoc.at(0);
+	// get the competition games
+	const gamesResponse = await fetch(`${BaseURL}/api/games/${params.id}`);
+	const games: GamesResponseType = await gamesResponse.json();
 
 	// get if the player has joined the competition
 	const compPlayerResponse = await fetch(
