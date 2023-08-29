@@ -32,9 +32,15 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 	num,
 	...divParams
 }) => {
+	// // get host profile data
+	// const profileResponse = await fetch(
+	// 	`${BaseURL}/api/profile/${competition.hostID}`
+	// );
+	// const hostData: PlayerResponseType = await profileResponse.json();
+
 	// get host profile data
 	const profileResponse = await fetch(
-		`${BaseURL}/api/profile/${competition.hostID}`
+		`${BaseURL}/api/user-data/${competition.hostID}`
 	);
 	const hostData: PlayerResponseType = await profileResponse.json();
 
@@ -46,7 +52,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 			<div className="relative w-full">
 				<NextImage
 					src={competition.image}
-					alt="competition profile picture"
+					alt={`${competition.name} profile picture`}
 					className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
 				/>
 				<div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
@@ -79,22 +85,22 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 						{competition.description}
 					</p>
 				</div>
-				<div className="mt-8 flex w-full items-end justify-between">
-					<div className="relative flex items-center gap-x-4">
-						<NextImage
-							src={hostData.image}
-							alt="host profile picture"
-							className="h-10 w-10 rounded-lg bg-gray-100"
-						/>
-						<div className="text-sm leading-6">
-							<p className="truncate text-sm font-semibold text-gray-900">
-								{hostData.firstName} {hostData.lastName}
-							</p>
-							<p className="truncate text-sm text-gray-600">
-								{hostData.rating?.numGames}
-							</p>
+				<div className="mt-5 flex w-full items-end justify-between">
+					{hostData.image || hostData.firstName ? (
+						<div className="relative flex items-center gap-x-4">
+							<NextImage
+								src={hostData.image}
+								alt={`${hostData.firstName} profile picture`}
+								className="h-10 w-10 rounded-lg bg-gray-100"
+							/>
+							<div className="text-sm leading-6">
+								<p className="truncate text-sm font-semibold text-gray-900">
+									{hostData.firstName} {hostData.lastName}
+								</p>
+							</div>
 						</div>
-					</div>
+					) : null}
+
 					<div className="flex">
 						<p className="inline text-sm text-gray-600">
 							<p className="inline text-sm font-semibold text-gray-800">

@@ -11,7 +11,11 @@ import { CompetitionCard } from "app/components/cards/alt-comp-card";
  */
 export default async function Home() {
 	// fetch competition data
-	const competitionResponse = await fetch(`${BaseURL}/api/competitions/all`);
+	const competitionResponse = await fetch(
+		// line belows filters comp, to just future comps
+		// `${BaseURL}/api/competitions/all/${new Date().toString()}`
+		`${BaseURL}/api/competitions/all`
+	);
 	const competitions: CompetitionsResponseType =
 		await competitionResponse.json();
 
