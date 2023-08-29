@@ -32,9 +32,15 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 	num,
 	...divParams
 }) => {
+	// // get host profile data
+	// const profileResponse = await fetch(
+	// 	`${BaseURL}/api/profile/${competition.hostID}`
+	// );
+	// const hostData: PlayerResponseType = await profileResponse.json();
+
 	// get host profile data
 	const profileResponse = await fetch(
-		`${BaseURL}/api/profile/${competition.hostID}`
+		`${BaseURL}/api/user-data/${competition.hostID}`
 	);
 	const hostData: PlayerResponseType = await profileResponse.json();
 
@@ -79,7 +85,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 						{competition.description}
 					</p>
 				</div>
-				<div className="mt-8 flex w-full items-end justify-between">
+				<div className="mt-5 flex w-full items-end justify-between">
 					{hostData.image || hostData.firstName ? (
 						<div className="relative flex items-center gap-x-4">
 							<NextImage
@@ -90,9 +96,6 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 							<div className="text-sm leading-6">
 								<p className="truncate text-sm font-semibold text-gray-900">
 									{hostData.firstName} {hostData.lastName}
-								</p>
-								<p className="truncate text-sm text-gray-600">
-									{hostData.rating?.numGames}
 								</p>
 							</div>
 						</div>
