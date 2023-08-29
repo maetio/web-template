@@ -1,23 +1,14 @@
 import React from "react";
-import {
-	// CompProfilesResponseType,
-	CompetitionsResponseType,
-	// GamesResponseType,
-	PlayersResponseType,
-} from "types/next-api";
+import { CompProfilesResponseType, CompetitionsResponseType, PlayersResponseType } from "types/next-api";
 import { BaseURL } from "config/constants";
-// import { getUserData } from "server-actions/users";
-// import { ActionButton } from "app/components/action-button";
 import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
-
-// import { AltPlayerCard } from "app/components/cards/alt-player-card";
-// import { GameCard } from "app/components/cards/game-card";
 import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
 import { filterPlayerData } from "utils/format";
 import { GamesCardList } from "app/components/data-display/games-card-list";
 import { AltPlayerCard } from "app/components/cards/alt-player-card";
-// import { PlayerCardList } from "app/components/data-display/player-card-list";
+import { ActionButton } from "app/components/action-button";
+import { getUserData } from "server-actions/users";
 
 /**
  * Function will display the competition to the user
@@ -36,7 +27,7 @@ export default async function ViewCompScreen({
 	params: { id: string };
 }) {
 	// get the user data
-	// const user = await getUserData();
+	const user = await getUserData();
 
 	// get competition data
 	const competitionResponse = await fetch(
@@ -55,20 +46,20 @@ export default async function ViewCompScreen({
 	// const games: GamesResponseType = await gamesResponse.json();
 
 	// get if the player has joined the competition
-	// const compPlayerResponse = await fetch(
-	// 	`${BaseURL}/api/comp-player/${params.id}/${user?.id}`
-	// );
-	// const compPlayer: CompProfilesResponseType =
-	// 	await compPlayerResponse.json();
+	const compPlayerResponse = await fetch(
+		`${BaseURL}/api/comp-player/${params.id}/${user?.id}`
+	);
+	const compPlayer: CompProfilesResponseType =
+		await compPlayerResponse.json();
 
 	// // set rank string
-	// const getRankString = (rank: number) => {
-	// 	if (rank === 0) return "1st";
-	// 	if (rank === 1) return "2nd";
-	// 	if (rank === 2) return "3rd";
-	// 	if (rank > 2) return `${rank + 1}th`;
-	// 	return "Not Ranked";
-	// };
+	const getRankString = (rank: number) => {
+		if (rank === 0) return "1st";
+		if (rank === 1) return "2nd";
+		if (rank === 2) return "3rd";
+		if (rank > 2) return `${rank + 1}th`;
+		return "Not Ranked";
+	};
 
 	// filter the player data for victory to use
 	const filteredPlayerData = filterPlayerData(players);
@@ -102,7 +93,7 @@ export default async function ViewCompScreen({
 							"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
 					</p>
 
-					{/* <div className="flex flex-row flex-wrap py-4">
+					<div className="flex flex-row flex-wrap py-4">
 						{compPlayer?.rating?.displayRating ? (
 							<div className="flex flex-row">
 								<NextImage
@@ -146,7 +137,7 @@ export default async function ViewCompScreen({
 								colorVariant="indigo"
 							/>
 						)}
-					</div> */}
+					</div>
 				</div>
 			</section>
 
