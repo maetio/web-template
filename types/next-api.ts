@@ -3,6 +3,16 @@ import { CollectionDataTypes, SubcollectionDataTypes } from ".";
 /**
  * Reponse type defined here important for importing into the components that hit this api
  */
+export type ViewCompetitionsResponseType = {
+	competitionDoc: CompetitionsResponseType;
+	players: PlayersResponseType;
+	games: GamesResponseType;
+};
+
+export type CompetitionsTestResponseType = { id: string } & Partial<
+	CollectionDataTypes["competitions"]
+>;
+
 export type CompetitionsResponseType = ({ id: string } & Partial<
 	CollectionDataTypes["competitions"]
 >)[];

@@ -31,8 +31,14 @@ const NextImage = ({
 
 	// check if image is a url
 	useEffect(() => {
-		if (src) setImageSrc(src);
-	}, [src]);
+		if (src) {
+			setImageSrc(src);
+		} else {
+			setImageSrc(
+				`https://api.dicebear.com/7.x/initials/svg?seed=${alt.at(0)}`
+			);
+		}
+	}, [alt, src]);
 
 	if (typeof imageSrc === "string") {
 		return (

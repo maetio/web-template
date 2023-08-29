@@ -32,6 +32,9 @@ const ProfileButton = () => {
 						alt=""
 						loader={() =>
 							userData.image ||
+							`https://api.dicebear.com/7.x/initials/svg?seed=${userData?.firstName?.at(
+								0
+							)}` ||
 							"https://global.discourse-cdn.com/turtlehead/optimized/2X/c/c830d1dee245de3c851f0f88b6c57c83c69f3ace_2_250x250.png"
 						}
 					/>
