@@ -49,7 +49,7 @@ const NextImage = ({
 						: undefined
 				}
 				src={imageSrc}
-				className={className || "flex-none rounded-lg bg-gray-50"}
+				className={className || "flex-none rounded-2xl bg-gray-50"}
 				alt={alt || ""}
 				width={size === "full" ? undefined : size || 15}
 				height={size === "full" ? undefined : size || 15}
@@ -74,7 +74,7 @@ const NextImage = ({
 							: undefined
 					}
 					src={image}
-					className={className || "flex-none rounded-lg bg-gray-50"}
+					className={className || "flex-none rounded-2xl bg-gray-50"}
 					alt={alt || "Image not loaded..."}
 					width={size === "full" ? undefined : size || 15}
 					height={size === "full" ? undefined : size || 15}

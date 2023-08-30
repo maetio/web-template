@@ -5,7 +5,7 @@ import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
 import { getOrCreateProfile } from "server-actions/profiles";
 import { NextImage } from "app/components/image";
-import { AltPlayerCard } from "app/components/cards/alt-player-card";
+import { PlayerCard } from "app/components/cards/player-card";
 import { RatedCompetitionCard } from "app/components/cards";
 import { Steps } from "app/components/layout/steps";
 import Link from "next/link";
@@ -91,7 +91,7 @@ export default async function JoinCompSuccessScreen({
 				<div className="flex flex-col items-center gap-8 self-center sm:w-full sm:max-w-md">
 					<RatedCompetitionCard />
 					<div className="w-full">
-						{profileData && <AltPlayerCard player={profileData} />}
+						{profileData && <PlayerCard player={profileData} />}
 					</div>
 					<p className="flex w-full items-center justify-center text-xl font-normal leading-tight tracking-tight text-black">
 						<IoIosCheckmarkCircle className="mr-2 h-7 w-7 text-green-600" />{" "}

@@ -13,7 +13,7 @@ import { BaseURL } from "config/constants";
 import { ProfilesResponseType } from "types/next-api";
 import { capitalizeFirstLetter } from "utils/format";
 import { NextImage } from "app/components/image";
-import { AltPlayerCard } from "./alt-player-card";
+import { PlayerCard } from "./player-card";
 
 export interface CompetitionCardProps
 	extends Omit<
@@ -134,7 +134,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = async ({
 						<ul>
 							{topPlayers.map((player, rank) => (
 								<li key={player.id}>
-									<AltPlayerCard
+									<PlayerCard
 										player={player}
 										ranking={rank}
 									/>

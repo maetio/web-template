@@ -7,11 +7,11 @@ import {
 } from "types/next-api";
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
-import { ActionButton } from "app/components/action-button";
+// import { ActionButton } from "app/components/action-button";
 import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
 
-import { AltPlayerCard } from "app/components/cards/alt-player-card";
+import { PlayerCard } from "app/components/cards/player-card";
 import { GameCard } from "app/components/cards/game-card";
 import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
 import { filterPlayerData } from "utils/format";
@@ -81,74 +81,24 @@ export default async function ViewCompScreen({
 						alt={`${competitionData?.name} profile`}
 					/>
 				</div>
-				<div className=" mt-10 flex flex-col flex-wrap self-center lg:mx-5 lg:mt-0">
-					<section className="rounded-2xl bg-white p-4">
-						<h6 className="font-bold">Competition Info</h6>
-						<CompDisplayData
-							className="mt-5"
-							type={competitionData?.type || "session"}
-							sport={competitionData?.sport || "pickleball"}
-							startTimeISO={competitionData?.startTimeISO}
-							endTimeISO={competitionData?.endTimeISO}
-							location={competitionData?.location}
-						/>
-					</section>
-
-					<h1 className="my-3 flex flex-wrap text-5xl font-bold md:text-6xl">
+				{/* name and host section */}
+				<section className="flex w-full flex-col flex-wrap self-center rounded-2xl bg-white p-4">
+					<h1 className="flex flex-wrap text-3xl font-bold md:text-4xl">
 						{competitionData?.name}
 					</h1>
+				</section>
+			</section>
 
-					<p className="flex flex-wrap xl:hidden">
-						{competitionData?.description ||
-							"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
-					</p>
-
-					<div className="flex flex-row flex-wrap py-4">
-						{compPlayer?.rating?.displayRating ? (
-							<div className="flex flex-row">
-								<NextImage
-									size={50}
-									src={compPlayer.image}
-									alt="Player profile"
-								/>
-								<h3 className="ml-3 self-center font-semibold">
-									You are ranked{" "}
-									{getRankString(
-										players.findIndex(
-											(profile) =>
-												profile.id === compPlayer.id
-										)
-									)}{" "}
-									of {players.length} total players.
-								</h3>
-							</div>
-						) : (
-							<ActionButton
-								className="w-auto px-12"
-								disabled={
-									(competitionData?.maxPlayers &&
-										competitionData?.maxPlayers <=
-											players.length) ||
-									!competitionData?.registrationOpen
-								}
-								referRoute={
-									user?.id
-										? `/join-comp/${competitionData?.id}`
-										: `/comp-login/${competitionData?.id}`
-								}
-								title={
-									(competitionData?.maxPlayers &&
-										competitionData?.maxPlayers <=
-											players.length) ||
-									!competitionData?.registrationOpen
-										? "Competition is Full"
-										: "Join Competition"
-								}
-								colorVariant="indigo"
-							/>
-						)}
-					</div>
-				</div>
+			<section className="rounded-2xl bg-white p-4">
+				<h6 className="font-bold">Competition Info</h6>
+				<CompDisplayData
+					className="mt-5"
+					type={competitionData?.type || "session"}
+					sport={competitionData?.sport || "pickleball"}
+					startTimeISO={competitionData?.startTimeISO}
+					endTimeISO={competitionData?.endTimeISO}
+					location={competitionData?.location}
+				/>
 			</section>
 
 			{/* main content of the page */}
@@ -187,7 +137,7 @@ export default async function ViewCompScreen({
 							>
 								{players.map((player, rank) => (
 									<li key={player.id} className="px-5">
-										<AltPlayerCard
+										<PlayerCard
 											key={player.id}
 											player={player}
 											ranking={rank}
@@ -235,7 +185,7 @@ export default async function ViewCompScreen({
 							<ul role="list">
 								{players.map((player, rank) => (
 									<li key={player.id} className="px-3">
-										<AltPlayerCard
+										<PlayerCard
 											key={player.id}
 											player={player}
 											ranking={rank}

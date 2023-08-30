@@ -10,7 +10,7 @@ import { ActionButton } from "app/components/action-button";
 import { getStripeSession } from "server-actions/stripe";
 import { StripeCheckoutForm } from "app/components/stripe/stripe-checkout-form";
 import { NextImage } from "app/components/image";
-import { AltPlayerCard } from "app/components/cards/alt-player-card";
+import { PlayerCard } from "app/components/cards/player-card";
 import { Steps } from "app/components/layout/steps";
 import { RatedCompetitionCard } from "app/components/cards";
 import { MaetIcon } from "app/components/icons";
@@ -119,7 +119,7 @@ export default async function JoinCompScreen({
 
 				<div className="flex flex-col gap-8 sm:w-full sm:max-w-md">
 					<RatedCompetitionCard />
-					{profileData && <AltPlayerCard player={profileData} />}
+					{profileData && <PlayerCard player={profileData} />}
 
 					<div>
 						<div>
