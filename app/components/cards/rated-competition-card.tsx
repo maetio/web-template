@@ -1,14 +1,26 @@
 import React from "react";
 import { MaetIcon } from "../icons";
 
+interface RatedCompetitionCardParams {
+	className?: string;
+}
+
 export /**
  * card that display a message about the rating system
  *
+ *
+ * @param {*} {
+ * 	className,
+ * }
  * @return {*}
  */
-const RatedCompetitionCard = () => {
+const RatedCompetitionCard: React.FC<RatedCompetitionCardParams> = ({
+	className,
+}) => {
 	return (
-		<div className="inline-flex flex-col items-start justify-center gap-4 rounded-2xl bg-indigo-600 p-4">
+		<div
+			className={`inline-flex flex-col items-start justify-center gap-4 rounded-2xl bg-indigo-600 p-4 ${className}`}
+		>
 			<p className="self-stretch text-xs font-bold leading-tight tracking-tight text-indigo-300">
 				RATED COMPETITION
 			</p>

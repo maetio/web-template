@@ -83,7 +83,7 @@ export default async function ViewCompScreen({
 	return (
 		<main className="container min-w-full px-0 sm:px-2">
 			{/* Competition image and name banner */}
-			<section className="flex flex-col flex-wrap pb-12 pt-4 md:flex-row lg:flex-nowrap lg:pt-12">
+			<section className="flex flex-col flex-wrap pt-4 md:flex-row lg:flex-nowrap lg:pt-12">
 				<div className="self-center">
 					<NextImage
 						size={400}
@@ -92,7 +92,7 @@ export default async function ViewCompScreen({
 					/>
 				</div>
 				{/* name and host section */}
-				<section className="flex w-full flex-col flex-wrap self-center rounded-2xl bg-white p-4">
+				<section className="mt-2.5 flex w-full flex-col flex-wrap self-center rounded-2xl bg-white p-4 md:mt-0">
 					<h1 className="flex flex-wrap text-3xl font-bold md:text-4xl">
 						{competitionData?.name}
 					</h1>
@@ -100,7 +100,7 @@ export default async function ViewCompScreen({
 				</section>
 			</section>
 
-			<RatedCompetitionCard />
+			<RatedCompetitionCard className="mb-2.5 mt-2.5 md:mb-0" />
 
 			<section className="rounded-2xl bg-white p-4">
 				<h6 className="font-bold">Competition Info</h6>
@@ -171,6 +171,7 @@ export default async function ViewCompScreen({
 							))}
 						</ul>
 					</div>
+					<PaginationList />
 				</section>
 				{/* game section */}
 				<section className="rounded-2xl bg-white p-4">

@@ -24,7 +24,7 @@ export default function RootLayout({
 			>
 				<ServerAuthProvider>
 					<Header />
-					<div className="w-full max-w-[1600px] px-1.5 pt-20">
+					<div className="w-full max-w-[1600px] px-2.5 pt-20">
 						{children}
 					</div>
 					<Footer />

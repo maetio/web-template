@@ -2,7 +2,7 @@ import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
 
 export function PaginationList() {
 	return (
-		<div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+		<div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 pt-3 sm:px-6">
 			<div className="flex flex-1 justify-between sm:hidden">
 				<a
 					href="#"
