@@ -82,13 +82,17 @@ export default async function ViewCompScreen({
 					/>
 				</div>
 				<div className=" mt-10 flex flex-col flex-wrap self-center lg:mx-5 lg:mt-0">
-					<CompDisplayData
-						type={competitionData?.type || "session"}
-						sport={competitionData?.sport || "pickleball"}
-						startTimeISO={competitionData?.startTimeISO}
-						endTimeISO={competitionData?.endTimeISO}
-						location={competitionData?.location}
-					/>
+					<section className="rounded-2xl bg-white p-4">
+						<h6 className="font-bold">Competition Info</h6>
+						<CompDisplayData
+							className="mt-5"
+							type={competitionData?.type || "session"}
+							sport={competitionData?.sport || "pickleball"}
+							startTimeISO={competitionData?.startTimeISO}
+							endTimeISO={competitionData?.endTimeISO}
+							location={competitionData?.location}
+						/>
+					</section>
 
 					<h1 className="my-3 flex flex-wrap text-5xl font-bold md:text-6xl">
 						{competitionData?.name}
