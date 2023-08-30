@@ -8,7 +8,6 @@ import {
 } from "types/next-api";
 import { BaseURL } from "config/constants";
 import { getUserData } from "server-actions/users";
-// import { ActionButton } from "app/components/action-button";
 import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
 
@@ -19,6 +18,7 @@ import { filterPlayerData } from "utils/format";
 import { RatedCompetitionCard } from "app/components/cards";
 import { SimpleMap } from "app/components/layout/map";
 import { MdLocationOn } from "react-icons/md";
+import { PaginationList } from "app/components/layout/pagination";
 
 /**
  * Function will display the competition to the user
@@ -119,7 +119,7 @@ export default async function ViewCompScreen({
 				<section className="rounded-2xl bg-white p-4">
 					<h6 className="font-bold">Location</h6>
 					{competitionData?.location ? (
-						<p className="mt-5 mb-2.5 flex items-center font-bold">
+						<p className="mb-2.5 mt-5 flex items-center font-bold">
 							<MdLocationOn
 								className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-900"
 								aria-hidden="true"
@@ -186,6 +186,7 @@ export default async function ViewCompScreen({
 							<p className=" ml-2 mt-3 text-gray-600">No Games</p>
 						)}
 					</ul>
+					<PaginationList />
 				</section>
 			</section>
 		</main>
