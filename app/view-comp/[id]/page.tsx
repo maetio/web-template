@@ -17,6 +17,7 @@ import { GameCard } from "app/components/cards/game-card";
 import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
 import { filterPlayerData } from "utils/format";
 import { RatedCompetitionCard } from "app/components/cards";
+import { SimpleMap } from "app/components/layout/map";
 
 /**
  * Function will display the competition to the user
@@ -114,6 +115,8 @@ export default async function ViewCompScreen({
 
 			{/* main content of the page */}
 			<section className="mt-2.5 flex min-w-full flex-col gap-2.5">
+				<SimpleMap />
+
 				{/* description section */}
 				<section className="rounded-2xl bg-white p-4">
 					<h6 className="font-bold">Description</h6>
