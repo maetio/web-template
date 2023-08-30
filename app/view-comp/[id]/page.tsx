@@ -18,6 +18,7 @@ import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
 import { filterPlayerData } from "utils/format";
 import { RatedCompetitionCard } from "app/components/cards";
 import { SimpleMap } from "app/components/layout/map";
+import { MdLocationOn } from "react-icons/md";
 
 /**
  * Function will display the competition to the user
@@ -117,7 +118,15 @@ export default async function ViewCompScreen({
 			<section className="mt-2.5 flex min-w-full flex-col gap-2.5">
 				<section className="rounded-2xl bg-white p-4">
 					<h6 className="font-bold">Location</h6>
-					<p className="font-bold">Location</p>
+					{competitionData?.location ? (
+						<p className="mt-5 mb-2.5 flex items-center font-bold">
+							<MdLocationOn
+								className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-900"
+								aria-hidden="true"
+							/>{" "}
+							{competitionData.location.name}
+						</p>
+					) : null}
 					<SimpleMap />
 				</section>
 
