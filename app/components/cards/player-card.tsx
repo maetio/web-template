@@ -8,6 +8,7 @@ import { NextImage } from "app/components/image";
 export interface PlayerCardProps extends Omit<LinkProps, "href"> {
 	player: Partial<Profile>;
 	ranking?: number;
+	host?: boolean;
 	animate?: boolean;
 }
 
@@ -25,6 +26,7 @@ function classNames(...classes: string[]) {
 export const PlayerCard: React.FC<PlayerCardProps> = ({
 	player,
 	ranking,
+	host,
 	animate,
 	...divParams
 }) => {
@@ -33,7 +35,7 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
 			href={`/view-profile/${player.userID}/${player.sport}`}
 			// eslint-disable-next-line react/jsx-props-no-spreading
 			{...divParams}
-			className="flex h-20 justify-between gap-x-6"
+			className="flex justify-between gap-x-6"
 		>
 			<div className="flex items-center justify-center gap-x-4">
 				{typeof ranking === "number" ? (
@@ -52,48 +54,53 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
 				) : null}
 				<NextImage
 					size={50}
+					className="rounded-full"
 					src={player.image}
 					alt="player profile picture"
 				/>
-				<div className="min-w-0 flex-auto">
+				<div className={`min-w-0  ${host ? "flex" : "flex-auto"}`}>
 					<p className="truncate text-sm font-bold leading-6 text-gray-900 dark:text-white">
-						{player.firstName}
+						{player.firstName}{" "}
 					</p>
 					<p className="truncate text-sm font-bold leading-6 text-gray-900 dark:text-white">
-						{player.lastName}
+						&nbsp; {player.lastName}
 					</p>
 				</div>
 			</div>
-			<div className="relative self-center">
-				<dt>
-					<div className="absolute rounded-md p-3">
-						<MaetIcon />
-					</div>
-					<p className="ml-16 justify-center truncate text-sm font-medium text-gray-500 dark:text-white">
-						Rating
-					</p>
-				</dt>
-				<dd className="ml-16 flex items-baseline">
-					<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
-						{Math.round(player.rating?.displayRating || 100)}
-					</p>
-					<p
-						className={classNames(
-							player?.deltaRating?.displayRating &&
-								player?.deltaRating?.displayRating < 0
-								? "text-red-600"
-								: "text-green-600",
-							"ml-2 flex items-baseline text-sm font-semibold"
-						)}
-					>
-						{player?.deltaRating?.displayRating &&
-						player?.deltaRating?.displayRating < 0
-							? ""
-							: "+"}
-						{Math.round(player?.deltaRating?.displayRating || 0)}
-					</p>
-				</dd>
-			</div>
+			{host ? null : (
+				<div className="relative self-center">
+					<dt>
+						<div className="absolute rounded-md p-3">
+							<MaetIcon />
+						</div>
+						<p className="ml-16 justify-center truncate text-sm font-medium text-gray-500 dark:text-white">
+							Rating
+						</p>
+					</dt>
+					<dd className="ml-16 flex items-baseline">
+						<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
+							{Math.round(player.rating?.displayRating || 100)}
+						</p>
+						<p
+							className={classNames(
+								player?.deltaRating?.displayRating &&
+									player?.deltaRating?.displayRating < 0
+									? "text-red-600"
+									: "text-green-600",
+								"ml-2 flex items-baseline text-sm font-semibold"
+							)}
+						>
+							{player?.deltaRating?.displayRating &&
+							player?.deltaRating?.displayRating < 0
+								? ""
+								: "+"}
+							{Math.round(
+								player?.deltaRating?.displayRating || 0
+							)}
+						</p>
+					</dd>
+				</div>
+			)}
 		</Link>
 	);
 };

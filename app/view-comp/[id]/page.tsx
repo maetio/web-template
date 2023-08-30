@@ -3,6 +3,7 @@ import {
 	CompProfilesResponseType,
 	CompetitionsResponseType,
 	GamesResponseType,
+	PlayerResponseType,
 	PlayersResponseType,
 } from "types/next-api";
 import { BaseURL } from "config/constants";
@@ -15,6 +16,7 @@ import { PlayerCard } from "app/components/cards/player-card";
 import { GameCard } from "app/components/cards/game-card";
 import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
 import { filterPlayerData } from "utils/format";
+import { RatedCompetitionCard } from "app/components/cards";
 
 /**
  * Function will display the competition to the user
@@ -58,6 +60,12 @@ export default async function ViewCompScreen({
 	const compPlayer: CompProfilesResponseType =
 		await compPlayerResponse.json();
 
+	// get host profile data
+	const profileResponse = await fetch(
+		`${BaseURL}/api/user-data/${competitionData?.hostID}`
+	);
+	const hostData: PlayerResponseType = await profileResponse.json();
+
 	// set rank string
 	const getRankString = (rank: number) => {
 		if (rank === 0) return "1st";
@@ -86,8 +94,11 @@ export default async function ViewCompScreen({
 					<h1 className="flex flex-wrap text-3xl font-bold md:text-4xl">
 						{competitionData?.name}
 					</h1>
+					<PlayerCard host player={hostData} />
 				</section>
 			</section>
+
+			<RatedCompetitionCard />
 
 			<section className="rounded-2xl bg-white p-4">
 				<h6 className="font-bold">Competition Info</h6>
@@ -102,55 +113,52 @@ export default async function ViewCompScreen({
 			</section>
 
 			{/* main content of the page */}
-			<section className="min-w-full lg:flex lg:justify-between">
-				{/* games data */}
-				<section className="w-full">
-					<div className="hidden xl:inline">
-						<h3 className="text-3xl font-bold">Description</h3>
-						<p className="wrap mr-14 flex flex-wrap">
-							{competitionData?.description ||
-								"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
-						</p>
+			<section className="mt-2.5 flex min-w-full flex-col gap-2.5">
+				{/* description section */}
+				<section className="rounded-2xl bg-white p-4">
+					<h6 className="font-bold">Description</h6>
+					<p className="wrap mt-5 flex flex-wrap">
+						{competitionData?.description ||
+							"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
+					</p>
+				</section>
+				{/* graph section */}
+				<section className="rounded-2xl bg-white p-4">
+					<div>
+						<h6 className="font-bold">Players</h6>
+						<VictoryBarGraph
+							className="w-full"
+							data={filteredPlayerData}
+							tickLabels={[
+								"<1750",
+								"1751-1850",
+								"1851-1950",
+								"1951-2050",
+								">2050",
+							]}
+						/>
 					</div>
 
-					{/* players and graph on SMALL screens  */}
-					<section className="lg:hidden">
-						<div>
-							<h3 className="text-3xl font-bold">Players</h3>
-							<VictoryBarGraph
-								className="w-full"
-								data={filteredPlayerData}
-								tickLabels={[
-									"<1750",
-									"1751-1850",
-									"1851-1950",
-									"1951-2050",
-									">2050",
-								]}
-							/>
-						</div>
-
-						<div className="border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border bg-white lg:sticky lg:top-4 lg:col-span-2">
-							<ul
-								role="list"
-								className="sticky top-0 h-96 divide-y divide-gray-100 overflow-y-auto"
-							>
-								{players.map((player, rank) => (
-									<li key={player.id} className="px-5">
-										<PlayerCard
-											key={player.id}
-											player={player}
-											ranking={rank}
-										/>
-									</li>
-								))}
-							</ul>
-						</div>
-					</section>
-
-					<h3 className="mt-10 text-3xl font-bold lg:mt-0 xl:mt-5">
-						Games
-					</h3>
+					<div className="top-8 col-span-6 h-96 rounded-lg  bg-white lg:sticky lg:top-4 lg:col-span-2">
+						<ul
+							role="list"
+							className="sticky top-0 h-96 divide-y divide-gray-100 overflow-y-auto"
+						>
+							{players.map((player, rank) => (
+								<li key={player.id} className="px-5">
+									<PlayerCard
+										key={player.id}
+										player={player}
+										ranking={rank}
+									/>
+								</li>
+							))}
+						</ul>
+					</div>
+				</section>
+				{/* game section */}
+				<section className="rounded-2xl bg-white p-4">
+					<h6 className="font-bold">Games</h6>
 					<ul role="list" className="">
 						{games.length ? (
 							games.map((game) => (
@@ -163,39 +171,6 @@ export default async function ViewCompScreen({
 						)}
 					</ul>
 				</section>
-
-				{/* sidebar on LARGE screens */}
-				<aside className="top-24 ml-3 hidden h-[82vh] self-start rounded-lg bg-white p-4 lg:sticky lg:inline">
-					<div className="flex h-full flex-col">
-						<div>
-							<h3 className="text-3xl font-bold">Players</h3>
-							<VictoryBarGraph
-								className="w-[400px]"
-								data={filteredPlayerData}
-								tickLabels={[
-									"<1750",
-									"1751-1850",
-									"1851-1950",
-									"1951-2050",
-									">2050",
-								]}
-							/>
-						</div>
-						<div className="mt-4 flex-grow overflow-y-auto">
-							<ul role="list">
-								{players.map((player, rank) => (
-									<li key={player.id} className="px-3">
-										<PlayerCard
-											key={player.id}
-											player={player}
-											ranking={rank}
-										/>
-									</li>
-								))}
-							</ul>
-						</div>
-					</div>
-				</aside>
 			</section>
 		</main>
 	);
