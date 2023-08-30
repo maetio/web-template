@@ -115,7 +115,11 @@ export default async function ViewCompScreen({
 
 			{/* main content of the page */}
 			<section className="mt-2.5 flex min-w-full flex-col gap-2.5">
-				<SimpleMap />
+				<section className="rounded-2xl bg-white p-4">
+					<h6 className="font-bold">Location</h6>
+					<p className="font-bold">Location</p>
+					<SimpleMap />
+				</section>
 
 				{/* description section */}
 				<section className="rounded-2xl bg-white p-4">

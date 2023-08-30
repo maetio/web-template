@@ -15,7 +15,14 @@ export async function SimpleMap() {
 
 	return (
 		// Important! Always set the container height explicitly
-		<div style={{ height: "300px", width: "500px" }}>
+		<div
+			style={{
+				overflow: "hidden",
+				borderRadius: "1rem",
+				height: "232px",
+				width: "100%",
+			}}
+		>
 			<GoogleMapReact
 				bootstrapURLKeys={{
 					key: process.env.NEXT_PUBLIC_FIREBASE_API_KEY as string,
@@ -24,8 +31,8 @@ export async function SimpleMap() {
 				defaultZoom={defaultProps.zoom}
 			>
 				<AnyReactComponent
-					lat={59.955413}
-					lng={30.337844}
+					lat={10.99835602}
+					lng={77.01502627}
 					text="My Marker"
 				/>
 			</GoogleMapReact>
