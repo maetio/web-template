@@ -95,7 +95,7 @@ export default async function ViewCompScreen({
 						</div>
 						<div className="hidden lg:flex">
 							<NextImage
-								size={600}
+								size={200}
 								src={competitionData?.image}
 								alt={`${competitionData?.name} profile`}
 							/>
@@ -141,12 +141,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-								<SimpleMap
-									zoom={11}
-									lat={competitionData.location.latitude}
-									lng={competitionData.location.longitude}
-								/>
-							) : null}
+							<SimpleMap
+								zoom={11}
+								lat={competitionData.location.latitude}
+								lng={competitionData.location.longitude}
+							/>
+						) : null}
 					</section>
 
 					{/* description section */}
@@ -159,10 +159,10 @@ export default async function ViewCompScreen({
 					</section>
 					{/* graph section */}
 					<section className="rounded-2xl bg-white p-4">
-						<div>
+						<div className="w-full flex flex-col">
 							<h6 className="font-bold">Players</h6>
 							<VictoryBarGraph
-								className="w-full"
+								className="flex w-3/4 self-center"
 								data={filteredPlayerData}
 								tickLabels={[
 									"<1750",
