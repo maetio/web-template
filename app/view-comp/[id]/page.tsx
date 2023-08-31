@@ -83,7 +83,7 @@ export default async function ViewCompScreen({
 	return (
 		<main className="container min-w-full px-0 sm:px-2">
 			{/* Competition image and name banner */}
-			<section className="flex h-fit min-h-fit flex-col flex-wrap pt-4 md:flex-row md:flex-nowrap md:gap-2.5 lg:flex-col lg:gap-0 lg:pt-12">
+			<section className="flex h-fit flex-col flex-wrap pt-4 md:flex-row md:flex-nowrap md:gap-2.5 lg:flex-col lg:gap-0 lg:pt-12">
 				<div className="flex">
 					<NextImage
 						size={400}
@@ -103,7 +103,7 @@ export default async function ViewCompScreen({
 				</div>
 			</section>
 
-			<section className="rounded-2xl bg-white p-4">
+			<section className="mt-2.5 rounded-2xl bg-white p-4">
 				<h6 className="font-bold">Competition Info</h6>
 				<CompDisplayData
 					className="mt-5"
