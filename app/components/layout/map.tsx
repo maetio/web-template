@@ -4,13 +4,21 @@ import React from "react";
 import GoogleMapReact from "google-map-react";
 import { AnyReactComponent } from "./map-marker";
 
-export async function SimpleMap() {
+export async function SimpleMap({
+	lat,
+	lng,
+	zoom,
+}: {
+	lat: number;
+	lng: number;
+	zoom: number;
+}) {
 	const defaultProps = {
 		center: {
-			lat: 10.99835602,
-			lng: 77.01502627,
+			lat,
+			lng,
 		},
-		zoom: 11,
+		zoom,
 	};
 
 	return (
@@ -31,8 +39,8 @@ export async function SimpleMap() {
 				defaultZoom={defaultProps.zoom}
 			>
 				<AnyReactComponent
-					lat={10.99835602}
-					lng={77.01502627}
+					lat={defaultProps.center.lat}
+					lng={defaultProps.center.lng}
 					text="My Marker"
 				/>
 			</GoogleMapReact>
