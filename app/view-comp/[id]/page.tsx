@@ -83,7 +83,7 @@ export default async function ViewCompScreen({
 	return (
 		<main className="container min-w-full px-0">
 			<div className="w-full lg:flex lg:flex-row lg:gap-2.5">
-				<div className="lg:sticky lg:top-20 lg:h-[100vh] lg:overflow-auto">
+				<div className="lg:sticky lg:top-20 lg:h-full">
 					{/* Competition image and name banner */}
 					<section className="mt-2.5 flex h-fit flex-col flex-wrap md:flex-row md:flex-nowrap md:gap-2.5 lg:flex-col">
 						<div className="md:flex lg:hidden">
@@ -95,7 +95,7 @@ export default async function ViewCompScreen({
 						</div>
 						<div className="hidden lg:flex">
 							<NextImage
-								size={200}
+								size={600}
 								src={competitionData?.image}
 								alt={`${competitionData?.name} profile`}
 							/>
@@ -159,7 +159,7 @@ export default async function ViewCompScreen({
 					</section>
 					{/* graph section */}
 					<section className="rounded-2xl bg-white p-4">
-						<div className="w-full flex flex-col">
+						<div className="flex w-full flex-col">
 							<h6 className="font-bold">Players</h6>
 							<VictoryBarGraph
 								className="flex w-3/4 self-center"
@@ -198,7 +198,7 @@ export default async function ViewCompScreen({
 						<ul role="list" className="">
 							{games.length ? (
 								games.map((game) => (
-									<li key={game.id} className="lg:pr-3">
+									<li key={game.id} className="mt-5 lg:pr-3">
 										<GameCard id={game.id} />
 									</li>
 								))

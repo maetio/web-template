@@ -65,15 +65,13 @@ const GameCard: React.FC<GameCardProps> = async ({
 	return (
 		<div
 			{...divParams}
-			className="mt-5 flex min-w-full flex-wrap rounded-xl bg-gray-100 p-4"
+			className="flex min-w-full flex-wrap rounded-xl bg-gray-100 p-4"
 		>
 			{/* time section */}
 			<section className="mr-3 self-center whitespace-nowrap">
 				<div className="mt-1 items-center">
-					<p className="text-3xl font-semibold text-black">
+					<p className="text-sm font-semibold text-black">
 						{getShortDateString(new Date(game.startTimeISO || ""))}
-					</p>
-					<p className="text-xs font-semibold text-gray-500">
 						at {getTimeString(new Date(game.startTimeISO || ""))}
 					</p>
 				</div>
@@ -111,13 +109,6 @@ const GameCard: React.FC<GameCardProps> = async ({
 											alt="player image"
 										/>
 									)}
-								{/* {game.team1?.image &&
-							typeof game.team1.image !== "string" &&
-							game.team1.image?.length - 2 > 0 && (
-								<div className="relative z-0 inline-block flex h-[35px] w-[35px] items-center justify-center rounded-full bg-slate-50 ring-2 ring-white">
-									+{game.team1.image?.length - 2}
-								</div>
-							)} */}
 							</div>
 							<div
 								className={`flex flex-col justify-center ${
