@@ -85,7 +85,7 @@ export default async function ViewCompScreen({
 			<div className="w-full lg:flex lg:flex-row lg:gap-2.5">
 				<div>
 					{/* Competition image and name banner */}
-					<section className="flex h-fit flex-col flex-wrap mt-2.5 md:flex-row md:flex-nowrap md:gap-2.5 lg:flex-col">
+					<section className="mt-2.5 flex h-fit flex-col flex-wrap md:flex-row md:flex-nowrap md:gap-2.5 lg:flex-col">
 						<div className="md:flex lg:hidden">
 							<NextImage
 								size={400}
