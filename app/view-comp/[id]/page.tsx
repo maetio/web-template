@@ -86,9 +86,16 @@ export default async function ViewCompScreen({
 				<div>
 					{/* Competition image and name banner */}
 					<section className="flex h-fit flex-col flex-wrap pt-4 md:flex-row md:flex-nowrap md:gap-2.5 lg:flex-col">
-						<div className="md:flex">
+						<div className="md:flex lg:hidden">
 							<NextImage
 								size={400}
+								src={competitionData?.image}
+								alt={`${competitionData?.name} profile`}
+							/>
+						</div>
+						<div className="hidden lg:flex">
+							<NextImage
+								size={600}
 								src={competitionData?.image}
 								alt={`${competitionData?.name} profile`}
 							/>
@@ -119,7 +126,7 @@ export default async function ViewCompScreen({
 				</div>
 
 				{/* main content of the page */}
-				<section className="mt-2.5 flex w-full flex-col gap-2.5">
+				<section className="mt-2.5 flex w-full lg:w-3/4 flex-col gap-2.5">
 					<section className="rounded-2xl bg-white p-4">
 						<h6 className="font-bold">Location</h6>
 						{competitionData?.location ? (
