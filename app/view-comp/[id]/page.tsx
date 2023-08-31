@@ -83,7 +83,7 @@ export default async function ViewCompScreen({
 	return (
 		<main className="container min-w-full px-0">
 			<div className="w-full lg:flex lg:flex-row lg:gap-2.5">
-				<div className="lg:h-[100vh] lg:sticky lg:top-20 lg:overflow-auto">
+				<div className="lg:sticky lg:top-20 lg:h-[100vh] lg:overflow-auto">
 					{/* Competition image and name banner */}
 					<section className="mt-2.5 flex h-fit flex-col flex-wrap md:flex-row md:flex-nowrap md:gap-2.5 lg:flex-col">
 						<div className="md:flex lg:hidden">
@@ -141,12 +141,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-							<SimpleMap
-								zoom={11}
-								lat={competitionData.location.latitude}
-								lng={competitionData.location.longitude}
-							/>
-						) : null}
+								<SimpleMap
+									zoom={11}
+									lat={competitionData.location.latitude}
+									lng={competitionData.location.longitude}
+								/>
+							) : null}
 					</section>
 
 					{/* description section */}
