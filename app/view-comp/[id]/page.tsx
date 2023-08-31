@@ -126,7 +126,7 @@ export default async function ViewCompScreen({
 				</div>
 
 				{/* main content of the page */}
-				<section className="mt-2.5 flex w-full lg:w-3/4 flex-col gap-2.5">
+				<section className="mt-2.5 flex w-full flex-col gap-2.5 lg:w-3/4">
 					<section className="rounded-2xl bg-white p-4">
 						<h6 className="font-bold">Location</h6>
 						{competitionData?.location ? (
@@ -141,12 +141,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-							<SimpleMap
-								zoom={11}
-								lat={competitionData.location.latitude}
-								lng={competitionData.location.longitude}
-							/>
-						) : null}
+								<SimpleMap
+									zoom={11}
+									lat={competitionData.location.latitude}
+									lng={competitionData.location.longitude}
+								/>
+							) : null}
 					</section>
 
 					{/* description section */}
