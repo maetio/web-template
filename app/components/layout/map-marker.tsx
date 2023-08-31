@@ -11,6 +11,7 @@ export const AnyReactComponent: React.FC<{
 	return (
 		<div>
 			<MaetIcon />
+			<p>{text}</p>
 		</div>
 	);
 };
