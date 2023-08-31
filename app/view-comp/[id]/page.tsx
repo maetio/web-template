@@ -81,11 +81,11 @@ export default async function ViewCompScreen({
 	const filteredPlayerData = filterPlayerData(players);
 
 	return (
-		<main className="container min-w-full px-0 sm:px-2">
+		<main className="container min-w-full px-0">
 			<div className="w-full lg:flex lg:flex-row lg:gap-2.5">
 				<div>
 					{/* Competition image and name banner */}
-					<section className="flex h-fit flex-col flex-wrap pt-4 md:flex-row md:flex-nowrap md:gap-2.5 lg:flex-col">
+					<section className="flex h-fit flex-col flex-wrap mt-2.5 md:flex-row md:flex-nowrap md:gap-2.5 lg:flex-col">
 						<div className="md:flex lg:hidden">
 							<NextImage
 								size={400}
