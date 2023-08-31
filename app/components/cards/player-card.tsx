@@ -53,7 +53,7 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
 					</div>
 				) : null}
 				<NextImage
-					size={50}
+					size={host ? 40 : 50}
 					className="rounded-full"
 					src={player.image}
 					alt="player profile picture"
