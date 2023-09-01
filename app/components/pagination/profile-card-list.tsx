@@ -19,7 +19,6 @@ export const PlayerCardList: React.FC<PlayerCardListParams> = ({ players }) => {
 
 	const handleForwardClick = () => {
 		const delta = players.length - end;
-		console.log("delta", delta, "start", start, "end", end);
 
 		if (end >= players.length) return;
 
@@ -34,8 +33,14 @@ export const PlayerCardList: React.FC<PlayerCardListParams> = ({ players }) => {
 
 	const handleBackClick = () => {
 		if (start <= 0) return;
-		setStart(start - 5);
-		setEnd(end - 5);
+
+		if (start < 5 && start > 0) {
+			setStart(0);
+			setEnd(5);
+		} else {
+			setStart(start - 5);
+			setEnd(end - 5);
+		}
 	};
 
 	return (
