@@ -7,37 +7,65 @@ import { useQueryHook } from "utils/hook-template";
 import { BaseURL } from "config/constants";
 import { GamesResponseType } from "types/next-api";
 
-const grabPaginatatedGames = async (compID: string) => {
-	const gamesResponse = await fetch(`${BaseURL}/api/games/${compID}`);
+const grabPaginatatedGames = async ({
+	compID,
+	begID,
+}: {
+	compID: string;
+	begID?: string;
+}) => {
+	if (begID) {
+		const gamesResponse = await fetch(
+			`${BaseURL}/api/games/${compID}/0/0/4/${begID}`
+		);
+		const games: GamesResponseType = await gamesResponse.json();
+
+		return games;
+	}
+	const gamesResponse = await fetch(`${BaseURL}/api/games/${compID}/0/0/8`);
 	const games: GamesResponseType = await gamesResponse.json();
 
 	return games;
 };
 export const GamesCardList = ({ compID }: { compID: string }) => {
-	
+	const [start, setStart] = useState(0);
+	const [end, setEnd] = useState(4);
+	const [begID, setBegID] = useState<string>();
 	const [listData, setListData] = useState<GamesResponseType>([]);
+
+	const handleForwardClick = () => {
+		if (end >= listData.length) return;
+		setStart(start + 5);
+		setEnd(end + 5);
+	};
+
+	const handleBackClick = () => {
+		if (start <= 0) return;
+		setStart(start - 5);
+		setEnd(end - 5);
+	};
 
 	const [{ error, isLoading, data: games }, updateData] =
 		useQueryHook(grabPaginatatedGames);
 
 	useEffect(() => {
-		updateData(compID);
+		updateData({ compID });
 	}, []);
 
-	// useEffect(() => {
-	// 	if (begID) {
-	// 		setListData(listData.concat(data));
-	// 	} else {
-	// 		setListData(data);
-	// 	}
-	// }, [data]);
+	useEffect(() => {
+		if (begID) {
+			setListData(listData.concat(games));
+		} else {
+			setListData(games);
+		}
+	}, [games]);
 
 	return (
 		<>
-			{games && !isLoading ? (
-				<ul role="list" className="">
-					{games.length ? (
-						games.map((game) => (
+			{listData && !isLoading ? (
+				<ul role="list">
+					{listData.length ? (
+						listData.slice(start, end).map((game) => (
 							<li key={game.id} className="mt-5 lg:pr-3">
 								<GameCard game={game} />
 							</li>
@@ -51,7 +79,10 @@ export const GamesCardList = ({ compID }: { compID: string }) => {
 			)}
 			{error && <p>{error}</p>}
 
-			<PaginationList />
+			<PaginationList
+				forwardAction={handleForwardClick}
+				backwardsAction={handleBackClick}
+			/>
 		</>
 	);
 };
