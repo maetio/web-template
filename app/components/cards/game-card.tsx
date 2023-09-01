@@ -89,29 +89,29 @@ const GameCard: React.FC<GameCardProps> = ({
 								{game &&
 								game.team1?.image &&
 								typeof game.team1?.image !== "string" ? (
-										game.team1.image
-											.slice(0, 2)
-											.map((img, index) => (
-												<NextImage
-													key={index}
-													// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-													className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white sm:h-[45px] sm:w-[45px]"
-													src={img}
-													alt="player image"
-												/>
-											))
-									) : (
-										<NextImage
-											className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-											src={
-												typeof game.team1?.image ===
+									game.team1.image
+										.slice(0, 2)
+										.map((img, index) => (
+											<NextImage
+												key={index}
+												// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+												className="relative z-0 inline-block h-[35px] w-[35px] rounded-full ring-2 ring-white sm:h-[45px] sm:w-[45px]"
+												src={img}
+												alt="player image"
+											/>
+										))
+								) : (
+									<NextImage
+										className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+										src={
+											typeof game.team1?.image ===
 											"string"
-													? game.team1.image
-													: undefined
-											}
-											alt="player image"
-										/>
-									)}
+												? game.team1.image
+												: undefined
+										}
+										alt="player image"
+									/>
+								)}
 							</div>
 							<div
 								className={`flex flex-col justify-center ${
@@ -203,29 +203,29 @@ const GameCard: React.FC<GameCardProps> = ({
 								{game &&
 								game.team2?.image &&
 								typeof game.team2?.image !== "string" ? (
-										game.team2.image
-											.slice(0, 2)
-											.map((img, index) => (
-												<NextImage
-													key={index}
-													// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-													className="relative z-0 inline-block h-[35px] h-[35px] w-[35px] w-[35px] rounded-full ring-2 ring-white sm:h-[45px] sm:w-[45px]"
-													src={img}
-													alt="player image"
-												/>
-											))
-									) : (
-										<NextImage
-											className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-											src={
-												typeof game.team2?.image ===
+									game.team2.image
+										.slice(0, 2)
+										.map((img, index) => (
+											<NextImage
+												key={index}
+												// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+												className="relative z-0 inline-block h-[35px] h-[35px] w-[35px] w-[35px] rounded-full ring-2 ring-white sm:h-[45px] sm:w-[45px]"
+												src={img}
+												alt="player image"
+											/>
+										))
+								) : (
+									<NextImage
+										className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+										src={
+											typeof game.team2?.image ===
 											"string"
-													? game.team2.image
-													: undefined
-											}
-											alt="player image"
-										/>
-									)}
+												? game.team2.image
+												: undefined
+										}
+										alt="player image"
+									/>
+								)}
 								{/* {game.team2?.image &&
 							typeof game.team2.image !== "string" &&
 							game.team2.image?.length - 2 > 0 && (
@@ -287,11 +287,11 @@ const GameCard: React.FC<GameCardProps> = ({
 				{game.team1?.rating &&
 					game.team2?.rating &&
 					gameStatus === "unreported" && (
-					<WinProb
-						team1Rating={game.team1?.rating}
-						team2Rating={game.team2?.rating}
-					/>
-				)}
+						<WinProb
+							team1Rating={game.team1?.rating}
+							team2Rating={game.team2?.rating}
+						/>
+					)}
 			</div>
 		</div>
 	);

@@ -1,25 +1,19 @@
 import React from "react";
 import {
-	// CompProfilesResponseType,
 	CompetitionsResponseType,
 	GamesResponseType,
 	PlayerResponseType,
 	PlayersResponseType,
 } from "types/next-api";
 import { BaseURL } from "config/constants";
-// import { getUserData } from "server-actions/users";
 import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
-
 import { PlayerCard } from "app/components/cards/player-card";
-import { GameCard } from "app/components/cards/game-card";
-import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
-import { filterPlayerData } from "utils/format";
 import { RatedCompetitionCard } from "app/components/cards";
 import { SimpleMap } from "app/components/layout/map";
 import { MdLocationOn } from "react-icons/md";
-import { PaginationList } from "app/components/layout/pagination";
 import { GamesCardList } from "app/components/pagination/games-card-list";
+import { PlayerCardList } from "app/components/pagination/profile-card-list";
 
 /**
  * Function will display the competition to the user
@@ -53,8 +47,6 @@ export default async function ViewCompScreen({
 	const players: PlayersResponseType = await playersResponse.json();
 
 	// get the competition games
-	const gamesResponse = await fetch(`${BaseURL}/api/games/${params.id}`);
-	const games: GamesResponseType = await gamesResponse.json();
 
 	// get if the player has joined the competition
 	// const compPlayerResponse = await fetch(
@@ -79,7 +71,6 @@ export default async function ViewCompScreen({
 	// };
 
 	// filter the player data for victory to use
-	const filteredPlayerData = filterPlayerData(players);
 
 	return (
 		<main className="container min-w-full px-0">
@@ -160,58 +151,15 @@ export default async function ViewCompScreen({
 					</section>
 					{/* graph section */}
 					<section className="rounded-2xl bg-white p-4">
-						<div className="flex w-full flex-col">
-							<h6 className="font-bold">Players</h6>
-							<VictoryBarGraph
-								className="flex w-3/4 self-center"
-								data={filteredPlayerData}
-								tickLabels={[
-									"<1750",
-									"1751-1850",
-									"1851-1950",
-									"1951-2050",
-									">2050",
-								]}
-							/>
-						</div>
-
-						<div className="top-8 col-span-6 h-96 rounded-lg  bg-white lg:sticky lg:top-4 lg:col-span-2">
-							<ul
-								role="list"
-								className="sticky top-0 h-96 divide-y divide-gray-100 overflow-y-auto"
-							>
-								{players.map((player, rank) => (
-									<li key={player.id} className="px-5">
-										<PlayerCard
-											key={player.id}
-											player={player}
-											ranking={rank}
-										/>
-									</li>
-								))}
-							</ul>
-						</div>
-						<PaginationList />
+						<h6 className="font-bold">Players</h6>
+						<PlayerCardList players={players} />
 					</section>
 					{/* game section */}
 					<section className="rounded-2xl bg-white p-4">
 						<h6 className="font-bold">Games</h6>
-						<ul role="list" className="">
-							{games.length ? (
-								games.map((game) => (
-									<li key={game.id} className="mt-5 lg:pr-3">
-										<GameCard game={game} />
-									</li>
-								))
-							) : (
-								<p className=" ml-2 mt-3 text-gray-600">
-									No Games
-								</p>
-							)}
-						</ul>
-						<PaginationList />
+
+						<GamesCardList compID={params.id} />
 					</section>
-					{/* <GamesCardList games={games} /> */}
 				</section>
 			</div>
 		</main>
