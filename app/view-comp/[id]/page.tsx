@@ -19,6 +19,7 @@ import { RatedCompetitionCard } from "app/components/cards";
 import { SimpleMap } from "app/components/layout/map";
 import { MdLocationOn } from "react-icons/md";
 import { PaginationList } from "app/components/layout/pagination";
+import { GamesCardList } from "app/components/pagination/games-card-list";
 
 /**
  * Function will display the competition to the user
@@ -141,12 +142,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-								<SimpleMap
-									zoom={11}
-									lat={competitionData.location.latitude}
-									lng={competitionData.location.longitude}
-								/>
-							) : null}
+							<SimpleMap
+								zoom={11}
+								lat={competitionData.location.latitude}
+								lng={competitionData.location.longitude}
+							/>
+						) : null}
 					</section>
 
 					{/* description section */}
@@ -210,6 +211,7 @@ export default async function ViewCompScreen({
 						</ul>
 						<PaginationList />
 					</section>
+					<GamesCardList games={games} />
 				</section>
 			</div>
 		</main>
