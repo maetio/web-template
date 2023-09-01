@@ -14,6 +14,7 @@ const grabPaginatatedGames = async (compID: string) => {
 	return games;
 };
 export const GamesCardList = ({ compID }: { compID: string }) => {
+	
 	const [listData, setListData] = useState<GamesResponseType>([]);
 
 	const [{ error, isLoading, data: games }, updateData] =
