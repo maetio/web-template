@@ -4,9 +4,7 @@ import React from "react";
 import { GameCard } from "app/components/cards";
 import { PaginationList } from "app/components/layout/pagination";
 
-
-
-export const GamesCardList = ({games}) => {
+export const GamesCardList = ({ games }) => {
 	return (
 		<section className="rounded-2xl bg-white p-4">
 			<h6 className="font-bold">Games</h6>

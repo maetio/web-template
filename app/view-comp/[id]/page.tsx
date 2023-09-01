@@ -200,7 +200,7 @@ export default async function ViewCompScreen({
 							{games.length ? (
 								games.map((game) => (
 									<li key={game.id} className="mt-5 lg:pr-3">
-										<GameCard id={game.id} />
+										<GameCard game={game} />
 									</li>
 								))
 							) : (
@@ -211,7 +211,7 @@ export default async function ViewCompScreen({
 						</ul>
 						<PaginationList />
 					</section>
-					<GamesCardList games={games} />
+					{/* <GamesCardList games={games} /> */}
 				</section>
 			</div>
 		</main>
