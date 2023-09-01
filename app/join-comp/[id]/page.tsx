@@ -41,9 +41,9 @@ export default async function JoinCompScreen({
 	// get the profile data for the user
 	const profileData = user?.id
 		? await getOrCreateProfile(
-				user,
-				competitionData?.sport || "basketball",
-				"player"
+			user,
+			competitionData?.sport || "basketball",
+			"player"
 		  )
 		: null;
 
@@ -125,31 +125,31 @@ export default async function JoinCompScreen({
 						<div>
 							{competitionData?.price &&
 							competitionData.price > 0 ? (
-								<div>
-									{stripeSession?.paymentIntentSecret ? (
-										<StripeCheckoutForm
-											price={competitionData.price}
-											paymentIntentSecret={
-												stripeSession?.paymentIntentSecret
-											}
-											paymentIntent={
-												stripeSession?.paymentIntent
-											}
-											redirectURL={`${BaseURL}/join-comp/${params.id}/success`}
-										/>
-									) : (
-										<button>loading</button>
-									)}
-								</div>
-							) : (
-								<ActionButton
-									className="w-full"
-									referRoute={`/join-comp/${params.id}/success`}
-									colorVariant="indigo"
-									title="Join competition"
-									action={submitFormAction}
-								/>
-							)}
+									<div>
+										{stripeSession?.paymentIntentSecret ? (
+											<StripeCheckoutForm
+												price={competitionData.price}
+												paymentIntentSecret={
+													stripeSession?.paymentIntentSecret
+												}
+												paymentIntent={
+													stripeSession?.paymentIntent
+												}
+												redirectURL={`${BaseURL}/join-comp/${params.id}/success`}
+											/>
+										) : (
+											<button>loading</button>
+										)}
+									</div>
+								) : (
+									<ActionButton
+										className="w-full"
+										referRoute={`/join-comp/${params.id}/success`}
+										colorVariant="indigo"
+										title="Join competition"
+										action={submitFormAction}
+									/>
+								)}
 						</div>
 					</div>
 				</div>

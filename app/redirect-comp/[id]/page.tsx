@@ -32,9 +32,9 @@ export default async function RedirectComp({
 	// get the profile data for the user
 	const profileData = user?.id
 		? await getOrCreateProfile(
-				user,
-				competitionData?.sport || "basketball",
-				"player"
+			user,
+			competitionData?.sport || "basketball",
+			"player"
 		  )
 		: null;
 
