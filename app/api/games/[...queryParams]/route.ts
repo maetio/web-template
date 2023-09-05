@@ -37,6 +37,9 @@ export async function GET(
 		console.log(startTimestamp, endTimestamp);
 		// if beginID
 		if (begID) {
+			console.log("begin id from api call", begID);
+
+			const game = await gamesCollection.doc(begID).get();
 			// if the comp id is provided, return that competition
 			if (compID && compID !== "all") {
 				const querySnapshot = await gamesCollection
@@ -44,8 +47,7 @@ export async function GET(
 					.where("startTimestamp", ">=", startTimestamp)
 					.where("startTimestamp", "<", endTimestamp)
 					.orderBy("startTimestamp", "asc")
-					// .startAfter(gamesCollection.doc(begID))
-					.startAfter(begID)
+					.startAfter(game)
 					.limit(Number(limit) || 100)
 					.get();
 				return NextResponse.json(

@@ -79,16 +79,16 @@ export default async function ViewCompScreen({
 	futureDate.setFullYear(futureDate.getFullYear() + 100);
 	const endTimestamp = Timestamp.fromDate(futureDate);
 
-	const countz = await gamesCollection
+	const gameCountRef = await gamesCollection
 		.where("competitionID", "==", params.id)
 		.where("startTimestamp", ">=", startTimestamp)
 		.where("startTimestamp", "<", endTimestamp)
 		.count()
 		.get();
 
-	const { count } = countz.data();
+	const gameCount = gameCountRef.data().count;
 
-	console.log("count from thing", count);
+	console.log("count from thing", gameCount);
 
 	// filter the player data for victory to use
 
@@ -178,7 +178,7 @@ export default async function ViewCompScreen({
 					<section className="rounded-2xl bg-white p-4">
 						<h6 className="font-bold">Games</h6>
 
-						<GamesCardList count={count} compID={params.id} />
+						<GamesCardList count={gameCount} compID={params.id} />
 					</section>
 				</section>
 			</div>

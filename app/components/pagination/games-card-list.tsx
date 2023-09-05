@@ -14,11 +14,14 @@ const grabPaginatatedGames = async ({
 	compID: string;
 	begID?: string;
 }) => {
+	console.log("begin id passed into func", begID);
 	if (begID) {
 		const gamesResponse = await fetch(
 			`${BaseURL}/api/games/${compID}/0/0/4/${begID}`
 		);
 		const games: GamesResponseType = await gamesResponse.json();
+
+		console.log("games from begin id", games);
 
 		return games;
 	}
@@ -39,32 +42,46 @@ export const GamesCardList = ({
 	const [begID, setBegID] = useState<string>();
 	const [listData, setListData] = useState<GamesResponseType>([]);
 
+	const [{ error, isLoading, data: games }, updateData] =
+		useQueryHook(grabPaginatatedGames);
+
 	const handleForwardClick = () => {
 		if (end >= listData.length) return;
-		setStart(start + 5);
-		setEnd(end + 5);
+		setStart(start + 4);
+		setEnd(end + 4);
+		if (listData.length - end <= 4) {
+			const thing = listData[listData.length - 1].id;
+			console.log("thingy", thing);
+			updateData({ compID, begID: listData[listData.length - 1].id });
+		}
+		// 	console.log("differnce", listData.length - end);
+		// setBegID(listData[listData.length - 1].id);
 	};
 
 	const handleBackClick = () => {
 		if (start <= 0) return;
-		setStart(start - 5);
-		setEnd(end - 5);
+		setStart(start - 4);
+		setEnd(end - 4);
 	};
-
-	const [{ error, isLoading, data: games }, updateData] =
-		useQueryHook(grabPaginatatedGames);
 
 	useEffect(() => {
 		updateData({ compID });
 	}, []);
 
 	useEffect(() => {
-		if (begID) {
-			setListData(listData.concat(games));
-		} else {
-			setListData(games);
+		if (games) {
+			console.log(games.length);
+			if (games.length <= 4) {
+				setListData(listData.concat(games));
+			} else {
+				setListData(games);
+			}
 		}
 	}, [games]);
+
+	useEffect(() => {
+		console.log("list data", listData);
+	}, [listData]);
 
 	return (
 		<>
