@@ -121,29 +121,23 @@ const GameCard: React.FC<GameCardProps> = ({
 												100
 										)}
 									</p>
+									{/* points awarded */}
+									{gameStatus !== "unreported" &&
+									team1PointsAwarded ? (
+											<p
+												className={`text-xs font-bold leading-tight tracking-tight ${
+													team1PointsAwarded > 0
+														? "text-green-700"
+														: "text-red-800"
+												}`}
+											>
+												{team1PointsAwarded > 0 && "+"}
+												{Math.round(team1PointsAwarded)}
+											</p>
+										) : null}
 								</div>
 							</div>
 						</div>
-						{/* points awarded */}
-						{gameStatus !== "unreported" && team1PointsAwarded ? (
-							<div className="mt-1.5 flex flex-wrap items-center justify-center text-xs md:justify-start">
-								<p
-									className={`mr-2 rounded-3xl px-4 text-center font-bold ${
-										team1PointsAwarded > 0
-											? "bg-green-200 text-green-800"
-											: "bg-red-200 text-red-800"
-									}`}
-								>
-									{team1PointsAwarded > 0 && "+"}
-									{Math.round(team1PointsAwarded)}
-								</p>
-								<p>
-									{team1PointsAwarded > 0
-										? "Points Won"
-										: "Points Lost"}
-								</p>
-							</div>
-						) : null}
 					</section>
 					<div className="hidden flex-col items-start gap-8 md:flex">
 						{/* win prob */}
@@ -233,29 +227,24 @@ const GameCard: React.FC<GameCardProps> = ({
 									) : (
 										<XSGrayMaetIcon />
 									)}
+
+									{/* points awarded */}
+									{gameStatus !== "unreported" &&
+									team2PointsAwarded ? (
+											<p
+												className={`text-xs font-bold leading-tight tracking-tight ${
+													team2PointsAwarded > 0
+														? "text-green-700"
+														: "text-red-800"
+												}`}
+											>
+												{team2PointsAwarded > 0 && "+"}
+												{Math.round(team2PointsAwarded)}
+											</p>
+										) : null}
 								</div>
 							</div>
 						</div>
-						{/* points awarded */}
-						{gameStatus !== "unreported" && team2PointsAwarded ? (
-							<div className="mt-1.5 flex flex-row-reverse flex-wrap items-center justify-center text-xs md:justify-start">
-								<p
-									className={`ml-2 rounded-3xl px-4 text-center font-bold ${
-										team2PointsAwarded > 0
-											? "bg-green-200 text-green-800"
-											: "bg-red-200 text-red-800"
-									}`}
-								>
-									{team2PointsAwarded > 0 && "+"}
-									{Math.round(team2PointsAwarded)}
-								</p>
-								<p>
-									{team2PointsAwarded > 0
-										? "Points Won"
-										: "Points Lost"}
-								</p>
-							</div>
-						) : null}
 					</section>
 				</section>
 			</div>

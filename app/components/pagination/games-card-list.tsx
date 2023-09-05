@@ -45,15 +45,6 @@ export const GamesCardList = ({
 		useQueryHook(grabPaginatatedGames);
 
 	const handleForwardClick = () => {
-		// if (end >= listData.length) return;
-		// setStart(start + 4);
-		// setEnd(end + 4);
-		// if (listData.length - end <= 4) {
-		// 	const thing = listData[listData.length - 1].id;
-		// 	console.log("thingy", thing);
-		// 	updateData({ compID, begID: listData[listData.length - 1].id });
-		// }
-
 		const delta = listData.length - end;
 
 		if (end >= listData.length) return;
