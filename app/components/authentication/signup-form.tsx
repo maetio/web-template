@@ -7,7 +7,7 @@ import { signupSchema, SignupSchemaType } from "utils/schemas";
 import { FormInput } from "app/components/forms/form-input";
 import { signInWithEmailPassword } from "auth/client";
 import { useRouter } from "next/navigation";
-import { useCreateFirestoreHook } from "utils/hook-template";
+import { useQueryHook } from "utils/hook-template";
 import { ActionButton } from "app/components/action-button";
 
 export interface SignupFormParams {
@@ -60,8 +60,7 @@ const SignupForm: React.FC<SignupFormParams> = ({
 		reset();
 	};
 
-	const [{ error, isLoading }, updateData] =
-		useCreateFirestoreHook(handleSignup);
+	const [{ error, isLoading }, updateData] = useQueryHook(handleSignup);
 
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

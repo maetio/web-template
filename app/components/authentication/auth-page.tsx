@@ -14,7 +14,7 @@ import { EmailSchemaType, emailSchema } from "utils/schemas";
 import { fetchSignInMethods } from "auth/client";
 import { ActionButton } from "app/components/action-button";
 import { NextImage } from "app/components/image";
-import { useCreateFirestoreHook } from "utils/hook-template";
+import { useQueryHook } from "utils/hook-template";
 
 interface AuthPageCompParams {
 	redirectURL?: string;
@@ -80,8 +80,7 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 		}
 	};
 
-	const [{ error, isLoading }, updateData] =
-		useCreateFirestoreHook(handleSignIn);
+	const [{ error, isLoading }, updateData] = useQueryHook(handleSignIn);
 
 	return (
 		<div className="flex">

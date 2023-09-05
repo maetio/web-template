@@ -1,7 +1,6 @@
 import React from "react";
 import {
 	CompetitionsResponseType,
-	GamesResponseType,
 	PlayerResponseType,
 	PlayersResponseType,
 } from "types/next-api";
