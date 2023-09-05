@@ -41,7 +41,7 @@ export const GamesCardList = ({
 	const [end, setEnd] = useState(4);
 	const [listData, setListData] = useState<GamesResponseType>([]);
 
-	const [{ error, isLoading, data: games }, updateData] =
+	const [{ error, data: games }, updateData] =
 		useQueryHook(grabPaginatatedGames);
 
 	const handleForwardClick = () => {

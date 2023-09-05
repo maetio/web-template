@@ -11,7 +11,6 @@ interface PaginationListParams {
 
 export const PaginationList: React.FC<PaginationListParams> = ({
 	totalListCount,
-	itemsPerList,
 	forwardAction,
 	backwardsAction,
 }) => {
