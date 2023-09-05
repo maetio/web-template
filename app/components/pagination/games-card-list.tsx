@@ -27,7 +27,13 @@ const grabPaginatatedGames = async ({
 
 	return games;
 };
-export const GamesCardList = ({ compID }: { compID: string }) => {
+export const GamesCardList = ({
+	compID,
+	count,
+}: {
+	compID: string;
+	count: number;
+}) => {
 	const [start, setStart] = useState(0);
 	const [end, setEnd] = useState(4);
 	const [begID, setBegID] = useState<string>();
@@ -80,6 +86,7 @@ export const GamesCardList = ({ compID }: { compID: string }) => {
 			{error && <p>{error}</p>}
 
 			<PaginationList
+				totalListCount={count}
 				forwardAction={handleForwardClick}
 				backwardsAction={handleBackClick}
 			/>

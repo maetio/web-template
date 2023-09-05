@@ -13,6 +13,8 @@ import { SimpleMap } from "app/components/layout/map";
 import { MdLocationOn } from "react-icons/md";
 import { GamesCardList } from "app/components/pagination/games-card-list";
 import { PlayerCardList } from "app/components/pagination/profile-card-list";
+import { gamesCollection } from "config/server";
+import { Timestamp } from "firebase-admin/firestore";
 
 /**
  * Function will display the competition to the user
@@ -68,6 +70,25 @@ export default async function ViewCompScreen({
 	// 	if (rank > 2) return `${rank + 1}th`;
 	// 	return "Not Ranked";
 	// };
+
+	const startDate = new Date(0);
+	const startTimestamp = Timestamp.fromDate(startDate);
+
+	// set the end timestamp to 100 years in the future from today
+	const futureDate = new Date();
+	futureDate.setFullYear(futureDate.getFullYear() + 100);
+	const endTimestamp = Timestamp.fromDate(futureDate);
+
+	const countz = await gamesCollection
+		.where("competitionID", "==", params.id)
+		.where("startTimestamp", ">=", startTimestamp)
+		.where("startTimestamp", "<", endTimestamp)
+		.count()
+		.get();
+
+	const { count } = countz.data();
+
+	console.log("count from thing", count);
 
 	// filter the player data for victory to use
 
@@ -132,12 +153,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-								<SimpleMap
-									zoom={11}
-									lat={competitionData.location.latitude}
-									lng={competitionData.location.longitude}
-								/>
-							) : null}
+							<SimpleMap
+								zoom={11}
+								lat={competitionData.location.latitude}
+								lng={competitionData.location.longitude}
+							/>
+						) : null}
 					</section>
 
 					{/* description section */}
@@ -157,7 +178,7 @@ export default async function ViewCompScreen({
 					<section className="rounded-2xl bg-white p-4">
 						<h6 className="font-bold">Games</h6>
 
-						<GamesCardList compID={params.id} />
+						<GamesCardList count={count} compID={params.id} />
 					</section>
 				</section>
 			</div>

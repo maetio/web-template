@@ -44,6 +44,7 @@ export async function GET(
 					.where("startTimestamp", ">=", startTimestamp)
 					.where("startTimestamp", "<", endTimestamp)
 					.orderBy("startTimestamp", "asc")
+					// .startAfter(gamesCollection.doc(begID))
 					.startAfter(begID)
 					.limit(Number(limit) || 100)
 					.get();
