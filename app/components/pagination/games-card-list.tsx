@@ -39,7 +39,6 @@ export const GamesCardList = ({
 }) => {
 	const [start, setStart] = useState(0);
 	const [end, setEnd] = useState(4);
-	const [begID, setBegID] = useState<string>();
 	const [listData, setListData] = useState<GamesResponseType>([]);
 
 	const [{ error, isLoading, data: games }, updateData] =
@@ -66,17 +65,22 @@ export const GamesCardList = ({
 
 	useEffect(() => {
 		updateData({ compID });
-	}, []);
+	}, [compID, updateData]);
 
 	useEffect(() => {
-		if (games) {
-			console.log(games.length);
-			if (games.length <= 4) {
-				setListData(listData.concat(games));
-			} else {
-				setListData(games);
+		const handleGameChange = () => {
+			if (games) {
+				console.log(games.length);
+				if (games.length <= 4) {
+					setListData(listData.concat(games));
+				} else {
+					setListData(games);
+				}
 			}
-		}
+		};
+
+		handleGameChange();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [games]);
 
 	useEffect(() => {
@@ -85,7 +89,7 @@ export const GamesCardList = ({
 
 	return (
 		<>
-			{listData && !isLoading ? (
+			{listData ? (
 				<ul role="list">
 					{listData.length ? (
 						listData.slice(start, end).map((game) => (
