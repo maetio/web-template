@@ -7,6 +7,7 @@ import { StartTimestamp } from "types/firebase";
 import { Game } from "types/game";
 import { XSGrayMaetIcon, XSMaetIcon } from "../icons";
 import { VictoryWinProb } from "../data-display/victory-win-probability";
+import { CircularProgressBar } from "../data-display/test-bar";
 
 // modular props for all competition cards
 export interface GameCardProps
@@ -251,11 +252,13 @@ const GameCard: React.FC<GameCardProps> = ({
 							{game.team1?.rating &&
 								game.team2?.rating &&
 								gameStatus === "unreported" && (
-								<VictoryWinProb value={42} />
+							// <VictoryWinProb value={42} />
+								<CircularProgressBar number={46} />
 							)}
 
 							{/* <p>victory</p> */}
 						</section>
+						<CircularProgressBar number={46} />
 					</section>
 				</section>
 			</div>

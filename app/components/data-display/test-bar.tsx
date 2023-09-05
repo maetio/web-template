@@ -2,7 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 
-export const CircularProgressBar = ({ number }) => {
+export const CircularProgressBar: React.FC<{ number: number }> = ({
+	number,
+}) => {
 	const [progress, setProgress] = useState(0);
 
 	useEffect(() => {
@@ -25,7 +27,7 @@ export const CircularProgressBar = ({ number }) => {
 		<div className="relative h-20 w-20">
 			<svg className="h-full w-full">
 				<circle
-					className="stroke-current stroke-2 text-transparent"
+					className="fill-blue-500 stroke-transparent stroke-2 text-transparent"
 					strokeDasharray={circumference}
 					strokeDashoffset={strokeDashoffset}
 					r={radius}
