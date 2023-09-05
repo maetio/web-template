@@ -6,6 +6,7 @@ import { WinProb } from "app/components/data-display/win-probability";
 import { StartTimestamp } from "types/firebase";
 import { Game } from "types/game";
 import { XSGrayMaetIcon, XSMaetIcon } from "../icons";
+import { VictoryWinProb } from "../data-display/victory-win-probability";
 
 // modular props for all competition cards
 export interface GameCardProps
@@ -187,7 +188,7 @@ const GameCard: React.FC<GameCardProps> = ({
 						</div> */}
 					</div>
 					{/* right/bottom team */}
-					<section className="flex-col items-center">
+					<section className="flex w-full items-center justify-between">
 						<div className="flex flex-row flex-wrap items-center justify-center md:flex-row-reverse">
 							<div className=" isolate flex overflow-hidden">
 								{game && game.team2?.image
@@ -245,6 +246,16 @@ const GameCard: React.FC<GameCardProps> = ({
 								</div>
 							</div>
 						</div>
+						{/* victory win percentage */}
+						<section>
+							{game.team1?.rating &&
+								game.team2?.rating &&
+								gameStatus === "unreported" && (
+								<VictoryWinProb value={42} />
+							)}
+
+							{/* <p>victory</p> */}
+						</section>
 					</section>
 				</section>
 			</div>
