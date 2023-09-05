@@ -45,22 +45,39 @@ export const GamesCardList = ({
 		useQueryHook(grabPaginatatedGames);
 
 	const handleForwardClick = () => {
+		// if (end >= listData.length) return;
+		// setStart(start + 4);
+		// setEnd(end + 4);
+		// if (listData.length - end <= 4) {
+		// 	const thing = listData[listData.length - 1].id;
+		// 	console.log("thingy", thing);
+		// 	updateData({ compID, begID: listData[listData.length - 1].id });
+		// }
+
+		const delta = listData.length - end;
+
 		if (end >= listData.length) return;
-		setStart(start + 4);
-		setEnd(end + 4);
-		if (listData.length - end <= 4) {
-			const thing = listData[listData.length - 1].id;
-			console.log("thingy", thing);
+
+		if (delta <= 4) {
+			setStart(start + delta);
+			setEnd(end + delta);
 			updateData({ compID, begID: listData[listData.length - 1].id });
+		} else {
+			setStart(start + 4);
+			setEnd(end + 4);
 		}
-		// 	console.log("differnce", listData.length - end);
-		// setBegID(listData[listData.length - 1].id);
 	};
 
 	const handleBackClick = () => {
 		if (start <= 0) return;
-		setStart(start - 4);
-		setEnd(end - 4);
+
+		if (start < 4 && start > 0) {
+			setStart(0);
+			setEnd(4);
+		} else {
+			setStart(start - 4);
+			setEnd(end - 4);
+		}
 	};
 
 	useEffect(() => {
@@ -86,6 +103,11 @@ export const GamesCardList = ({
 	useEffect(() => {
 		console.log("list data", listData);
 	}, [listData]);
+
+	useEffect(() => {
+		console.log("start", start);
+		console.log("end", end);
+	}, [start, end]);
 
 	return (
 		<>
