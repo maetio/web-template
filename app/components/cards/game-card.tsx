@@ -158,7 +158,7 @@ const GameCard: React.FC<GameCardProps> = ({
 				{gameStatus === "unreported" ? (
 					<p className="self-end py-1 md:hidden">Win Prob</p>
 				) : null}
-				<div className="hidden flex-col gap-8 md:flex">
+				<div className="hidden w-full flex-col gap-8 md:flex">
 					{/* win prob */}
 					{game.team1?.rating &&
 						game.team2?.rating &&
