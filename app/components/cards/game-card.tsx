@@ -10,8 +10,8 @@ import { WinProb } from "app/components/data-display/win-probability";
 import { StartTimestamp } from "types/firebase";
 import { Game } from "types/game";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
-import { XSGrayMaetIcon, XSMaetIcon } from "../icons";
-import { CircularProgressBar } from "../data-display/test-bar";
+import { XSGrayMaetIcon, XSMaetIcon } from "app/components/icons";
+import { CircularProgressBar } from "app/components/data-display/test-bar";
 
 // modular props for all competition cards
 export interface GameCardProps

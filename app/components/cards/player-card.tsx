@@ -1,33 +1,26 @@
 import React from "react";
 import { Profile } from "types/index";
-// import { FaMedal } from "react-icons/fa6";
 import Link, { LinkProps } from "next/link";
-import { MaetIcon } from "app/components/icons";
+import { XSMaetIcon } from "app/components/icons";
 import { NextImage } from "app/components/image";
+import { LuStars } from "react-icons/lu";
 
 export interface PlayerCardProps extends Omit<LinkProps, "href"> {
 	player: Partial<Profile>;
 	ranking?: number;
 	host?: boolean;
 	animate?: boolean;
+	pointsAwarded?: number;
+	compPointsAwarded?: number;
 }
-
-function classNames(...classes: string[]) {
-	return classes.filter(Boolean).join(" ");
-}
-
-// define medal colors
-// const medalColor: string[] = [
-// 	"text-yellow-400",
-// 	"text-gray-400",
-// 	"text-amber-700",
-// ];
 
 export const PlayerCard: React.FC<PlayerCardProps> = ({
 	player,
 	ranking,
 	host,
 	animate,
+	pointsAwarded,
+	compPointsAwarded,
 	...divParams
 }) => {
 	return (
@@ -35,7 +28,7 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
 			href={`/view-profile/${player.userID}/${player.sport}`}
 			// eslint-disable-next-line react/jsx-props-no-spreading
 			{...divParams}
-			className="flex justify-between gap-x-6"
+			className="flex w-full justify-between gap-x-6"
 		>
 			<div className="flex items-center justify-center gap-x-4">
 				{typeof ranking === "number" ? (
@@ -43,13 +36,6 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
 						<h1 className="flex-none text-xl font-bold">
 							{ranking + 1}
 						</h1>
-						{/* {ranking < 3 ? (
-							<div className="flex items-center">
-								<FaMedal
-									className={`${medalColor[ranking]} text-base md:text-lg`}
-								/>
-							</div>
-						) : null} */}
 					</div>
 				) : null}
 				<NextImage
@@ -58,49 +44,70 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
 					src={player.image}
 					alt="player profile picture"
 				/>
-				<div className={`min-w-0  ${host ? "flex" : "flex-auto"}`}>
-					<p className="truncate text-sm font-bold leading-6 text-gray-900 dark:text-white">
-						{player.firstName}{" "}
-					</p>
-					<p className="truncate text-sm font-bold leading-6 text-gray-900 dark:text-white">
-						&nbsp; {player.lastName}
-					</p>
-				</div>
-			</div>
-			{host ? null : (
-				<div className="relative self-center">
-					<dt>
-						<div className="absolute rounded-md p-3">
-							<MaetIcon />
-						</div>
-						<p className="ml-16 justify-center truncate text-sm font-medium text-gray-500 dark:text-white">
-							Rating
+				{compPointsAwarded ? (
+					<div className="flex flex-col items-start">
+						<p className="truncate text-sm font-bold leading-6 text-gray-900 dark:text-white">
+							{player.firstName} {player.lastName}
 						</p>
-					</dt>
-					<dd className="ml-16 flex items-baseline">
-						<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
+						<div className="flex gap-1">
+							<XSMaetIcon />
+							<p className="text-xs font-semibold text-gray-900 dark:text-white ">
+								{Math.round(
+									player.rating?.displayRating || 100
+								)}
+							</p>
+							{pointsAwarded ? (
+								<p
+									className={`text-xs ${
+										pointsAwarded > 0
+											? "text-green-600"
+											: "text-red-600"
+									}`}
+								>
+									{`${
+										pointsAwarded > 0 ? "+" : "-"
+									}${pointsAwarded}`}
+								</p>
+							) : null}
+						</div>
+					</div>
+				) : null}
+			</div>
+			{!compPointsAwarded ? (
+				<div className="flex flex-col items-end">
+					<p className="truncate text-sm font-bold leading-6 text-gray-900 dark:text-white">
+						{player.firstName} {player.lastName}
+					</p>
+					<div className="flex gap-1">
+						<XSMaetIcon />
+						<p className="text-xs font-semibold text-gray-900 dark:text-white ">
 							{Math.round(player.rating?.displayRating || 100)}
 						</p>
-						<p
-							className={classNames(
-								player?.deltaRating?.displayRating &&
-									player?.deltaRating?.displayRating < 0
-									? "text-red-600"
-									: "text-green-600",
-								"ml-2 flex items-baseline text-sm font-semibold"
-							)}
-						>
-							{player?.deltaRating?.displayRating &&
-							player?.deltaRating?.displayRating < 0
-								? ""
-								: "+"}
-							{Math.round(
-								player?.deltaRating?.displayRating || 0
-							)}
-						</p>
-					</dd>
+						{pointsAwarded ? (
+							<p
+								className={`text-xs ${
+									pointsAwarded > 0
+										? "text-green-600"
+										: "text-red-600"
+								}`}
+							>
+								{`${
+									pointsAwarded > 0 ? "+" : "-"
+								}${pointsAwarded}`}
+							</p>
+						) : null}
+					</div>
 				</div>
-			)}
+			) : null}
+
+			{compPointsAwarded ? (
+				<div className="flex">
+					<LuStars />
+					<div>
+						<p>Competitions Points</p>
+					</div>
+				</div>
+			) : null}
 		</Link>
 	);
 };
