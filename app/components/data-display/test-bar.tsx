@@ -14,22 +14,23 @@ export const CircularProgressBar: React.FC<{ number: number }> = ({
 			} else {
 				clearInterval(interval);
 			}
-		}, 25); // Adjust the interval to control the animation speed
+		}, 20); // Adjust the interval to control the animation speed
 
 		return () => clearInterval(interval);
 	}, [number, progress]);
 
 	const radius = 20; // Adjust the radius of the circle
 	const circumference = 2 * Math.PI * radius;
+
 	const strokeDashoffset = circumference - (progress / 100) * circumference;
 
 	return (
-		<div className="relative h-20 w-20">
+		<div className="relative h-12 w-12">
 			{/* <div> */}
 			<svg className="h-full w-full">
 				<circle
-					className="fill-transparent stroke-blue-500"
-					strokeWidth="12" // Adjust the stroke width here
+					className="fill-transparent stroke-indigo-600"
+					strokeWidth="8" // Adjust the stroke width here
 					strokeDasharray={circumference}
 					strokeDashoffset={strokeDashoffset}
 					r={radius}
