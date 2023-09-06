@@ -253,12 +253,12 @@ const GameCard: React.FC<GameCardProps> = ({
 								game.team2?.rating &&
 								gameStatus === "unreported" && (
 							// <VictoryWinProb value={42} />
-								<CircularProgressBar number={46} />
+								<CircularProgressBar percent={46} />
 							)}
 
 							{/* <p>victory</p> */}
 						</section>
-						<CircularProgressBar number={46} />
+						<CircularProgressBar percent={46} />
 					</section>
 				</section>
 			</div>

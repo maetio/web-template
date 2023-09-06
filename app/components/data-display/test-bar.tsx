@@ -2,14 +2,18 @@
 
 import React, { useEffect, useState } from "react";
 
-export const CircularProgressBar: React.FC<{ number: number }> = ({
-	number,
+interface CircularProgressBarParams {
+	percent: number;
+}
+
+export const CircularProgressBar: React.FC<CircularProgressBarParams> = ({
+	percent,
 }) => {
 	const [progress, setProgress] = useState(0);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			if (progress < number) {
+			if (progress < percent) {
 				setProgress((prevProgress) => prevProgress + 1);
 			} else {
 				clearInterval(interval);
@@ -17,7 +21,7 @@ export const CircularProgressBar: React.FC<{ number: number }> = ({
 		}, 18); // Adjust the interval to control the animation speed
 
 		return () => clearInterval(interval);
-	}, [number, progress]);
+	}, [percent, progress]);
 
 	const radius = 20; // Adjust the radius of the circle
 	const circumference = 2 * Math.PI * radius;
