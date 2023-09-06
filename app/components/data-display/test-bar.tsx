@@ -14,7 +14,7 @@ export const CircularProgressBar: React.FC<{ number: number }> = ({
 			} else {
 				clearInterval(interval);
 			}
-		}, 20); // Adjust the interval to control the animation speed
+		}, 18); // Adjust the interval to control the animation speed
 
 		return () => clearInterval(interval);
 	}, [number, progress]);
@@ -26,8 +26,10 @@ export const CircularProgressBar: React.FC<{ number: number }> = ({
 
 	return (
 		<div className="relative h-12 w-12">
-			{/* <div> */}
-			<svg className="h-full w-full">
+			<svg
+				className="h-full w-full"
+				style={{ transform: "rotate(-45deg)" }}
+			>
 				<circle
 					className="fill-transparent stroke-indigo-600"
 					strokeWidth="8" // Adjust the stroke width here
@@ -36,6 +38,7 @@ export const CircularProgressBar: React.FC<{ number: number }> = ({
 					r={radius}
 					cx="50%"
 					cy="50%"
+					strokeLinecap="round" // Add this to make edges rounded
 				/>
 			</svg>
 			<div className=" absolute inset-0 flex items-center justify-center ">
@@ -45,7 +48,6 @@ export const CircularProgressBar: React.FC<{ number: number }> = ({
 					</p>
 				</div>
 			</div>
-			{/* </div> */}
 		</div>
 	);
 };
