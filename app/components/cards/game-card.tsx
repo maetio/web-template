@@ -9,9 +9,9 @@ import { NextImage } from "app/components/image";
 import { WinProb } from "app/components/data-display/win-probability";
 import { StartTimestamp } from "types/firebase";
 import { Game } from "types/game";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { XSGrayMaetIcon, XSMaetIcon } from "../icons";
 import { CircularProgressBar } from "../data-display/test-bar";
-import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 // modular props for all competition cards
 export interface GameCardProps
@@ -99,16 +99,16 @@ const GameCard: React.FC<GameCardProps> = ({
 						<div className="isolate flex overflow-hidden">
 							{game && game.team1?.image
 								? game.team1.image
-										.slice(0, 2)
-										.map((img, index) => (
-											<NextImage
-												key={index}
-												// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-												className="relative z-0 inline-block h-[60px] w-[60px] rounded-full ring-2 ring-white"
-												src={img}
-												alt="player image"
-											/>
-										))
+									.slice(0, 2)
+									.map((img, index) => (
+										<NextImage
+											key={index}
+											// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+											className="relative z-0 inline-block h-[60px] w-[60px] rounded-full ring-2 ring-white"
+											src={img}
+											alt="player image"
+										/>
+									))
 								: null}
 						</div>
 						<div
@@ -135,44 +135,65 @@ const GameCard: React.FC<GameCardProps> = ({
 								{/* points awarded */}
 								{gameStatus !== "unreported" &&
 								team1PointsAwarded ? (
-									<p
-										className={`text-xs font-bold leading-tight tracking-tight ${
-											team1PointsAwarded > 0
-												? "text-green-700"
-												: "text-red-800"
-										}`}
-									>
-										{team1PointsAwarded > 0 && "+"}
-										{Math.round(team1PointsAwarded)}
-									</p>
-								) : null}
+										<p
+											className={`text-xs font-bold leading-tight tracking-tight ${
+												team1PointsAwarded > 0
+													? "text-green-700"
+													: "text-red-800"
+											}`}
+										>
+											{team1PointsAwarded > 0 && "+"}
+											{Math.round(team1PointsAwarded)}
+										</p>
+									) : null}
 							</div>
 						</div>
 					</div>
+
+					{gameStatus !== "unreported" ? (
+						<div className="flex-end flex items-center text-3xl font-bold md:hidden">
+							{gameStatus === "team1-winner" ? (
+								<>
+									<BiChevronRight className="h-10 w-10" />
+
+									<p className=" font-black ">
+										{game.team1?.points}
+									</p>
+								</>
+							) : (
+								<p className="text-gray-500">
+									{game.team1?.points}
+								</p>
+							)}
+						</div>
+					) : null}
+
 					{/* victory win percentage */}
-					<section className="self-start md:hidden">
-						{gameStatus === "unreported" && (
+					{gameStatus === "unreported" && (
+						<section className="self-start md:hidden">
 							<CircularProgressBar percent={team2Prob} />
-						)}
-					</section>
+						</section>
+					)}
 				</section>
 				{/* Win prob text on mobile */}
 				{gameStatus === "unreported" ? (
-					<p className="self-end py-1 md:hidden">Win Prob</p>
-				) : null}
+					<p className="self-end py-1 text-xs md:hidden">Win Prob</p>
+				) : (
+					<p className="self-end py-1 text-xs md:hidden">&#160;</p>
+				)}
 
 				<div className="hidden w-full items-center justify-center md:flex md:flex-col">
 					{/* win prob */}
 					{game.team1?.rating &&
 						game.team2?.rating &&
 						gameStatus === "unreported" && (
-							<div className="w-full items-center self-center">
-								<WinProb
-									team1Prob={team1Prob}
-									team2Prob={team2Prob}
-								/>
-							</div>
-						)}
+						<div className="w-full items-center self-center">
+							<WinProb
+								team1Prob={team1Prob}
+								team2Prob={team2Prob}
+							/>
+						</div>
+					)}
 					<div className="flex min-w-full items-center justify-center">
 						{gameStatus !== "unreported" ? (
 							<div className="flex items-center justify-center whitespace-nowrap rounded-2xl bg-zinc-100 p-2 sm:px-6 sm:py-3.5">
@@ -220,16 +241,16 @@ const GameCard: React.FC<GameCardProps> = ({
 						<div className=" isolate flex overflow-hidden">
 							{game && game.team2?.image
 								? game.team2.image
-										.slice(0, 2)
-										.map((img, index) => (
-											<NextImage
-												key={index}
-												// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
-												className="relative z-0 inline-block h-[60px] w-[60px] rounded-full ring-2 ring-white"
-												src={img}
-												alt="player image"
-											/>
-										))
+									.slice(0, 2)
+									.map((img, index) => (
+										<NextImage
+											key={index}
+											// className="h-12 w-12 flex-none rounded-md bg-gray-50 sm:h-16 sm:w-16 lg:h-24 lg:min-h-0 lg:w-24 2xl:h-36 2xl:w-36"
+											className="relative z-0 inline-block h-[60px] w-[60px] rounded-full ring-2 ring-white"
+											src={img}
+											alt="player image"
+										/>
+									))
 								: null}
 						</div>
 
@@ -258,26 +279,45 @@ const GameCard: React.FC<GameCardProps> = ({
 								{/* points awarded */}
 								{gameStatus !== "unreported" &&
 								team2PointsAwarded ? (
-									<p
-										className={`text-xs font-bold leading-tight tracking-tight ${
-											team2PointsAwarded > 0
-												? "text-green-700"
-												: "text-red-800"
-										}`}
-									>
-										{team2PointsAwarded > 0 && "+"}
-										{Math.round(team2PointsAwarded)}
-									</p>
-								) : null}
+										<p
+											className={`text-xs font-bold leading-tight tracking-tight ${
+												team2PointsAwarded > 0
+													? "text-green-700"
+													: "text-red-800"
+											}`}
+										>
+											{team2PointsAwarded > 0 && "+"}
+											{Math.round(team2PointsAwarded)}
+										</p>
+									) : null}
 							</div>
 						</div>
 					</div>
+
+					{/* points section on mobile */}
+					{gameStatus !== "unreported" ? (
+						<div className="flex-end flex items-center text-3xl font-bold md:hidden">
+							{gameStatus === "team2-winner" ? (
+								<>
+									<BiChevronRight className="h-10 w-10" />
+
+									<p className=" font-black ">
+										{game.team2?.points}
+									</p>
+								</>
+							) : (
+								<p className="text-gray-500">
+									{game.team2?.points}
+								</p>
+							)}
+						</div>
+					) : null}
 					{/* victory win percentage */}
-					<section className="md:hidden">
-						{gameStatus === "unreported" && (
+					{gameStatus === "unreported" && (
+						<section className="md:hidden">
 							<CircularProgressBar percent={team2Prob} />
-						)}
-					</section>
+						</section>
+					)}
 				</section>
 			</section>
 		</div>
