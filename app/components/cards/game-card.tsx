@@ -11,6 +11,7 @@ import { StartTimestamp } from "types/firebase";
 import { Game } from "types/game";
 import { XSGrayMaetIcon, XSMaetIcon } from "../icons";
 import { CircularProgressBar } from "../data-display/test-bar";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 // modular props for all competition cards
 export interface GameCardProps
@@ -155,10 +156,12 @@ const GameCard: React.FC<GameCardProps> = ({
 						)}
 					</section>
 				</section>
+				{/* Win prob text on mobile */}
 				{gameStatus === "unreported" ? (
 					<p className="self-end py-1 md:hidden">Win Prob</p>
 				) : null}
-				<div className="hidden w-full md:flex-col items-center justify-center md:flex">
+
+				<div className="hidden w-full items-center justify-center md:flex md:flex-col">
 					{/* win prob */}
 					{game.team1?.rating &&
 						game.team2?.rating &&
@@ -170,7 +173,6 @@ const GameCard: React.FC<GameCardProps> = ({
 								/>
 							</div>
 						)}
-					{/* thing */}
 					<div className="flex min-w-full items-center justify-center">
 						{gameStatus !== "unreported" ? (
 							<div className="flex items-center justify-center whitespace-nowrap rounded-2xl bg-zinc-100 p-2 sm:px-6 sm:py-3.5">
@@ -183,8 +185,21 @@ const GameCard: React.FC<GameCardProps> = ({
 										}
 									>
 										{game.team1?.points}
-									</span>{" "}
-									:{" "}
+									</span>
+								</p>
+								<BiChevronLeft
+									className={`h-10 w-10 ${
+										gameStatus === "team2-winner" &&
+										"hidden"
+									}`}
+								/>
+								<BiChevronRight
+									className={`h-10 w-10 ${
+										gameStatus === "team1-winner" &&
+										"hidden"
+									}`}
+								/>
+								<p className="text-1xl font-bold leading-tight tracking-tight text-gray-500 md:text-3xl ">
 									<span
 										className={
 											gameStatus === "team2-winner"
