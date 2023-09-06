@@ -1,12 +1,15 @@
 import React from "react";
-import { inferGameStatus, simulateMatchup } from "utils/skill-rating";
+import {
+	expectedDisplayResult,
+	inferGameStatus,
+	simulateMatchup,
+} from "utils/skill-rating";
 import { getShortDateString, getTimeString } from "utils/date";
 import { NextImage } from "app/components/image";
 import { WinProb } from "app/components/data-display/win-probability";
 import { StartTimestamp } from "types/firebase";
 import { Game } from "types/game";
 import { XSGrayMaetIcon, XSMaetIcon } from "../icons";
-import { VictoryWinProb } from "../data-display/victory-win-probability";
 import { CircularProgressBar } from "../data-display/test-bar";
 
 // modular props for all competition cards
@@ -64,6 +67,13 @@ const GameCard: React.FC<GameCardProps> = ({
 	const team2PointsAwarded = game.team2?.rating?.displayRating
 		? team2Rating.displayRating - game.team2.rating.displayRating
 		: null;
+
+	// for calculation, input display ratings as well
+	const probTeam1 = Math.floor(
+		expectedDisplayResult(team1Rating, team2Rating) * 100
+	);
+
+	const probTeam2 = probTeam1 !== undefined ? 100 - probTeam1 : 0;
 
 	return (
 		<div
@@ -253,12 +263,9 @@ const GameCard: React.FC<GameCardProps> = ({
 								game.team2?.rating &&
 								gameStatus === "unreported" && (
 							// <VictoryWinProb value={42} />
-								<CircularProgressBar percent={46} />
+								<CircularProgressBar percent={probTeam2} />
 							)}
-
-							{/* <p>victory</p> */}
 						</section>
-						<CircularProgressBar percent={46} />
 					</section>
 				</section>
 			</div>
