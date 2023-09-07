@@ -15,6 +15,8 @@ import { PlayerCardList } from "app/components/pagination/profile-card-list";
 import { gamesCollection } from "config/server";
 import { Timestamp } from "firebase-admin/firestore";
 import { PlayerRatingCard } from "app/components/cards/player-rating-card";
+import { ActionButton } from "app/components/action-button";
+import { getUserData } from "server-actions/users";
 
 /**
  * Function will display the competition to the user
@@ -33,7 +35,7 @@ export default async function ViewCompScreen({
 	params: { id: string };
 }) {
 	// get the user data
-	// const user = await getUserData();
+	const user = await getUserData();
 
 	// get competition data
 	const competitionResponse = await fetch(
@@ -70,11 +72,11 @@ export default async function ViewCompScreen({
 	const gameCount = gameCountRef.data().count;
 
 	return (
-		<main className="container min-w-full px-0">
+		<main className="w-full min-w-full">
 			<div className="w-full lg:flex lg:flex-row lg:gap-2.5">
 				<div className="lg:sticky lg:top-20 lg:h-full">
 					{/* Competition image and name banner */}
-					<section className="mt-2.5 flex h-fit flex-col flex-wrap md:flex-row md:flex-nowrap md:gap-2.5 lg:flex-col">
+					<section className="mt-2.5 flex h-fit w-full flex-col flex-wrap md:flex-row md:flex-nowrap md:gap-2.5 lg:flex-col">
 						<div className="md:flex lg:hidden">
 							<NextImage
 								size={400}
@@ -113,6 +115,52 @@ export default async function ViewCompScreen({
 							location={competitionData?.location}
 						/>
 					</section>
+					{/* signup */}
+
+					{competitionData?.price ? (
+						<section className="fixed bottom-0 left-0 right-0 z-10 mt-2.5 flex w-full items-center justify-between lg:rounded-2xl bg-white p-4 lg:relative">
+							<div>
+								<h4 className="text-xl font-bold leading-tight tracking-tight text-black">
+									${competitionData.price / 100}
+								</h4>
+								{competitionData?.startTimeISO && (
+									<p className="text-sm">
+										Registration closes on
+										{new Date(
+											competitionData.startTimeISO
+										).toLocaleDateString()}{" "}
+										at{" "}
+										{new Date(
+											competitionData.startTimeISO
+										).toLocaleTimeString()}
+									</p>
+								)}
+							</div>
+							<ActionButton
+								className="h-10 w-28 gap-2.5 rounded-lg p-2.5"
+								// disabled={
+								// 	(competitionData?.maxPlayers &&
+								// 		competitionData?.maxPlayers <=
+								// 			players.length) ||
+								// 	!competitionData?.registrationOpen
+								// }
+								referRoute={
+									user?.id
+										? `/join-comp/${competitionData?.id}`
+										: `/comp-login/${competitionData?.id}`
+								}
+								title={
+									(competitionData?.maxPlayers &&
+										competitionData?.maxPlayers <=
+											players.length) ||
+									!competitionData?.registrationOpen
+										? "Competition is Full"
+										: "Register Now"
+								}
+								colorVariant="indigo"
+							/>
+						</section>
+					) : null}
 				</div>
 
 				{/* main content of the page */}
@@ -143,12 +191,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-								<SimpleMap
-									zoom={11}
-									lat={competitionData.location.latitude}
-									lng={competitionData.location.longitude}
-								/>
-							) : null}
+							<SimpleMap
+								zoom={11}
+								lat={competitionData.location.latitude}
+								lng={competitionData.location.longitude}
+							/>
+						) : null}
 					</section>
 
 					{/* description section */}
