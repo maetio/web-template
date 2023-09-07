@@ -139,7 +139,8 @@ export default async function ViewCompScreen({
 											className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-900"
 											aria-hidden="true"
 										/>{" "}
-										Open in Maps {competitionData.location.name}
+										Open in Maps{" "}
+										{competitionData.location.name}
 									</a>
 								</a>
 							</p>
@@ -147,12 +148,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-							<SimpleMap
-								zoom={11}
-								lat={competitionData.location.latitude}
-								lng={competitionData.location.longitude}
-							/>
-						) : null}
+								<SimpleMap
+									zoom={11}
+									lat={competitionData.location.latitude}
+									lng={competitionData.location.longitude}
+								/>
+							) : null}
 					</section>
 
 					{/* description section */}
