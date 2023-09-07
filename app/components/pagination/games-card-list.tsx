@@ -32,7 +32,7 @@ const grabPaginatatedGames = async ({
 };
 export const GamesCardList = ({
 	compID,
-	count,
+	count = 1,
 }: {
 	compID: string;
 	count: number;

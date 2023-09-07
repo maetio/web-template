@@ -52,8 +52,6 @@ export default async function ViewCompScreen({
 	);
 	const hostData: PlayerResponseType = await profileResponse.json();
 
-	console.log("host data", hostData);
-
 	const startDate = new Date(0);
 	const startTimestamp = Timestamp.fromDate(startDate);
 
@@ -70,8 +68,6 @@ export default async function ViewCompScreen({
 		.get();
 
 	const gameCount = gameCountRef.data().count;
-
-	console.log(competitionData?.location);
 
 	return (
 		<main className="container min-w-full px-0">
@@ -138,9 +134,8 @@ export default async function ViewCompScreen({
 										<MdLocationOn
 											className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-900"
 											aria-hidden="true"
-										/>{" "}
-										Open in Maps{" "}
-										{competitionData.location.name}
+										/>
+										Open in Maps
 									</a>
 								</a>
 							</p>
