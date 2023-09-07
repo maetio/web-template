@@ -7,6 +7,7 @@ interface PaginationListParams {
 	listCountLabel?: string;
 	forwardAction?: () => void;
 	backwardsAction?: () => void;
+	className?: string;
 }
 
 export const PaginationList: React.FC<PaginationListParams> = ({
@@ -14,9 +15,12 @@ export const PaginationList: React.FC<PaginationListParams> = ({
 	listCountLabel,
 	forwardAction,
 	backwardsAction,
+	className,
 }) => {
 	return (
-		<div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 pt-3 sm:px-6">
+		<div
+			className={`flex items-center justify-between bg-white px-4 pt-3 sm:px-6 ${className}`}
+		>
 			<div className="flex flex-1 justify-between sm:hidden">
 				<button
 					onClick={backwardsAction}
