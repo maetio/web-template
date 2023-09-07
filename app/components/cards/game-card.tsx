@@ -129,7 +129,7 @@ const GameCard: React.FC<GameCardProps> = ({
 									) : (
 										<XSGrayMaetIcon />
 									)}
-								<p className="ml-1 text-xs">
+								<p className="mx-0.5 text-xs">
 									{Math.round(
 										game.team1?.rating?.displayRating || 100
 									)}
@@ -138,7 +138,7 @@ const GameCard: React.FC<GameCardProps> = ({
 								{gameStatus !== "unreported" &&
 								team1PointsAwarded ? (
 										<p
-											className={`text-xs font-bold leading-tight tracking-tight ${
+											className={`mx-0.5 text-xs font-bold leading-tight tracking-tight ${
 												team1PointsAwarded > 0
 													? "text-green-700"
 													: "text-red-800"
@@ -264,12 +264,26 @@ const GameCard: React.FC<GameCardProps> = ({
 									: "text-gray-500"
 							}`}
 						>
-							<p className="text-center text-xs font-semibold md:ml-1 md:p-0 lg:text-sm">
+							<p className="text-xs font-semibold lg:text-sm">
 								{game.team2?.lastName}
 							</p>
 							<div className="flex-start flex items-center justify-start md:mr-1 md:flex-row-reverse">
-								<div className="flex flex-row-reverse md:flex-row">
-									<p className="ml-1 text-xs">
+								<div className="flex flex-row-reverse items-center md:flex-row">
+									{gameStatus !== "unreported" &&
+									team2PointsAwarded ? (
+											<p
+												className={`mx-0.5 text-xs font-bold leading-tight tracking-tight ${
+													team2PointsAwarded > 0
+														? "text-green-700"
+														: "text-red-800"
+												}`}
+											>
+												{team2PointsAwarded > 0 && "+"}
+												{Math.round(team2PointsAwarded)}
+											</p>
+										) : null}
+
+									<p className="mx-0.5 text-xs">
 										{Math.round(
 											game.team2?.rating?.displayRating ||
 												100
@@ -282,21 +296,6 @@ const GameCard: React.FC<GameCardProps> = ({
 											<XSGrayMaetIcon />
 										)}
 								</div>
-
-								{/* points awarded */}
-								{gameStatus !== "unreported" &&
-								team2PointsAwarded ? (
-										<p
-											className={`text-xs font-bold leading-tight tracking-tight ${
-												team2PointsAwarded > 0
-													? "text-green-700"
-													: "text-red-800"
-											}`}
-										>
-											{team2PointsAwarded > 0 && "+"}
-											{Math.round(team2PointsAwarded)}
-										</p>
-									) : null}
 							</div>
 						</div>
 					</div>
