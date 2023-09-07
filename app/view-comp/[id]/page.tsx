@@ -15,6 +15,7 @@ import { GamesCardList } from "app/components/pagination/games-card-list";
 import { PlayerCardList } from "app/components/pagination/profile-card-list";
 import { gamesCollection } from "config/server";
 import { Timestamp } from "firebase-admin/firestore";
+import { PlayerRatingCard } from "app/components/cards/player-rating-card";
 
 /**
  * Function will display the competition to the user
@@ -62,14 +63,7 @@ export default async function ViewCompScreen({
 	);
 	const hostData: PlayerResponseType = await profileResponse.json();
 
-	// set rank string
-	// const getRankString = (rank: number) => {
-	// 	if (rank === 0) return "1st";
-	// 	if (rank === 1) return "2nd";
-	// 	if (rank === 2) return "3rd";
-	// 	if (rank > 2) return `${rank + 1}th`;
-	// 	return "Not Ranked";
-	// };
+	console.log("host data", hostData);
 
 	const startDate = new Date(0);
 	const startTimestamp = Timestamp.fromDate(startDate);
@@ -87,10 +81,6 @@ export default async function ViewCompScreen({
 		.get();
 
 	const gameCount = gameCountRef.data().count;
-
-	console.log("count from thing", gameCount);
-
-	// filter the player data for victory to use
 
 	return (
 		<main className="container min-w-full px-0">
@@ -118,7 +108,8 @@ export default async function ViewCompScreen({
 								<h1 className="flex flex-wrap text-3xl font-bold lg:text-4xl">
 									{competitionData?.name}
 								</h1>
-								<PlayerCard host player={hostData} />
+								{/* <PlayerCard host player={hostData} /> */}
+								<PlayerRatingCard host player={hostData} />
 							</section>
 							<RatedCompetitionCard />
 						</div>
@@ -153,12 +144,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-								<SimpleMap
-									zoom={11}
-									lat={competitionData.location.latitude}
-									lng={competitionData.location.longitude}
-								/>
-							) : null}
+							<SimpleMap
+								zoom={11}
+								lat={competitionData.location.latitude}
+								lng={competitionData.location.longitude}
+							/>
+						) : null}
 					</section>
 
 					{/* description section */}

@@ -8,14 +8,17 @@ export interface PlayerCardProps extends Omit<LinkProps, "href"> {
 	player: Partial<Profile>;
 	ranking?: number;
 	animate?: boolean;
+	host?: boolean;
 }
 
 export const PlayerRatingCard: React.FC<PlayerCardProps> = ({
 	player,
 	ranking,
 	animate,
+	host,
 	...divParams
 }) => {
+	console.log("host info", player);
 	return (
 		<Link
 			href={`/view-profile/${player.userID}/${player.sport}`}
@@ -43,15 +46,17 @@ export const PlayerRatingCard: React.FC<PlayerCardProps> = ({
 					</p>
 				</div>
 			</div>
-			<div className="flex items-center">
-				<div className="rounded-md ">
-					<MaetIcon />
-				</div>
+			{!host ? (
+				<div className="flex items-center">
+					<div className="rounded-md ">
+						<MaetIcon />
+					</div>
 
-				<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
-					{Math.round(player.rating?.displayRating || 100)}
-				</p>
-			</div>
+					<p className="text-2xl font-semibold text-gray-900 dark:text-white ">
+						{Math.round(player.rating?.displayRating || 100)}
+					</p>
+				</div>
+			) : null}
 		</Link>
 	);
 };
