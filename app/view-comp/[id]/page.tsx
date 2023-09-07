@@ -7,7 +7,6 @@ import {
 import { BaseURL } from "config/constants";
 import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
-import { PlayerCard } from "app/components/cards/player-card";
 import { RatedCompetitionCard } from "app/components/cards";
 import { SimpleMap } from "app/components/layout/map";
 import { MdLocationOn } from "react-icons/md";
@@ -48,16 +47,6 @@ export default async function ViewCompScreen({
 	const playersResponse = await fetch(`${BaseURL}/api/players/${params.id}`);
 	const players: PlayersResponseType = await playersResponse.json();
 
-	// get the competition games
-
-	// get if the player has joined the competition
-	// const compPlayerResponse = await fetch(
-	// 	`${BaseURL}/api/comp-player/${params.id}/${user?.id}`
-	// );
-	// const compPlayer: CompProfilesResponseType =
-	// 	await compPlayerResponse.json();
-
-	// get host profile data
 	const profileResponse = await fetch(
 		`${BaseURL}/api/user-data/${competitionData?.hostID}`
 	);
@@ -81,6 +70,8 @@ export default async function ViewCompScreen({
 		.get();
 
 	const gameCount = gameCountRef.data().count;
+
+	console.log(competitionData?.location);
 
 	return (
 		<main className="container min-w-full px-0">
@@ -134,22 +125,27 @@ export default async function ViewCompScreen({
 						<h6 className="font-bold">Location</h6>
 						{competitionData?.location ? (
 							<p className="mb-2.5 mt-5 flex items-center font-bold">
-								<MdLocationOn
-									className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-900"
-									aria-hidden="true"
-								/>{" "}
-								{competitionData.location.name}
+								<a
+									target="_blank"
+									href={`http://maps.google.com/?q=1200 ${competitionData.location.address}`}
+								>
+									<MdLocationOn
+										className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-900"
+										aria-hidden="true"
+									/>{" "}
+									{competitionData.location.name}
+								</a>
 							</p>
 						) : null}
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-							<SimpleMap
-								zoom={11}
-								lat={competitionData.location.latitude}
-								lng={competitionData.location.longitude}
-							/>
-						) : null}
+								<SimpleMap
+									zoom={11}
+									lat={competitionData.location.latitude}
+									lng={competitionData.location.longitude}
+								/>
+							) : null}
 					</section>
 
 					{/* description section */}
