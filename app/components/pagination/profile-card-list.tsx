@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
 import { PlayersResponseType } from "types/next-api";
 import { filterPlayerData } from "utils/format";
-import { PlayerCard } from "../cards";
+import { PlayerRatingCard } from "app/components/cards/player-rating-card";
 import { PaginationList } from "../layout/pagination";
 
 interface PlayerCardListParams {
@@ -62,8 +62,8 @@ export const PlayerCardList: React.FC<PlayerCardListParams> = ({ players }) => {
 			<div className=" col-span-6 rounded-lg  bg-white lg:top-4 lg:col-span-2">
 				<ul role="list" className="divide-y divide-gray-100 ">
 					{players.slice(start, end).map((player, rank) => (
-						<li key={player.id} className="my-[5px] px-5">
-							<PlayerCard
+						<li key={player.id} className="my-[5px] px-3">
+							<PlayerRatingCard
 								key={player.id}
 								player={player}
 								ranking={rank}
