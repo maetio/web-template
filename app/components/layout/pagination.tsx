@@ -3,14 +3,15 @@
 import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
 
 interface PaginationListParams {
-	itemsPerList?: number;
 	totalListCount?: number;
+	listCountLabel?: string;
 	forwardAction?: () => void;
 	backwardsAction?: () => void;
 }
 
 export const PaginationList: React.FC<PaginationListParams> = ({
 	totalListCount,
+	listCountLabel,
 	forwardAction,
 	backwardsAction,
 }) => {
@@ -34,7 +35,7 @@ export const PaginationList: React.FC<PaginationListParams> = ({
 				{totalListCount ? (
 					<div>
 						<p className="text-sm text-gray-700">
-							Total Players {totalListCount}
+							{listCountLabel} {totalListCount}
 						</p>
 					</div>
 				) : null}

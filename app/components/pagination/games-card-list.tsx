@@ -121,6 +121,7 @@ export const GamesCardList = ({
 
 			<PaginationList
 				totalListCount={count}
+				listCountLabel="Total Games:"
 				forwardAction={handleForwardClick}
 				backwardsAction={handleBackClick}
 			/>

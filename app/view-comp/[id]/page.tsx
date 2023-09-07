@@ -120,7 +120,7 @@ export default async function ViewCompScreen({
 								</h1>
 								<PlayerCard host player={hostData} />
 							</section>
-							<RatedCompetitionCard className="mb-2.5 md:mb-0 md:mt-0" />
+							<RatedCompetitionCard />
 						</div>
 					</section>
 
@@ -153,12 +153,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-								<SimpleMap
-									zoom={11}
-									lat={competitionData.location.latitude}
-									lng={competitionData.location.longitude}
-								/>
-							) : null}
+							<SimpleMap
+								zoom={11}
+								lat={competitionData.location.latitude}
+								lng={competitionData.location.longitude}
+							/>
+						) : null}
 					</section>
 
 					{/* description section */}

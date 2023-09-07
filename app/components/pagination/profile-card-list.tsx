@@ -73,10 +73,10 @@ export const PlayerCardList: React.FC<PlayerCardListParams> = ({ players }) => {
 				</ul>
 			</div>
 			<PaginationList
+				listCountLabel="Total Players:"
 				forwardAction={handleForwardClick}
 				backwardsAction={handleBackClick}
 				totalListCount={players.length}
-				itemsPerList={5}
 			/>
 		</>
 	);

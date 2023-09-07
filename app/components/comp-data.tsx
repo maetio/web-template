@@ -91,7 +91,7 @@ const CompDisplayData = ({
 
 	return (
 		<div
-			className={`flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6
+			className={`flex flex-col
 				${className || ""}
 			`}
 			{...divParams}
