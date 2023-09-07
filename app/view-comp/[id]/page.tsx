@@ -126,26 +126,33 @@ export default async function ViewCompScreen({
 						{competitionData?.location ? (
 							<p className="mb-2.5 mt-5 flex items-center font-bold">
 								<a
+									className="flex"
 									target="_blank"
 									href={`http://maps.google.com/?q=1200 ${competitionData.location.address}`}
 								>
-									<MdLocationOn
-										className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-900"
-										aria-hidden="true"
-									/>{" "}
-									{competitionData.location.name}
+									<a
+										className="flex"
+										target="_blank"
+										href={`https://maps.apple.com/maps?q=2000 ${competitionData.location.address}`}
+									>
+										<MdLocationOn
+											className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-900"
+											aria-hidden="true"
+										/>{" "}
+										{competitionData.location.name}
+									</a>
 								</a>
 							</p>
 						) : null}
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-								<SimpleMap
-									zoom={11}
-									lat={competitionData.location.latitude}
-									lng={competitionData.location.longitude}
-								/>
-							) : null}
+							<SimpleMap
+								zoom={11}
+								lat={competitionData.location.latitude}
+								lng={competitionData.location.longitude}
+							/>
+						) : null}
 					</section>
 
 					{/* description section */}
