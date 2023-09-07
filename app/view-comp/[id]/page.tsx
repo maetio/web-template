@@ -100,7 +100,7 @@ export default async function ViewCompScreen({
 								{/* <PlayerCard host player={hostData} /> */}
 								<PlayerRatingCard host player={hostData} />
 							</section>
-							<RatedCompetitionCard />
+							<RatedCompetitionCard joinable={false} />
 						</div>
 					</section>
 
@@ -118,7 +118,7 @@ export default async function ViewCompScreen({
 					{/* signup */}
 
 					{competitionData?.price ? (
-						<section className="fixed bottom-0 left-0 right-0 z-10 mt-2.5 flex w-full items-center justify-between lg:rounded-2xl bg-white p-4 lg:relative">
+						<section className="fixed bottom-0 left-0 right-0 z-10 mt-2.5 flex w-full items-center justify-between bg-white p-4 lg:relative lg:rounded-2xl">
 							<div>
 								<h4 className="text-xl font-bold leading-tight tracking-tight text-black">
 									${competitionData.price / 100}
@@ -191,12 +191,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-							<SimpleMap
-								zoom={11}
-								lat={competitionData.location.latitude}
-								lng={competitionData.location.longitude}
-							/>
-						) : null}
+								<SimpleMap
+									zoom={11}
+									lat={competitionData.location.latitude}
+									lng={competitionData.location.longitude}
+								/>
+							) : null}
 					</section>
 
 					{/* description section */}
