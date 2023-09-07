@@ -139,7 +139,7 @@ export default async function ViewCompScreen({
 											className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-900"
 											aria-hidden="true"
 										/>{" "}
-										{competitionData.location.name}
+										Open in Maps {competitionData.location.name}
 									</a>
 								</a>
 							</p>
