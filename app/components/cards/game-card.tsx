@@ -268,7 +268,21 @@ const GameCard: React.FC<GameCardProps> = ({
 								{game.team2?.lastName}
 							</p>
 							<div className="flex-start flex items-center justify-start md:mr-1 md:flex-row-reverse">
-								<div className="flex flex-row-reverse items-center md:flex-row">
+								<div className="flex  items-center">
+									{gameStatus === "team2-winner" ||
+									gameStatus === "unreported" ? (
+											<XSMaetIcon />
+										) : (
+											<XSGrayMaetIcon />
+										)}
+
+									<p className="mx-0.5 text-xs">
+										{Math.round(
+											game.team2?.rating?.displayRating ||
+												100
+										)}
+									</p>
+
 									{gameStatus !== "unreported" &&
 									team2PointsAwarded ? (
 											<p
@@ -282,19 +296,6 @@ const GameCard: React.FC<GameCardProps> = ({
 												{Math.round(team2PointsAwarded)}
 											</p>
 										) : null}
-
-									<p className="mx-0.5 text-xs">
-										{Math.round(
-											game.team2?.rating?.displayRating ||
-												100
-										)}
-									</p>
-									{gameStatus === "team2-winner" ||
-									gameStatus === "unreported" ? (
-											<XSMaetIcon />
-										) : (
-											<XSGrayMaetIcon />
-										)}
 								</div>
 							</div>
 						</div>
