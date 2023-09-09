@@ -1,17 +1,17 @@
 "use client";
 
 import React from "react";
-import { MaetIcon } from "../icons";
+import { MdLocationOn } from "react-icons/md";
 
 export const AnyReactComponent: React.FC<{
-	text: string;
+	text?: string;
 	lat: number;
 	lng: number;
-}> = ({ text }: { text: string }) => {
+}> = ({ text }: { text?: string }) => {
 	return (
 		<div>
-			<MaetIcon />
-			<p>{text}</p>
+			<MdLocationOn className="h-10 w-10" />
+			{text && <p>{text}</p>}
 		</div>
 	);
 };

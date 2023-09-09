@@ -42,7 +42,6 @@ export async function SimpleMap({
 					<AnyReactComponent
 						lat={defaultProps.center.lat}
 						lng={defaultProps.center.lng}
-						text="My Marker"
 					/>
 				</GoogleMapReact>
 			</Suspense>
