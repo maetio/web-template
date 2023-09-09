@@ -19,6 +19,8 @@ import { PlayerRatingCard } from "app/components/cards/player-rating-card";
 import { ActionButton } from "app/components/action-button";
 import { getUserData } from "server-actions/users";
 
+console.log("testing");
+
 /**
  * Function will display the competition to the user
  *
