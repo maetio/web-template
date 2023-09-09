@@ -10,6 +10,7 @@ import { NextImage } from "app/components/image";
 import { RatedCompetitionCard } from "app/components/cards";
 import { SimpleMap } from "app/components/layout/map";
 import { MdLocationOn } from "react-icons/md";
+import { BiLinkExternal } from "react-icons/bi";
 import { GamesCardList } from "app/components/pagination/games-card-list";
 import { PlayerCardList } from "app/components/pagination/profile-card-list";
 import { gamesCollection } from "config/server";
@@ -168,25 +169,36 @@ export default async function ViewCompScreen({
 					<section className="rounded-2xl bg-white p-4">
 						<h6 className="font-bold">Location</h6>
 						{competitionData?.location ? (
-							<p className="mb-2.5 mt-5 flex items-center font-bold">
-								<a
-									className="flex"
-									target="_blank"
-									href={`http://maps.google.com/?q=1200 ${competitionData.location.address}`}
-								>
-									<a
-										className="flex"
-										target="_blank"
-										href={`https://maps.apple.com/maps?q=2000 ${competitionData.location.address}`}
-									>
-										<MdLocationOn
-											className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-900"
-											aria-hidden="true"
-										/>
-										Open in Maps
-									</a>
-								</a>
-							</p>
+							<div className="mb-2.5 mt-5 flex items-center">
+								<MdLocationOn
+									className="mr-1.5 h-8 w-8 text-gray-900"
+									aria-hidden="true"
+								/>
+								<div className="flex flex-col">
+									<p className="flex items-center text-sm font-bold">
+										{competitionData.location.name}
+									</p>
+									<p className="flex text-xs font-medium leading-none tracking-tight text-gray-500 underline">
+										<a
+											className="flex"
+											target="_blank"
+											href={`http://maps.google.com/?q=1200 ${competitionData.location.address}`}
+										>
+											<a
+												className="flex"
+												target="_blank"
+												href={`https://maps.apple.com/maps?q=2000 ${competitionData.location.address}`}
+											>
+												{
+													competitionData.location
+														.address
+												}{" "}
+												<BiLinkExternal className="ml-1" />
+											</a>
+										</a>
+									</p>
+								</div>
+							</div>
 						) : null}
 
 						{competitionData?.location?.latitude &&
