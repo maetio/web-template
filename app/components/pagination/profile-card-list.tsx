@@ -9,9 +9,13 @@ import { PaginationList } from "../layout/pagination";
 
 interface PlayerCardListParams {
 	players: PlayersResponseType;
+	blur?: boolean;
 }
 
-export const PlayerCardList: React.FC<PlayerCardListParams> = ({ players }) => {
+export const PlayerCardList: React.FC<PlayerCardListParams> = ({
+	players,
+	blur,
+}) => {
 	const filteredPlayerData = filterPlayerData(players);
 
 	const [start, setStart] = useState<number>(0);
@@ -59,19 +63,29 @@ export const PlayerCardList: React.FC<PlayerCardListParams> = ({ players }) => {
 				/>
 			</div>
 
-			<div className=" col-span-6 rounded-lg  bg-white lg:top-4 lg:col-span-2">
-				<ul role="list" className="divide-y divide-gray-100 ">
+			<div className="relative w-full rounded-lg bg-white">
+				<ul
+					role="list"
+					className={`divide-y divide-gray-100 ${blur && "blur-sm"}`}
+				>
 					{players.slice(start, end).map((player, rank) => (
 						<li key={player.id} className="my-[5px] px-3">
 							<PlayerRatingCard
 								key={player.id}
 								player={player}
 								ranking={rank}
+								blur={blur}
 							/>
 						</li>
 					))}
 				</ul>
+				{blur && (
+					<div className="absolute top-[50%] left-[50%] z-10 mx-auto text-center">
+						hello
+					</div>
+				)}
 			</div>
+
 			<PaginationList
 				className="border-t border-gray-200"
 				listCountLabel="Total Players:"

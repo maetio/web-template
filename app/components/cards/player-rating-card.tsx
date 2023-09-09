@@ -9,6 +9,7 @@ export interface PlayerCardProps extends Omit<LinkProps, "href"> {
 	ranking?: number;
 	animate?: boolean;
 	host?: boolean;
+	blur?: boolean;
 }
 
 export const PlayerRatingCard: React.FC<PlayerCardProps> = ({
@@ -16,15 +17,16 @@ export const PlayerRatingCard: React.FC<PlayerCardProps> = ({
 	ranking,
 	animate,
 	host,
+	blur,
 	...divParams
 }) => {
 	console.log("host info", player);
 	return (
 		<Link
-			href={`/view-profile/${player.userID}/${player.sport}`}
+			href={blur ? "" : `/view-profile/${player.userID}/${player.sport}`}
 			// eslint-disable-next-line react/jsx-props-no-spreading
 			{...divParams}
-			className="flex justify-between"
+			className={`flex justify-between ${blur && "blur-sm"}`}
 		>
 			<div className="flex items-center justify-center gap-x-2.5">
 				{typeof ranking === "number" ? (

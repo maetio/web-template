@@ -232,7 +232,7 @@ export default async function ViewCompScreen({
 					{/* graph section */}
 					<section className="rounded-2xl bg-white p-4">
 						<h6 className="font-bold">Players</h6>
-						<PlayerCardList players={players} />
+						<PlayerCardList blur players={players} />
 					</section>
 					{/* game section */}
 					<section className="rounded-2xl bg-white p-4">
