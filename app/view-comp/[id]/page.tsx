@@ -103,7 +103,15 @@ export default async function ViewCompScreen({
 								{/* <PlayerCard host player={hostData} /> */}
 								<PlayerRatingCard host player={hostData} />
 							</section>
-							<RatedCompetitionCard joinable={false} />
+							{}
+							<RatedCompetitionCard
+								joinable={
+									(competitionData?.maxPlayers &&
+										competitionData?.maxPlayers <=
+											players.length) ||
+									!competitionData?.registrationOpen
+								}
+							/>
 						</div>
 					</section>
 
@@ -205,12 +213,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-								<SimpleMap
-									zoom={11}
-									lat={competitionData.location.latitude}
-									lng={competitionData.location.longitude}
-								/>
-							) : null}
+							<SimpleMap
+								zoom={11}
+								lat={competitionData.location.latitude}
+								lng={competitionData.location.longitude}
+							/>
+						) : null}
 					</section>
 
 					{/* description section */}
