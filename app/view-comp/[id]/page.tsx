@@ -1,5 +1,6 @@
 import React from "react";
 import {
+	CompProfilesResponseType,
 	CompetitionsResponseType,
 	PlayerResponseType,
 	PlayersResponseType,
@@ -74,6 +75,15 @@ export default async function ViewCompScreen({
 		.get();
 
 	const gameCount = gameCountRef.data().count;
+
+	// get if the player has joined the competition
+	const compPlayerResponse = await fetch(
+		`${BaseURL}/api/comp-player/${params.id}/${user?.id}`
+	);
+	const compPlayer: CompProfilesResponseType =
+		await compPlayerResponse.json();
+
+	console.log(compPlayer?.rating?.displayRating);
 
 	return (
 		<main className="w-full min-w-full">

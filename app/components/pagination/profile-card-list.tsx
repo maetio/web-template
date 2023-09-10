@@ -90,7 +90,7 @@ export const PlayerCardList: React.FC<PlayerCardListParams> = ({
 					))}
 				</ul>
 				{blur && (
-					<div className="absolute left-[40%] top-[35%] z-10 text-center">
+					<div className="absolute left-[30%] top-[35%] z-10 text-center md:left-[40%]">
 						<div className="flex flex-col items-center gap-2.5">
 							<FaLock className="h-5 w-5" />
 							<p className="w-[178px] text-center text-[15px] font-medium leading-tight tracking-tight text-black">
