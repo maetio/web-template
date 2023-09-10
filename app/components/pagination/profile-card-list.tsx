@@ -7,15 +7,22 @@ import { FaLock } from "react-icons/fa";
 import { filterPlayerData } from "utils/format";
 import { PlayerRatingCard } from "app/components/cards/player-rating-card";
 import { PaginationList } from "../layout/pagination";
+import { ActionButton } from "../action-button";
 
 interface PlayerCardListParams {
 	players: PlayersResponseType;
 	blur?: boolean;
+	buttonDisabled?: boolean;
+	buttonReferRoute?: string;
+	buttonTitle?: string;
 }
 
 export const PlayerCardList: React.FC<PlayerCardListParams> = ({
 	players,
 	blur,
+	buttonDisabled = false,
+	buttonReferRoute,
+	buttonTitle,
 }) => {
 	const filteredPlayerData = filterPlayerData(players);
 
@@ -83,13 +90,21 @@ export const PlayerCardList: React.FC<PlayerCardListParams> = ({
 					))}
 				</ul>
 				{blur && (
-					<div className="absolute left-[40%] top-[50%] z-10 mx-auto text-center">
+					<div className="absolute left-[40%] top-[35%] z-10 text-center">
 						<div className="flex flex-col items-center gap-2.5">
 							<FaLock className="h-5 w-5" />
 							<p className="w-[178px] text-center text-[15px] font-medium leading-tight tracking-tight text-black">
 								Register to view players
 							</p>
-							<button> click me</button>
+							{buttonTitle && buttonReferRoute ? (
+								<ActionButton
+									className="h-10 w-28 gap-2.5 rounded-lg p-2.5"
+									disabled={buttonDisabled}
+									referRoute={buttonReferRoute}
+									title={buttonTitle}
+									colorVariant="indigo"
+								/>
+							) : null}
 						</div>
 					</div>
 				)}

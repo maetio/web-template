@@ -18,6 +18,7 @@ import { Timestamp } from "firebase-admin/firestore";
 import { PlayerRatingCard } from "app/components/cards/player-rating-card";
 import { ActionButton } from "app/components/action-button";
 import { getUserData } from "server-actions/users";
+import { FaLock } from "react-icons/fa";
 
 console.log("testing");
 
@@ -232,7 +233,29 @@ export default async function ViewCompScreen({
 					{/* graph section */}
 					<section className="rounded-2xl bg-white p-4">
 						<h6 className="font-bold">Players</h6>
-						<PlayerCardList blur players={players} />
+						<PlayerCardList
+							blur
+							players={players}
+							buttonReferRoute={
+								user?.id
+									? `/join-comp/${competitionData?.id}`
+									: `/comp-login/${competitionData?.id}`
+							}
+							buttonTitle={
+								(competitionData?.maxPlayers &&
+									competitionData?.maxPlayers <=
+										players.length) ||
+								!competitionData?.registrationOpen
+									? "Competition is Full"
+									: "Register Now"
+							}
+							// buttonDisabled={
+							// 	(competitionData?.maxPlayers &&
+							// 		competitionData?.maxPlayers <=
+							// 			players.length) ||
+							// 	!competitionData?.registrationOpen
+							// }
+						/>
 					</section>
 					{/* game section */}
 					<section className="rounded-2xl bg-white p-4">
