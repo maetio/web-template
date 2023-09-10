@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { Profile } from "types/index";
 import Link, { LinkProps } from "next/link";
 import { MaetIcon } from "app/components/icons";

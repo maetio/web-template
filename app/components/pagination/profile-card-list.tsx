@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
 import { PlayersResponseType } from "types/next-api";
+import { FaLock } from "react-icons/fa";
 import { filterPlayerData } from "utils/format";
 import { PlayerRatingCard } from "app/components/cards/player-rating-card";
 import { PaginationList } from "../layout/pagination";
@@ -66,7 +67,9 @@ export const PlayerCardList: React.FC<PlayerCardListParams> = ({
 			<div className="relative w-full rounded-lg bg-white">
 				<ul
 					role="list"
-					className={`divide-y divide-gray-100 ${blur && "blur-sm"}`}
+					className={`divide-y divide-gray-100 ${
+						blur && "pointer-events-none blur-sm"
+					}`}
 				>
 					{players.slice(start, end).map((player, rank) => (
 						<li key={player.id} className="my-[5px] px-3">
@@ -80,8 +83,14 @@ export const PlayerCardList: React.FC<PlayerCardListParams> = ({
 					))}
 				</ul>
 				{blur && (
-					<div className="absolute top-[50%] left-[50%] z-10 mx-auto text-center">
-						hello
+					<div className="absolute left-[40%] top-[50%] z-10 mx-auto text-center">
+						<div className="flex flex-col items-center gap-2.5">
+							<FaLock className="h-5 w-5" />
+							<p className="w-[178px] text-center text-[15px] font-medium leading-tight tracking-tight text-black">
+								Register to view players
+							</p>
+							<button> click me</button>
+						</div>
 					</div>
 				)}
 			</div>
