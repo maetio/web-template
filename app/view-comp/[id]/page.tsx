@@ -85,6 +85,14 @@ export default async function ViewCompScreen({
 
 	console.log(compPlayer?.rating?.displayRating);
 
+	const getRankString = (rank: number) => {
+		if (rank === 0) return "1st";
+		if (rank === 1) return "2nd";
+		if (rank === 2) return "3rd";
+		if (rank > 2) return `${rank + 1}th`;
+		return "Not Ranked";
+	};
+
 	return (
 		<main className="w-full min-w-full">
 			<div className="w-full lg:flex lg:flex-row lg:gap-2.5">
@@ -139,11 +147,31 @@ export default async function ViewCompScreen({
 					</section>
 					{/* signup */}
 
-					{competitionData?.price ? (
+					{compPlayer?.rating?.displayRating ? (
+						<div className="flex flex-row">
+							<NextImage
+								size={50}
+								src={compPlayer.image}
+								alt="Player profile"
+							/>
+							<h3 className="ml-3 self-center font-semibold">
+								You are ranked{" "}
+								{getRankString(
+									players.findIndex(
+										(profile) =>
+											profile.id === compPlayer.id
+									)
+								)}{" "}
+								of {players.length} total players.
+							</h3>
+						</div>
+					) : (
 						<section className="fixed bottom-0 left-0 right-0 z-10 mt-2.5 flex w-full items-center justify-between bg-white p-4 lg:relative lg:rounded-2xl">
 							<div>
 								<h4 className="text-xl font-bold leading-tight tracking-tight text-black">
-									${competitionData.price / 100}
+									{competitionData?.price
+										? competitionData.price / 100
+										: "Free"}
 								</h4>
 								{competitionData?.startTimeISO && (
 									<p className="text-sm">
@@ -182,7 +210,7 @@ export default async function ViewCompScreen({
 								colorVariant="indigo"
 							/>
 						</section>
-					) : null}
+					)}
 				</div>
 
 				{/* main content of the page */}
@@ -244,7 +272,12 @@ export default async function ViewCompScreen({
 					<section className="rounded-2xl bg-white p-4">
 						<h6 className="font-bold">Players</h6>
 						<PlayerCardList
-							blur
+							blur={
+								!(
+									typeof compPlayer?.rating?.displayRating ===
+									"number"
+								)
+							}
 							players={players}
 							buttonReferRoute={
 								user?.id
