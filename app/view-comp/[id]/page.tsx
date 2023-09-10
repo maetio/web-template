@@ -19,7 +19,6 @@ import { Timestamp } from "firebase-admin/firestore";
 import { PlayerRatingCard } from "app/components/cards/player-rating-card";
 import { ActionButton } from "app/components/action-button";
 import { getUserData } from "server-actions/users";
-import { FaLock } from "react-icons/fa";
 
 console.log("testing");
 
@@ -252,12 +251,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-							<SimpleMap
-								zoom={11}
-								lat={competitionData.location.latitude}
-								lng={competitionData.location.longitude}
-							/>
-						) : null}
+								<SimpleMap
+									zoom={11}
+									lat={competitionData.location.latitude}
+									lng={competitionData.location.longitude}
+								/>
+							) : null}
 					</section>
 
 					{/* description section */}
