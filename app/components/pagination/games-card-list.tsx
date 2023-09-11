@@ -14,7 +14,6 @@ const grabPaginatatedGames = async ({
 	compID: string;
 	begID?: string;
 }) => {
-	console.log("begin id passed into func", begID);
 	if (begID) {
 		const gamesResponse = await fetch(
 			`${BaseURL}/api/games/${compID}/0/0/4/${begID}`
