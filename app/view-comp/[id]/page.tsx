@@ -19,6 +19,7 @@ import { Timestamp } from "firebase-admin/firestore";
 import { PlayerRatingCard } from "app/components/cards/player-rating-card";
 import { ActionButton } from "app/components/action-button";
 import { getUserData } from "server-actions/users";
+import { IoMdCheckmark } from "react-icons/io";
 
 console.log("testing");
 
@@ -124,10 +125,11 @@ export default async function ViewCompScreen({
 							{}
 							<RatedCompetitionCard
 								joinable={
-									(competitionData?.maxPlayers &&
+									!(
+										competitionData?.maxPlayers &&
 										competitionData?.maxPlayers <=
-											players.length) ||
-									!competitionData?.registrationOpen
+											players.length
+									) || !competitionData?.registrationOpen
 								}
 							/>
 						</div>
@@ -146,23 +148,33 @@ export default async function ViewCompScreen({
 					</section>
 					{/* signup */}
 
+					{/* show that player has either joined or 'join comp' section */}
 					{compPlayer?.rating?.displayRating ? (
-						<div className="flex flex-row">
-							<NextImage
-								size={50}
-								src={compPlayer.image}
-								alt="Player profile"
-							/>
-							<h3 className="ml-3 self-center font-semibold">
-								You are ranked{" "}
-								{getRankString(
-									players.findIndex(
-										(profile) =>
-											profile.id === compPlayer.id
-									)
-								)}{" "}
-								of {players.length} total players.
-							</h3>
+						<div className="ml-0.5 mt-2.5 rounded-2xl bg-white p-4">
+							<p className="flex items-center text-xs text-gray-600">
+								Completed Registration
+								<IoMdCheckmark
+									className="h-5 w-5 text-green-600"
+									aria-hidden="true"
+								/>
+							</p>
+							<div className="mt-2.5 flex flex-row">
+								<NextImage
+									size={50}
+									src={compPlayer.image}
+									alt="Player profile"
+								/>
+								<h3 className="ml-3 self-center font-semibold">
+									You are ranked{" "}
+									{getRankString(
+										players.findIndex(
+											(profile) =>
+												profile.id === compPlayer.id
+										)
+									)}{" "}
+									of {players.length} total players.
+								</h3>
+							</div>
 						</div>
 					) : (
 						<section className="fixed bottom-0 left-0 right-0 z-10 mt-2.5 flex w-full items-center justify-between bg-white p-4 lg:relative lg:rounded-2xl">
@@ -187,12 +199,12 @@ export default async function ViewCompScreen({
 							</div>
 							<ActionButton
 								className="h-10 w-28 gap-2.5 rounded-lg p-2.5"
-								// disabled={
-								// 	(competitionData?.maxPlayers &&
-								// 		competitionData?.maxPlayers <=
-								// 			players.length) ||
-								// 	!competitionData?.registrationOpen
-								// }
+								disabled={
+									(competitionData?.maxPlayers &&
+										competitionData?.maxPlayers <=
+											players.length) ||
+									!competitionData?.registrationOpen
+								}
 								referRoute={
 									user?.id
 										? `/join-comp/${competitionData?.id}`
@@ -251,12 +263,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-								<SimpleMap
-									zoom={11}
-									lat={competitionData.location.latitude}
-									lng={competitionData.location.longitude}
-								/>
-							) : null}
+							<SimpleMap
+								zoom={11}
+								lat={competitionData.location.latitude}
+								lng={competitionData.location.longitude}
+							/>
+						) : null}
 					</section>
 
 					{/* description section */}
@@ -291,12 +303,12 @@ export default async function ViewCompScreen({
 									? "Competition is Full"
 									: "Register Now"
 							}
-							// buttonDisabled={
-							// 	(competitionData?.maxPlayers &&
-							// 		competitionData?.maxPlayers <=
-							// 			players.length) ||
-							// 	!competitionData?.registrationOpen
-							// }
+							buttonDisabled={
+								(competitionData?.maxPlayers &&
+									competitionData?.maxPlayers <=
+										players.length) ||
+								!competitionData?.registrationOpen
+							}
 						/>
 					</section>
 					{/* game section */}
