@@ -8,7 +8,7 @@ interface FormInputParams {
 	label?: string;
 	labelClassName?: string;
 	name: string; // register name
-	type: "email" | "text" | "password";
+	rows?: number;
 	errorMessage?: string | undefined;
 	defaultValue?: string;
 	placeholder?: string;
@@ -38,13 +38,13 @@ export /**
  * }
  * @return {*}
  */
-const FormInput: React.FC<FormInputParams> = ({
+const FormTextArea: React.FC<FormInputParams> = ({
 	register,
 	inputClassName,
 	label,
 	labelClassName,
 	name,
-	type,
+	rows,
 	errorMessage,
 	defaultValue,
 	placeholder,
@@ -53,7 +53,7 @@ const FormInput: React.FC<FormInputParams> = ({
 	labelButtonAction,
 	className,
 }) => {
-	const [showPassword, setShowPassword] = useState(false);
+	// const [showPassword, setShowPassword] = useState(false);
 
 	return (
 		<div className={className || undefined}>
@@ -81,12 +81,12 @@ const FormInput: React.FC<FormInputParams> = ({
 				) : null}
 			</div>
 			<div className="relative mt-1.5 rounded-md shadow-sm">
-				<input
+				<textarea
 					{...register(name)}
 					disabled={disabled}
-					type={showPassword ? "text" : type}
 					name={name}
 					id={name}
+					rows={rows || 2}
 					className={`block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${
 						disabled &&
 						"disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 disabled:ring-gray-200"
@@ -99,7 +99,7 @@ const FormInput: React.FC<FormInputParams> = ({
 					aria-invalid="true"
 					aria-describedby="email-error"
 				/>
-				{type === "password" ? (
+				{/* {type === "password" ? (
 					<div className="absolute inset-y-0 right-0 flex items-center pr-3 hover:cursor-pointer">
 						<button
 							type="button"
@@ -122,16 +122,16 @@ const FormInput: React.FC<FormInputParams> = ({
 							)}
 						</button>
 					</div>
-				) : null}
+				) : null} */}
 
-				{errorMessage && type !== "password" && (
+				{/* {errorMessage && type !== "password" && (
 					<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
 						<PiWarningCircleFill
 							className="h-5 w-5 text-red-500"
 							aria-hidden="true"
 						/>
 					</div>
-				)}
+				)} */}
 			</div>
 
 			{errorMessage && (
@@ -143,9 +143,9 @@ const FormInput: React.FC<FormInputParams> = ({
 	);
 };
 
-FormInput.defaultProps = {
+FormTextArea.defaultProps = {
 	label: undefined,
-	type: "text",
+
 	errorMessage: undefined,
 	defaultValue: undefined,
 	placeholder: undefined,
