@@ -91,6 +91,8 @@ export default async function ViewCompScreen({
 		return "Not Ranked";
 	};
 
+	console.log("location", competitionData?.location);
+
 	return (
 		<main className="w-full min-w-full">
 			<div className="w-full lg:flex lg:flex-row lg:gap-2.5">
@@ -179,19 +181,15 @@ export default async function ViewCompScreen({
 							<div>
 								<h4 className="text-xl font-bold leading-tight tracking-tight text-black">
 									{competitionData?.price
-										? competitionData.price / 100
+										? `$ ${competitionData.price / 100}`
 										: "Free"}
 								</h4>
 								{competitionData?.startTimeISO && (
 									<p className="text-sm">
-										Registration closes on
+										Registration closes on{" "}
 										{new Date(
 											competitionData.startTimeISO
-										).toLocaleDateString()}{" "}
-										at{" "}
-										{new Date(
-											competitionData.startTimeISO
-										).toLocaleTimeString()}
+										).toLocaleDateString()}
 									</p>
 								)}
 							</div>
@@ -261,12 +259,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-								<SimpleMap
-									zoom={11}
-									lat={competitionData.location.latitude}
-									lng={competitionData.location.longitude}
-								/>
-							) : null}
+							<SimpleMap
+								zoom={11}
+								lat={competitionData.location.latitude}
+								lng={competitionData.location.longitude}
+							/>
+						) : null}
 					</section>
 
 					{/* description section */}
