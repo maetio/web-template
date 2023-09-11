@@ -45,7 +45,6 @@ const SignupForm: React.FC<SignupFormParams> = ({
 
 	// handle signup
 	const handleSignup = async (data: SignupSchemaType) => {
-		console.log("fired");
 		const userCredential = await signInWithEmailPassword(
 			data.email,
 			data.password,

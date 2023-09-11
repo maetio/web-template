@@ -20,8 +20,6 @@ export async function GET(
 	// get the parameters from the query
 	const [compID, startTime, endTime, limit, begID] = params.queryParams;
 
-	console.log("dawdwwada", limit, begID);
-
 	try {
 		// set the start timestamp
 		const startDate = new Date(startTime || 0);
@@ -34,11 +32,8 @@ export async function GET(
 			endTime && endTime !== "0" ? new Date(endTime) : futureDate
 		);
 
-		console.log(startTimestamp, endTimestamp);
 		// if beginID
 		if (begID) {
-			console.log("begin id from api call", begID);
-
 			const game = await gamesCollection.doc(begID).get();
 			// if the comp id is provided, return that competition
 			if (compID && compID !== "all") {

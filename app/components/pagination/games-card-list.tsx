@@ -20,8 +20,6 @@ const grabPaginatatedGames = async ({
 		);
 		const games: GamesResponseType = await gamesResponse.json();
 
-		console.log("games from begin id", games);
-
 		return games;
 	}
 	const gamesResponse = await fetch(`${BaseURL}/api/games/${compID}/0/0/8`);
@@ -77,7 +75,6 @@ export const GamesCardList = ({
 	useEffect(() => {
 		const handleGameChange = () => {
 			if (games) {
-				console.log(games.length);
 				if (games.length <= 4) {
 					setListData(listData.concat(games));
 				} else {
@@ -89,15 +86,6 @@ export const GamesCardList = ({
 		handleGameChange();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [games]);
-
-	useEffect(() => {
-		console.log("list data", listData);
-	}, [listData]);
-
-	useEffect(() => {
-		console.log("start", start);
-		console.log("end", end);
-	}, [start, end]);
 
 	return (
 		<>

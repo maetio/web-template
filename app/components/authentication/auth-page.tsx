@@ -74,7 +74,7 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 				setUserStatus("noAccount");
 				setDefaultEmail(data.email);
 			}
-			console.log("sign in methods", methods);
+
 			reset();
 		} catch (e: any) {
 			throw Error(e);

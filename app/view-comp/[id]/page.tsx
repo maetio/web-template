@@ -21,8 +21,6 @@ import { ActionButton } from "app/components/action-button";
 import { getUserData } from "server-actions/users";
 import { IoMdCheckmark } from "react-icons/io";
 
-console.log("testing");
-
 /**
  * Function will display the competition to the user
  *
@@ -90,8 +88,6 @@ export default async function ViewCompScreen({
 		if (rank > 2) return `${rank + 1}th`;
 		return "Not Ranked";
 	};
-
-	console.log("location", competitionData?.location);
 
 	return (
 		<main className="w-full min-w-full">
