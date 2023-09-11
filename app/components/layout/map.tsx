@@ -1,0 +1,50 @@
+"use client";
+
+import React, { Suspense } from "react";
+import GoogleMapReact from "google-map-react";
+import { AnyReactComponent } from "app/components/layout/map-marker";
+
+export async function SimpleMap({
+	lat,
+	lng,
+	zoom,
+}: {
+	lat: number;
+	lng: number;
+	zoom: number;
+}) {
+	const defaultProps = {
+		center: {
+			lat,
+			lng,
+		},
+		zoom,
+	};
+
+	return (
+		// Important! Always set the container height explicitly
+		<div
+			style={{
+				overflow: "hidden",
+				borderRadius: "1rem",
+				height: "232px",
+				width: "100%",
+			}}
+		>
+			<Suspense fallback={<p>loading...</p>}>
+				<GoogleMapReact
+					bootstrapURLKeys={{
+						key: process.env.NEXT_PUBLIC_FIREBASE_API_KEY as string,
+					}}
+					defaultCenter={defaultProps.center}
+					defaultZoom={defaultProps.zoom}
+				>
+					<AnyReactComponent
+						lat={defaultProps.center.lat}
+						lng={defaultProps.center.lng}
+					/>
+				</GoogleMapReact>
+			</Suspense>
+		</div>
+	);
+}

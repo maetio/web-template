@@ -32,8 +32,8 @@ export /**
  *
  * @return {*}
  */
-const useCreateFirestoreHook = <InputData = never, ReturnDataType = null>(
-	firestoreQuery: FunctionType<InputData, ReturnDataType>
+const useQueryHook = <InputData = never, ReturnDataType = null>(
+	asyncQuery: FunctionType<InputData, ReturnDataType>
 ): [
 	HookReturnParameters<ReturnDataType>,
 	FunctionType<InputData, ReturnDataType>
@@ -58,7 +58,7 @@ const useCreateFirestoreHook = <InputData = never, ReturnDataType = null>(
 			// run the firebase query with loading states
 			try {
 				// run the query for firestore
-				returnData = await firestoreQuery(inputData);
+				returnData = await asyncQuery(inputData);
 
 				// set the states
 				setData(returnData);
@@ -75,7 +75,7 @@ const useCreateFirestoreHook = <InputData = never, ReturnDataType = null>(
 
 			return returnData;
 		},
-		[firestoreQuery]
+		[asyncQuery]
 	);
 
 	return [{ data, isLoading, isSuccess, error }, updateData];

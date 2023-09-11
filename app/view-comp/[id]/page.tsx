@@ -2,19 +2,24 @@ import React from "react";
 import {
 	CompProfilesResponseType,
 	CompetitionsResponseType,
-	GamesResponseType,
+	PlayerResponseType,
 	PlayersResponseType,
 } from "types/next-api";
 import { BaseURL } from "config/constants";
-import { getUserData } from "server-actions/users";
-import { ActionButton } from "app/components/action-button";
 import { CompDisplayData } from "app/components/comp-data";
 import { NextImage } from "app/components/image";
-
-import { AltPlayerCard } from "app/components/cards/alt-player-card";
-import { GameCard } from "app/components/cards/game-card";
-import { VictoryBarGraph } from "app/components/data-display/victory-bargraph";
-import { filterPlayerData } from "utils/format";
+import { RatedCompetitionCard } from "app/components/cards";
+import { SimpleMap } from "app/components/layout/map";
+import { MdLocationOn } from "react-icons/md";
+import { BiLinkExternal } from "react-icons/bi";
+import { GamesCardList } from "app/components/pagination/games-card-list";
+import { PlayerCardList } from "app/components/pagination/profile-card-list";
+import { gamesCollection } from "config/server";
+import { Timestamp } from "firebase-admin/firestore";
+import { PlayerRatingCard } from "app/components/cards/player-rating-card";
+import { ActionButton } from "app/components/action-button";
+import { getUserData } from "server-actions/users";
+import { IoMdCheckmark } from "react-icons/io";
 
 /**
  * Function will display the competition to the user
@@ -47,9 +52,27 @@ export default async function ViewCompScreen({
 	const playersResponse = await fetch(`${BaseURL}/api/players/${params.id}`);
 	const players: PlayersResponseType = await playersResponse.json();
 
-	// get the competition games
-	const gamesResponse = await fetch(`${BaseURL}/api/games/${params.id}`);
-	const games: GamesResponseType = await gamesResponse.json();
+	const profileResponse = await fetch(
+		`${BaseURL}/api/user-data/${competitionData?.hostID}`
+	);
+	const hostData: PlayerResponseType = await profileResponse.json();
+
+	const startDate = new Date(0);
+	const startTimestamp = Timestamp.fromDate(startDate);
+
+	// set the end timestamp to 100 years in the future from today
+	const futureDate = new Date();
+	futureDate.setFullYear(futureDate.getFullYear() + 100);
+	const endTimestamp = Timestamp.fromDate(futureDate);
+
+	const gameCountRef = await gamesCollection
+		.where("competitionID", "==", params.id)
+		.where("startTimestamp", ">=", startTimestamp)
+		.where("startTimestamp", "<", endTimestamp)
+		.count()
+		.get();
+
+	const gameCount = gameCountRef.data().count;
 
 	// get if the player has joined the competition
 	const compPlayerResponse = await fetch(
@@ -58,7 +81,6 @@ export default async function ViewCompScreen({
 	const compPlayer: CompProfilesResponseType =
 		await compPlayerResponse.json();
 
-	// set rank string
 	const getRankString = (rank: number) => {
 		if (rank === 0) return "1st";
 		if (rank === 1) return "2nd";
@@ -67,41 +89,72 @@ export default async function ViewCompScreen({
 		return "Not Ranked";
 	};
 
-	// filter the player data for victory to use
-	const filteredPlayerData = filterPlayerData(players);
-
 	return (
-		<main className="container min-w-full px-0 sm:px-2">
-			{/* Competition image and name banner */}
-			<section className="flex flex-col flex-wrap pb-12 pt-4 md:flex-row lg:flex-nowrap lg:pt-12">
-				<div className="self-center">
-					<NextImage
-						size={400}
-						src={competitionData?.image}
-						alt={`${competitionData?.name} profile`}
-					/>
-				</div>
-				<div className=" mt-10 flex flex-col flex-wrap self-center lg:mx-5 lg:mt-0">
-					<CompDisplayData
-						type={competitionData?.type || "session"}
-						sport={competitionData?.sport || "pickleball"}
-						startTimeISO={competitionData?.startTimeISO}
-						endTimeISO={competitionData?.endTimeISO}
-						location={competitionData?.location}
-					/>
+		<main className="w-full min-w-full">
+			<div className="w-full lg:flex lg:flex-row lg:gap-2.5">
+				<div className="lg:sticky lg:top-20 lg:h-full">
+					{/* Competition image and name banner */}
+					<section className="mt-2.5 flex h-fit w-full flex-col flex-wrap md:flex-row md:flex-nowrap md:gap-2.5 lg:flex-col">
+						<div className="self-center md:flex lg:hidden">
+							<NextImage
+								size={400}
+								src={competitionData?.image}
+								alt={`${competitionData?.name} profile`}
+							/>
+						</div>
+						<div className="hidden lg:flex">
+							<NextImage
+								size={600}
+								src={competitionData?.image}
+								alt={`${competitionData?.name} profile`}
+							/>
+						</div>
+						{/* name and host section */}
+						<div className="flex w-full flex-col justify-center gap-2.5">
+							<section className="mt-2.5 flex h-full w-full flex-col flex-wrap self-center rounded-2xl bg-white p-4 md:mt-0">
+								<h1 className="flex flex-wrap text-3xl font-bold lg:text-4xl">
+									{competitionData?.name}
+								</h1>
+								{/* <PlayerCard host player={hostData} /> */}
+								<PlayerRatingCard host player={hostData} />
+							</section>
+							{}
+							<RatedCompetitionCard
+								joinable={
+									!(
+										competitionData?.maxPlayers &&
+										competitionData?.maxPlayers <=
+											players.length
+									) || !competitionData?.registrationOpen
+								}
+							/>
+						</div>
+					</section>
 
-					<h1 className="my-3 flex flex-wrap text-5xl font-bold md:text-6xl">
-						{competitionData?.name}
-					</h1>
+					<section className="mt-2.5 rounded-2xl bg-white p-4">
+						<h6 className="font-bold">Competition Info</h6>
+						<CompDisplayData
+							className="mt-5"
+							type={competitionData?.type || "session"}
+							sport={competitionData?.sport || "pickleball"}
+							startTimeISO={competitionData?.startTimeISO}
+							endTimeISO={competitionData?.endTimeISO}
+							location={competitionData?.location}
+						/>
+					</section>
+					{/* signup */}
 
-					<p className="flex flex-wrap xl:hidden">
-						{competitionData?.description ||
-							"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
-					</p>
-
-					<div className="flex flex-row flex-wrap py-4">
-						{compPlayer?.rating?.displayRating ? (
-							<div className="flex flex-row">
+					{/* show that player has either joined or 'join comp' section */}
+					{compPlayer?.rating?.displayRating ? (
+						<div className="ml-0.5 mt-2.5 rounded-2xl bg-white p-4">
+							<p className="flex items-center text-xs text-gray-600">
+								Completed Registration
+								<IoMdCheckmark
+									className="h-5 w-5 text-green-600"
+									aria-hidden="true"
+								/>
+							</p>
+							<div className="mt-2.5 flex flex-row">
 								<NextImage
 									size={50}
 									src={compPlayer.image}
@@ -118,9 +171,26 @@ export default async function ViewCompScreen({
 									of {players.length} total players.
 								</h3>
 							</div>
-						) : (
+						</div>
+					) : (
+						<section className="fixed bottom-0 left-0 right-0 z-10 mt-2.5 flex w-full items-center justify-between bg-white p-4 lg:relative lg:rounded-2xl">
+							<div>
+								<h4 className="text-xl font-bold leading-tight tracking-tight text-black">
+									{competitionData?.price
+										? `$ ${competitionData.price / 100}`
+										: "Free"}
+								</h4>
+								{competitionData?.startTimeISO && (
+									<p className="text-sm">
+										Registration closes on{" "}
+										{new Date(
+											competitionData.startTimeISO
+										).toLocaleDateString()}
+									</p>
+								)}
+							</div>
 							<ActionButton
-								className="w-auto px-12"
+								className="h-10 w-28 gap-2.5 rounded-lg p-2.5"
 								disabled={
 									(competitionData?.maxPlayers &&
 										competitionData?.maxPlayers <=
@@ -138,111 +208,109 @@ export default async function ViewCompScreen({
 											players.length) ||
 									!competitionData?.registrationOpen
 										? "Competition is Full"
-										: "Join Competition"
+										: "Register Now"
 								}
 								colorVariant="indigo"
 							/>
-						)}
-					</div>
+						</section>
+					)}
 				</div>
-			</section>
 
-			{/* main content of the page */}
-			<section className="min-w-full lg:flex lg:justify-between">
-				{/* games data */}
-				<section className="w-full">
-					<div className="hidden xl:inline">
-						<h3 className="text-3xl font-bold">Description</h3>
-						<p className="wrap mr-14 flex flex-wrap">
+				{/* main content of the page */}
+				<section className="mt-2.5 flex w-full flex-col gap-2.5 lg:w-3/4">
+					<section className="rounded-2xl bg-white p-4">
+						<h6 className="font-bold">Location</h6>
+						{competitionData?.location ? (
+							<div className="mb-2.5 mt-5 flex items-center">
+								<MdLocationOn
+									className="mr-1.5 h-8 w-8 text-gray-900"
+									aria-hidden="true"
+								/>
+								<div className="flex flex-col">
+									<p className="flex items-center text-sm font-bold">
+										{competitionData.location.name}
+									</p>
+									<p className="flex text-xs font-medium leading-none tracking-tight text-gray-500 underline">
+										<a
+											className="flex"
+											target="_blank"
+											href={`http://maps.google.com/?q=1200 ${competitionData.location.address}`}
+										>
+											<a
+												className="flex"
+												target="_blank"
+												href={`https://maps.apple.com/maps?q=2000 ${competitionData.location.address}`}
+											>
+												{
+													competitionData.location
+														.address
+												}{" "}
+												<BiLinkExternal className="ml-1" />
+											</a>
+										</a>
+									</p>
+								</div>
+							</div>
+						) : null}
+
+						{competitionData?.location?.latitude &&
+						competitionData.location.longitude ? (
+								<SimpleMap
+									zoom={11}
+									lat={competitionData.location.latitude}
+									lng={competitionData.location.longitude}
+								/>
+							) : null}
+					</section>
+
+					{/* description section */}
+					<section className="rounded-2xl bg-white p-4">
+						<h6 className="font-bold">Description</h6>
+						<p className="wrap mt-5 flex flex-wrap">
 							{competitionData?.description ||
 								"ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release ged. It was popularised in the 1960s with the release"}
 						</p>
-					</div>
-
-					{/* players and graph on SMALL screens  */}
-					<section className="lg:hidden">
-						<div>
-							<h3 className="text-3xl font-bold">Players</h3>
-							<VictoryBarGraph
-								className="w-full"
-								data={filteredPlayerData}
-								tickLabels={[
-									"<1750",
-									"1751-1850",
-									"1851-1950",
-									"1951-2050",
-									">2050",
-								]}
-							/>
-						</div>
-
-						<div className="border-gray-900/7 top-8 col-span-6 h-96 rounded-lg border bg-white lg:sticky lg:top-4 lg:col-span-2">
-							<ul
-								role="list"
-								className="sticky top-0 h-96 divide-y divide-gray-100 overflow-y-auto"
-							>
-								{players.map((player, rank) => (
-									<li key={player.id} className="px-5">
-										<AltPlayerCard
-											key={player.id}
-											player={player}
-											ranking={rank}
-										/>
-									</li>
-								))}
-							</ul>
-						</div>
 					</section>
+					{/* graph section */}
+					<section className="rounded-2xl bg-white p-4">
+						<h6 className="font-bold">Players</h6>
+						<PlayerCardList
+							blur={
+								!(
+									typeof compPlayer?.rating?.displayRating ===
+									"number"
+								)
+							}
+							players={players}
+							buttonReferRoute={
+								user?.id
+									? `/join-comp/${competitionData?.id}`
+									: `/comp-login/${competitionData?.id}`
+							}
+							buttonTitle={
+								(competitionData?.maxPlayers &&
+									competitionData?.maxPlayers <=
+										players.length) ||
+								!competitionData?.registrationOpen
+									? "Competition is Full"
+									: "Register Now"
+							}
+							buttonDisabled={
+								(competitionData?.maxPlayers &&
+									competitionData?.maxPlayers <=
+										players.length) ||
+								!competitionData?.registrationOpen
+							}
+						/>
+					</section>
+					{/* game section */}
+					<section className="rounded-2xl bg-white p-4">
+						<h6 className="font-bold">Games</h6>
 
-					<h3 className="mt-10 text-3xl font-bold lg:mt-0 xl:mt-5">
-						Games
-					</h3>
-					<ul role="list" className="">
-						{games.length ? (
-							games.map((game) => (
-								<li key={game.id} className="lg:pr-3">
-									<GameCard id={game.id} />
-								</li>
-							))
-						) : (
-							<p className=" ml-2 mt-3 text-gray-600">No Games</p>
-						)}
-					</ul>
+						<GamesCardList count={gameCount} compID={params.id} />
+					</section>
 				</section>
-
-				{/* sidebar on LARGE screens */}
-				<aside className="top-24 ml-3 hidden h-[82vh] self-start rounded-lg bg-white p-4 lg:sticky lg:inline">
-					<div className="flex h-full flex-col">
-						<div>
-							<h3 className="text-3xl font-bold">Players</h3>
-							<VictoryBarGraph
-								className="w-[400px]"
-								data={filteredPlayerData}
-								tickLabels={[
-									"<1750",
-									"1751-1850",
-									"1851-1950",
-									"1951-2050",
-									">2050",
-								]}
-							/>
-						</div>
-						<div className="mt-4 flex-grow overflow-y-auto">
-							<ul role="list">
-								{players.map((player, rank) => (
-									<li key={player.id} className="px-3">
-										<AltPlayerCard
-											key={player.id}
-											player={player}
-											ranking={rank}
-										/>
-									</li>
-								))}
-							</ul>
-						</div>
-					</div>
-				</aside>
-			</section>
+			</div>
 		</main>
 	);
 }

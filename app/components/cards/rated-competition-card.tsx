@@ -1,14 +1,28 @@
 import React from "react";
-import { MaetIcon } from "../icons";
+import { MaetIcon } from "app/components/icons";
+
+interface RatedCompetitionCardParams {
+	className?: string;
+	joinable?: boolean;
+}
 
 export /**
  * card that display a message about the rating system
  *
+ *
+ * @param {*} {
+ * 	className,
+ * }
  * @return {*}
  */
-const RatedCompetitionCard = () => {
+const RatedCompetitionCard: React.FC<RatedCompetitionCardParams> = ({
+	className,
+	joinable,
+}) => {
 	return (
-		<div className="inline-flex flex-col items-start justify-center gap-4 rounded-2xl bg-indigo-600 p-4">
+		<div
+			className={`inline-flex flex-col items-start justify-center gap-4 rounded-2xl bg-indigo-600 p-4 ${className}`}
+		>
 			<p className="self-stretch text-xs font-bold leading-tight tracking-tight text-indigo-300">
 				RATED COMPETITION
 			</p>
@@ -19,12 +33,15 @@ const RatedCompetitionCard = () => {
 					className="w-14 text-white"
 				/>
 				<h6 className="shrink grow basis-0 text-xl font-bold leading-normal tracking-tight text-white">
-					You will be able to earn rating points at this competition.
+					{joinable
+						? "You will be able to earn rating points at this competition."
+						: "This is a rated competition."}
 				</h6>
 			</div>
 			<p className="flex flex-wrap self-stretch text-xs font-normal leading-none tracking-tight text-white">
-				Your rating helps determine your pickleball ranking and
-				eligibility for select competitions.
+				{joinable
+					? "Your rating helps determine your pickleball ranking and eligibility for select competitions."
+					: "The Maet rating helps determine players’ pickleball ranking and eligibility for select competitions."}
 			</p>
 		</div>
 	);

@@ -7,7 +7,7 @@ import { signInSchema, SignInSchemaType } from "utils/schemas";
 import { FormInput } from "app/components/forms/form-input";
 import { useRouter } from "next/navigation";
 import { signInWithEmailPassword } from "auth/client";
-import { useCreateFirestoreHook } from "utils/hook-template";
+import { useQueryHook } from "utils/hook-template";
 import { SignupFormParams } from "app/components/authentication/signup-form";
 import { ActionButton } from "app/components/action-button";
 
@@ -59,8 +59,7 @@ const LoginForm: React.FC<SignupFormParams> = ({
 		}
 	};
 
-	const [{ error, isLoading }, updateData] =
-		useCreateFirestoreHook(handleSignIn);
+	const [{ error, isLoading }, updateData] = useQueryHook(handleSignIn);
 
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

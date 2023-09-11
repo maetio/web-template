@@ -14,7 +14,7 @@ import { EmailSchemaType, emailSchema } from "utils/schemas";
 import { fetchSignInMethods } from "auth/client";
 import { ActionButton } from "app/components/action-button";
 import { NextImage } from "app/components/image";
-import { useCreateFirestoreHook } from "utils/hook-template";
+import { useQueryHook } from "utils/hook-template";
 
 interface AuthPageCompParams {
 	redirectURL?: string;
@@ -62,26 +62,26 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 	const handleSignIn = async (data: EmailSchemaType) => {
 		try {
 			const methods = await fetchSignInMethods(data.email);
-			if (methods.length && !methods.includes("password")) {
+
+			if (methods && !methods.includes("password")) {
 				throw Error(
 					"Looks like you have logged in with one of our authentication providers(google, facebook)in the past. Please sign in with the appropriate provider"
 				);
-			} else if (methods.includes("password")) {
+			} else if (methods && methods.includes("password")) {
 				setUserStatus("passwordAccont");
 				setDefaultEmail(data.email);
 			} else {
 				setUserStatus("noAccount");
 				setDefaultEmail(data.email);
 			}
-			console.log("sign in methods", methods);
+
 			reset();
 		} catch (e: any) {
 			throw Error(e);
 		}
 	};
 
-	const [{ error, isLoading }, updateData] =
-		useCreateFirestoreHook(handleSignIn);
+	const [{ error, isLoading }, updateData] = useQueryHook(handleSignIn);
 
 	return (
 		<div className="flex">

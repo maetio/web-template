@@ -141,7 +141,7 @@ export async function POST(req: NextRequest) {
 					break;
 				}
 				default: {
-					console.log("something");
+					console.log("default case fired");
 				}
 				}
 			}

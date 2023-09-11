@@ -10,7 +10,7 @@ import {
 import { FormInput } from "app/components/forms/form-input";
 import { updateUserPassword } from "auth/client";
 import { useAuthContext } from "auth/auth-context-provider";
-import { useCreateFirestoreHook } from "utils/hook-template";
+import { useQueryHook } from "utils/hook-template";
 import { ActionButton } from "app/components/action-button";
 
 export /**
@@ -41,8 +41,7 @@ const UpdatePasswordForm: React.FC<{}> = () => {
 		reset();
 	};
 
-	const [{ error }, updateData] =
-		useCreateFirestoreHook(handleUpdatePassword);
+	const [{ error }, updateData] = useQueryHook(handleUpdatePassword);
 
 	return (
 		<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

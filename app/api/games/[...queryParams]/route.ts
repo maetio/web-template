@@ -18,7 +18,7 @@ export async function GET(
 	{ params }: { params: { queryParams: Array<string | undefined> } }
 ): Promise<NextResponse<GamesResponseType>> {
 	// get the parameters from the query
-	const [compID, startTime, endTime] = params.queryParams;
+	const [compID, startTime, endTime, limit, begID] = params.queryParams;
 
 	try {
 		// set the start timestamp
@@ -29,8 +29,42 @@ export async function GET(
 		const futureDate = new Date();
 		futureDate.setFullYear(futureDate.getFullYear() + 100);
 		const endTimestamp = Timestamp.fromDate(
-			endTime ? new Date(endTime) : futureDate
+			endTime && endTime !== "0" ? new Date(endTime) : futureDate
 		);
+
+		// if beginID
+		if (begID) {
+			const game = await gamesCollection.doc(begID).get();
+			// if the comp id is provided, return that competition
+			if (compID && compID !== "all") {
+				const querySnapshot = await gamesCollection
+					.where("competitionID", "==", compID)
+					.where("startTimestamp", ">=", startTimestamp)
+					.where("startTimestamp", "<", endTimestamp)
+					.orderBy("startTimestamp", "asc")
+					.startAfter(game)
+					.limit(Number(limit) || 100)
+					.get();
+				return NextResponse.json(
+					querySnapshot.docs.map((doc) => ({
+						...doc.data(),
+						id: doc.id,
+					}))
+				);
+			}
+
+			// get all the games within a certain frame
+			const querySnapshot = await gamesCollection
+				.where("startTimestamp", ">=", startTimestamp)
+				.where("startTimestamp", "<=", endTimestamp)
+				.orderBy("startTimestamp", "asc")
+				.startAfter(begID)
+				.limit(Number(limit) || 100)
+				.get();
+			return NextResponse.json(
+				querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+			);
+		}
 
 		// if the comp id is provided, return that competition
 		if (compID && compID !== "all") {
@@ -39,6 +73,7 @@ export async function GET(
 				.where("startTimestamp", ">=", startTimestamp)
 				.where("startTimestamp", "<", endTimestamp)
 				.orderBy("startTimestamp", "asc")
+				.limit(Number(limit) || 100)
 				.get();
 			return NextResponse.json(
 				querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
@@ -50,6 +85,7 @@ export async function GET(
 			.where("startTimestamp", ">=", startTimestamp)
 			.where("startTimestamp", "<=", endTimestamp)
 			.orderBy("startTimestamp", "asc")
+			.limit(Number(limit) || 100)
 			.get();
 		return NextResponse.json(
 			querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))

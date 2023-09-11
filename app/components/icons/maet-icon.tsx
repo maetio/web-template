@@ -99,7 +99,7 @@ export const XSGrayMaetIcon: React.FC<MaetIconProps> = () => {
 	return (
 		<div>
 			<svg
-				className={"h-4 w-4 fill-gray-300 dark:fill-white"}
+				className={"h-4 w-4 fill-gray-500 dark:fill-white"}
 				viewBox="0 0 1500 1500"
 			>
 				<path

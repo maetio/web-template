@@ -183,7 +183,8 @@ export default async function ViewProfileScreen({
 					<div className="flex flex-col items-center">
 						{gameProfiles.map((gameProf) => (
 							<GameCard
-								id={gameProf.gameID}
+								// id={gameProf.gameID}
+								game={gameProf}
 								key={gameProf.gameID}
 							/>
 						))}

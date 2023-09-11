@@ -14,7 +14,7 @@ export interface Game {
 		rating?: Rating;
 		deltaRating?: Rating;
 		averagePlayerRating?: Rating;
-		image?: string[] | string;
+		image?: string[];
 		firstName?: string;
 		lastName?: string;
 		points?: number | null;
@@ -24,7 +24,7 @@ export interface Game {
 		rating?: Rating;
 		deltaRating?: Rating;
 		averagePlayerRating?: Rating;
-		image?: string[] | string;
+		image?: string[];
 		firstName?: string;
 		lastName?: string;
 		points?: number | null;

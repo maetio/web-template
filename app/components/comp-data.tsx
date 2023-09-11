@@ -91,31 +91,31 @@ const CompDisplayData = ({
 
 	return (
 		<div
-			className={"my-3 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6".concat(
-				className || ""
-			)}
+			className={`flex flex-col
+				${className || ""}
+			`}
 			{...divParams}
 		>
-			<div className="text-md mt-2 flex items-center text-gray-500">
+			<div className="text-md flex items-center">
 				<SportIcon
-					className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+					className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-900"
 					aria-hidden="true"
 				/>
 				{compTypeString}
 			</div>
 			{location?.name?.length ? (
-				<div className="text-md mt-2 flex items-center text-gray-500">
+				<div className="text-md mt-2 flex items-center">
 					<MdLocationOn
-						className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+						className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-900"
 						aria-hidden="true"
 					/>
 					{location?.name}
 				</div>
 			) : null}
 			{startTimeISO ? (
-				<div className="text-md mt-2 flex items-center text-gray-500">
+				<div className="text-md mt-2 flex items-center">
 					<MdOutlineCalendarMonth
-						className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+						className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-900"
 						aria-hidden="true"
 					/>
 					{new Date(startTimeISO || "").toLocaleDateString()}
