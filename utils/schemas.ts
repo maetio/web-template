@@ -94,3 +94,29 @@ export const editProfileSchema = yup.object().shape({
 	lastName: yup.string(),
 });
 export type EditProfileSchemaType = yup.InferType<typeof editProfileSchema>;
+
+const phoneRegExp =
+	/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
+/**
+ * venue schema for creating venues
+ */
+export const venueSchema = yup.object().shape({
+	name: yup.string(),
+	about: yup.string(),
+	image: yup.string().required("image is required to show off your venue"),
+	email: yup.string().email("Invalid email").required("Email is required"),
+	phoneNumber: yup
+		.string()
+		.matches(phoneRegExp, "Phone number is not valid")
+		.required("phone number is required"),
+	website: yup.string(),
+	courtNumber: yup.number().required("court number is required"),
+	hoursPerWeek: yup
+		.number()
+		.required("hour per week is required to calculate "),
+	pricePerHour: yup
+		.number()
+		.required("price is required. Please put 0 if it is free"),
+});
+export type VenueSchemaType = yup.InferType<typeof signupSchema>;

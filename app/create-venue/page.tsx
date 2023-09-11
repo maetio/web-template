@@ -1,13 +1,31 @@
+"use client";
+
 import React from "react";
 import { HiPhoto } from "react-icons/hi2";
+// import { useForm } from "react-hook-form";
+// import { yupResolver } from "@hookform/resolvers/yup";
+// import { FormInput } from "app/components/forms";
 
-export default async function CreateVenue() {
+export default function CreateVenue() {
+	// // react hook form
+	// const {
+	// 	handleSubmit,
+	// 	register,
+	// 	formState: { errors },
+	// 	reset,
+	// } = useForm({
+	// 	resolver: yupResolver(emailSchema),
+	// });
+
 	return (
-		<div className="px-10 space-y-10 divide-y divide-gray-900/10">
+		<div className="mt-12 space-y-10 divide-y divide-gray-900/10 px-10">
+			<h1 className="w-[842px] text-[32px] font-bold tracking-wide text-black">
+				Create Your Veneu
+			</h1>
 			<div className="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
 				<div className="px-4 sm:px-0">
 					<h2 className="text-base font-semibold leading-7 text-gray-900">
-						Profile
+						Information
 					</h2>
 					<p className="mt-1 text-sm leading-6 text-gray-600">
 						This information will be displayed publicly so be
@@ -23,23 +41,21 @@ export default async function CreateVenue() {
 									htmlFor="website"
 									className="block text-sm font-medium leading-6 text-gray-900"
 								>
-									Website
+									Venue Name
 								</label>
 								<div className="mt-2">
 									<div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-										<span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
-											http://
-										</span>
 										<input
 											type="text"
 											name="website"
 											id="website"
 											className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-											placeholder="www.example.com"
 										/>
 									</div>
 								</div>
 							</div>
+
+							{/* <FormInput /> */}
 
 							<div className="col-span-full">
 								<label
@@ -55,32 +71,12 @@ export default async function CreateVenue() {
 										rows={3}
 										className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 										defaultValue={""}
+										placeholder={"Enter description here"}
 									/>
 								</div>
 								<p className="mt-3 text-sm leading-6 text-gray-600">
-									Write a few sentences about yourself.
+									Write a few sentences about your venue.
 								</p>
-							</div>
-
-							<div className="col-span-full">
-								<label
-									htmlFor="photo"
-									className="block text-sm font-medium leading-6 text-gray-900"
-								>
-									Photo
-								</label>
-								<div className="mt-2 flex items-center gap-x-3">
-									{/* <UserCircleIcon
-										className="h-12 w-12 text-gray-300"
-										aria-hidden="true"
-									/> */}
-									<button
-										type="button"
-										className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-									>
-										Change
-									</button>
-								</div>
 							</div>
 
 							<div className="col-span-full">
@@ -121,19 +117,77 @@ export default async function CreateVenue() {
 							</div>
 						</div>
 					</div>
-					<div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-						<button
-							type="button"
-							className="text-sm font-semibold leading-6 text-gray-900"
-						>
-							Cancel
-						</button>
-						<button
-							type="submit"
-							className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-						>
-							Save
-						</button>
+				</form>
+			</div>
+
+			<div className="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3">
+				<div className="px-4 sm:px-0">
+					<h2 className="text-base font-semibold leading-7 text-gray-900">
+						Contact
+					</h2>
+					<p className="mt-1 text-sm leading-6 text-gray-600">
+						How can people reach your venue?
+					</p>
+				</div>
+
+				<form className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+					<div className="px-4 py-6 sm:p-8">
+						<div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+							<div className="sm:col-span-4">
+								<label
+									htmlFor="email"
+									className="block text-sm font-medium leading-6 text-gray-900"
+								>
+									Contact Email
+								</label>
+								<div className="mt-2">
+									<input
+										id="email"
+										name="email"
+										type="email"
+										autoComplete="email"
+										className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+										placeholder="example@domain.com"
+									/>
+								</div>
+							</div>
+
+							<div className="sm:col-span-4">
+								<label
+									htmlFor="phone-number"
+									className="block text-sm font-medium leading-6 text-gray-900"
+								>
+									Phone Number
+								</label>
+								<div className="relative mt-2 rounded-md shadow-sm">
+									<div className="absolute inset-y-0 left-0 flex items-center">
+										<label
+											htmlFor="country"
+											className="sr-only"
+										>
+											Country
+										</label>
+										<select
+											id="country"
+											name="country"
+											autoComplete="country"
+											className="h-full rounded-md border-0 bg-transparent py-0 pl-3 pr-7 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+										>
+											<option>US</option>
+											<option>CA</option>
+											<option>EU</option>
+										</select>
+									</div>
+									<input
+										type="text"
+										name="phone-number"
+										id="phone-number"
+										className="block w-full rounded-md border-0 py-1.5 pl-16 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+										placeholder="+1 (555) 987-6543"
+									/>
+								</div>
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>
@@ -141,10 +195,10 @@ export default async function CreateVenue() {
 			<div className="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3">
 				<div className="px-4 sm:px-0">
 					<h2 className="text-base font-semibold leading-7 text-gray-900">
-						Personal Information
+						Courts and Availibility
 					</h2>
 					<p className="mt-1 text-sm leading-6 text-gray-600">
-						Use a permanent address where you can receive mail.
+						How often can players book your venue?
 					</p>
 				</div>
 
@@ -299,19 +353,42 @@ export default async function CreateVenue() {
 							</div>
 						</div>
 					</div>
-					<div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-						<button
-							type="button"
-							className="text-sm font-semibold leading-6 text-gray-900"
-						>
-							Cancel
-						</button>
-						<button
-							type="submit"
-							className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-						>
-							Save
-						</button>
+				</form>
+			</div>
+
+			<div className="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3">
+				<div className="px-4 sm:px-0">
+					<h2 className="text-base font-semibold leading-7 text-gray-900">
+						Pricing
+					</h2>
+					<p className="mt-1 text-sm leading-6 text-gray-600">
+						How much would you like to charge for your venue?
+					</p>
+				</div>
+
+				<form className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+					<div className="px-4 py-6 sm:p-8">
+						<div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+							{/* <div className="sm:col-span-4">
+								<label
+									htmlFor="email"
+									className="block text-sm font-medium leading-6 text-gray-900"
+								>
+									Email address
+								</label>
+								<div className="mt-2">
+									<input
+										id="email"
+										name="email"
+										type="email"
+										autoComplete="email"
+										className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+									/>
+								</div>
+							</div> */}
+
+							{/* <FormInput register={} /> */}
+						</div>
 					</div>
 				</form>
 			</div>
