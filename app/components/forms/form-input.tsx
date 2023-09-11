@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { UseFormRegister } from "react-hook-form";
+import { HiPhoto } from "react-icons/hi2";
 import { PiWarningCircleFill, PiEyeBold, PiEyeSlashBold } from "react-icons/pi";
 
 interface FormInputParams {
@@ -8,7 +9,7 @@ interface FormInputParams {
 	label?: string;
 	labelClassName?: string;
 	name: string; // register name
-	type: "email" | "text" | "password";
+	type: "email" | "text" | "password" | "image";
 	errorMessage?: string | undefined;
 	defaultValue?: string;
 	placeholder?: string;
@@ -80,59 +81,88 @@ const FormInput: React.FC<FormInputParams> = ({
 					</div>
 				) : null}
 			</div>
-			<div className="relative mt-1.5 rounded-md shadow-sm">
-				<input
-					{...register(name)}
-					disabled={disabled}
-					type={showPassword ? "text" : type}
-					name={name}
-					id={name}
-					className={`block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${
-						disabled &&
-						"disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 disabled:ring-gray-200"
-					} ${
-						errorMessage &&
-						"text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500"
-					} ${inputClassName}`}
-					placeholder={placeholder}
-					defaultValue={defaultValue}
-					aria-invalid="true"
-					aria-describedby="email-error"
-				/>
-				{type === "password" ? (
-					<div className="absolute inset-y-0 right-0 flex items-center pr-3 hover:cursor-pointer">
-						<button
-							type="button"
-							onClick={() => setShowPassword(!showPassword)}
-						>
-							{showPassword ? (
-								<PiEyeSlashBold
-									className={`h-5 w-5 text-gray-400 ${
-										errorMessage && "text-red-900"
-									}`}
-									aria-hidden="true"
-								/>
-							) : (
-								<PiEyeBold
-									className={`h-5 w-5 text-gray-400 ${
-										errorMessage && "text-red-900"
-									}`}
-									aria-hidden="true"
-								/>
-							)}
-						</button>
-					</div>
-				) : null}
-
-				{errorMessage && type !== "password" && (
-					<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-						<PiWarningCircleFill
-							className="h-5 w-5 text-red-500"
+			{type === "image" ? (
+				<div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+					<div className="text-center">
+						<HiPhoto
+							className="mx-auto h-12 w-12 text-gray-300"
 							aria-hidden="true"
 						/>
+						<div className="mt-4 flex text-sm leading-6 text-gray-600">
+							<label
+								htmlFor="file-upload"
+								className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+							>
+								<span>Upload a file</span>
+								<input
+									id="file-upload"
+									name="file-upload"
+									type="file"
+									className="sr-only"
+								/>
+							</label>
+							<p className="pl-1">or drag and drop</p>
+						</div>
+						<p className="text-xs leading-5 text-gray-600">
+							PNG, JPG, GIF up to 10MB
+						</p>
 					</div>
-				)}
-			</div>
+				</div>
+			) : (
+				<div className="relative mt-1.5 rounded-md shadow-sm">
+					<input
+						{...register(name)}
+						disabled={disabled}
+						type={showPassword ? "text" : type}
+						name={name}
+						id={name}
+						className={`block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${
+							disabled &&
+							"disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 disabled:ring-gray-200"
+						} ${
+							errorMessage &&
+							"text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500"
+						} ${inputClassName}`}
+						placeholder={placeholder}
+						defaultValue={defaultValue}
+						aria-invalid="true"
+						aria-describedby="email-error"
+					/>
+					{type === "password" ? (
+						<div className="absolute inset-y-0 right-0 flex items-center pr-3 hover:cursor-pointer">
+							<button
+								type="button"
+								onClick={() => setShowPassword(!showPassword)}
+							>
+								{showPassword ? (
+									<PiEyeSlashBold
+										className={`h-5 w-5 text-gray-400 ${
+											errorMessage && "text-red-900"
+										}`}
+										aria-hidden="true"
+									/>
+								) : (
+									<PiEyeBold
+										className={`h-5 w-5 text-gray-400 ${
+											errorMessage && "text-red-900"
+										}`}
+										aria-hidden="true"
+									/>
+								)}
+							</button>
+						</div>
+					) : null}
+
+					{errorMessage && type !== "password" && (
+						<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+							<PiWarningCircleFill
+								className="h-5 w-5 text-red-500"
+								aria-hidden="true"
+							/>
+						</div>
+					)}
+				</div>
+			)}
 
 			{errorMessage && (
 				<p className="mt-2 text-sm text-red-600" id="email-error">
