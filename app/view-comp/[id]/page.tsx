@@ -83,8 +83,6 @@ export default async function ViewCompScreen({
 	const compPlayer: CompProfilesResponseType =
 		await compPlayerResponse.json();
 
-	console.log(compPlayer?.rating?.displayRating);
-
 	const getRankString = (rank: number) => {
 		if (rank === 0) return "1st";
 		if (rank === 1) return "2nd";
@@ -263,12 +261,12 @@ export default async function ViewCompScreen({
 
 						{competitionData?.location?.latitude &&
 						competitionData.location.longitude ? (
-							<SimpleMap
-								zoom={11}
-								lat={competitionData.location.latitude}
-								lng={competitionData.location.longitude}
-							/>
-						) : null}
+								<SimpleMap
+									zoom={11}
+									lat={competitionData.location.latitude}
+									lng={competitionData.location.longitude}
+								/>
+							) : null}
 					</section>
 
 					{/* description section */}
