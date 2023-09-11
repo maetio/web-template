@@ -6,8 +6,8 @@ import { PlayersResponseType } from "types/next-api";
 import { FaLock } from "react-icons/fa";
 import { filterPlayerData } from "utils/format";
 import { PlayerRatingCard } from "app/components/cards/player-rating-card";
-import { PaginationList } from "../layout/pagination";
-import { ActionButton } from "../action-button";
+import { PaginationList } from "app/components/layout/pagination";
+import { ActionButton } from "app/components/action-button";
 
 interface PlayerCardListParams {
 	players: PlayersResponseType;

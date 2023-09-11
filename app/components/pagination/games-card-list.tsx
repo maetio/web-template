@@ -7,7 +7,7 @@ import { useQueryHook } from "utils/hook-template";
 import { BaseURL } from "config/constants";
 import { GamesResponseType } from "types/next-api";
 
-const grabPaginatatedGames = async ({
+const grabPaginatedGames = async ({
 	compID,
 	begID,
 }: {
@@ -39,7 +39,7 @@ export const GamesCardList = ({
 	const [listData, setListData] = useState<GamesResponseType>([]);
 
 	const [{ error, data: games }, updateData] =
-		useQueryHook(grabPaginatatedGames);
+		useQueryHook(grabPaginatedGames);
 
 	const handleForwardClick = () => {
 		const delta = listData.length - end;

@@ -1,5 +1,5 @@
 import React from "react";
-import { MaetIcon } from "../icons";
+import { MaetIcon } from "app/components/icons";
 
 interface RatedCompetitionCardParams {
 	className?: string;

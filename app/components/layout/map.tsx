@@ -2,7 +2,7 @@
 
 import React, { Suspense } from "react";
 import GoogleMapReact from "google-map-react";
-import { AnyReactComponent } from "./map-marker";
+import { AnyReactComponent } from "app/components/layout/map-marker";
 
 export async function SimpleMap({
 	lat,

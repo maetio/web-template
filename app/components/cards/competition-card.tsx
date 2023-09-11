@@ -13,7 +13,7 @@ import { BaseURL } from "config/constants";
 import { ProfilesResponseType } from "types/next-api";
 import { capitalizeFirstLetter } from "utils/format";
 import { NextImage } from "app/components/image";
-import { PlayerCard } from "./player-card";
+import { PlayerCard } from "app/components/cards";
 
 export interface CompetitionCardProps
 	extends Omit<
