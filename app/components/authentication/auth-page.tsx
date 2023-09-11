@@ -62,11 +62,12 @@ const AuthPageComp: React.FC<AuthPageCompParams> = ({
 	const handleSignIn = async (data: EmailSchemaType) => {
 		try {
 			const methods = await fetchSignInMethods(data.email);
-			if (methods.length && !methods.includes("password")) {
+
+			if (methods && !methods.includes("password")) {
 				throw Error(
 					"Looks like you have logged in with one of our authentication providers(google, facebook)in the past. Please sign in with the appropriate provider"
 				);
-			} else if (methods.includes("password")) {
+			} else if (methods && methods.includes("password")) {
 				setUserStatus("passwordAccont");
 				setDefaultEmail(data.email);
 			} else {
