@@ -22,7 +22,11 @@ export const PlayerRatingCard: React.FC<PlayerCardProps> = ({
 }) => {
 	return (
 		<Link
-			href={blur || host ? "" : `/view-profile/${player.userID}/${player.sport}`}
+			href={
+				blur || host
+					? ""
+					: `/view-profile/${player.userID}/${player.sport}`
+			}
 			// eslint-disable-next-line react/jsx-props-no-spreading
 			{...divParams}
 			className={`flex justify-between ${blur && "blur-sm"}`}
