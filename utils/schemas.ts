@@ -104,7 +104,7 @@ const phoneRegExp =
 export const venueSchema = yup.object().shape({
 	name: yup.string().required("Venue name is required"),
 	about: yup.string(),
-	image: yup.string().required("image is required to show off your venue"),
+	image: yup.mixed().required("image is required to show off your venue"),
 	email: yup.string().email("Invalid email").required("Email is required"),
 	phoneNumber: yup
 		.string()

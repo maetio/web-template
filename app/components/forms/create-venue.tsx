@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { venueSchema } from "utils/schemas";
@@ -15,14 +15,21 @@ export const CreateVenue = () => {
 		register,
 		formState: { errors },
 		reset,
+		getFieldState,
 	} = useForm({
 		resolver: yupResolver(venueSchema),
 	});
 
 	const handleVenueCreation = async (data: any) => {
+		const thing = getFieldState("image");
+		console.log("thing", thing);
 		console.log("data", data);
-		reset();
 	};
+
+	useEffect(() => {
+		const otherthing = getFieldState("name");
+		console.log("other thing", otherthing);
+	}, [getFieldState("name")]);
 
 	return (
 		<main className="w-full min-w-full">

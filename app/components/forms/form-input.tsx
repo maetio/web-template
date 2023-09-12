@@ -90,13 +90,14 @@ const FormInput: React.FC<FormInputParams> = ({
 						/>
 						<div className="mt-4 flex text-sm leading-6 text-gray-600">
 							<label
-								htmlFor="file-upload"
+								// htmlFor="file-upload"
 								className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
 							>
 								<span>Upload a file</span>
 								<input
-									id="file-upload"
-									name="file-upload"
+									{...register(name)}
+									id={name}
+									name={name}
 									type="file"
 									className="sr-only"
 								/>
