@@ -9,7 +9,7 @@ interface FormInputParams {
 	label?: string;
 	labelClassName?: string;
 	name: string; // register name
-	type: "email" | "text" | "password" | "image";
+	type: "email" | "text" | "password" | "image" | "number";
 	errorMessage?: string | undefined;
 	defaultValue?: string;
 	placeholder?: string;
