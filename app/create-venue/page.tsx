@@ -6,7 +6,7 @@ import { CreateVenue } from "app/components/forms/create-venue";
 
 export default function CreateVenuePage() {
 	return (
-		<main>
+		<main className="w-full min-w-full">
 			<CreateVenue />
 		</main>
 	);
