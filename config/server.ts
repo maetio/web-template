@@ -7,6 +7,7 @@ import {
 	QueryDocumentSnapshot,
 } from "firebase-admin/firestore";
 import { cert } from "firebase-admin/app";
+import { getStorage } from "firebase-admin/storage";
 import { FirebaseServiceAccount } from "config/constants";
 import { CollectionDataTypes, SubcollectionDataTypes } from "../types/firebase";
 
@@ -17,9 +18,12 @@ import { CollectionDataTypes, SubcollectionDataTypes } from "../types/firebase";
  */
 export const firestore = initFirestore({
 	credential: cert(FirebaseServiceAccount),
+	storageBucket: "maet-dev-ced69.appspot.com",
 });
 // export const app = initializeApp();
 // export const firestore = initializeFirestore(app);
+
+export const bucket = getStorage().bucket();
 
 /**
  * Generic data type converter from firestore

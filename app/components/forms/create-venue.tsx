@@ -3,12 +3,13 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { venueSchema } from "utils/schemas";
+import { VenueSchemaType, venueSchema } from "utils/schemas";
 import { Venue } from "types/venue";
 import { addVenue } from "server-actions/venue";
 import { FormInput } from "./form-input";
 import { FormTextArea } from "./form-text-area";
 import { ActionButton } from "../action-button";
+import { useQueryHook } from "utils/hook-template";
 
 export const CreateVenue = () => {
 	// react hook form
@@ -18,16 +19,29 @@ export const CreateVenue = () => {
 		formState: { errors },
 		reset,
 	} = useForm({
-		resolver: yupResolver(venueSchema),
+		resolver: yupResolver<VenueSchemaType>(venueSchema),
 	});
 
-	const handleVenueCreation = async (data: any) => {
+	const handleVenueCreation = async (data: VenueSchemaType) => {
+		const image = data.images;
+
+		console.log("image from FE", image);
+
 		const sortedVenue: Partial<Venue> = {
-			name: "test",
+			name: data.name,
+			email: data.email,
+			website: data.website,
+			about: data.about,
+			phoneNumber: data.phoneNumber,
+			pricePerHour: data.pricePerHour,
+			image: data.images[0],
 		};
 
 		await addVenue(sortedVenue);
 	};
+
+	const [{ error, isLoading }, updateData] =
+		useQueryHook(handleVenueCreation);
 
 	useEffect(() => {
 		console.log(errors);
@@ -38,7 +52,7 @@ export const CreateVenue = () => {
 			<h1 className="w-[842px] text-[32px] font-bold tracking-wide text-black">
 				Create Your Veneu
 			</h1>
-			<form onSubmit={handleSubmit(handleVenueCreation)}>
+			<form onSubmit={handleSubmit(updateData)}>
 				<div className="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
 					<div className="px-4 sm:px-0">
 						<h2 className="text-base font-semibold leading-7 text-gray-900">

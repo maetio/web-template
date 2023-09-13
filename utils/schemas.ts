@@ -121,4 +121,4 @@ export const venueSchema = yup.object().shape({
 		.number()
 		.required("price is required. Please put 0 if it is free"),
 });
-export type VenueSchemaType = yup.InferType<typeof signupSchema>;
+export type VenueSchemaType = yup.InferType<typeof venueSchema>;
