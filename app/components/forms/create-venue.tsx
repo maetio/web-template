@@ -54,9 +54,6 @@ export const CreateVenue = () => {
 				{
 					method: "POST",
 					body: formData,
-					// headers: {
-					// 	"Content-Type": image.type,
-					// },
 				}
 			);
 
@@ -66,18 +63,10 @@ export const CreateVenue = () => {
 		}
 	};
 
-	const [{ error, isLoading }, updateData] =
-		useQueryHook(handleVenueCreation);
-
-	useEffect(() => {
-		console.log(errors);
-	}, [errors]);
+	const [{ isLoading }, updateData] = useQueryHook(handleVenueCreation);
 
 	return (
-		<div className="mt-12 space-y-10 px-10">
-			<h1 className="w-[842px] text-[32px] font-bold tracking-wide text-black">
-				Create Your Veneu
-			</h1>
+		<div className="mt-12 space-y-10">
 			<form onSubmit={handleSubmit(updateData)}>
 				<div className="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
 					<div className="px-4 sm:px-0">
@@ -92,9 +81,9 @@ export const CreateVenue = () => {
 
 					{/* <img src="https://storage.googleapis.com/maet-dev-ced69.appspot.com/venue/wzHjhEcawjqss0H5Pk9U?GoogleAccessId=firebase-adminsdk-le5l6%40maet-dev-ced69.iam.gserviceaccount.com&Expires=4102358400&Signature=i5yYdjNr5hVGGJsQacZH2GlnvqGmA7uRLREXOOtHK2t0qPPMqQeUHkh0rEsp82L3xRDMcDb%2BXS6I%2BsnJEcq3LLSUWs7m3oma%2BE1fjMGmW2E8wltmN4kLuuy0160GmAURFC54kK9D5V1yl6W8OMiJQfT6QB3lnR0jy8i%2BmBYZMKKUCs8IcQ%2Fa4QOuBEOu%2BUjDI9UodB58qyKjStbGEKxHLqyOeEc%2FOhikQhDXVcTl%2FibWrfg2GV53QiRinPFUxaYbtwfnsluYzrNkhsd1O%2Bwe4fgev4lwylGqGBjyMzMnWZhjZyJVILTIVKSUJyEZUN7PWy7v2vvpPontuWid%2F9s%2FzQ%3D%3D" /> */}
 
-					<form className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+					<form className="rounded-xl bg-white shadow-sm ring-1 ring-gray-900/5 md:col-span-2">
 						<div className="px-4 py-6 sm:p-8">
-							<div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+							<div className="grid  grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 								<FormInput
 									className="sm:col-span-4"
 									register={register}
@@ -137,7 +126,7 @@ export const CreateVenue = () => {
 						</p>
 					</div>
 
-					<form className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+					<form className="rounded-xl bg-white shadow-sm ring-1 ring-gray-900/5 md:col-span-2">
 						<div className="px-4 py-6 sm:p-8">
 							<div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 								<FormInput
@@ -184,9 +173,9 @@ export const CreateVenue = () => {
 						</p>
 					</div>
 
-					<form className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+					<form className="rounded-xl bg-white shadow-sm ring-1 ring-gray-900/5 md:col-span-2">
 						<div className="px-4 py-6 sm:p-8">
-							<div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+							<div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 								<FormInput
 									className="sm:col-span-4"
 									register={register}
@@ -221,7 +210,7 @@ export const CreateVenue = () => {
 
 					<form className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
 						<div className="px-4 py-6 sm:p-8">
-							<div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+							<div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 								<FormInput
 									className="sm:col-span-4"
 									register={register}
@@ -235,7 +224,7 @@ export const CreateVenue = () => {
 					</form>
 				</div>
 				<div className="flex w-full justify-center">
-					<ActionButton />
+					<ActionButton isLoading={isLoading} />
 				</div>
 			</form>
 		</div>
