@@ -5,11 +5,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { VenueSchemaType, venueSchema } from "utils/schemas";
 import { Venue } from "types/venue";
-import { addVenue } from "server-actions/venue";
+import { updateVenue } from "server-actions/venue";
+import { BaseURL } from "config/constants";
+import { useQueryHook } from "utils/hook-template";
 import { FormInput } from "./form-input";
 import { FormTextArea } from "./form-text-area";
 import { ActionButton } from "../action-button";
-import { useQueryHook } from "utils/hook-template";
 
 export const CreateVenue = () => {
 	// react hook form
@@ -23,9 +24,7 @@ export const CreateVenue = () => {
 	});
 
 	const handleVenueCreation = async (data: VenueSchemaType) => {
-		const image = data.images;
-
-		console.log("image from FE", image);
+		// get the image from file input
 
 		const sortedVenue: Partial<Venue> = {
 			name: data.name,
@@ -34,10 +33,37 @@ export const CreateVenue = () => {
 			about: data.about,
 			phoneNumber: data.phoneNumber,
 			pricePerHour: data.pricePerHour,
-			image: data.images[0],
+			images: [
+				"https://images.pexels.com/photos/6985001/pexels-photo-6985001.jpeg?auto=compress&cs=tinysrgb&w=1200",
+			],
 		};
 
-		await addVenue(sortedVenue);
+		const id = await updateVenue(sortedVenue);
+
+		if (data.images) {
+			// the typing on these files is pretty tricky, maybe you can figure it out
+			const image: File = (data.images as FileList)[0];
+
+			console.log("content type", image.type);
+
+			const formData = new FormData();
+			formData.append("file", image);
+
+			const resp = await fetch(
+				`${BaseURL}/api/venue/upload-image/${id}`,
+				{
+					method: "POST",
+					body: formData,
+					// headers: {
+					// 	"Content-Type": image.type,
+					// },
+				}
+			);
+
+			const url = await resp.json();
+
+			await updateVenue({ images: url }, id);
+		}
 	};
 
 	const [{ error, isLoading }, updateData] =
@@ -63,6 +89,8 @@ export const CreateVenue = () => {
 							careful what you share.
 						</p>
 					</div>
+
+					{/* <img src="https://storage.googleapis.com/maet-dev-ced69.appspot.com/venue/wzHjhEcawjqss0H5Pk9U?GoogleAccessId=firebase-adminsdk-le5l6%40maet-dev-ced69.iam.gserviceaccount.com&Expires=4102358400&Signature=i5yYdjNr5hVGGJsQacZH2GlnvqGmA7uRLREXOOtHK2t0qPPMqQeUHkh0rEsp82L3xRDMcDb%2BXS6I%2BsnJEcq3LLSUWs7m3oma%2BE1fjMGmW2E8wltmN4kLuuy0160GmAURFC54kK9D5V1yl6W8OMiJQfT6QB3lnR0jy8i%2BmBYZMKKUCs8IcQ%2Fa4QOuBEOu%2BUjDI9UodB58qyKjStbGEKxHLqyOeEc%2FOhikQhDXVcTl%2FibWrfg2GV53QiRinPFUxaYbtwfnsluYzrNkhsd1O%2Bwe4fgev4lwylGqGBjyMzMnWZhjZyJVILTIVKSUJyEZUN7PWy7v2vvpPontuWid%2F9s%2FzQ%3D%3D" /> */}
 
 					<form className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
 						<div className="px-4 py-6 sm:p-8">

@@ -98,6 +98,23 @@ export type EditProfileSchemaType = yup.InferType<typeof editProfileSchema>;
 const phoneRegExp =
 	/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
+const fileSchema = yup
+	.mixed()
+	.test("fileRequired", "File is required", (value) => {
+		if (!value) return false;
+
+		if (Array.isArray(value)) {
+			for (let i = 0; i < value.length; i+=1) {
+				if (!(value[i] instanceof File)) {
+					return false;
+				}
+			}
+			return value.length > 0;
+		}
+
+		return value instanceof File;
+	});
+
 /**
  * venue schema for creating venues
  */
@@ -107,6 +124,7 @@ export const venueSchema = yup.object().shape({
 	images: yup.mixed().test("fileRequired", "File is required", (value) => {
 		return value && (value as File).length > 0;
 	}),
+	// images: fileSchema,
 	email: yup.string().email("Invalid email").required("Email is required"),
 	phoneNumber: yup
 		.string()
