@@ -1,20 +1,11 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { privateUserCollection } from "config/server";
+import { venueCollection } from "config/server";
 import { getServerAuthUser } from "auth/server";
-import { PrivateUserData } from "../types";
+import { Venue } from "types/venue";
 
-/**
- * Server action that updates the user's information
- * @remarks
- * doing it insdie a formAction or an action like the documentation explains
- * https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions#invocation
- *
- * @export
- * @param {Partial<PrivateUserData>} userData
- */
-export async function updateUserData(userData: Partial<PrivateUserData>) {
+export async function addVenue(venue: Partial<Venue>) {
 	// get the user for the server
 	const user = await getServerAuthUser();
 
@@ -24,7 +15,7 @@ export async function updateUserData(userData: Partial<PrivateUserData>) {
 	}
 
 	// set user data
-	await privateUserCollection.doc(user.id).set(userData, { merge: true });
+	await venueCollection.add(venue);
 
 	revalidatePath("/");
 }

@@ -86,6 +86,8 @@ export const transactionEvents =
 	createCollection<CollectionDataTypes["transaction-events"]>(
 		"transaction-events"
 	);
+export const venueCollection =
+	createCollection<CollectionDataTypes["venue"]>("venue");
 
 /**
  * Define Subcollections as functions

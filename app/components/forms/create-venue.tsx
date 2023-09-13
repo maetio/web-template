@@ -4,6 +4,8 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { venueSchema } from "utils/schemas";
+import { Venue } from "types/venue";
+import { addVenue } from "server-actions/venue";
 import { FormInput } from "./form-input";
 import { FormTextArea } from "./form-text-area";
 import { ActionButton } from "../action-button";
@@ -15,22 +17,21 @@ export const CreateVenue = () => {
 		register,
 		formState: { errors },
 		reset,
-		getFieldState,
 	} = useForm({
 		resolver: yupResolver(venueSchema),
 	});
 
 	const handleVenueCreation = async (data: any) => {
-		console.log("data", data);
+		const sortedVenue: Partial<Venue> = {
+			name: "test",
+		};
+
+		await addVenue(sortedVenue);
 	};
 
 	useEffect(() => {
 		console.log(errors);
 	}, [errors]);
-
-	useEffect(() => {
-		console.log("thing", getFieldState("images"));
-	}, [getFieldState("images")]);
 
 	return (
 		<div className="mt-12 space-y-10 px-10">
