@@ -104,7 +104,7 @@ const fileSchema = yup
 		if (!value) return false;
 
 		if (Array.isArray(value)) {
-			for (let i = 0; i < value.length; i+=1) {
+			for (let i = 0; i < value.length; i += 1) {
 				if (!(value[i] instanceof File)) {
 					return false;
 				}

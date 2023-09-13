@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { UseFormRegister } from "react-hook-form";
-import { PiWarningCircleFill, PiEyeBold, PiEyeSlashBold } from "react-icons/pi";
 
 interface FormInputParams {
 	register: UseFormRegister<any>; // tried using FieldVales instead of any, and was still getting a TS error

@@ -1,4 +1,3 @@
-import { PlayerResponseType } from "types/next-api";
 import { NextResponse } from "next/server";
 import { bucket } from "config/server";
 
@@ -19,9 +18,11 @@ export async function POST(
 	try {
 		if (params.id) {
 			const data = await request.formData();
-			const files = data.get("file");
+			const files = data.get("file") as Blob;
 
 			console.log("file in server", files);
+
+			// console.log("instance", files instanceof Blob);
 
 			// Ensure that a file was uploaded
 			if (files) {
